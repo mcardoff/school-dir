@@ -1,0 +1,64 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 545 Midterm}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\begin{document}
+\maketitle
+\section*{Question 1}
+\section*{Question 2}
+\section*{Question 3}
+Pion isospin states:
+\begin{align*}
+  \pi^+&\equiv\ket{1,1}\\
+  \pi^0&\equiv\ket{1,0}\\
+  \pi^-&\equiv\ket{1,-1}
+\end{align*}
+The Quantities $B,C,D$ are all scattering into the same two objects so we need to take inner products with themselves. So we only need to calculate the following vector sums:
+\begin{align*}
+  B:\quad \pi^+\oplus\pi^+&=\ket{1,1}\oplus\ket{1,1} \\
+  &=
+  C:\quad \pi^+\oplus\pi^0&=\ket{1,1}\oplus\ket{1,0} \\
+  D:\quad \pi^+\oplus\pi^-&=\ket{1,1}\oplus\ket{1,-1} 
+\end{align*}
+\section*{Question 4}
+\section*{Question 5}
+\section*{Question 6}
+\end{document}

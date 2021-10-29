@@ -1,0 +1,141 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 545 HW 3B}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\begin{document}
+\maketitle
+\section*{Question 1}
+We now have $\phi = a + ic$. First we write out the potential:
+\begin{align*}
+  V&=\lambda\qty(\phi^*\phi-\frac{v^2}{2})^2\\
+  &=\lambda\qty(\qty(a-\frac{v}{\sqrt{2}}-ic)
+  \qty(a-\frac{v}{\sqrt{2}}+ic)-\frac{v^2}{2})^2\\
+  &=\lambda\qty(\qty(a-\frac{v}{\sqrt{2}})^2+c^2-\frac{v^2}{2})^2\\
+  &=\lambda\qty(a^2+c^2-av\sqrt{2}+\frac{v^2}{2}-\frac{v^2}{2})^2\\
+  &=\lambda\qty(a^2+c^2-av\sqrt{2})^2
+\end{align*}
+A mass term is given by $\frac{1}{2}m_\phi\phi^2$, so we have a couple terms when we distribute the $\lambda$ and expand:
+\begin{align*}
+  V&=\lambda\qty(a^4+c^4-2\sqrt{2}a^3v-2\sqrt{2}vac^2+2v^2a^2)\\
+  &=\lambda\qty(a^4+c^4-2\sqrt{2}a^3v-2\sqrt{2}vac^2)+
+  \boxed{\frac{1}{2}\qty(4\lambda v^2)a^2}\\
+  &=\lambda\qty(a^4+c^4-2\sqrt{2}a^3v-2\sqrt{2}vac^2)+
+  \frac{1}{2}m_a^2a^2
+\end{align*}
+We have found a single mass term, so the $c$ field should represent a goldstone boson. 
+\section*{Question 2}
+First we should work out the scalar product for $\phi$
+\begin{align*}
+  \phi^\dag\phi&=\pmqty{a'-ic & b-id}\pmqty{a'+ic\\b+id}\\
+  &=(a'-ic)(a'+ic)+(b-id)(b+id)\\
+  &=(a')^2+b^2+c^2+d^2
+  =\qty(a-\frac{v}{\sqrt{2}})^2+b^2+c^2+d^2\\
+  &=a^2+b^2+c^2+d^2-av\sqrt{2}+\frac{v^2}{2}
+\end{align*}
+The potential is then:
+\begin{align*}
+  V=&\lambda\qty(\phi^\dag\phi-\frac{v^2}{2})^2\\
+  =&\lambda\qty(a^2+b^2+c^2+d^2-av\sqrt{2}+\frac{v^2}{2}-\frac{v^2}{2})^2\\
+  =&\lambda\qty(a^2+b^2+c^2+d^2-av\sqrt{2})^2\\
+  =&\lambda\left(a^4+b^4+c^4+d^4+2a^2v^2\right.\\
+  &-2\sqrt{2}a^3v-2\sqrt{2}ab^2v-2\sqrt{2}ac^2v-2\sqrt{2}ad^2v\\
+  &\left.+2a^2b^2+2a^2c^2+2a^2d^2+2b^2c^2+2b^2d^2+2c^2d^2\right)
+\end{align*}
+Once again the only terms quadratic in the field is the $a^2v^2$ term, so the $a$ field is the only one with mass, so $b,c,d$ are all goldstone bosons.
+\section*{Question 3}
+The symmetry of $SU(2)_{L/R}$ is in terms of matrices, so it might be better to write the Lagrangian in terms of matrices and the quark vector:
+\begin{align*}
+  q=\pmqty{u\\d}\implies \mathcal{L}=-\bar{q}\pmqty{m_u&\\&m_d}q
+\end{align*}
+In terms of $L$ and $R$ quarks this is:
+\begin{align*}
+  \mathcal{L}=-\bar{q}_L\pmqty{m_u&\\&m_d}q_R-\bar{q}_R\pmqty{m_u&\\&m_d}q_L
+\end{align*}
+For $SU(2)_L$, the quark vector gets transformed as:
+\begin{align*}
+  SU(2)_L:q_L\to U_Lq_L\quad\qty(\implies\bar{q}_L\to\bar{q}_LU^\dag_L)
+\end{align*}
+So the lagrangian will become:
+\begin{align*}
+  \mathcal{L}\to-\bar{q}_LU^\dag_L\pmqty{m_u&\\&m_d}q_R
+  -\bar{q}_R\pmqty{m_u&\\&m_d}U_Lq_L
+\end{align*}
+However, since $m_u\neq m_d$, the matrix cannot be treated as a number times the identity, so $SU(2)_L$ is not a symmetry of this term. As for $SU(2)_R$, we have:
+\begin{align*}
+  SU(2)_R:q_R\to U_Rq_R\quad\qty(\implies\bar{q}_R\to\bar{q}_RU^\dag_R)
+\end{align*}
+For the lagrangian
+\begin{align*}
+  \mathcal{L}\to-\bar{q}_L\pmqty{m_u&\\&m_d}U_Rq_R
+  -\bar{q}_RU^\dag_R\pmqty{m_u&\\&m_d}q_L
+\end{align*}
+Again, $SU(2)_R$ is not a symmetry
+
+Let $m_u=m_d=m$, such that the matrix of masses now becomes $m\mathbb{I}$ where $\mathbb{I}$ is the identity matrix, and the lagrangrian becomes:
+\begin{align*}
+  \mathcal{L}=-m\qty(\bar{q}_Lq_R+\bar{q}_Rq_L)
+\end{align*}
+Isospin does not differentiate between quark helicity, so the transformation is:
+\begin{align*}
+  SU(2)_I:q_{L/R}\to Uq_{L/R}
+\end{align*}
+So the lagrangian becomes:
+\begin{align*}
+  \mathcal{L}&\to-m\qty(\bar{q}_LU^\dag Uq_R+\bar{q}_RU^\dag Uq_L)\\
+  &\to-m\qty(\bar{q}_Lq_R+\bar{q}_Rq_L)=\mathcal{L}
+\end{align*}
+So Isospin is in fact a symmetry
+
+The mass term of the pions should be:
+\begin{align*}
+  \mathcal{L}=-m_\pi^2\pi^i\pi^i
+\end{align*}
+We showed in class that an isospin transformation of the pion theory is a rotation:
+\begin{align*}
+  \text{Isospin}:\pi^i\to R^{ij}\pi^j
+\end{align*}
+The lagrangian becomes:
+\begin{align*}
+  \mathcal{L}\to-m_\pi^2R^{ij}\pi^jR^{ik}\pi^k=-m_\pi^2(R^T)^{ji}R^{ik}\pi^j\pi^k=
+  -m_\pi^2\delta^{jk}\pi^j\pi^k=-m_\pi^2\pi^j\pi^j=\mathcal{L}
+\end{align*}
+So this term respects isospin
+\end{document}

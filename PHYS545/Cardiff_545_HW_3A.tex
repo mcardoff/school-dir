@@ -1,0 +1,367 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 545 HW 3}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+
+\usepackage[margin=1in]{geometry}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\newcommand{\Tx}{\pmqty{0&0&0\\0&0&i\\0&-i&0}}
+\newcommand{\Ty}{\pmqty{0&0&i\\0&0&0\\-i&0&0}}
+\newcommand{\Tz}{\pmqty{0&i&0\\-i&0&0\\0&0&0}}
+
+\newcommand{\tx}{\frac{1}{\sqrt{2}}\pmqty{0&1&0\\1&0&1\\0&1&0}}
+\newcommand{\ty}{\frac{1}{\sqrt{2}}\pmqty{0&-i&0\\i&0&-i\\0&i&0}}
+\newcommand{\tz}{\pmqty{1&0&0\\0&0&0\\0&0&-1}}
+
+\newcommand{\Px}{\frac{1}{2}\pmqty{0&-1\\-1&0}}
+\newcommand{\Py}{\frac{1}{2}\pmqty{0&-i\\i&0}}
+\newcommand{\Pz}{\frac{1}{2}\pmqty{-1&0\\0&1}}
+\newcommand{\Um}{\pmqty{0&-1\\1&0}}
+\newcommand{\UmT}{\pmqty{0&1\\-1&0}}
+
+\newcommand{\px}{\frac{1}{2}\pmqty{0&1\\1&0}}
+\newcommand{\py}{\frac{1}{2}\pmqty{0&-i\\i&0}}
+\newcommand{\pz}{\frac{1}{2}\pmqty{1&0\\0&-1}}
+
+\newcommand{\ppls}{\ket{1,1}}
+\newcommand{\pzro}{\ket{1,0}}
+\newcommand{\pmin}{\ket{1,-1}}
+\newcommand{\prot}{\ket{\tfrac{1}{2}, \tfrac{1}{2}}}
+\newcommand{\neut}{\ket{\tfrac{1}{2},-\tfrac{1}{2}}}
+\newcommand{\ath}{\ket{\tfrac{3}{2},\tfrac{1}{2}}}
+\newcommand{\aoh}{\ket{\tfrac{1}{2},\tfrac{1}{2}}}
+\newcommand{\athc}{\bra{\tfrac{3}{2},\tfrac{1}{2}}}
+\newcommand{\aohc}{\bra{\tfrac{1}{2},\tfrac{1}{2}}}
+
+\begin{document}
+\section*{Problem 1}
+\maketitle
+The commutators do not include the $i$, so we actually use the following matrices:
+\begin{align*}
+  T_x=\pmqty{0&0&0\\0&0&i\\0&-i&0}\quad
+  T_y=\pmqty{0&0&i\\0&0&0\\-i&0&0}\quad
+  T_z=\pmqty{0&i&0\\-i&0&0\\0&0&0}
+\end{align*}
+Performing the commutators from here is just matrix multiplication:
+\begin{align*}
+  \comm{T_x}{T_y}&=\Tx\Ty-\Ty\Tx\\
+  &=\pmqty{0&0&0\\1&0&0\\0&0&0}-\pmqty{0&1&0\\0&0&0\\0&0&0}
+  =\boxed{\pmqty{0&-1&0\\1&0&0\\0&0&0}=iT_z}\\
+  \comm{T_y}{T_z}&=\Ty\Tz-\Tz\Ty\\
+  &=\pmqty{0&0&0\\0&0&0\\0&1&0}-\pmqty{0&0&0\\0&0&1\\0&0&0}
+  =\boxed{\pmqty{0&0&0\\0&0&-1\\0&1&0}=iT_x}\\
+  \comm{T_z}{T_x}&=\Tz\Tx-\Tx\Tz\\
+  &=\pmqty{0&0&-1\\0&0&0\\0&0&0}-\pmqty{0&0&0\\0&0&0\\-1&0&0}
+  =\boxed{\pmqty{0&0&-1\\0&0&0\\1&0&0}=iT_y}
+\end{align*}
+If we write out the (non-zero) and positive terms in the Levi-Civita term, we get the following:
+\begin{align*}
+  \comm{T_x}{T_y}=i\sum_{k=x,y,z}\varepsilon_{xyk}T_k=
+  i\qty(\varepsilon_{xyx}T_x+\varepsilon_{xyy}T_y+\varepsilon_{xyz}T_z)
+  =\boxed{iT_z}\\
+  \comm{T_y}{T_z}=i\sum_{k=x,y,z}\varepsilon_{yzk}T_k=
+  i\qty(\varepsilon_{yzx}T_x+\varepsilon_{yzy}T_y+\varepsilon_{yzz}T_z)
+  =\boxed{iT_x}\\
+  \comm{T_z}{T_x}=i\sum_{k=x,y,z}\varepsilon_{zxk}T_k=
+  i\qty(\varepsilon_{zxx}T_x+\varepsilon_{zxy}T_y+\varepsilon_{zxz}T_z)
+  =\boxed{iT_y}\\
+\end{align*}
+The remaining aysmmetric terms would give another overall minus sign, which would come from the following commutator rule:
+\begin{align*}
+  [A,B]=-[B,A]
+\end{align*}
+So we have the rules for all the symmetric and antisymmetric combinations, and combinations with repeated indices are trivial since the Levi-Civita symbol is zero with a repeated index, as well as self-commutator is 0:
+\begin{align*}
+  [A,A]=AA-AA=0
+\end{align*}
+Hence we have found:
+\begin{align*}
+  \boxed{\comm{T_i}{T_j}=i\varepsilon_{ijk}T_k}
+\end{align*}
+\section*{Problem 2}
+This problem is pretty much the same, except with the benefit of hindsight, so we only need to work out the commutators, and none of the extra algebra with the levi-civita symbol. We use the following matricies:
+\begin{align*}
+  T_x=\px\quad T_y=\py\quad T_z=\pz
+\end{align*}
+The commutators now are:
+\begin{align*}
+  [T_x,T_y]&=\px\py-\py\px\\
+  &=\frac{1}{4}\qty(\pmqty{i&0\\0&-i}-\pmqty{-i&0\\0&i})
+  =\boxed{\frac{1}{2}\pmqty{i&0\\0&-i}=iT_z}\\
+  [T_y,T_z]&=\py\pz-\pz\py\\
+  &=\frac{1}{4}\qty(\pmqty{0&i\\i&0}-\pmqty{0&-i\\-i&0})
+  =\boxed{\frac{1}{2}\pmqty{0&i\\i&0}=iT_x}\\
+  [T_z,T_x]&=\pz\px-\px\pz\\
+  &=\frac{1}{4}\qty(\pmqty{0&1\\-1&0}-\pmqty{0&-1\\1&0})
+  =\boxed{\frac{1}{2}\pmqty{0&1\\-1&0}=iT_y}\\
+\end{align*}
+With the same logic as the previous problem applied, we have found:
+\begin{align*}
+  \boxed{\comm{T_i}{T_j}=i\varepsilon_{ijk}T_k}
+\end{align*}
+\section*{Problem 3}
+A matrix is Hermitian if it is equal to its conjugate transpose:
+\begin{align*}
+  A=A^\dag
+\end{align*}
+So in order to show $M_i$ is Hermitian, we must take its conjugate transpose:
+\begin{align*}
+  M_i^\dag=\qty(UT_iU^\dag)^\dag
+\end{align*}
+The following properties apply to matrices:
+\begin{align*}
+  (ABC)^*&=A^*B^*C^*\\
+  (ABC)^T&=C^TB^TA^T
+\end{align*}
+Combining these into the conjugate transpose operator we get:
+\begin{align*}
+  (ABC)^\dag&=C^\dag B^\dag A^\dag 
+\end{align*}
+Applying to $M_i$:
+\begin{align*}
+  M_i^\dag=\qty(UT_iU^\dag)^\dag=U^{\dag\dag}T_i^\dag U^\dag
+\end{align*}
+Properties of the complex conjugate and the transpose tell us that the first matrix is simply $U$ again, and the Hermitian property of $T_i$ gives the rest:
+\begin{align*}
+  M_i^\dag=U^{\dag}T_i^\dag U^\dag=U^{\dag}T_iU^\dag=M_i
+\end{align*}
+Therefore $M_i=M_i^\dag$ and $M_i$ is Hermitian.
+
+Since $T_i$ form a Lie Algebra, they obey the following:
+\begin{align*}
+  \comm{T_i}{T_j}=i\varepsilon_{ijk}T_k
+\end{align*}
+In order to verify that the $M_i$ also satisfy this algebra, we need to calculate the commutator $\comm{M_i}{M_j}$, we can start by expanding this commutator in terms of $T_i$ and $U$:
+\begin{align*}
+  \comm{M_i}{M_j}=M_iM_j-M_jM_i=UT_iU^{\dag}UT_jU^\dag-UT_jU^{\dag}UT_iU^\dag
+\end{align*}
+Now we use the fact that $U$ is unitary, so its conjugate transpose is its inverse. This allows us to simplify the commutator:
+\begin{align*}
+  UT_iU^{\dag}UT_jU^\dag-UT_jU^{\dag}UT_iU^\dag&=UT_iT_jU^\dag-UT_jT_iU^\dag\\
+  U(T_iT_j-T_jT_j)U^\dag&=U(i\varepsilon_{ijk}T_k)U^\dag\\
+  i\varepsilon_{ijk}UT_kU^\dag&=\boxed{i\varepsilon_{ijk}M_k}
+\end{align*}
+Hence the $M_i$ follow the same Lie algebra as the $T_i$
+
+We simply need to brute force calculate the commutators with these matrices
+\begin{align*}
+  \comm{T_x}{T_y}&=\tx\ty-\ty\tx\\
+  &=\frac{1}{2}\qty(\pmqty{i&0&-i\\0&0&0\\i&0&-i}-\pmqty{-i&0&-i\\0&0&0\\i&0&i})
+  =\boxed{\pmqty{\dmat[0]{i,0,-i}}=iT_z}\\
+  \comm{T_y}{T_z}&=\ty\tz-\tz\ty\\
+  &=\frac{1}{\sqrt{2}}
+  \qty(\pmqty{0&0&0\\i&0&i\\0&0&0}-\pmqty{0&-i&0\\0&0&0\\0&-i&0})
+  =\boxed{\frac{1}{\sqrt{2}}\pmqty{0&i&0\\i&0&i\\0&i&0}=iT_x}\\
+  \comm{T_z}{T_x}&=\tz\tx-\tx\tz\\
+  &=\frac{1}{\sqrt{2}}
+  \qty(\pmqty{0&1&0\\0&0&0\\0&-1&0}-\pmqty{0&0&0\\1&0&-1\\0&0&0})
+  =\boxed{\frac{1}{\sqrt{2}}\pmqty{0&1&0\\-1&0&1\\0&-1&0}=iT_y}
+\end{align*}
+From our previous logic we can find the remaining values of the structure constant:
+\begin{align*}
+  \comm{T_y}{T_x}=-\comm{T_x}{T_y}&=-iT_z\\
+  \comm{T_z}{T_y}=-\comm{T_y}{T_z}&=-iT_x\\
+  \comm{T_x}{T_z}=-\comm{T_z}{T_x}&=-iT_y
+\end{align*}
+So our generalized structure function should just be the Levi-Civita symbol:
+\begin{align*}
+  \boxed{C_{ijk}=\varepsilon_{ijk}}
+\end{align*}
+
+Since these supposedly come from a unitary transformation of the matrices in problem 1, they should also represent spin 1, and since the eigenvalues are in the diagonals of the $T_z$ generator, the spin alignment is in the '$z$' direction.
+
+If we are to find this matrix it is important to note that they will be related by the following:
+\begin{align*}
+  T_i^{(3)}=UT_i^{(1)}U^\dag
+\end{align*}
+Where the upper index distinguishes between which set of matrices we are talking about. Multiplying by $U$ on the right and using the unitary property of $U$ gives:
+\begin{align*}
+  T_i^{(3)}U=UT_i^{(1)}U^\dag \implies T_i^{(3)}U=UT_i^{(1)}
+\end{align*}
+I might finish this later...
+\section*{Problem 4}
+If we first work out the minus conjugates we get:
+\begin{align*}
+  -\px^*=\Px\quad-\py^*=\Py\quad-\pz^*=\Pz
+\end{align*}
+We simply need to work out the following Matrix multiplications:
+\begin{align*}
+  \Um\Px\UmT&=\frac{1}{2}\pmqty{\dmat[0]{1,-1}}\UmT=\frac{1}{2}\pmqty{0&1\\1&0}\\
+  \Um\Py\UmT&=\frac{1}{2}\pmqty{\dmat[0]{-i,-i}}\UmT=\frac{1}{2}\pmqty{0&-i\\i&0}\\
+  \Um\Pz\UmT&=\frac{1}{2}\pmqty{0&-1\\-1&0}\UmT=\frac{1}{2}\pmqty{1&0\\0&-1}
+\end{align*}
+From top to bottom we can clearly see the following:
+\begin{align*}
+  \Um\Px\UmT&=\px\\
+  \Um\Py\UmT&=\py\\
+  \Um\Pz\UmT&=\pz
+\end{align*}
+In other words:
+\begin{align*}
+  T_i=\spmqty{&-1\\1&}\qty(-T_i^*)\spmqty{&1\\-1&}
+\end{align*}
+\section*{Problem 5}
+As just a reference for this, It is useful to have the following info:
+\begin{align*}
+  \begin{matrix}
+    \ket{1,1}\equiv\pi^+&\ket{\tfrac{1}{2},\tfrac{1}{2}}\equiv p\\
+    \ket{1,0}\equiv\pi^0&\ket{\tfrac{1}{2},-\tfrac{1}{2}}\equiv n\\
+    \ket{1,-1}\equiv\pi^-&
+  \end{matrix}  
+\end{align*}
+\begin{enumerate}[label=\alph*.)]
+\item The collision requires the combination of a $pi^+$ and $p$, so the combination is:
+  \begin{align*}
+    \ppls\oplus\prot
+  \end{align*}
+  We can check the Clebsch Gordan table to find the final state:
+  \begin{align*}
+    \ppls\oplus\prot=\ket{\tfrac{3}{2},\tfrac{3}{2}}
+  \end{align*}
+  Finding the amplitude requires completing the inner product with the corresponding hermitian conjugate, however in this case it is simply the amplitude:
+  \begin{align*}
+    A(\pi^+p\to\pi^+p)=\ip{\tfrac{3}{2},\tfrac{3}{2}}\equiv \boxed{A_{3/2}}
+  \end{align*}
+\item In terms of isospin, we have:
+  \begin{align*}
+    \pzro\oplus\prot=\sqrt{\frac{2}{3}}\ath-\sqrt{\frac{1}{3}}\aoh
+  \end{align*}
+  Taking the amplitude:
+  \begin{align*}
+    A(\pi^0p\to\pi^0p)&=\qty(\sqrt{\frac{2}{3}}\athc-\sqrt{\frac{1}{3}}\aohc)
+    \qty(\sqrt{\frac{2}{3}}\ath-\sqrt{\frac{1}{3}}\aoh)\\
+    &=\frac{2}{3}\ip{\tfrac{3}{2},\tfrac{1}{2}}
+    -\frac{\sqrt{2}}{3}
+    \qty(\ip{\tfrac{3}{2},\tfrac{1}{2}}{\tfrac{1}{2},\tfrac{1}{2}}
+    +\ip{\tfrac{1}{2},\tfrac{1}{2}}{\tfrac{3}{2},\tfrac{1}{2}})
+    +\frac{1}{3}\ip{\tfrac{1}{2},\tfrac{1}{2}}
+  \end{align*}
+  Quantum mechanical states are orthogonal, so the cross terms are $0$:
+  \begin{align*}
+    A(\pi^0p\to\pi^0p)&=
+    \frac{2}{3}\ip{\tfrac{3}{2},\tfrac{1}{2}}
+    +\frac{1}{3}\ip{\tfrac{1}{2},\tfrac{1}{2}}
+    =\boxed{\frac{2}{3}A_{3/2}+\frac{1}{3}A_{1/2}}
+  \end{align*}
+\item Again, using isospin but with $\pi^-$:
+  \begin{align*}
+    \pmin\oplus\prot = \sqrt{\frac{1}{3}}\ket{\tfrac{3}{2},-\tfrac{1}{2}}
+    -\sqrt{\frac{2}{3}}\ket{\tfrac{1}{2},-\tfrac{1}{2}}
+  \end{align*}
+  All we need to do to find the amplitude is square the coefficients:
+  \begin{align*}
+    A(\pi^-p\to\pi^-p)=\boxed{\frac{1}{3}A_{3/2}+\frac{2}{3}A_{1/2}}
+  \end{align*}
+\item We can simply repeat the calculation in a except with the other isospin doublet state:
+  \begin{align*}
+    \ppls\oplus\neut=\sqrt{\frac{1}{3}}\ket{\tfrac{3}{2},\tfrac{1}{2}}
+                    +\sqrt{\frac{2}{3}}\ket{\tfrac{1}{2},\tfrac{1}{2}}
+  \end{align*}
+  The amplitude:
+  \begin{align*}
+    A(\pi^+n\to\pi^+n)=\boxed{\frac{1}{3}A_{3/2}+\frac{2}{3}A_{1/2}}
+  \end{align*}
+\item Now with the $\pi^0$
+  \begin{align*}
+    \pzro\oplus\neut=\sqrt{\frac{2}{3}}\ket{\tfrac{3}{2},-\tfrac{1}{2}}
+                    +\sqrt{\frac{1}{3}}\ket{\tfrac{1}{2},-\tfrac{1}{2}}
+  \end{align*}
+  So the amplitude is now:
+  \begin{align*}
+    A(\pi^0n\to\pi^0n)=\boxed{\frac{2}{3}A_{3/2}+\frac{1}{3}A_{1/2}}
+  \end{align*}
+\item Now for the $\pi^-$
+  \begin{align*}
+    \pmin\oplus\neut=\ket{\tfrac{3}{2},-\tfrac{3}{2}}
+  \end{align*}
+  And the amplitude:
+  \begin{align*}
+    A(\pi^-n\to\pi^-n)=\boxed{A_{3/2}}
+  \end{align*}
+\item With these mixed products, we simply need to complete the inner product with the other state:
+  \begin{align*}
+    \ket{\pi^+n}&=\ppls\oplus\neut=\sqrt{\frac{1}{3}}\ath+\sqrt{\frac{2}{3}}\aoh\\
+    \ket{\pi^op}&=\pzro\oplus\prot=\sqrt{\frac{2}{3}}\ath-\sqrt{\frac{1}{3}}\aoh
+  \end{align*}
+  Finding the amplitude is just multiplying the matching coefficients on each term, since the cross terms will vanish
+  \begin{align*}
+    A(\pi^+n\to\pi^0p)=\frac{\sqrt{2}}{3}\ath-\frac{\sqrt{2}}{3}\aoh
+    =\boxed{\frac{\sqrt{2}}{3}A_{3/2}-\frac{\sqrt{2}}{3}A_{1/2}}
+  \end{align*}
+\item Now we rinse and repeat
+    \begin{align*}
+    \ket{\pi^0p}&=\pzro\oplus\prot=\sqrt{\frac{2}{3}}\ath-\sqrt{\frac{1}{3}}\aoh\\
+    \ket{\pi^+n}&=\ppls\oplus\neut=\sqrt{\frac{1}{3}}\ath+\sqrt{\frac{2}{3}}\aoh
+  \end{align*}
+  Amplitude:
+  \begin{align*}
+    A(\pi^0p\to\pi^+n)=\frac{\sqrt{2}}{3}\ath-\frac{\sqrt{2}}{3}\aoh
+    =\boxed{\frac{\sqrt{2}}{3}A_{3/2}-\frac{\sqrt{2}}{3}A_{1/2}}
+  \end{align*}
+\item And repeat...
+    \begin{align*}
+    \ket{\pi^0n}&=\pzro\oplus\neut=\sqrt{\frac{2}{3}}\ath+\sqrt{\frac{1}{3}}\aoh\\
+    \ket{\pi^-p}&=\pmin\oplus\prot=\sqrt{\frac{1}{3}}\ath-\sqrt{\frac{2}{3}}\aoh
+  \end{align*}
+  Amplitude:
+  \begin{align*}
+    A(\pi^0n\to\pi^-p)=\frac{\sqrt{2}}{3}\ath-\frac{\sqrt{2}}{3}\aoh
+    =\boxed{\frac{\sqrt{2}}{3}A_{3/2}-\frac{\sqrt{2}}{3}A_{1/2}}
+  \end{align*}
+\item And the last one is symmetric to the previous
+    \begin{align*}
+    \ket{\pi^-p}&=\pmin\oplus\prot=\sqrt{\frac{1}{3}}\ath-\sqrt{\frac{2}{3}}\aoh\\
+    \ket{\pi^0n}&=\pzro\oplus\neut=\sqrt{\frac{2}{3}}\ath+\sqrt{\frac{1}{3}}\aoh
+  \end{align*}
+  Amplitude:
+  \begin{align*}
+    A(\pi^-p\to\pi^0n)=\frac{\sqrt{2}}{3}\ath-\frac{\sqrt{2}}{3}\aoh
+    =\boxed{\frac{\sqrt{2}}{3}A_{3/2}-\frac{\sqrt{2}}{3}A_{1/2}}
+  \end{align*}
+\end{enumerate}
+\section*{Problem 6}
+The $\rho$ state would be $\ket{1,0}$, and we can find the $\pi^+\pi^-$ and $\pi^0\pi^0$ states using Clebsch Gordan coefficients:
+\begin{align*}
+  \ket{\pi^0\pi^0}&=\pzro\oplus\pzro=\sqrt{\frac{2}{3}}\ket{2,0}
+  -\sqrt{\frac{1}{3}}\ket{0,0}\\
+  \ket{\pi^+\pi^-}&=\ppls\oplus\pmin=\sqrt{\frac{1}{6}}\ket{2,0}+
+  \sqrt{\frac{1}{2}}\ket{1,0}+\sqrt{\frac{1}{3}}\ket{0,0}
+\end{align*}
+The first inner product for $\ip{\rho^0}{\pi^0\pi^0}$ is simply $0$ since there is no $\ket{1,0}$ term, the one for $\ip{\rho^0}{\pi^+\pi^-}$ will be $\sqrt{1/2}$. But due to the other term, the ratio is $0$
+
+The total isospin of the $\omega$ is 0, so its state would be $\ket{0,0}$, and there is a $\ket{0,0}$ term in the $\pi^+\pi^-$ state, specifically, the inner product results in $\sqrt{1/3}$. It is allowed by isospin.
+\end{document}
