@@ -16,4 +16,4 @@ Taken from =/usr/share/texmf/tex/latex/=
 - textpos
 - tipa
   
-All of these may not be necessary, but they are reccomended
+All of these may not be necessary, but they are reccomended to get this working in the same way everywhere
