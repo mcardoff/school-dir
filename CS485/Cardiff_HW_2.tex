@@ -1,0 +1,79 @@
+\documentclass[12pt]{article}
+
+\title{CS 485 HW 2}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+
+\begin{document}
+\maketitle
+\section{Truth Telling System}
+There is a distinction between objective and subjective truth-telling, so we will look at this question separately through the lens of subjectivity and objectivity.
+\subsection{Objective Truths}
+In an objective truth, things are either clearly true, or clearly false, so we could use a boolean system of logic. In boolean logic, there is only true (1) and false (0). These statements are combined using various logical operations such as AND, OR, and others. With there only being 2 numerical options, we can tabulate all possible combinations:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c}
+    $p$ & $q$ & $p$ AND $q$ \\
+    \hline
+    0 & 0 & 0 \\
+    0 & 1 & 0 \\
+    1 & 0 & 0 \\
+    1 & 1 & 1
+  \end{tabular}
+  \caption{Truth table for $p$ AND $q$}
+\end{table}
+With other combinations such as implications or material equivalence, we can verify the truth or falseness of any statement regarding objective truths.
+
+The basis of these statements are true, certain facts, hence why the are objective. Since we are confident in these statements, we should also be confident in the statements that are logically derived from them, using operations such as AND, OR, and IF THEN.
+
+Misinformations would be easily detected by inconsistences in the logic, for example, something derived by the following truth table for AND would be inconsistent and hence misinformation:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c}
+    $p$ & $q$ & $p$ AND $q$ \\
+    \hline
+    0 & 0 & 0 \\
+    0 & 1 & 0 \\
+    1 & 0 & 1 \\
+    1 & 1 & 1
+  \end{tabular}
+  \caption{Wrong truth table for $p$ AND $q$}
+\end{table}
+It would be corrected since the logical statement which was previously inconsistent or was misinformation.
+\subsection{Subjective Truths}
+This is a little more difficult, since the subjective truth is not just true and false, but there is a sense of "maybe" that comes with being non-objective. However, when working with the system of one person, we can develop a system similar to the boolean system. If a person sees that binary, then boolean logic of objective truths can be applied. However, if there is an ambiguity, it can be placed on a spectrum of truth/falseness. Then depending on the placement of the statement, label it as true or false. We can then derive a sense of confidence in that truth or falseness based on how far from the 'center' on the scale the truth is placed. The problem is however, if something IS in the center, then it is helpless, and this system is useless. As for a system of correcting/discovering disinformation, it would have to be one that has its own scale, and that might not match up with the person who formulated the subjective truth, so this aspect is a little bit ambiguous
+\end{document}

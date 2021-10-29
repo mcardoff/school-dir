@@ -1,0 +1,13 @@
+/misc/
+*.aux
+*.dvi
+*.log
+*.pdf
+*.org
+*.bbl
+*.blg
+*.out
+*.JPG
+*.png
+*.jpg
+/CS485/Research Paper/figs/

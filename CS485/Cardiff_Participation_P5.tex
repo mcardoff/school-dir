@@ -1,0 +1,57 @@
+\documentclass[12pt]{article}
+
+\title{CS 485 Participation 5}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\begin{document}
+\maketitle
+\section*{Question 1}
+The reason you have friends in the first place is because there is a social contract between you and the friend. In the creation of this social contract entailed a sense of reliability. You trust in this friend and make them your friend because they have been able to consistently provide you with a bond that leads to friendship. This could be called reliability.
+
+What may be better to discuss, is personal relationships. The quality of a relationship is determined by many things such as communication, time spent together, and quality of activities. From many of these you could derive reliability. If someone communicates their emotions consistently, then you could rely on them for emotional support. If someone hides their emotions, this reliability is not there. If someone spends time with you a lot and you both seem to enjoy that time spent together, then you can rely on that friend to spend time with you when you are both available. As for the quality of activies, this could determine reliability to have a good time at that end.
+
+I chose this question because I think the contrast is very interesting between this and the second question. Friendship reliability is interesting in the sense that it has a circular definition, reliability can come from trust, where but trust can come from consistency, or reliability. 
+\section*{Question 2}
+A system on the other end of the spectrum is easily defined. A system can be reliable if it produces expected results. Boom! There, thats it. We can specify which type of system, not limited to a computer system. We can talk about something like a democratic system, which may be much more difficult to determine reliability.
+
+A computer system is reliable if, it produces expected output. This is the reason we have design documents. A system \textit{cannot} be reliable if it does not follow design documents, an alternative definition. We can avoid entering circularity again by the definition of expected output and these design documents. This is because while the definitions are a bit codependent, it is not in a self-referencing sense. For example, we can define the design documents as a document that provides expected outputs, and say that the expected outputs are the values defined there. So there is a circularity, but not recursive.
+
+An easy contrast here is the democratic system. I feel like this is a similar difference to subjecrtive and objective truths. This is because whether or not the democratic system works is up to different people with different viewpoints. I could say the democratic system works because in a mechanical sense, many people are voting and we have elected officials. Another person could say that the democratic system could not work because there are some requirements that are not met. So in a sense we could say that there is a list of requirements (such as a design document) that would entail a reliable democratic system. The only difference is that the requirements change on a person to person basis. 
+\end{document}

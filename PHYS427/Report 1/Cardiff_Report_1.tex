@@ -1,0 +1,237 @@
+%++++++++++++++++++++++++++++++++++++++++
+% Don't modify this section unless you know what you're doing!
+\documentclass[letterpaper,12pt]{article}
+\usepackage{tabularx} % extra features for tabular environment
+\usepackage{multirow} % multiple rows in the table
+\usepackage{siunitx}
+\usepackage{physics}  % improve math presentation
+\usepackage{graphicx} % takes care of graphic including machinery
+\usepackage[margin=1in,letterpaper]{geometry} % decreases margins
+\usepackage{cite} % takes care of citations
+\usepackage{float}
+\usepackage[final]{hyperref} % adds hyper links inside the generated pdf file
+% \usepackage{url}
+\usepackage{natbib}
+% \usepackage[labelfont=bf]{caption}
+\hypersetup{
+	colorlinks=true,       % false: boxed links; true: colored links
+	linkcolor=blue,        % color of internal links
+	citecolor=blue,        % color of links to bibliography
+	filecolor=magenta,     % color of file links
+	urlcolor=blue         
+}
+% ++++++++++++++++++++++++++++++++++++++++
+
+\newcommand{\labfig}[4]{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}}
+
+
+\begin{document}
+
+\title{\vspace{-3em}Generation \& Detection of X-Rays}
+\author{Michael Cardiff}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+  In this experiment I studied the use and production of X-Rays and it is applied to study diffraction in a LiF crystal. A multi-dimensional analysis is done, factoring in slit width and the voltage which generates the X-Rays. There is also an analysis into the errors and statistics involved in the measurements.   
+\end{abstract}
+
+\section{Introduction/Objective}
+The objective of this experiment is to study the diffraction of X-Rays in a LiF crystal, and to understand how slit width and voltage effects measurements. 
+\section{Theory/Background}
+There are a few main topics to cover here, mainly the production of the X-Rays and how they scatter. For emission we want to study thermionic emission, and for the scattering we discuss Bragg scattering.
+\subsection{Thermionic Emission}
+The device we are using is a TEL-X-OMETER X-Ray Diffractometer Scalar Monitor 806. Thermionic emission happens when a metal is heated up and emits electrons. The heating causes the electrons to get excited. If the excitation energy is beyond the threshold, then electrons can be emitted from the surface of the metal. In this case our source (the metal) is a cathode filament, which is heated up using a high voltage (\SI{20}{\kV} - \SI{30}{\kV}) AC current.
+
+We can attribute the production of the X-Rays to two phenomena: accelerating charges (Brehmsstrahlung) and electrons transitioning in the atomic bound states (ionization). These effects can be seen separately in the plots, the ionization as greater intensity peaks, and the Brehmsstrahlung as a more general plateauing intensity of the plot.
+
+Ionization is the effect seen when an incoming electron transmits energy to an electron inside the atom. The electron cannot remain in the excited state, so it transitions down, and the energy is released as a photon. The \SI{30}{\kV} electrons have enough energy to excite electrons from the innermost electron shell, and when those get back to their initial states, the photon energy is large enough to produce X-Rays. Specifically, the sharpest peak comes from a transition from the lowest shell back to the highest, this is what is referred to $k_\alpha$. The next sharpest would be a peak from the second lowest energy level would be $k_\beta$.
+
+The other process, the Brehmsstrahlung is due to electrodynamics. The electron is faced with local forces that decelerate them, thus producing radiation. These electrons accelerate in such a way that they emit detectable X-Rays.
+\subsection{Bragg Scattering}
+Ths is the experiment that was done, Bragg diffracton off the LiF crystal. We observe diffraction due to the fact that X-Ray wavelengths are on the order of spacings in crystal structure, they will get dffracted. There are two cases in diffraction:
+\begin{enumerate}
+\item X-Ray is not parallel to crystal planes. In this case the photons will just reflect off of the crystal where the law of reflection can be used (so momentum is conserved).
+\item The incident X-Ray is parallel to two consecutive planes. In this case, there is constructive interference. We can use the Bragg condition:
+  \begin{equation}\label{eq:bragg}
+    n\lambda=2d\sin\theta
+  \end{equation}
+  Since crystal has periodic structure, so that when two or more planes align and we observe coherent scattering, this overwhelms any higher order scattering which is non-coherent. The angle at which this occurs is called the Bragg angle and is characteristic for any crystal.  
+\end{enumerate}
+\section{Procedures}
+The LiF crystal was mounted on top of the crystal holder in the TEL-X-OMETER Diffractometer. A \SI{1}{\milli\meter} slit was used at first, placed in front of the X-Ray source. The voltage of the source was set to \SI{30}{\kV}. In order to keep the system safe, once the crystal is in its place, the glass lid must be locked in place. In order to detect the events, we need to connect the diffractometer to a Geiger meter set to take readings at \SI{10}{\second} intervals. Readings were taken at \SI{1}{\degree} intervals between 15 and \SI{120}{\degree} with most intervals being at \SI{1}{\degree}, while points at peaks were taken with intervals of \SI{0.33}{\degree} to get more fine grain readings. These precautions were taken during the first and second order $k_\alpha$ and $k_\beta$.
+
+The second part of the experiment involved nearly the same procedure near the first order $k_\alpha$ peak, the main change was the difference in slit width, \SI{3}{\milli\meter} this time.
+
+A third part of the experiment was repeated with the \SI{1}{\milli\meter} slit and this tme, a lower potential, this time \SI{20}{\kV}. In addition to this, readings were taken at low angles to check for the cutoff.
+
+The final part of the experiment involved analyzing the statistics and errors that can show up when taking these kinds of measurements. Two angles were chosen, one at a peak and another at the baseline. 
+\section{Data}
+A peak in general takes the form of a Gaussian. So for each of the plots a Gaussian curve was fit. The plots are all Counts vs $2\theta$, as the angle on the outside of the diffractometer is twice the angle of diffraction.
+\labfig{14}{./img/ka1}{A Gaussian Fitted to the first $k_\alpha$ at about \ang{44.3}}{ka1}
+\labfig{14}{./img/kb1}{A Gaussian Fitted to the first $k_\beta$ at about \ang{40}}{kb1}
+\labfig{14}{./img/ka2}{A Gaussian Fitted to the second $k_\alpha$ at about \ang{99}}{ka2}
+\labfig{14}{./img/kb2}{A Gaussian Fitted to the second $k_\beta$ at about \ang{85.8}}{kb2}
+\labfig{14}{./img/1v3}{Two Gaussians fitted to the second $k_\alpha$, with a \SI{1}{\milli\meter} and \SI{3}{\milli\meter} slit. Note: Red is the \SI{1}{\milli\meter} and Blue is the \SI{3}{\milli\meter}}{1v3}
+This next plot, Figure \ref{20kev}, shows measurements taken with \SI{20}{\kV} at low angles, to demonstrate where there should be a cutoff. However there was error in measurement and the plot1 has no clear cutoff observed, and almost seems to be just a random plot. 
+\labfig{14}{./img/20kev}{Number of counts near the cutoff region with the voltage set to \SI{20}{\kV}}{20kev}
+\section{Analysis}
+Here some of the data tables from the graphs are placed in more visible form. The form of the fit is visible on the plots, but in more detail we have:
+\begin{align*}
+  fit(x)=m_1+m_2e^{-(x-m_3)^2/m_4^2}
+\end{align*}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc}
+\multicolumn{2}{c}{Gaussian Fit}    \\ \hline
+\multicolumn{1}{c|}{$m_1$} & 346.78 \\
+\multicolumn{1}{c|}{$m_2$} & 3209.2 \\
+\multicolumn{1}{c|}{$m_3$} & 44.348 \\
+\multicolumn{1}{c|}{$m_4$} & 0.893 
+\end{tabular}
+\caption{Gaussian fit parameters for first order $k_\alpha$}
+\end{table}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc}
+\multicolumn{2}{c}{Gaussian Fit}     \\ \hline
+\multicolumn{1}{c|}{$m_1$} & 300.21  \\
+\multicolumn{1}{c|}{$m_2$} & 539.21  \\
+\multicolumn{1}{c|}{$m_3$} & 40.016  \\
+\multicolumn{1}{c|}{$m_4$} & 0.71504
+\end{tabular}
+\caption{Gaussian fit parameters for first order $k_\beta$}
+\end{table}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc}
+\multicolumn{2}{c}{Gaussian Fit}     \\ \hline
+\multicolumn{1}{c|}{$m_1$} & 254.72  \\
+\multicolumn{1}{c|}{$m_2$} & 1722.1  \\
+\multicolumn{1}{c|}{$m_3$} & 98.977  \\
+\multicolumn{1}{c|}{$m_4$} & 0.9386
+\end{tabular}
+\caption{Gaussian fit parameters for second order $k_\alpha$}
+\end{table}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc}
+\multicolumn{2}{c}{Gaussian Fit}     \\ \hline
+\multicolumn{1}{c|}{$m_1$} & 218.08  \\
+\multicolumn{1}{c|}{$m_2$} & 381.63  \\
+\multicolumn{1}{c|}{$m_3$} & 85.831  \\
+\multicolumn{1}{c|}{$m_4$} & 1.3801
+\end{tabular}
+\caption{Gaussian fit parameters for second order $k_\beta$}
+\end{table}
+\begin{table}[H]
+\centering
+\begin{tabular}{ccc}
+\multicolumn{3}{c}{Gaussian Fit}                                    \\ \hline
+\multicolumn{1}{c|}{}      & \multicolumn{1}{c|}{1mm}     & 3mm     \\ \hline
+\multicolumn{1}{c|}{$m_1$} & \multicolumn{1}{c|}{276.27}  & 2202.4  \\
+\multicolumn{1}{c|}{$m_2$} & \multicolumn{1}{c|}{1702.7}  & 5578.2  \\
+\multicolumn{1}{c|}{$m_3$} & \multicolumn{1}{c|}{98.976}  & 98.461  \\
+\multicolumn{1}{c|}{$m_4$} & \multicolumn{1}{c|}{0.92727} & 0.93893
+\end{tabular}
+\caption{Gaussian fit parameters for the slit width comparison}
+\end{table}
+Now we can move onto the peak analysis, we used \eqref{eq:bragg} to find $\lambda$, either setting $n=1,2$ since we are only dealing with first and second order peaks. Note again the measurement on the diffractometer is halved to give the angle of scattering. The measurement of $2\theta$ is taken from the fit parameters seen above, specifically $m_3$
+\begin{table}[H]\label{peaks}
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+Order & Name & $2\theta$ & $\lambda_{exp}$ (\SI{}{\angstrom}) & $\lambda_{acc}$ (\SI{}{\angstrom}) & Error (\%) \\ \hline
+1 & $k_\alpha$ & \ang{44.3} & 1.515 & 1.54 & 1.623 \\
+1 & $k_\beta$  & \ang{40.0} & 1.375 & 1.39 & 1.079 \\
+2 & $k_\alpha$ & \ang{99.0} & 1.528 & 1.54 & 0.779 \\
+2 & $k_\beta$  & \ang{85.8} & 1.368 & 1.39 & 1.583 \\ \hline
+\end{tabular}
+\caption{The Peak order, name, location and wavelength for all measured peaks}
+\end{table}
+The error is measured using the following formula:
+\begin{equation*}
+  error=\frac{\abs{\lambda_{exp}-\lambda_{acc}}}{\lambda_{acc}}\times 100
+\end{equation*}
+The accepted values $\lambda_{acc}$ are found in \cite{LIF}. The values $\lambda_{exp}$ are experimentally measured, and calculated from equation \eqref{eq:bragg}.
+
+Now we record the statistics measurements from the Kaleidagraph analysis of a baseline measurement, and a peak.
+\begin{table}[H]
+\centering
+\begin{tabular}{cc}
+\multicolumn{2}{c}{Peak}                 \\ \hline
+\multicolumn{1}{c|}{Min}      & 3489     \\
+\multicolumn{1}{c|}{Max}      & 3780     \\
+\multicolumn{1}{c|}{Pts}      & 20       \\
+\multicolumn{1}{c|}{Mean}     & 3610.6   \\
+\multicolumn{1}{c|}{Median}   & 3622.0   \\
+\multicolumn{1}{c|}{RMS}      & 3611.0   \\
+\multicolumn{1}{c|}{Std Dev.} & 56.180   \\
+\multicolumn{1}{c|}{Variance} & 3156.1   \\
+\multicolumn{1}{c|}{Std Err}  & 12.562   \\
+\multicolumn{1}{c|}{Skewness} & -0.35788 \\
+\multicolumn{1}{c|}{Kurtosis} & -0.50684
+\end{tabular}
+\caption{Peak Measurement Statistics}
+\label{pstat}
+\end{table}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc}
+\multicolumn{2}{c}{Baseline}             \\ \hline
+\multicolumn{1}{c|}{Min}      & 512      \\
+\multicolumn{1}{c|}{Max}      & 597      \\
+\multicolumn{1}{c|}{Pts}      & 20       \\
+\multicolumn{1}{c|}{Mean}     & 554.20   \\
+\multicolumn{1}{c|}{Median}   & 555      \\
+\multicolumn{1}{c|}{RMS}      & 553.4    \\
+\multicolumn{1}{c|}{Std Dev.} & 21.568   \\
+\multicolumn{1}{c|}{Variance} & 464.66   \\
+\multicolumn{1}{c|}{Std Err}  & 4.7039   \\
+\multicolumn{1}{c|}{Skewness} & -0.12858 \\
+\multicolumn{1}{c|}{Kurtosis} & -0.54910
+\end{tabular}
+\caption{Baseline Measurement Statistics}
+\label{bstat}
+\end{table}
+Clearly in both cases, the mean is close to the square of the standard deviation, the variance. For the peak measurement, we get an error of $12\%$, and the baseline we see a $16\%$ error, which is not up to the standards of the previous measurements but for a very crude approximation, it is close. 
+\section{Conclusion}
+With the peak angles measured, the values are all within $1.6\%$ of the expected values. This is well within the bounds of experimental error. One of the issues with measurement here is a sort of parallax effect, where the measurement of the angle may be thrown off if you did not look directly above the diffractometer. This may be prevalent since the error is not consistent. Another error would be the resolution of the instrument, as the most significant digit was before the decimal place, so an educated guess was made to find where a third of a degree is found. This leads to a large inconsistency when combined with the parallax effect.
+
+From \ref{1v3} we see higher and broader peaks from a wider slit. This is expected, as a wider slit allows a greater count to pass through so greater counts can be observed. As for the measurement at \SI{20}{\kV} in figure \ref{20kev}, the cutoff was not observed. This is either due to the orientation of the crystal not being correct, or possibly the cutoff being lower, in which case the equipment was not sufficient for this use case. In the handout figure, it is mentioned that the peaks 5 and 6 should correspond to the second order $k_\alpha$ and $k_\beta$ we can confirm this with our analysis in table \ref{peaks}. As for the final remark, we have already mentioned that the mean is close to the square of the standard deviation, the variance, by our analysis of tables \ref{pstat} and \ref{bstat} demonstrating a fairly low percent error. 
+
+%++++++++++++++++++++++++++++++++++++++++
+% References section will be created automatically 
+% with inclusion of "thebibliography" environment
+% as it shown below. See text starting with line
+% \begin{thebibliography}{99}
+% Note: with this approach it is YOUR responsibility to put them in order
+% of appearance.
+
+% \begin{thebibliography}{99}
+
+% \bibitem{melissinos}
+% A.~C. Melissinos and J. Napolitano, \textit{Experiments in Modern Physics},
+% (Academic Press, New York, 2003).
+
+% \bibitem{Cyr}
+% N.\ Cyr, M.\ T$\hat{e}$tu, and M.\ Breton,
+% "All-optical microwave frequency standard: a proposal,"
+% IEEE Trans.\ Instrum.\ Meas.\ \textbf{42}, 640 (1993).
+
+% \bibitem{Wiki} \emph{Expected value},  available at
+% \texttt{http://en.wikipedia.org/wiki/Expected\_value}.
+
+% \end{thebibliography}
+
+\bibliographystyle{abbrv}
+\bibliography{sources}
+
+\end{document}
+
