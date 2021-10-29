@@ -3,7 +3,6 @@
 *.dvi
 *.log
 *.pdf
-*.org
 *.bbl
 *.blg
 *.out
@@ -12,6 +11,8 @@
 *.jpg
 *.m
 *_.tex
+*.org
+!README.org
 octave-workspace
 *#
 /CS485/Research Paper/figs/

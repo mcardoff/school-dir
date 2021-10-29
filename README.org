@@ -1,0 +1,19 @@
+#+TITLE:School Directory
+* What Is This Repo?
+This repo is meant to be my solution to not wanting to use overleaf, it mostly contains =.tex= files, so it is noted what LaTeX packages are necessary
+* TeX Packages
+Taken from =/usr/share/texmf/tex/latex/=
+- caption
+- dblfloatfix
+- enumitem
+- float
+- gcard
+- letltxmacro
+- lm
+- multirow
+- physics
+- tex-gyre
+- textpos
+- tipa
+  
+All of these may not be necessary, but they are reccomended
