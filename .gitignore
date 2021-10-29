@@ -10,4 +10,8 @@
 *.JPG
 *.png
 *.jpg
+*.m
+*_.tex
+octave-workspace
+*#
 /CS485/Research Paper/figs/

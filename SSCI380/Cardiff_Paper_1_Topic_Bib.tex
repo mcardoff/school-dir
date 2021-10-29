@@ -1,0 +1,62 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}Paper 1 Topic \& Bibliography}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\begin{document}
+\maketitle
+\section{Topic/Title}
+\begin{itemize}
+\item Gender equality and development:  How does gender equity (or lack thereof) affect development?
+\item How does Gender Inequality Effect the Development of Countries? 
+\end{itemize}
+\section{Bibliography}
+Here I provide a short description of each of my sources and following is the actual list of references
+\begin{itemize}
+\item \cite{bhatt} This article is a specific study in the country of India, however I call into question its recency due to it using data from almost 40 years ago at this point, but I believe the analysis is recent enough to be relevant. 
+\item \cite{elson} This article looks less on the economic development of countries, but rather the response to economic crises in economically developing countries, and sets up a framework to analyze these responses in a gender-conscious way. 
+\item \cite{foho} I found this article eye catching as it looked through the same lens of socialism that dependency theorists used, so it could be an interesting approach. 
+\item \cite{ferrant} I thought this article would be useful as it makes use of multiple countries, and more directly addresses the questions at hand, specifically with the challenges of gender and development. 
+\end{itemize}
+\newpage
+\bibliographystyle{apalike}
+\bibliography{Cardiff_Paper_1_Topic_Bib} 
+
+\end{document}
