@@ -1,0 +1,76 @@
+%++++++++++++++++++++++++++++++++++++++++
+% Don't modify this section unless you know what you're doing!
+\documentclass[letterpaper,12pt]{article}
+\usepackage{tabularx} % extra features for tabular environment
+\usepackage{multirow} % multiple rows in the table
+\usepackage{physics}  % improve math presentation
+\usepackage{graphicx} % takes care of graphic including machinery
+\usepackage[margin=1in,letterpaper]{geometry} % decreases margins
+\usepackage{cite} % takes care of citations
+\usepackage{float}
+\usepackage[final]{hyperref} % adds hyper links inside the generated pdf file
+\usepackage{url}
+\usepackage{natbib}
+\usepackage[labelfont=bf]{caption}
+\hypersetup{
+	colorlinks=true,       % false: boxed links; true: colored links
+	linkcolor=blue,        % color of internal links
+	citecolor=blue,        % color of links to bibliography
+	filecolor=magenta,     % color of file links
+	urlcolor=blue         
+}
+% ++++++++++++++++++++++++++++++++++++++++
+
+\newcommand{\labfig}[4]{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}}
+
+
+\begin{document}
+
+\title{Title of the Report}
+\author{Michael Cardiff}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+\end{abstract}
+
+\section{Introduction}
+
+\section{Objective}
+
+
+%++++++++++++++++++++++++++++++++++++++++
+% References section will be created automatically 
+% with inclusion of "thebibliography" environment
+% as it shown below. See text starting with line
+% \begin{thebibliography}{99}
+% Note: with this approach it is YOUR responsibility to put them in order
+% of appearance.
+
+% \begin{thebibliography}{99}
+
+% \bibitem{melissinos}
+% A.~C. Melissinos and J. Napolitano, \textit{Experiments in Modern Physics},
+% (Academic Press, New York, 2003).
+
+% \bibitem{Cyr}
+% N.\ Cyr, M.\ T$\hat{e}$tu, and M.\ Breton,
+% "All-optical microwave frequency standard: a proposal,"
+% IEEE Trans.\ Instrum.\ Meas.\ \textbf{42}, 640 (1993).
+
+% \bibitem{Wiki} \emph{Expected value},  available at
+% \texttt{http://en.wikipedia.org/wiki/Expected\_value}.
+
+% \end{thebibliography}
+
+\bibliographystyle{abbrv}
+\bibliography{template}
+
+\end{document}
+
