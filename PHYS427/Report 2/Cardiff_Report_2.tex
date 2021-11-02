@@ -5,6 +5,7 @@
 \usepackage{multirow} % multiple rows in the table
 \usepackage{physics}  % improve math presentation
 \usepackage{graphicx} % takes care of graphic including machinery
+\usepackage{siunitx}
 \usepackage[margin=1in,letterpaper]{geometry} % decreases margins
 \usepackage{cite} % takes care of citations
 \usepackage{float}
@@ -19,6 +20,8 @@
 	filecolor=magenta,     % color of file links
 	urlcolor=blue         
 }
+
+
 % ++++++++++++++++++++++++++++++++++++++++
 
 \newcommand{\labfig}[4]{
@@ -32,45 +35,223 @@
 
 \begin{document}
 
-\title{Title of the Report}
+\title{PHYS 427 Lab Report 2}
 \author{Michael Cardiff}
 \date{\today}
 \maketitle
 
 \begin{abstract}
+  In this experiment the different structure of crystals is studied using the diffraction of X-Rays. This is to determine the lattice constant for the various crystals. The Bragg diffraction peaks are studied as well, in the hkl planes and only the ones that obey the extinction rules.
 \end{abstract}
+\section{Introduction/Objective}
+This experiment aims to study and determine the properties of crystal lattices. We could then use this data to determine the specific material that the crystal is made of. 
 
-\section{Introduction}
+\section{Theory}
 
-\section{Objective}
+\subsection{Crystal Structure}
+Mathematically, a crystal is made of an infinite repetition of a structural units over all space. This is only done for calculation purposes as we do not have infinitely big crystals. However, the mathematics that is derived from infinite structures can be applied to the more localized structures that we observe in our world. The structural units that are repeated are different combinations of atoms, repeated to some length which defines the crystal. This length is usually much larger than the spacing between the atoms so we can approximate the length of the crystal as infinite. The basic repeated unit is known as the basis of the crystal, which uniquely determines the crystal's structure.
 
+Since the crystal basis determines the structure, it is much more convenient to discuss the properties of the unit cell as opposed to the entirety of the crystal. There are a number of unit cells which all determine a crystal structure. For example, there is a simple cubic lattice, where atoms are on the corners of a unit cube, a body centered cubic, which is a cubic structure with an extra atom in the center of the cube, and face-centered cubic, where there is one atom in the center, one in the center of each of the faces, and one at the corners. 
 
-%++++++++++++++++++++++++++++++++++++++++
-% References section will be created automatically 
-% with inclusion of "thebibliography" environment
-% as it shown below. See text starting with line
-% \begin{thebibliography}{99}
-% Note: with this approach it is YOUR responsibility to put them in order
-% of appearance.
+\subsection{Crystal Planes}
+The position and orientation of the crystal plane can be determined by any three points on the plane. This is basic geometry, and some vector algebra tells us that these points cannot all three be mutually collinear. Then the orientation is determined by a set of three numbers $(a,b,c)$ called the Miller indices, determined by finding the intercept of the plane with the spatial axes. To compute the Miller indices, simply invert $a,b,c$, and find the smallest multiplicative factor that makes the resulting triplet an integer triplet, these numbers will be $(h,k,l)$, the Miller indices.
 
-% \begin{thebibliography}{99}
+Talking about the spacing is important in the case of Bragg diffraction, as it will determine the characteristic peaks. Since the actual position of the plane is not determined by the miller indices, all parallel planes are determined as well, so we can take this fact into account when we need to talk about the reflection of X Rays off of planes parallel to the crystal plane. The characteristic spacing is given by the Miller indices and the plane intercepts, given by:
+\begin{align}
+  d=\frac{1}{\sqrt{(h/a)^2+(k/b)^2+(l/c)^2}}
+\end{align}
+For a cubic lattice, the intercepts will all be the same, so we can factor out $a$:
+\begin{equation}
+  d_{hkl}=\frac{a}{\sqrt{h^2+k^2+l^2}}
+\end{equation}
 
-% \bibitem{melissinos}
-% A.~C. Melissinos and J. Napolitano, \textit{Experiments in Modern Physics},
-% (Academic Press, New York, 2003).
+\subsection{X-Ray Diffraction in Crystal Structure}
+Bragg diffraction peaks are determined by the formula:
+\begin{equation}
+  n\lambda = 2d\sin\theta
+\end{equation}
+We know a formula for the spacing $d$ in terms of the Miller indices:
+\begin{equation}
+  n\lambda=\frac{2a\sin\theta}{\sqrt{h^2+k^2+l^2}}
+\end{equation}
+It may be convenient to relabel $a$ as a distance $d$.
 
-% \bibitem{Cyr}
-% N.\ Cyr, M.\ T$\hat{e}$tu, and M.\ Breton,
-% "All-optical microwave frequency standard: a proposal,"
-% IEEE Trans.\ Instrum.\ Meas.\ \textbf{42}, 640 (1993).
+The following table lists a few values of $h,k,$ and $l$ and the corresponding spacing $d_{hkl}$:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c|c|c}
+    $h$ & $k$ & $l$ & $h^2+k^2+l^2$ & $d_{hkl}$ \\ \hline
+    1 & 0 & 0 & 1  & $d$ \\
+    1 & 1 & 0 & 2  & $d/\sqrt{2}$ \\
+    1 & 1 & 1 & 3  & $d/\sqrt{3}$ \\
+    2 & 0 & 0 & 4  & $d/2$ \\
+    2 & 1 & 0 & 5  & $d/\sqrt{5}$ \\
+    2 & 1 & 1 & 6  & $d/\sqrt{6}$ \\
+    2 & 2 & 0 & 8  & $d/\sqrt{8}$ \\
+    2 & 2 & 1 & 9  & $d/3$ \\
+    3 & 0 & 0 & 9  & $d/3$ \\
+    3 & 1 & 0 & 10 & $d/\sqrt{10}$ \\
+    3 & 1 & 1 & 11 & $d/\sqrt{11}$ \\
+    2 & 2 & 2 & 12 & $d/\sqrt{12}$ \\
+    3 & 2 & 0 & 13 & $d/\sqrt{13}$ \\
+    3 & 2 & 1 & 14 & $d/\sqrt{14}$ \\
+    4 & 0 & 0 & 16 & $d/4$ \\
+    3 & 2 & 2 & 17 & $d/\sqrt{17}$ \\
+    4 & 1 & 0 & 17 & $d/\sqrt{17}$ \\
+    3 & 3 & 0 & 18 & $d/\sqrt{18}$ \\
+    4 & 1 & 1 & 18 & $d/\sqrt{18}$ \\
+    3 & 3 & 1 & 19 & $d/\sqrt{19}$ \\
+    4 & 2 & 0 & 20 & $d/\sqrt{20}$ \\
+    4 & 2 & 1 & 21 & $d/\sqrt{21}$ \\
+    3 & 3 & 2 & 22 & $d/\sqrt{22}$ \\
+    4 & 2 & 2 & 24 & $d/\sqrt{24}$ \\
+    3 & 3 & 3 & 27 & $d/\sqrt{27}$ 
+  \end{tabular}
+  \caption{Relating Miller Indices to Lattice Constant}
+  \label{tab:1}
+\end{table}
 
-% \bibitem{Wiki} \emph{Expected value},  available at
-% \texttt{http://en.wikipedia.org/wiki/Expected\_value}.
+\section{Procedure}
+There are two experiments conducted. First is running a known Alkali Halide crystal (here NaCl), an unknown Alkali Halide Crystal, and on a Si wafer. The second experiment has to do with diffraction off KCl powder.
 
-% \end{thebibliography}
+\subsection{Crystal Diffraction}
 
+First we run the experiment for the Alkali Halide crystals. Attach the crystal on the clamp of the TEL-X-OMETER 580M X-Ray Diffractometer Scalar Monitor 806. A \SI{1}{\mm} slit is used, with a voltage of \SI{30}{\kV}. Locking the device in place and turning it on, readings were taken off of a Geiger counter in intervals of \SI{10}{\s}. Readings for NaCl were taken between angles of \ang{29} and \ang{35} where the unknown material had readings taken between \ang{53} and \ang{59}. These angles are in the region near the first order $k_\alpha$. Also take measurements at the $k_\beta$ peak but there is no need to record the values. Notice that upon the introduction of a Ni filter on the X Ray beam that this peak disappears. For the Si wafer, mount it where your crystal was before so we are measuring diffraction from the wafer. It may help to put the wafer in while one of the Alkali Halide crystals are in since they will be a bit bigger than the Si wafer. Add the Nickel Filter, and the rest of the setup remains the same. Take readings between \ang{66} and \and{72}.
+\subsection{Powder Diffraction}
+
+We wish to determine the crystal structure of KCl using powdered KCl. Begin by crushing KCl into a fine powder using a mortar and pestle. Place the sample into the holder, be careful to prevent spilling any powder into the machine. Scan between the \ang{10} and \ang{80} region, with intervals of \ang{0.1}. The counting time is set to \SI{3}{s}. Analysis is required on the data for a similar experiment performed on an unknown powder. Information that is given is that it is an Alkali Halide powder with an unknown cubic element and a Si powder. 
+
+\section{Plots}
+
+Scatter plots were made for all data measured, and Gaussian peaks were fitted where necessary. For the powder, a similar process was performed, but no fitting of the Gaussians due to the finer measurements.
+\labfig{10.0}{./img/naclka}{Gaussian peak fitted to the first $k_a$ for NaCl crystal}{naclka}
+\labfig{10.0}{./img/uka}{Gaussian peak fitted to the first $k_a$ for the unknown crystal}{uka}
+\labfig{10.0}{./img/sini}{Gaussian peak fitted to the first $k_a$ for the Si wafer}{sini}
+Now for the powder plots
+\labfig{17}{./img/kclpow}{Scatter plot for KCl powder}{kclpow}
+\labfig{17}{./img/idkpow}{Scatter plot for unknown alkali halide powder}{idkpow}
+\labfig{17}{./img/idk3pow}{Scatter plot for unknown cubic powder}{idk3pow}
+\labfig{17}{./img/sipow}{Scatter plot for Si powder}{sipow}
+
+\section{Analysis}
+
+\subsection{X-Ray Diffraction for Alkali-Halide Crystals and Si Wafer}
+\subsubsection{LiF}
+
+Revisiting table \ref{tab:1} shows that the $k_\alpha$ here can have Miller indices of $(2,0,0)$ or any permutation. This shows why $d=\SI{2.01}{\angstrom}$ as opposed to \SI{4.02}{\angstrom}, since table \ref{tab:1} shows the actual $d$ value is half of what is expected due to the Miller indices.
+
+\subsubsection{NaCl}
+
+From the provided data, the lattice constant for NaCl is \SI{564}{\pico\meter}. The previous experiment also gave an accepted value for the wavelength of the first $k_\alpha$ peak at around $\lambda=\SI{154}{\pico\meter}$. The measured angle was $2\theta=\ang{31.075}$ from figure \ref{naclka}. We can then measure $d_{hkl}$:
+\begin{equation}
+  d_{hkl}=\frac{\lambda}{2\sin(2\theta/2)}=\frac{154}{2\sin(\ang{31.075}/2)}=
+  \boxed{\SI{288.454}{\pico\meter}}
+\end{equation}
+Clearly this is similar to LiF, as $d_{hkl}\approx 564/2$ which is the accepted value from before. This gives us greater certainty in the Miller indices being one of the permutations of $(2,0,0)$. This would mean that the crystal is parallel to the plane defined by $(1,0,0)$
+\subsubsection{Unknown Alkali Halide}
+We cannot rely on known facts for this one, so we simply plug and chug, with $2\theta=\ang{56.231}$ from Figure \ref{uka}:
+\begin{equation}
+  d_{hkl}=\frac{154}{2\sin(\ang{56.231}/2)}=\boxed{\SI{163.395}{\pico\meter}}
+\end{equation}
+Giving us the d-spacing. 
+\subsubsection{Si Wafer}
+Here, the measurement for the $k_\alpha$ peak is at $2\theta=\ang{68.974}$ from Figure \ref{sini}:
+\begin{equation}
+  d_{hkl}=\frac{154}{2\sin(\ang{68.974}/2)}=\boxed{\SI{135.99}{\pico\meter}}
+\end{equation}
+The lattice constant of Si is known, at $d=\SI{543}{\pico\meter}$, taken from \cite{si}. We can see clearly that $d_{hkl}\approx d/4$ so:
+\begin{equation}
+  h^2+k^2+l^2=16
+\end{equation}
+So the options for the Miller indices are permutations of $(4,0,0)$. Interestingly, the Si wafer is parallel to $(1,0,0)$. 
+
+\subsection{Powder Diffractions}
+\subsubsection{KCl}
+The value of $2\theta$ in figure \ref{kclpow} should correspond to the calculated values using the reduced formulas from before. We are given a lattice constant for KCl of \SI{629}{\pico\meter} and the wavelength once again is $\lambda=\SI{154}{\pico\meter}$.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c|c|c|c|c}
+    $h$ & $k$ & $l$ & $h^2+k^2+l^2$ & $d_{hkl}(\si{\pico\meter})$ &  $2\theta_{calc}$ & $2\theta_{meas}$ \\ \hline
+    1 & 0 & 0 & 1  & 629    & 14.06 & N/A   \\
+    1 & 1 & 0 & 2  & 444.77 & 19.94 & N/A   \\
+    1 & 1 & 1 & 3  & 363.15 & 24.48 & 24.68 \\
+    2 & 0 & 0 & 4  & 314.5  & 28.34 & 28.54 \\
+    2 & 1 & 0 & 5  & 281.3  & 31.77 & 31.89 \\
+    2 & 1 & 1 & 6  & 256.79 & 34.89 & N/A   \\
+    2 & 2 & 0 & 8  & 222.39 & 40.51 & 40.7  \\
+    2 & 2 & 1 & 9  & 209.67 & 43.09 & N/A   \\
+    3 & 0 & 0 & 9  & 209.67 & 43.09 & N/A   \\
+    3 & 1 & 0 & 10 & 198.91 & 45.55 & N/A   \\
+    3 & 1 & 1 & 11 & 189.65 & 47.9  & N/A   \\
+    2 & 2 & 2 & 12 & 181.58 & 50.18 & 50.31 \\
+    3 & 2 & 0 & 13 & 174.45 & 52.38 & N/A   \\
+    3 & 2 & 1 & 14 & 168.1  & 54.52 & N/A   \\
+    4 & 0 & 0 & 16 & 157.25 & 58.64 & 58.76 \\
+    3 & 2 & 2 & 17 & 152.55 & 60.63 & N/A   \\
+    4 & 1 & 0 & 17 & 152.55 & 60.63 & N/A   \\
+    3 & 3 & 0 & 18 & 148.26 & 62.57 & N/A   \\
+    4 & 1 & 1 & 18 & 148.26 & 62.57 & N/A   \\
+    3 & 3 & 1 & 19 & 144.3  & 64.5  & N/A   \\
+    4 & 2 & 0 & 20 & 140.64 & 66.38 & 66.51 \\
+    4 & 2 & 1 & 21 & 137.26 & 68.25 & N/A   \\
+    3 & 3 & 2 & 22 & 134.11 & 70.08 & N/A   \\
+    4 & 2 & 2 & 24 & 128.39 & 73.7  & 73.8  \\
+    3 & 3 & 3 & 27 & 121.05 & 79.03 & N/A  
+  \end{tabular}
+  \caption{Comparing measured and calculated $2\theta$ vals}
+\end{table}
+\subsubsection{Unknown Alkali Halide}
+The first major peak appears with miller indices of $(2,0,0)$. This we have $d_{hkl}=d/2$. We can calculate it using the Bragg formula to get a value of $d_{hkl}=\SI{231.24}{\pico\meter}$, with lattice spacing of $d=\SI{462.49}{\pico\meter}$. Provided data says this is most likely NaF, with an actual value of \SI{463}{\pico\meter}, which is a difference of only $0.1\%$. 
+\subsubsection{Unknown Cubic Element}
+The plot in figure \ref{idk3pow} has the data of the diffraction of an unknown powder, but we are told the powder has a cubic structure. We have peaks at \ang{44.6}, \ang{51.9}, \ang{76.5}, \and{93.0}, and \ang{98.5}. This lattice is also either bcc or fcc, so this limits the values of $hkl$. For bcc we have:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c|c|c|c}
+    $h$ & $k$ & $l$ & $h^2+k^2+l^2$ & $d_{hkl} (\si{\pico\meter})$ & $d (\si{\pico\meter})$ \\ \hline
+    1 & 1 & 0 & 2  & 202.92 & 286.97                 \\
+    2 & 0 & 0 & 4  & 175.96 & 351.92                 \\
+    2 & 1 & 1 & 6  & 124.37 & 304.64                 \\
+    2 & 2 & 0 & 8  & 106.15 & 300.24                 \\
+    3 & 1 & 0 & 10 & 101.64 & 321.41                
+  \end{tabular}
+  \caption{Lattice spacing assuming bcc lattice}
+\end{table}
+These values are not close to each other so we cannot have a bcc lattice, leading us to the fcc lattice:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c|c|c|c}
+    $h$ & $k$ & $l$ & $h^2+k^2+l^2$ & $d_{hkl} (\si{\pico\meter})$ & $d (\si{\pico\meter})$ \\ \hline
+    1 & 1 & 1 & 3  & 202.92 & 351.47                 \\
+    2 & 0 & 0 & 4  & 175.96 & 351.92                 \\
+    2 & 2 & 0 & 8  & 124.37 & 351.77                 \\
+    3 & 1 & 1 & 11 & 106.15 & 352.06                 \\
+    2 & 2 & 2 & 12 & 101.64 & 352.09                
+  \end{tabular}
+  \caption{Lattice spacing assuming fcc lattice}
+\end{table}
+These values are closer to each other, so likely the lattice constant is about \SI{351.86}{\pico\meter}. The most likely element is Ni as it has a fcc lattice and a lattice constant of \SI{351.86}. 
+\subsubsection{Si Powder}
+Repeat the same process for Si.
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c|c|c|c}
+    $2\theta\deg$ & $d_{hkl}(\si{\pico\meter})$ & $d/d_{hkl}$ & $(h,k,l)$\\ \hline
+    28.45 & 313.35 & $1.7328\approx\sqrt{3}$  & (1,1,1) \\
+    47.31 & 191.91 & $2.8292\approx\sqrt{8}$  & (2,2,0) \\
+    56.13 & 163.67 & $3.3176\approx\sqrt{11}$ & (3,1,1) \\
+    76.61 & 124.22 & $4.3712\approx\sqrt{19}$ & (3,3,1) \\
+    88.03 & 110.82 & $4.8998\approx\sqrt{24}$ & (4,2,2) 
+  \end{tabular}
+  \caption{Miller indices for first 5 Si peaks}
+  \label{tab:2}
+\end{table}\newpage
+\section{Conclusion}
+It is important to note that we used $d/2$ as the lattice constant for LiF in lab1 as that corresponded to diffraction from the $(2,0,0)$ plane which was defined by the found Miller indices. Note the same phenomenon occurs in the NaCl crystal. The d-spacing found for the unknown alkali halide was measured to be \SI{163.395}{\pico\meter}. The Miller indices for the Si wafer is $(4,0,0)$. Note the NaCl, LiF and Si were all cleaved parallel to $(1,0,0)$.
+
+For the KCl powder, we find that measured and calculated values of $2\theta$ are very close, indicating accurate analysis using Bragg equation. For the unknown Alkali Halide, the lattice spacing was measured to be \SI{463}{\pico\meter}, indicating it is most likely NaF. The peaks of the unknown cubic element were analyzed and it was determined the structure should be fcc. Using this and the estimated value of the lattice constant, it was determined that the element was most likely Ni. See table \ref{tab:2} for the Miller indices of Si. 
+% ++++++++++++++++++++++++++++++++++++++++
 \bibliographystyle{abbrv}
-\bibliography{template}
-
+\bibliography{sources}
 \end{document}
 
