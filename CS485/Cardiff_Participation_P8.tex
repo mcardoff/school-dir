@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}CS 485 Participation 8}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\begin{document}
+\maketitle
+\section*{Questions 1-3}
+These three questions all sort of go together so I want to cover them all at once.
+
+The current democratic system involves a few important technologies, that all work together to form a voting chain of sorts. This allows for a system that should, in theory, be able to work and count votes without human interference. Despite this, the 'newness' of this technology in the grand scheme of voting, means many people simply do not trust these systems, so they need to be checked. The current system in place (at least in Chicago) is a computerized ballot, which is automatically read, and if a paper ballot is still offered, then a machine then either scans the document or reads the info off of it. The shortcomings or vulnerabilities of this system are those of the technology which it uses. These shortcomings are different depending on the type of ballot.
+
+The benefits of these technologies are quite clear. If humans are removed completely, then there is a removal of the bias in the fact of human counters. The fact of the matter is that the people counting the votes are most likely voters as well, so they may be inclined to favor one party over the other, causing an improper count of the votes. Having a computer count the votes as opposed to another human will allow for a direct removal of this bias. The caveat is that there is a lack of trust in these technologies. I believe that this does not come from the fact that these technologies are 'new' in the sense that they have been recently invented, but rather the fact that this is a new application of the technologies where a precedent has been set. This precdent is that there are human voters which verify the votes, this is important as a human would be able to catch edge cases which a computer may not see. However an adjustment of the voting system, or a readjustment of the technology, would be able to eliminate these edge cases. There are however other disadvantages that are not specifically related to this bias/human error issues.
+
+The main issue with voting that involves machines is vulnerable to machine errors. This includes the external manipulation of the internal state of the machine. You may think that this is exclusive to intentional attacks by third parties which may want to manipulate various election results. Third parties here may be anyone who gains an advantage by manipulating the election results. Whether this is Russia or even a random person who wants an ordinance to pass. However, this does not need to be the case. Even radiation from space can change the data stored in computers. For example, someone was playing a video game, and a rogue cosmic ray struck a certain transistor in their game console, causing the character to change position. While this happens often, and many transistors will change value at random, but it still remains to be said that it can happen, and the results can be devasting. The hexadecimal position value for the character in the video game was changed by only one, but in the '10' place, so it was changed by another factor of 16. Sixteen votes may not matter in any major election, but say the vote count was stored in a 64-bit integer, and the final bit was changed, so there is a significant number of votes added to one side, completely unintentionally. This is why the human verification should still be needed. These vulnerabilities are not necessarily horrible or even detrimental, but still need to be considered when designing a voting system which utilizes computers.
+
+\section*{Question 5}
+The pandemic most definitely accelerated the use of mail-in absentee ballots. This makes sense, as people would rather send in their vote as opposed to coming in person and potentially risk getting a disease which is possibly fatal. There is also of course Zoom or related services, which supports democracy in a different way, by supporting the members of the government, allowing them to attend their meetings without their full attendance needed.
+
+The more obvious of these two is something like zoom. Obviously in order for democracy to be effective, there needs to be people working in the government! The pandemic halted this a people did not want to have to attend meetings to risk death just for a single meeting. This is rather trivial, as of course there is a need to create an online meeting platform. This has been discussed in depth already in class, so I will not elaborate further.
+
+The more interesting is the use of mail-in ballots increasing significantly in 2020. The use of these ballots is valid, as explained before, yet they became so controversial. This is due to the fact that they are (mostly) blindly sent out in order to accelerate the process of getting them out. The side effect of this is that a few dead people may get mail in ballots even though they are, well, dead. I remember a case of voter fraud where someone voted using their dead mother's absentee ballot, though these cases seem to be one in a million. These errors are very clearly small scale and have no grand effect on elections, it would be interesting to see how the problem is eliminated. This would have to involve constant communication between governmental departments which does not always happen, cross referencing voting registration information with information from death certificates. However this I believe is an unlikely solution since the problem is already so small. 
+\end{document}
