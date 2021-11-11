@@ -1,0 +1,226 @@
+%++++++++++++++++++++++++++++++++++++++++
+% Don't modify this section unless you know what you're doing!
+\documentclass[letterpaper,12pt]{article}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{physics} 
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[margin=1in,letterpaper]{geometry}
+\usepackage{cite}
+\usepackage{float}
+\usepackage[final]{hyperref}
+\usepackage{url}
+\usepackage{natbib}
+\usepackage[labelfont=bf]{caption}
+\hypersetup{
+  colorlinks=true, linkcolor=blue, citecolor=blue,
+  filecolor=magenta, urlcolor=blue
+}
+
+\graphicspath{{./img/}}
+% \numberwithin{section}
+% ++++++++++++++++++++++++++++++++++++++++
+
+\newcommand{\labfig}[4]{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}}
+
+
+\begin{document}
+
+\title{Introduction to Gamma Ray Detection}
+\author{Michael Cardiff}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+  In this experiment we study the detection of gamma rays using various sources. We also aim to familiarize ourselves with the Multichannel analyzer. This involves an analysis to find the resolution of the detector based on various effects. 
+\end{abstract}
+\section{Introduction/Objective}
+The point of this experiment is to become familiar with the equipment used to detect gamma rays, such as the Multichannel analyzer. We also aim to understand the resolution of the detector by changing various factors such as the amplifier gain, photomultiplier voltage, and incident gamma energy. Some of these effects are brought in for further analysis. For example the effect of amplifier gain can be used place a peak in a specific channel. The last bit is to demonstrate that the height of the pulse is proportional to incident gamma energy. 
+\section{Theory/Background}
+
+\subsection{Gamma Spectrometry Setup}
+The specific setup used for the detection is a NaI(Tl) scintillation crystal to convert gamma rays into visible light, a photomultiplier tube with a high voltage supply and a multichannel analyzer, and various gamma ray sources. The multichannel analyzer has a linear amplifier and this, along with the high voltage supply allows the analyzer to have high enough voltage to work with a scintillation detector with amplified pulse. The gamma source will emit a gamma ray and eventually produce a voltage pulse, we will find that the height of this pulse (which corresponds to channel number) is proportional to the incoming gamma energy. The specific channel which a pulse value shows up in is determined by the incident energy as well as the gain set by the analyzer. This means if we want a specific energy to appear at a specific channel, we need to calibrate the gain and keep it constant in order to correlate energy levels with channel number. 
+
+\subsection{Detector Resolution}
+There are some sources with multiple gamma energies that are close to each other. Thus a detector needs to have the ability to distinguish similar energy peaks. This is called the resolution, and can be given by the following formula:
+\begin{equation}
+  \label{eq:res}
+  R(\%)=\frac{\text{FWHM}_{c}}{\text{Centroid}_{c}}\times 100
+\end{equation}
+The following figure \ref{fig:1} should what we are looking for when we measure the peak, although it is not a complete spectrum it is just a single peak.
+
+\labfig{8.0}{fwhmdemo}{Example of Centroid and FWHM}{fig:1}.
+\subsection{Energy Calibration}
+In order to calibrate the detector we need various sources of different gamma energies, that way we can find the association between centroid channel number and an energy value. We hope to get a straight line.
+\section{Procedures}
+This experiment was split into two parts, one focusing on the measurement of the resolution of the detector, and the other focusing on generating the calibration curve. 
+\subsection{Resolution}
+Set up the multichannel analyzer to work as a pulse height analyzer (PHA in UCS). Position the gamma source in the plastic holder and position it in the detector so it is near the detector\footnote{Note that the sources used were purchased in 2021, the year of writing}. Turn on the control unit and ensure it is connected to the computer. Now open the UCS software and use the following parameters under Settings $\rightarrow$ Amp/HC/ADC:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|}
+    \hline
+    High Voltage & \SI{700}{\volt} \\\hline
+    Coarse Gain & 32 \\\hline
+    Fine Gain & 1.24 \\\hline
+    Conversion Gain & 1024 \\\hline 
+  \end{tabular}
+  \caption{Basic Settings}
+  \label{tab:1}
+\end{table}
+Note that the specific detector used required \SI{700}{\volt}, This is just for a first run, so the gain can be adjusted later. Under Settings $\rightarrow$ Presets $\rightarrow$ Time $\rightarrow$ Real Time Parameter, set it to \SI{300}{\s}. Start recording pulse heights, and wait five minutes for it to stop, it will do so on its own. Once it has finished, you will be able to set a region of interest (ROI), where in the bottom right hand corner it will you the channel number of the centroid as well as the full width at half max. Record FHWM, centroid and the gain settings. Repeat, changing the gain such that the peak will appear near channel 200, 600, and 1000. Note the same data as before for each run through. Now move to testing the effect of HV, choose a gain setting that puts the peak at about channel 900, and note the same data as before. Reduce the HV setting by about 10\%, for example here the initial voltage was \SI{700}{\volt} so it was changed to \SI{630}{\volt}. Ensure that you are using the same gain settings and measure again, note the same data.  
+
+\subsection{Calibration Curve}
+If not changed back already, ensure your HV setting is back to \SI{700}{\volt}. We want to see a calibration curve, so the gain settings need to be fixed. Start with the highest energy source and adjust gain so that its highest energy peak is near the end, around channel 900-1000, this is $^{60}$Co, with a gamma energy at \SI{1332}{\keV}. Note these gain settings and ensure they are kept the same throughout. Instead of changing these settings, the gamma sources are changed out for ones with different energies. Using either the reference sheet provided with the sources or the appendix of the write up, take note of the gamma energies for each of the sources, as there may be larger peaks which show up that are not gamma peaks. For each source, get a five minute spectrum, and record the FWHM and centroid of the gamma peak using a ROI. Keep the ROI on screen and print a peak report which lists the data in a succinct report. After this is done plot the channel number of the centroid vs the accepted gamma energy to find that there is a linear correlation between the two. 
+\newpage
+\section{Data}
+
+\subsection{Resolution Measurements}
+The results from changing amplifier gain:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c|c}
+    Centroid & FWHM & Fine Gain & Coarse Gain \\\hline
+    208.3    & 18   & 1.24      & 8 \\
+    462.1    & 38   & 1.40      & 16 \\
+    740.5    & 61   & 1.24      & 32
+  \end{tabular}
+  \caption{Gain Setting Change}
+  \label{tab:2}
+\end{table}
+Changing the high voltage value:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c}
+    High Voltage (\si{\volt}) & Centroid & FWHM \\\hline
+    700 & 904 & 70 \\
+    630 & 490 & 40
+  \end{tabular}
+  \caption{High Voltage Setting Change}
+  \label{tab:3}
+\end{table}
+The following gain settings were used:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c}
+    Fine Gain & Coarse Gain \\\hline
+    1.5 & 32
+  \end{tabular}
+  \caption{Gain Settings for Fixed High Voltage}
+  \label{tab:4}
+\end{table}
+
+\subsection{Calibration Curve}
+The following settings were fixed for an analysis of the calibration curve.
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c}
+    Voltage (\si{\volt}) & Coarse Gain & Fine Gain \\\hline
+    700 & 16 & 1.45
+  \end{tabular}
+  \caption{Fixed Settings for Part B}
+  \label{tab:5}
+\end{table}
+Now for the values used for the calibration curve:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c|c}
+    Source(Peak)&Energy (\si{\keV})&Centroid& FWHM \\\hline
+    $^{60}$Co(1) & 1332.5 & 944 & 59\\
+    $^{22}$Na & 1274.5 & 904 & 56\\
+    $^{60}$Co(2) & 1173.2 & 827 & 56\\
+    $^{137}$Cs & 661.7 & 477 & 37\\
+    $^{57}$Co & 122.1 & 93.1 & 12\\
+    $^{109}$Cd & 88.0 & 64.6 & 11
+  \end{tabular}
+  \caption{Calibration Curve Data}
+  \label{tab:6}
+\end{table}
+Now for the actual calibration curve:
+\labfig{9.0}{chve}{Calibration Curve: Channel Number vs. Energy}{chve}
+If it is not visible, the following statistics are given by the linear regression:
+\begin{equation}
+  \label{eq:fit}
+  y=6.5171+0.70365x
+\end{equation}
+The provided $R^2$ value is $R^2=0.99995$, This means it is essentially a line. 
+\newpage
+Here are the peak reports for each of the gamma sources
+\labfig{17.0}{co60}{Peak Report for $^{60}$Co}{co60}
+\labfig{17.0}{na22}{Peak Report for $^{22}$Na}{na22}
+\labfig{17.0}{cs137}{Peak Report for $^{137}$Cs}{cs137}
+\labfig{17.0}{co57}{Peak Report for $^{57}$Co}{co57}
+\labfig{17.0}{cd109}{Peak Report for $^{109}$Cd}{cd109}
+\newpage
+\section{Analysis}
+
+\subsection{Resolution}
+We analyze the resolution by looking at the tables \ref{tab:2} and \ref{tab:3}. The formula used for calculating the resolution is equation \eqref{eq:res}.
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c}
+    Centroid&FWHM&R(\%)\\\hline
+    208.3 & 18 & 8.64\\
+    462.1 & 38 & 8.22\\
+    740.5 & 61 & 8.24
+  \end{tabular}
+  \caption{Resolutions for Changing Amplifier Gain}
+  \label{tab:7}
+\end{table}
+Immediately we see consistency in the values, with the highest pairwise percent difference being a mere 5\%. This means that changing the gain settings will not greatly affect the accuracy of our measurements.
+
+As for the analysis of resolution using the changing high voltage reading, we see:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c}
+    Centroid&FWHM&R(\%)\\\hline
+    904 & 70 & 7.74 \\
+    490 & 40 & 8.16
+  \end{tabular}
+  \caption{Resolutions for Changing High Voltage}
+  \label{tab:8}
+\end{table}
+Which is only a slightly more inaccurate measurement, with the pairwise percent differences being just above 5\%. This however may be due to an error in measurement, and could be fixed by adding more measurements at this voltage.
+
+Now for source energy, we perform the same calculation
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c|c}
+    Energy (\si{\keV})& Centroid&FWHM&R(\%)\\\hline
+    1332.5&944&59&6.25\\
+    1274.5&904&56&6.19\\
+    1173.2&827&56&6.77\\
+    661.7 &477&37&7.75\\
+    122.1 &93.1&12&12.89\\
+    88.9&64.6&11&17.03
+  \end{tabular}
+  \caption{Resolution for Changing Gamma Energy}
+  \label{tab:9}
+\end{table}
+There is clearly a degrading resolution as energy gets lower. This makes sense however, as the lower energy peaks, especially with a fixed gain, will get bunched in with a lot of other peaks, so they are not very readable on their own. 
+\subsection{Calibration Curve}
+Once again, equation \eqref{eq:fit} gives the fit parameters for our calibration curve. This calibration gives about \SI{1.4}{\keV} per channel number. Plugging in channel 450, we would get the energy value of:
+\begin{equation}
+  \label{eq:number}
+  E=x=\frac{y-6.5171}{0.70365}\implies E=\frac{450-6.5171}{0.70365}=
+  \boxed{\SI{630.26}{\keV}}
+\end{equation}
+
+In order to set up a calibration that gives \SI{1}{\keV} per channel, we would have to fine tune the gain such that a peak like the mid-range energy $^{137}$Cs peak is at channel 661. These gain settings should put the rest of the energies such that their energy is directly proportional to the channel number. However, I am not sure how the front factor could be eliminated entirely. For the specific calibration curve refer to figure \ref{chve}.
+\section{Conclusion}
+To summarize the results, it was found that amplifier gain had the least (read nearly no) effect on the detector resolution. This is probably due to the fact that it is changing nothing about the actual measurement except for accepted values, so it should effect resolution very little if at all. The next up was the high voltage value of the detector, but to say this for sure would require extra testing. I assume that if more high voltage values were taken, then we would see a further decay in the resolution. If the value of the voltage is low enough, then the scintillation detector fails, resulting in bad readings. After that was incident gamma energy, which clearly degraded the detector resolution as the energy was lower, as can be seen in the resolutions of figures
+\ref{co60},\ref{na22},\ref{cs137},\ref{co57}, and \ref{cd109}. More information gets crunched to the side as the incident energy gets lower, which is what resolution aims to measure. The reason that the effect is so bad is due to the other fixed variables, the gain. We are forcing this information into a small container, so the various peaks that are near each other will be nearly indistinguishable from one another. 
+
+% ++++++++++++++++++++++++++++++++++++++++
+\bibliographystyle{abbrv}
+\bibliography{template}
+
+\end{document}
+
