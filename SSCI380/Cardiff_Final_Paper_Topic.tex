@@ -1,0 +1,55 @@
+\documentclass[12pt]{article}
+
+\title{SSCI 380 Final Paper Title and Topic}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\begin{document}
+\maketitle
+
+\section{Title}
+How do Gender Norms Impact the Economic and Human Development of [a Country] \footnote{I am still unsure as to which country I should focus on as of yet, some further research will be done to assist the more theoretical approach I currently have}
+
+\section{Topic Statement}
+The goal of this paper is to examine the role of Gender Norms on the development of countries. Due to previous research, a focus is placed on the Economic and Human development, as there seems to be a sort of tug of war between these two sides when it comes to development of women's rights specifically. When talking about this it is important to discuss the relation to the Capabilities approach in relation to this, which discusses these sorts of issues of 'Human development' in a relevant way. In the final product this should not just be theoretical discussion, but relate to a country so these concepts have actual attachment to reality. However, there is no guarantee that there will be one specific country that fits all of this, so most likely multiple countries will be used as examples for specific points. Whichever proves to be more useful in the final paper will end up being used. 
+
+\bibliographystyle{apalike}
+\bibliography{sources} 
+
+\end{document}
