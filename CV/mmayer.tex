@@ -1,0 +1,109 @@
+\documentclass[10pt,a4paper,ragged2e]{altacv}
+\geometry{left=2cm,right=10cm,marginparwidth=6.8cm,marginparsep=1.2cm,top=1.25cm,bottom=1.25cm}
+\ifxetexorluatex
+  \setmainfont{Carlito}
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage[default]{lato}
+\fi
+  
+
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\definecolor{DarkPastelRed}{HTML}{450808}
+\definecolor{PastelRed}{HTML}{8b3622}
+\definecolor{GoldenEarth}{HTML}{cc8c3c}
+\definecolor{VividPurple}{HTML}{8b3622}
+\colorlet{name}{black}
+\colorlet{tagline}{PastelRed}
+\colorlet{heading}{DarkPastelRed}
+\colorlet{headingrule}{GoldenEarth}
+\colorlet{subheading}{PastelRed}
+\colorlet{accent}{PastelRed}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+
+\begin{document}
+\name{MICHAEL CARDIFF}
+\tagline{Illinois Institute of Technology}
+% Cropped to square from https://en.wikipedia.org/wiki/Marissa_Mayer#/media/File:Marissa_Mayer_May_2014_(cropped).jpg, CC-BY 2.0
+\photo{3.3cm}{photojpg.jpg}
+\personalinfo{%
+  % Not all of these are required!
+  % You can add your own with \printinfo{symbol}{detail}
+  \email{mcardiff@hawk.iit.edu}
+%  \phone{773-870-6384}
+%  \mailaddress{Address, Street, 00000 County}
+  \location{Chicago, IL}
+  \homepage{https://github.com/mcardoff/}
+%  \twitter{@marissamayer}
+%  \linkedin{https://www.linkedin.com/in/jaydeep-singh-4ab1a3162/}
+%   \orcid{orcid.org/0000-0000-0000-0000} % Obviously making this up too. If you want to use this field (and also other academicons symbols), add "academicons" option to \documentclass{altacv}
+}
+
+%% Make the header extend all the way to the right, if you want.
+\begin{fullwidth}
+\makecvheader
+\end{fullwidth}
+
+%% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
+\AtBeginEnvironment{itemize}{\small}
+
+%% Provide the file name containing the sidebar contents as an optional parameter to \cvsection.
+%% You can always just use \marginpar{...} if you do
+%% not need to align the top of the contents to any
+%% \cvsection title in the "main" bar.
+\cvsection[page1sidebar]{Experience}
+% \cvevent{Shipping \& Receiving/Front End}{VCG Uniform}{Jun 2016 -- Aug 2016}{Chicago, IL}
+% \begin{itemize}
+% \item Managed Shipping and Receiving of about fifty packages weekly.
+% \smallskip
+% \item When packages were not coming in or going out, worked stocking or cashiering on front end.
+% \smallskip
+% \item Worked to fulfill uniform order requests of about 50 printed shirts, pants, and shorts per week.
+% \end{itemize}
+
+\cvevent{Research Assistant}{Computational Physics, Dr. John Zasadzinski}{May 2020 -- Present}{Chicago, IL}
+\begin{itemize}
+\item Worked with code written by a team, re-purposing previously written Python code to fit new needs
+\item Meeting weekly with a team of five people over the internet and in person to present on progress
+\item In addition to weekly meetings, maintained a constant stream of communication with advisors to ensure work was getting one
+\smallskip
+\item Work resulted in development of a paper currently in process of being published to [TODO INSERT JOURNAL HERE] 
+\end{itemize}
+
+\divider
+
+\cvevent{Research Assistant}{Computational Physics, Dr. Zack Sullivan}{August 2021 -- Present}{Chicago, IL}
+\begin{itemize}
+\item Worked to use modern GPU programming on a standard program used for numerous calculations in High Energy Physics
+\item Meet up to twice per week with advisor to present current progress and set specific goals for the week
+\item Provide a sustainable long term project by focusing on creating a framework for porting these programs to GPU codes 
+\end{itemize}
+
+\divider
+
+\cvevent{Student Grader}{Illinois Institute of Technology}{Jan 2020 - Dec 2021}{Chicago, IL}
+\begin{itemize}
+\item Coordinated communication with over fifty students to communicate grade feedback
+\item Developed a system for electronically submitting homework via email during COVID-19 Pandemic
+\item Maintained a stream of communication with the course professor, updating in terms of feedback given to me from students, along with comments on the student's grades
+\end{itemize}
+
+\divider
+
+\cvsection{Achievements}
+\begin{itemize}
+\item Honorable mention for a poster created for the Lewis College Virtual Undergraduate Research Day, created from work done with Dr. John Zasadzinski
+\item Dean's List for Fall 2018,2019,2020, and Spring 2019,2021
+\item International Baccalaureate Diploma holder
+\end{itemize}
+
+\clearpage
+\nocite{*}
+
+
+\end{document}
