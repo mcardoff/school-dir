@@ -10,6 +10,10 @@
 *.png
 *.jpg
 *.m
+*.txt
+*.toc
+*.nav
+*.snm
 *_.tex
 *.org
 !README.org
