@@ -1,0 +1,62 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}CS 485 HW 3}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\begin{document}
+\maketitle
+
+\section{Impact of Bias on Congress}
+The bias we are specifically discussing here is in gerrymandering, the intentional manipulation of congressional districts to either fill a district with certain type of voter, or remove one type of voter from a certain district. This can be done for many reasons, but in the majority of cases it is done in order to manipulate the current political status of the people in the district. This can be done by either party to secure another democratic or republican seat in congress. This leads to a general mistrust of the people in congress, as it is intentionally disrupting the natural order to democracy. This especially comes when places like Chicago are gerrymandered, splitting neighbors and neighborhoods. This can also impact the effectiveness of Congress as well, since if a congressperson is too focused on securing their seat for the next election cycle, then how can they have any time to do any actual work?
+
+The public trust in congress is very fragile, especially in states where the congress is split between the two parties. However gerrymandering forces the issue to cross party lines, as it is something that both do! People are expecting congresspeople to execute the will of the people, the people who elected them. This is not possible when the representative has a gerrymandered district, and then the people which he is representing are no longer the people who voted for him. This may not be true for all of the people, the cases are not too extreme, but still, this lowers the trust of the people in congress, as they had no role in voting for that person if the district border is changed.
+
+Another interesting aspect to consider is the fact that they are changing the border in the first place. If the representative does not trust the people to reelect them, then the representative is probably doing something controversial, which does not benefit the people he is supposedly representing. This may be more of a stretch to say it lowers the people's trust, but nonetheless it is true.
+
+One important thing about gerrymandering is that it takes time, there have to be bills that pass through all the checks and balances, and essentially it is time wasted when there could be other stuff getting done. I touched on this earlier as well when I mentioned the lack of consistency in who the representative is, well, representing. This combined bit of losing trust and representation leads to the people seeing a congressperson in a completely different light, they are more likely to scrutinize their elected officials. However this could lead in a good direction, as if more people are aware, then we create better informed voters, who are able to vote more effectively. However this does not atone for the other horrible things that gerrymandering does in the first place. 
+\section{Removing the Bias}
+In order to remove the bias we need to create a system that can not only remap the current districts that we currently have, but update those districts with time. We have to ensure that this is in fact updating based on demographic data, rather than updating based on political climate, which could lead to gerrymandering all over again. I believe that this system should have two parts, one based on the more rural, low population density areas of the state, and the other based on districts for urban areas with higher population density.
+
+It is important to consider the rural areas of a state, even though they are much less gerrymandered currently. The system should choose sections that minimize population, so not too many people are being represented by a single person, while 'trying' to minimize area. This however is hard, as the more rural districts tend to be further spread out, to make up for more gerrymandered urban counties. So a focus should be emphasized, mostly on areas which are a certain maximum distance apart, with population above a certain threshold, which only a few of the counties should actually have.
+
+The majority of the gerrymandering problem is in urban areas. This is why attention should be paid to large cities, which is why I mentioned population density earlier, as this should be used as differentiator between rural and urban. It is important to mention that it is not an absolute indicator, but definitely is a helpful one. Most urban areas are divided into groups of different people with different lifestyles. For example there is the North, South, West and Downtown areas of Chicago, which all have different types of people based on how they live. The next concept to base this model on is a sense of resolution, now that we are going to determine our districts mostly by lifestyle. The sense of resolution can be as low as looking at one single city as a district, or as fine as looking at individual blocks as sets of unique people. It is impossible for the amount of representation to be that well, but this is just an example. This resolution could be adjusted based on how many districts the state has. This means a higher population and then greater diversity of people in the area, defining our resolution. I believe that this system works very well for the urban areas, and not so much for rural, which is where I believe an A.I. could help.
+\section{Enhancing the Model}
+There are two aspects where an A.I. would be helpful in improving this system. On a large scale the classification of rural districts. On a smaller scale the updating of urban districts over time. The interesting is that the same A.I. could be used for both systems. The basic logic would be seeing if two adjacent districts, over multiple voting periods voted very much the same, not on just a binary vote for a representative but for certain referendums and other things, suggesting that parts can be merged, and the remainder moved into another county. This can be used on a finer scale of resolution, so it is applicable to both the urban and rural sectors.
+\end{document}
