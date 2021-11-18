@@ -1,0 +1,54 @@
+%++++++++++++++++++++++++++++++++++++++++
+% Don't modify this section unless you know what you're doing!
+\documentclass[letterpaper,12pt]{article}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{physics} 
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[margin=1in,letterpaper]{geometry}
+\usepackage{cite}
+\usepackage{float}
+\usepackage[final]{hyperref}
+\usepackage{url}
+\usepackage{natbib}
+\usepackage[labelfont=bf]{caption}
+\hypersetup{
+  colorlinks=true, linkcolor=blue, citecolor=blue,
+  filecolor=magenta, urlcolor=blue
+}
+% ++++++++++++++++++++++++++++++++++++++++
+
+\newcommand{\labfig}[4]{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}}
+
+
+\begin{document}
+
+\title{Title of the Report}
+\author{A. Partner, B. Partner, and C. Partner}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+\end{abstract}
+\section{Introduction/Objective}
+The objective of this experiment is to rep
+\section{Theory/Background}
+\section{Procedures}
+\section{Data}
+\section{Analysis}
+\section{Conclusion}
+
+
+%++++++++++++++++++++++++++++++++++++++++
+\bibliographystyle{abbrv}
+\bibliography{template}
+
+\end{document}
+
