@@ -1,0 +1,85 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}Ansari Colloquium Review}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{siunitx}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\begin{document}
+\maketitle
+
+\section{Outline}
+\begin{itemize}
+\item Does not appear to be a physics talk at first
+\item But, talking about crystal structure of DNA
+\item When DNA gets damaged (UV, carcinogens) it gets repaired through NER
+\item Interesting talk on time scales of recognition of damaged sites
+\item One of the processes which repairs the DNA is through XPC/Rad4
+\item Able to recognize without making contact with actual damaged nucleotides
+\item Unsure how it interacts with regular DNA then
+\item Monitor its activity with fluorescent probes
+\item Time scale of flipping nucleotides: 5-\SI{10}{\ms}
+\item Has to unzip DNA and rezip with good nucleotides
+\item Looks at groups of different nucelotides
+\item This leads to ambiguity in case where there could be a mismatch, but there is a correct matching, but with the same number as a mismatching
+\item Findings!
+  \begin{itemize}
+  \item Mismatched DNA by itself can access conformations seen in Rad4-Bound DNA
+  \item Conformations only a snapshot of the full story
+  \end{itemize}
+\item Lasers used to probe how Rad4 interacts with DNA, nonspecific 'interrogation'
+\item Rad4 is a lot faster than individually looking at every nucleotide and judging if it is correct
+\item Timescale of unwinding dynamics ~\SI{300}{\micro\s}
+\item Next steps: introduce supercoiling to increase Rad4 binding affinity
+\end{itemize}
+\section{Review}
+This colloquium was odd, as at first it did not seem like a physics talk, but rather more focused on the biology side. This ended up being not so true, whether that be because the speaker intentionally talked about more things which physicists are prone to talking about or due to physics permeating into all other sciences. The speaker, Ansari, made this distinction clear from the start, this was a biology talk, and that she would try to explain it in a way that a physicist would understand. This became immediately apparent at the beginning of the talk, when the speaker was talking about DNA. Specifically DNA that has been affected by UV radiation or carcinogens, so there is some defect in the DNA. The speaker goes on to talk about various methods of detecting and correcting these defects, as well as their time scales!
+
+The main problem which this talk addresses is the dynamics of how DNA detects and repairs damaged DNA. Proteins responsibly for this repair need to rapidly scan for correct nucleotide pairs, while also slowing down when an incorrect pair is detected. Even so they need to interrogate the possibly incorrect pair to ensure it is actually incorrect. The speaker mentions the timescale of the detection and repair is overall on the scale of \SI{10}{\ms}, with the detection independently  only taking about \SI{500}{\micro\s}. An interesting part is the way they probe these time scales. A laser is passed through the sample, and a temperature jump is measured, and the time it takes for the temperature to rise a certain amount, defines the time constant in which the process takes place! This was very surprising to me, as increase in temperature is something I do not always consider when thinking about an experiment.
+
+The bulk of the talk was spent talking about the protein Rad4, which is a key in the detection and repair. Rad4 can detect two to three pairs at once, which aids in the time scale, but leads to confusion when there is a situation like this:
+\begin{center}
+  AAA \quad ATA\\
+  $\uparrow$\qquad$\uparrow$\\
+  TTT\quad TAT
+\end{center}
+Rad4 sees these situations as the same, so it might stop on the one on the right, which has the correct pairings, so 'repairing' here would actually do more harm than good. Somehow Rad4 still accounts for this, as there is not a change in intensity of the laser observed when put through a T-change test! This colloquium was a very interesting look into biophysics from this perspective.
+
+To conclude, this talk was a very interesting look into biology, which I have not properly thought about in a class since high school. The field of biology asks many interesting questions even regarding physics, such as what was discussed today. What are the dynamics of the human body? The speaker was very invested in this as well, discussing the implications of every single result presented. If this talk has done anything, it has made me interested in the field of biophysics as a whole, especially in the dynamics of processes in the human body.
+\end{document}
