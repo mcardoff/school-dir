@@ -27,21 +27,79 @@
     \label{#4}
   \end{figure}}
 
+\graphicspath{{./img/}}
 
 \begin{document}
 
-\title{Title of the Report}
-\author{A. Partner, B. Partner, and C. Partner}
+\title{Gamma Spectrum Analysis}
+\author{M. Cardiff, J. Campbell, S. Kundu, B. Ng}
 \date{\today}
 \maketitle
 
 \begin{abstract}
+  Observation of gamma spectra, specific peaks and regions identified based on knowledge of material and the processes which it undergoes. Also noted are the effects of using the specific NaI(Tl) detector in this experiment. The method of calibrating the detector software to use energy instead of channel number is also discussed. 
 \end{abstract}
 \section{Introduction/Objective}
-The objective of this experiment is to rep
+The objectives of this experiment are to go in depth into a full gamma spectrum, explaining the main features as measured with a NaI(Tl) scintillation detector. Some of the processes which need to be observed are the photoelectric effect, Compton scattering, and pair production. As a side effect we must also understand how X-Rays originate from this detection process. To do all of this we also need to calibrate the detector like in the last experiment in order to use an energy scale as opposed to the channel numbers.
 \section{Theory/Background}
+
+\subsection{Emission Processes}
+In general atoms need to have a specific number of protons and neutrons in order to remain stable. If the number of protons is off, then it is a different element all together but with an unstable amount of neutrons, so it will undergo one of the following processes, positron emission:
+\begin{equation}
+  \label{eq:pe}
+  p\to n+e^++\nu_e
+\end{equation}
+Or electron capture:
+\begin{equation}
+  \label{eq:ec}
+  p+e^-\to n+\nu_e
+\end{equation}
+If the number of neutrons is off, then we have an isotope. These isotopes are often unstable and can undergo $\beta$ decay, governed by the following reaction
+\begin{equation}
+  \label{eq:beta}
+  n\to p^++e^-+\overline{\nu}_e
+\end{equation}
+
+\subsection{Breaking down a spectrum}
+In the previous lab we already measured the principal gamma peak which is usually far to the right and is very pronounced. However there is much more to this spectrum which we can identify with other processes. Right after the main gamma peak will be the Compton valley. The Compton valley comes from the fact that a scattered electron cannot escape our crystal detector, but a photon can, so there is a continuum of kinetic energy which the trapped electron can have, up to a maximum. This gives the next feature, the edge of the valley, called the Compton edge, and the spectrum goes until this maximum energy, where we have a backscattering peak, the maximum energy given by:
+\begin{equation*}
+  h\nu'=\frac{h\nu}{1+\frac{h\nu}{m_0c^2}(1-\cos\theta)}
+\end{equation*}
+However, we are only interesting in $\theta=\ang{180}$, so we can rewrite this as:
+\begin{equation}
+  \label{eq:back}
+  h\nu'=\frac{h\nu}{1+\frac{h\nu}{m_0c^2}(1-\cos\pi)}=
+  \boxed{\frac{h\nu}{1+2\frac{h\nu}{m_0c^2}}}
+\end{equation}
+Note that $h\nu$ is an energy. This backscattering peak comes from the environment, scattering off of tables, walls etc.
+
+\subsection{Decay Schemes}
+We already talked about \textbf{how} the decays happen, we should now talk about the specific decay chains which we are looking for so we know what features to expect on the spectra.
+
+We begin with $^{137}$Cs, which undergoes $\beta$ decay to $^{137}$Ba, so we should detect an x ray at about \SI{31}{\kilo\eV}. This of course is in addition to the regular gamma peak at \SI{662}{\kilo\eV}. We can then predict the the location of the backscattering peak.
+
+
 \section{Procedures}
+First ensure the detector is set up properly, with the proper voltage (either \SI{500}{\V} or \SI{700}{\V}) and that the source holder is an appropriate distance from the detector. The experiment will be done with multiple sources, so first examine the source with the highest energy peak and perform a test measurement. After, set the gain settings so it appears near channel 1024. Ensure the low and high energy discriminators are both adjusted so that a full spectrum is obtained. Change nothing between all measurements so the same energy scale can be used for all measurements.
+
+Now it is time to calibrate the detector. Use $^{57}$Co as a calibration source, note where the \SI{122}{\kilo\eV}. Then you can use the two principal gamma peaks of $^{60}$Co as two other calibration points in order to get the energy scale on the bottom of the screen. Using the dialog, you can enter the data points for a correlation between channel number and energy.
+
+Now we can get an 'official' run of every source. Highlight each of the peaks (Pb x ray, compton valley, compton edge, backscattering, principal gamma) discussed in the theory section. Calculate the expected backscater peak for each source using equation \eqref{eq:back}. Print the peak report which notes the data for each of the regions of interest.
+
+For $^{22}$Na and $^{60}$Co note the sum peaks, you can adjust the gain, as they may be off the scale chosen for the rest of the sources. You may need to change the scale from a linear to a log scale. Rescaling needs to be done to observe the energy. 
 \section{Data}
+First the comprehensive data, with everything
+\labfig{14.5}{Cd_109_Plot}{Cadmium 109 Gamma Spectrum}{cd109}
+\labfig{14.5}{Co_57_Plot}{Cobalt 57 Gamma Spectrum}{co57}
+\labfig{14.5}{Co_60_Plot}{Cobalt 60 Gamma Spectrum}{co60}
+\labfig{14.5}{Cs_137_Plot}{Cesium 137 Gamma Spectrum}{cs137}
+\labfig{14.5}{Mn_54_Plot}{Manganese 54 Gamma Spectrum}{mn54}
+\labfig{14.5}{Na_22_Plot}{Sodium 22 Gamma Spectrum}{na22}
+% \newpage
+Now the sum peaks
+\labfig{14.5}{Cd_109_Sum_Peaks}{Cadmium 109 Sum Peak}{sumcd109}
+\labfig{14.5}{Co_60_Sum_Peaks}{Cobalt 60 Sum Peak}{sumco60}
+\labfig{14.5}{Na_22_Sum_Peak}{Sodium 22 Sum Peak}{sumna22}
 \section{Analysis}
 \section{Conclusion}
 
