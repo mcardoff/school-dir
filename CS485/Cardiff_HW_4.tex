@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+
+\title{CS 485 HW 4}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{graphicx}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\begin{document}
+\maketitle
+
+\section{Information Handling}
+It is very difficult to keep track of, or detect germs, but it is possible to keep track of things which are controllable by humans. My proposition is that a database is created which keeps track of when the last time an area was cleaned or disinfected. This is important as we cannot keep track of individual germ numbers, but we do know how germs spread, and we do know how that disinfectants get rid of a majority of germs. This means we can effectively model how germs spread from a small initial amount. 
+
+In order to effectively gather the data, we need to make it easily entered. There should be automated systems that detect when a designated cleaning crew enters a room and cleans it. The system can then use a simple differential equation model to determine when the amount of germs in the room is no longer safe for people to be in. This system would require some rooms to be sealed off in order to ensure that the germs spread according to the simple model. However this is not really returning to the normal, so a more complex model can be used, this would ensure maximum normalcy. However the biggest deviation of normalcy would be a flurry of cleaning crew workers which would have to go around to ensure everything above a threshold is cleaned.
+
+I feel like an augmented reality system would not suit this model, but it would in fact help present the information to a regular person. The only necessary data would be the last time any given room was cleaned. This data could easily be tagged per room and stored in a database. This time can be processed using the differential equation model to determine a probable 'number' of germs in the room at some time after the last cleaning time. The only thing that we need to convey to our user is then the probability that the room is dangerous to enter, and whether or not a cleaning crew is on the way. This would be extremely helpful for someone who is looking to use a room for studying or homework. This system would also reduce on mask usage if there is a definitive say on whether or not the room is overflowing with COVID germs. 
+
+\section{Open Source}
+This framework is something that easily could be open sourced. It can even be general-purposed to use not only for COVID. I think the most interesting of these cases would be in Doctors Offices. These types of tools should always be open source in my opinion, as they help the betterment of humanity as a whole.
+
+This software could easily be extrapolated to be used in a doctor's office, or even in hospitals. Keeping track of patients and what kinds of diseases have been in any individual rooms could be of infinite use to nurses who already have hard enough jobs. Nurses obviously would have to clean a room after any use no matter what, so it is more useful to know whether or not they will spend 10 minutes or 2 hours deep cleaning a room. For smaller doctors offices it can be a quick tell for patients the detail of safety and care that the doctor takes. 
+
+More on the moral side of this project, it is important for anyone who is health conscious, especially in the post-pandemic era, to have this kind of data. If any employer wishes to implement some sort of COVID preventing technology, they should be able to with no cost. This is because sometimes, this information could be life or death, so hiding it behind a paywall seems highly immoral to do. 
+
+\end{document}

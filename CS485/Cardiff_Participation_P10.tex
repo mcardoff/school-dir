@@ -1,0 +1,64 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}CS 485 Participation 10}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{graphicx}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\begin{document}
+\maketitle
+
+\section{Risks and Benefits of Autonomy}
+An interesting case of automating systems which generally tends to work is automatic manufacturing. The benefits of this are quite easily seen. It was a bit difficult to even think of this as an example since it is pretty much a standard at this point in time. However the risks are still very prevalent today. These risks are very indirect, they may even end up becoming regular products, but the effects and still yet be damaging.
+
+The benefits are very clear of automating manufacturing. Speed is very much the greatest benefit, manufacturing mostly involves creating the same object using the same process repeatedly for the entire duration of a working day. Doing this with a single person, or even a huge factory team of people, is extremely inefficient compared to the efficiency of even a single machine. This speed also results in increased yield, more products produced overall. Another benefit (although this may only be a benefit for someone who owns the factory) is that you would not have to pay as many workers to get this large yield. However there are of course risks associated with making a switch from a set of people to a set of machines.
+
+The most obvious risk in my opinion happens when the automated process produces something that is incorrect, and is somehow able to pass through any quality inspections. This however is very limited in where the risk could take place, in terms of the stage of production. If for example, a can top can be placed on the can body wrong, leaving a sharp lip. This would be detectable by a human QA control and most likely an AI one. However something which would have entered the can before it is sealed is something that would be detected by neither, needing something external to test it. These are all risks that are dangerous, but can clearly be mediated in some way, so they are less risks and more design considerations.
+\pagebreak
+\section{Turning Over Control}
+It is difficult to say whether or not we can trust an automated systems enough to turn over complete control. The most obvious tale of caution would be with autmatic driving, where it is unlikely for us to actually relinquish control to an automated system. We can contrast this with something like manufacturing where the control has been already given (for the most part) to the automated system.
+
+For a system like driving, it is difficult to give away complete control, to allow driving completely in the 'hands' of a machine. Especially with all of the extensive testing that has been done showing that the AI is not ready, it is easy to say it is incapable of operating on its own, with no operator holding it back from making mistakes. Making the decision of when it is good 'enough' (since most likely, it will never be perfect) is very difficult. Is it enough to say that getting into a crash 90\% of the time is good? No, the system should never result in a crash! This may be an unreachable result, but it is what the responsible choice is. Overall we need to be careful when handing over control, since it could result in unnecessary danger, which could be prevented when a more careful decision should be made.
+
+A different system where the decision may be easier is in manufacturing. While it did take some time for the technology to be developed, it took no time for it to be adapted into factories, so the decision was much easier to make. The reason for this decision being easier can be attributed to many things. I think the most prevalent is probably a great number of deaths that occured in factories due to non-automatic machinery that would prove to be fatal if not used right. Thus in trusting a machine to do a repetitive task that adheres to specific guidlines, the decision is easy.
+
+Overall the trust in humans to make these good decisions all goes down to the complexity of the system. If a system is well suited for a computer, i.e. repeitive and must adhere to strict rules, then we have an easy decision. It is when those rules are relaxed, and the task is more complex, that these decisions become more difficult
+\pagebreak
+\section{Mitigating Risk}
+In order to mitigate risk, it is important to consider the consequences of actions. All of the various impacts of a decision must be made in order to then calculate a risk of that decision. Some of these may be simple logically derived from the situation, others may need a deep analysis in a scientific sense. We can provide an example for each of these. A more simple risk analysis would be like looking at the risks of jumping off a cliff, where a risk with some necessary scientific analysis would be something like the use of fluorochlorocarbons in aerosols. The former is easy to see, the risks in jumping off of a cliff is death. Where this risk is arrived at in seconds, the other claim required years of research to even find out. The original question asked was not even the one we have the answer to, scientists wanted to know why there was a hole in the ozone layer. So a system of checks need to take all of those possibilities into consideration when taking risk into account.
+\end{document}
