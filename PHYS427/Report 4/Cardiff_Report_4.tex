@@ -54,12 +54,20 @@ Or electron capture:
   \label{eq:ec}
   p+e^-\to n+\nu_e
 \end{equation}
+These processes both result in a conversion of a proton to a neutron.
+
 If the number of neutrons is off, then we have an isotope. These isotopes are often unstable and can undergo $\beta$ decay, governed by the following reaction
 \begin{equation}
   \label{eq:beta}
   n\to p^++e^-+\overline{\nu}_e
 \end{equation}
+This results in a neutron turning into a proton.
 
+Another process seen here is pair annihilation, in which a positron (say from \eqref{eq:pe}) and electron collide and annihilate, creating a gamma:
+\begin{equation}
+  \label{eq:ann}
+  e^++e^-\to\gamma
+\end{equation}
 \subsection{Breaking down a spectrum}
 In the previous lab we already measured the principal gamma peak which is usually far to the right and is very pronounced. However there is much more to this spectrum which we can identify with other processes. Right after the main gamma peak will be the Compton valley. The Compton valley comes from the fact that a scattered electron cannot escape our crystal detector, but a photon can, so there is a continuum of kinetic energy which the trapped electron can have, up to a maximum. This gives the next feature, the edge of the valley, called the Compton edge, and the spectrum goes until this maximum energy, where we have a backscattering peak, the maximum energy given by:
 \begin{equation*}
@@ -71,42 +79,137 @@ However, we are only interesting in $\theta=\ang{180}$, so we can rewrite this a
   h\nu'=\frac{h\nu}{1+\frac{h\nu}{m_0c^2}(1-\cos\pi)}=
   \boxed{\frac{h\nu}{1+2\frac{h\nu}{m_0c^2}}}
 \end{equation}
-Note that $h\nu$ is an energy. This backscattering peak comes from the environment, scattering off of tables, walls etc.
+Note that $h\nu$ is an energy. This backscattering peak comes from the environment, scattering off of tables, walls etc. The $m_0$ is the electron mass, taken in all calculations to be just about \SI{0.5}{\mega\eV}/$c^2$
+
+\subsection{Photon Interactions with Matter}
+It is important to note how we can see some but not all of the x rays which these atoms produce, for this we look at the cross section for photons interacting with matter. This scales as $Z^5$, so atoms with higher $Z$ will produce higher counts:
+\begin{equation}
+  \label{eq:cross}
+  \sigma_p=\sigma_T\frac{Z^5}{(137)^4}2\sqrt{2}\qty[\frac{h\nu}{mc^2}]^{-7/2}
+\end{equation}
+The most important thing here is the $Z$ dependence, we can postulate that a material (such as Pb) with a high $Z$ will show up more pronounced than something with a lower $Z$.
 
 \subsection{Decay Schemes}
 We already talked about \textbf{how} the decays happen, we should now talk about the specific decay chains which we are looking for so we know what features to expect on the spectra.
 
-We begin with $^{137}$Cs, which undergoes $\beta$ decay to $^{137}$Ba, so we should detect an x ray at about \SI{31}{\kilo\eV}. This of course is in addition to the regular gamma peak at \SI{662}{\kilo\eV}. We can then predict the the location of the backscattering peak.
+We begin with $^{137}$Cs, which undergoes $\beta$ decay \eqref{eq:beta} to $^{137}$Ba, so we should detect an x ray at about \SI{31}{\kilo\eV}. This of course is in addition to the regular gamma peak at \SI{662}{\kilo\eV}. We can then predict the the location of the backscattering peak:
+\begin{align*}
+  E'=\frac{\SI{662}{\kilo\eV}}
+  {1+2\frac{\SI{662}{\kilo\eV}}{1000*\SI{0.5}{\mega\eV}}}
+  =\boxed{\SI{184}{\kilo\eV}}
+\end{align*}
 
+The next material, $^{109}$Cd, undergoes electron capture \eqref{eq:ec}, emitting a Ag x-ray, which should appear at about \SI{21.6}{\kilo\eV}. The main gamma peak is at \SI{88}{\kilo\eV}, we should then predict the backscatter peak to be at:
+\begin{align*}
+  E'=\frac{\SI{88}{\kilo\eV}}
+  {1+2\frac{\SI{88}{\kilo\eV}}{1000*\SI{0.5}{\mega\eV}}}
+  =\boxed{\SI{65}{\kilo\eV}}
+\end{align*}
 
+Sodium 22 experiences electron capture \eqref{eq:ec}, emitting a Ne x-ray. However, pair production is also possible via positron emission, leading to a much more pronounced peak at \SI{511}{\kilo\eV}. Despite this, the Ne x-ray is too low energy and infrequent (see \eqref{eq:cross}) to be seen in our detector. Due to the production of multiple gammas, both can be absorbed by the detector and we may observe a sum peak at 511+\SI{1274}{\keV}. Based on both gamma we can predict a backscatter:
+\begin{align*}
+  E'_1&=\frac{\SI{511}{\kilo\eV}}
+  {1+2\frac{\SI{511}{\kilo\eV}}{1000*\SI{0.5}{\mega\eV}}}
+  =\boxed{\SI{170.3}{\kilo\eV}}\\
+  E'_2&=\frac{\SI{1274}{\kilo\eV}}
+  {1+2\frac{\SI{1274}{\kilo\eV}}{1000*\SI{0.5}{\mega\eV}}}
+  =\boxed{\SI{212}{\kilo\eV}}
+\end{align*}
+
+Cobalt 60 decays to a Nickel x ray via position emission \eqref{eq:pe}. The x ray energy is about \SI{7.4}{\keV} \cite{TabRad_v5}. There should be 2 gammas, so we look for a sum peak as well. Backscattering is predicted to be:
+\begin{align*}
+  E'=\frac{\SI{1173}{\kilo\eV}}
+  {1+2\frac{\SI{1173}{\kilo\eV}}{1000*\SI{0.5}{\mega\eV}}}
+  =\boxed{\SI{209.8}{\kilo\eV}}
+\end{align*}
+
+Manganese 54 can decay to $^{54}$Cr via electron capture \eqref{eq:ec} or to $^{54}$Fe via beta decay\cite{TabRad_v5}. Both of these are very low energy x rays. The principal gamma is at \SI{835}{\keV}. The backscattering is then predicted to be at:
+\begin{align*}
+  E'=\frac{\SI{835}{\keV}}
+  {1+2\frac{\SI{835}{\keV}}{1000*\SI{0.5}{\MeV}}}
+  =\boxed{\SI{195}{\keV}}
+\end{align*}
+
+Finally, $^{57}$Co decays by electron capture \eqref{eq:ec} to two different states of $^{57}$Fe \cite{TabRad_v5}. The more prominent has energy of about \SI{136}{\keV}. This low energy gamma peak means we can see an Iodine x ray from our detector as opposed to a Pb x ray. The backscatter prediction is:
+\begin{align*}
+  E'=\frac{\SI{136}{\keV}}
+  {1+2\frac{\SI{136}{\keV}}{1000*\SI{0.5}{\MeV}}}
+  =\boxed{\SI{88.8}{\keV}}
+\end{align*}
 \section{Procedures}
 First ensure the detector is set up properly, with the proper voltage (either \SI{500}{\V} or \SI{700}{\V}) and that the source holder is an appropriate distance from the detector. The experiment will be done with multiple sources, so first examine the source with the highest energy peak and perform a test measurement. After, set the gain settings so it appears near channel 1024. Ensure the low and high energy discriminators are both adjusted so that a full spectrum is obtained. Change nothing between all measurements so the same energy scale can be used for all measurements.
 
 Now it is time to calibrate the detector. Use $^{57}$Co as a calibration source, note where the \SI{122}{\kilo\eV}. Then you can use the two principal gamma peaks of $^{60}$Co as two other calibration points in order to get the energy scale on the bottom of the screen. Using the dialog, you can enter the data points for a correlation between channel number and energy.
 
-Now we can get an 'official' run of every source. Highlight each of the peaks (Pb x ray, compton valley, compton edge, backscattering, principal gamma) discussed in the theory section. Calculate the expected backscater peak for each source using equation \eqref{eq:back}. Print the peak report which notes the data for each of the regions of interest.
+Now we can get an 'official' run of every source. After five minutes of data collection, highlight each of the peaks (Pb x ray, compton valley, compton edge, backscattering, principal gamma) discussed in the theory section. Calculate the expected backscatter peak for each source using equation \eqref{eq:back}. Print the peak report which notes the data for each of the regions of interest.
 
 For $^{22}$Na and $^{60}$Co note the sum peaks, you can adjust the gain, as they may be off the scale chosen for the rest of the sources. You may need to change the scale from a linear to a log scale. Rescaling needs to be done to observe the energy. 
 \section{Data}
 First the comprehensive data, with everything
-\labfig{14.5}{Cd_109_Plot}{Cadmium 109 Gamma Spectrum}{cd109}
-\labfig{14.5}{Co_57_Plot}{Cobalt 57 Gamma Spectrum}{co57}
-\labfig{14.5}{Co_60_Plot}{Cobalt 60 Gamma Spectrum}{co60}
-\labfig{14.5}{Cs_137_Plot}{Cesium 137 Gamma Spectrum}{cs137}
-\labfig{14.5}{Mn_54_Plot}{Manganese 54 Gamma Spectrum}{mn54}
-\labfig{14.5}{Na_22_Plot}{Sodium 22 Gamma Spectrum}{na22}
-% \newpage
+\labfig{13.5}{Cs_137_Plot}{Cesium 137 Gamma Spectrum}{cs137}
+\labfig{13.5}{Cd_109_Plot}{Cadmium 109 Gamma Spectrum}{cd109}
+\labfig{13.5}{Na_22_Plot}{Sodium 22 Gamma Spectrum}{na22}
+\labfig{13.5}{Co_60_Plot}{Cobalt 60 Gamma Spectrum}{co60}
+\labfig{13.5}{Mn_54_Plot}{Manganese 54 Gamma Spectrum}{mn54}
+\labfig{13.5}{Co_57_Plot}{Cobalt 57 Gamma Spectrum}{co57}
 Now the sum peaks
-\labfig{14.5}{Cd_109_Sum_Peaks}{Cadmium 109 Sum Peak}{sumcd109}
-\labfig{14.5}{Co_60_Sum_Peaks}{Cobalt 60 Sum Peak}{sumco60}
-\labfig{14.5}{Na_22_Sum_Peak}{Sodium 22 Sum Peak}{sumna22}
+\labfig{13.5}{Cd_109_Sum_Peaks}{Cadmium 109 Sum Peak}{sumcd109}
+\labfig{13.5}{Na_22_Sum_Peak}{Sodium 22 Sum Peak}{sumna22}
+\labfig{13.5}{Co_60_Sum_Peaks}{Cobalt 60 Sum Peak}{sumco60}
 \section{Analysis}
-\section{Conclusion}
+We can identify the many peaks in each of these spectra, I did not have access to the full peak reports, but many of these are very close to the scale points so an estimate can be made.
 
+\subsection{Bare Spectrum Analysis}
+\subsubsection{Cesium 137}
+We can identify the principle gamma right around \SI{662}{\keV} which is perfect, and then the beginning of the compton edge around \SI{500}{\keV}. The backscatter peak is at \SI{170}{\keV}, with a fwhm of 25, this well encompasses our prediction in the Theory Section. We clearly see the Barium x ray at \SI{27}{\keV}. Finally the Pb xray is all the way to the left, without an ROI.  
+
+\subsubsection{Cadmium 109}
+This is a much more suppressed plot, we can only see the principal gamma in green at \SI{88}{\keV} and the Pb x ray at \SI{21}{\keV}. We cannot see the Compton valley or distribution, so we cannot see the backscatter.
+
+\subsubsection{Sodium 22}
+The sodium spectrum here is only missing the second gamma further down, but we clearly see the pair annihilation peak at \SI{511}{\keV}. Surprisingly the only backscatter which is seen is the one closer to \SI{212}{\keV}, we see it at \SI{210}{\keV}. The Pb x ray is seen then in green.
+
+\subsubsection{Cobalt 60}
+The two gammas are very distinct, one near to \SI{1332}{\keV}, the other right on \SI{1173}{\keV}. We then see the compton valley, edge and distribution. The backscatter in green is right around that \SI{209}{\keV} which was predicted. The Pb x ray once again is all the way at that end, and is probably grouped with the Ni x ray since it is very low energy.
+
+\subsubsection{Manganese 54}
+The gamma peak is right at the expected location of \SI{834}{\keV}. The backscatter is at \SI{210}{\keV} which is a bit above the expected of \SI{195}{\keV}, but the peak is not fully covered in the ROI, so this could be adjusted. The x ray energy is very low and is not seen, but the Pb x ray is the one in blue.
+
+\subsubsection{Cobalt 57}
+Even though the main gamma is seen in its correct position right around \SI{136}{\keV}. However this spectra is a bit compressed and we were not able to get everything. The only other distinct peak is the general look of a backscattering peak around \SI{88}{\keV} but this is not a very convincing looking peak.
+
+\subsubsection{Error Summary}
+\begin{table}[H]
+\centering
+\begin{tabular}{c|c|c|c}
+Source & Expected ($\si{\keV}$) & Measured ($\si{\keV}$) & \% Error \\ \hline
+$^{137}$Cs & 184 & 170 & 7.6\% \\
+$^{109}$Cd & 65 & ??? & N/A \\
+$^{22}$Na & 212 & 210 & 0.94\% \\
+$^{60}$Co & 209 & 220 & 5.26\% \\
+$^{54}$Mn & 195 & 210 & 7.7\% \\
+$^{57}$Co & 88.8 & ??? & N/A
+\end{tabular}
+\caption{Error values in Backscattering Predictions}
+\label{tab:err}
+\end{table}
+
+\subsection{Sum Peak Analysis}
+\subsubsection{Cadmium 109}
+There two peaks here are obviously distinct, but the sum peak is very faint, and not of a convincing amplitude.
+
+\subsubsection{Sodium 22}
+This is a much better figure, the peaks both are visible, and the sum peak is seen at what is assumed to be the sum of the two channel numbers of the two former peaks. 
+
+\subsubsection{Cobalt 60}
+The sum peak is a bit less distinct, but it is in the correct location to be the sum peak, so it works!
+
+\section{Conclusion}
+Overall the measured data was for the most part accurate, with a maximum error in the prediction of around 8\%. This is not the best, as it should ideally be around 5\%. These datasets can easily be improved by letting them go for a longer amount of time, this would ensure all of the peaks are more pronounced. However this would make some uncessary peaks more pronounced, and downplay the peaks which we want to examine. A prime example of this is the Cadmium peak, where the leftmost peak became too pronounced, and resolution was lost in other parts. All in all, the measurements were not horrible and there were some interesting effects observed. 
 
 %++++++++++++++++++++++++++++++++++++++++
 \bibliographystyle{abbrv}
-\bibliography{template}
+\bibliography{source}
 
 \end{document}
 
