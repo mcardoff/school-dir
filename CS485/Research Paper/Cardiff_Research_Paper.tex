@@ -1,0 +1,112 @@
+\documentclass[letterpaper, 12pt]{article}
+
+\title{CS 485 Research Paper Final}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[labelfont=bf]{caption}
+
+% figures
+\graphicspath{ {./figs/} }
+\numberwithin{figure}{section}
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]\centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    #4
+  \end{figure}
+}
+
+
+\begin{document}
+\maketitle\nocite{*}
+\section{Introduction}
+Safety is of the utmost importance when you are racing cars, and the organizations which faciliate races all to be at least safe enough to avoid any major accidents, let aline deaths. This paper will look at two different racing organizations: Formula 1 and NASCAR, which both involve high speed racing of specially designmed cars. More importantly, both have a major problem with safety, specifically of the drivers. The deaths and injuring of other drivers led to having to learn new methods to adapt, in order to ensure the safety of drivers in the future.
+
+\section{The Problem}
+\subsection{Formula One}
+Formula 1 (F1) is bar none the fastest, most intense and prestigious motor-sport in the world. Twenty drivers from ten teams each race to be crowned a champion of the world. The drivers participate in a number of races each year, with their final position in the race determining a number of points they get in the championship, and whoever gets the most points in a given year is the (drivers) champion. In order to be competitive, you have to drive fast, and these drivers definitely drive fast, at over 200 miles per hour, no vehicles that race on complex circuits are faster. This includes the inherent risk of those drivers doing something wrong, humans are imperfect after all. One case where this could go terribly wrong is the case of Jules Bianchi during the 2014 Japanese Grand Prix.
+
+Bianchi crashed into a medical car which was attending to another crashed vehicle at the time. The driver of the other vehicle was relatively okay, considering that a number of months later, Bianchi died of the injuries sustained from this crash. During this time F1 cars had an open cockpit, with the driver's head (seen in their helmet) sticking out. This is a massive risk to the driver's safety, as anything that is flung at the driver's head, whether it would be debris from crashes, would impact the head directly. In the case of Jules Bianchi, he sustained a "catastrophic head injury" \cite{halogood} from his crash, which, in the end, would have been prevented if there was sufficient protection of his head. This presents the governing body of F1, known as the FIA with a problem, as deaths like that of Jules Bianchi are completely preventable, and should not happen again if at all possible.
+
+The circumstances of Bianchi's accident are relevant here. The article in \cite{bianchi} lists the important details of his crash. The most important detail is the weather, on the lap of Bianchi's crash, the track was completely wet, and it was still raining. This makes the F1 driver's job 1000x harder than it already is, so conditions already are not in his favor. The next important detail was the fact that Bianchi was going a touch too fast, and had not slowed down when faced with the yellow flags that tell a driver to slow down, as there was an accident up ahead. This, especially in the rain, could lead to a driver easily losing control of their car. This is important to note, as it is something that Bianchi did which contributed to the crash. However, he is an F1 driver, so of course he is going to go as fast as possible despite the conditions. The report mentions multiple details which lead to an unfortunate set of circumstances for Jules Bianchi, including issues with the software of the car, the position of vehicles attempting to make the track safer. Ultimately, the FIA determined that Bianchi's injuries were more than anything, a result of the unfortunate circumstances which he was put in. This then begs the question, what could have been done to prevent such circumstances.
+
+\figref{8}{halo}{The Halo Shown on a 2018 F1 Car \cite{halopic}}{\label{fig:1}}
+Many solutions were proposed that could have prevented this crash. The first was a software override of the car, which allowed for the race stewards to set a virtual speed limit on the car so speeding in this case would not be a problem. However, software fails, just as it did with this specific incident. Another was an age limit for drivers, which would inevitably require drivers to have more experience in order to drive in F1. This is irrelevant to the Bianchi incident, since Bianchi had years of experience prior to his crash, so the crash is unrelated at all to years of experience. The final did not come until years later, in 2018, when F1 introduced a titanium "halo" (called a secondary roll structure by \cite{fia2018}) meant to protect the drivers in the cockpit while being minimally obtrusive. Pictured below in Figure \ref{fig:1}, the Halo is a y-shaped structure that connects the nose of the car to the rear section which supports the engine. 
+
+Since its introduction, the Halo has saved numerous lives. To name a few, I can immediately think of crashes like those of Charles Leclerc and Marcus Ericsson in 2018, where if the halo was not there, the drivers may not have survived their respective crashes. However two major crashes come to mind when I think of the halo. The first is the crash of Romain Grosjean in the 2020 Bahrain Grand Prix, the second is a crash between two drivers, Max Verstappen and Lewis Hamilton, in the 2021 Italian grand Prix. These two crashes are exemplary of how the FIA has learned from the crash of Jules Bianchi by preventing the certain death of two drivers.
+
+\subsection{NASCAR}
+Another example of this type of dangerous, high speed racing is NASCAR, where instead of a highly aerodynamically optimized vehicle that looks nothing like the cars you or I drive, NASCAR drives stock cars (hence the SC). The last death that ever happened in NASCAR was that of Dale Earnhardt \cite{earnhardt}. Earnhardt was an icon in the world of NASCAR, and his death led to safety innovations that have prevented any further deaths in NASCAR since.
+
+The race where Earnhardt died was the Daytona 500, a race he struggled for many years to win. He eventually would win the race in 1998, but he would not race for much longer, as his death was in 2001 \cite{earnhardt}. Earnhardt lost grip in his tires on the last corner of the last lap of the race, he crashed directly into a wall, which as far as we know, immediately killed him. Earnhardt sustained numerous injuries such as blunt force trauma and a skull fracture. It was a bad crash, involving an important person, it could not happen again. This specific crash led to multiple new innovations, including the car of tomorrow and the SAFER barrier.
+
+The new barrier, called SAFER for Steel And Foam Energy Reduction, was created to deal directly with crashes like that of Dale Earnhardt \cite{smith_2016}. They better absorb the the energies involved in these crashes, so less impact is felt by the driver, which would have prevented the death of Dale Earnhardt. It is important to note that this was introduced almost immediately after it finished development with NASCAR, and was implemented into many other race tracks around the world, starting in 2002. Another important technology introduced was in the latest generation of car, so advanced they called it the Car of Tomorrow.
+
+The Car of Tomorrow is partially the reason why there have been no deaths in NASCAR since Dale Earnhardt raced in 2001. This is because the new generation design implemented a much safer chassis. This new chassis would further reduce the impact on the crash of the driver, and be an even safer car. This philosophy was further developed in the second generation car of tomorrow, which is still used in NASCAR. The crash of Dale Earnhardt undeniably led the people at NASCAR to think more about safety, and to learn more from crashes. 
+
+\section{How Did We Learn?}
+
+\subsection{Formula One}
+It is important to see the result of crashes in a world that has experience the preventable death of Jules Bianchi. The first crash is in the Bahrain grand prix, where conditions were not nearly as bad as the 2014 Japanese GP, but the actual crash is much worse. Next we talk about a crash that is not as bad, but once again the result could have been so much worse if the halo was not involved.
+
+\figref{8}{grosjeancrash}{A Figure from \cite{grosjeancrashsim} Depicting how the Halo Saved Romain Grosjean's Life}{\label{fig:2}}
+The 2020 Bahrain GP had nothing wrong, there was no rain (how could there be if its in the middle of the desert?). An on track battle occurred in the first lap, when there is usually chaos. Grosjean was attempting to overtake his teammate, when the car behind him was trying to overtake as well, in the process, Grosjean hit the front tires of the car behind him, sending him spinning off towards the barriers \cite{grosjeanvideo}. The result of this was Grosjean being sent into the barriers. However, unfortunate circumstances struck once again, as the lower of 2 barriers collapsed, which caught the top of the engine, causing the engine to separate at the point where fuel is injected, causing the fuel to catch fire. We will discuss the fire safety later, but the main importance of this crash can be seen in the video \cite{grosjeancrashsim}. Grosjean went straight into the barriers, however, his halo being so rigid and strong, it was able to push the barrier out of the way of his head, allowing Grosjean to pass unharmed from a physical crash, see Figure \ref{fig:2}. At best, without the halo, grosjean would have a very bad migraine, and at worst, he could have been decapitated. This shows that the FIA have learned from the mistakes that lead to the Bianchi crash, and have taken steps which, if not taken, would have clearly resulted in the death of Grosjean.
+
+\figref{8}{monza.jpg}{Image from \cite{rayson_2021} Depicting the Italian GP Crash}{\label{fig:3}}
+The halo succeeded again when two drivers ended up stacked up on top of each other, seen in figure \ref{fig:3}. The circumstances of this crash are much different from anything we have talked about so far. This crash was not necessarily anyones fault, and simply happened because two drivers were racing too hard. The situation ended up with Max Verstappen's RedBull shooting up into the air after hitting a curb. The car directly in his way was the Mercedes of Lewis Hamilton, who would surely have been crushed by the one and a half thousand pound car \cite{rayson_2021}. The halo, unsurprisingly took the entirety of the blow, and held Verstappen's car up for the entire time between the initial crash and by the time Hamilton exited his car, multiple minutes later. Once again we see the FIA learning from the mistakes of the Bianchi crash by continuing to use the halo.
+
+\subsection{NASCAR}
+While I am not too familiar with specific crashes which have occured in NASCAR, the simple fact that there has not been a death in NASCAR since Earnhardt speaks to the fact that NASCAR has learned from the crash. As already discussed, introduction of the Car of Tomorrow and SAFER barriers are key safety elements still used at tracks which NASCAR drives at to this day. A crash in post Earnhardt crash NASCAR is not nearly as fatal as it was before, and this mentality has been important to the lack of dangerous crashes in NASCAR.
+
+\figref{8}{cot}{The Car of Tomorrow}{\label{fig:4}}
+This did not prevent any crashes from happening at all however. There were multiple incidents over the lifetime of the Car of Tomorrow which led to its revisions. It is important however to note none of the crashes resulted in ANY injuries to the drivers, which is simply shocking \cite{nascar.com_2010}. I will not go in depth as I did on the other crashes, as their story is all the same, the driver had spun around due to a crash yet they sustained no injury. This simply speaks to the effectiveness of the method which NASCAR implemented. NASCAR learned much quicker and more effectively from the Earnhardt crash than the FIA learned from the Bianchi crash. 
+
+\section{Did it Succeed?}
+This is a clear, although extreme example of reinforcement learning. The clear comparison to machine learning here is that a computer would be programmed to see crashes as bad as the ones that caused the deaths of Jules Bianchi and Dale Earnhardt. As a response the FIA and NASCAR (or our hypothetical computer) took direct steps to prevent this, even taking a couple tries before it was perfected. The contrast is in the way that the solution was arrived at seems to not be reachable by a computer, as it seems to require extensive knowledge of humans, cars, and crashes.
+
+Reinforcement learning is a section of machine learning which is Pavlovian. This is in the sense that good 'behavior' is rewarded and 'bad' behavior is punished. The punishment to the FIA is less a physical one, not like a slap on the wrist or not getting a treat, but rather it is a moral one. A moral punishment is something that weighs on your conscious more than anything, in our case having a life on your hands. This is an interesting case where it would be useful for a machine to have fear. We would want the fear to be intense enough so that the machine does not want someone to die, but not too intense as to stop the cars entirely as it thinks driving is too dangerous. Even in humans this balance could be difficult to achieve, so it is hard to realize in terms of machines as well.
+
+The solution reached by both a computer, NASCAR and the  FIA may have drastically differed. This is even true between different racing series. In the NTT IndyCar series, which uses Formula style cars, use a windscreen, which has its own advantages, but nonetheless a different solution. This does not mean that a computer could not have produced an equally effective solution as the FIA did, but instead it could produce a less conventional one, which the FIA could not think of. Another clear cut difference is the time frame. It took the FIA years to develop this solution, and even in a time where machine learning was not as advanced, so developing a machine-generated solution could have taken just as long, but more likely much longer, since we are not even sure if that solution would be effective, so the FIA would need to conduct its own tests etc.
+
+\subsection{Could Machines Have Prevented This?}
+In essence, no. Given the details in the last section, this sort of ML takes time, and even then, producing this solution and rigorously testing it would take even longer. So, could machine learning have prevented the death of Jules Bianchi, or the great harm that was caused to Romain Grosjean? Probably not. This leads to the question, what is the value of producing machine learning solutions to F1 crashes? The answer is quite simple, for the future.
+
+In order to be proactive in the prevention of future crashes, F1 needs to gather more information on crashes, these all could be used to train some sort of AI to learn what the chief causes of crashes are, and thus the most optimal places to insert driver protection. The method which NASCAR took may be a better way of tackling this problem. NASCAR simply said that crashes are inevitable, and we simply must do our best to ensure they are the least fatal as they can be. This was done by adding not only safety implements to the cars, as done in F1, but also to the tracks. It is one thing to encase the driver in a safer cage, but the only way to truly make crashes non-fatal is to ensure the environment which these races occur are equally as safe as the cars.
+
+Many situations which racing drivers are placed in can be fatal, and in order to preserve that spirit of racing, the actual mentality of racers should not be changed, even if this would result in less crashes, it would simply make boring races! This can even be said about some of the innovations discussed here, many people believe that modern NASCAR is boring due to there being no risk for the drivers. While this certainly is a fair point, the most interesting racing should also keep the racers safe.
+
+Another solution to this problem possibly involving machines would be a computer assistant in the cockpit of the car with a driver, which would only activate when the driver is in imminent danger. This would present many problems however and does not seem viable. The concept of a false positive in this situation would result in a driver reacting to something that is not going to happen, and could lead to a different, completely unrelated crash, which is equally as fatal as the situation which the computer detected. The easy answer to this is that the computer simply needs to calculate more branches of the causality tree. This would become very impractical due to the speed of the cars. Crashes can happen in split seconds, and while computers are fast, they are not fast enough to find hundreds of possibilities to a depth of 3 in that time. A cockpit assistant like this is simply not viable for the safety of drivers.
+
+\section{The Future}
+The future should include some sort of AI that is trained wtih the fatal and nonfatal crashes from F1's history, and should be able to figure out what can be done on the end of the FIA's end to ensure the safety of the drivers. This notion is clear from various sections of \cite{fia2021} which lists the various regulations related to the safety of drivers in F1. With the innovations of the future, we may not need machine learning to prevent crashes, if simulations become realistic and more advanced, drivers could become good enough to prevent any crash entirely!
+
+I believe that the NASCAR mentality of weakening the danger of crashes is the way to go for preventing dangerous crashes all together. It is one thing to ensure drivers are safe from one type of crash, but it is another to descrease the danger of all crashes. It is important to consider as well that there have been quite a number of dangerous crashes in formula one since the death of Jules Bianchi, while NASCAR has had crashes, nothing as bad as the one that killed Dale Earnhardt. It is very possible that machines could solve the key to extending the lives of NASCAR and Formula 1 drivers, but we simply do not know it yet. 
+\newpage
+\bibliographystyle{plain}
+\bibliography{sources}
+\end{document}

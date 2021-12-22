@@ -1,0 +1,269 @@
+%++++++++++++++++++++++++++++++++++++++++
+% Don't modify this section unless you know what you're doing!
+\documentclass[letterpaper,12pt]{article}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{physics} 
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[margin=1in,letterpaper]{geometry}
+\usepackage{cite}
+\usepackage{float}
+\usepackage[final]{hyperref}
+\usepackage{url}
+\usepackage{natbib}
+\usepackage{cleveref}
+\usepackage[labelfont=bf]{caption}
+\hypersetup{
+  colorlinks=true, linkcolor=blue, citecolor=blue,
+  filecolor=magenta, urlcolor=blue
+}
+% ++++++++++++++++++++++++++++++++++++++++
+
+\newcommand{\labfig}[4]{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}}
+
+\graphicspath{{./img/}}
+
+\begin{document}
+
+\title{Absorption of Gamma Rays}
+\author{M. Cardiff, J. Campbell, S. Kundu, B. Ng}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+  It is important to determine how gamma rays and x rays interact with matter in the real world. In this report we examine the absorption length in four total materials, Pb sheets, Al Sheets, water, and Si. These materials are very common in real life to either shield from these types of radiation, or are just something which we interact with a lot, and we can determine the protection from gamma rays by measuring an absorption length. 
+\end{abstract}
+\section{Introduction/Objective}
+The goals of this experiment is to study the absorption of gamma rays in various materials, such as Pb, Al, Water, and Si. The overall goal is to calculate the mass absorption coefficient $\mu$ for each of these materials. This helps to determine how safe a material is if we wanted to use it to shield against these effects, we find that Pb is most useful for this specific application. For other materials like Al and Si, these are often used in electronics and more recently in superconduction qubits used in QIS, so the study of their interactions with gamma rays is of particular interest at this time. 
+
+\section{Theory/Background}
+In general, absorption can be determined by considering how likely you are to hit a given type of particle with cross section $\sigma$ within a certain area, $A$. The probability of hitting a single one of these disks is given by:
+\begin{align*}
+  P=\frac{\sigma}{A}
+\end{align*}
+If you have many of these disks, then your probability should be proportional to the number of disks:
+\begin{align*}
+  P=N_{disks}\frac{\sigma}{A}
+\end{align*}
+If there are multiple types of disks, we can calculate an overall probability of a scattering interaction with any of these disks, which is given by:
+\begin{equation}
+  \label{eq:xmission}
+  P=\frac{1}{A}\sum_{i}N_{i}\sigma_i
+\end{equation}
+Where $N_i$ is the number disks of type $i$, and $\sigma_i$ is the cross section for the disk of type $i$.
+
+Instead a single particle, we can instead discuss a slab of this material, consider a thickness of $\dd{x}$. Using this probability we can find the number of particles which get absorbed or scattered:
+\begin{align*}
+  \dd{N}=N(x)P=-N(x)\frac{N_{disks}\sigma}{A}
+\end{align*}
+Where $N_{disks}$ can be written in terms of the same cross sectional area $A$ and the density of scattering events $n$:
+\begin{align*}
+  N_{disks}=A\dd{x}
+\end{align*}
+This greatly simplifies our formula for $\dd{N}$ and allows us to calculate a functional form for $N$ which we can later use in our experiment. The differential equation we find is:
+\begin{align*}
+  \frac{\dd{N}}{N}=-n\sigma\dd{x}
+\end{align*}
+Which has the solution:
+\begin{equation}
+  \label{eq:soln}
+  N=N_0\exp{-n\sigma x}=N_0\exp{-\mu x}
+\end{equation}
+The particular quantity of interest is $\mu$, which we can find experimentally by measuring a normalized number of counts and doing the following linear fit:
+\begin{align*}
+  \ln(\frac{N}{N_0})=-\mu x
+\end{align*}
+We can measure $x$ using specific lengths of whichever material we are trying to study, and the counts are tracked by the multichannel analyzer.
+
+The derivation we did early only took into account a single type of interaction, when many of these materials undergo multiple types of interactions. For these materials we need to modify the definition of $\mu$:
+\begin{equation}
+  \label{eq:mutot}
+  \mu_{total}=n_{C}\sigma_C+n_{ph}\sigma_{ph}+n_{pp}\sigma_{pp}
+\end{equation}
+Here we have taken into account the compton scattering interaction, which we saw in the previous lab, the photoelectric effect, and pair production effects. The photoelectric cross section is given in previous labs, and has the following formula:
+\begin{equation}
+  \label{eq:ph}
+  \sigma_{ph}=\sigma_T\frac{Z^5}{137^4}2\sqrt{2}\qty(\frac{h\nu}{m_ec})^{-7/2}
+\end{equation}
+The Thompson scattering cross section is given by: \eqref{eq:thom}
+\begin{equation}
+  \label{eq:thom}
+  \sigma_T=\frac{8}{3}\pi r_0^2
+\end{equation}
+At these energies the Compton cross section $\sigma_C$ is proportional to the Thompson cross section, this is calculable, and is given numerically as:
+\begin{equation}
+  \label{eq:compt}
+  \sigma_C=0.45\sigma_T
+\end{equation}
+The only source which we considered pair production in the previous lab was $^{22}$Na, so we do not need to consider the pair production cross section.
+
+We can then consider the densities $n$ which we need to consider. Every electron potentially can be Compton scattered, so the density would be $Zn$, with $n$ as the electron density of the material. For the photoelectric effect only the outer $K$ shell electrons participate, so the density is $2n$. Combining all of these previous equations allows us to write the following:
+\begin{equation}
+  \label{eq:mutot2}
+  \begin{aligned}
+    \mu_{total}&=Zn\sigma_T(0.45)+
+    2n\sigma_T\frac{Z^5}{137^4}2\sqrt{2}\qty(\frac{h\nu}{m_ec})^{-7/2}\\
+    &= n\sigma_T\qty(0.45Z+\frac{Z^5}{137^4}
+    4\sqrt{2}\qty[\frac{h\nu}{m_ec}]^{-7/2})
+  \end{aligned}
+\end{equation}
+Finally, the density $n$ by material can be calculated the following way:
+\begin{align*}
+  n=\frac{\text{mass density}}{\text{atomic mass}}=
+  \frac{\text{mass density}}{\text{molar mass}}N_A
+\end{align*}
+Where $N_A$ is Avogadro's constant. From this we should make a table of these values:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{cccc}
+    \hline
+    Material & Mass Density ($\si{\g\per\cubic\cm})$
+    & Atomic Mass ($\si{\atomicmassunit}$) & $n$ \\ \hline
+    Pb     & 11.34 & 207.2 & \num{3.293e22} \\
+    Al     & 2.7   & 26.9  & \num{6.044e22} \\
+    H$_2$O & 1.0   & 18.02 & \num{3.341e22} \\
+    Si     & 2.33  & 28.0  & \num{5.008e22}
+  \end{tabular}
+  \caption{Number densities for materials in experiment}
+  \label{tab:ns}
+\end{table}
+All values in this table are taken from \cite{pt}. Since we do not see pair production at all, we onyl need to use the formula \eqref{eq:mutot2} with $h\nu$ as the gamma peak energy of our source $^{137}$Cs (\SI{662}{\keV}) and $Z$ as the number of eletrons.
+\begin{table}[H]
+  \centering
+  \begin{tabular}{cccc} \hline
+    Material & $Z$ & $\mu (\si{\per\cm})$ \\ \hline
+    Pb       & 82  & 1.335 \\
+    Al       & 13  & 0.235 \\
+    H$_2$O   & 10  & 0.100 \\
+    Si       & 14  & 0.210 \\
+    \hline
+  \end{tabular}
+  \caption{Expected $\mu$ for each material}
+  \label{tab:mus}
+\end{table}
+\section{Procedures}
+The general procedure will be described here, but there are a few variables that may need to be changed from experiment to experiment, notably the time for each run. Here is a table of all the times used in this experiment:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{cc}
+    \hline
+    Material & Run Time ($\si{\s}$) \\ \hline
+    Pb       & 100                  \\                     
+    Al       & 300                  \\
+    H$_2$O   & 800                  \\
+    Si       & 400                  \\
+    \hline
+  \end{tabular}
+  \caption{The amount of time for each run for each material}
+  \label{tab:times}
+\end{table}
+
+Now onto the actual procedure. Begin by setting up the multichannel analyzer to work as a pulse height analyzer. Place the $^{137}$Cs source near the bottom of the detecter, ensure it is not moved over the course of the experiment. With no material in between the source and the detector, do a 'raw' run, in order to determine the initial intensity for all the future runs. In order to determine the total counts, set a ROI to cover the entire photopeak, and record the number of counts. Next, measure the thickness of one slab of whatever material you are measuring the $\mu$ of. Place it directly above the source in such a way that it is stable. For the same duration of time as you did the raw run, do another run with this single plate. Repeat this process of measuring and placing above the detector until you have at least 3 points for each. Do more if the total time is not very long. Repeat this for each material, Here we did Pb, Al, H$_2$O and Si. For the water, you will need to mesaure out the length of water used, and for Si a large wafer was used, which is a bit odd to measure. For the Si wafer, it is most important to measure the height of the part which is in the shadow of the detector. It may be necessary to do more than three datapoints, but only do this within time allotted.
+\newpage
+\section{Data}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{cc}
+    \hline
+    d ($\si{mm}$) & Net Count\\
+    \hline
+    0.0 & 72052\\
+    1.0 & 64517\\
+    2.1 & 56976\\
+    3.8 & 46573\\
+    4.7 & 41182\\
+    \hline
+  \end{tabular}
+  \caption{Measurement for Pb}
+  \label{tab:pb}
+\end{table}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{cc}
+    \hline
+    d (mm) & Net Count\\
+    \hline
+    0 & 46806\\
+    10.5 & 37611\\
+    24.5 & 28340\\
+    37.0 & 21885\\
+    \hline
+  \end{tabular}
+  \caption{Measurement for Al}
+  \label{tab:al}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{cc}
+    \hline
+    d (cm) & Net Count \\ \hline
+    0.0    & 6492      \\
+    8.5    & 3315      \\
+    17.0   & 1846      \\
+    25.5   & 1254      \\
+    34.0   & 873       \\
+    \hline
+  \end{tabular}
+  \caption{Measurement for Water}
+  \label{tab:h2o}
+\end{table}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{cc}
+    \hline
+    d (mm) & Net Count \\ \hline
+    0.0    & 10459     \\
+    4.25   & 9617      \\
+    80.65  & 3738      \\
+    \hline
+  \end{tabular}
+  \caption{Measurement for Si}
+  \label{tab:si}
+\end{table}\newpage
+\section{Analysis}
+The following plots include linear regressions from the tables \ref{tab:pb}, \ref{tab:al}, \ref{tab:h2o}, \ref{tab:si}
+\labfig{12}{PbPlot}{Regression Line for Pb}{fig:pbplot}
+\labfig{12}{AlPlot}{Regression Line for Al}{fig:alplot}
+\labfig{13.5}{H2OPlot}{Regression Line for Water}{fig:h2oplot}
+\labfig{13.5}{SiPlot}{Regression Line for Si}{fig:siplot}
+Here is a summary of the values which we have found for each material:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{cccc}
+    \hline
+    Material & $\mu_{th} (\si{\per\cm})$ & $\mu_{ex} (\si{\per\cm})$ & $\%$ error
+    \\ \hline
+    Pb       & 1.335 & 1.180  & \SI{11.6}{\percent} \\
+    Al       & 0.235 & 0.205  & \SI{12.7}{\percent} \\
+    H$_2$O   & 0.100 & 0.0586 & \SI{41.4}{\percent} \\
+    Si       & 0.210 & 0.126  & \SI{40.0}{\percent} \\
+    \hline
+  \end{tabular}
+  \caption{Measurement for Si}
+  \label{tab:si}
+\end{table}
+Where the error is calculated using the following:
+\begin{equation}
+  \label{eq:err}
+  \% \text{ error} = \frac{\mu_{th}-\mu_{ex}}{\mu_{th}}
+\end{equation}
+
+It is interesting to note that the first two calculated values are very close, but the other two differ by quite a bit. There a couple possible explanations as to why these numbers can be off. For water, the calculation is off by a factor of 2-ish, so there may be something we did not take into account with there being two hydrogrens in the molecule. That is another issue, we have done calculations strictly for atoms, not molecules, so this may be the source of error as well. As for Si I believe this error comes from a lack of datapoints. While three data points is sufficient to calculate a line, the sheer range of values discredits this value greatly. This compounded with the fact that the pieces of Si that we used were not uniform and was a bit difficult to measure, so multiple measurements may be off. 
+
+\section{Conclusion}
+The results for this experiment were a bit mixed, for some of the materials, the theoretical calculation matched the experimental value within experimental bounds. The values for Al and Pb were both very close, with only a 12\% error seen. There could be some improvement in the theoretical calculation for water, where a 41\% error was observed, and in Si, where a similar 40\% error was seen. The energy scale which is used is appropriate for the Compton cross section, so the theoretical calculations are not to blame here, less than the experiment. In order to improve these results, some more investigation may be necessary for the water calculation, and more points should be collected for Si. Otherwise, the calculations predicted very well for Pb and Al, but not so much for H$_2$O and Si.
+
+%++++++++++++++++++++++++++++++++++++++++
+\bibliographystyle{abbrv}
+\bibliography{sources}
+
+\end{document}
+
