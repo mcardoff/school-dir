@@ -1,0 +1,46 @@
+\documentclass{article}
+\pagestyle{empty}
+\usepackage{geometry,fontspec,tikz}
+\geometry{a6paper,landscape,hmargin={1cm,1cm},vmargin={1cm,1cm}}
+\setmainfont[Ligatures=TeX]{Adobe Garamond Pro}
+\usetikzlibrary{fadings}
+\tikzfading[name=fade right,
+left color=transparent!0,
+right color=transparent!100]
+\setlength\parindent{0pt}
+\begin{document}
+\begin{tikzpicture}[overlay,remember picture]
+  \node[anchor=east,inner sep=0pt] (pic) at (current page.east)
+    {\includegraphics[height=\pdfpageheight]{map}};
+  \fill[white,path fading=fade right] (pic.north west) rectangle (pic.south east);
+  \coordinate (pin) at (12,-2.5);
+  \filldraw[ultra thick,draw=red,fill=red!50] (pin) -- ++(70:.5) arc (-20:200:.18) -- cycle;
+  \path (pin) -- ++(0,.5) node[draw,fill,red,circle,inner sep=1pt] {};
+\end{tikzpicture}%
+\obeylines%
+{\addfontfeatures{Scale=3,LetterSpace=10} INVITATION}
+
+\bigbreak
+\textit{%
+  Dear friend,
+
+  I'd love to invite you to my party.
+
+  Sincerly, your friend.
+}
+
+\vfill
+
+{\addfontfeatures{Scale=1.4,LetterSpace=5}\scshape when?}
+\textit{%
+  December 24\/\rlap{,}\textsuperscript{th} 2015
+  8\kern.5pt:\kern.5pt30 pm
+}
+\medbreak
+{\addfontfeatures{Scale=1.4,LetterSpace=5}\scshape where?}
+\textit{%
+  Times Square,
+  London E1,
+  UK
+}
+\end{document}

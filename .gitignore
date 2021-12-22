@@ -1,4 +1,6 @@
-/misc/
+*.zip
+*.xcf
+*.odt
 *.aux
 *.dvi
 *.log

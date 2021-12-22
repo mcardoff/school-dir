@@ -1,0 +1,21 @@
+gcard.sty provides a simple LaTeX2e package for producing greeting cards.
+It arranges four panels onto a single sheet (typically, A4 or letter)
+so that when the sheet is folded twice the four panels are 
+arranged as front cover, inside left and right pages, and back
+cover.  It uses the textpos package for placement on the sheet
+and the graphicx package for the necessary rotation. The four
+panels are set in minipages for formatting by the user.
+
+The package is distributed under the LaTeX Public Project License.
+
+File list:
+
+gcard.sty          % main package file
+gcard.pdf	   % main documentation
+README             % this file
+gcardminexample.tex     % minimal example as shown in gcard.pdf
+gcardex.tex        % slightly more complicated example
+
+21 August 2007
+George McBane
+mcbaneg@gvsu.edu

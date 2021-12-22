@@ -1,0 +1,69 @@
+\documentclass[12pt]{article}
+
+\title{Proof}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\begin{document}
+\maketitle
+We start with the following identity:
+\begin{equation}
+  \sin(\frac{\pi}{6})=\frac{1}{2}
+\end{equation}
+As well as the Taylor series for $\sin$:
+\begin{equation}
+  \sin(x)=\sum_{n=0}^\infty(-1)^{n}\frac{x^{2n+1}}{(2n+1)!}
+\end{equation}
+Truncating to first order allows us to say:
+\begin{equation}
+  \sin(x)=x
+\end{equation}
+Plugging in allows us to find the following relation:
+\begin{equation}
+  \sin(\frac{\pi}{6})=\frac{\pi}{6}
+\end{equation}
+Truncating to first order makes sense, as $\frac{\pi}{6}$ is small, so this approximation is sesnsible. We can then using the first relation:
+\begin{equation}
+  \sin(\frac{\pi}{6})=\frac{1}{2}=\frac{\pi}{6}
+\end{equation}
+Multiplying each side by 6 gives our final result:
+\begin{equation}
+  \pi=3
+\end{equation}
+\end{document}
