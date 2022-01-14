@@ -1,0 +1,88 @@
+\documentclass[12pt]{article}
+
+% title
+\title{TEMPLATE}
+\author{Michael Cardiff}
+\date{\today}
+
+% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+% general pretty stuff
+\usepackage{bm}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{graphicx}
+
+% figures
+\graphicspath{ {./figs/} }
+\newcommand{\fig}[3]{
+  \begin{figure}[H]
+    \centering\includegraphics[width=#1cm]{#2}\caption{#3}
+  \end{figure}}
+
+\newcommand{\uv}[1]{\hat{\vb{#1}}}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\begin{document}
+\maketitle
+\section*{Question 1}
+Without loss of generality we can assume that the side length of the cube is 1. From there we see that we need to find the angle between the two red lines in the following figures:
+\fig{8.0}{tetrahedral.png}{The Depiction of Tetrahedral Bond Angles by the Body Diagonals of a Cube}
+We can make this a bit simpler in terms of the vectors by seeing the symmetry of the situation, and seing that if we find the angle between the vertical axis (labelled $z$ by Kittel) and one of the red lines, we have half of the required angle. Hence we have the following triangle:
+\fig{5.0}{triangle1.png}{Cross section of the above figure}
+In the above figure, the red line is the same as in the first one, the blue line is one of the face diagonals, and the thin black one is a side length, and the arc is $\frac{\theta}{2}$. By constructing the unit vector represented by the red line we can find the angle using the following relationship:
+\begin{equation*}
+  \vb{\hat{a}}\vdot\vb{\hat{b}}=\cos\phi
+\end{equation*}
+In this case $\phi=\frac{\theta}{2}$. The vector for the corner of the cube is clearly just the addition of the three basic unit vectors, we shall call it $\vb{d}$:
+\begin{equation*}
+  \vb{d}=\vb{\hat{x}+\hat{y}+\hat{z}}
+\end{equation*}
+And the other vector, $\vb{a}$ is simply:
+\begin{equation*}
+  \vb{a}=\vb{\hat{z}}
+\end{equation*}
+This is already a unit vector, the other one is not normalized, we can normalize it fairly easily, by remembering that the length of the body diagonal should be $\sqrt{3}$ so the unit vector $\vb{\hat{d}}$ is:
+\begin{equation*}
+  \vb{\hat{d}}=\frac{1}{\sqrt{3}}\qty(\vb{\hat{x}+\hat{y}+\hat{z}})
+\end{equation*}
+Hence the cosine of $\frac{\theta}{2}$ is:
+\begin{equation*}
+  \cos\frac{\theta}{2}=\vb{a}\vdot\vb{\hat{d}}=\frac{1}{\sqrt{3}}
+\end{equation*}
+Solving for $\theta$:
+\begin{equation*}
+  \theta=2\arccos\frac{1}{\sqrt{3}}
+\end{equation*}
+Numerically evaluating using a calculator gives:
+\begin{equation*}
+  \boxed{\theta\approx109.471^\circ}
+\end{equation*}
+\section*{Question 2}
+This is a simple question of changing from the standard cubic basis $\{a_i\}$:
+\begin{align*}
+  \vb{a}_1=a\vu{x}\quad\vb{a}_2=a\vu{y}\quad\vb{a}_3=a\vu{z}
+\end{align*}
+To the new basis $\{b_i\}$:
+\begin{align*}
+  \vb{b}_1=\frac{a}{2}\qty(\vu{x}+\vu{y})\quad
+  \vb{b}_2=\frac{a}{2}\qty(\vu{y}+\vu{z})\quad
+  \vb{b}_3=\frac{a}{2}\qty(\vu{z}+\vu{x})
+\end{align*}
+The objective is to write the vectors $\vb{a}_1$ and $\vb{a}_3$ in terms of these new vectors $\{b_i\}$. Essentially we need to find a linear combination of these vectors such that we are left only with either an $a\vu{x}$ or $a\vu{z}$. We can do this by adding two of the $b$ vectors and subtracting, for example we can get $\vb{a}_1$ in the following way:
+\begin{align*}
+  \vb{b}_1-\vb{b}_2+\vb{b}_3&=
+  \frac{a}{2}\qty(\vu{x}+\vu{y}-\vu{y}-\vu{z}+\vu{z}+\vu{x})\\
+  &=\frac{a}{2}\qty(2\vu{x})=a\vu{x}=\vb{a}_1
+\end{align*}
+Thus the indices for the new basis would be (1,-1,1)
+\section*{Question 3}
+\section*{Question 4}
+
+\section*{Question 5}
+\section*{Question 6}
+\end{document}
