@@ -1,0 +1,135 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 546 HW 1}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
+\newcommand{\munu}{{\mu\nu}}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+A mass term in a lagrangian will look like the following:
+\begin{align*}
+  \L_{mass}=\frac{1}{2}m^2\phi^2
+\end{align*}
+This is for an example field $\phi$ which is its own antiparticle. So in order for the Maxwell-Dirac Lagrangian to have a mass term for the photon field we must see something like:
+\begin{align*}
+  \frac{1}{2}m_\gamma^2A^\mu A_\mu
+\end{align*}
+Where $m_\gamma$ would be the mass of the photon. However this is not the only way a mass term can come, since out of all of these there are no explicit second order terms of the $A$ field. It can also come from the breaking of the local $U(1)$ symmetry of the theory, similar to how pions have mass. The transformations of this theory are the following:
+\begin{gather*}
+  \psi\to e^{iQ\theta}\psi\qquad\bar{\psi}\to \bar{\psi}e^{-iQ\theta}\\
+  A_\mu\to A_\mu-\frac{1}{e}\D_\mu\theta
+\end{gather*}
+So if the term is invariant under these transformations, it can still produce massless photons.
+\begin{enumerate}[label=\alph*)]
+\item By symmetry of indices, if $A^\mu A_\mu$ is invariant, so will $A^\nu A_\nu$:
+  \begin{align*}
+    A^\mu A_\mu&\to\qty(A^\mu-\frac{1}{e}\D^\mu\theta)
+    \qty(A_\mu-\frac{1}{e}\D_\mu\theta)\\
+    &=A^\mu A_\mu-\frac{1}{e}A^\mu\D_\mu\theta-\frac{1}{e}\D^\mu\theta A_\mu
+    +\frac{1}{e^2}\qty(\D^\mu\theta)\qty(\D_\mu\theta)
+  \end{align*}
+\end{enumerate}
+\section*{Problem 2}
+The Lagrangian is:
+\begin{align*}
+  \L=\qty[(\D_\mu-ieQA_\mu)\phi^*]\qty[(\D^\mu+ieQA^\mu)\phi]-m^2\phi^*\phi-\frac{1}{4}F^\munu F_\munu
+\end{align*}
+\begin{enumerate}[label=\alph*)]
+\item The Lagrangian will be gauge invariant if the terms remain the same if we introduce the following transformations to $\phi$ and $A_\mu$:
+  \begin{gather*}
+    \phi\to e^{iQ\theta}\phi\qquad\phi^*\to \phi^*e^{-iQ\theta} \\
+    A_\mu\to A_\mu-\frac{1}{e}\D_\mu\theta
+  \end{gather*}
+  We can start with the mass term:
+  \begin{align*}
+    m^2\phi^*\phi\to\phi^*e^{-iQ\theta}e^{iQ\theta}\phi=\boxed{m^2\phi^*\phi}
+  \end{align*}
+  So this term is invariant. Next we should do the strength tensor term:
+  \begin{align*}
+    F_{\mu\nu}F^{\mu\nu}=& (\D_\mu A_\nu-\D_\nu A_\mu)(\D^\mu A^\nu-\D^\nu A^\mu)\\
+    =& \qty(\D_\mu\qty(A_\nu-\frac{1}{e}\D_\nu\theta)
+    -\D_\nu\qty(A_\mu-\frac{1}{e}\D_\mu\theta))\\
+    \times& \qty(\D^\mu\qty(A^\nu-\frac{1}{e}\D^\nu\theta)
+    -\D^\nu\qty(A^\mu-\frac{1}{e}\D^\mu\theta))\\
+    =& \qty(\D_\mu A_\nu-\frac{1}{e}\D_\mu\D_\nu\theta
+    -\D_\nu A_\mu-\frac{1}{e}\D_\nu\D_\mu\theta)\\
+    \times& \qty(\D^\mu A^\nu-\frac{1}{e}\D^\mu\D^\nu\theta
+    -\D^\nu A^\mu-\frac{1}{e}\D^\nu\D^\mu\theta)
+  \end{align*}
+  Notice how in both terms that there is a second derivative of $\theta$, and since second derivatives are interchangeable then we can simple cancel them out in both cases, leaving us with:
+  \begin{align*}
+    F_{\mu\nu}F^{\mu\nu}\to\qty(\D_\mu A_\nu-\D_\nu A_\mu)
+    \qty(\D^\mu A^\nu-\D^\nu A^\mu)=\boxed{F_{\mu\nu}F^{\mu\nu}}
+  \end{align*}
+  All that remains is the covariant derivative term:
+  \begin{align*}
+    (\D^\mu+ieQA^\mu)\phi&\to\qty(\D^\mu+ieQ\qty[A^\mu-\frac{1}{e}\D^\mu\theta])
+    e^{iQ\theta}\phi\\
+    &=e^{iQ\theta}(\D^\mu\phi)+\qty(iQe^{iQ\theta}\D^\mu\theta)\phi+
+    ieQA^\mu e^{iQ\theta}\phi-(iQe^{iQ\theta}\D^\mu\theta)\phi\\
+    &=e^{iQ\theta}\qty(\D^\mu+ieQA^\mu)\phi
+  \end{align*}
+  So just like when we did the mass term, the complex conjugate term should cancel out since we have a $(D_\mu\phi)^*D^\mu\phi$ term. Therefore the entire Lagrangian is invariant under this gauge transoformation. 
+\item The field for $\phi$ is obtained by using the Euler-Lagrange equations and varying with respect to the $\phi^*$ field:
+  \begin{align*}
+    \pdv{\L}{\phi^*}=\D_\mu\pdv{\L}{(\D_\mu\phi^*)}
+  \end{align*}
+  The first term only affects two terms, one in the covariant derivative and then the mass term:
+  \begin{align*}
+    \pdv{\L}{\phi^*}&=-ieA_\mu\qty(\D^\mu+ieQA^\mu)\phi-m^2\phi\\
+    &=-ieA_\mu\D^\mu\phi+e^2QA_\mu A^\mu\phi-m^2\phi
+  \end{align*}
+  Next with respect to the spacetime derivatives:
+  \begin{align*}
+    \pdv{\L}{(\D_\mu\phi^*)}&=\qty(\D^\mu+ieQA^\mu)\phi\\
+    &=\D^\mu\phi+ieQA^\mu\phi\\
+    \D_\mu\pdv{\L}{(\D_\mu\phi^*)}&=\D^2\phi+\D_\mu\qty(ieQA^\mu\phi)
+  \end{align*}
+  Equating them will give the equations of motion:
+  \begin{align*}
+    \D^2\phi+\D_\mu(ieQA^\mu\phi)=-ieA_\mu\D^\mu\phi+e^2QA_\mu A^\mu\phi-m^2\phi
+  \end{align*}
+\end{enumerate}
+\section*{Problem 3}
+
+\end{document}
