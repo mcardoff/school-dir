@@ -60,7 +60,7 @@ Where $m_\gamma$ would be the mass of the photon. However this is not the only w
   A_\mu\to A_\mu-\frac{1}{e}\D_\mu\theta
 \end{gather*}
 So if the term is invariant under these transformations, it can still produce massless photons.
-\begin{enumerate}[label=\alph*)]
+\begin{enumerate}
 \item By symmetry of indices, if $A^\mu A_\mu$ is invariant, so will $A^\nu A_\nu$:
   \begin{align*}
     A^\mu A_\mu&\to\qty(A^\mu-\frac{1}{e}\D^\mu\theta)
@@ -68,11 +68,73 @@ So if the term is invariant under these transformations, it can still produce ma
     &=A^\mu A_\mu-\frac{1}{e}A^\mu\D_\mu\theta-\frac{1}{e}\D^\mu\theta A_\mu
     +\frac{1}{e^2}\qty(\D^\mu\theta)\qty(\D_\mu\theta)
   \end{align*}
+  Multiply with the $\nu$ term:
+  \begin{align*}
+    A^\mu A_\mu A^\nu A_\nu=&
+    \qty(A^\mu A_\mu-\frac{1}{e}A^\mu\D_\mu\theta-\frac{1}{e}\D^\mu\theta A_\mu
+    +\frac{1}{e^2}\qty(\D^\mu\theta)\qty(\D_\mu\theta))\\\times&
+    \qty(A^\nu A_\nu-\frac{1}{e}A^\nu\D_\nu\theta-\frac{1}{e}\D^\nu\theta A_\nu
+    +\frac{1}{e^2}\qty(\D^\nu\theta)\qty(\D_\nu\theta))
+  \end{align*}
+  Due to the distinct lack of opposing signs in the terms containing $\D^\mu\theta$, there is no reason why any of this should cancel. So it would not describe massless photons. 
+\item This term will transform as:
+  \begin{align*}
+    A^\mu A^\nu\D_\mu A_\nu&\to
+    \qty(A^\mu-\frac{1}{e}\D^\mu\theta)
+    \qty(A^\nu-\frac{1}{e}\D^\nu\theta)
+    \D_\mu\qty(A_\nu-\frac{1}{e}\D_\nu\theta)\\
+    &=\qty(A^\mu A^\nu-\frac{1}{e}A^\mu\D^\nu\theta-\frac{1}{e}A^\nu\D^\mu\theta
+    +\frac{1}{e^2}\D^\mu\theta\D^\nu\theta)\\
+    &\times\qty(\D_\mu A_\nu-\frac{1}{e}\D_\mu\D_\nu\theta)\\
+    &=A^\mu A^\nu\D_\mu A_\nu-\frac{1}{e}A^\mu A^\nu\D_\mu\D_\nu\theta
+    -\frac{1}{e}A^\mu\D^\nu\theta\D_\mu A_\nu
+    +\frac{1}{e^2}A^\mu\D^\nu\theta\D_\mu\D_\nu\theta\\
+    &-\frac{1}{e}A^\nu\D^\mu\theta\D_\mu A_\nu
+    +\frac{1}{e^2}A^\nu\D^\mu\theta\D_\mu\D_\nu\theta
+    +\frac{1}{e^2}\D^\mu\theta\D^\nu\theta\D_\mu A_\nu
+    -\frac{1}{e^3}\D^\mu\theta\D^\nu\theta\D_\mu\D_\nu\theta
+  \end{align*}
+  Even if we could find a way where all the $\frac{1}{e}$ or $\frac{1}{e^2}$ terms could cancel, there is no term for the $\frac{1}{e^3}$ to cancel with, so this term would not describe massless photons.
+\item The field strength tensor is defined as:
+  \begin{align*}
+    F_\munu=\D_\mu A_\nu-\D_\nu A_\mu
+  \end{align*}
+  So it is antisymmetric in its indices.
+  \begin{align*}
+    F^\mu_\nu&\to\D^\mu (A_\nu-\frac{1}{e}\D_\nu\theta)-\D_\nu
+    (A^\mu-\frac{1}{e}\D^\mu\theta)\\
+    &=\D^\mu A_\nu-\frac{1}{e}\D^\mu\D_\nu\theta+\frac{1}{e}\D_\nu\D^\mu\theta
+    -\D_\nu A^\mu\\
+    &=\D^\mu A_\nu-\D_\nu A^\mu=\boxed{F^\mu_\nu}
+  \end{align*}
+  Since one strength tensor individually transforms as itself, we can assume the others will, so the entire product will be invariant, and hence would still describe massless photons.
+
+  Another idea I had for this problem: we know that the trace of an antisymmetric quantity is 0, and this product is identical to a trace. So we simply need to find if this product is if the product is antisymmetric. However I am not sure how that exactly would be done. I believe it is true that it should be antisymmetric in this case, I am not exactly sure how it would be proven. 
+\item This is the square of the contraction we see in the Maxwell-Dirac Lagrangian. So it should be invariant under $U(1)$ and thus should describe massless photons. 
+\item With the commutator written out this term becomes:
+  \begin{align*}
+    \bar{\psi}\sigma^\munu\psi F_\munu=
+    \bar{\psi}\qty(\gamma^\mu\gamma^\nu-\gamma^\nu\gamma^\mu)\psi
+    \qty(\D_\mu A_\nu-\D_\nu A_\mu)
+  \end{align*}
+  We already know $F_\munu$ transforms as itself, and the rest will transform as:
+  \begin{align*}
+    \bar{\psi}\sigma^\munu\psi F_\munu\to\bar{\psi}e^{-iQ\theta}
+    \sigma^\munu e^{iQ\theta}\psi F_\munu
+  \end{align*}
+  However, since we are dealing with a scalar field, we need not worry about interchanging the sigma and exponential, giving:
+  \begin{align*}
+    \bar{\psi}\sigma^\munu\psi F_\munu\to\bar{\psi}
+    \sigma^\munu \psi F_\munu
+  \end{align*}
+  So it could describe massless photons. 
+\item This term should be able to describe massless photons since not only does it not contain the $A$ field at all, but also it is simply the square of the conserved dirac current, so it should be invariant under $U(1)$ anyways. 
 \end{enumerate}
 \section*{Problem 2}
 The Lagrangian is:
 \begin{align*}
-  \L=\qty[(\D_\mu-ieQA_\mu)\phi^*]\qty[(\D^\mu+ieQA^\mu)\phi]-m^2\phi^*\phi-\frac{1}{4}F^\munu F_\munu
+  \L=\qty[(\D_\mu-ieQA_\mu)\phi^*]\qty[(\D^\mu+ieQA^\mu)\phi]
+  -m^2\phi^*\phi-\frac{1}{4}F^\munu F_\munu
 \end{align*}
 \begin{enumerate}[label=\alph*)]
 \item The Lagrangian will be gauge invariant if the terms remain the same if we introduce the following transformations to $\phi$ and $A_\mu$:
@@ -129,7 +191,76 @@ The Lagrangian is:
   \begin{align*}
     \D^2\phi+\D_\mu(ieQA^\mu\phi)=-ieA_\mu\D^\mu\phi+e^2QA_\mu A^\mu\phi-m^2\phi
   \end{align*}
+  This does in fact include a massive Klein-Gordon Equation:
+  \begin{align*}
+    \D^2\phi+m^2\phi=
+    -\D_\mu\qty(ieQA^\mu\phi)-ieA_\mu\D^\mu\phi+e^2QA_\mu A^\mu\phi
+  \end{align*}
+\item For the $A^\mu$ field, we only need to consider the $A^\mu$ field:
+  \begin{align*}
+    \pdv{\L}{A_\mu}=\D_\nu\pdv{\L}{(\D_\nu A_\mu)}
+  \end{align*}
+  The left hand side:
+  \begin{align*}
+    \pdv{\L}{A_\mu}=\pdv{A_\mu}\qty(\D_\mu\phi^*\D^\mu\phi)
+  \end{align*}
 \end{enumerate}
 \section*{Problem 3}
+The Maxwell-Dirac Lagrangian is:
+\begin{align*}
+  \L=i\bar{\psi}\gamma^\mu\qty(\D_\mu+ieQA_\mu)\psi-
+  m\bar{\psi}\psi-\frac{1}{4}F_\munu F^\munu
+\end{align*}
+\begin{enumerate}[label=\alph*)]
+\item If we are finding the field for $\bar{\psi}$ we need to vary with respect to $\psi$ in our Lagrangian, so we can ignore the field strength terms:
+  \begin{align*}
+    \pdv{\L}{\psi}=-i\bar{\psi}\gamma^\mu ieQA_\mu+m\bar{\psi}
+  \end{align*}
+  Note that the following derivative is not as expected:
+  \begin{align*}
+    \pdv{\psi}\qty(\bar{\psi}\psi)=-\bar{\psi}
+  \end{align*}
+  Since we have to interchange the derivative with the fermionic term $\bar{\psi}$, which requires an anticommutator and thus an extra minus sign, the same is done to the term from the covariant derivative.
 
+  Next the derivative term:
+  \begin{align*}
+    \D_\mu\pdv{\L}{(\D_\mu\psi)}=\D_{\mu}\qty(-i\bar{\psi}\gamma^\mu)
+  \end{align*}
+  Setting them equal:
+  \begin{align*}
+    i\D_\mu\bar{\psi}\gamma^\mu&=-ieQ\bar{\psi}i\gamma^\mu A_\mu+m\bar{\psi}\\
+    m\bar{\psi}&=\bar{\psi}\qty(i\D_\mu\gamma^\mu+ieQi\gamma^\mu A_\mu)\\
+    &=\bar{\psi}(\D_\mu-ieQA_\mu)i\gamma^\mu
+  \end{align*}
+  Which certainly looks like the Dirac equation:
+  \begin{align*}
+    \bar{\psi}(-\D_\mu+ieQA_\mu)i\gamma^\mu=m\bar{\psi}
+  \end{align*}
+\item Taking the conjugate would invert the sign of $i$s and give us:
+  \begin{align*}
+    i\gamma^\mu(\D_\mu+ieQA_\mu)\psi=m\psi
+  \end{align*}
+  Which is the equation of motion which we derived in class.
+\item Rearranging our field equations gives us a set of two equations of the following form:
+  \begin{align*}
+    \gamma^\mu\D_\mu\psi&=-im\psi-ieQ\gamma^\mu A_\mu\psi\\
+    \D_\mu\bar{\psi}\gamma^\mu&=-im\bar{\psi}-ieQ\bar{\psi}A_\mu\gamma^\mu \\
+  \end{align*}
+  And current conservation entails that:
+  \begin{align*}
+    \D_\mu J^\mu=Q\qty((\D_\mu\bar{\psi})\gamma^\mu\psi
+    +\bar{\psi}\gamma^\mu\qty(\D_\mu\psi))
+  \end{align*}
+  I assume that since there is a $\gamma^0$ from $\bar{\psi}$ as well as a $\gamma^\mu$ we do not need to flip signs on the second term.
+
+  We can then sub in our relation to get the following:
+  \begin{align*}
+    \D_\mu J^\mu=Q\qty(-im\bar{\psi}\psi-ieQ\bar{\psi}A_\mu\gamma^\mu\psi
+    -im\bar{\psi}\psi-ieQ\bar{\psi}\gamma^\mu A_\mu\psi)
+  \end{align*}
+  Interchanging everything ends up with the right amount of minus signs to cancel everything out, leading to current conservation.
+  \begin{align*}
+    \boxed{\D_\mu J^\mu=0}
+  \end{align*}
+\end{enumerate}
 \end{document}
