@@ -1,12 +1,8 @@
 \documentclass[10pt,a4paper,ragged2e]{altacv}
 \geometry{left=2cm,right=10cm,marginparwidth=6.8cm,marginparsep=1.2cm,top=1.25cm,bottom=1.25cm}
-\ifxetexorluatex
-  \setmainfont{Carlito}
-\else
-  \usepackage[utf8]{inputenc}
-  \usepackage[T1]{fontenc}
-  \usepackage[default]{lato}
-\fi
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[default]{lato}
   
 
 \definecolor{SlateGrey}{HTML}{2E2E2E}
@@ -32,16 +28,9 @@
 % Cropped to square from https://en.wikipedia.org/wiki/Marissa_Mayer#/media/File:Marissa_Mayer_May_2014_(cropped).jpg, CC-BY 2.0
 \photo{3.3cm}{photojpg.jpg}
 \personalinfo{%
-  % Not all of these are required!
-  % You can add your own with \printinfo{symbol}{detail}
   \email{mcardiff@hawk.iit.edu}
-%  \phone{773-870-6384}
-%  \mailaddress{Address, Street, 00000 County}
   \location{Chicago, IL}
   \homepage{https://github.com/mcardoff/}
-%  \twitter{@marissamayer}
-%  \linkedin{https://www.linkedin.com/in/jaydeep-singh-4ab1a3162/}
-%   \orcid{orcid.org/0000-0000-0000-0000} % Obviously making this up too. If you want to use this field (and also other academicons symbols), add "academicons" option to \documentclass{altacv}
 }
 
 %% Make the header extend all the way to the right, if you want.
@@ -104,6 +93,54 @@
 
 \clearpage
 \nocite{*}
-
-
+% \columnratio{1.0}
+\cvsection[page2sidebar]{Relevant Courses}
+\cvevent{Physics}{Illinois Institute of Technology}{Aug 2018-May 2022}{Chicago, IL}
+\begin{itemize}
+\item \textbf{PHYS 304} : Thermodynamics \& Statistical Physics
+  \begin{itemize}
+  \item Classical Thermodynamics up through Quantum Statistical Mechanics
+  \item \textbf{Book}: Thermal Physics by \textit{Franz Mandl}
+  \end{itemize}
+\item \textbf{PHYS 308, 309} : Classical Mechanics I \& II
+  \begin{itemize}
+  \item 
+  \end{itemize}
+\item \textbf{PHYS 405, 406} : Introduction to Quantum Theory I \& II
+  \begin{itemize}
+  \item 
+  \end{itemize}
+\item \textbf{PHYS 413, 414} : Electromagnetism I \& II
+  \begin{itemize}
+  \item 
+  \end{itemize}
+\item \textbf{PHYS 427} : Advanced Physics Lab
+  \begin{itemize}
+  \item 
+  \end{itemize}
+\item \textbf{PHYS 437} : Solid State Physics
+  \begin{itemize}
+  \item 
+  \end{itemize}
+\item \textbf{PHYS 502} : Methods of Theoretical Physics II
+  \begin{itemize}
+  \item 
+  \end{itemize}
+\item \textbf{PHYS 510} : Quantum Theory II
+  \begin{itemize}
+  \item 
+  \end{itemize}
+\item \textbf{PHYS 518} : General Relativity
+  \begin{itemize}
+  \item 
+  \end{itemize}
+\item \textbf{PHYS 545, 546} : Particle Physics I \& II
+  \begin{itemize}
+  \item 
+  \end{itemize}
+\item \textbf{PHYS 553} : Quantum Field Theory
+  \begin{itemize}
+  \item 
+  \end{itemize}
+\end{itemize}
 \end{document}
