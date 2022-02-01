@@ -202,8 +202,53 @@ The Lagrangian is:
   \end{align*}
   The left hand side:
   \begin{align*}
-    \pdv{\L}{A_\mu}=\pdv{A_\mu}\qty(\D_\mu\phi^*\D^\mu\phi)
+    \pdv{\L}{A_\mu}&=-ieQ\phi^*\qty(\D^\mu+ieQA^\mu)\phi+
+    \pdv{A_\mu}\qty(ieQ\D_\mu\phi^*A^\mu\phi)\\
+    &=-ieQ\phi^*D^\mu\phi+ieQ(\D_\mu\phi^*)\phi
   \end{align*}
+  This is because $F_\munu$ only has derivatives of $A_\mu$, so the right hand side is:
+  \begin{align*}
+    \pdv{\L}{(\D_\nu A_\mu)}&=\frac{1}{4}\pdv{(\D_\nu A_\mu)}
+    \qty(\D^\mu A^\nu-\D^\nu A^\mu)(\D_\mu A_\nu-\D_\nu A_\mu)\\
+    &=-\frac{1}{4}\qty(\D^\mu A^\nu-\D^\nu A^\mu)\\
+    \D_\nu\pdv{\L}{(\D_\nu A_\mu)}&=
+    -\frac{1}{4}\qty(\D_\nu\D^\mu A^\nu-\D_\nu\D^\nu A^\mu)\\
+    &=-\D_\nu F^\munu
+  \end{align*}
+  Setting them equal:
+  \begin{align*}
+    \D_\nu F^\munu=ieQ\D_\mu(\phi^*\phi)-e^2Q^2\phi^*A^\mu\phi
+  \end{align*}
+\item This is a local $U(1)$ so our variations are given by:
+  \begin{align*}
+    \delta\phi=iQ\theta\phi\quad
+    \delta A_\mu=-\frac{1}{e}\D_\mu\theta
+  \end{align*}
+  The variation in the Lagrangian density:
+  \begin{align*}
+    \delta\L&=\D_\mu\qty(\pdv{\L}{(\D_\mu\phi)}\delta\phi)+
+    \D_\mu\qty(\pdv{\L}{(\D_\mu\phi^*)}\delta\phi^*)
+    +\D_\mu\qty(\pdv{\L}{(\D_\mu A_\nu)}\delta A_\nu)\\
+    &=\D_\mu\qty(D_\mu\phi^*iQ\theta\phi-\phi^*D_\mu\phi iQ\theta
+    -\frac{1}{e}\D_\mu F^\munu\D_\nu\theta)
+  \end{align*}
+  The last term should cancel out, as it is a symmetric term, hence we get
+  \begin{align*}
+    \delta\L=iQ\theta\D_\mu\qty(\phi D_\mu\phi-\phi^* D_\mu\phi)
+  \end{align*}
+  Which is our Noether current:
+  \begin{align*}
+    J_\mu=iQ\theta\qty(\phi D_\mu\phi-\phi^* D_\mu\phi)
+  \end{align*}
+\item Given that variations of the lagrangian should be $0$, the above should be:
+  \begin{align*}
+    \delta\L=iQ\theta\D_\mu\qty(\phi D_\mu\phi-\phi^* D_\mu\phi)=0
+  \end{align*}
+  Which is:
+  \begin{align*}
+    \D_\mu J^\mu=0
+  \end{align*}
+  Which means our Noether current is conserved.
 \end{enumerate}
 \section*{Problem 3}
 The Maxwell-Dirac Lagrangian is:
