@@ -1,0 +1,151 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 553 HW 1}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\newcommand{\g}{\gamma}
+\newcommand{\psib}{\bar{\psi}}
+\newcommand{\psid}{\psi^\dag}
+
+\begin{document}
+\maketitle
+\section*{Question 1}
+We want to verify the Dirac bilinears:
+\begin{enumerate}
+\item The scalar bilinear is fairly simple if we find a transformation law for $\psib$:
+  \begin{align*}
+    \psib'(x')=(\psi')^\dag\g^0=(S\psi)^\dag\g^0=\psid S^\dag\g^0
+  \end{align*}
+  Next we should compute the following commutator:
+  \begin{align*}
+    \comm{S^\dag}{\g^0}\approx
+    \comm{I+\frac{i}{4}\sigma_{\mu\nu}\omega^{\mu\nu}}{\g^0}
+  \end{align*}
+  Clearly, $\g^0$ commutes with the identity:
+  \begin{align*}
+    \comm{\frac{i}{4}\sigma_{\mu\nu}\omega^{\mu\nu}}{\g^0}=
+    \frac{i}{4}\comm{\sigma_{\mu\nu}\omega^{\mu\nu}}{\g^0}=
+    \frac{i}{4}\comm{\sigma_{\mu\nu}}{\g^0}\omega^{\mu\nu}
+  \end{align*}
+  We can then use Eq (2.119) of Fradkin:
+  \begin{align*}
+    \comm{\sigma_{\mu\nu}}{\g^0}=-\comm{\g^0}{\sigma_{\mu\nu}}=
+    -2i\qty(g^0_\mu\gamma_\nu-g^0_\nu\gamma_\mu)
+  \end{align*}
+  For $\mu=\nu$ this disappears, and for $\mu,\nu=1,2,3$ the metric is $0$, so we can conclude:
+  \begin{align*}
+    \comm{S^\dag}{\g^0}=0
+  \end{align*}
+  We can then say:
+  \begin{align*}
+    \psib'(x)=\psib S^\dag
+  \end{align*}
+  Since $S$ is a unitary matrix it follows that:
+  \begin{align*}
+    \psib'(x')\psi'(x')=\psib(x)S^\dag S\psi(x)=\psib\psi
+  \end{align*}
+\item The pseudoscalar bilinear relies on the following identity:
+  \begin{align*}
+    S^\dag\g_5S=\det\Lambda\g_5
+  \end{align*}
+  The bilinear gives us:
+  \begin{align*}
+    \psib'\g_5\psi'=\psib S^\dag\g_5 S\psi=\psib\qty(\det\Lambda\g_5)\psi
+  \end{align*}
+  Since the determinant is just a number, it can be moved to the front:
+  \begin{align*}
+    \psib'\g_5\psi'=\det\Lambda\,\psib\g_5\psi
+  \end{align*}
+\item The vector bilinear takes advantage of this identity:
+  \begin{align*}
+    S\g^\mu S^\dag=\qty(\Lambda^{-1})^\mu_\nu\g^\nu=\Lambda^\nu_\mu\g^\nu
+  \end{align*}
+  So the transformation becomes:
+  \begin{align*}
+    \psib'\g^\mu\psi'=\psib S^\dag\g^\mu S\psi
+  \end{align*}
+  I am going to make quite a bold claim, mainly that it does not matter that the interchange of $S^\dag$ and $S$ does not matter, so we can simply use the same identity which we have above:
+  \begin{align*}
+    \psib'\g^\mu\psi'=\Lambda^\mu_\nu\psib\g^\mu\psi
+  \end{align*}
+\item The axial vector identity simply comes from applying the previous two identities one after the other, resulting in both of their side effects:
+  \begin{align*}
+    \psib'\g_5\g^\mu\psi'=\det(\Lambda)\Lambda^\mu_\nu\psib\g_5\g^\mu\psi
+  \end{align*}
+\item The same goes for the tensor, especially this one, as it is a combination of two vectors we have seen before:
+  \begin{align*}
+    \psib'\sigma^{\mu\nu}\psi'=\Lambda^\mu_\alpha\Lambda^\nu_\beta\psib
+    \sigma^{\alpha\beta}\psi
+  \end{align*}
+\end{enumerate}
+
+\section*{Question 2}
+\begin{enumerate}
+\item The saddle point equations are given by:
+  \begin{align*}
+    -\fdv{F}{\phi(\vb{x})}+\grad_j\qty(\fdv{F}{\grad_j\phi(\vb{x})})
+  \end{align*}
+  First the derivative with respect to the field:
+  \begin{align*}
+    -\fdv{F}{\phi}=-\qty(m_0^2\phi
+    +\frac{\abs{\lambda_4}}{3!}\phi^3
+    +\frac{\lambda_6}{5!}\phi^5)
+  \end{align*}
+  And with respect to the gradient:
+  \begin{align*}
+    \grad_j\fdv{F}{\grad_j\phi}=\grad_j\qty(\grad_j\phi)=\laplacian{\phi}
+  \end{align*}
+  So the Landau-Ginzburg equation of motion is given as:
+  \begin{align*}
+    \laplacian{\phi}-m_0^2+\frac{\abs{\lambda_4}}{3!}\phi^3
+    -\frac{\lambda_6}{5!}\phi^5=0
+  \end{align*}
+  The saddle point $\phi_c$ minimizes equations of motion, so it will have no 'momentum' so the laplacian goes away:
+  \begin{align*}
+    m_0^2\phi_c-\frac{\abs{\lambda_4}}{3!}\phi^3+\frac{\lambda_6}{5!}\phi^5=0
+  \end{align*}
+\item The potential is given by:
+  \begin{align*}
+    U(\phi)-\frac{a}{2}(T-T_0)\phi^2+\frac{\lambda_4}{4!}\phi^4
+    +\frac{\lambda_6}{6!}\phi^6
+  \end{align*}
+  Choosing a $\lambda_4$ which is negative and $\lambda_6$ which is positive can give us the following plot. 
+\end{enumerate}
+\end{document}
