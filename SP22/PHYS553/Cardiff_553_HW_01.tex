@@ -39,7 +39,9 @@
 }
 
 \renewcommand{\L}{\mathcal{L}}
+\renewcommand{\H}{\mathcal{H}}
 
+\newcommand{\D}{\partial}
 \newcommand{\g}{\gamma}
 \newcommand{\psib}{\bar{\psi}}
 \newcommand{\psid}{\psi^\dag}
@@ -146,6 +148,158 @@ We want to verify the Dirac bilinears:
     U(\phi)-\frac{a}{2}(T-T_0)\phi^2+\frac{\lambda_4}{4!}\phi^4
     +\frac{\lambda_6}{6!}\phi^6
   \end{align*}
-  Choosing a $\lambda_4$ which is negative and $\lambda_6$ which is positive can give us the following plot. 
+  Choosing a $\lambda_4$ which is negative and $\lambda_6$ which is positive can give us the following plot:
+  \fig{9.0}{potentialhw1}{The topmost represents the highest temperature}
+  Notice how slowly as the temperature increases there develops a minimal $\ev{\phi}\neq0$, we can see this more clearly in the next plot:
+  \fig{9.0}{tempvariation}{Temperature variation of $\ev{\phi}$}
+  This was done by numerically computing the minima at various temperatures and at a specific $\lambda_4,\lambda_6$. This is clearly not a continuous function, as a phase transition occurs before and after the specified $T_0$. Above the $T^*$ the potential should be $0$, meaning the energy is minimized, coming only from the kinetic energy.
+\item The plot is the following:
+  \fig{9.0}{plusl4}{The same process as the previous figure but with a positive $\lambda_4$}
+  Since this is a numerical computation, the region around $T_c$ does not seem to be continuous, but I believe it should be, especially when more and computations are done. This should also be a second order phase transition although I do not know why. 
+\end{enumerate}
+\section*{Question 3}
+The Lagrangian for convenience:
+\begin{align*}
+  \L=\qty(\D_\mu-ieA_\mu)\phi^*\qty(\D^\mu+ieA^\mu)\phi
+  -m_0^2\phi^*\phi-\frac{\lambda}{2}(\phi^*\phi)^2
+  -\frac{1}{4}\qty(\D^\mu A^\nu-\D^\nu A^\mu)\qty(\D_\mu A_\nu-\D_\nu A_\mu)
+\end{align*}
+\begin{enumerate}
+\item Going term by term starting with the terms proportional to $\phi^*\phi$
+  \begin{align*}
+    \phi^*\phi\to\phi^*\exp{ie\Lambda}\exp{-ie\Lambda}\phi=\phi^*\phi
+  \end{align*}
+  Since the mass term and the $\lambda$ term in the Lagrangian both do not have anything else, so they are invariant. The next term would be the covariant derivative $D_\mu$:
+  \begin{align*}
+    (\D_\mu+ieA_\mu)\phi&\to(\D_\mu+ie\qty(A_\mu+\D_\mu\Lambda))
+    \phi\exp{-ie\Lambda}\\
+    &=(\D_\mu-ie\D_\mu\Lambda+ieA_\mu+ie\D_\mu\Lambda)\phi\exp{-ie\Lambda}\\
+    &=(\D_\mu+ieA_\mu)\phi\exp{-ie\Lambda}\\
+    &=\exp{-ie\Lambda}D_\mu\phi
+  \end{align*}
+  What we have is a product of $D_\mu$ terms, so we have:
+  \begin{align*}
+    (D_\mu\phi)^*(D^\mu\phi)\to\exp{ie\Lambda}\exp{-ie\Lambda}
+    (D_\mu\phi)^*(D^\mu\phi)=(D_\mu\phi)^*(D^\mu\phi)
+  \end{align*}
+  So the term in the Lagrangian is in fact invariant. By construction the field strength tensor should be invariant, but we should check anyways!
+  \begin{align*}
+    F_{\mu\nu}&=\D_\mu A_\nu-\D_\nu A_\mu\to
+    \D_\mu\qty(A_\nu+\D_\nu\Lambda)-\D_\nu\qty(A_\mu+\D_\mu\Lambda)\\
+    &=F_{\mu\nu}+\D_\mu\Lambda-\D_\nu\Lambda=F_{\mu\nu}
+  \end{align*}
+  Hence, two separate field strength tensors should be invariant. Thus, under this gauge transformation, the Lagrangian is invariant:
+  \begin{align*}
+    \boxed{\L\to\L}
+  \end{align*}
+\item There are three total field equations, first for $\phi^*$:
+  \begin{align*}
+    \fdv{\L}{\phi^*}&=-ieA_\mu\D^\mu\phi-m_0^2\phi-\lambda\phi^*\phi^2\\
+    \fdv{\L}{(\D_\mu\phi^*)}&=D^\mu\phi\\
+    \D_\mu\fdv{\L}{(\D_\mu\phi^*)}&=\D_\mu D^\mu\phi\\
+  \end{align*}
+  Notice that when we set these terms equal to each other, we get the following:
+  \begin{align*}
+    \fdv{\L}{\phi^*}=\D_\mu\fdv{\L}{(\D_\mu\phi^*)}\implies
+    (D_\mu D^\mu+m_0^2)\phi=\lambda\phi^*\phi^2
+  \end{align*}
+  Now for $\phi$:
+  \begin{align*}
+    \fdv{\L}{\phi}&=ieD_\mu\phi^*A^\mu-m_0^2\phi^*-\lambda(\phi^*)^2\phi\\
+    \fdv{\L}{(\D_\mu\phi)}&=(D^\mu\phi)^*\\
+    \D_\mu\fdv{\L}{(\D_\mu\phi^*)}&=\D_\mu(D^\mu\phi)^*\\
+  \end{align*}
+  So the field equation will look like:
+  \begin{align*}
+    D_\mu \qty(D^\mu\phi)^*+m_0^2\phi^*=\lambda(\phi^*)^2\phi
+  \end{align*}
+  Finally for $A$:
+  \begin{align*}
+    \fdv{\L}{A_\mu}&=\frac{1}{2}\qty[-ie\phi^*D^\phi+ie\phi(D^\mu\phi)^*]\\
+    &=-\frac{ie}{2}\qty[\phi^*D^\mu\phi-\phi(D^\mu\phi)^*]\\
+    \fdv{\L}{(\D_\nu A_\mu)}&=-\fdv{(\D_\nu A_\mu)}
+    -\frac{1}{2}\qty(\D_\mu A_\nu\D^\mu A^\nu-\D_\nu A_\mu\D^\mu A^\nu)\\
+    &=-\frac{1}{2}\fdv{(\D_\nu A_\mu)}\qty(\D_\mu A_\nu F^{\mu\nu})\\
+    &=-\frac{1}{2}F^{\mu\nu}\\
+    \D_\mu\fdv{\L}{(\D_\nu A_\mu)}&=-\frac{1}{2}\D_\mu F^{\mu\nu}
+  \end{align*}
+  So our field equations will look like current conservation:
+  \begin{align*}
+    \D_\mu F^{\mu\nu}=ie\qty[\phi^*D^\mu\phi-\phi(D^\mu\phi)^*]
+  \end{align*}
+\item The Hamiltonian density is given by the following:
+  \begin{align*}
+    \H=\sum_{\psi=\phi,\phi^*,A_\mu}\Pi_\psi\D_0\psi-\L
+  \end{align*}
+  We need to compute the conjugate momentum for each of the fields:
+  \begin{align*}
+    \Pi_{\phi^*}&=D^0\phi\\
+    \Pi_\phi&=(D^0\phi)^*\\
+    \Pi_{A_\mu}&=-\frac{1}{2}\D_0F^{\mu0}
+  \end{align*}
+  We can rewrite $\D_0\phi$ and $\D_0\phi^*$ as:
+  \begin{align*}
+    \D_0\phi&=D_0\phi-ieA_0\\
+    \D_0\phi^*&=D_0\phi^*+ieA_0
+  \end{align*}
+  So the products are:
+  \begin{align*}
+    \Pi_{\phi^*}\D_0\phi^*&=D^0\phi\qty(D_0\phi^*+ieA_0)\\
+    \Pi_{\phi}\D_0\phi&=(D^0\phi)^*\qty(D_0\phi-ieA_0)\\
+    \Pi_{A_\mu}&=-\frac{1}{2}\D_0F^{\mu0}\D_0A_\mu
+  \end{align*}
+  Combining all of these and rewriting the lagrangian in terms of conjugate momentum will get you the Hamiltonian density $\H$
+\item We now will replace $\phi$ with:
+  \begin{align*}
+    \phi=\rho e^{i\theta}
+  \end{align*}
+  The terms with $\phi^*\phi$ simply turn into $\abs{\rho}^2$, the only significant changes come from derivatives:
+  \begin{align*}
+    D_\mu\phi&=\qty(\D_\mu+ieA_\mu)\rho e^{i\theta}\\
+    (D_\mu\phi)^*D^\mu\phi&=
+    \mqty{\D_\mu\rho\D^\mu\rho+i\rho\D_\mu\rho\D^\mu\theta+ieA^\mu\rho\D_\mu\rho\\
+      -i\rho\D_\mu\theta\D^\mu\rho+\rho^2\D_\mu\theta\D^\mu\theta+
+      eA^\mu\rho^2\D_\mu\theta\\-ieA_\mu\rho\D^\mu\rho+e\rho^2A_\mu\D^\mu\theta+
+      e^2\rho^2A_\mu A^\mu}\\
+    &=\D_\mu\rho\D^\mu\rho+(\D_\mu\theta\D^\mu\theta)\rho^2+e^2\rho^2A_\mu A^\mu
+    +2e\rho^2A_\mu\D^\mu\theta\\
+    &=\D_\mu\rho\D^\mu\rho+\rho^2\qty(\D_\mu\theta\D^\mu\theta+
+    e^2A_\mu A^\mu+2eA_\mu\D^\mu\theta)
+  \end{align*}
+  There is no change with the field strength term. The Lagrangian is:
+  \begin{align*}
+    \L=\D_\mu\rho\D^\mu\rho+\rho^2\qty(\D_\mu\theta\D^\mu\theta+
+    e^2A_\mu A^\mu+2eA_\mu\D^\mu\theta)
+    -m_0^2\abs{\rho}^2-\frac{\lambda}{2}\abs{\rho}^4
+    -\frac{1}{4}F^{\mu\nu}F_{\mu\nu}
+  \end{align*}
+  If we choose the London gauge all terms with $\theta$ disappear:
+  \begin{align*}
+    \L=\D_\mu\rho\D^\mu\rho+\rho^2e^2A_\mu A^\mu
+    -m_0^2\abs{\rho}^2-\frac{\lambda}{2}\abs{\rho}^4
+    -\frac{1}{4}F^{\mu\nu}F_{\mu\nu}
+  \end{align*}
+  The equations of motion for $\rho$ are then:
+  \begin{align*}
+    \fdv{\L}{\rho}&=2\rho e^2A_\mu A^\mu-2m_0^2\rho-2\lambda\rho^3\\
+    \fdv{\L}{\D_\mu\rho}&=\D^\mu\rho\\
+    \D_\mu\fdv{\L}{\D_\mu\rho}&=\D_\mu\D^\mu\rho
+  \end{align*}
+  So the equations of motion are:
+  \begin{align*}
+    \frac{1}{2}\D^2\rho=\rho e^2A_\mu A^\mu-m_0^2\rho-\lambda\rho^3
+  \end{align*}
+\item If we have a constant term in $\rho$ we may have the following term:
+  \begin{align*}
+    \L_{eff}=\overline{\rho}^2e^2A_\mu A^\mu
+  \end{align*}
+  Which could be seen as a photon mass, as it is quadratic in $A$ and so in our equations of motion we would get an effective Klein-Gordon equation that looks like:
+  \begin{align*}
+    \D^2A_\mu+m_\gamma^2A_\mu=???
+  \end{align*}
+  Which would represent a photon with mass as opposed to the normal field equation which simply has:
+  \begin{align*}
+    \D^2A_\mu=0
+  \end{align*}
 \end{enumerate}
 \end{document}
