@@ -43,7 +43,102 @@
 \begin{document}
 \maketitle
 \section*{Question 1}
+\begin{enumerate}[label=\alph*)]
+\item There are not weird effects going on, so we can assume the total energy is:
+  \begin{align*}
+    E=T+V
+  \end{align*}
+  Further we can expand this by finding the energy per atom, then summing over all the atoms in the lattice:
+  \begin{align*}
+    E_s=T_s+V_s\qquad E=\sum_s E_s
+  \end{align*}
+  The kinetic energy for a single particle is given by:
+  \begin{align*}
+    T_s=\frac{1}{2}Mv_s^2=\frac{1}{2}M\qty(\dv{u_s}{t})^2
+  \end{align*}
+  So the total kinetic energy is the first term in the energy given:
+  \begin{align*}
+    T=\frac{1}{2}M\sum_s\qty(\dv{u_s}{t})^2
+  \end{align*}
+  For a single spring, the potential energy is:
+  \begin{align*}
+    V_{spring}=\frac{1}{2}Cx^2
+  \end{align*}
+  Without any loss of information, the stretching of the spring can be determined by its current displacement, minus any displacement of the one on the other side, hence:
+  \begin{align*}
+    \delta{x}_s=u_s-u_{s+1}
+  \end{align*}
+  So the total potential is:
+  \begin{align*}
+    V=\frac{1}{2}C\sum_s(u_s-u_{s+1})^2
+  \end{align*}
+  And the total energy:
+  \begin{align*}
+    E=T+V=\boxed{\frac{1}{2}M\sum_s\qty(\dv{u_s}{t})^2+
+    \frac{1}{2}C\sum_s(u_s-u_{s+1})^2}
+  \end{align*}
+\item The time derivative of $u_s$ with respect to time is:
+  \begin{align*}
+    \dv{u_s}{t}=-u\omega\sin(\omega t - sKa)
+  \end{align*}
+  Squaring this and time averaging yields:
+  \begin{align*}
+    \ev{\qty(\dv{u_s}{t})^2}=\ev{u^2\omega^2\sin^2(\omega t- sKa)}
+    =\frac{u^2\omega^2}{2}
+  \end{align*}
+  Hence the average kinetic energy per atom:
+  \begin{align*}
+    \ev{T_s}=\frac{1}{4}Mu^2\omega^2
+  \end{align*}
+  Which is exactly the first term.
+
+  The potential is:
+  \begin{align*}
+    V_s&=\frac{C}{2}u^2\qty(\cos(\omega t+sKa)-\cos(\omega t+ska+ka))^2\\
+       &=\frac{C}{2}u^2\qty(\cos(\omega t +sKa)(1-\cos(Ka))+
+         \sin(\omega t+ sKa)\sin(k a))^2\\
+       &=\frac{C}{2}u^2\qty(\cos^2(\omega t+sKa))(1-\cos(Ka))^2+
+         \sin(\omega t+ sKa)\sin^2(k a)
+  \end{align*}
+  
+\end{enumerate}
 \section*{Question 2}
+In a uniform lattice, since there is only one spring constant, periodic conditions can be imposed, that is:
+\begin{align*}
+  u_{s+1}=u_s(x+a)\quad u_{s-1}=u_s(x-a)
+\end{align*}
+Where $a$ is the lattice spacing. We can then taylor expand each of these to relate it to $u_s$:
+\begin{align*}
+  u_{s+1}&=u_s+a\dv{u}{x}+a^2+\dv[2]{u}{x}+\cdots\\
+  u_{s-1}&=u_s-a\dv{u}{x}+a^2+\dv[2]{u}{x}+\cdots
+\end{align*}
+The equations of motion can be rewritten to make our results a bit more useful:
+\begin{align*}
+  M\dv[2]{u_s}{t}&=C\qty(u_{s+1}+u_{s-1}-2u_s)\\
+  &=C\qty((u_{s+1}- u_s) - (u_{s}-u_{s-1}))
+\end{align*}
+We can then compute these differences in our series:
+\begin{align*}
+  u_{s+1}-u_s&=a\dv{u}{x}+a^2+\dv[2]{u}{x}+\cdots\\
+  u_{s-1}-u_s&=-a\dv{u}{x}+a^2+\dv[2]{u}{x}+\cdots
+\end{align*}
+If we keep up through the second order terms, the term we need in the equation of motion:
+\begin{align*}
+  (u_{s+1}- u_s) - (u_{s}-u_{s-1})=2a^2\dv[2]{u_s}{x}
+\end{align*}
+Substitute and get it into the form of a wave equation:
+\begin{align*}
+  M\dv[2]{u_s}{t}&=2a^2C\dv[2]{u_s}{x}\\
+  \dv[2]{u_s}{t}&=2\frac{a^2C}{M}\dv[2]{u_s}{x}
+\end{align*}
+Define $v_s$ in the following way:
+\begin{align*}
+  v_s^2=\frac{2a^2C}{M}
+\end{align*}
+So that we get the wave equation:
+\begin{align*}
+  \dv[2]{u_s}{t}&=v_2^2\dv[2]{u_s}{x}
+\end{align*}
 \section*{Question 3}
 \section*{Question 4}
 \end{document}
