@@ -1,0 +1,83 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 437 HW 5}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\begin{document}
+\maketitle
+\section*{Kittel 6.1}
+The energy eigenvalues are given by:
+\begin{align*}
+  E_{\vb{k}}=\frac{\hbar^2}{2m}k^2
+\end{align*}
+For the Fermi energy $E_F$:
+\begin{align*}
+  E_F=\frac{\hbar^2}{2m}k^2_F
+\end{align*}
+We then need to average of this over a sphere:
+\begin{align*}
+  \ev{E}=\frac{\hbar^2}{2m}\frac{1}{V}\int_0^{k_F}\dd{k}k^2*k^2
+\end{align*}
+Where the volume is:
+\begin{align*}
+  V=\int_0^{k_F}\dd{k}k^2=\frac{k_F^3}{3}
+\end{align*}
+The other integral is:
+\begin{align*}
+  \int_0^{k_F}\dd{k}k^2*k^2=\frac{k_F^5}{5}
+\end{align*}
+In total we have:
+\begin{align*}
+  \ev{E}&=\frac{\hbar^2}{2m}\frac{3}{5}\frac{k_F^5}{k_F^3}\\
+  &=\frac{3}{5}\frac{\hbar^2}{2m}k_F^2\\
+  &=\frac{3}{5}E_F
+\end{align*}
+Thus for $N$ electrons:
+\begin{align*}
+  \ev{E}=U_0=\boxed{\frac{3}{5}NE_F}
+\end{align*}
+\section*{Kittel 6.2}
+
+\section*{Kittel 6.3}
+
+\section*{Kittel 6.4}
+
+\section*{Kittel 6.6}
+\end{document}

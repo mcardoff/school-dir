@@ -1,0 +1,91 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}Fun With Integrals}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\begin{document}
+\maketitle
+In class we wanted to compute the integral:
+\begin{align*}
+  \int_0^\infty\dd{x}\frac{x^3}{e^x-1}
+\end{align*}
+Recall the $3$ comes from the fact that we are computing the heat capacity for a 3-D solid, if we were to compute this for an $n$-D solid, we would have the following integral:
+\begin{align*}
+  \int_0^\infty\dd{x}\frac{x^n}{e^x-1}
+\end{align*}
+We can use the geometric series of the following term to make this integral simpler:
+\begin{align*}
+  \sum_{s=0}^{\infty}e^{-sx}=\frac{e^x}{e^x-1}
+\end{align*}
+We can use this to substitute in our integral:
+\begin{align*}
+  \int_0^\infty\dd{x}\frac{x^n}{e^x-1}=
+  \int_0^\infty\dd{x}x^ne^{-x}\sum_{s=0}^\infty e^{-sx}
+\end{align*}
+By the magic of Fubini's theorem (supposedly) we can interchange the integral and the sum:
+\begin{equation}
+  \sum_{s=0}^\infty\int_0^\infty\dd{x}x^ne^{-(s+1)x}\label{bruh}
+\end{equation}
+Recall the definitions of the following special functions in math:
+\begin{align*}
+  \zeta(s)&=\sum_{n=1}^\infty\frac{1}{n^s}\\
+  \Gamma(n+1)&=\int_0^\infty\dd{x}x^ne^{-x}
+\end{align*}
+If we introduce a substitution into \eqref{bruh} we should find a gamma function:
+\begin{gather*}
+  \alpha = (s+1)x\\
+  \dd{\alpha} = (s+1)\dd{x}\\
+  I=\sum_{s=0}^\infty\int_0^\infty\frac{\dd{\alpha}}{s+1}\qty(\frac{\alpha}{s+1})^n
+  e^{-\alpha}
+\end{gather*}
+We can then turn our end result into:
+\begin{align*}
+  I=\sum_{s=0}^\infty\frac{1}{(s+1)^{n+1}}
+  \int_0^\infty\dd{\alpha}\alpha^ne^{-\alpha}
+\end{align*}
+The integral is not dependent on $s$ at all, so it and the sum are independent, clearly the integral is the gamma function:
+\begin{align*}
+  I=\sum_{s=0}^\infty\frac{1}{(s+1)^{n+1}}\Gamma(n+1)
+\end{align*}
+Readjusting the sum index allows it to match the definition of $\zeta$:
+\begin{align*}
+  I=\sum_{t=1}^\infty\frac{1}{t^{n+1}}\Gamma(n+1)=\zeta(n+1)\Gamma(n+1)
+\end{align*}
+\end{document}
