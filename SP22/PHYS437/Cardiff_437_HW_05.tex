@@ -39,6 +39,7 @@
 }
 
 \renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\mathcal{D}}
 
 \begin{document}
 \maketitle
@@ -74,10 +75,141 @@ Thus for $N$ electrons:
   \ev{E}=U_0=\boxed{\frac{3}{5}NE_F}
 \end{align*}
 \section*{Kittel 6.2}
-
+\subsection*{Pressure}
+From the first law of thermodynamics we know that:
+\begin{align*}
+  p=-\pdv{U}{V}
+\end{align*}
+So that at $0$K:
+\begin{align*}
+  p=-\pdv{U_0}{V}
+\end{align*}
+Recalling the Fermi wavenumber has volume in it, we can write it as
+\begin{align*}
+  k_F=\qty(3\pi^2\frac{N}{V})^{1/3}
+\end{align*}
+So the Fermi energy is:
+\begin{align*}
+  E_F=\frac{\hbar^2}{2m}k_F^2=\frac{\hbar^2}{2m}\qty(3\pi^2\frac{N}{V})^{2/3}
+\end{align*}
+This is the only volume dependent part:
+\begin{align*}
+  \pdv{E_F}{V}=-\frac{2}{3}\frac{\hbar^2}{2m}\qty(3\pi^2\frac{N}{V})^{2/3}
+  \frac{1}{V}=-\frac{2}{3}\frac{E_F}{V}
+\end{align*}
+Introducing the constants to make this $U_0$:
+\begin{align*}
+  p=-\pdv{U_0}{V}=\frac{2}{3}\frac{U_0}{V}
+\end{align*}
+We now have:
+\begin{align*}
+  \boxed{p=\frac{2}{3}\frac{U_0}{V}}
+\end{align*}
+\subsection*{Bulk Modulus}
+The bulk modulus is given by:
+\begin{align*}
+  B=-V\pdv{p}{V}=V\qty(-\frac{2}{3}\frac{U_0}{V^2}+\frac{2}{3V}\pdv{U_0}{V})=
+  \frac{10}{9}\frac{U_0}{V}
+\end{align*}
+Hence:
+\begin{align*}
+  \boxed{B=\frac{10}{9}\frac{U_0}{V}}
+\end{align*}
+\subsection*{Lithium}
+The $U_0/V$ is:
+\begin{align*}
+  \frac{U_0}{V}&=\frac{3}{5}\qty(4.7\times10^{22})(4.7)\qty(1.6\times10^{-12})\\
+  &=2.1\times10^{11}\text{dyne cm}^{-2}
+\end{align*}
+So $B$ will be:
+\begin{align*}
+  B = 2.3\times10^{11}\text{dyne cm}^{-2}
+\end{align*}
 \section*{Kittel 6.3}
-
+We can use the following integral for the number of electrons per unit volume is:
+\begin{align*}
+  n=\int_0^\infty\dd{E}\D(E)f(E)
+\end{align*}
+Place in our variables:
+\begin{align*}
+  n=\frac{m}{\pi\hbar^2}\int_0^\infty\dd{E}\frac{1}{e^{(E-\mu)/k_BT}+1}
+\end{align*}
+Evaluating it:
+\begin{align*}
+  n=\frac{m}{\pi\hbar^2}\qty(\mu+k_BT\log(1+e^{-\mu/k_BT}))
+\end{align*}
+Doing some algebra:
+\begin{align*}
+  \frac{n\pi\hbar^2}{m}&=\mu+k_BT\log(1+e^{-\mu/k_BT})\\
+  \frac{n\pi\hbar^2}{mk_BT}-\frac{\mu}{k_BT}&=\log(1+e^{-\mu/k_BT})\\
+  \exp{\frac{n\pi\hbar^2}{mk_BT}}\exp{-\frac{\mu}{k_BT}}
+  &=1+\exp{-\frac{\mu}{k_BT}}\\
+  \qty(\exp{\frac{n\pi\hbar^2}{mk_BT}}-1)\exp{-\frac{\mu}{k_BT}}&=1\\
+  \exp{-\frac{\mu}{k_BT}}&=\qty(\exp{\frac{n\pi\hbar^2}{mk_BT}}-1)^{-1}\\
+  -\frac{\mu}{k_BT}&=-\log(\exp{\frac{n\pi\hbar^2}{mk_BT}}-1)\\
+  \frac{\mu}{k_BT}&=\log(\exp{\frac{n\pi\hbar^2}{mk_BT}}-1)
+\end{align*}
+Mulitplying through by $k_BT$ gives our final answer:
+\begin{align*}
+  \boxed{\mu=k_BT\log(\exp{\frac{n\pi\hbar^2}{mk_BT}}-1)}
+\end{align*}
+Which is the desired result
 \section*{Kittel 6.4}
-
+The number of electrons in the sun is approximately given by the mass of the sun divided by the mass per nucleon, to which there are an equal number of electrons:
+\begin{align*}
+  N_{e^-}=\frac{2\times10^{33}}{1.7\times10^{-24}}\approx10^{57}e^{-}
+\end{align*}
+The volume of this dwarf star would be:
+\begin{align*}
+  V=\frac{4\pi}{3}(2\times 10^9)^3=3\times10^{28}
+\end{align*}
+So the electron concentration is:
+\begin{align*}
+  n_{e^-}=\frac{10^{57}}{3\times10^{28}}\approx3.3\times10^{28}
+\end{align*}
+So the fermi energy is:
+\begin{align*}
+  E_f=\frac{\hbar^2}{2m}(3\pi^2n)^{2/3}\approx3\times10^4\text{eV}
+\end{align*}
+The $k_F$ is not changed by relativistic effects, the volume would now be $~4\times10^{18}$ and the concentration is $~3\times10^{38}$ so the fermi energy is now:
+\begin{align*}
+  E_F\approx10^8\text{eV}
+\end{align*}
 \section*{Kittel 6.6}
+The differential equation is given as:
+\begin{align*}
+  \dv{v}{t}+\frac{v}{\tau}=-\frac{eE}{m}
+\end{align*}
+We let our velocity oscillate:
+\begin{align*}
+  v&=v_0e^{-i\omega t}\\
+  \dv{v}{t}&=v_0e^{-i\omega t}(-i\omega)=-i\omega v
+\end{align*}
+So the equation becomes:
+\begin{align*}
+  -i\omega v +\frac{v}{\tau}=-\frac{eE}{m}
+\end{align*}
+With some algebra:
+\begin{align*}
+  \qty(\frac{1}{\tau}-i\omega)v&=-\frac{eE}{m}\\
+  v&=-\frac{eE}{m}\frac{\tau}{1-i\omega\tau}\\
+  v&=-\frac{e\tau}{m}\frac{\qty(1+i\omega\tau)}{1+(\omega\tau)^2}E\\
+\end{align*}
+We can then use the field form of Ohm's law to get $\sigma$:
+\begin{align*}
+  \vb{j}=\sigma \vb{E}
+\end{align*}
+Where $\vb{j}$ is:
+\begin{align*}
+  \vb{j}=-ne\vb{v}
+\end{align*}
+So we can multiply the above equation by $ne$ to get the current density:
+\begin{align*}
+  j=-nev=\frac{ne^2\tau}{m}\qty(\frac{1+i\omega\tau}{1+(\omega\tau)^2})E
+\end{align*}
+So the conductivity is given by:
+\begin{align*}
+  \sigma(\omega)&=\frac{ne^2\tau}{m}\qty(\frac{1+i\omega\tau}{1+(\omega\tau)^2})\\
+  &\equiv\boxed{\sigma(0)\qty(\frac{1+i\omega\tau}{1+(\omega\tau)^2})}
+\end{align*}
 \end{document}
