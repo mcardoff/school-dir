@@ -1,0 +1,48 @@
+\documentclass[12pt]{article}
+
+\title{Week 7 Updates}
+\author{Michael Cardiff}
+\date{February 25, 2022}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\begin{document}
+\maketitle
+This week was a bit hectic and I was not really able to do much research on my own, but I still made important progress on my own individual items. I decided to look into what systems were relevant when looking at the head and neck. I need to look deeper into this since I did not get to look into it too much. Due to how the compartmental model works, I need to know what exactly is moving through the head and neck. This requires in depth knowledge of our fluorescent molecule, and what exactly it interacts with. This way we can isolate those systems and minimally model how the dispersion will work between those systems.
+
+The question that also must come up is what programming language should be used. While I am not explicitly familiar with it, MATLAB feels like a perfect choice, whether it is for solving differential equations or integrating. I am familiar with GNU Octave, which attempts to emulate the functions of MATLAB in a free and open source setting. This means that many of the functions can be tested in an Octave program. Some alternatives I would also consider is python, only because it is easily the language I am most familiar with in terms of numerical modeling. Despite that MATLAB is much better considering that it has these functions built in, so they will be a lot faster. 
+\end{document}
