@@ -1,0 +1,408 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}518 Review Notes}
+\author{Michael Cardiff}
+\date{\today}
+
+\usepackage[utf8]{inputenc}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{law}{Law}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\begin{document}
+\maketitle
+\section{The Spacetime of Special Relativity}
+
+\subsection{The Principle of Relativity}
+The big idea of relativity in general is the following:
+\begin{law}[Relativity]
+  The Laws of Physics take the same form in every inertial frame.
+\end{law}
+What this means is that our equations should only differ by three possibilities:
+\begin{itemize}
+\item Translation of frame
+\item Rotation of frame
+\item Movement of one frame at a constant velocity
+\end{itemize}
+The third one is kind of a gimme, as it would violate Newton's first law. This principle is valid in ALL fields of physics, and no exception has ever been found to it.
+
+The general idea of relativity is the relate the spacetime coordinates $(t,\vb{x})$ in one frame $S$ to another frame's $S'$ coordinates $(t',\vb{x}')$ in terms of a linear transformation, with no offset, so it will take the form:
+\begin{align*}
+  t'&=At+Bx\\
+  x'&=Dt+Ex\\
+  y'&=y\\
+  z'&=z
+\end{align*}
+We can reduce the $x'$ equation by realizing it has to be proportional to $x-vt$ as if $x'=0$ we only have $x=vt$, and $x=0$ corresponds to $x'=-vt'$, hence:
+\begin{align*}
+  t'&=At+Bx\\
+  x'&=A(x-vt)\\
+  y'&=y\\
+  z'&=z
+\end{align*}
+\subsection{Newtonian Relativity}
+Newton (or Galilean) relativity has an assumption associated with it, that time is the same in any equivalent reference frame, that is, we set the constant $A=1$ and $B=0$, which means the transformation looks like:
+\begin{align*}
+  \boxed{
+    \begin{matrix}
+      t'=t\\
+      x'=x-vt\\
+      y'=y\\
+      z'=z
+    \end{matrix}
+  }
+\end{align*}
+The inverse of this transformation, which goes from unprimed to primed coordinates would simply replace the sign on the velocity, so the $x$ equation would be $x'+vt'$.
+
+The main postulate of Newtonian Relativity can be stated in the following way:
+\begin{law}[Newton's Relativity]
+  The 'current' time is the same in all reference frames
+\end{law}
+
+We can then talk about the speed of a particle. In the unprimed frame we talk about the velocity as:
+\begin{align*}
+  u_x=\dv{x}{t}
+\end{align*}
+So that in the primed frame its velocity will be:
+\begin{align*}
+  u_x'=\dv{x'}{t'}=\dv{x'}{t}=\dv{t}\qty(x-vt)=u_x-v
+\end{align*}
+The initial explicit form will become important later when $t$ and $t'$ are not necessarily the same.
+
+The followings quantities are separately invariant under this newtonian relativity:
+\begin{gather*}
+  \Delta{t}\equiv t_B-t_A\\
+  \Delta{r}^2=\Delta{x}^2+\Delta{y}^2+\Delta{z}^2
+\end{gather*}
+What we mean by invariant is that if we apply the transformation, we will send up with the exact same 'number' or if we keep it general, we will have primed coordinates in place of unprimed:
+\begin{gather*}
+  \Delta{t}=\Delta{t}'\\
+  \Delta{r}^2=\Delta{r'}^2
+\end{gather*}
+
+\subsection{Special Relativity}
+Einstein's first theory of relativity is the special theory. The main difference between this and Newtonian relativity is that the \emph{speed of light} is constant between change of reference frame as opposed to the time:
+\begin{law}[Einstein's Postulate]
+  The speed of light is the same in all reference frames
+\end{law}
+Keep in mind, this is also in addition to the principle of relativity, so we have these two in order to derive our new transformation.
+
+Consider a photon (which travels at the speed of light) the spacetime coordinates of the photon have to obey:
+\begin{gather*}
+  (ct)^2-x^2-y^2-z^2=(ct')^2-x^{\prime2}-y^{\prime2}-z^{\prime2}=0
+\end{gather*}
+We can then find the form of Einstein's special relativistic transformation between reference frames:
+\begin{align*}
+  ct'&=\gamma(ct-\beta x)\\
+  x'&=\gamma(x-\beta ct)\\
+  y'&=y\\
+  z'&=z
+\end{align*}
+Where the constants $\beta,\gamma$ are:
+\begin{gather*}
+  \beta=\frac{v}{c}\\
+  \gamma=\frac{1}{\sqrt{1-\beta^2}}
+\end{gather*}
+Notice, the Newtonian transformation is a limit of this, specifically when $\beta\to0$. This type of transformation is called a Lorentz transformation. We can then see the following interval is invariant under our transformation:
+\begin{gather*}
+  \Delta{s}^2=c^2\Delta{t}^2-\Delta{x}^2-\Delta{y}^2-\Delta{z}^2
+\end{gather*}
+This denotes a transformation in our way of thinking about space itself. We move from 3-D Euclidean space and 1-D time, we unite them into a singular 4-D Minkowski spacetime. This Minkowski space is notably pseudo-Euclidean, as under a fixed time we can treat it as Euclidean all the same.
+
+\subsection{Lorentz Transformations}
+Any two reference frames that are valid in Special Relativity are related by a Lorentz transformation, which can be represented by a matrix $\Lambda$. Describing the dynamics of different reference frames required the knowledge of these matrices $\Lambda$.
+
+One possible change in reference frame we mentioned was a rotation, say a rotation about the $z$ axis, it would take the following form:
+\begin{align*}
+  ct' &= ct \\
+  x'  &= x \cos\theta - y\sin\theta\\
+  y'  &= x \sin\theta + y\cos\theta\\
+  z'  &= z
+\end{align*}
+We can similarly parameterize a spacetime boost (Lorentz transformation derived previously with $\gamma$ and $\beta$) using the rapidity $\psi$:
+\begin{align*}
+  \beta=\tanh(\psi)
+\end{align*}
+We can parameterize then a boost along $y$ for example as:
+\begin{align*}
+  ct' &= ct\cosh\psi - y\sinh\psi \\
+  x'  &= x \\
+  y'  &= -ct\sinh\psi + y\cosh\psi\\
+  z'  &= z
+\end{align*}
+This can be thought of as a time rotation, the reason it would be a little different is because of the fact that the $c\Delta{t}$ term in the invariant $\Delta{s}$ has opposite the sign of everything else.
+
+\subsection{Spacetime Diagrams}
+We draw events in special relativity on spacetime diagrams, with $t$ on the vertical axis and $x$ on the horizontal. Using this formalism we can clearly draw out the light cone, showing the three regions of spacetime intervals:
+\begin{itemize}
+\item If $\Delta{s}^2>0$, the interval is timelike, and acts like a particle in our universe
+\item If $\Delta{s}^2=0$, the interval is lightlike, and acts like light, travelling at $u=c$
+\item If $\Delta{s}^2<0$, the interval is spacelike, we do not know of anything that is spacelike
+\end{itemize}
+This is the idea of the light cone, where particles exist in between the section where the velocity is $\pm c$.
+
+More specifically, if an interval is timelike, then there is a frame where two events occur at the same spatial coordinates, and if it is spacelike we can find a frame where they occur at the same time coordinate.
+\subsection{Length Contraction, Time Dilation}
+When you look at the action of a Lorentz transformation on a spacetime diagram, we notice that certain distances change. This leads to the concept of length contractions and time dilations in special relativity
+
+\subsubsection{Length Contraction}
+Consider a rod that when you view it from its own reference frame, at whatever velocity it is moving, has a length $\ell_0$, given in terms of spacetime coordinates:
+\begin{align*}
+  \ell_0=x'_B-x'_A
+\end{align*}
+Where one end of the rod is at $x'_A$ and the other at $x'_B$. This rod is moving, but is at rest in the frame $S'$, we want to find the length $\ell$ according to someone looking at the rod. Applying the lorentz transform formula we get:
+\begin{align*}
+  x'_A&=\gamma(x_A-vt_A)\\
+  x'_B&=\gamma(x_B-vt_B)\\
+\end{align*}
+The length according to the observer at rest in $S$ would equivalently be $x_B-x_A$, if we fix the time we measure, then $t_A=t_B$:
+\begin{align*}
+  \ell = x_B-x_A = \frac{1}{\gamma}(x_B'-x_A')=\frac{\ell_0}{\gamma}
+\end{align*}
+So the rod seems to have shrunk or \emph{contracted} its length\footnote{Note that because $0<\beta<1$, $gamma>1$, so it will in fact be shorter}!
+\subsubsection{Time Dilation}
+Now instead of a rod, suppose we have a clock at rest in the frame $S'$, this clock and an identical one in the frame $S$ both measure time together, their clicks are separated by an interval $T_0$ in their own reference frames. We want to measure with our clock in $S$ the length of time that interval takes for the clock in $S'$. Note for Newtonian relativity they should be the same, but for Einsteinian, we need to apply the Lorentz transformation:
+\begin{align*}
+  t_A&=\gamma(t'_A+\beta x'_A/c)\\
+  t_B&=\gamma(t'_B+\beta x'_B/c)
+\end{align*}
+We can simplify this a bit, noting that we can relate $t_B'$ to $t_A'$ via $T_0$, and the fact that the clock is at rest in its own frame so $x'_A=x'_B$:
+\begin{align*}
+  t_A&=\gamma(t'_A+\beta x'_A/c)\\
+  t_B&=\gamma(t'_A+T_0+\beta x'_B/c)
+\end{align*}
+So the time between these clicks as measured by our clock in $S$ is given by:
+\begin{align*}
+  t_B-t_A=\gamma T_0
+\end{align*}
+So moving clocks tick slower\footnote{This should be read as there is a greater gap in between ticks than in a nonmoving clock}.
+\subsection{Proper Time}
+We define a particles proper time as $\dd{\tau}$ as a way to examine its worldline, as in how the particle evolves as that parameter changes. The differential proper time between two separated events on the wordline is defined by:
+\begin{align*}
+  \dd{\tau}^2=\frac{\dd{s}^2}{c^2}
+\end{align*}
+We can discuss it in terms of the speed of the reference frame if we inspect $\dd{s}$ a bit more:
+\begin{align*}
+  c^2\dd{\tau}^2=c^2\dd{t}^2-\dd{\vb{x}}^2
+\end{align*}
+Factoring out $\dd{t}$:
+\begin{align*}
+  c^2\dd{\tau}^2=\qty(c^2-\dv{\vb{x}}{t}^2)\dd{t}^2=\qty(c^2-v^2)\dd{t}^2
+\end{align*}
+This means we can divide through by $c^2$ and take the square root to get $\dd{\tau}$ on its own:
+\begin{align*}
+  \dd{\tau}=\sqrt{1-\frac{v^2}{c^2}}\dd{t}=\frac{\dd{t}}{\gamma}
+\end{align*}
+Note that if $v$ is dependent on time we would need to integrate to get a $\Delta\tau$.
+
+An interesting use of this proper time is the fact that the Lorentz transformation is given by (suppressing the $y,z$ parts which are obvious):
+\begin{align*}
+  t&=\gamma\tau\\
+  x&=\gamma v\tau
+\end{align*}
+Which look a lot more familiar
+\subsection{The Doppler Effect}
+The formula is just:
+\begin{align*}
+  \frac{\nu_{obs}}{\nu_{rf}}=\qty(\frac{1-\beta}{1+\beta})^{1/2}
+\end{align*}
+\subsection{Addition of Velocities}
+The velocity of a particle in terms of an unprimed reference frame is given by:
+\begin{align*}
+  u_x=\dv{x}{t}\quad u_y=\dv{y}{t}\quad u_z=\dv{z}{t}
+\end{align*}
+Note the transformed velocities are found by taking a differential version of the Lorentz transformation and finding the right factors:
+\begin{align*}
+  \dd{t'}&=\gamma\qty(\dd{t}-v\dd{x}/c^2)=\gamma\qty(1-vu_x/c^2)\dd{t}\\
+  \dd{x'}&=\gamma(\dd{x}-v\dd{t})=\gamma\qty(u_x-v)\dd{t}\\
+  \dd{y'}&=\dd{y}\\
+  \dd{z'}&=\dd{z}
+\end{align*}
+So we can find the each of the primed velocity's coordinates:
+\begin{align*}
+  u_x'&=\dv{x'}{t'}=\frac{u_x-v}{1-u_xv/c^2}\\
+  u_y'&=\dv{x'}{t'}=\frac{u_y}{\gamma(1-u_xv/c^2)}\\
+  u_z'&=\dv{x'}{t'}=\frac{u_x}{\gamma(1-u_xv/c^2)}
+\end{align*}
+We can write this in terms of the rapidity when the addition of velocity is in the same direction:
+\begin{align*}
+  u=c\tanh(\psi_v+\psi_{u'})=c\frac{\tanh\psi_v+\tanh\psi_{u'}}{1+\tanh\psi_v\tanh\psi_{u'}}=\frac{u'+v}{1+u'v/c^2}
+\end{align*}
+\subsection{Acceleration}
+We can find acceleration by differentiating the velocity:
+\begin{align*}
+  \dd{u_x}'=\frac{\dd{u_x}}{\gamma^2(1-u_xv/c^2)^2}
+\end{align*}
+Using the same $\dd{t'}$ as before we can see:
+\begin{align*}
+  a'_x=\dv{u'_x}{t'}=\frac{a_x}{\gamma^3(1-u_xv/c^2)^3}
+\end{align*}
+The other two components are:
+\begin{align*}
+  a_{y,z}'=\dv{u'_{y,z}}{t'}=\frac{a_{y,z}}{\gamma^2(1-u_xv/c^2)^2}
+  +\frac{u_{y,z}va_x}{c^2\gamma^2(1-u_xv/c^2)^3}
+\end{align*}
+\section{Reformulation of Special Relativity}
+
+\subsection{Minkowsli Spacetime in Cartesian Coordinates}
+We want to use 4-vectors instead of writing out the same letters each time, we define a position 4-vector as:
+\begin{align*}
+  x^\mu=(ct,x,y,z)=(ct,\vb{x})
+\end{align*}
+And the differential:
+\begin{align*}
+  \dd{x}^\mu=(c\dd{t},\dd{x},\dd{y},\dd{z})=(c\dd{t},\vb{x})
+\end{align*}
+We can then define our invariant interval as an inner product of this vector:
+\begin{align}
+  \dd{s}^2=\dd{x}^\mu\eta_{\mu\nu}\dd{x}^\nu \label{eq:metric}
+\end{align}
+Where $\eta_{\mu\nu}$ is the metric tensor:
+\begin{align*}
+  \eta_{\mu\nu}=\pmqty{\dmat{1}{-1}{-1}{-1}}
+\end{align*}
+Note that all other elements are zero.
+
+From the form of \eqref{eq:metric} we know this should be an inner product:
+\begin{align*}
+  \dd{s}^2=\pmqty{c\dd{t}& \dd{\vb{x}}}
+  \pmqty{\dmat{1}{-1}}\pmqty{c\dd{t}\\ \dd{\vb{x}}}=c^2\dd{t}^2-\dd{\vb{x}}^2
+\end{align*}
+
+\subsection{Lorentz Transformations}
+We know the interval $\dd{s}^2$ is invariant, so if we write it in terms of two different coordinate systems:
+\begin{align*}
+  \eta_{\mu\nu}\dd{x}^\mu\dd{x}^\nu=\dd{s^2}=
+  \eta_{\rho\sigma}\dd{x'}^\rho\dd{x'}^\sigma
+\end{align*}
+Matching the differentials we can find the Lorentz transformation between $x^\mu\to x^{\prime\mu}$:
+\begin{align*}
+  \eta_{\mu\nu}=\pdv{x^{\prime\rho}}{x^\mu}\pdv{x^{\prime\sigma}}{x^\nu}
+  \eta_{\rho\sigma}
+\end{align*}
+The metric should be invariant, so that product of derivatives must be the identity $1$
+\begin{align*}
+  x^{\prime\mu}=\Lambda^\mu_\mu x^\nu+a^\mu
+\end{align*}
+This is a general Poincar\'{e} transformation, but for pure Lorentz transformation we set $a^\mu=0$. The matrix form of these is:
+\begin{align*}
+  \Lambda= \qty[\pdv{x^{\prime\mu}}{x^\nu}]=
+  \pmqty{\gamma&-\beta\gamma \\ -\beta\gamma&\gamma \\&&1&\\ &&&1}=
+  \pmqty{\cosh\psi&-\sinh\psi\\-\sinh\psi&\cosh\psi\\ &&1&\\ &&&1}
+\end{align*}
+The inverse is given by:
+\begin{align*}
+  \qty(\Lambda^\mu_\nu)^{-1}=\lambda_\mu^\nu
+\end{align*}
+This means that:
+\begin{align*}
+  \Lambda_\mu^\nu=\eta_{\mu\rho}\eta^{\nu\sigma}\Lambda^\rho_\sigma
+\end{align*}
+Hence we can prove it is the inverse:
+\begin{align*}
+  \Lambda^\mu_\nu\Lambda_\mu^\sigma=\Lambda^\mu_\nu\eta_{\mu\rho}\eta^{\sigma\tau}
+  \Lambda^{\rho}_\tau=\eta_{\nu\tau}\eta^{\sigma\tau}=\delta^\sigma_\nu
+\end{align*}
+\subsection{Four-vectors and Lorentz transformations}
+The transformation in terms of 4-vectors can be written as:
+\begin{align*}
+  v^{\prime\mu}=\Lambda^\mu_\nu v^\nu
+\end{align*}
+Where $\Lambda$ relates unprimed and primed coordinates
+\subsection{Four-velocity}
+Dotting the 4-velocity with itself is a scalar:
+\begin{align*}
+  u^\mu u_\mu=\qty(\dv{s}{\tau})^2=c^2
+\end{align*}
+So the contravariant components of the 4-velocity is given by:
+\begin{align*}
+  u^\mu=\dv{x^\mu}{\tau}
+\end{align*}
+We can then write out the components:
+\begin{align*}
+  u^\mu=\gamma_u\qty(c,\dv{\vb{x}}{t})
+\end{align*}
+Now for the primed coordinates, simply replace any $x$ in the earlier equation by $1$ and $y,z$ with  $2,3$
+\subsection{Four-momentum of a massive particle}
+The easiest way to define momentum in special relativity is:
+\begin{align*}
+  p^\mu=m_0u^\mu
+\end{align*}
+Using the length of the 4-velocity we can derive the length of the 4-momentum:
+\begin{align*}
+  p^\mu p_\mu=m_0^2c^2
+\end{align*}
+Its components are:
+\begin{align*}
+  p^\mu=\qty(\frac{E}{c},\vb{p})
+\end{align*}
+Matching components, we get:
+\begin{align*}
+  E&=\gamma m_0c^2\\
+  \vb{p}&=\gamma m_0\vb{u}
+\end{align*}
+Using these, we can write the length again as:
+\begin{align*}
+  \frac{E^2}{c^2}-\vb{p}\vdot\vb{p}&=m_0^2c^2\\
+  \implies E^2-p^2c^2&=m_0^2c^4
+\end{align*}
+For waves, we introduce the 4-wavevector $k$:
+\begin{align*}
+  k^\mu=(\omega/c,\vb{k})
+\end{align*}
+\subsection{Relativistic Mechanics}
+The equation of motion of a massive particle is given by:
+\begin{align*}
+  \pdv{p^\mu}{\tau}=f^\mu
+\end{align*}
+Where $f^\mu$ is the 4-force, whose components are:
+\begin{align*}
+  f^\mu=\gamma_u\qty(\frac{\vb{f}\vdot\vb{u}}{c},\vb{f})
+\end{align*}
+\subsection{Relativistic Collisions}
+It is most important to know that a particle at rest has the following 4-momentum:
+\begin{align*}
+  p^\mu=(mc,0,0,0)
+\end{align*}
+Where a general moving particle has:
+\begin{align*}
+  p^\mu=(E,\vb{p})
+\end{align*}
+
+\end{document}
