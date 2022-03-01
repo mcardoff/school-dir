@@ -43,9 +43,116 @@
 \begin{document}
 \maketitle
 \section{Crystal Structure}
+Any lattice point in a crystal structure can be found by knowing the basis and the translation vectors $\{\vb{a}_i\}$, in 3-D this looks like:
+\begin{align*}
+  \vb{T}=\Delta{\vb{r}}=u_1\vb{a}_1+u_2\vb{a}_2+u_3\vb{a}_3
+\end{align*}
 
+Some notable notations are:
+\begin{itemize}
+\item \emph{Conventional cell}: The first cell that comes to mind when you think of a crystal structure. 
+\item \emph{Primitive cell}: The cell that has only one lattice point per cell.
+\end{itemize}
+
+The basic types of lattice we will study are:
+\begin{itemize}
+\item \emph{Simple Cubic} (SC) Conventional cell has an atom in each corner of the cube
+\item \emph{Face Centered Cubic} (FCC) Conventional cell has an atom in each corner of the cube as well as one in the \textbf{center} of each \textbf{face}
+\item \emph{Body Centered Cubic} (BCC) Conventional cell has an atom in each corner of the cube as well as one in the \textbf{center} of the \textbf{body}
+\end{itemize}
+From these description alone many of the properties in Kittel's table 2 can be calculated.
+
+Some notable other structures are diamond, which is FCC with some caveats, NaCl, which is FCC but with a basis of one Na$^+$ and one Cl$^-$, CsCl which is actuall two simple subic structures, and Hexagonal close packing.
 \section{Wave Diffraction and the Reciprocal Lattice}
+Bragg's Law is the important equation here, though we can rewrite it in other terms, it is useful in the 'path difference' form here:
+\begin{align*}
+  2d\sin\theta=n\lambda
+\end{align*}
 
+\subsection{Fourier Analysis}
+Crystals are invariant under translations, they will look the same, so we have some periodic condition of electron number density, $n(\vb{r})$:
+\begin{align*}
+  n(\vb{r+T})=n(\vb{r})
+\end{align*}
+It might be useful to write this as a Fourier series:
+\begin{align*}
+  n(x)=n_0+\sum_{p>0}\qty(C_p\cos(2\pi px/a)+S_p\sin(2\pi px/a))
+\end{align*}
+This form satisfies the periodic condition explicitly.
+
+We can write this in a single sum using a complex exponential and summing over all $p$ instead of just $p>0$:
+\begin{align*}
+  n(x)=\sum_pn_p\exp{2\pi ipx/a}
+\end{align*}
+Due to our formulation of the coefficients we find that:
+\begin{align*}
+  n_p=n^*_{-p}
+\end{align*}
+
+For multiple dimensions we replace the quantity $p$ with a vector $\vb{G}$ such that:
+\begin{align*}
+  n(\vb{r})=\sum_{\vb{G}}n_{\vb{G}}\exp{-\vb{G}\vdot\vb{r}}
+\end{align*}
+
+We can find the coefficient by taking an integral:
+\begin{align*}
+  n_p=\frac{1}{a}\int_0^a\dd{x}n(x)\exp{-i2\pi px/a}
+\end{align*}
+Using our sum definition for $n(x)$ we get:
+\begin{align*}
+  n_p=\frac{1}{a}\sum_{p'}n_{p'}\int_0^a\dd{x}\exp{-2\pi(p'-p)x/a}
+\end{align*}
+So long as $p\neq p'$ we can evaluate the integral:
+\begin{align*}
+  \frac{a}{i2\pi(p'-p)}\qty(\exp{-2\pi(p-p')}-1)=0
+\end{align*}
+
+In 3-D:
+\begin{align*}
+  n_{\vb{G}}=V_c^{-1}\int_{cell}\dd{V}n(\vb{r})\exp{-i\vb{G}\vdot\vb{r}}
+\end{align*}
+
+The reciprocal lattice vectors describe the spacing in (essentially) momentum space, they are the primitive vectors of the reciprocal lattice. 
+\begin{align*}
+  \vb{b}_1=2\pi\frac{\vb{a}_2\times\vb{a}_3}
+  {\vb{a}_1\vdot\vb{a}_2\times\vb{a}_3}\qquad
+  \vb{b}_2=2\pi\frac{\vb{a}_3\times\vb{a}_1}
+  {\vb{a}_1\vdot\vb{a}_2\times\vb{a}_3}\qquad
+  \vb{b}_3=2\pi\frac{\vb{a}_1\times\vb{a}_2}
+  {\vb{a}_1\vdot\vb{a}_2\times\vb{a}_3}
+\end{align*}
+Due to their definition with a cross product, the following property holds:
+\begin{align*}
+  \vb{b}_i\vdot\vb{a}_j=2\pi\delta_{ij}
+\end{align*}
+So points in reciprocal are mapped by the vector $\vb{G}$:
+\begin{align*}
+  \vb{G}=v_1\vb{b}_1+v_2\vb{b}_2+v_3\vb{b}_3
+\end{align*}
+
+Different scattering conditions can be found using various properties of waves:
+\begin{align*}
+  \Delta{\vb{k}}=\vb{G}
+\end{align*}
+We can also write a diffraction condition, equivalent to Bragg's law:
+\begin{align*}
+  2\vb{k}\vdot\vb{G}=G^2
+\end{align*}
+Which reduces to the more familiar Bragg's law:
+\begin{align*}
+  2d_{hkl}\sin\theta=\lambda
+\end{align*}
+
+We define a Brillouin zone based on the following reformulation of the diffraction condition:
+\begin{align*}
+  \vb{k}\vdot\qty(\frac{1}{2}\vb{G})=\qty(\frac{1}{2}G)^2
+\end{align*}
+Here is the process for finding Brillouin zones:
+\begin{enumerate}
+\item Select a vector $\vb{G}$ from the origin to a reciprocal lattice point.
+\item Construct a plane normal to this vector at its midpoint
+\item This plane is the boundary of the Brillouin zone.
+\end{enumerate}
 \section{Phonons}
 
 \subsection{Crystal Vibrations}
