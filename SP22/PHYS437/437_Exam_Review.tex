@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 437 Review}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\begin{document}
+\maketitle
+\section{Crystal Structure}
+
+\section{Wave Diffraction and the Reciprocal Lattice}
+
+\section{Phonons}
+
+\subsection{Crystal Vibrations}
+
+\subsection{Thermal Properties}
+
+\section{Free Electron Fermi Gas}
+
+
+\end{document}
