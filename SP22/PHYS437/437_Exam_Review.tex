@@ -39,6 +39,7 @@
 }
 
 \renewcommand{\L}{\mathcal{L}}
+\newcommand{\vbb}[1]{\bm\vb{#1}}
 
 \begin{document}
 \maketitle
@@ -68,6 +69,19 @@ Bragg's Law is the important equation here, though we can rewrite it in other te
 \begin{align*}
   2d\sin\theta=n\lambda
 \end{align*}
+
+Extinction Rules:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c}
+    Lattice & Allowed vals \\ \hline
+    SC & All \\
+    BCC & $h+k+\ell=2n$ \\
+    FCC & $h,k,\ell$ all odd or all even \\
+    Diamond & FCC +$h+k+\ell=4n$
+  \end{tabular}
+  \caption{Extinction Rules}
+\end{table}
 
 \subsection{Fourier Analysis}
 Crystals are invariant under translations, they will look the same, so we have some periodic condition of electron number density, $n(\vb{r})$:
@@ -153,10 +167,98 @@ Here is the process for finding Brillouin zones:
 \item Construct a plane normal to this vector at its midpoint
 \item This plane is the boundary of the Brillouin zone.
 \end{enumerate}
+
+\subsection{Fourier Analysis of the Basis}
+When the diffraction $\Delta{\vb{k}}=\vb{G}$ condition is met, we can write the scattering amplitude for a crystal of $N$ cells can be written:
+\begin{align*}
+  F_{\vb{G}}=N\int\dd{V}n(\vb{r})\exp{-i\vb{G}\vdot\vb{r}}=NS_{\vb{G}}
+\end{align*}
+Where $S_{\vb{G}}$ is the structure factor is defined as an integral over a single cell, with $\vb{r}=0$ at one corner.
+
+We can write the total concentration as a sum over individual electron concentrations $n_j$ associated with each atom $j$ of the cell:
+\begin{align*}
+  n(\vb{r})=\sum_{j-1}^sn_j(\vb{r-r}_j)
+\end{align*}
+We can then write the structure factor defined earlier may be written over interals over the atoms:
+\begin{align*}
+  S_{\vb{G}}&=\sum_j\int\dd{V}n_j(\vb{r-r}_j)\exp{-i\vb{G\vdot r}}\\
+  &=\sum_j\exp{-i\vb{G}\vdot\vb{r}_j}\int\dd{V}n_j(\vb{\bm{\rho}})
+  \exp{-i\vb{G}\vdot\vb{\bm{\rho}}}
+\end{align*}
+We then define the atomic form factor as:
+\begin{align*}
+  f_j=\int\dd{V}n_j(\vb{\bm{\rho}})\exp{-i\vb{G}\vdot\vb{\bm{\rho}}}
+\end{align*}
+So that the structure factor is:
+\begin{align*}
+  S_{\vb{G}}=\sum_jf_j\exp{-i\vb{G}\vdot\vb{r}_j}
+\end{align*}
+This can be written in terms of the position of the atoms $(x_i,y_i,z_i)$ and the standard $\vb{G}$ vector:
+\begin{align*}
+  \vb{G}\vdot\vb{r}_j=2\pi\qty(v_1x_j+v_2y_j+v_3z_j)
+\end{align*}
+The structure factor is then:
+\begin{align*}
+  S_{\vb{G}}=\sum_jf_j\exp{-2\pi i(v_1x_j+v_2y_j+v_3z_j)}
+\end{align*}
+There are certain assumptions you can make to reduce the integral for $f_j$, you would end up with:
+\begin{align*}
+  f_j=4\pi\int\dd{r}n_j(r)r^2\frac{\sin(Gr)}{Gr}
+\end{align*}
+Where $G=\norm{\vb{G}}$
 \section{Phonons}
 
 \subsection{Crystal Vibrations}
+If we describe an infinite chain of atoms connected in 1-D, the force on atom $s$ will be:
+\begin{align*}
+  F_s=C(u_{s+1}-u_s)+C(u_{s-1}-u_s)
+\end{align*}
+Where $C$ is the force constant between each of the atoms, for these purposes the constant is the same for each atom, this is not necessarily true in all cases.
 
+We find that the solutions have the relationship:
+\begin{align*}
+  u_{s\pm1}=u\exp{isKa}\exp{\pm iKa}
+\end{align*}
+From this we can derive a dispersion relation:
+\begin{align*}
+  \omega^2=\frac{2C}{M}\qty(1-\cos Ka)
+\end{align*}
+At the first Brillouin zone, the derivative $\dv{\omega}{K}$ should be $0$:
+\begin{align*}
+  \dv{\omega^2}{K}=\frac{2Ca}{M}\sin(Ka)=0
+\end{align*}
+Therefore $K=\pm\pi/a$. At not the boundary of the Brillouin zone, we define the derivative as the group velocity:
+\begin{align*}
+  v_g=\dv{\omega}{K}
+\end{align*}
+Having two or mode per the primitive cell introduces acoustic and optical branches, specifically, if there are $p$ atoms in the cell, there will be 3 acoustic and 3p-3 optical branches. With $p$ atoms in the primitive cell, and $N$ primitive cells, there are $pN$ atoms. Each atom has three degrees of freedom, so $3pN$ degrees of freedom in the crystal total. The number of $K$ values allowed in a branch is $N$, defined by the Brillouin zone. So all of the acoustic branches account for $3N$ degrees of freedom (2 transverse and one longitudinal), the remaining $3(p-1)N$ are from optical branches.
+
+For a crystal of say $2$ atoms, we get a system of equations:
+\begin{align*}
+  M_1\dv[2]{u_s}{t}&=C(v_s+v_{s-1}-2u_s)\\
+  M_2\dv[2]{v_s}{t}&=C(u_{s+1}+u_s-2v_s)
+\end{align*}
+
+We examine two cases for the dispersion relation:
+\begin{itemize}
+\item[$Ka\ll1$)]For the optical branch the dispersion relation is given by:
+  \begin{align*}
+    \omega^2\approx2C\qty(\frac{1}{M_1}+\frac{1}{M_2})
+  \end{align*}
+  And the acoustic:
+  \begin{align*}
+    \omega^2\approx2C\qty(\frac{1}{M_1}+\frac{1}{M_2})
+  \end{align*}
+\item[$Ka=\pm\pi$)] The roots are:
+  \begin{align*}
+    \omega^2=\frac{2C}{M_1}\qquad\frac{2C}{M_2}
+  \end{align*}
+\end{itemize}
+
+The energy of these lattice vibrations are quantized:
+\begin{align*}
+  E=\qty(n+\frac{1}{2})\hbar\omega
+\end{align*}
 \subsection{Thermal Properties}
 
 \section{Free Electron Fermi Gas}
