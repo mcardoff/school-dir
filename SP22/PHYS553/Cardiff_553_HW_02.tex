@@ -1,0 +1,422 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 553 HW 2}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\H}{\mathcal{H}}
+\renewcommand{\P}{\mathcal{P}}
+
+\newcommand{\D}{\partial}
+\newcommand{\g}{\gamma}
+\newcommand{\phis}{\phi^*}
+
+\newcommand{\phih}{\hat{\phi}}
+\newcommand{\phish}{\hat{\phi}^*}
+\newcommand{\pih}{\hat{\Pi}}
+\newcommand{\pish}{\hat{\Pi}^*}
+
+\newcommand{\ahat}{\hat{a}}
+\newcommand{\ahatd}{\hat{a}^\dag}
+\newcommand{\bhat}{\hat{b}}
+\newcommand{\bhatd}{\hat{b}^\dag}
+
+\newcommand{\intk}{\int\frac{\dd[3]{k}}{(2\pi)^32\omega(k)}}
+\newcommand{\intkp}{\int\frac{\dd[3]{k}}{2(2\pi)^3}}
+
+\begin{document}
+\maketitle
+
+\section{Classical Variables}
+As a reminder this is our Lagrangian density:
+\begin{align*}
+  \L=\qty(\D_\mu\phi_a)^*\D^\mu\phi_a-m_0^2\phis_a\phi_a=
+  (\D_0\phi_a)^*\D^0\phi - \grad{\phi}\vdot\grad{\phis}-m_0\phis_a\phi_a
+\end{align*}
+\subsection{Canonical Momenta}
+First we find $\Pi_a$, conjugate to $\phi_a$:
+\begin{align*}
+  \Pi_a=\fdv{\L}{\D_0\phi_a}=\boxed{\D^0\phis_a}
+\end{align*}
+Similar for the momentum $\Pi^*_a$ conjugate to $\phis_a$:
+\begin{align*}
+  \Pi^*_a=\fdv{\L}{\D_0\phis_a}=\boxed{\D^0\phi_a}
+\end{align*}
+\subsection{Hamiltonian}
+First the hamiltonian density $\H$:
+\begin{align*}
+  \H = \sum \D^0\phi\Pi - \L
+\end{align*}
+Where we sum over fields, giving:
+\begin{align*}
+  \H &=  \D^0\phis_a\Pi^*_a+\D^0\phi_a\Pi_a=\L\\
+  &=\Pi_a\Pi^*_a+\Pi^*_a\Pi_a-\L
+\end{align*}
+Since the multiplication between numbers is commutative, we can just write this as:
+\begin{align*}
+  \H = 2\Pi^*_a\Pi_a-\L
+\end{align*}
+The terms with $\D^0$ in the lagrangian will similarly turn into a product of $\Pi$, so we end up with the following Hamiltonian density:
+\begin{align*}
+  \boxed{\H=\Pi^*_a\Pi_a+\grad{\phi}\vdot\grad{\phis}+m_0\phis\phi}
+\end{align*}
+And the hamiltonian is this integrated over space:
+\begin{align*}
+  \boxed{H=\int\dd[3]{x}\H}
+\end{align*}
+\subsection{Total Momentum}
+The total momentum density is the $0,j$ component of the energy-momentum tensor $T^{\mu\nu}$:
+\begin{align*}
+  T^{\mu\nu}&\equiv-g^{\mu\nu}\L+\fdv{\L}{\D_\mu\phi_a}\D^\nu\phi_a\\
+  \implies \P^j=T^{0j}&=-g^{0j}\L+\fdv{\L}{\D_0\phi_a}\D^j\phi_a
+\end{align*}
+We identify the variation term as the canonical momentum $\Pi$, there will also be a term for the other field $\phis$:
+\begin{align*}
+  \boxed{\P^j=\Pi_a\D^j\phi_a+\Pi_a^*\D^j\phis_a}
+\end{align*}
+So that the total momentum is:
+\begin{align*}
+  \boxed{P^j=\int\dd[3]{x}\P^j}
+\end{align*}
+\section{Constants of Motion}
+We want to impose a global $SU(2)$ on this field theory, so we need the following transformations:
+\begin{align*}
+  (U\phi)_a&=U_{ab}\phi_b\\
+  (U\phi)^\dag_a&=\phis_bU^\dag_{ba}
+\end{align*}
+Where the infinitesimal form of this transformation matrix $U_{ab}$ in terms of the $SU(2)$ generators $\sigma^j$ are:
+\begin{align*}
+  U_{ab}&\approx\delta_{ab}+i\sigma^j_{ab}\theta^j\\
+  U^\dag_{ab}&\approx\delta_{ab}-i\sigma^j_{ab}\theta^j
+\end{align*}
+We can then identify the infinitesimal variation in $\phi$ and $\phis$:
+\begin{align*}
+  \delta\phi_a&\approx i\sigma^j_{ab}\phi_b\theta^j\\
+  \delta\phis_a&\approx i\phis_b\sigma^j_{ba}\theta^j
+\end{align*}
+Now we can vary our Lagrangian:
+\begin{align*}
+  \delta\L=\fdv{\L}{\phi_a}\delta\phi_a+\fdv{\L}{\D_\mu\phi_a}+
+  \fdv{\L}{\phis_a}\delta\phis_a+\fdv{\L}{\D_\mu\phis_a}
+\end{align*}
+Turning this into the usual total derivative:
+\begin{align*}
+  \delta\L=\D_\mu\qty(\fdv{\L}{\D_\mu\phi_a}\delta\phi_a+
+  \delta\phis_a\fdv{\L}{\D_\mu\phis_a})
+\end{align*}
+We can do the functional derivatives from the canonical momentum, except replacing the $0\to\mu$, and we replace the $\delta$ with what we found earlier:
+\begin{align*}
+  \delta\L=i\D_\mu\qty(\sigma^j_{ab}\qty(\D^\mu\phi_a)^a\phi_b
+  -\phis_b\sigma^j_{ba}\qty(\D^\mu\phi_a))\theta^j
+\end{align*}
+Conservation of any current tells us:
+\begin{align*}
+  \D^\nu j_\nu=0
+\end{align*}
+However, we know the currents do not include the corresponding $\theta$ variables, so we should have three separate currents $j_\mu^j$
+\begin{align*}
+  \boxed{j_\mu^j=-i\qty((\D_\mu\phi)^*_a\sigma^j_{ab}\phi_
+  b-\phis_b\sigma^k_{ba}\D_\mu\phi_a)}
+\end{align*}
+So there is a conserved noether current for each of the $SU(2)$ generators. If we integrate the $0$ component, we get the conserved charge:
+\begin{align*}
+  \boxed{Q^j=\int\dd[3]{x}j_0^j=-i\sigma^j_{ab}
+  \int\dd[3]{x}\qty(\Pi_a\phi_b-\phi^*_a\Pi^*_b)}
+\end{align*}
+\section{Quantizing}
+In order to quantize this field, we need to promote the fields $\phi,\phis,\Pi,\Pi^*$ to operators, and impose the equal time commutation relations:
+\begin{align*}
+  \Pi_a\to\pih_a\qquad\phi_a\to\phih_a
+\end{align*}
+So the Hamiltonian is:
+\begin{align*}
+  \hat{H}=\int\dd[3]{x}\qty(\pish\pih+\grad{\phih_a}\vdot\grad{\phish_a}+
+  m_0^2\phish\phih)
+\end{align*}
+The total momentum:
+\begin{align*}
+  \hat{P}^j=\int\dd[3]{x}\qty(\pih_a\D^j\phih_a+\pish_a\D^j\phish_a)
+\end{align*}
+The commutation relations are:
+\begin{equation*}
+    \boxed{
+      \begin{aligned}
+        \comm{\phih_a(\vb{x},t)}{\pih_b(\vb{y},t)}=
+        \comm{\phish_a(\vb{x},t)}{\pish_b(\vb{y},t)}&=
+        i\delta_{ab}\delta^3(\vb{x}-\vb{y})\\
+        \comm{\phih_a(\vb{x},t)}{\phih_b(\vb{y},t)}=
+        \comm{\pih_a(\vb{x},t)}{\pih_b(\vb{y},t)}&=0 \\
+        \comm{\phih_a(\vb{x},t)}{\pish_b(\vb{y},t)}=
+        \comm{\pih_a(\vb{x},t)}{\phish_b(\vb{y},t)}&=0
+      \end{aligned}
+    }
+\end{equation*}
+
+\section{Heisenberg Equations of Motion}
+Time evolution in the Heisenberg picture is given by:
+\begin{align*}
+  \D_0\phih_a(\vb{x},t)=\frac{1}{i}\comm{\phih_a(\vb{x},t)}{\hat{H}(\vb{y},t)}
+\end{align*}
+Clearly the field operator commuts with the potential and the gradient term, so we only need to find the following commutator:
+\begin{align*}
+  \comm{\phih_a(\vb{x},t)}{\pih_b(\vb{y},t)\pish_b(\vb{y},t)}=
+  i\delta_{ab}\delta^3(\vb{x}-\vb{y})\pish_b(\vb{y},t)=\pish_a(\vb{x},t)
+\end{align*}
+The direct commutator can be inserted since $\phih$ commutes with $\pish$. As expected:
+\begin{align*}
+  \boxed{\D_0\phih_a(\vb{x},t)=\pish_a(\vb{x},t)}
+\end{align*}
+Where we have integrated out the delta function. The exact same process can be applied to $\phish$, getting:
+\begin{align*}
+  \boxed{\D_0\phish_a(\vb{x},t)=\pih_a(\vb{x},t)}
+\end{align*}
+For the momenta variables, we need to take advantage of the fact that we are integrating our Hamiltonian density, something which was not necessary before, but we shall do the gradient first to use this:
+\begin{align*}
+  \int\dd[3]{y}\comm{\pih_a(\vb{x},t)}{\grad_{\vb{y}}{\phih_b(\vb{y},t)}}
+  \grad_{\vb{y}}\phish_b(\vb{y},t)
+\end{align*}
+Integrating by parts puts another gradient on $\phish_b$, and off of the commutator, and we ignore the boundary terms:
+\begin{align*}
+  \int\dd[3]{y}\comm{\phih_b(\vb{y},t)}{\pih_a(\vb{x},t)}
+  \laplacian_y{\phish_b(\vb{y},t)}
+\end{align*}
+The commutator then places in an $i$, changes the $b\to a$, then we can integrate out the $\vb{y}$ to $\vb{x}$:
+\begin{align*}
+  \int\dd[3]{y}\comm{\phih_b(\vb{y},t)}{\pih_a(\vb{x},t)}
+  \laplacian_y{\phish_b(\vb{y},t)}=i\laplacian{\phish_a(\vb{x},t)}
+\end{align*}
+Doing the potential commutator is the same as the previous, only we get a $\phish$, and it is negative, so we end up with...
+\begin{align*}
+  \boxed{\D_0\pih(\vb{x},t)=\laplacian{\phish_a(\vb{x},t)}-m_0^2\phish_a}
+\end{align*}
+Similarly for the other momentum:
+\begin{align*}
+  \boxed{\D_0\pish_a(\vb{x},t)=
+    \laplacian{\phih_a(\vb{x},t)}-m^2\phih_a(\vb{x},t)}
+\end{align*}
+\section{Creation/Annihilation Operators}
+We expand the field in terms of incoming and outgoing waves:
+\begin{align*}
+  \phih(\vb{x},x0)=\int\frac{\dd[3]{k}}{(2\pi)^3}
+  \qty[\phih_+(\vb{k},x0)e^{i\vb{k}\vdot\vb{x}}+
+  \phih_-(\vb{k},x0)e^{-i\vb{k}\vdot\vb{x}}]
+\end{align*}
+The $\phih_\pm$ must each satisfy the momentum space klein gordon equation:
+\begin{align*}
+  \D_0^2\phih_\pm(\vb{k},x_0)+\qty(k^2+m^2)\phih_\pm(\vb{k},x0)=0
+\end{align*}
+So we need an exponential time dependence, with energy $\omega(\vb{k})$:
+\begin{align*}
+  \omega(\vb{k})=\sqrt{k^2+m^2}
+\end{align*}
+Like in class, we only need solutions on the light cone, which are proportional to $\omega(\vb{k})x_0-\vb{k}\vdot\vb{x}$, which shall be called $k\vdot x$ from here on out, with $k=(\omega(\vb{k}),\vb{k})$. Doing this again with $\phish$ gives the following forms for our field operators:
+\begin{align*}
+  \phih(x)&=\int\frac{\dd[3]{k}}{(2\pi)^3}
+  \qty[\phih_+(k)\exp{-ik\vdot x}+\phih_-(k)\exp{ik\vdot x}]\\
+  \phish(x)&=\int\frac{\dd[3]{k}}{(2\pi)^3}
+  \qty[\phish_+(k)\exp{-ik\vdot x}+\phish_-(k)\exp{ik\vdot x}]
+\end{align*}
+Similar to what we did in class, matching coefficients of the exponentials we find that:
+\begin{align*}
+  \phish_+=\phih^\dag_-\qquad\phish_-=\phih^\dag
+\end{align*}
+Thus we get our properly adjusted operators to ensure a Lorentz invariant measure:
+\begin{align*}
+  \ahat(k)=2\omega(k)\phih_+\qquad\bhatd(k)=2\omega(k)\phih_-
+\end{align*}
+Where the commutation relations are:
+\begin{align*}
+  \comm{\ahat(k)}{\ahatd(q)}&=(2\pi)^3\omega(k)\delta^3(k-q)\\
+  \comm{\bhat(k)}{\bhatd(q)}&=(2\pi)^3\omega(k)\delta^3(k-q)
+\end{align*}
+With once again every other commutator as 0. The fields now in terms of our creation and annihilation operators are:
+\begin{align*}
+  \phih(x)&=\intk\qty[\ahat(k)e^{-ik\vdot x}+\bhatd(k)e^{ik\vdot x}]\\
+  \phish(x)&=\intk\qty[\bhat(k)e^{-ik\vdot x}+\ahatd(k)e^{ik\vdot x}]
+\end{align*}
+Do not get confused between $a$ the component and $\ahat$ the operator as we generalize to a vector instead:
+\begin{equation*}
+  \boxed {
+    \begin{aligned}
+      \phih_a(x)&=\intk\qty[\ahat_a(k)e^{-ik\vdot x}+\bhatd_a(k)e^{ik\vdot x}]\\
+      \phish_a(x)&=\intk\qty[\bhat_a(k)e^{-ik\vdot x}+\ahatd_a(k)e^{ik\vdot x}]
+    \end{aligned}
+  }
+\end{equation*}
+From similar calculations to those done in class, we get the momenta as:
+\begin{equation*}
+  \boxed{
+    \begin{aligned}
+      \pih_a(x)&=i\intkp\qty[\ahatd_a(k)e^{ik\vdot x}-\bhat_a(k)e^{-ik\vdot x}]\\
+      \pish_a(x)&=-i\intkp\qty[\ahat_a(k)e^{-ik\vdot x}-\bhatd_a(k)e^{ik\vdot x}]
+    \end{aligned}
+  }
+\end{equation*}
+
+\section{Generators}
+Promoting the conserved charge $\hat{Q}$ to an operator allows us to equate coefficients and find what the $\sigma$ should be. We had two different products:
+\begin{align*}
+  -\phish_a\pish_b(x)\propto
+  i\qty(\bhat_m(q)e^{-iq\vdot x}+\ahatd_m(q)e^{iq\vdot x})
+  \qty(\ahat_n(k)e^{-ik\vdot x}+\bhatd_n(q)e^{ik\vdot x})
+\end{align*}
+Where the $\propto$ means that we ignore the integration operators. Multiply out the operators:
+\begin{align*}
+  \bhat_m(q)\ahat(k)e^{-i(k+q)\vdot x}-\bhat_m(q)\bhatd_n(k)e^{i(k-q)\vdot x}
+  +\ahatd_m(q)\ahat_n(k)e^{-i(k+q)\vdot x}-\ahatd_m(q)\bhatd_n(k)e^{i(k+q)\vdot x}
+\end{align*}
+Integrating out ONE of the variables $q$ allows us to use the fact that:
+\begin{align*}
+  \int\dd[3]{x}e^{\pm i(\vb{k}\pm \vb{q})\vdot \vb{x}}
+  =(2\pi)^3\delta^3(\vb{k}\pm \vb{q})
+\end{align*}
+Note that the integration is with respect to the 3-vector, not 4-vector. We then end up with:
+\begin{align*}
+  \bhat_m(-k)\ahat(k)e^{-2i\omega(k)x_0}-\bhat_m(k)\bhatd_n(k)+
+  \ahatd_m(k)\ahat_n(k)-\ahatd(k)\bhatd(-k)e^{2i\omega(k)x_0}
+\end{align*}
+The other product in our conserved charge:
+\begin{align*}
+  \pih_m\phih_n(x)\propto
+  i\qty(\ahatd_m(k)e^{ik\vdot x}+\bhat_m(k)e^{-ik\vdot x})
+  \qty(\ahat_n(q)e^{-iq\vdot x}+\bhatd_n(q)e^{iq\vdot x})
+\end{align*}
+Same 'proportionality' applies here, expand out:
+\begin{align*}
+  \ahatd_m(k)\ahat_n(q)e^{i(k-q)\vdot x}-\bhat_m(k)\ahat_n(q)e^{-i(k+q)\vdot x}+
+  \ahatd_m(k)\bhatd_n(q)e^{-i(k+q)\vdot x}-\bhat_m(k)\bhatd_n(q)e^{-i(k-q)\vdot x}
+\end{align*}
+Same simplification results in:
+\begin{align*}
+  \ahatd_m(k)\ahat_n(k)-\bhat_m(k)\ahat_n(-k)e^{-2i\omega(k)x_0}+
+  \ahatd_m(k)\bhatd_n(-k)e^{-2i\omega(k)x_0}-\bhat_m(k)\bhatd_n(k)
+\end{align*}
+Hence we get:
+\begin{align*}
+  \boxed{\hat{Q}^j=-i\sigma_{mn}^j\int\frac{\dd[3]{k}}{(2\pi)^32\omega(k)}
+  \qty(\ahat_m(k)\ahat_n(k)-\bhat_m(k)\bhatd_n(k))}
+\end{align*}
+\section{Ground State}
+It may be easier to first find the normal ordered Hamiltonian, we EXPECT it to look something like:
+\begin{align*}
+  :\hat{H}:=\int\frac{\dd[3]{k}}{(2\pi)^32\omega(k)}\omega(k)
+  \qty[\ahatd_m(k)\ahat_m(k)+\bhatd_m(k)\bhat_m(k)]
+\end{align*}
+The gradient and momenta square terms in the scalar case turn into:
+\begin{align*}
+  \iint\frac{\dd[3]{k}}{2\omega(k)(2\pi)^3}\frac{\dd[3]{q}}{2\omega(q)(2\pi)^3}
+  \qty(\omega(k)\omega(q)+\vb{k}\vdot\vb{q})
+  \qty(\ahat(k)e^{-ik\vdot x}-\bhatd(k)e^{ik\vdot x})
+  \qty(\ahatd(q)e^{iq\vdot x}-\bhat(q)e^{-iq\vdot x})
+\end{align*}
+Expanding terms and simplifying one of the integrals gives a result similar to what we have had before, notably however, we still have the factor in the front to worry about since we end up with delta functions in terms of $k$. The potential term is only in terms of $\phih\phish$:
+\begin{align*}
+  \phih\phish=
+  \iint\frac{\dd[3]{k}}{2\omega(k)(2\pi)^3}\frac{\dd[3]{q}}{2\omega(q)(2\pi)^3}
+  \qty(\ahat(k)e^{-ik\vdot x}+\bhatd(k)e^{ik\vdot x})
+  \qty(\ahatd(q)e^{iq\vdot x}+\bhat(q)e^{-iq\vdot x})
+\end{align*}
+Expanding and such gives similar results which give similar delta functions. This along with the previous term however will give us some terms which we can remove given the fact that we are within the light cone. The full mess is:
+\begin{align*}
+  \hat{H}=\iint&\frac{\dd[3]{k}}{2\omega(k)(2\pi)^3}
+  \frac{\dd[3]{q}}{2\omega(q)(2\pi)^3}\\
+  &\left(\delta^3(k-q)\qty(\omega(k)\omega(q)+\vb{k\vdot q}+m^2)
+    \qty(\ahat(k)\ahatd(q)e^{i(\omega(k)-\omega(q))x_0}
+    +\bhatd(k)\bhat(q)e^{-i(\omega(k)-\omega(q))x_0})\right.\\
+  +&\left.\delta^3(k+q)\qty(-\omega(k)\omega(q)-\vb{k\vdot q}+m^2)
+    \qty(\bhatd(k)\ahatd(q)e^{-i(\omega(k)+\omega(q))x_0}
+    +\ahat(k)\bhat(q)e^{i(\omega(k)+\omega(q))x_0})\right)
+\end{align*}
+The second delta makes that term go away due to the klein-gordon equation. Due to the same relation the first term is proportional to just $\omega$:
+\begin{align*}
+  \hat{H}=\int\frac{\dd[3]{k}}{2\omega(k)(2\pi)^3}\omega(k)
+  \qty(\ahat(k)\ahatd(k)+\bhatd(k)\bhat(k))
+\end{align*}
+Add in the components:
+\begin{align*}
+  \hat{H}=\int\frac{\dd[3]{k}}{2\omega(k)(2\pi)^3}\omega(k)
+  \qty(\ahat_a(k)\ahatd_a(k)+\bhatd_a(k)\bhat_a(k))
+\end{align*}
+Switching around the $\ahat$ so we have a normal ordering gives an explicit infinity:
+\begin{align*}
+  \hat{H}=\int\frac{\dd[3]{k}}{2\omega(k)(2\pi)^3}\omega(k)
+  \qty(\ahatd_a(k)\ahat_a(k)+\bhatd_a(k)\bhat_a(k))
+  +\sum_a\int\dd[3]{k}\frac{\omega(k)}{2}\delta^3(k-k)
+\end{align*}
+Exactly as expected, the normal ordered Hamiltonian is:
+\begin{align*}
+  \boxed{:\hat{H}:\,= \int\frac{\dd[3]{k}}{(2\pi)^32\omega(k)}\omega(k)
+  \qty[\ahatd_m(k)\ahat_m(k)+\bhatd_m(k)\bhat_m(k)]}
+\end{align*}
+Thus the ground state is defined by:
+\begin{align*}
+  \ahatd_a(k)\ahat_a(k)\ket{0}=\bhatd_a(k)\bhat_a(k)\ket{0}=0
+\end{align*}
+More importantly, the ground state energy is:
+\begin{align*}
+  \boxed{E_0=2\int\dd[3]{k}\frac{\omega(k)}{2}\delta^3(0)}
+\end{align*}
+with both numbers $n_a=n_b=0$.
+
+As for the momentum, we recognize the hamiltonian as the $0$ component of the 4-momentum, so the momentum should look like:
+\begin{align*}
+  \boxed{\hat{P}=\int\frac{\dd[3]{k}}{(2\pi)^32\omega(k)}\vb{k}
+    \qty(\ahatd_a(k)\ahat_a(k)+\bhatd_a(k)\bhat_a(k))=:\hat{P}:}
+\end{align*}
+So the momentum of the ground state is $0$.
+
+In the exact same fashion to class we can find the conserved charge as well:
+\begin{align*}
+  \hat{Q}^j&=\sigma^k_{ab}\int\frac{\dd[3]{k}}{(2\pi)^32\omega(k)}
+  \qty(\ahatd_a(k)\ahat_b(k)-\bhat_a(k)\bhatd_b(k))\\
+  &=\boxed{\sigma^k_{ab}\int\frac{\dd[3]{k}}{(2\pi)^32\omega(k)}
+  \qty(\ahatd_a(k)\ahat_b(k)-\bhatd_b(k)\bhat_a(k))=:\hat{Q^j}:}
+\end{align*}
+We can do the last reordering since operators with different lower indices commute. Clearly the charge of the ground state is $0$ due to its definition. 
+\section{Spectrum of One Particle States}
+We build up single particle states from the vacuum:
+\begin{align*}
+  \ahatd_a(k)\ket{0}&=\ket{a_a(k)}\\
+  \bhatd_a(k)\ket{0}&=\ket{b_a(k)}
+\end{align*}
+We find the excitations to be in units of:
+\begin{align*}
+  \boxed{\ev{:\hat{H}:}=\omega(k)}
+\end{align*}
+Note that $\omega$ depends only on $k$, not the index $a$ or whether or not there is a conjugated field, so there is a four fold degeneracy.
+\end{document}
