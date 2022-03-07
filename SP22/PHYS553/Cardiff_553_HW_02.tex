@@ -97,7 +97,7 @@ The terms with $\D^0$ in the lagrangian will similarly turn into a product of $\
 \end{align*}
 And the hamiltonian is this integrated over space:
 \begin{align*}
-  \boxed{H=\int\dd[3]{x}\H}
+  \boxed{H=\int\dd[3]{x}\Pi^*_a\Pi_a+\grad{\phi}\vdot\grad{\phis}+m_0\phis\phi}
 \end{align*}
 \subsection{Total Momentum}
 The total momentum density is the $0,j$ component of the energy-momentum tensor $T^{\mu\nu}$:
@@ -227,49 +227,46 @@ Doing the potential commutator is the same as the previous, only we get a $\phis
 Similarly for the other momentum:
 \begin{align*}
   \boxed{\D_0\pish_a(\vb{x},t)=
-    \laplacian{\phih_a(\vb{x},t)}-m^2\phih_a(\vb{x},t)}
+    \laplacian{\phih_a(\vb{x},t)}-m_0^2\phih_a(\vb{x},t)}
 \end{align*}
 \section{Creation/Annihilation Operators}
 We expand the field in terms of incoming and outgoing waves:
 \begin{align*}
-  \phih(\vb{x},x0)=\int\frac{\dd[3]{k}}{(2\pi)^3}
-  \qty[\phih_+(\vb{k},x0)e^{i\vb{k}\vdot\vb{x}}+
-  \phih_-(\vb{k},x0)e^{-i\vb{k}\vdot\vb{x}}]
+  \phih^a(\vb{x},x0)=\int\frac{\dd[3]{k}}{(2\pi)^3}
+  \qty[\phih_+^a(\vb{k},x0)e^{i\vb{k}\vdot\vb{x}}+
+  \phih_-^a(\vb{k},x0)e^{-i\vb{k}\vdot\vb{x}}]
 \end{align*}
 The $\phih_\pm$ must each satisfy the momentum space klein gordon equation:
 \begin{align*}
-  \D_0^2\phih_\pm(\vb{k},x_0)+\qty(k^2+m^2)\phih_\pm(\vb{k},x0)=0
+  \D_0^2\phih^a_\pm(\vb{k},x_0)+\qty(k^2+m_0^2)\phih^a_\pm(\vb{k},x0)=0
 \end{align*}
 So we need an exponential time dependence, with energy $\omega(\vb{k})$:
 \begin{align*}
-  \omega(\vb{k})=\sqrt{k^2+m^2}
+  \omega(\vb{k})=\sqrt{k^2+m^2_0}
 \end{align*}
 Like in class, we only need solutions on the light cone, which are proportional to $\omega(\vb{k})x_0-\vb{k}\vdot\vb{x}$, which shall be called $k\vdot x$ from here on out, with $k=(\omega(\vb{k}),\vb{k})$. Doing this again with $\phish$ gives the following forms for our field operators:
 \begin{align*}
-  \phih(x)&=\int\frac{\dd[3]{k}}{(2\pi)^3}
-  \qty[\phih_+(k)\exp{-ik\vdot x}+\phih_-(k)\exp{ik\vdot x}]\\
-  \phish(x)&=\int\frac{\dd[3]{k}}{(2\pi)^3}
-  \qty[\phish_+(k)\exp{-ik\vdot x}+\phish_-(k)\exp{ik\vdot x}]
+  \phih^a(x)&=\int\frac{\dd[3]{k}}{(2\pi)^3}
+  \qty[\phih_+^a(k)\exp{-ik\vdot x}+\phih^a_-(k)\exp{ik\vdot x}]\\
+  \phih^{*a}(x)&=\int\frac{\dd[3]{k}}{(2\pi)^3}
+  \qty[\phih^{*a}_+(k)\exp{-ik\vdot x}+(\phih^{*a}_-(k)\exp{ik\vdot x}]
 \end{align*}
-Similar to what we did in class, matching coefficients of the exponentials we find that:
+We need to impose that these fields, when one is complex conjugated, are equal, from this we find
 \begin{align*}
-  \phish_+=\phih^\dag_-\qquad\phish_-=\phih^\dag
+  \phih^{*a}_+=\phih^{a\dag}_-\qquad\phih^{*a}_-=\phih^{a\dag}
 \end{align*}
 Thus we get our properly adjusted operators to ensure a Lorentz invariant measure:
 \begin{align*}
-  \ahat(k)=2\omega(k)\phih_+\qquad\bhatd(k)=2\omega(k)\phih_-
+  \ahat^a(k)=2\omega(k)\phih^a_+\qquad\bhat^{\dag a}(k)=2\omega(k)\phih^a_-
 \end{align*}
 Where the commutation relations are:
 \begin{align*}
-  \comm{\ahat(k)}{\ahatd(q)}&=(2\pi)^3\omega(k)\delta^3(k-q)\\
-  \comm{\bhat(k)}{\bhatd(q)}&=(2\pi)^3\omega(k)\delta^3(k-q)
+  \comm{\ahat_a(k)}{\ahatd_a(q)}&=(2\pi)^3\omega(k)\delta^3(k-q)\\
+  \comm{\bhat_a(k)}{\bhatd_a(q)}&=(2\pi)^3\omega(k)\delta^3(k-q)
 \end{align*}
-With once again every other commutator as 0. The fields now in terms of our creation and annihilation operators are:
-\begin{align*}
-  \phih(x)&=\intk\qty[\ahat(k)e^{-ik\vdot x}+\bhatd(k)e^{ik\vdot x}]\\
-  \phish(x)&=\intk\qty[\bhat(k)e^{-ik\vdot x}+\ahatd(k)e^{ik\vdot x}]
-\end{align*}
-Do not get confused between $a$ the component and $\ahat$ the operator as we generalize to a vector instead:
+With once again every other commutator as 0. Note as well that the indices are now below since we do not need the $\pm$ fields anymore.
+
+The fields now in terms of our creation and annihilation operators are:
 \begin{equation*}
   \boxed {
     \begin{aligned}
@@ -355,10 +352,10 @@ Expanding and such gives similar results which give similar delta functions. Thi
 \begin{align*}
   \hat{H}=\iint&\frac{\dd[3]{k}}{2\omega(k)(2\pi)^3}
   \frac{\dd[3]{q}}{2\omega(q)(2\pi)^3}\\
-  &\left(\delta^3(k-q)\qty(\omega(k)\omega(q)+\vb{k\vdot q}+m^2)
+  &\left(\delta^3(k-q)\qty(\omega(k)\omega(q)+\vb{k\vdot q}+m^2_0)
     \qty(\ahat(k)\ahatd(q)e^{i(\omega(k)-\omega(q))x_0}
     +\bhatd(k)\bhat(q)e^{-i(\omega(k)-\omega(q))x_0})\right.\\
-  +&\left.\delta^3(k+q)\qty(-\omega(k)\omega(q)-\vb{k\vdot q}+m^2)
+  +&\left.\delta^3(k+q)\qty(-\omega(k)\omega(q)-\vb{k\vdot q}+m^2_0)
     \qty(\bhatd(k)\ahatd(q)e^{-i(\omega(k)+\omega(q))x_0}
     +\ahat(k)\bhat(q)e^{i(\omega(k)+\omega(q))x_0})\right)
 \end{align*}
