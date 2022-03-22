@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 
-\title{\vspace{-3em}PHYS 437 HW 6}
+\title{PHYS 437 HW 6}
 \author{Michael Cardiff}
 \date{\today}
 
@@ -43,4 +43,76 @@
 \begin{document}
 \maketitle
 
+\section{Problem 7.1}
+\subsection{Part a}
+The distance from the center of a square to the midpoint of one of the sides is going to be simply half the side length. The distance to the corner is going to $\sqrt{2}$ times that length. Since the energy is proportional to $k^2$, the two energies will differ by a factor of $\sqrt{2}^2=2$.
+\subsection{Part b}
+The distance from the center of a cube to the midpoint of one of its faces is still the side length divided by 2. The only difference this time is that the distance to the corner of the cube is now $\sqrt{3}$ times the distance from the normal, so the proportionality is now $\sqrt{3}^2=3$ instead of 2
+\subsection{Part c}
+As a result of this, electrons may prefer to spill over into the second zone if they are pushed into the corner, this will only not happen when the energy the electron has is less than the difference between the midpoint and the corner.
+\section{Problem 7.2}
+The $K$ along the $111$ direction, we have the group of vectors that lie in the first Brillouin zone:
+\begin{align*}
+  \vb{K}=\frac{2\pi}{a}\qty(\vb{b}_1+\vb{b}_2+\vb{b}_3)u
+\end{align*}
+Where $0<u<\frac{1}{2}$ indicates the $K$ which lie in the first zone. In the reduced zone re have a degeneracy between states which lie between a $\vb{G}$ vector. The degeneracies are $\pm 1$ along every axis:
+\begin{align*}
+  \vb{G}=\frac{2\pi}{a}
+  \qty[\qty(h-k+\ell)\vu{x}+\qty(h+k-\ell)\vu{y}+\qty(-h+k+\ell)\vu{z}]
+\end{align*}
+As usual in these, $h,k,\ell\in\mathbb{Z}$. The energy is then:
+\begin{align*}
+  \varepsilon=\frac{\hbar^2}{2m}\qty(\frac{2\pi}{a})^2
+  \qty[\qty(u+h-k+\ell)^2+\qty(u+h+k-\ell)^2+\qty(u-h-k+\ell)^2]
+\end{align*}
+We then use the Bragg condition to choose specific values of $h,k,\ell$, we get:
+\begin{align*}
+  \boxed{\{(hk\ell)\}=\qty{(000),
+    \mqty{(00\pm1)\\(0\pm10)\\(\pm100)},
+    \mqty{(\pm10\pm1)\\(\pm1\pm10)\\(0\pm1\pm1)},
+    (\pm1\pm1\pm1)}}
+\end{align*}
+\section{Problem 7.3}
+\subsection{Part a}
+For this model the equation we need to solve is:
+\begin{align*}
+  1=\frac{P}{Ka}\sin(Ka)+\cos(Ka)
+\end{align*}
+Taylor expanding in the limit of small positive $P$ gives the following:
+\begin{align*}
+  1=\frac{P}{Ka}Ka+1-\frac{1}{2}(Ka)^2\implies P=\frac{1}{2}(Ka)^2
+\end{align*}
+Using the relationship between the energy and $K$ we get:
+\begin{align*}
+  \varepsilon = \frac{\hbar^2}{2m}K^2 = \boxed{\frac{\hbar^2}{ma^2}P}
+\end{align*}
+
+\subsection{Part b}
+The equation is now:
+\begin{align*}
+  -1=\frac{P}{Ka}\sin(Ka)+\cos(Ka)
+\end{align*}
+We now only have solutions at $Ka=\pi+\alpha$, where $\alpha$ is small expand again:
+\begin{align*}
+  -1=\frac{P}{\pi}(-\alpha)+(-1+\frac{1}{2}\alpha^2)
+\end{align*}
+We get values of $\alpha$ either as $0$ or $\frac{2P}{\pi}$
+The energy is:
+\begin{align*}
+  \boxed{\varepsilon = \frac{\hbar^2}{ma^2}2P}
+\end{align*}
+\section{Problem 7.6}
+The potential energy will contain the following reciprocal lattice vectors:
+\begin{align*}
+  \frac{2\pi}{a}\pmqty{\pm1\\\pm1}
+\end{align*}
+Our degenerate functions are when $e^{i(\pi/a)(x+y)}$ and $e^{-i(\pi/a)(x+y)}$.
+The central equation gives us:
+\begin{align*}
+  (\lambda-\varepsilon)C\frac{\pi}{a}\pmqty{1\\1}-
+  UC\frac{\pi}{a}\pmqty{-1\\-1}&=0\\
+  (\lambda-\varepsilon)C\frac{\pi}{a}\pmqty{-1\\-1}-
+  UC\frac{\pi}{a}\pmqty{1\\1}&=0
+\end{align*}
+We will find the gap is $\boxed{2U}$, twice the amplitude of the potential energy
 \end{document}
