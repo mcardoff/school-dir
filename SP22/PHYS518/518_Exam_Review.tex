@@ -44,6 +44,7 @@
 \newtheorem{law}{Law}
 
 \renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
 
 \begin{document}
 \maketitle
@@ -405,4 +406,29 @@ Where a general moving particle has:
   p^\mu=(E,\vb{p})
 \end{align*}
 
+\section{Christoffel Symbols}
+The use of Christoffel symbols is to calculate the covariant derivative of a vector $v$:
+\begin{align*}
+  v_{\mu;\nu}=\D_\nu v_\mu-\Gamma^\lambda_{\mu\nu}v_\lambda
+\end{align*}
+Sometimes the covariant derivative may be written differently:
+\begin{align*}
+  v_{\mu;\nu}=\grad_\nu{v_\mu}=D_\nu v_\mu
+\end{align*}
+And for upper index vectors:
+\begin{align*}  
+  v_{;\nu}^\mu=\grad_\nu{v^\mu}=D_\nu v^\mu=
+  \D_\nu v^\mu-\Gamma^\mu_{\lambda\nu}v^\lambda
+\end{align*}
+The formula to calculate Christoffel Symbols is given by:
+\begin{align*}
+  \Gamma^\lambda_{\mu\nu}=\frac{1}{2}g^{\lambda\sigma}
+  \qty(\D_\mu g_{\sigma\nu}+\D_\nu g_{\mu\sigma}-\D_\sigma g_{\mu\nu})
+\end{align*}
+\subsection{Geodesics}
+The motion along a geodesic is given by the following equation:
+\begin{align*}
+  \dv[2]{x^\mu}{u}+\Gamma^\mu_{\lambda\nu}\dv{x^\lambda}{u}\dv{x^\nu}{u}
+\end{align*}
+Where $u$ is some affine parameter like the invariant interval $\dd{s}$
 \end{document}

@@ -1,0 +1,315 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 518 HW 3}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
+\newcommand{\h}{\phi}
+\newcommand{\s}{\psi}
+
+\begin{document}
+\maketitle
+
+\section{Antisymmetric Tensor}
+Expanding out everything:
+\begin{align*}
+  &\D_\lambda F_{\mu\nu}+\D_\nu F_{\lambda_\mu}+\D_\mu F_{\nu\lambda}\\
+  &=\D_\lambda F_{\mu\nu}-\Gamma^{\alpha}_{\lambda\mu}F_{\alpha\nu}
+  -\Gamma^{\alpha}_{\lambda\nu}F_{\mu\alpha}+\D_\nu F_{\lambda\mu}
+  -\Gamma^{\alpha}_{\nu\alpha}F_{\alpha\mu}-\Gamma^\alpha_{\nu\mu}F_{\lambda\alpha}
+  +\D_\mu F_{\nu\lambda}-\Gamma^\alpha_{\mu\nu}F_{\alpha\lambda}
+  -\Gamma^{\alpha}_{\mu\lambda}F_{\nu\alpha}
+\end{align*}
+Consider the first and last terms with Christoffel symbols:
+\begin{align*}
+  \Gamma^\alpha_{\lambda\mu}F_{\alpha\nu}+\Gamma^{\alpha}_{\mu\lambda}F_{\nu\alpha}
+  &=\Gamma^\alpha_{\lambda\mu}\qty(F_{\alpha\nu}+F_{\nu\alpha})\\
+  &=\Gamma^\alpha_{\lambda\mu}\qty(F_{\alpha\nu}-F_{\alpha\nu})\\
+  &=0
+\end{align*}
+This is due to the symmetry of the Christoffel symbol in the lower indices and the defined antisymmetry of the tensor $F$. Most of the terms cancel out this way, so we are left with:
+\begin{align*}
+  \D_\lambda F_{\mu\nu}-\Gamma^{\alpha}_{\lambda\mu}F_{\alpha\nu}
+  -\Gamma^{\alpha}_{\lambda\nu}F_{\mu\alpha}&=\grad_\lambda{F_{\mu\nu}}\\
+  \D_\nu F_{\lambda\mu}-\Gamma^{\alpha}_{\nu\lambda}F_{\alpha\mu}
+  -\Gamma^{\alpha}_{\mu\nu}F_{\lambda\alpha}&=\grad_\nu{F_{\lambda\nu}}\\
+  \D_\mu F_{\nu\lambda}-\Gamma^{\alpha}_{\mu\nu}F_{\alpha\lambda}
+  -\Gamma^{\alpha}_{\mu\lambda}F_{\nu\alpha}&=\grad_\mu{F_{\nu\lambda}}
+\end{align*}
+Hence we end up with only covariant derivatives, so the sum is in fact a tensor:
+\begin{align*}
+  \D_\lambda F_{\mu\nu}+\D_\nu F_{\lambda_\mu}+\D_\mu F_{\nu\lambda}
+  =\boxed{
+    \grad_\lambda F_{\mu\nu}+
+    \grad_\nu F_{\lambda_\mu}+
+    \grad_\mu F_{\nu\lambda}}
+\end{align*}
+\section{Hyperbolic Surface}
+The metric is:
+\begin{align*}
+  \dd{s}^2=a^2\qty(\dd{\psi}^2+\sinh^2\psi\dd{\phi}^2)
+\end{align*}
+Such that the metric tensor has the following components:
+\begin{gather*}
+  g_{\phi\phi}=a^2\sinh^2\psi\quad g_{\s\s}=a^2\\
+  g^{\phi\phi}=\frac{1}{a^2\sinh^2\psi}\quad g^{\s\s}=\frac{1}{a^2}\\
+  g_{\h\s}=g_{\s\h}=0=g^{\h\s}=g^{\s\h}
+\end{gather*}
+\subsection{Christoffel Symbol}
+The only non-zero indices will be $\Gamma^\s_{\h\h}$ and $\Gamma^\h_{\h\s}$:
+\begin{align*}
+  \Gamma^\s_{\h\h}&=\frac{1}{2}g^{\s\sigma}=-\frac{1}{2}g^{\s\s}\D_\s g_{\h\h}\\
+  &=\boxed{-a^2\sinh\s\cosh\s}\\
+  \Gamma^\h_{\h\s}&=\frac{1}{2}g^{\h\sigma}\qty(\D_\h g_{\sigma\s}+
+  \D_\s g_{\sigma\h}-\D_\sigma g_{\s\h})\\
+  &=\frac{1}{2}g^{\h\h}\qty(\D_\h g_{\h\s}+\D_\s g_{\h\h})=\coth\s\\
+  \Gamma^\h_{\h\s}=\Gamma^\h_{\s\h}&=\boxed{\coth\s}
+\end{align*}
+\subsection{Laplacian}
+The Laplacian is given via the scale factors as:
+\begin{align*}
+  \laplacian = \frac{1}{h_\s h_\h}\D_\sigma\qty(\frac{\h_\s h+\h}{h^2}\D_\sigma)
+\end{align*}
+Going from here:
+\begin{align*}
+  \laplacian&=\frac{1}{a^4\sinh^2\s}\qty(\D_\h\qty(\frac{1}{\sinh^2\psi}\D_h)
+  +\D_\s\qty(\sinh^2\s)\D_\s)\\
+  &=\boxed{\frac{1}{a^4\sinh^2\psi}\qty(\frac{1}{\sinh^2\psi}\D^2_\phi
+    +\D_\psi\qty(\sinh^2\psi\D_\psi))}
+\end{align*}
+\subsection{Riemann Tensor}
+The indices of the Riemann Tensor are:
+\begin{align*}
+  R_{abcd}=\frac{1}{2}(\D_d\D_ag_{bc}-\D_d\D_bg_{ac}+\D_c\D_bg_{ad}-\D_c\D_ag_{bd})
+  -g_{ef}\qty(\Gamma^e_{ac}\Gamma^f_{bd}-\Gamma^e_{ad}\Gamma^f_{bc})
+\end{align*}
+The number of independent components for $N=2$:
+\begin{align*}
+  \frac{N^2(N^2-1)}{12}=\frac{4(4-1)}{12}=1
+\end{align*}
+Choose $R_{\s\h\s\h}$ to be the unique component:
+\begin{align*}
+  R_{\s\h\s\h}&=\frac{1}{2}\qty(\D_\h\D_\s g_{\s\h}-\D_\h\D_\h g_{\h\s}
+  +\D_\h\D_\h g_{\h\s}-\D_\s\D_\h g_{\h\h})-g_{\mu\sigma}
+  \qty(\Gamma^\lambda_{\s\s}\Gamma^\sigma_{\h\h}-
+  \Gamma^\lambda_{\s\h}\Gamma^\sigma_{\s\h})\\
+  &=-\frac{a^2}{2}
+  \D_\s\qty(\sinh\s\cosh\s)+a^2\sinh^2\s\frac{\cosh^2\s}{\sinh^2\s}\\
+  &=\boxed{-\frac{a^2}{2}\sinh^2\s}
+\end{align*}
+\subsection{Ricci Tensor}
+We need to use:
+\begin{align*}
+  R_{\nu\nu}=R^\lambda_{\mu\lambda\nu}
+\end{align*}
+This means:
+\begin{align*}
+  R^\psi_{\h\s\h}=R_{\h\h}=\frac{1}{a^2}R_{\s\h\s\h}=\boxed{-\sinh^2\s}
+\end{align*}
+\subsection{Ricci Scalar}
+Once again we need:
+\begin{align*}
+  R^\mu_\mu=g^{\mu\nu}R_{\mu\nu}
+\end{align*}
+Hence:
+\begin{align*}
+  R_{\h\h}=g_{\h\h}R^{\h}_\h=\implies \boxed{R=-\frac{1}{a^2}}
+\end{align*}
+The formula we need to confirm is:
+\begin{align*}
+  R_{\s\h\s\h}&=-\frac{1}{2}(g_{\s\s}g_{\h\h}-g_{\s\h}g_{\s\h})R\\
+  &=-\frac{a^2}{2}\sinh^2\s
+\end{align*}
+\section{Conformally Flat Metric}
+The metric is given by the following:
+\begin{align*}
+  \dd{s}^2=\Omega^2(x,y)\qty(\dd{x}^2+\dd{y}^2)
+\end{align*}
+So we have the following for our metric tensor:
+\begin{gather*}
+  g_{xx}=g_{yy}=\Omega^2\qquad g^{xx}=g^{yy}=\Omega^{-2}\\
+  g_{xy}=g_{yx}=g^{xy}=g^{yx}=0
+\end{gather*}
+\subsection{Christoffel Symbol}
+The formula for the Christoffel symbol is:
+\begin{align*}
+  \Gamma^\lambda_{\mu\nu}=\frac{1}{2}g^{\lambda\sigma}
+  \qty(\D_\mu g_{\sigma\nu}+\D_\nu g_{\mu\sigma}-\D_\sigma g_{\mu\nu})
+\end{align*}
+And we can plug and chug to continue:
+\begin{align*}
+  \Gamma^x_{xx}&=\frac{1}{2}g^{x\sigma}
+  \qty(\D_xg_{\sigma x}+\D_x g_{\sigma x}-\D_\sigma g_{xx})\\
+  &=\frac{g^{xx}}{2}\qty(\D_x g_{xx}+\D_x g_{xx}-\D_xg_{xx})\\
+  &=\boxed{\frac{1}{2}\frac{\D_x\Omega^2}{\Omega^2}}
+\end{align*}
+\begin{align*}
+  \Gamma^y_{xx}&=\frac{1}{2}g^{y\sigma}
+  \qty(\D_xg_{\sigma x}+\D_x g_{\sigma x}-\D_\sigma g_{xx})\\
+  &=\frac{g^{yy}}{2}\qty(\D_x g_{yx}+\D_x g_{yx}-\D_yg_{xx})\\
+  &=\boxed{-\frac{1}{2}\frac{\D_y\Omega^2}{\Omega^2}}
+\end{align*}
+\begin{align*}
+  \Gamma^y_{yy}&=\frac{1}{2}g^{y\sigma}
+  \qty(\D_yg_{\sigma y}+\D_y g_{\sigma y}-\D_\sigma g_{yy})\\
+  &=\frac{g^{yy}}{2}\qty(\D_y g_{yy}+\D_y g_{yy}-\D_yg_{yy})\\
+  &=\boxed{\frac{1}{2}\frac{\D_y\Omega^2}{\Omega^2}}
+\end{align*}
+\begin{align*}
+  \Gamma^x_{yy}&=\frac{1}{2}g^{x\sigma}
+  \qty(\D_yg_{\sigma y}+\D_y g_{\sigma y}-\D_\sigma g_{yy})\\
+  &=\frac{g^{xy}}{2}\qty(\D_y g_{yy}+\D_y g_{yy}-\D_yg_{yy})\\
+  &=\boxed{-\frac{1}{2}\frac{\D_x\Omega^2}{\Omega^2}}
+\end{align*}
+\begin{align*}
+  \Gamma^x_{xy}&=\frac{1}{2}g^{x\sigma}
+  \qty(\D_xg_{\sigma y}+\D_y g_{\sigma x}-\D_\sigma g_{yx})\\
+  &=\boxed{-\frac{1}{2}\frac{\D_y\Omega^2}{\Omega^2}}
+\end{align*}
+\begin{align*}
+  \Gamma^y_{xy}&=\frac{1}{2}g^{y\sigma}
+  \qty(\D_xg_{\sigma y}+\D_y g_{\sigma x}-\D_\sigma g_{yx})\\
+  &=\boxed{-\frac{1}{2}\frac{\D_x\Omega^2}{\Omega^2}}
+\end{align*}
+We can simplify some of these derivatives since it is $\Omega^2$ not just $\Omega$ so the chain rule can be invoked:
+\begin{equation*}
+  \boxed{
+    \begin{aligned}
+      \Gamma^{x}_{xx}=\frac{\D_x\Omega}{\Omega}\quad
+      \Gamma^{y}_{xx}=-\frac{\D_y\Omega}{\Omega}\quad
+      \Gamma^{y}_{yy}=\frac{\D_y\Omega}{\Omega}\\
+      \Gamma^{x}_{yy}=-\frac{\D_x\Omega}{\Omega}\quad
+      \Gamma^{x}_{xy}=\frac{\D_y\Omega}{\Omega}\quad
+      \Gamma^{y}_{xy}=\frac{\D_y\Omega}{\Omega}
+    \end{aligned}
+  }
+\end{equation*}
+\subsection{Riemann Tensor}
+The indices of the Riemann Tensor are:
+\begin{align*}
+  R_{abcd}=\frac{1}{2}(\D_d\D_ag_{bc}-\D_d\D_bg_{ac}+\D_c\D_bg_{ad}-\D_c\D_ag_{bd})
+  -g_{ef}\qty(\Gamma^e_{ac}\Gamma^f_{bd}-\Gamma^e_{ad}\Gamma^f_{bc})
+\end{align*}
+Due to the dimension $N=2$, there is one independent component of the Riemann tensor:
+\begin{align*}
+  R_{xyxy}&=\frac{1}{2}
+  \qty(\D_y\D_xg_{yx}-\D_y\D_yg_{xx}+\D_x\D_yg_{xy}-\D_x\D_xg_{yy})
+  -g_{ef}\qty(\Gamma^e_{xx}\Gamma^f_{yy}-\Gamma^e_{xy}\Gamma^f_{yx})\\
+  &=-\frac{1}{2}\qty(\D^2_y\Omega^2+\D^2_x\Omega^2)
+  -g_{xx}\qty(\Gamma^x_{xx}\Gamma^x_{yy}-\Gamma^x_{xy}\Gamma^x_{xy})
+  -g_{yy}\qty(\Gamma^y_{xx}\Gamma^y_{yy}-\Gamma^y_{xy}\Gamma^y_{xy})
+\end{align*}
+We can reduce this going term by term:
+\begin{align*}
+  -\frac{1}{2}\qty(\D^2_y\Omega^2+\D^2_x\Omega^2)&=
+  -\qty(\D_y\qty(\Omega\D_y\Omega)+\D_x(\Omega\D_x\Omega))\\
+  &=-\Omega\qty(\D_x^2\Omega+\D_y^2\Omega)
+\end{align*}
+\begin{align*}
+  -g_{xx}\qty(\Gamma^x_{xx}\Gamma^x_{yy}-\Gamma^x_{xy}\Gamma^x_{xy})&=
+  -\Omega^2\qty(-\frac{\D_x\Omega}{\Omega}\frac{\D_x\Omega}{\Omega}
+  -\frac{\D_y\Omega}{\Omega}\frac{\D_y\Omega}{\Omega})\\
+  &=(\D_x\Omega)^2+(\D_y\Omega)^2
+\end{align*}
+\begin{align*}
+  -g_{yy}\qty(\Gamma^y_{xx}\Gamma^y_{yy}-\Gamma^y_{xy}\Gamma^y_{xy})&=
+  \Omega^2\qty(\frac{\D_y\Omega}{\Omega}\frac{\D_y\Omega}{\Omega}
+  +\frac{\D_x\Omega}{\Omega}\frac{\D_x\Omega}{\Omega})\\
+  &=(\D_y\Omega)^2+(\D_x\Omega)^2
+\end{align*}
+Combining these gives:
+\begin{align*}
+  \boxed{R_{xyxy}=(\D_x\Omega)^2+(\D_y\Omega)^2
+    -\Omega(\D_x^2\Omega+\D_y^2\Omega)}
+\end{align*}
+\subsection{Ricci Tensor}
+The Ricci tensor will be given by:
+\begin{align*}
+  R_{\mu\nu}=R^\lambda_{\mu\lambda\nu}
+\end{align*}
+In our case:
+\begin{align*}
+  R_{xyxy}=g_{xx}R^x_{yxy}
+\end{align*}
+The one unique component will be $R_{yy}$:
+\begin{align*}
+  R_{yy}=\boxed{\frac{(\D_x\Omega)^2+(\D_y\Omega)^2}{\Omega^2}
+    -\frac{\D_x^2\Omega+\D_y^2\Omega}{\Omega}}
+\end{align*}
+\subsubsection{Ricci Scalar}
+Finally the Ricci scalar:
+\begin{align*}
+  R=R^\mu_\mu
+\end{align*}
+So in our case we just need to multiply by $g_{yy}$
+\begin{align*}
+  R=\boxed{\frac{(\D_x\Omega)^2+(\D_y\Omega)^2}{\Omega^4}
+    -\frac{\D_x^2\Omega+\D_y^2\Omega}{\Omega^3}}
+\end{align*}
+\section{Variation of the Christoffel Symbol}
+We start with the definition of the symbol as derivatives of the metric:
+\begin{align*}
+  \Gamma^\lambda_{\mu\nu}=\frac{1}{2}g^{\lambda\rho}
+  \qty(\D_\mu g_{\rho\nu}+\D_\nu g_{\rho\mu}-\D_\rho g_{\mu\nu})
+\end{align*}
+Variations of $\Gamma$ yield:
+\begin{align*}
+  \delta\Gamma^\lambda_{\mu\nu}&=\frac{1}{2}\delta g^{\lambda\rho}
+  \qty(\D_\mu g_{\rho\nu}+\D_\nu g_{\rho\mu}-\D_\rho g_{\mu\nu})+
+  \frac{1}{2}g^{\lambda\rho} \qty(\D_\mu\delta g_{\rho\nu}+
+  \D_\nu\delta g_{\rho\mu}-\D_\rho\delta g_{\mu\nu})\\
+  &=-\frac{1}{2}g^{\lambda\rho}\delta g^{\rho\sigma}
+  \qty(\D_\mu g_{\rho\nu}+\D_\nu g_{\rho\mu}-\D_\rho g_{\mu\nu})+
+  \frac{1}{2}g^{\lambda\rho} \qty(\D_\mu\delta g_{\rho\nu}+
+  \D_\nu\delta g_{\rho\mu}-\D_\rho\delta g_{\mu\nu})\\
+  &=-g^{\lambda\rho}(\delta g_{\rho\sigma})\Gamma^\sigma_{\mu\nu}
+  +\frac{1}{2}g^{\lambda\rho} \qty(\D_\mu\delta g_{\rho\nu}+
+  \D_\nu\delta g_{\rho\mu}-\D_\rho\delta g_{\mu\nu})\\
+  &=\frac{1}{2}g^{\lambda\rho}\qty(\D_\mu\delta g_{\rho\nu}+
+  \D_\nu\delta g_{\rho\mu}-\D_\rho\delta g_{\mu\nu}
+  -2\delta_{\rho\sigma}\Gamma^{\sigma}_{\mu\nu})
+\end{align*}
+By adding and subtracting pairs of Christoffel symbols, we can make all of these into the covariant derivatives $\grad_\mu$:
+\begin{align*}
+  \boxed{\delta\Gamma^\lambda_{\mu\nu}=\frac{1}{2}g^{\lambda\rho}\qty(
+   \grad_\mu\delta g_{\rho\mu}
+  +\grad_\nu\delta g_{\rho\mu}
+  -\grad_\rho\delta g_{\mu\nu})}
+\end{align*}
+\end{document}
