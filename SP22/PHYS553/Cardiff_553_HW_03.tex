@@ -1,0 +1,125 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 553 HW 3}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]{\begin{figure}[H]\centering\includegraphics[width=#1cm]{#2}\caption{#3}\end{figure}}
+
+\newcommand{\figref}[4]
+{\begin{figure}[H]\centering\includegraphics[width=#1cm]{#2}\caption{#3}\label{#4}\end{figure}}
+
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\q}{\vb{q}}
+\newcommand{\p}{\vb{p}}
+
+\begin{document}
+\maketitle
+
+\section{Charged Particle Path Integral}
+Note the book uses $\vb{r}$ where here $\q$ is used.
+
+As a reminder, here is the Hamiltonian as well as the field $\vb{A}$:
+\begin{gather*}
+  H(\q,\p)=\frac{1}{2m}\qty(\p+\frac{e}{c}\vb{A}(\q))^2\\
+  A_1(\q)=-\frac{B}{2}q_2\\ A_2(\q)=\frac{B}{2}q_1
+\end{gather*}
+
+\subsection{Transition Amplitude for $\vb{q}_i=\vb{q}_f$}
+Our aim is the following:
+\begin{align*}
+  \ip{\q_0,t_f}{\q_0,t_i}
+\end{align*}
+In class we derived the following formula for this inner product:
+\begin{align*}
+  \ip{\q_0,t_f}{\q_0,t_i}&=\int\cD q_1\cD q_2\cD p_1\cD p_2
+  \exp{\frac{i}{\hbar}S}\\
+  &=\int\cD\q\cD\p\exp{\frac{i}{\hbar}S}
+\end{align*}
+The action in this case is simple:
+\begin{align*}
+  S&=\int\dd{t}L
+\end{align*}
+The Lagrangian is given in terms of the Hamiltonian:
+\begin{align*}
+  L=\p\vdot\dot{\q}-H
+\end{align*}
+Expanding the Hamiltonian:
+\begin{align*}
+  H&=\frac{1}{2m}\qty(\p\vdot\p+\frac{e^2}{c^2}\vb{A\vdot A}+
+  2\frac{e}{c}\p\vdot\vb{A})\\
+  &=\frac{1}{2m}\qty(p_1^2+p_2^2+
+  \frac{e^2}{c^2}\qty(\frac{B^2}{4}x_2^2+\frac{B^2}{4}x_1^2)+
+  2\frac{e}{c}\qty(-\frac{B}{2}p_1q_2+\frac{B}{2}p_2q_1))\\
+  &=\frac{1}{2m}\qty(p_1^2+p_2^2+\qty(\frac{eB}{2c})^2\qty(x_1^2+x_2^2)
+  +\frac{eB}{c}\qty(p_2q_1-p_1q_2))\\
+  &=\frac{1}{2m}\qty(p_1^2+p_2^2)
+  +\frac{1}{2m}\qty(\frac{eB}{2c})^2\qty(x_1^2+x_2^2)
+  +\frac{eB}{2mc}\qty(p_2q_1-p_1q_2)
+\end{align*}
+The transformation part is given by:
+\begin{align*}
+  \p\vdot\q=p_1\dot{q}_1+p_2\dot{q}_2
+\end{align*}
+We ultimately want to integrate out the $\p$ variables, so we should organize in terms of powers of $p$:
+\begin{align*}
+  \p\vdot\q-H=-\frac{p_1^2}{2m}+p_1\qty(\dot{q}_1+\frac{eB}{2mc}q_2)
+  -\frac{p_2^2}{2m}+p_2\qty(\dot{q}_2-\frac{eB}{2mc}q_1)
+  -\frac{1}{2m}\qty(\frac{eB}{2c})^2\qty(x_1^2+x_2^2)
+\end{align*}
+We should look at one of these terms, and see how we can write it as a complete square:
+\begin{align*}
+  -\frac{p_1^2}{2m}+p_1\qty(\dot{q}_1+\frac{eB}{2mc}q_2)=
+  -\frac{1}{2m}\qty[p_1^2-p_1\qty(2m\dot{q}_1+\frac{eB}{c}q_2)]
+\end{align*}
+
+\paragraph{Completing the Square}
+To complete the square, we need the following form:
+\begin{align*}
+  (p+a)^2=p^2+2pa+a^2
+\end{align*}
+In our case, we identify the constant $2a$ with the coefficient of the linear term:
+\begin{align*}
+  -\frac{1}{2m}\qty[p_1^2-p_1\qty(2m\dot{q}_1+\frac{eB}{c}q_2)]
+  =-\frac{1}{2m}\qty[\qty(p_1-\qty(m\dot{q}_1+\frac{eB}{2c}q))^2
+  -\qty(m\dot{q}_1+\frac{eB}{2c})]
+\end{align*}
+\subsection{Ultra-Quantum Limit}
+
+\subsection{Particle on a Torus}
+
+\section{Scalar Theory Path Integral}
+
+\subsection{Source Vacuum Persistence}
+
+\subsubsection{Evaluating The Above}
+
+\subsection{Two Point Functions}
+
+\subsection{Propagator}
+
+\subsubsection{Euclidean}
+
+\subsubsection{Minkowski}
+
+\subsection{Four Point Functions}
+
+
+
+\end{document}
