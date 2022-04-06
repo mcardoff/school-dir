@@ -1,0 +1,121 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 437 HW 7}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\begin{document}
+\maketitle
+\section*{Question 1}
+The effective mass is given in terms of the dispersion relation:
+\begin{align*}
+  m^*=\frac{\hbar^2}{\dv[2]{E}{k}}
+\end{align*}
+The free particle dispersion relation gives:
+\begin{align*}
+  E&=\frac{\hbar^2k^2}{2m}\\
+  \dv[2]{E}{k}&=\frac{\hbar^2}{m}
+\end{align*}
+So for a free particle:
+\begin{align*}
+  \boxed{m^*=m}
+\end{align*}
+At the $L$-point, we get:
+\begin{align*}
+  m_L=\frac{\hbar^2k_L^2}{2E_L}=\frac{\hbar^2}{8}\qty(\frac{3\pi^2}{a^2})
+\end{align*}
+Where we had $k_L\propto\qty(\frac{1}{2},\frac{1}{2},\frac{1}{2})$ and $E_L=4$.
+
+Now we need to find the heavy and light hole masses at $\Gamma$, where we solve for the mass isolating it at a point $\Gamma$:
+\begin{align*}
+  E_{hh}&\approx\frac{\hbar^2k^2}{2m_{hh}}\\
+  \implies m_{hh}&=\frac{\hbar^2\Gamma^2}{0.18}\\
+  E_{lh}&\approx\frac{\hbar^2k^2}{2m_{lh}}\\
+  \implies m_{lh}&=\frac{\hbar^2\Gamma^2}{0.58}
+\end{align*}
+
+\section{Question 2}
+The fermi energy is half of the gap energy $E_g$, which can be described by:
+\begin{align*}
+  E_i=\frac{E_g}{2}=\frac{E_v-E_c}{2}
+\end{align*}
+For electron densities $n$ and hole densities $p$:
+\begin{align*}
+  n&=2\qty(\frac{m_ek_bT}{2\pi\hbar^2})^{3/2}e^{(\mu-E_c)/k_bT}\\
+  p&=2\qty(\frac{m_ek_bT}{2\pi\hbar^2})^{3/2}e^{(E_v-\mu)/k_bT}
+\end{align*}
+In this case, we have $m_e=m=m_h$, and our $\mu=E_F$:
+\begin{align*}
+  n&=2\qty(\frac{mk_bT}{2\pi\hbar^2})^{3/2}e^{(E_F-E_c)/k_bT}\\
+  p&=2\qty(\frac{mk_bT}{2\pi\hbar^2})^{3/2}e^{(E_v-E_F)/k_bT}  
+\end{align*}
+Solving for the Energy differences:
+\begin{align*}
+  E_F-E_c&=k_bT\ln(\frac{n}{2}\qty(\frac{2\pi\hbar^2}{mk_bT})^{3/2})\\
+  E_v-E_F&=k_bT\ln(\frac{p}{2}\qty(\frac{2\pi\hbar^2}{mk_bT})^{3/2})
+\end{align*}
+Let the constant in the argument of the logs be $C$:
+\begin{align*}
+  E_F-E_c&=k_bT\ln(nC)\\
+  E_v-E_F&=k_bT\ln(pC)  
+\end{align*}
+Finding the differences gives:
+\begin{align*}
+  \boxed{E_F-E_i=k_bT\ln(\frac{n}{p})}
+\end{align*}
+I am not sure how to do this problem and I am already way past the deadline
+
+\section{Question 3}
+Using Ampere's law, we get the following expression:
+\begin{align*}
+  \oint\vb{B}\vdot\dd{\bm{\ell}}=\mu_0NI
+\end{align*}
+We are only considering a single loop, so $N=1$, choosing the correct loop at a distance $r$ out makes this integral fairly trivial:
+\begin{align*}
+  \oint\vb{B}\vdot\dd{\bm{\ell}}=B\oint\dd{\ell}=B(2\pi r)
+\end{align*}
+Solving for $B$:
+\begin{align*}
+  B=\frac{\mu_0}{2\pi}\frac{I}{r}\implies I=B\frac{2\pi r}{\mu_0}
+\end{align*}
+Plugging in the wire radius as well as the critical field, we can solve for $I_{max}$:
+\begin{align*}
+  I_{max}=\frac{2\pi r_w B_C}{\mu_0}=\boxed{125 A}
+\end{align*}
+\end{document}
