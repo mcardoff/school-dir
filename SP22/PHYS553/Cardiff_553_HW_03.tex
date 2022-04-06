@@ -26,8 +26,12 @@
 
 \renewcommand{\L}{\mathcal{L}}
 \newcommand{\cD}{\mathcal{D}}
+\newcommand{\D}{\partial}
 \newcommand{\q}{\vb{q}}
 \newcommand{\p}{\vb{p}}
+\newcommand{\phis}{\phi^*}
+\newcommand{\bphis}{\bar{\phi}^*}
+\newcommand{\bphi}{\bar{\phi}}
 
 \begin{document}
 \maketitle
@@ -65,12 +69,12 @@ Expanding the Hamiltonian:
   H&=\frac{1}{2m}\qty(\p\vdot\p+\frac{e^2}{c^2}\vb{A\vdot A}+
   2\frac{e}{c}\p\vdot\vb{A})\\
   &=\frac{1}{2m}\qty(p_1^2+p_2^2+
-  \frac{e^2}{c^2}\qty(\frac{B^2}{4}x_2^2+\frac{B^2}{4}x_1^2)+
+  \frac{e^2}{c^2}\qty(\frac{B^2}{4}x_2^2+\frac{B^2}{4}q_1^2)+
   2\frac{e}{c}\qty(-\frac{B}{2}p_1q_2+\frac{B}{2}p_2q_1))\\
-  &=\frac{1}{2m}\qty(p_1^2+p_2^2+\qty(\frac{eB}{2c})^2\qty(x_1^2+x_2^2)
+  &=\frac{1}{2m}\qty(p_1^2+p_2^2+\qty(\frac{eB}{2c})^2\qty(q_1^2+q_2^2)
   +\frac{eB}{c}\qty(p_2q_1-p_1q_2))\\
   &=\frac{1}{2m}\qty(p_1^2+p_2^2)
-  +\frac{1}{2m}\qty(\frac{eB}{2c})^2\qty(x_1^2+x_2^2)
+  +\frac{1}{2m}\qty(\frac{eB}{2c})^2\qty(q_1^2+q_2^2)
   +\frac{eB}{2mc}\qty(p_2q_1-p_1q_2)
 \end{align*}
 The transformation part is given by:
@@ -81,7 +85,7 @@ We ultimately want to integrate out the $\p$ variables, so we should organize in
 \begin{align*}
   \p\vdot\q-H=-\frac{p_1^2}{2m}+p_1\qty(\dot{q}_1+\frac{eB}{2mc}q_2)
   -\frac{p_2^2}{2m}+p_2\qty(\dot{q}_2-\frac{eB}{2mc}q_1)
-  -\frac{1}{2m}\qty(\frac{eB}{2c})^2\qty(x_1^2+x_2^2)
+  -\frac{1}{2m}\qty(\frac{eB}{2c})^2\qty(q_1^2+q_2^2)
 \end{align*}
 We should look at one of these terms, and see how we can write it as a complete square:
 \begin{align*}
@@ -96,30 +100,254 @@ To complete the square, we need the following form:
 \end{align*}
 In our case, we identify the constant $2a$ with the coefficient of the linear term:
 \begin{align*}
-  -\frac{1}{2m}\qty[p_1^2-p_1\qty(2m\dot{q}_1+\frac{eB}{c}q_2)]
-  =-\frac{1}{2m}\qty[\qty(p_1-\qty(m\dot{q}_1+\frac{eB}{2c}q))^2
-  -\qty(m\dot{q}_1+\frac{eB}{2c})]
+  p_1^2-p_1\qty(2m\dot{q}_1+\frac{eB}{c}q_2)
+  =\qty(p_1-\qty(m\dot{q}_1+\frac{eB}{2c}q_2))^2
+  -\qty(m\dot{q}_1+\frac{eB}{2c}q_2)^2
+\end{align*}
+The overall term is then:
+\begin{align*}
+  -\frac{1}{2m}
+  &\left[
+    \qty(p_1-\qty(m\dot{q}_1+\frac{eB}{2c}q_2))^2+
+    \qty(p_2-\qty(m\dot{q}_2-\frac{eB}{2c}q_1))^2
+  \right. \\
+  &\left.
+    -\qty(m\dot{q}_1+\frac{eB}{2c}q_2)^2
+    -\qty(m\dot{q}_2-\frac{eB}{2c}q_1)^2 \right]
+\end{align*}
+Where we have taken into account the opposite signs of the two components of $\vb{A}$. After Integrating out the $p$ variables (Which we can do because the argument of all this is quadratic in either $p_1$ or $p_2$) we can absorb the result into a normalization, leaving us with:
+\begin{align*}
+  &-\frac{1}{2m}\qty(\frac{eB}{2c})^2(q_1^2+q_2^2)
+  +\frac{1}{2m}\qty(m\dot{q}_1+\frac{eB}{2c}q_2)^2
+  +\frac{1}{2m}\qty(m\dot{q}_2-\frac{eB}{2c}q_1)^2\\
+  =&-\frac{1}{2m}\qty(\frac{eB}{2c})^2(q_1^2+q_2^2)
+  +\frac{1}{2}m\dot{q}_1^2+\frac{e^2B^2}{8mc^2}q_2^2+\frac{eB}{4c}\dot{q}_1q_2
+  +\frac{1}{2}m\dot{q}_2^2+\frac{e^2B^2}{8mc^2}q_1^2-\frac{eB}{4c}\dot{q}_2q_1\\
+  =&\frac{1}{2}m\qty(\dot{q}_1^2+\dot{q}_2^2)
+  -\frac{eB}{4c}\qty(\dot{q}_2q_1-\dot{q}_1q_2)\\
+  =&\frac{1}{2}m\dot{\q}^2-\frac{e}{2c}\dot{\q}\vdot\vb{A}
+\end{align*}
+So that our path integral becomes:
+\begin{align*}
+  \boxed{\ip{\q_0,t_f}{\q_0,t_i}=\int\cD{\q}
+  \exp{\frac{i}{\hbar}\int_{t_i}^{t_f}\dd{t}
+    \qty[\frac{1}{2}m\dot{\q}^2-\frac{e}{2c}\dot{\q}\vdot\vb{A}]}}
 \end{align*}
 \subsection{Ultra-Quantum Limit}
-
+Luckily with our action, we were able to eliminate all terms proportional to one over the mass, so the action becomes:
+\begin{align*}
+  \lim_{m\to0}S&=-\int\dd{t}\frac{e}{2c}\dot{\q}\vdot\vb{A}\\
+  &=-\frac{e}{2c}\int\dd{t}\dv{\q}{t}\vdot\vb{A}\\
+  &=-\frac{e}{2c}\int\dd{\q}\vdot\vb{A}
+\end{align*}
+Since $\q$ is a path, this is a line integral, but it is over a closed loop, so it defines the boundary of a surface, so we can use the following form of Stokes' theorem:
+\begin{align*}
+  \oint_{\partial\Sigma}\dd{\vb{r}}\vdot\vb{V}=
+  \int_\Sigma\dd{\vb{S}}\vdot\qty(\curl{\vb{V}})
+\end{align*}
+So our integral becomes:
+\begin{align*}
+  -\frac{e}{2c}\oint_{\partial\Sigma}\dd{\q}\vdot\vb{A}
+  &=-\frac{e}{2c}\int_\Sigma\dd{\vb{S}}\vdot\vb{B}
+  =-\frac{e}{2c}\int_\Sigma\dd{\vb{S}}\vdot(B\vu{n})\\
+  &=-\frac{eB}{2c}\int_\Sigma\dd{S_n}=\mp\frac{eB}{2c}A(\Sigma)
+\end{align*}
+Where $\vb{B}$ is perpendicular as opposed to along $z$ because of the next part, and the surface can either be oriented along or against the surface:
+\begin{align*}
+  \boxed{\lim_{m\to0}S=\mp\frac{eB}{2c}A(\Sigma)}
+\end{align*}
 \subsection{Particle on a Torus}
+In the flat case, we have the normal axis as just the $\vu{z}$ unit vector, if the trajectory and surface have opposite signs, so we have a positive action. The amplitude is:
+\begin{align*}
+  e^{iS/\hbar}=\exp{\frac{eBi}{2\hbar c}A\qty(\Sigma)}
+\end{align*}
+From solid state, the constant can be simplified using the quantized magnetic flux $\Phi$:
+\begin{align*}
+  \frac{e}{2c}=\frac{h}{2e}=BA=\Phi
+\end{align*}
+Rewriting our amplitude:
+\begin{align*}
+  \exp{\frac{eBi}{2\hbar c}A\qty(\Sigma)}=\exp{\frac{2\pi i}{hc/e}B A(\Sigma)}
+\end{align*}
+Note that since we are considering the trajectory, the $A$ is the area inside the trajectory.
 
+If we consider this instead to be a Torus, we have the following boundary conditions for our space:
+\begin{align*}
+  q_i+L=q_i
+\end{align*}
 \section{Scalar Theory Path Integral}
-
+The action we are working with is:
+\begin{align*}
+  S=\int\dd[4]{x}\qty(\D_\mu\phi^*\D^\mu\phi-m^2\phi^*\phi-J^*\phi-J\phi^*)
+\end{align*}
 \subsection{Source Vacuum Persistence}
-
+The source vacuum persistence in Minkowski space is simply:
+\begin{align*}
+  _J\ip{0}{0}_J=Z_M[J,J^*]&=\int\cD\phi\cD\phi^*\exp{\frac{i}{\hbar}S}\\
+  &=\boxed{\int\cD\phi\cD\phi^*\exp{\frac{i}{\hbar}
+    \int\dd[4]{x}\qty(\D_\mu\phi^*\D^\mu\phi-m^2\phi^*\phi-J^*\phi-J\phi^*)}}
+\end{align*}
+To get the Euclidean persistence $Z_E$, we replace $x^0\to -ix^4$, and define the new gradient $\grad_\mu$ with $\mu=1,2,3,4$ such that the action is:
+\begin{align*}
+  iS=-\int\dd[4]{x}\qty(\grad_\mu\phis\grad_\mu\phi+m^2\phis\phi+J^*\phi+J\phis)
+\end{align*}
+Which gives the Euclidean vacuum persistence as:
+\begin{align*}
+  Z_E[J,J^*]=&=\boxed{\int\cD\phi\cD\phi^*\exp{-\frac{1}{\hbar}
+    \int\dd[4]{x}\qty(\grad_\mu\phis\grad_\mu\phi+m^2\phis\phi+J^*\phi+J\phis)}}
+\end{align*}
 \subsubsection{Evaluating The Above}
+For Minkowski space, we separate each of the equations into a classical solution plus a perturbation $\eta$:
+\begin{align*}
+  \phi=\bphi+\eta\qquad \phis=\bphis+\eta^*
+\end{align*}
+The Minkowski Lagrangian is:
+\begin{align*}
+  \L=&\,\D_\mu\bphis\D^\mu\bphi+\D_\mu\bphi\D^\mu\eta^*+\D_\mu\bphis\D^\mu\eta
+  + \D_\mu\eta^*\D^\mu\eta\\
+  &-m^2\bphis\bphi-m^2\bphi\eta^*-m^2\bphis\eta-m^2\eta^*\eta\\
+  &-J^*(\bphi+\eta)-J(\bphis+\eta^*)
+\end{align*}
+We want to integrate this out in order to separate into the individual klein gordon parts, and many of the parts with $\eta$ will vanish due to the boundary conditions of $\eta$:
+\begin{align*}
+  \L=\,&-\frac{1}{2}\bphis\qty(\D^2+m^2)\bphi
+  -\frac{1}{2}\bphi\qty(\D^2+m^2)\bphis\\
+  &-\eta\qty(\D^2+m^2)\bphis-\eta^*\qty(\D^2+m^2)\bphi\\
+  &-\frac{1}{2}\eta^*\qty(\D^2+m^2)\eta-\frac{1}{2}\eta\qty(\D^2+m^2)\eta^*\\
+  &-J^*\phi-J\phis
+\end{align*}
+The barred variables should obey the source equations when we act on the Klein-Gordon operator:
+\begin{align*}
+  \hat{A}\bphi=\qty(\D^2+m^2)\bphi&=-J\\
+  \hat{A}\bphis=\qty(\D^2+m^2)\bphis&=-J^*
+\end{align*}
+We then have the Lagrangian as:
+\begin{align*}
+  \L=\,&-\frac{1}{2}\eta^*\hat{A}\eta-\frac{1}{2}\eta\hat{A}\eta^*\\
+  &-\frac{1}{2}\qty(J^*\bphi+J\bphis)
+\end{align*}
+Note that the functions $\bphi/bphis$ define the Green function of $\hat{A}$ for a delta function source:
+\begin{equation*}
+  \qty(\D^2+m^2)G_0^{\mathcal{M}}(x-y)=\delta(x-y)
+  \begin{aligned}
+    &\implies\bphi=-\int\dd[4]{y}G_0^{\mathcal{M}}(x-y)J(y)\\
+    &\implies\bphis=-\int\dd[4]{y}G_0^{\mathcal{M}}(x-y)J^*(y)
+  \end{aligned}
+\end{equation*}
+We can then identify the Green function as a sort of inverse Laplace operator:
+\begin{align*}
+  G_0^{\mathcal{M}}(x-y)=\mel{x}{\frac{1}{\D^2+m^2}}{y}
+\end{align*}
+The Minkowski partition functional will be identical to the real scalar field one, but squared, and the source term will be a bit different:
+\begin{align*}
+  Z[J,J^*]&=\boxed{\mathcal{N}\qty(\det\hat{A})^{-1}
+    \exp{\frac{i}{\hbar}\int\dd[4]{y}\dd[4]{x}J^*(x)G_0^{\mathcal{M}}(x-y)J(y)}}
+\end{align*}
+Note, we have the determinant of $A$ to the minus one instead of $\frac{1}{2}$ since we have the extra degree of freedom from $\phis$. This is also up to some normalization, which could be absorbed into $Z[0,0]$.
 
+Analytically ccontinuing time would turn the $\D^2$ into a $\grad_\mu\grad_\mu$ instead of $\D_\mu\D^\mu$, call it $-\D^2$, and we would need a new Green function due to this:
+\begin{align*}
+  Z_E[J,J^*]&=\boxed{\mathcal{N}\qty(\det\qty(-\D^2+m^2))^{-1}
+    \exp{\frac{i}{\hbar}\int\dd[4]{y}\dd[4]{x}J^*(x)G_0^E(x-y)J(y)}}\\
+  G_0^E(x-y)&=\mel{x}{\frac{1}{-\D^2+m^2}}{y}
+\end{align*}
 \subsection{Two Point Functions}
-
-\subsection{Propagator}
-
-\subsubsection{Euclidean}
-
 \subsubsection{Minkowski}
-
+The two point function is given as a variation depending on the ordering.
+\begin{align*}
+  G_2(x-y)&=\frac{1}{i^2}\frac{1}{Z[0,0]}
+  \eval{\frac{\delta Z[J,J^*]}{\delta J^*(x)\delta J(y)}}_{J=0}
+\end{align*}
+Note that the normalization and the determinant will cancel out from our functions, leaving only the arguments of the exponentials:
+\begin{align*}
+  G_2=\frac{1}{i}\fdv{J^*(x)}\eval{
+  \qty(\int\dd[4]{z}J^*(z)G_0^{\mathcal{M}}(z-y))
+  \exp{i\int\dd[4]{z}\dd[4]{z'}J^*(y)G_0^{\mathcal{M}}(z-z')J(z')}}_{J=0}
+\end{align*}
+Differentiating with respect $J^*$ will leave only the Green function, with the $x$ variable in front due to symmetry:
+\begin{align*}
+  \boxed{G_2(x-y)=-iG_0^{\mathcal{M}}(x-y)}
+\end{align*}
+The next function is done similarly, except we reverse the order of the functional derivatives, which will end up adding in a reversal of the variables in the ening Green function:
+\begin{align*}
+  \boxed{G_2^*(x-y)=-iG_0^{\mathcal{M}}(y-x)}
+\end{align*}
+For these next two, the first functional derivative eliminates most of the $J^*$ except for in the exponentials, but they should cancel out when we take the second functional derivative, hence:
+\begin{align*}
+  \boxed{G_2^*(x-y)=G_2^{\prime*}(x-y)=0}
+\end{align*}
+\subsubsection{Euclidean}
+The Euclidean functions should simply not have the factors of $i$:
+\begin{equation*}
+  \boxed{
+    \begin{aligned}
+      G_2^E(x-y)&=G_0^E(x-y)\\
+      G_2^{E*}(x-y)&=G_0^E(y-x)\\
+      G_2^{\prime E}(x-y)&=G_2^{\prime E*}(x-y)=0
+    \end{aligned}
+  }
+\end{equation*}
+\subsubsection{Equation Satisfying the Propogator}
+The equation satisfied is that with a delta function source:
+\begin{gather*}
+  (\D_x^2+m^2)G_0^{\mathcal{M}}(x-y)=\delta(x-y)\\
+  (-\D_x^2+m^2)G_0^{E}(x-y)=\delta(x-y)
+\end{gather*}
+Solving the Euclidean case is fairly simply done with a Fourier transform:
+\begin{align*}
+  (-\D^2_x+m^2)\int\frac{\dd[4]{p}}{(2\pi)^4}G_0^E(p)e^{ip\vdot(x-y)}=
+  \int\frac{\dd[4]{p}}{(2\pi)^4}e^{ip\vdot(x-y)}
+\end{align*}
+The transform of the equation turns the derivative into $ip$s:
+\begin{align*}
+  \int\frac{\dd[4]{p}}{(2\pi)^4}(p^2+m^2)G_0^E(p)e^{ip\vdot(x-y)}=
+  \int\frac{\dd[4]{p}}{(2\pi)^4}e^{ip\vdot(x-y)}
+\end{align*}
+Matching terms allows us to see that:
+\begin{align*}
+  G_0^E(p)=\frac{1}{p^2+m^2}
+\end{align*}
+Which means the Euclidean Green function is given by:
+\begin{align*}
+  G_0^E(x-y)=\int\frac{\dd[4]{p}}{(2\pi)^4}\frac{e^{ip\vdot(x-y)}}{p^2+m^2}
+\end{align*}
+This can be manipulated to a modified Bessel function if we introduce an integration parameter, but I am not sure how we end up there...
+Mathematica gives the integral in terms of the Exponential integral $\mathrm{Ei}(x)$, which can certainly be turned into the combination required for the exponential which we need. 
+\begin{align*}
+  G_0^E(x-y)&=\frac{1}{4\pi^2}\qty(\frac{m}{\abs{x-y}})K_1(m\abs{x-y})\\
+  K_\nu(z)&=\frac{1}{2}\int\dd{t}t^{\nu-1}\exp{-\frac{z}{2}\qty(t+\frac{1}{t})}
+\end{align*}
+For long distances, the modified Bessel function becomes:
+\begin{align*}
+  K_\nu(z)\approx\sqrt{\frac{\pi}{2z}}e^{-z}\implies
+  \boxed{G_0^E\approx\frac{\sqrt{\pi}}{4\sqrt{2}\pi^2}\frac{m^2}{m^{3/2}}
+  \frac{e^{-m\abs{x-y}}}{\abs{x-y}^{3/2}}}
+\end{align*}
+Short distances have the modified Bessel function as:
+\begin{align*}
+  K_\nu(z)\approx\frac{\Gamma(\nu)}{2}\qty(\frac{2}{z})^\nu
+\end{align*}
+Giving the much simpler Green function of:
+\begin{align*}
+  \boxed{G_0^E\approx\frac{1}{4\pi^2\abs{x-y}^2}}
+\end{align*}
+Analytically continuing back to Minkowski space:
+\begin{align*}
+  G_0^{\mathcal{M}}(x-y)=\frac{i}{4\pi^2}\frac{m}{\sqrt{-s^2}}K_1(m\sqrt{-s^2})
+\end{align*}
+We then go to spacelike vs timelike separations, spacelike separations will act the same as euclidean but with the usual oddities, for long separations:
+\begin{align*}
+  \boxed{G_0^{\mathcal{M}}\approx i\frac{\sqrt{\pi}}{4\sqrt{2}\pi^2}
+    \frac{m^2}{m^{3/2}}\frac{e^{-m\sqrt{-s^2}}}{\sqrt{-s^2}^{3/2}}}
+\end{align*}
+For short ones:
+\begin{align*}
+  \boxed{G_0^{\mathcal{M}}\approx\frac{i}{4\pi^2(-s^2)}}
+\end{align*}
+For timelike separations we should get a Hankel function, and get very similar functions, but with complex exponentials as opposed to real ones.
 \subsection{Four Point Functions}
-
-
-
+Wick's theorem says we can just use two point functions to create the four point ones:
+\begin{align*}
+  
+\end{align*}
 \end{document}
