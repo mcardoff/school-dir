@@ -1,7 +1,7 @@
 \documentclass[12pt]{article}
 
-\title{\vspace{-3em}PHYS 553 HW 3}
-\author{Michael Cardiff}
+\title{\vspace{-4em}PHYS 553 HW 3}
+\author{Michael Cardiff\\Collaborated with Shayarneel Kundu}
 \date{\today}
 
 %% science symbols 
@@ -157,24 +157,36 @@ Where $\vb{B}$ is perpendicular as opposed to along $z$ because of the next part
   \boxed{\lim_{m\to0}S=\mp\frac{eB}{2c}A(\Sigma)}
 \end{align*}
 \subsection{Particle on a Torus}
-In the flat case, we have the normal axis as just the $\vu{z}$ unit vector, if the trajectory and surface have opposite signs, so we have a positive action. The amplitude is:
-\begin{align*}
-  e^{iS/\hbar}=\exp{\frac{eBi}{2\hbar c}A\qty(\Sigma)}
-\end{align*}
-From solid state, the constant can be simplified using the quantized magnetic flux $\Phi$:
-\begin{align*}
-  \frac{e}{2c}=\frac{h}{2e}=BA=\Phi
-\end{align*}
-Rewriting our amplitude:
-\begin{align*}
-  \exp{\frac{eBi}{2\hbar c}A\qty(\Sigma)}=\exp{\frac{2\pi i}{hc/e}B A(\Sigma)}
-\end{align*}
-Note that since we are considering the trajectory, the $A$ is the area inside the trajectory.
-
-If we consider this instead to be a Torus, we have the following boundary conditions for our space:
+If we consider this particle to be on a Torus, we have the following boundary conditions for our space:
 \begin{align*}
   q_i+L=q_i
 \end{align*}
+Since we are limiting our space to have a finite surface area, depending on the orientation of our curve with respect to our surface, we will get a different area 'enclosed' by the surface. In one case we have $A_{in}$, where the flux is give by:
+\begin{align*}
+  e^{iS_{in}/\hbar}=\exp{\frac{eBi}{2\hbar c}A_{in}}
+\end{align*}
+The other case must have area $A_{out}$ such that $A_{in}+A_{out}=A(\text{Torus})$, so we can write the 'out' amplitude as:
+\begin{align*}
+  e^{iS_{out}/\hbar}=\exp{\frac{eBi}{2\hbar c}\qty(A(\text{Torus})-A_{in})}
+\end{align*}
+The amplitudes should be equal, doing some math:
+\begin{align*}
+  e^{iS_{out}/\hbar}=e^{iS_{in}/\hbar}\implies 1=e^{i(S_{in}-S_{out})/\hbar}
+\end{align*}
+In order for this to be true we require the following limit on the argument:
+\begin{align*}
+  S_{in}-S_{out}=2\pi\hbar n
+\end{align*}
+For $n\in Z$. The difference is:
+\begin{align*}
+  \frac{eB}{2\hbar c}A(\text{Torus})=2\pi\hbar n
+\end{align*}
+So the magnetic field is quantized! As:
+\begin{align*}
+  \boxed{B=n\frac{4\pi\hbar^2c/e}{A(\text{Torus})}}
+\end{align*}
+Where the coefficient of $n$ defines some fundamental flux!
+% \newpage
 \section{Scalar Theory Path Integral}
 The action we are working with is:
 \begin{align*}
@@ -348,6 +360,7 @@ For timelike separations we should get a Hankel function, and get very similar f
 \subsection{Four Point Functions}
 Wick's theorem says we can just use two point functions to create the four point ones:
 \begin{align*}
-  
+  G^a_4(x_1,x_2,x_3,x_4)=G_2(x_1-x_3)G_2(x_2-x_4)+G_2(x_1-x_4)G_2(x_2-x_3)
 \end{align*}
+The next two are going to be proportional to the two point functions which are $0$ so we do not need to compute them explicitly. The final two as well are the same as the first one up to renaming coordinates, such that we get the second one by swapping $x_2$ and $x_3$, and the final by swapping the fourth and the second one.
 \end{document}
