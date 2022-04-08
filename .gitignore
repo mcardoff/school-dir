@@ -8,7 +8,6 @@
 *.bbl
 *.blg
 *.out
-*.m
 *.txt
 *.toc
 *.nav
