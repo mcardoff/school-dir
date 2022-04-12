@@ -9,6 +9,9 @@
 \usepackage{amssymb}
 \usepackage{physics}
 
+%% slash notation
+\usepackage{slashed}
+
 %% general pretty stuff
 \usepackage{bm}
 \usepackage{enumitem}
@@ -39,13 +42,21 @@
 }
 
 \renewcommand{\L}{\mathcal{L}}
+% integration measure
 \newcommand{\cD}{\mathcal{D}}
+% spacetime deriv
 \newcommand{\D}{\partial}
+% p,q as vecs
 \newcommand{\q}{\vb{q}}
 \newcommand{\p}{\vb{p}}
+% fields
 \newcommand{\phis}{\phi^*}
 \newcommand{\bphis}{\bar{\phi}^*}
 \newcommand{\bphi}{\bar{\phi}}
+\newcommand{\psib}{\bar{\psi}}
+\newcommand{\etab}{\bar{\eta}}
+\newcommand{\xib}{\bar{\xi}}
+\newcommand{\A}{\hat{A}}
 \renewcommand{\a}{\hat{a}}
 
 \begin{document}
@@ -177,11 +188,121 @@ Getting rid of the function leaves us with the identity:
   \boxed{\acomm{\a^*}{\a}=1}
 \end{align*}
 \section{Path Integral for Fermions}
-
+The Lagrangian:
+\begin{align*}
+  \L=\psib(i\slashed{\D}-m)\psi
+\end{align*}
+With sources:
+\begin{align*}
+  \L_\eta=\psib(i\slashed{\D}-m)\psi+\psib\eta+\etab\psi
+\end{align*}
 \subsection{Generating Function}
-
+We know that the partition functional will be:
+\begin{align*}
+  Z[\etab,\eta]=N\int\cD\psib\cD\psi \exp{iS}
+\end{align*}
+Where $N$ is the normalization constant, note factors of $\hbar$ are ignored. The action is given by:
+\begin{align*}
+  S(\psib,\psi)=\int\dd[4]{x}\L_\eta
+\end{align*}
+The operator we (eventually) need to find the Green function of is $\A\equiv i\slashed{\D}-m$, write the solution in terms of the classical solution and its perturbation:
+\begin{align*}
+  \psi(x)=\psi_0(x)+\xi(x)
+\end{align*}
+A similar equation exists for $\psib$ as well. The Lagrangian will have the form:
+\begin{align*}
+  \L_\eta=\psib_0\A\psi_0+\xib\A\xi+
+  \psi_0\etab+\psib_0\eta+\xi\etab+\xib\eta+
+  \xib\A\psi_0+\psib_0\A\xi
+\end{align*}
+The definition of our Green function is:
+\begin{align*}
+  \A G(x-y)=\delta(x-y)
+\end{align*}
+Giving the form of $\psi_0\psib_0$
+\begin{align*}
+  \psi_0&=-\int\dd[4]{y}G(x-y)\eta(y)\\
+  \psib_0&=-\int\dd[4]{y}G(x-y)\etab(y)
+\end{align*}
+We have in both cases $\A$ acting on $\psi_0,\psib_0$:
+\begin{align*}
+  \A\psi_0&=-\int\dd[4]{y}\A G(x-y)\eta(y)
+  =-\int\dd[4]{y}\delta(x-y)\eta(y)=-\eta(x)\\
+  \A\psib_0&=-\int\dd[4]{y}\A G(x-y)\etab(y)
+  =-\int\dd[4]{y}\delta(x-y)\etab(y)=-\etab(x)
+\end{align*}
+So the mixed $\psi_0$ and $\xi$ terms cancel out. Putting all of this back into the Lagrangian gives:
+\begin{align*}
+  \L=\xib\A\xi-\int\dd[4]{y}\etab(x)G(x-y)\eta(y)
+\end{align*}
+The same we had as in class. The partition functional is:
+\begin{align*}
+  Z[\etab,\eta]=\qty(\int\cD\xib\cD\xi\exp{iS_\xi})
+  \exp{i\int\dd[4]{x}\dd[4]{y}\etab(x)G(x-y)\eta(y)}
+\end{align*}
+With the action of $\xi$ is:
+\begin{align*}
+  S_\xi=\int\dd[4]{x}\xib\A\xi
+\end{align*}
+This is the structure which gave us the determinant in class, we also must add in the spin indices which were dropped since they did not contribute to the content of the integral at all:
+\begin{align*}
+  Z[\etab,\eta]=\det(\A)
+  \exp{i\int\dd[4]{x}\dd[4]{y}\etab_a(x)G_{ab}(x-y)\eta_b(y)}
+\end{align*}
+Instead of greek indices I used Latin but it should not matter in this case. 
 \subsection{Feynman Propagator}
-
+The normal partition functional is given in terms of the fields $\psib,\psi$:
+\begin{align*}
+  Z[\etab,\eta]=\int\cD\psib\cD\psi\exp{i\int\dd[4]{x}\L_\eta}
+\end{align*}
+We get the two-point function by varying the partition functional with respect to the two sources:
+\begin{align*}
+  \eval{\frac{\delta^2Z[\etab,\eta]}{\delta\etab_a(x)\delta\eta_b(y)}}_
+  {\eta,\etab=0}
+\end{align*}
+Th
+\begin{align*}
+  \fdv{Z[\etab,\eta]}{\eta_b(y)}=\int\cD\psib\cD\psi\int\dd[4]{x'}
+  \fdv{\psib_c(x')\eta_c(x')}{\eta_b(y)}e^{iS}
+\end{align*}
+We need to commute the $\psib$ and the $\eta$ to take the derivative, picking up a minus sign:
+\begin{align*}
+  \fdv{Z[\etab,\eta]}{\eta_b(y)}=-\int\cD\psib\cD\psi\psib_be^{iS}
+\end{align*}
+The next one will have similar results, but since we have to commute the functional derivative past another Grassman variable $\psi$, we pick up an overall one more minus sign, cancelling out the original, but we will get another from the derivative:
+\begin{align*}
+  \frac{\delta^2Z[\etab,\eta]}{\delta\etab_a(x)\delta\eta_b(y)}=
+  -\int\cD\psib\cD\psi\psib_b\psi_ae^{iS}
+\end{align*}
+Commuting the fields on the inside one last time makes things positive again:
+\begin{align*}
+  \frac{\delta^2Z[\etab,\eta]}{\delta\etab_a(x)\delta\eta_b(y)}=
+  \int\cD\psib\cD\psi\psi_a(x)\psib_b(y)e^{iS}
+\end{align*}
+We then get:
+\begin{align*}
+  \eval{\frac{\delta^2Z[\etab,\eta]}{\delta\etab_a(x)\delta\eta_b(y)}}_
+  {\eta,\etab=0}=\mel{0}{T\psi_a(x)\psi_b(y)}{0}
+\end{align*}
+If we were to do this in the scheme of the previous part, the derivative would give us something proportional to:
+\begin{align*}
+  \fdv{Z}{\eta_b(y)}=Z\int\dd[4]{x'}\dd[4]{y'}\fdv{\eta_b(y)}
+  \qty(\etab_d(x')G_{dc}(x'-y')\eta_c(y'))
+\end{align*}
+When we take the functional derivative, we should replace $y'$ with $y$\footnote{Equivalent to a $\delta(y'-y)$}, replace the $c$ indices with $b$ indices\footnote{Equivalent to a $\delta_{bc}$} finally, we need to add in a minus sign from commuting the functional derivative with the first Grassman source:
+\begin{align*}
+  \fdv{Z}{\eta_b(y)}=-Z\int\dd[4]{x'}
+  \etab_d(x')G_{db}(x'-y)
+\end{align*}
+Taking the next derivative is exactly the same, so we can immediately set everything to $0$:
+\begin{align*}
+  \eval{\frac{\delta^2Z}{\delta\etab_a(x)\eta_b(y)}}_{\eta,\etab=0}=
+  iG_{ab}(x-y)Z[0,0]
+\end{align*}
+The propagator will get rid of the $Z[0,0]$ from the normalization, and also gets rid of the $i$:
+\begin{align*}
+  \boxed{S^{ab}_F(x-y)=G_{ab}(x-y)=\mel{x,a}{\frac{1}{i\slashed{\D}-m}}{y,b}}
+\end{align*}
 \subsection{Four-Point Function}
 
 
