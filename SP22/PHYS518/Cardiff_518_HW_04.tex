@@ -1,0 +1,90 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 518 HW 4}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
+\newcommand{\h}{\phi}
+\newcommand{\s}{\psi}
+\newcommand{\munu}{{\mu\nu}}
+
+\begin{document}
+\maketitle
+
+\section{Chapter 9.9}
+The chapter starts off by introducing the following equation and constants:
+\begin{align*}
+  \dv[2]{u}{\phi}+u=\frac{GM}{h^2}+\frac{3GM}{c^2}u^2
+\end{align*}
+Where $u=\frac{1}{r}$, $h=r^2\dot{phi}$, but we can rewrite it as:
+\begin{align*}
+  \qty(\dv{r}{t})^2+\frac{h^2}{r^2}\qty(1-\frac{2GM}{c^2r})-\frac{2GM}{r}=
+  c^2(k^2-1)
+\end{align*}
+Where $k=E/(m_0c^2)$. The author introduces the constant $\mu\equiv GM/c^2$:
+\begin{align*}
+  \qty(\dv{r}{t})^2+\frac{h^2}{r^2}\qty(1-\frac{2\mu}{r})-\frac{2\mu c^2}{r}=
+  c^2(k^2-1)
+\end{align*}
+We want to manipulate this a bit further so it matches this equation:
+\begin{align*}
+  \frac{1}{2}\qty(\dv{r}{t})^2+V_{eff}(r)=E
+\end{align*}
+This is done simply by dividing through by 2:
+\begin{align*}
+  \frac{1}{2}\qty(\dv{r}{t})^2
+  +\frac{h^2}{2r^2}\qty(1-\frac{2\mu}{r})
+  -\frac{\mu c^2}{r}=\frac{c^2}{2}(k^2-1)
+\end{align*}
+So we can identify the effective potential as:
+\begin{align*}
+  V_{eff}(r)=-\frac{\mu c^2}{r}+\frac{h^2}{2r^2}-\frac{\mu h^2}{r^3}
+\end{align*}
+Differentiating it is fairly simple:
+\begin{align*}
+  \dv{V_{eff}}{r}=\frac{\mu c^2}{r^2}-\frac{h^2}{r^3}+\frac{4\mu h^2}{r^4}
+\end{align*}
+\section{Chapter 9.12 \& 9.13}
+
+\section{Chapter 10.3}
+
+\section{$f(R)$ Theory}
+
+
+\end{document}
