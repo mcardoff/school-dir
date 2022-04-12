@@ -1,0 +1,188 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 553 HW 4}
+\author{Michael Cardiff\\Collaborated with Shayarneel Kundu}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\D}{\partial}
+\newcommand{\q}{\vb{q}}
+\newcommand{\p}{\vb{p}}
+\newcommand{\phis}{\phi^*}
+\newcommand{\bphis}{\bar{\phi}^*}
+\newcommand{\bphi}{\bar{\phi}}
+\renewcommand{\a}{\hat{a}}
+
+\begin{document}
+\maketitle
+\section{Grassman Variables}
+The notation in the question is a bit confusing with respect to proper complex conjugates, the convention I used for the function is:
+\begin{align*}
+  f(a)\equiv f_0+f_1a
+  f(a^*)^*\equiv \bar{f_0}+\bar{f_1}a
+\end{align*}
+\subsection{Inner Product}
+The inner product makes use of the product of these two functions:
+\begin{align*}
+  f(a^*)^*g(a^*)=\qty(\bar{f_0}+\bar{f_1}a)(g_0+g_1a^*)
+\end{align*}
+Remembering that $f_0,f_1,g_0,g_1$ are all just complex numbers, we can write this product as:
+\begin{align*}
+  f(a^*)^*g(a^*)=\bar{f_0}g_0+\bar{f_0}g_1a^*+\bar{f_1}g_0a+\bar{f_1}g_1aa^*
+\end{align*}
+In the integrand we also have an exponential, which is defined by its power series, which truncates after two terms:
+\begin{align*}
+  e^{-a^*a}=\sum_{n=0}^\infty-\frac{a^*a}{n!}=1-a^*a
+\end{align*}
+Distributing this to the rest of the integrand:
+\begin{align*}
+  e^{-a^*a}f(a^*)^*g(a^*)&=(1-a^*a)\qty(
+  \bar{f_0}g_0+\bar{f_0}g_1a^*+\bar{f_1}g_0a+\bar{f_1}g_1aa^*)\\
+  &=\bar{f_0}g_0+\bar{f_0}g_1a^*+\bar{f_1}g_0a+\bar{f_1}g_1aa^*
+  -\bar{f_0}g_0a^*a-\bar{f_0}g_1a^*aa^*-\bar{f_1}g_0a^*aa-\bar{f_1}g_1a^*aaa^*\\
+\end{align*}
+The last two terms are immediately killed due to having powers of $a$ or $a^*$ that are greater than one, but the term with $a^*aa^*$ requires we use the following identity:
+\begin{align*}
+  \acomm{a}{a^*}=aa^*-a^*a\equiv0
+\end{align*}
+This means we can simply swap them to pick up a minus sign, but the square is $0$ anyways, so it gets killed without reprecussion:
+\begin{align*}
+  e^{-a^*a}f(a^*)^*g(a^*)&=\bar{f_0}g_0+\bar{f_0}g_1a^*+\bar{f_1}g_0a
+  +\bar{f_1}g_1aa^*-\bar{f_0}g_0a^*a\\
+  &=\bar{f_0}g_0+\bar{f_0}g_1a^*+\bar{f_1}g_0a+\qty(\bar{f_1}g_1+\bar{f_0}g_0)aa^*
+\end{align*}
+When we integrate over $a$, anything which is a constant in $a$ will go to $0$, this will kill the terms linear in $a^*$ as well:
+\begin{align*}
+  \int\dd{a}e^{-a^*a}f(a^*)^*g(a^*)=\bar{f_1}g_0+\qty(\bar{f_1}g_1+\bar{f_0}g_0)a^*
+\end{align*}
+Integrating then through $a^*$ we are left with only the terms which have an $a^*$:
+\begin{align*}
+  \int\dd{a^*}\dd{a}e^{-a^*a}f(a^*)^*g(a^*)=\bar{f_1}g_1+\bar{f_0}g_0
+\end{align*}
+Rearranging makes this look like a normal (expected) inner product:
+\begin{align*}
+  \boxed{
+    \ip{f}{g}=\int\dd{a^*}\dd{a}e^{-a^*a}f(a^*)^*g(a^*)=\bar{f_0}g_0+\bar{f_1}g_1}
+\end{align*}
+\subsection{Matrix Identities}
+\subsubsection{Matrix Product on a Function}
+We can identify the 'vector' on the left hand side of the matrix equation with the function $f$:
+\begin{align*}
+  f\equiv\mqty(f_0\\f_1)
+\end{align*}
+The most general form of a function of two Grassman variables is given by by 4 coefficients, so we can in fact arrange them in a matrix $A$:
+\begin{align*}
+  A(a^*,b)=A_{00}+A_{01}b+A_{10}a^*+A_{11}a^*b
+\end{align*}
+Since this itself is a function in Grassman variables, we can compute its inner product with $f$:
+\begin{align*}
+  Af(a^*)=\int\dd{b^*}\dd{b} A(a^*,b)f(b^*)e^{-b^*b}
+\end{align*}
+The only terms in the product that will have $b^*b$:
+\begin{align*}
+  A(a^*,b)f(b^*)e^{-b^*b}=\qty(A_{00}f_0+A_{01}f_1+\qty(A_{10}f_0+A_{11}f_1)a^*)bb^*
+\end{align*}
+Finishing this off, we see that we simply take the coefficient of $bb^*$:
+\begin{align*}
+  Af(a^*)&=A_{00}f_0+A_{01}f_1+\qty(A_{10}f_0+A_{11}f_1)a^*=
+  \mqty(A_{00}f_0+A_{01}f_1\\A_{10}f_0+A_{11}f_1)\\
+  &=\boxed{
+    \mqty(A_{00}&A_{10}\\A_{10}&A_{11})\mqty(f_0\\f_1)\equiv \mqty(g_0\\g_1)=g(a^*)}
+\end{align*}
+
+\subsubsection{Matrix Multiplication}
+For Matrix multiplication, we require a function $B$ of two grassman variables, but this time with $b^*$ and $a$ instead of $a^*,b$:
+\begin{align*}
+  AB(a^*,a)&\equiv\int\dd{b^*}\dd{b}e^{-b^*b}A(-a^*,b)B(b^*,a)\\
+  e^{-b^*b}A(-a^*,b)B(b^*,a)&=(1-b^*b)(A_{00}+A_{01}b+A_{01}a^*+A_{11}a^*b)
+  (B_{00}+B_{01}a+B_{10}b^*+B_{11}b^*a)\\
+  &=\qty[T(1)+T(a)a+T(a^*)a^*+T(a^*a)a^*a]bb^*
+\end{align*}
+Where the quantities $T$ are:
+\begin{align*}
+  T(1)&=A_{00}B_{00}+A_{01}B_{10}\\
+  T(a)&=A_{01}B_{11}+A_{00}B_{01}\\
+  T(a^*)&=A_{11}B_{10}+A_{10}B_{00}\\
+  T(a^*a)&=A_{11}B_{11}+A_{10}B_{01}
+\end{align*}
+Note that these are the entries of a matrix, whose entries are:
+\begin{align*}
+  \mqty(T(1)&T(a)\\T(a^*)&T(a^*a))
+\end{align*}
+Up to a possible transpose which I misdid, this is our $C$:
+\begin{align*}
+  \boxed{AB(a^*,a)=C(a^*a)}
+\end{align*}
+\subsection{Anticommutation Identities}
+Start with $\hat{a}^{*2}=0$:
+\begin{align*}
+  \a^*\a^*f(a^*)=\a^*(\a^*f(a^*))=a^*\a^*f(a^*)=a^*a^*f(a^*)=0
+\end{align*}
+Since $a^*a^*=0$
+
+Next is $\a^2=0$:
+\begin{align*}
+  \a(\a f(a^*))=\a\qty(\dv{a^*}f(a^*))
+\end{align*}
+The derivative of a function $f$ will result in the constant coefficient of $a^*$ in $f$, so its second derivative must be $0$:
+\begin{align*}
+  \a\a = 0
+\end{align*}
+Now the final one:
+\begin{align*}
+  \a^*(\a f(a^*))&=\a^*\qty(\dv{a^*}f(a^*))=\a^*f_1=a^*f_1\\
+  \a(\a^*f(a^*))&=\a\qty(a^*f(a^*))=\dv{a^*}\qty(a^*f_0+a^*f_1a^*)=f_0
+\end{align*}
+Putting these together gives the anticommutator operated on a function
+\begin{align*}
+  \acomm{\a^*}{\a}f(a^*)=\a^*\a f(a^*)+\a\a^*f(a^*)=f_0+f_1a^*=f(a^*)
+\end{align*}
+Getting rid of the function leaves us with the identity:
+\begin{align*}
+  \boxed{\acomm{\a^*}{\a}=1}
+\end{align*}
+\section{Path Integral for Fermions}
+
+\subsection{Generating Function}
+
+\subsection{Feynman Propagator}
+
+\subsection{Four-Point Function}
+
+
+\end{document}
