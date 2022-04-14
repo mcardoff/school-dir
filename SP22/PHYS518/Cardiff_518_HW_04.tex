@@ -78,10 +78,87 @@ So we can identify the effective potential as:
 \end{align*}
 Differentiating it is fairly simple:
 \begin{align*}
-  \dv{V_{eff}}{r}=\frac{\mu c^2}{r^2}-\frac{h^2}{r^3}+\frac{4\mu h^2}{r^4}
+  \dv{V_{eff}}{r}=\frac{\mu c^2}{r^2}-\frac{h^2}{r^3}+\frac{3\mu h^2}{r^4}
 \end{align*}
+Finding the minimum:
+\begin{align*}
+  \dv{V_{eff}}{r}=0\implies
+  0&=\frac{\mu c^2}{r^2}-\frac{h^2}{r^3}+\frac{3\mu h^2}{r^4}\\
+  &=\mu c^2-\frac{h^2}{r}+\frac{3\mu h^2}{r^2}\\
+  &=\mu c^2r^2-h^2r+3\mu h^2\\
+  0&=\boxed{r^2-\frac{h^2}{\mu c^2}r+\frac{3h^2}{c^2}}
+\end{align*}
+Solving for $r$ is just the quadratic formula:
+\begin{align*}
+  r&=\frac{h^2}{2\mu c^2}\pm
+  \frac{1}{2}\sqrt{\frac{h^4}{\mu^2c^4}-\frac{12h^2}{c^2}}\\
+  &=\frac{h^2}{2\mu c^2}\pm\frac{h}{2c}\sqrt{\qty(\frac{h}{\mu c})^2-12}\\
+  &=\frac{h^2}{2\mu c^2}\pm\frac{h}{2\mu c^2}\sqrt{h^2-12\mu^2c^2}\\
+  &=\boxed{\frac{h}{2\mu c^2}\qty(h\pm\sqrt{h^2-12\mu^2c^2})}
+\end{align*}
+The value of $h=\sqrt{12}\mu c$ then there is one extremum:
+\begin{align*}
+  r&=\frac{\sqrt{12}\mu c}{2\mu c^2}\sqrt{12}\mu c\\
+  &=\frac{12\mu^2c^2}{2\mu c^2}\\
+  &=6\mu
+\end{align*}
+Lets check that this satisfies $\dv[2]{V_{eff}}{r}=0$ as well:
+\begin{align*}
+  \dv[2]{V_{eff}}{r}=-\frac{2\mu c^2}{r^3}+\frac{3h^2}{r^4}-\frac{12\mu h^2}{r^5}
+\end{align*}
+The minimum condition can be found in a similar way:
+\begin{align*}
+  \boxed{-2\mu c^2r^2+3h^2r-12\mu h^2=0}
+\end{align*}
+Setting $h=\sqrt{12}\mu c$:
+\begin{align*}
+  0&=-2\mu c^2r^2+36\mu cr-144\mu c\\
+  &=-2\mu c^2(36\mu)+36\mu c(6\mu)-144\mu c\\
+  &=0
+\end{align*}
+We did the remainder in class, notably the relativistic correction to the newtonian orbit.
 \section{Chapter 9.12 \& 9.13}
-
+The photon trajectory is:
+\begin{align*}
+  \dv[2]{u}{\phi}+u=\frac{3GM}{c^2}u^2
+\end{align*}
+A circular photon orbit occurs when $r=\text{const}$ so all derivatives disappear:
+\begin{align*}
+  u=\frac{3GM}{c^2}u^2
+\end{align*}
+Transforming $u\to\frac{1}{r}$:
+\begin{align*}
+  \frac{1}{r}=\frac{3GM}{c^2}\frac{1}{r^2}\implies r=\frac{3GM}{c^2}
+\end{align*}
+The energy equation is:
+\begin{align*}
+  \frac{\dot{r}^2}{h^2}+\frac{1}{r^2}\qty(1-\frac{2\mu}{r})=\frac{c^2k^2}{h^2}
+\end{align*}
+Where we define $b=h/(ck)$ as the constant on the right hand side, the term only in $\mu,r$ is the effective potential. The $h$ dependence can be ignored. The we can rewrite this with the geodesic equation:
+\begin{align*}
+  k=\qty(1-\frac{2\mu}{r})\dot{t}
+\end{align*}
+This gives the $r$ deriv of $\phi$:
+\begin{align*}
+  \dv{\phi}{r}=\frac{1}{r^2}
+  \qty[\frac{1}{b^2}-\frac{1}{r^2}\qty(1-\frac{2\mu}{r})]^{-1/2}
+\end{align*}
+Take the limit as $r\to\infty:$
+\begin{align*}
+  \lim_{r\to\infty}r^2\dv{\phi}{r}=\qty[\frac{1}{b^2}-\frac{1}{r^2}\{\}]^{-1/2}
+\end{align*}
+Where the curly bracket term does not matter since it is $0$:
+\begin{align*}
+  \lim_{r\to\infty}r^2\dv{\phi}{r}=\qty[\frac{1}{b^2}]^{-1/2}=\pm b
+\end{align*}
+The solution can be found by separation of varibles
+\begin{align*}
+  r^2\dd{\phi}=\pm b\dd{r}\implies\dd{\phi}=\pm b\frac{\dd{r}}{r^2}
+\end{align*}
+Integrating will give a linear approximation of the solution, extending it gives:
+\begin{align*}
+  r=\pm\frac{b}{\sin\phi}
+\end{align*}
 \section{Chapter 10.3}
 
 \section{$f(R)$ Theory}
