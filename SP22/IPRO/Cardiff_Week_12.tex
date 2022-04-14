@@ -1,0 +1,48 @@
+\documentclass[12pt]{article}
+
+\title{Week 12 Updates}
+\author{Michael Cardiff}
+\date{April 8, 2022}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\begin{document}
+\maketitle
+This week was a bit slow, I finally ended up going on to the VCL to try out the codes in proper MATLAB, when before I had been doing some testing in GNU Octave. It is nice to have the actual plots which we will end up using. I am finally able to meet with the team again officially since I am done with graduate school visits. This means we will get a lot more done.
+
+In terms of the team, I know Stephanie finished creating the phantoms, so the hardware aspect will come in next so we get imaging done and we can actually make use of the curves I will be plotting. The paired agent imaging project was a good idea, and has a lot of interesting applications.  
+\end{document}
