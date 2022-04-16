@@ -1,0 +1,48 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}Week 13 Summary}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\begin{document}
+\maketitle
+This week I did not do too much, but I tried to get some work done seeing how a binding vs non-binding agent would affect the concetration curve. Essentially I wanted to replicate what was shown during our 1-on-1 meeting last week. I think by next week I should be able to have a fairly decent representation of the effect on a plot.
+
+Over the next week we should be able to start our image processing and thus make use of the work we have been doing behind the scenes. The rest of the team's work would finally be put to use. 
+\end{document}
