@@ -1,6 +1,7 @@
 \documentclass[12pt]{article}
 
-\title{\vspace{-3em}PHYS 518 HW 4}
+% \title{\vspace{-3em}PHYS 518 HW 4}
+\title{PHYS 518 HW 4}
 \author{Michael Cardiff}
 \date{\today}
 
@@ -117,6 +118,9 @@ Setting $h=\sqrt{12}\mu c$:
   &=0
 \end{align*}
 We did the remainder in class, notably the relativistic correction to the newtonian orbit.
+
+\subsection{Discussion}
+Because we have just proved the massive objects have stable orbits around other massive bodies. This means we can safely even observe a black hole like the EHT did in 2019, without having to worry about the camera specifically being eaten by the black hole. Unless of course we were to enter the radius where the centrifugal force changes sign and we have a spiral orbit towards the center.
 \section{Chapter 9.12 \& 9.13}
 The photon trajectory is:
 \begin{align*}
@@ -159,9 +163,147 @@ Integrating will give a linear approximation of the solution, extending it gives
 \begin{align*}
   r=\pm\frac{b}{\sin\phi}
 \end{align*}
+\subsection{Discussion}
+This part of the chapter tells us that photons themselves have stable orbits and can in fact head towards us in the first place, so we can eventually capture them and take a picture, like we did in 2019 at the EHT!
 \section{Chapter 10.3}
-
+The energy equation is given as:
+\begin{align*}
+  \qty(\dv{r}{\tau})^2+\frac{h^2}{r^2}\qty(1-\frac{2\mu}{r})=c^2k^2
+\end{align*}
+And the result we have is:
+\begin{align*}
+  \qty(\dv{r}{\tau})^2=\frac{k^2}{(1-2\mu/r^2)^2}\qty(\dv{r}{t})^2
+\end{align*}
+We can sub this into the energy equation for:
+\begin{align*}
+  \frac{k^2}{(1-2\mu/r)^2}\qty(\dv{r}{t})^2+\frac{h^2}{r^2}
+  \qty(1-\frac{2\mu}{r})=c^2k^2
+\end{align*}
+To get the equation (10.15) we divide though by the multiplying factor of the term with $h$ and move the term with $c^2$ to the other side:
+\begin{align*}
+  \frac{k^2}{(1-2\mu/r)^3}\qty(\dv{r}{t})^2+\frac{h^2}{r^2}&=
+  \frac{c^2k^2}{1-2\mu/r}\\
+  \frac{1}{(1-2\mu/r)^3}\qty(\dv{r}{t})^2+\frac{h^2}{k^2r^2}&=
+  \frac{c^2}{1-2\mu/r}
+\end{align*}
+Moving the term on the right hand side to the left hand side gives (10.15):
+\begin{align*}
+  \boxed{
+  \frac{1}{(1-2\mu/r)^3}\qty(\dv{r}{t})^2+\frac{h^2}{k^2r^2}-
+  \frac{c^2}{1-2\mu/r}=0}
+\end{align*}
+For the distance of shortest approach:
+\begin{align*}
+  \frac{h^2}{k^2r_0^2}=\frac{c^2}{1-2\mu/r_0}
+\end{align*}
+This is trivially substituted into (10.15):
+\begin{align*}
+  \frac{1}{(1-2\mu/r)^3}\qty(\dv{r}{t})^2+\frac{k^2c^2r_0^2}{k^2r^2(1-2\mu/r_0)}-
+  \frac{c^2}{1-2\mu/r}&=0\\
+  \frac{1}{(1-2\mu/r)^3}\qty(\dv{r}{t})^2+
+  c^2\qty(\frac{r_0^2}{r^2(1-2\mu/r_0)}-\frac{1}{1-2\mu/r})&=\\
+  \qty(\dv{r}{t})^2-c^2(1-2\mu/r)^2
+  \qty(1-\frac{r_0^2(1-2\mu/r)}{r^2(1-2\mu/r_0)})&=
+\end{align*}
+This means:
+\begin{align*}
+  \boxed{
+    \dv{r}{t}=c(1-2\mu/r)\qty(1-\frac{r_0^2(1-2\mu/r)}{r^2(1-2\mu/r_0)})^{1/2}
+  }
+\end{align*}
+This can be solved by separation of variables:
+\begin{align*}
+  \int\frac{\dd{r}}{I(r)}=\int\dd{t}
+\end{align*}
+The right hand side is trivial, but the other is not so much:
+\begin{align*}
+  t=\int_{r_0}^r\dd{r}\frac{1}{c(1-2\mu/r)}
+  \qty[1-\frac{r_0^2(1-2\mu/r)}{r^2(1-\mu/r_0)}]^{-1/2}
+\end{align*}
+The expansion for a square root is fairly trivial to do:
+\begin{align*}
+  t=\int_{r_0}^r\dd{r}\frac{r}{c(r^2-r_0^2)}\qty[1+\frac{2\mu}{r}
+  +\frac{\mu r_0}{r(r+r_0)}]
+\end{align*}
+Evaluating the integral is fairly simple and only consists of polynomial integration:
+\begin{align*}
+  \boxed{
+  t=\frac{(r^2-r_0^2)^{1/2}}{c}
+  +\frac{2\mu}{c}\ln(\frac{r+(r^2-r_0^2)^{1/2}}{r_0})
+  +\frac{\mu}{c}\qty(\frac{r-r_0}{r+r_0})^{1/2}}
+\end{align*}
+From the curvature we get the last term, and we can approximate the square root of the separation as the distance to earth:
+\begin{align*}
+  \boxed{\Delta{t}\approx\frac{4GM}{c^3}\qty(\ln\frac{r_er_v}{r_0^2}+1)}
+\end{align*}
+Which is the last relevant calculation here.
 \section{$f(R)$ Theory}
+In order to find the equations of motion (the field equations) we need to find a stationary action, that is $\delta S=0$:
+\begin{align*}
+  \delta S=0\implies \delta\qty(\frac{1}{2\kappa c}\int(R+f(R))\sqrt{-g}\dd[4]{x}+S_m)=0
+\end{align*}
+Ignoring the matter action, we can focus on this:
+\begin{align*}
+  \int\dd[4]{x}\qty[\delta(R+f(R))\sqrt{-g}+(R+f(R))\delta\sqrt{-g}]=0
+\end{align*}
+We notice that we have already done some of this:
+\begin{align*}
+  \int\dd[4]{x}\qty(\qty[\delta R+R\delta\sqrt{-g}]
+  +\qty[\delta f(R)\sqrt{-g}+f(R)\delta\sqrt{-g}])
+\end{align*}
+We already know the variation of square root term:
+\begin{align*}
+  \delta\sqrt{-g}=-\frac{1}{2}\sqrt{-g}g_\munu\delta g^\munu
+\end{align*}
+And the variation of just the Ricci scalar is:
+\begin{align*}
+  \delta R=\delta(g^\munu R_\munu)=R_\munu\delta g^\munu
+  +g_\munu\grad_\mu\grad_\nu\delta g^\munu-\grad_\mu\grad_\nu\delta g^\munu
+\end{align*}
+As its given, the variation of $f(R)$ is quite simple:
+\begin{align*}
+  \delta f(R)=\pdv{f}{R}\delta R
+\end{align*}
+With the $R$ variation the same as above.
 
-
+The integrand in our action now is:
+\begin{align*}
+  \delta\L=\,&\qty[R_\munu+g_\munu\grad_\mu\grad_\nu-\grad_\mu\grad_\nu
+  -\frac{R}{2}\sqrt{-g}g_\munu]\delta g^\munu\\\,&+
+  \qty[\pdv{f}{R}\qty(R_\munu+g_\munu\grad_\mu\grad_\nu-\grad_\mu\grad_\nu)
+  -\frac{f(R)}{2}\sqrt{-g}g_\munu]\delta g^\munu
+\end{align*}
+We can define a new $F(R)=R+f(R)$, turning this into:
+\begin{align*}
+  \delta\L=\sqrt{-g}\qty[\pdv{F}{R}\qty(R_\munu\delta g^\munu
+  +g_\munu\Box\delta g^\munu
+  -\grad_\mu\grad_\nu\delta g^\munu)
+  -\frac{1}{2}g_\munu\delta g^\munu F(R)]
+\end{align*}
+Since this is in an action integral over spacetime, we can move one of the derivatives from the d'Alembert, giving the action as:
+\begin{align*}
+  \delta S=\frac{1}{2\kappa}\int\dd[4]{x}\sqrt{-g}\delta g^\munu
+  \qty[\pdv{F}{R}R_\munu-\frac{1}{2}g_\munu F(R)
+  +\qty(g_\munu\Box+\grad_\mu\grad_\nu)\pdv{F}{R}]
+\end{align*}
+Therefore the free equation should look something like:
+\begin{align*}
+  \boxed{\pdv{F}{R}R_\munu-\frac{1}{2}F(R)g_\munu+g_\munu\Box\pdv{F}{R}
+  -\grad_\mu\grad_\nu\pdv{F}{R}=0}
+\end{align*}
+With the original equation we had:
+\begin{align*}
+  F(R)=f(R)+R\implies\pdv{F}{R}=\pdv{f}{R}+1
+\end{align*}
+So the final thing is:
+\begin{align*}
+  \qty(\pdv{f}{R}+1)R_\munu-\frac{1}{2}(f(R)+R)g_\munu
+  +\qty(g_\munu\Box-\grad_\mu\grad_\nu)\qty(\pdv{f}{R}+1)=0
+\end{align*}
+Which in the end must be equal to the Energy-Momentum tensor $T^\munu$:
+\begin{align*}
+  \boxed{\qty(\pdv{f}{R}+1)R_\munu-\frac{1}{2}(f(R)+R)g_\munu
+  +\qty(g_\munu\Box-\grad_\mu\grad_\nu)\qty(\pdv{f}{R}+1)=\kappa T^\munu}
+\end{align*}
+This theory will add additional fields, meaning in a quantization, we will have additional, massive degrees of freedom in addition to the massless spin-2 graviton we already would see in a gravitational QFT. 
 \end{document}
