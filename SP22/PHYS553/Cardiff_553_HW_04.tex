@@ -57,6 +57,7 @@
 \newcommand{\etab}{\bar{\eta}}
 \newcommand{\xib}{\bar{\xi}}
 \newcommand{\A}{\hat{A}}
+\renewcommand{\d}{\delta}
 \renewcommand{\a}{\hat{a}}
 
 \begin{document}
@@ -246,8 +247,8 @@ With the action of $\xi$ is:
 \end{align*}
 This is the structure which gave us the determinant in class, we also must add in the spin indices which were dropped since they did not contribute to the content of the integral at all:
 \begin{align*}
-  Z[\etab,\eta]=\det(\A)
-  \exp{i\int\dd[4]{x}\dd[4]{y}\etab_a(x)G_{ab}(x-y)\eta_b(y)}
+  \boxed{Z[\etab,\eta]=\det(\A)
+  \exp{i\int\dd[4]{x}\dd[4]{y}\etab_a(x)G_{ab}(x-y)\eta_b(y)}}
 \end{align*}
 Instead of greek indices I used Latin but it should not matter in this case. 
 \subsection{Feynman Propagator}
@@ -304,6 +305,27 @@ The propagator will get rid of the $Z[0,0]$ from the normalization, and also get
   \boxed{S^{ab}_F(x-y)=G_{ab}(x-y)=\mel{x,a}{\frac{1}{i\slashed{\D}-m}}{y,b}}
 \end{align*}
 \subsection{Four-Point Function}
+The Four-Point function is given by a fourth variation of the partition functional:
+\begin{align*}
+  S_{F,abcd}^4=\frac{1}{Z[0,0]}\eval{\frac{\delta^4Z[\etab,\eta]}{\delta \etab_a(x_1)\delta\etab(x_2)\delta\eta_c(x_3)\delta\eta_d(x_4)}}_{\eta,\etab=0}
+\end{align*}
+Due to the exponential like before, these will all be proportional to $Z$ or a variation of it:
+\begin{align*}
+  \fdv{Z[\etab,\eta]}{\eta_d(x_4)}&=
+  -\qty[\int\dd[4]{z}\etab_f(z)F_{fd}(z-x_4)]Z[\etab,\eta]\\
+  \frac{\delta^2Z[\etab,\eta]}{\delta\eta_c(x_3)\delta\eta_d(x_4)}=
+  \fdv{\eta_c(x_3)}\fdv{Z[\etab,\eta]}{\eta_d(x_4)}&=
+  -\qty[\int\dd[4]{z}\etab_f(z)G_{fd}(z-x_4)]
+  \qty[\int\dd[4]{z}\etab_f(z)G_{fc}(z-x_3)]Z[\etab,\eta]\\
+  \frac{\d^3Z[\etab,\eta]}{\d\etab_b(x_2)\d\eta_c(x_3)\d\eta_c(x_3)\d\eta_d(x_4)}
+  &=\int\dd[4]{z}\qty[G_{bc}(x_2-x_3)\etab_fG_{fd}(z-x_4)-
+  G_{bd}(x_2-x_4)\etab_fG_{fc}(z-x_3)]Z[\etab,\eta]
+\end{align*}
+The $Z$ in the last term should really be of $[0,0]$ since I am implicitly ignoring a derivative of $Z$, but it would give an overall term of a source, which we will set to $0$ inevitably.
 
-
+The final form out of this will in fact be a combination of 4-pt functions as expected from Wick's Theorem:
+\begin{align*}
+  \boxed{S^4_{F,abcd}=G_{bd}(x_2-x_4)G_{ac}(x_1-x_3)
+    -G_{bc}(x_2-x_3)G_{ad}(x_1-x_4)}
+\end{align*}
 \end{document}
