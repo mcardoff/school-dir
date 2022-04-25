@@ -39,14 +39,91 @@
 }
 
 \renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
+\newcommand{\ddst}{\dd[4]{x}}
+\newcommand{\dds}{\dd[3]{\vb{x}}}
+\newcommand{\textbm}[1]{\textbf{\emph{#1}}}
+\newcommand{\psib}{\bar{\psi}}
 
 \begin{document}
 \maketitle
+\begin{abstract}
+  The standard model of particle physics includes gauge bosons which mediate the four fundamental forces. This includes the photon, gluon, as well as the $W^{\pm}$ and $Z^0$ bosons. The only force which is not described by the standard model is gravity. This talk will cover how these gauge bosons appear in the other three forces, specifically focusing on how the photon comes out of QED. We will use our existing knowledge of the photon and other gauge bosons to discuss what the properties of a graviton would be if we found one. This will then lead into a discussion of how we can quantize gravitational waves to get gravitons. 
+\end{abstract}
+\section{Why Should we Expect a Gravition?}
+\subsection{The Standard Model}
+The standard model is the method by which we answer the following questions:
+\begin{itemize}
+\item What are the fundamental building blocks of the universe?
+\item How do these building blocks interact with one another?
+\end{itemize}
+This is done with the language of quantum field theory, which is related to a formulation of classical mechanics called classical field theory. Note that field theory using a lot of complicated math that I cannot completely cover here, so you will just have to trust me at some points.
 
-\section{Why should we expect a Gravition?}
+\subsection{Field Theory}
+In field theory we no longer consider individual systems described by functions like $\ev{x(t),y(t),z(t)}$, but rather all possible systems, called configurations, described by a field $\phi$. This 'upgrades' much of our field theory to describe not just how an individual configuration will transform, but rather how \emph{all} configurations will transform.
 
-\section{What has come before?}
+This is done in the watchful eyes of special relativity, so we change from using a full Lagrangian $L$ to a Lagrangian density $\L$:
+\begin{gather*}
+  S=\int\dd{t}L=\int\dd[4]{x}\L\\
+  \implies L=\int\dd[3]{\vb{x}}\L
+\end{gather*}
+Note that whenever we integrate with respect to $\ddst$ we integrate over all of spacetime, and a $\dds$ means an integral over only space, meaning $\ddst\equiv\dd{t}\dds$.
 
+We require the action to be stationary for a valid field, just like in classical mechanics, except instead of taking \textbm{derivatives} of \textbm{functions}, we are taking \textbm{variations} of \textbm{functionals}:
+\begin{align*}
+  \delta S=0\implies\boxed{\fdv{\L}{\phi}=\D_\mu\qty(\fdv{\L}{(\D_\mu\phi)})}
+\end{align*}
+This should kind of remind you of your normal Euler-Lagrange equations:
+\begin{align*}
+  \pdv{L}{q}=\dv{t}\qty(\pdv{L}{\dot{q}})
+\end{align*}
+Note an important difference, mainly that time is on equal footing with space, instead of just a time derivative, we are taking a derivative with respect to all spacetime variables.
+
+The Lagrangian Density is assumed to have the same form our Lagrangian does in classical mechanics, that is it is dependent on the fields, and first order derivatives of the field:
+\begin{align*}
+  \boxed{\L(\phi,\D_\mu\phi)=\frac{1}{2}\D_\mu\phi\D^\mu\phi-V(\phi)}
+\end{align*}
+Under Lorentz transformations, the most basic Lagrangian density we know about will be invariant, ensuring that any further derivations from this theory will also be Lorentz invariant. This most basic potential is:
+\begin{align*}
+  V(\phi)=\frac{1}{2}m^2\phi^2
+\end{align*}
+Using the Euler-Lagrange equations we can find the so called equations of motion for this Lagrangian:
+\begin{align*}
+  \fdv{\L}{\phi}&=m^^2\\
+  \fdv{\L}{(\D_\mu\phi)}&=\D^\mu\phi
+  \D_\mu\qty(\fdv{\L}{(\D_\mu\phi)})&=\D^2\phi
+\end{align*}
+This gives our equation of motion as:
+\begin{align*}
+  (\D^2+m^2)\phi=0
+\end{align*}
+This is called the Klein-Gordon Equation, and it is essentially the quantum-upgraded version of the Einstein Energy-momentum relation.
+
+Thus far we have discussed what is called a 'Scalar Field Theory' and it only covers the most basic of particles, and this theory explicitly will only describe scalar particles, which have spin 0. The only such \textbf{fundamental} spin 0 particle we know about is the Higgs boson, so in order to describe fermions and gauge bosons, we will have to talk about vector theories.
+
+\subsection{How Dirac Described the Electron (kind of)}
+
+\subsubsection{The Lagrangian}
+Regular Quantum mechanics is pretty darn good at describing how the electron works when you put it in various situations. The findings of quantum mechanics and trying to make it relativistic led to Dirac writing the following Lagrangian for electrons:
+\begin{align*}
+  \L=\psib\qty(i\gamma^\mu\D_\mu-m)\psi=i\psib\gamma^\mu\D_\mu\psi-m\psib\psi
+\end{align*}
+There are a few extra caveats here that I will not get too far into\footnote{This includes that $\psib$ and $\psi$ are treated as two different fields that have the same mass, so we no longer have some factors of a half, as well as an implicit index to sum over possible spin configurations}. If we perform the proper Euler-Lagrange prescription with these caveats, we get:
+\begin{align*}
+  (i\gamma^\mu\D_\mu-m)\psi=0\\
+  (i\gamma^\mu\D_\mu+m)\psib=0
+\end{align*}
+Note a couple things here, instead of $\phi$ we are using $\psi$, the difference being that $\phi$ is typically a real field, while $\psi$ is a complex field.
+\subsubsection{Its Symmetry}
+The full Dirac Lagrangian obeys a phase difference transformation, that is if we were to transform our $\psi$ to $\psi'$ such that:
+\begin{align*}
+  \psi\to\psi'=e^{i\alpha}\psi
+\end{align*}
+With $\alpha\in\mathbb{R}$ constant. This transformation leaves the Lagrangian invariant. We say that the theory in general obeys a $U(1)$ symmetry, which is a global symmetry since $\alpha$ is the same for all of space. If we were to change this to be a local symmetry, where $\alpha=\alpha(x)$ now. This means we now have a transformation like this:
+\begin{align*}
+  \psi\to\psi'=e^{i\alpha(x)}\psi
+\end{align*}
+However if we do this we are no longer
 \section{What do we know about a Graviton?}
 
 \end{document}
