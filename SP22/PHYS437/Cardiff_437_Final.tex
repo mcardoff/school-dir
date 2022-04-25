@@ -82,7 +82,48 @@ This means that:
   \boxed{B(x)-B_a\equiv 4\pi M(x)=-B_a\frac{\delta^2-4x^2}{8\lambda^2}}
 \end{align*}
 \subsection{Current Density}
-????
+The London equation tells us:
+\begin{align*}
+  \curl{\vb{j}}=-\frac{nq^2}{mc}\vb{B}
+\end{align*}
+The symmetry of this system tells us that this should be cylindrical coordinates, aligned on the $x$ axis. The wording of 'perpendicular' to the $x$ axis means our $B$ field has no $\phi$ dependence, only $\rho$:
+\begin{align*}
+  \vb{B}=B(x)\vu{\bm{\rho}}
+\end{align*}
+The cylindrical coordinates curl is:
+\begin{align*}
+  \curl{\vb{A}}=\vu{\bm{\rho}}\qty(\frac1\rho\pdv{A_x}{\phi}-\pdv{A_\phi}{x})
+  +\vu{\bm{\phi}}\qty(\pdv{A_\rho}{x}-\pdv{A_x}{\rho})
+  +\vu{x}\frac1\rho\qty(\pdv{(\rho A_\phi)}{\rho}-\pdv{A_\rho}{\phi})
+\end{align*}
+For our magnetic field $B$, it should only result in a $\vu{\bm{\rho}}$ term:
+\begin{align*}
+  \curl\vb{j}=\vu{\bm{\rho}}\qty(\frac1\rho\pdv{j_x}{\phi}-\pdv{j_\phi}{x})=
+  -\frac{nq^2}{mc}B(x)\vu{\bm{\rho}}
+\end{align*}
+We can then ignore the unit vectors and see we have:
+\begin{align*}
+  \frac1\rho\pdv{j_x}{\phi}-\pdv{j_\phi}{x}=-\frac{nq^2B_a}{mc}
+  \qty(1-\frac{\delta^2-4x^2}{8\lambda^2})
+\end{align*}
+We are told that the current density is $j(x)$, so the first derivative goes away:
+\begin{align*}
+  \pdv{j_\phi}{x}=\frac{nq^2B_a}{mc}\qty(1-\frac{\delta^2-4x^2}{8\lambda^2})
+\end{align*}
+Integrating:
+\begin{align*}
+  j_\phi&=\frac{nq^2B_a}{mc}\int\dd{x}\frac{8\lambda^2-\delta^2+4x^2}
+  {8\lambda^2}\\ &=\frac{nq^2B_a}{8mc\lambda^2}
+  \int_0^x\dd{x'}\qty(8\lambda^2-\delta^2+4(x')^2)\\
+  &=\frac{nq^2B_a}{8mc\lambda^2}\qty[\frac43x^3+x\qty(8\lambda^2-\delta^2)]
+\end{align*}
+Therefore our current density is:
+\begin{align*}
+  \boxed{\vb{j}(x)=\frac{nq^2B_ax}{8mc\lambda^2}
+  \qty[\frac43x^2+8\lambda^2-\delta^2]\vu{\bm{\phi}}}
+\end{align*}
+The direction in the plane of the plate looks like this:
+\fig{10.0}{phihat}{The direction of the field assuming $x$ is coming out of the plane}
 \section{Structure of a Vortex}
 \subsection{Solution \& Boundary Condition}
 Since the system we are considering is cylindrically symmetric, we only need to find the $\rho$ dependence:
