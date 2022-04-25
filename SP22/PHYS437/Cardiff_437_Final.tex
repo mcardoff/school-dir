@@ -311,9 +311,13 @@ This is an angular frequency, so we need to divide by $2\pi$ for our frequency, 
 \begin{align*}
   (2\pi)^2f^2=\frac{1}{LC}\implies C=\frac{1}{L(2\pi f)^2}
 \end{align*}
+However our josephson junction has a capacitance, we calculated it earlier! Since in the Regetti qubit the capacitor is in parallel the total capacitance is just the sum:
+\begin{align*}
+  C_{tot}=C_j+C_{shunt}\implies C_{shunt}=-C_j+\frac{1}{L(2\pi f)^2}
+\end{align*}
 So our shunt capacitance is:
 \begin{align*}
-  \boxed{C=\SI{3.56e-9}{\F}}
+  \boxed{C_{shunt}=\SI{2.03e-9}{\F}}
 \end{align*}
 \section{AC Resistivity}
 
