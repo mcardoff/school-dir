@@ -1,0 +1,48 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}Week 14 Report}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+
+\begin{document}
+\maketitle
+This week was a bit of a wrap up week at least on my end. I finished up some of my figures, taking the data from the VCL in MATLAB and putting it into python to make the plots look a little nicer with a legend and thicker lines. After that was finished it was time to make our poster for the eventual IPRO day presentation. However from the feedback from Dr Tichauer, they might need to be adjusted.
+
+Our team progress is going well overall, and it helps for us to be communicating in the way we have, fairly consistently through discord. Although I do think we could communicate better WHAT exactly we are working on and how we could help each other, which we tend to not do until the actual in class meeting. 
+\end{document}
