@@ -8,13 +8,17 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{physics}
+\usepackage{siunitx}
 
 %% general pretty stuff
 \usepackage{bm}
 \usepackage{enumitem}
 \usepackage{float}
 \usepackage{graphicx}
+\usepackage{tikz}
 \usepackage[margin=1in]{geometry}
+
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
 
 % figures
 \graphicspath{ {./figs/} }
@@ -46,29 +50,309 @@
 \section{Magnetic Field Penetration in a Plate}
 
 \subsection{$B(x)$ in a superconducting plate}
-
+This is a linear problem, so the equation becomes a lot simpler:
+\begin{align*}
+  \dv[2]{B}{x}=\frac{1}{\lambda}B
+\end{align*}
+The boundary condition should be that $B(\pm\delta/2)=B_a$, plugging in these values we get:
+\begin{align*}
+  B\qty(\frac{\delta}{2})=B_a\frac{\cosh(\delta/2\lambda)}
+  {\cosh(\delta/2\lambda)}=B_a\qquad&\text{\checkmark}\\
+  B\qty(-\frac{\delta}{2})=B_a\frac{\cosh(-\delta/2\lambda)}
+  {\cosh(\delta/2\lambda)}=B_a\qquad&\text{\checkmark}
+\end{align*}
+In the second line I used the evenness of the $\cosh$ function to cancel it with the denominator. Since the coefficient is just a constant we can recognize that the second derivative of $\cosh$ is $\cosh$ and see that from that second derivative two factors of $\lambda^{-1}$ will come out and be canceled by our equation. 
 \subsection{Effective Magnetization}
-
+If we Taylor expand both of our $\cosh$ functions (since none appear in the final result), we get:
+\begin{align*}
+  \cosh(\frac{x}{\lambda})\approx 1+\frac{1}{2}\qty(\frac{x}{\lambda})^2\\
+  \cosh(\frac{\delta}{2\lambda})\approx
+  1+\frac{1}{2}\qty(\frac{\delta}{2\lambda})^2
+\end{align*}
+The magnetic field is then:
+\begin{align*}
+  B(x)=B_a\qty(\frac{1+x^2/2\lambda^2}{1+\delta^2/8\lambda^2})
+\end{align*}
+Using the geometric series we can approximate this series as a simple linear term since $\delta\ll\lambda$:
+\begin{align*}
+  B(x)=B_a-B_a\frac{\delta^2-4x^2}{8\lambda^2}
+\end{align*}
+This means that:
+\begin{align*}
+  \boxed{B(x)-B_a\equiv 4\pi M(x)=-B_a\frac{\delta^2-4x^2}{8\lambda^2}}
+\end{align*}
 \subsection{Current Density}
-
+????
 \section{Structure of a Vortex}
-
-\section{Coupling Strength for Various Materials}
-
+\subsection{Solution \& Boundary Condition}
+Since the system we are considering is cylindrically symmetric, we only need to find the $\rho$ dependence:
+\begin{align*}
+  B-\lambda^2\qty(\pdv[2]{B}{\rho}+\frac1\rho\pdv{B}{\rho})=0
+\end{align*}
+Plugging this into Mathematica tells us that the solution is one of the modified Bessel functions:
+\begin{align*}
+  B(\rho)=CK_0(\rho/\lambda)
+\end{align*}
+If we integrate to get a flux, we get a $2\pi$ from the $\phi$ integration in polar coordinates, and the rest is:
+\begin{align*}
+  2\pi\int_0^\infty\rho B(\rho)\dd{\rho}&=2\pi C
+  \int_0^\infty\dd{\rho}\rho K_0(\rho/\lambda)\\
+  \phi_0&=2\pi C\lambda^2\int_0^\infty\dd{x}xK_0(x)
+\end{align*}
+The integral given is 1 from chucking it into Mathematica, giving us the constant $C$:
+\begin{align*}
+  \phi_0=2\pi C\lambda^2\implies \boxed{C=\frac{\phi_0}{2\pi\lambda^2}}
+\end{align*}
+Thus our solution is:
+\begin{align*}
+  \boxed{B(\rho)=\frac{\phi_0}{2\pi\lambda^2}K_0\qty(\frac{\rho}{\lambda})}
+\end{align*}
+\subsection{Limits}
+If we have that $\lambda\gg\rho$, the second term in our differential equation dominates, giving us a log solution. If $\rho\gg\lambda$ then we can drop the second term in the laplacian, giving an exponential:
+\begin{align*}
+  \boxed{
+    \mqty{(\rho\ll\lambda)&B(\rho)=(\phi_0/2\pi\lambda^2)\ln(\lambda/\rho)\\\\
+    (\rho\gg\lambda)&B(\rho)=(\phi_0/2\pi\lambda^2)(\pi\lambda/2\rho)^{1/2}
+    e^{-\rho/\lambda}}}
+\end{align*}
+The constant can be found by a series expansion about infinity, just something cool I found from playing in Mathematica. 
+\section{BCS Coupling Strength for Various Materials}
+Subbing in the approximation we are given leaves the following formula for BCS $T_C$:
+\begin{align*}
+  T_c\approx1.14\theta_De^{-1/N(0)V}
+\end{align*}
+From here it is simple to solve for the argument of the exponential:
+\begin{align*}
+  \boxed{N(0)V=-\ln\qty(\frac{T_c}{1.14\times\theta_D})}
+\end{align*}
 \subsection{Niobium}
-
+For Nb, the $T_c=\SI{9.3}{\K}$ and $\theta_D=\SI{276}{\K}$
+\begin{align*}
+  N(0)V=-\ln\qty(\frac{\SI{9.3}{\K}}{1.14\times\SI{276}{\K}})=\boxed{3.5}
+\end{align*}
 \subsection{Lead}
-
+For Pb, the $T_c=\SI{7.2}{\K}$ and $\theta_D=\SI{105}{\K}$
+\begin{align*}
+  N(0)V=-\ln\qty(\frac{\SI{7.2}{\K}}{1.14\times\SI{105}{\K}})=\boxed{2.8}
+\end{align*}
 \subsection{Aluminum}
-
+For Al, the $T_c=\SI{1.2}{\K}$ and $\theta_D=\SI{433}{\K}$
+\begin{align*}
+  N(0)V=-\ln\qty(\frac{\SI{1.2}{\K}}{1.14\times\SI{433}{\K}})=\boxed{6.0}
+\end{align*}
 \section{Diffraction Effect of Josephson Junction}
-
+Call $x$ the coordiate in the plane of the junction, such that $x$ is between $\pm w/2$. We can write the current in terms of a flux:
+\begin{align*}
+  \dd{j}\propto\cos\phi(x)\dd{x}
+\end{align*}
+The rectangle we are measuring the flux through is of width $2x$ and has thickness $T$, the flux $\phi=2xT B$ where $B$ is some magnetic field, giving the differential current density as:
+\begin{align*}
+  \dd{j}&=\frac{j_0}{w}\cos(\frac{e\phi(x)}{\hbar c})\\
+  &=\frac{j_0}{w}\cos(\frac{2exTB}{\hbar c})
+\end{align*}
+Integrating this:
+\begin{align*}
+  j=\int_{-\infty}^\infty\dd{j}
+\end{align*}
+However, our 'infinity' is cut off, as there is not current density outside of the box:
+\begin{align*}
+  j=\frac{j_0}{w}\int_{-w/2}^{w/2}\cos(\frac{2exTB}{\hbar c})\dd{x}
+\end{align*}
+Since this is an even function we are integrating we can reduce this to just an integral over half the distance but doubled:
+\begin{align*}
+  j&=\frac{2j_0}{w}\int_{0}^{w/2}\cos(2\frac{exTB}{\hbar c})\dd{x}\\
+  &=\frac{2j_0}{w}\eval(\frac{\sin(2exTB/\hbar c)}{2eTB/\hbar c}|_0^{w/2}\\
+  &=\boxed{j_0\frac{\sin(weTB/\hbar c)}{weTB/\hbar c}}
+\end{align*}
 \section{BCS Coherence Length}
+\subsection{Non-Dirty Materials}
+We simply need the following formula:
+\begin{align*}
+  \xi_{BCS}=\frac{\hbar v_f}{\pi\Delta}
+\end{align*}
+\subsubsection{Niobium}
+The fermi velocity for Ni is $\SI{2.03e6}{\m\per\s}$ and the band gap is: $\SI{3.05e-3}{\eV}$
+\begin{align*}
+  \xi_{BCS}&=\frac{(\SI{6.582e-16}{\eV\s})(\SI{2.03e6}{\m\per\s})}
+  {\pi(\SI{3.05e-3}{\eV})}=\boxed{\SI{1.39e-7}{\m}}
+\end{align*}
+\subsubsection{Aluminum}
+The fermi velocity for Al is $\SI{1.37e6}{\m\per\s}$ and the band gap is: $\SI{3.4e-4}{\eV}$
+\begin{align*}
+  \xi_{BCS}&=\frac{(\SI{6.582e-16}{\eV\s})(\SI{1.37e6}{\m\per\s})}
+  {\pi(\SI{3.4e-4}{\eV})}=\boxed{\SI{8.44e-7}{\m}}
+\end{align*}
 
+\subsection{Concentration of Alloy}
+The formula given for $H_{c2}$ is given from Kittel as:
+\begin{align*}
+  H_{c2}=\frac{\lambda}{\xi}H_c=\frac{\lambda}{\sqrt{\xi_0\lambda}}H_c
+  =\sqrt\frac{\lambda}{\xi_0}H_c
+\end{align*}
+The critical field for Nb is $\SI{15}{\tesla}=\num{1.5e6}\text{G}$, I am not going to assume any value for $\lambda$ here and simply solve for $\xi$:
+\begin{align*}
+  \qty(\frac{H_{c2}}{H_c})^2&=\frac{\lambda}{\xi_0}\\
+  \xi_0&=\lambda\qty(\frac{H_c}{H_{c2}})^2
+\end{align*}
+The value is then:
+\begin{align*}
+  \boxed{\xi_0=\lambda\qty(\frac{\num{1.5e6}}{10^5})^2=225\lambda}
+\end{align*}
 \section{Josephson Junction in the Regetti Qubit}
-
+\subsection{Capacitance}
+The capacitor used in this qubit is a parallel plate capacitor, for which the capacitance is given by:
+\begin{align*}
+  C=\varepsilon_r\varepsilon_0\frac{A}{d}
+\end{align*}
+Where $A$ is the area of the plates, $d$ is the separation between the plates, $\varepsilon_0$ is the permitivity of free space and $\varepsilon_r$ is the relative permitivity. Plugging these values in for the capacitance we get:
+\begin{align*}
+  C=2.0\cdot\SI{8.854e-12}{\farad\per\meter}
+  \frac{\qty(\SI{1.0e-6}{\m})^2}{\SI{2.0e-9}{\m}}
+  =\boxed{\SI{8.854e-15}{\F}}
+\end{align*}
+\subsection{Voltage \& Stored Energy}
+The capacitance is defined in terms of the voltage and charge, giving:
+\begin{align*}
+  q=CV
+\end{align*}
+Rearranging this gives the formula for the voltage across the capacitor:
+\begin{align*}
+  V=\frac{q}{C}
+\end{align*}
+With $q=\SI{1.6e-19}{\coulomb}$ and the value of the capacitance from the previous problem we get:
+\begin{align*}
+  V=\frac{\SI{1.6e-19}{\coulomb}}{\SI{8.854e-15}{\F}}=\boxed{\SI{1.807e-5}{\V}}
+\end{align*}
+The enery stored is given by:
+\begin{align*}
+  U=\frac{1}{2}\frac{q^2}{C}
+\end{align*}
+Using the values we have seen already:
+\begin{align*}
+  U=\frac{1}{2}\frac{(\SI{1.6e-19}{\coulomb})^2}{\SI{8.854e-15}{\F}}
+  =\SI{1.446e-24}{\J}
+\end{align*}
+To convert from Joule to eV, we divide through by the electric charge $e$:
+\begin{align*}
+  \boxed{U=\SI{9.03e-6}{\eV}}
+\end{align*}
+\subsection{Kinetic Inductance}
+The formula for kinetic inductance is given by:
+\begin{align*}
+  L_k=\frac{\phi_0}{2\pi I_C\cos\phi}
+\end{align*}
+We need to make the following insertions:
+\begin{align*}
+  \cos\phi\approx 1\qquad I_C=\frac{\pi\Delta}{2R_ne}
+\end{align*}
+This means our formula is now:
+\begin{align*}
+  L_k=\frac{\phi_0R_ne}{\pi^2\Delta}
+\end{align*}
+The value for the flux quantum is $\SI{2.068e-15}{\weber}$, we are given the normal resistance, and the band gap for Aluminum is $\SI{3.4}{\eV}=\SI{5.4e-19}{\J}$. But dividing out the $e$ in the numerator means we can use the value in eV:
+\begin{align*}
+  L_k=\frac{\phi_0R_n}{\pi^2\Delta[\si{\eV}]}
+\end{align*}
+thus the kinetic inductance is:
+\begin{align*}
+  L_k=\frac{(\SI{2.068e-15}{\weber})(\SI{e4}{\ohm})}{
+  \pi^2(\SI{3.4}{\eV})}=\boxed{\SI{6.16e-13}{\H}}
+\end{align*}
+\subsection{Shunt Capacitance}
+I am not sure about this one, but I am going to assume it has to do with the frequency $\omega$:
+\begin{align*}
+  \omega=\frac{1}{\sqrt{LC}}
+\end{align*}
+This is an angular frequency, so we need to divide by $2\pi$ for our frequency, then solve for $C$:
+\begin{align*}
+  (2\pi)^2f^2=\frac{1}{LC}\implies C=\frac{1}{L(2\pi f)^2}
+\end{align*}
+So our shunt capacitance is:
+\begin{align*}
+  \boxed{C=\SI{3.56e-9}{\F}}
+\end{align*}
 \section{AC Resistivity}
 
-\section{Resistance Questions}
-
+\section{Nb Examples}
+We are assuming that there is a linear fit, we know the resistivity is related to the resistance in the following form:
+\begin{align*}
+  R=\rho\frac{l}{A}
+\end{align*}
+\subsection{Resistance Near $T_c$}
+The value seen at $\SI{300}{K}$ is about $\SI{0.16}{\micro\ohm\m}$, and using the definition of RRR:
+\begin{align*}
+  RRR\equiv\frac{\rho_{\SI{300}{\K}}}{\rho_{\SI{0}{\K}}}\implies\rho_{\SI{0}{\K}}
+  =\frac{0.16}{1500}=\SI{1.07e-4}{\micro\ohm\meter}
+\end{align*}
+We know $L=\SI{1}{\m}$ and the 'wire' is a circle of diameter $\SI{2.0e-4}{\m}$:
+\begin{align*}
+  R&=\SI{1.07e-4}{\micro\ohm\m}\frac{\SI{1.0}{\m}}{\pi\qty(\SI{1.0e-4}{\m})^2}\\
+  &=\boxed{\SI{3.4e-2}{\ohm}}
+\end{align*}
+\subsection{Circuit Properties}
+Ohm's law says:
+\begin{align*}
+  V=I(R+r)
+\end{align*}
+The room temperature resistance is:
+\begin{align*}
+  \rho_{\SI{300}{K}}=\SI{0.16}{\micro\ohm\meter}\implies
+  R_{\SI{300}{\K}}=\SI{0.16}{\micro\ohm\meter}
+  \frac{\SI{1.0}{\m}}{\pi\qty(\SI{1.0e-4}{\m})^2}=\boxed{\SI{5.1}{\ohm}}
+\end{align*}
+Then the current is:
+\begin{align*}
+  I=\frac{\SI{10}{\V}}{\SI{5.1}{\ohm}+\SI{0.1}{\ohm}}=\boxed{\SI{1.9}{\A}}
+\end{align*}
+If we assume the current is uniform across the wire, then the current density is the current over the cross-sectional area:
+\begin{align*}
+  J=\frac{\SI{1.9}{\A}}{\pi\qty(\SI{1.0e-4}{\m})^2}=
+  \boxed{\SI{6.0e7}{\A\per\square\m}}
+\end{align*}
+The electric field is given by the field version of Ohm's Law:
+\begin{align*}
+  E=\rho J
+\end{align*}
+Assuming this is still at $\SI{300}{\K}$ we get:
+\begin{align*}
+  E=\SI{1.6e-5}{\ohm\meter}\cdot\SI{6.0e7}{\A\per\square\meter}=
+  \boxed{\SI{960}{\V\per\m}}
+\end{align*}
+Since we were careful about our units, and the wire is a meter long, we get:
+\begin{align*}
+  \boxed{V=\SI{960}{\V}}
+\end{align*}
+The current at the surface of a wire of radius $R$ is:
+\begin{align*}
+  B=\frac{\mu_0I}{2\pi R}=\boxed{\SI{3.8e-3}{\tesla}}
+\end{align*}
+\subsection{Superconducting Circuit Properties}
+The resistance is now $\SI{3.4e-2}{\ohm}$, the current starting off is:
+\begin{align*}
+  I=\frac{\SI{10}{\V}}{\SI{3.4e-2}{\ohm}+\SI{0.1}{\ohm}}=\boxed{\SI{74.6}{\A}}
+\end{align*}
+The current density is now:
+\begin{align*}
+  J=\frac{\SI{74.6}{\A}}{\pi\qty(\SI{1.0e-4}{\m})^2}=
+  \boxed{\SI{2.4e9}{\A\per\square\m}}
+\end{align*}
+The field:
+\begin{align*}
+  E=\SI{1.07e-4}{\micro\ohm\meter}\cdot\SI{2.4e9}{\A\per\square\meter}=
+  \boxed{\SI{0.26}{\V\per\m}}
+\end{align*}
+The voltage:
+\begin{align*}
+  \boxed{V=\SI{0.26}{\V}}
+\end{align*}
+\subsection{Maximum Magnetic Field}
+The critical current in terms of the critical field is:
+\begin{align*}
+  I_c=\frac{2\pi R}{\mu_0}B_c
+\end{align*}
+From what I have looked up the critical field for Nb is $\SI{15}{\tesla}$:
+\begin{align*}
+  \boxed{I_c=\frac{2\pi\times10^{-4}\si{\m}}{4\pi\times10^{-7}\si{\H\per\m}}=
+  \SI{500}{\A}}
+\end{align*}
 \end{document}
