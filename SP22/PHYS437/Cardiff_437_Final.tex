@@ -86,33 +86,25 @@ The London equation tells us:
 \begin{align*}
   \curl{\vb{j}}=-\frac{nq^2}{mc}\vb{B}
 \end{align*}
-The symmetry of this system tells us that this should be cylindrical coordinates, aligned on the $x$ axis. The wording of 'perpendicular' to the $x$ axis means our $B$ field has no $\phi$ dependence, only $\rho$:
+The dependence of the field should be:
 \begin{align*}
-  \vb{B}=B(x)\vu{\bm{\rho}}
+  \vb{B}=B(x)\vu{y}
 \end{align*}
-The cylindrical coordinates curl is:
+The curl is going to only have a term in $\vu{y}$
 \begin{align*}
-  \curl{\vb{A}}=\vu{\bm{\rho}}\qty(\frac1\rho\pdv{A_x}{\phi}-\pdv{A_\phi}{x})
-  +\vu{\bm{\phi}}\qty(\pdv{A_\rho}{x}-\pdv{A_x}{\rho})
-  +\vu{x}\frac1\rho\qty(\pdv{(\rho A_\phi)}{\rho}-\pdv{A_\rho}{\phi})
-\end{align*}
-For our magnetic field $B$, it should only result in a $\vu{\bm{\rho}}$ term:
-\begin{align*}
-  \curl\vb{j}=\vu{\bm{\rho}}\qty(\frac1\rho\pdv{j_x}{\phi}-\pdv{j_\phi}{x})=
-  -\frac{nq^2}{mc}B(x)\vu{\bm{\rho}}
+  \curl\vb{j}=\vu{y}\qty(\pdv{j_x}{z}-\pdv{j_z}{x})=-\frac{nq^2}{mc}B(x)\vu{y}
 \end{align*}
 We can then ignore the unit vectors and see we have:
 \begin{align*}
-  \frac1\rho\pdv{j_x}{\phi}-\pdv{j_\phi}{x}=-\frac{nq^2B_a}{mc}
-  \qty(1-\frac{\delta^2-4x^2}{8\lambda^2})
+  \pdv{j_x}{z}-\pdv{j_z}{x}=-\frac{nq^2}{mc}B(x)
 \end{align*}
 We are told that the current density is $j(x)$, so the first derivative goes away:
 \begin{align*}
-  \pdv{j_\phi}{x}=\frac{nq^2B_a}{mc}\qty(1-\frac{\delta^2-4x^2}{8\lambda^2})
+  \pdv{j_z}{x}=\frac{nq^2B_a}{mc}\qty(1-\frac{\delta^2-4x^2}{8\lambda^2})
 \end{align*}
 Integrating:
 \begin{align*}
-  j_\phi&=\frac{nq^2B_a}{mc}\int\dd{x}\frac{8\lambda^2-\delta^2+4x^2}
+  j_z&=\frac{nq^2B_a}{mc}\int\dd{x}\frac{8\lambda^2-\delta^2+4x^2}
   {8\lambda^2}\\ &=\frac{nq^2B_a}{8mc\lambda^2}
   \int_0^x\dd{x'}\qty(8\lambda^2-\delta^2+4(x')^2)\\
   &=\frac{nq^2B_a}{8mc\lambda^2}\qty[\frac43x^3+x\qty(8\lambda^2-\delta^2)]
@@ -120,11 +112,11 @@ Integrating:
 Therefore our current density is:
 \begin{align*}
   \boxed{\vb{j}(x)=\frac{nq^2B_ax}{8mc\lambda^2}
-  \qty[\frac43x^2+8\lambda^2-\delta^2]\vu{\bm{\phi}}}
+  \qty[\frac43x^2+8\lambda^2-\delta^2]\vu{z}}
 \end{align*}
 The direction in the plane of the plate looks like this:
-\fig{10.0}{phihat}{The direction of the field assuming $x$ is coming out of the plane}
-\section{Structure of a Vortex}
+\fig{10.0}{zhat}{The direction of the field assuming $x$ is coming out of the plane}
+\newpage\section{Structure of a Vortex}
 \subsection{Solution \& Boundary Condition}
 Since the system we are considering is cylindrically symmetric, we only need to find the $\rho$ dependence:
 \begin{align*}
@@ -157,7 +149,7 @@ If we have that $\lambda\gg\rho$, the second term in our differential equation d
     e^{-\rho/\lambda}}}
 \end{align*}
 The constant can be found by a series expansion about infinity, just something cool I found from playing in Mathematica. 
-\section{BCS Coupling Strength for Various Materials}
+\newpage\section{BCS Coupling Strength for Various Materials}
 Subbing in the approximation we are given leaves the following formula for BCS $T_C$:
 \begin{align*}
   T_c\approx1.14\theta_De^{-1/N(0)V}
@@ -184,7 +176,7 @@ For Al, the $T_c=\SI{1.75}{\K}$ and $\theta_D=\SI{433}{\K}$
   N(0)V=-\qty[\ln\qty(\frac{\SI{1.75}{\K}}{1.14\times\SI{433}{\K}})]^{-1}
   =\boxed{0.166}
 \end{align*}
-\section{Diffraction Effect of Josephson Junction}
+\newpage\section{Diffraction Effect of Josephson Junction}
 Call $x$ the coordiate in the plane of the junction, such that $x$ is between $\pm w/2$. We can write the current in terms of a flux:
 \begin{align*}
   \dd{j}\propto\cos\phi(x)\dd{x}
@@ -208,7 +200,7 @@ Since this is an even function we are integrating we can reduce this to just an 
   &=\frac{2j_0}{w}\eval(\frac{\sin(2exTB/\hbar c)}{2eTB/\hbar c}|_0^{w/2}\\
   &=\boxed{j_0\frac{\sin(weTB/\hbar c)}{weTB/\hbar c}}
 \end{align*}
-\section{BCS Coherence Length}
+\newpage\section{BCS Coherence Length}
 \subsection{Non-Dirty Materials}
 We simply need the following formula:
 \begin{align*}
@@ -242,7 +234,7 @@ The value is then:
 \begin{align*}
   \boxed{\xi_0=\lambda\qty(\frac{\num{1.5e6}}{10^5})^2=225\lambda}
 \end{align*}
-\section{Josephson Junction in the Regetti Qubit}
+\newpage\section{Josephson Junction in the Regetti Qubit}
 \subsection{Capacitance}
 The capacitor used in this qubit is a parallel plate capacitor, for which the capacitance is given by:
 \begin{align*}
@@ -319,9 +311,54 @@ So our shunt capacitance is:
 \begin{align*}
   \boxed{C_{shunt}=\SI{2.03e-9}{\F}}
 \end{align*}
-\section{AC Resistivity}
+\newpage\section{Two-Fluid Model AC Resistivity}
 
-\section{Nb Examples}
+\subsection{AC Resistivity}
+We have a time varying electric field:
+\begin{align*}
+  E=E_0e^{-i\omega t}
+\end{align*}
+The total current density is:
+\begin{align*}
+  \vb{J}=\vb{J}_n+\vb{J}_s
+\end{align*}
+Ohm's law says:
+\begin{align*}
+  \vb{J=\sigma E}
+\end{align*}
+So the total conductivity $\sigma$ is:
+\begin{align*}
+  \sigma=\sigma_n+i\sigma_s
+\end{align*}
+Which means that the resistivity is:
+\begin{align*}
+  \rho=^?\frac{1}{\sigma_n+i\sigma_s}=\frac{\sigma_n-i\sigma_s}
+  {\sigma_n^2+\sigma_s^2}
+\end{align*}
+However the resistivity should be real, so we take the real part:
+\begin{align*}
+  \boxed{\rho=\frac{\sigma_n}{\sigma_n^2+\sigma_s^2}}
+\end{align*}
+\subsection{Frequency Dependence}
+The definition for each of the conductivities:
+\begin{align*}
+  \sigma_n&=\frac{n_ne^2l}{m_ev_F}\\
+  \sigma_s&=\frac{n_se^2}{m_e\omega}
+\end{align*}
+Since in this limit $\sigma_s$ dominates, we essentially get an overall factor of $\omega^2$ from $1/\sigma_s^2$, therefore:
+\begin{align*}
+  \boxed{\rho\propto\omega^2}
+\end{align*}
+\subsection{Zero-Temperature Limit}
+The resistivitiy should go to zero as temperature goes to zero as we expect superconuctors to have infinite conductivity as temperature goes down. We can see this as we expand the exponential of $n_n$:
+\begin{align*}
+  n_n\approx 1-\frac{E_g}{2k_bT}
+\end{align*}
+This means the resistivity is directly proportional to $T$ at low temperature, which means it will go to some low value:
+\begin{align*}
+  \rho\approx0
+\end{align*}
+\newpage\section{Nb Examples}
 We are assuming that there is a linear fit, we know the resistivity is related to the resistance in the following form:
 \begin{align*}
   R=\rho\frac{l}{A}
