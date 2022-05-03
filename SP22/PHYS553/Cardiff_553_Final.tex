@@ -1,0 +1,210 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 553 Final Exam}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+% integration measure
+\newcommand{\cD}{\mathcal{D}}
+% spacetime deriv
+\newcommand{\D}{\partial}
+% fields
+\newcommand{\phis}{\phi^*}
+\newcommand{\bphis}{\bar{\phi}^*}
+\newcommand{\bphi}{\bar{\phi}}
+\newcommand{\psib}{\bar{\psi}}
+\newcommand{\etab}{\bar{\eta}}
+\newcommand{\xib}{\bar{\xi}}
+\newcommand{\A}{\hat{A}}
+\renewcommand{\d}{\delta}
+\renewcommand{\a}{\hat{a}}
+
+\begin{document}
+\maketitle
+
+\section{Casimir Effect}
+We are considering the following Lagrangian density in 1+1 spacetime dimensions, so $\mu=0,1$:
+\begin{align*}
+  \L=\frac12\D_\mu\phi\D^\mu\phi-\frac12m^2\phi^2
+\end{align*}
+\subsection{Classical Ground State Energy}
+The classical ground state energy is found by minimizing the classical Hamiltonian:
+\begin{align*}
+  \H&=\Pi\D_0\phi-\L
+\end{align*}
+The momentum is given by:
+\begin{align*}
+  \Pi=\D_0\phi
+\end{align*}
+So the Hamiltonian Density is:
+\begin{align*}
+  \H=\frac12\qty[\Pi^2+(\grad\phi)^2+m^2\phi^2]
+\end{align*}
+The ground state of a system should have zero momentum and since the gradient term is only positive its lowest value is $0$, otherwise the minimizing value would be $\phi=0$, so the ground state energy is $0$.
+\subsection{Ground State Energy Density in Path Integral Formalism}
+We start with the partition functional with our test sources:
+\begin{align*}
+  Z[J]&\propto\int\cD\phi\exp{iS}\\
+  S&=\int\dd[2]x\qty(\frac12(\D_\mu\phi)^2-\frac12m^2\phi^2+J\phi)
+\end{align*}
+Wick rotate, turn $x_0\to ix_4$:
+\begin{align*}
+  Z_E[J]&\propto\int\cD\phi\exp{-S_E}\\
+  S_E&=\int\dd[2]x\qty(\frac12(\D_\mu\phi)(\D_\mu\phi)+\frac12m^2\phi^2-J\phi)
+\end{align*}
+We can get this into a form which is bilinear in fields by integrating by parts, putting an extra derivative on a $\D_\mu\phi$:
+\begin{align*}
+  \L_E\to\frac12\phi\qty(-\D_\mu\D_\mu+m^2)\phi-J\phi
+\end{align*}
+Set $\D_\mu\D_\mu=\laplacian$, we can then rewrite out partition functional in terms of the Euclidean Green Function $G_E(x-x')$ by integrating through all $x,x'$:
+\begin{align*}
+  Z_E[J]&=Z_E[0]\exp{\frac{1}{2}\int\dd[2]x\dd[2]{x'}J(x)G_E(x-x')J(x')}\\
+  Z_E[0]&=\int\cD\delta\exp{-\frac12
+    \int\dd[2]\delta(x)\qty[-\laplacian+m^2]\delta(x)}
+\end{align*}
+We identified this $Z_E[0]$ with a determinant:
+\begin{align*}
+  Z_E[0]=\det[-\laplacian+m^2]^{-1/2}
+\end{align*}
+The full partition functional is then:
+\begin{align*}
+  Z_E[J]=\det[-\laplacian+m^2]^{-1/2}
+  \exp{\frac{1}{2}\int\dd[2]x\dd[2]{x'}J(x)G_E(x-x')J(x')}
+\end{align*}
+We wrote the ground state energy as a log of our partition functional:
+\begin{align*}
+  E_G=-\lim_{\beta\to\infty}\frac{\ln Z_E[J]}{\beta}
+\end{align*}
+We want to expand our field to act like a simple harmonic oscillator, the leading order term in the classical + quantum correction expansion has the form:
+\begin{align*}
+  \L=\L[\phi_c]+\frac12\phi\qty[-\D^2
+  -\eval{\dv[2]{V(\phi)}{x}}_{\phi=\phi_c}]\phi
+\end{align*}
+Where the value for the potential is simply $m^2$ in our case. Wick rotating THIS case we get:
+\begin{align*}
+  Z=\qty[\det(-\laplacian+m^2)]^{-1/2}\exp{-S[\phi_c]}
+\end{align*}
+We can identify the classical action with the $\beta$ parameter and the free field ground state energy:
+\begin{align*}
+  S[\phi_c]=-\beta E_0
+\end{align*}
+So our ground state energy at leading order is:
+\begin{align*}
+  \boxed{E_G=E_0+\frac{1}{2\beta}\ln\det(-\laplacian+m^2)}
+\end{align*}
+\subsection{Quantum Correction in Massless Limit}
+Using the generalized $\zeta$ function, we can find the determinant of an operator $\A$:
+\begin{align*}
+  -\ln\det\A=\lim_{s\to0^+}\dv{\zeta_A}{s}
+\end{align*}
+To do this we need to solve the generalized heat kernel:
+\begin{align*}
+  G_A(x,y,t)=\sum_n\exp{-a_nt}f_n(x)f_n^*(y)
+\end{align*}
+Where $f_n$ are eigenfunctions of $\A$ with $a_n$ as the corresponding eigenvalue, meaning we can write this as:
+\begin{align*}
+  G_A(x,y,t)=\mel{x}{\exp{-t\A}}{y}
+\end{align*}
+The condition that this must conform to is:
+\begin{align*}
+  \lim_{t\to0^+}G_A(x,y,t)=\delta(x-y)
+\end{align*}
+Relate it to the generalized $\zeta$:
+\begin{align*}
+  \int\dd[2]x\lim_{y\to x}G_A(x,y,t)=\sum_n\exp{-a_nt}\int\dd[2]xf_nf_n^*
+  =\sum_n\exp{-a_nt}\equiv\Tr\exp{-t\A}
+\end{align*}
+We have from class:
+\begin{align*}
+  \frac{\Gamma(s)}{a_n^s}=\int_0^\infty\dd{z}z^{s-1}e^{-a_nz}
+\end{align*}
+Summing this over $n$:
+\begin{align*}
+  \sum_n\frac{\Gamma(s)}{a_n^s}=\int_0^\infty\dd{t}z^{s-1}\sum_ne^{-a_nt}
+\end{align*}
+Which we can then again relate to our $\zeta_A$:
+\begin{align*}
+  \zeta_A(s)=\frac{1}{\Gamma(s)}\int\dd{t}t^{s-1}\int\dd[2]x
+  \lim_{y\to x}G_A(x,y,t)
+\end{align*}
+The eigenvalues of $\A$ using the periodic boundary conditions will be given by some propagator pole:
+\begin{align*}
+  a_n=k^2+m^2
+\end{align*}
+Where $k$ is a four-vector $k=\qty(\frac{2\pi n}{L},\frac{2\pi m}{\beta})$. Note two indices since we have 2 total dimensions:
+\begin{align*}
+  \zeta_A&=\frac{1}{\Gamma(s)}\sum_{m,n}\int_0^\infty\dd{t}t^{s-1}e^{-a_{mn}t}\\
+  &=\frac{\beta}{\Gamma(s)}\sum_{n}\int_0^\infty\int_{-\infty}^\infty
+  \frac{\dd{t}\dd\omega}{2\pi}t^{s-1}e^{-t(\omega^2+k_n^2+m^2)}
+\end{align*}
+Where in the second step we replace the sum with a fourier integral, notice the $\omega$ integral however is a Gaussian:
+\begin{align*}
+  \zeta_A(s)=\frac{\beta}{\Gamma(s)}\sum_{n}\int_0^\infty
+  \frac{\dd{t}}{2\sqrt\pi}t^{s-3/2}e^{-t(k_n^2+m^2)}
+\end{align*}
+We can then use the formula given:
+\begin{align*}
+  \zeta_A(s)=\frac{\beta}{\Gamma(s)}\sum_m\int_{-\infty}^\infty\dd{y}
+  \int_0^\infty\frac\dd{t}{2\sqrt\pi}e^{2\pi imy}t^{s-3/2}
+  e^{-t((\frac{2\pi}{L})^2+m_0^2)}
+\end{align*}
+Where in this case the mass is $m_0$ to not be confused with an index $m$:
+\begin{align*}
+  \zeta_A(s)=\frac{\beta L}{4\pi\Gamma(s)}\sum_n  \int_0^\infty
+  \dd{t}t^{s-2} e^{-m^2t-(nL)^2/4t}
+\end{align*}
+I am not sure where to go from here
+\subsection{Zero-Point Fluctuations}
+
+\section{Perturbation Theory for $SU(2)$}
+
+\subsection{Feynman Propagators in Momentum Space}
+
+\subsection{Feynman Rules in Position Space}
+
+\subsection{One Loop Corrections}
+
+\subsubsection{Fermion Propagator}
+
+\subsubsection{Gauge Propagator}
+
+\subsubsection{Fermion-Gauge Vertex}
+
+\subsubsection{Three/Four Gauge Field Vertices}
+
+\end{document}
