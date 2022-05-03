@@ -1,0 +1,533 @@
+\documentclass[12pt]{article}
+
+\title{PHYS 546 Final}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\usepackage{physics}
+\usepackage{slashed}
+
+\usepackage{tikz}
+\usepackage{tikz-feynman}
+% \usepackage{tikzfeynman}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[labelfont=bf]{caption}
+\usepackage[margin=1in]{geometry}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\newcommand*\circd[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\g}{\gamma}
+\renewcommand{\u}[1]{{u(#1)}}
+\newcommand{\ub}[1]{{\bar u(#1)}}
+\renewcommand{\v}[1]{{v(#1)}}
+\renewcommand{\vb}[1]{{\bar v(#1)}}
+\newcommand{\sla}[1]{\slashed{#1}}
+\renewcommand{\sp}{\slashed{p}}
+\newcommand{\munu}{{\mu\nu}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\veps}{\varepsilon}
+
+\begin{document}
+\maketitle
+\section{Decay of $\tau^-$ to $\pi^-\nu_\tau$}
+\subsection{Partial Width}
+The effective diagram we need to consider is:
+\begin{figure}[H]
+  \centering
+  \feynmandiagram [tree layout, horizontal=a to b] {
+    a [particle=\(\tau^-\)] -- [fermion, momentum'=\(p_{1}\)] b,
+    f1 [particle=\(\pi^-\)]
+    -- [anti charged scalar, rmomentum'=\(q\)] b
+    -- [fermion, momentum'=\(p_2\)] f2 [particle=\(\nu_\tau\)]
+  };
+  \caption{$\tau^-\to\pi^-\nu_\tau$}
+  \label{fig:1}
+\end{figure}
+For which the matrix element would be:
+\begin{align*}
+  i\m&=\frac{G_F}{\sqrt{2}}\mel*{\pi^-}{\bar{u}\g_\mu(1-\g_5)d\enspace
+    \tau\g^\mu(1-\g_5)\nu_\tau}{\tau\nu_\tau}\\
+  &=\frac{G_F}{\sqrt{2}}\mel*{\pi^-}{\bar{u}\g_\mu(1-\g_5)d\dyad{0}
+    \tau\g^\mu(1-\g_5)\nu_\tau}{\tau\nu_\tau}
+\end{align*}
+This separates into two matrix elements, one of which can be manipulated:
+\begin{align*}
+  \qty(\mel{\pi^-}{\bar{u}\g_\mu(1-\g_5)d}{0})^\dag
+  &=\mel{0}{\bar{d}\g_\mu(1-\g_5)u}{\pi^+}\\
+  \mel{\pi^-}{\bar{u}\g_\mu(1-\g_5)d}{0}&=-i\sqrt{2}F_\pi q_\mu
+\end{align*}
+We have to note that even though we will see a pion in our final state, the actual process that is happening involves a $W$ as well as an up and down, with $q$ being the momentum of that $W$, which would be equivalent to $p_1-p_2$. 
+\begin{align*}
+  i\m&=\frac{G_F}{\sqrt{2}}\qty(-i\sqrt{2}F_\pi(p_1-p_2)_\mu) V_{ud}
+  \ub{p_2}\g^\mu(1-\g_5)\u{p_1}\\
+  &=-iG_FV_{ud}F_\pi\ub{p_2}\qty(\sp_1-\sp_2)(1-\g_5)\u{p_1}
+\end{align*}
+The neutrino mass is effectively $0$, and we can use the dirac equation for the $\tau$ to change $\sp_1\u{p_1}$ into $m_\tau\u{p_1}$:
+\begin{align*}
+  i\m=-iG_FV_{ud}F_\pi m_\tau\ub{p_2}(1+\g_5)\u{p_1}
+\end{align*}
+Square the matrix element:
+\begin{align*}
+  \sum_\lambda\abs{\m}^2=G_F^2F_\pi^2m_\tau^2\abs{V_{ud}}^2
+  \Tr[\sp_2(1+\g_5)(\sp_1+m_\tau)(1-\g_5)]
+\end{align*}
+Look at the trace on its own:
+\begin{align*}
+  \Tr[\quad]&=\Tr[\sp_2\sp_1(1-\g_5)^2]+m_\tau\Tr[\sp_2(1+\g_5)(1-\g_5)]\\
+  &=2\Tr[\sp_2\sp_1(1-\g_5)]+0\\
+  &=8(p_2\vdot p_1)
+\end{align*}
+For the kinematics we can simplify a bit:
+\begin{align*}
+  q=p_1-p_2&\implies m_\pi^2=m_\tau^2-2p_1\vdot p_2\\
+  &\implies p_1\vdot p_2=\frac{1}{2}(m_\tau^2-m_\pi^2)
+\end{align*}
+So our trace is simply:
+\begin{align*}
+  \Tr[\quad]=4(m_\tau^2-m_\pi^2)
+\end{align*}
+And our squared matrix element:
+\begin{align*}
+  \sum_\lambda\abs{\m}^2=4G_F^2F_\pi^2m_\tau^4\qty(1-\frac{m_\pi^2}{m_\tau^2})
+  \abs{V_{ud}}^2
+\end{align*}
+The decay width is given by:
+\begin{align*}
+  \dd{\Gamma}&=\frac{1}{2m_\tau}\sum_\lambda\abs{\m}^2\dd{PS}
+\end{align*}
+Since we are looking at the $\pi$ as in the final state, this is only a 2-body phase space:
+\begin{align*}
+  \dd{PS}&=\frac{1}{4\sqrt{s}}\abs{\bm{p}_3}\dd{\Omega}\\
+  &=\frac{1}{4\sqrt{s}}\frac{\sqrt{s}}{2}\beta_3\dd{\Omega}\\
+  \beta_3&=\frac14m_\tau^2\qty(1-4\frac{m_\pi^2}{m_\tau^2})\\
+  \dd{PS}&=\frac{m_\tau^2}{32}\qty(1-4\frac{m_\pi^2}{m_\tau^2})\dd{\Omega}
+\end{align*}
+Notice that there is no $\theta$ dependence anywhere so we can simply integrate out the $\dd{\Omega}$:
+\begin{align*}
+  \boxed{\Gamma=\frac{G_F^2F_\pi^2\pi}{8} m_\tau^5\qty(1-\frac{m_\pi^2}{m_\tau^2})
+    \qty(1-4\frac{m_\pi^2}{m_\tau^2})\abs{V_{ud}}^2}
+\end{align*}
+\subsection{Branching Fraction}
+The value for $\Gamma$ is related to the decay time:
+\begin{align*}
+  \Gamma\propto\frac{1}{\tau_\tau}\approx\frac{1}{\num{2.903e-13}}
+\end{align*}
+Our calculations say:
+\begin{align*}
+  \Gamma(\tau\to\nu_\tau\pi)=\frac{3.1415\times\num{1.166e-5}\times\num{9.3e-2}}
+  {8}\times(1.77686)^5\qty(1-\frac{(0.1395)^2}{(1.77686)^2})\\
+  \times\qty(1-4\frac{(0.1395)^2}{(1.77686)^2})\abs{0.97}^2
+\end{align*}
+In total this will give a branching fraction of about $23\%$ which is way off. 
+\newpage\section{Decay of $Z^0$ to Fermions}
+\subsection{Partial Width}
+The diagram we are considering is:
+\begin{figure}[H]
+  \centering
+  \feynmandiagram [tree layout, horizontal=a to b] {
+    a [particle=\(Z^0\)] -- [boson, momentum'=\(p_{1}\)] b,
+    f1 [particle=\(f\)]
+    -- [anti fermion, rmomentum'=\(p_2\)] b
+    -- [fermion, momentum'=\(p_3\)] f2 [particle=\(\bar f\)]
+  };
+  \caption{$Z^0\to f\bar f$}
+  \label{fig:2}
+\end{figure}
+The neutral current interaction we have:
+\begin{align*}
+  i\mathfrak{m}&=-i\frac{g}{2\cos\theta_w}\u{p_2}\g^\mu(C_V-C_A\g_5)\vb{p_3}
+  \veps_{\mu\lambda}^*(p_1)
+\end{align*}
+Squaring the matrix element:
+\begin{align*}
+  \sum_{\lambda}\abs{\mathfrak{m}}^2=\,&\frac{g^2}{4\cos^2\theta_w}
+  \Tr[(\sla{p}_2+m)\g^\mu(C_V-C_A\g_5)(\sla{p}_3-m)\g^\nu(C_V-C_A\g_5)] \sum_\lambda\veps_{\nu\lambda}(p_1)\veps_{\lambda\mu}^*(p_1)
+\end{align*}
+Lets deal with the trace first:
+\begin{align*}
+  \Tr[(\sla{p}_2+m)\g^\mu(C_V-C_A\g_5)(\sla{p}_3-m)\g^\nu(C_V-C_A\g_5)]
+\end{align*}
+An easy first step is to assume our fermions are massless, which makes sense because of the $Z$ mass:
+\begin{align*}
+  \Tr[\quad]=\Tr[\sla{p}_2\g^\mu(C_V-C_A\g_5)\sla{p}_3\g^\nu(C_V-C_A\g_5)]
+\end{align*}
+In order to make the trace simpler we can push the $V-A$ term past the two gamme matrices to join it with the other one:
+\begin{align*}
+  \Tr[\quad]=\Tr[\sla{p}_2\g^\mu\sla{p}_3\g^\nu(C_V-C_A\g_5)(C_V-C_A\g_5)]
+\end{align*}
+Expand this term:
+\begin{align*}
+  (C_V-C_A\g_5)(C_V-C_A\g_5)&=C_V^2-C_VC_A\g_5-C_AC_V\g_5+C_A^2\g_5^2\\
+  &=C_V^2+C_A^2-2C_VC_A\g_5
+\end{align*}
+So that our trace is:
+\begin{align*}
+  \Tr[\sla{p}_2\g^\mu\sla{p}_3\g^\nu(C_V^2+C_A^2-2C_VC_A\g_5)]
+\end{align*}
+We also have the term which we calculated in class:
+\begin{align*}
+  \sum_\lambda\veps_{\nu\lambda}(p_1)\veps_{\lambda\mu}^*(p_1)
+  =-g_\munu+\frac{p^1_\mu p^1_\nu}{m_Z^2}
+\end{align*}
+We now have two total traces:
+\begin{align*}
+  \circd1&=-\Tr[\sla{p}_2\g^\mu\sla{p}_3\g_\mu(C_V^2+C_A^2-2C_VC_A\g_5)]\\
+  \circd2&=\frac{1}{m_Z^2}
+  \Tr[\sla{p}_2\sla{p}_1\sla{p}_3\sla{p}_1(C_V^2+C_A^2-2C_VC_A\g_5)]
+\end{align*}
+We should start with the first one:
+\begin{align*}
+  \circd1_q&=(C_V^2+C_A^2)\Tr[\sp_2\g^\mu\sp_3\g_\mu]=
+  -2(C_V^2+C_A^2)\Tr[\sp_2\sp_3]=\boxed{-8(C_V^2+C_A^2)p_2\vdot p_3}\\
+  \circd1_l&=-2C_VC_A\Tr[\sp_2\g^\mu\sp_3\g_\mu\g_5]=4C_VC_A\Tr[\sp_2\sp_3\g_5]=
+  \boxed{0}
+\end{align*}
+So the first term is:
+\begin{align*}
+  \boxed{\circd1=8(C_V^2+C_A^2)p_2\vdot p_3}
+\end{align*}
+The next is:
+\begin{align*}
+  \circd2_q&=(C_V^2+C_A^2)\Tr[\sla{p}_2\sla{p}_1\sla{p}_3\sla{p}_1]
+  =\boxed{4(C_V^2+C_A^2)\qty(2(p_2\vdot p_1)(p_3\vdot p_1)
+  -(p_2\vdot p_3)(p_1\vdot p_1))}\\
+  \circd2_l&=-2C_VC_A\Tr[\sla{p}_2\sla{p}_1\sla{p}_3\sla{p}_1\g_5]
+  =\boxed{-8iC_VC_Ap_2^\mu p_1^\nu p_3^\rho p_1^\sigma
+  \veps_{\munu\rho\sigma}}
+\end{align*}
+Notice that the first term in the $\g_5$ trace is symmetric in the $\nu\sigma$ indices, and $\veps$ is totally antisymmetric, so the second part goes away:
+\begin{align*}
+  \circd2&=\frac{4}{m_Z^2}(C_V^2+C_A^2)\qty((p_2\vdot p_3)(p_1\vdot p_1)
+  -2(p_2\vdot p_1)(p_3\vdot p_1))\\
+  &=\frac{4}{m_Z^2}(C_V^2+C_A^2)\qty((p_2\vdot p_3)m_Z^2
+  -2(p_2\vdot p_1)(p_3\vdot p_1))\\
+  &=4(C_V^2+C_A^2)\qty((p_2\vdot p_3)
+  -\frac{2}{m_Z^2}(p_2\vdot p_1)(p_3\vdot p_1))\\
+\end{align*}
+Thus our full trace is:
+\begin{align*}
+  \circd1+\circd2&=(C_V^2+C_A^2)\qty[8p_2\vdot p_3+4p_2\vdot p_3
+  -\frac{8}{m_Z^2}(p_2\vdot p_1)(p_3\vdot p_1)]\\
+  &=(C_V^2+C_A^2)\qty[12p_2\vdot p_3
+  -\frac{8}{m_Z^2}(p_2\vdot p_1)(p_3\vdot p_1)]
+\end{align*}
+The second term can completely disappear since they will have the same kinematics, leading to the dot product being $0$:
+\begin{align*}
+  \Tr[\quad]=12(C_V^2+C_A^2)p_2\vdot p_3
+\end{align*}
+So our spin summed matrix element is:
+\begin{align*}
+  \sum_\lambda\abs{\mathfrak{m}}^2=
+  \boxed{\frac{12g^2}{4\cos^2\theta_w}(C_V^2+C_A^2)p_2\vdot p_3}
+\end{align*}
+The kinematics tells us that:
+\begin{align*}
+  p_1^2&=(p_2+p_3)^2\\
+  m_Z^2&=p_2^2+p_3^2+2p_2\vdot p_3
+\end{align*}
+Since our outgoing particles are massless we have:
+\begin{align*}
+  p_2\vdot p_3=\frac{m_Z^2}{2}
+\end{align*}
+So once again we have
+\begin{align*}
+  \sum_\lambda\abs{\mathfrak{m}}^2=
+  \frac{3g^2}{2\cos^2\theta_w}(C_V^2+C_A^2)m_Z^2
+\end{align*}
+The differential width is given by:
+\begin{align*}
+  \dd\Gamma&=\frac{1}{2m_Z}\qty(\sum_\lambda\abs{\mathfrak{m}}^2)\dd{PS}\\
+  &=\frac{3g^2}{4\cos^2\theta_w}(C_V^2+C_A^2)m_Z\dd{PS}
+\end{align*}
+The phase space is simply a 2-body phase space:
+\begin{align*}
+  \dd{PS}&=\frac{(2\pi)^4}{(2\pi)^6}
+  \frac{\dd[3]{p_2}}{2E_2}
+  \frac{\dd[3]{p_3}}{2E_3}
+  \delta^{(4)}(p_1-p_2-p_3)\\
+  &=\frac{1}{4\pi^2}\frac{1}{4\sqrt{s}}\abs{\bm{p}_3}\dd{\Omega}\\
+  &=\frac{1}{4\pi^2}\frac{1}{4\sqrt{s}}\frac{\sqrt{s}}{2}\beta 4\pi
+  =\frac{\beta}{8\pi}
+\end{align*}
+Excluding $t\bar t$ from the fermions, $\beta\to1$, so our width is:
+\begin{align*}
+  \Gamma&=\frac{3g^2}{4\cos^2\theta_w}(C_V^2+C_A^2)\frac{m_Z}{8\pi}\\
+  &=\frac{3\alpha_w}{8\cos^2\theta_w}m_Z(C_V^2+C_A^2)
+\end{align*}
+Average over incoming spin:
+\begin{align*}
+  \Gamma=\frac{\alpha_w}{8\cos^2\theta_w}m_Z(C_V^2+C_A^2)
+\end{align*}
+Then adding in the color factor for the outgoing fermions:
+\begin{align*}
+  \boxed{\Gamma=\frac{N_C\alpha_w}{8\cos^2\theta_w}m_Z(C_V^2+C_A^2)}
+\end{align*}
+I am missing a factor of $\frac{1}{4}$ here I am not sure where it was lost however. 
+\subsection{Forward-Backward Asymmetry}
+Now we are considering:
+\begin{figure}[H]
+  \centering
+  \feynmandiagram [horizontal=a to b] {
+    e1 [particle=\(e^+\)]
+    -- [fermion, momentum'=\(p_2\)] a
+    -- [anti fermion, rmomentum'=\(p_1\)] e2 [particle=\(e^-\)],
+    a -- [boson, momentum'=\(q\)] b,
+    f1 [particle=\(f\)]
+    -- [anti fermion, rmomentum'=\(p_3\)] b
+    -- [fermion, momentum'=\(p_4\)] f2 [particle=\(\bar f\)]
+  };
+  \caption{$e^+e^-\to Z^0\to f\bar f$}
+  \label{fig:4}
+\end{figure}
+Our matrix element is given by:
+\begin{align*}
+  i\mathfrak{m}&=\qty(\frac{-ig}{2\cos\theta_w})^2\vb{p_2}\g^\mu(C_V^e-C_V^e\g_5)
+  \u{p_1}\ub{p_3}\g^\nu(C_V^f-C_V^f\g_5)\v{p_4}\\
+  &\,\times\frac{1}{q^2-m_Z^2}
+  \qty(-g_\munu+\frac{q_\mu q_\nu}{m_Z^2})
+\end{align*}
+Where a superscript $e/f$ denotes the relevant coefficient for either the electron or fermion.
+
+Consider the $q_\mu q_\nu$ term:
+\begin{align*}
+  &=\vb{p_2}\sla{q}\qty(C_V^e-C_A\g_5)\u{p_1}\\
+  &=\vb{p_2}(\sla{p}_1+\sla{p}_2)\qty(C_V^e-C_A\g_5)\u{p_1}
+\end{align*}
+We can move the second momentum to the $v$ spinor, and since in this case we can say the electron is massless, it will disappear, the same can be done with the $p_1$ to the $u$ spinor:
+\begin{align*}
+  \vb{p_2}\sla{q}\qty(C_V^e-C_A\g_5)\u{p_1}=0
+\end{align*}
+So the matrix element is:
+\begin{align*}
+  i\mathfrak{m}&=\frac{g^2}{4\cos^2\theta_w}\frac{1}{q^2-m_Z^2}
+  \vb{p_2}\g^\mu(C_V^e-C_V^e\g_5)
+  \u{p_1}\ub{p_3}\g_\mu(C_V^f-C_V^f\g_5)\v{p_4}
+\end{align*}
+Squaring the matrix element:
+\begin{align*}
+  \sum_\lambda\abs{\mathfrak{m}}^2=\frac{g^4}{16\cos^2\theta_w(q^2-m_Z^2)^2}
+  &\Tr[\sla{p}_2\g^\mu(C_V^e-C_A^e\g_5)\sla{p}_1\g^\nu(C_V^e-C_A^e\g_5)]\\
+  \times&\Tr[\sla{p}_3\g_\mu(C_V^f-C_A^f\g_5)\sla{p}_4\g_\nu(C_V^f-C_A^f\g_5)]
+\end{align*}
+These are practically identical, the structure of one is solved by doing either:
+\begin{align*}
+  \Tr[\quad]
+  =&\,\Tr[\sla{p}_2\g^\mu(C_V^e-C_A^e\g_5)\sla{p}_1\g^\nu(C_V^e-C_A^e\g_5)]\\
+  =&\,\Tr[\sla{p}_2\g^\mu\sla{p}_1\g^\nu(C_V^e-C_A^e\g_5)^2]\\
+  =&\,(C_V^2+C_A^2)\Tr[\sla{p}_2\g^\mu\sla{p}_1\g^\nu]
+  -2C_VC_A\Tr[\sla{p}_2\g^\mu\sla{p}_1\g^\nu\g_5]\\
+  =&\,4\qty[(C_V^2+C_A^2)\qty(p_2^\mu p_1^\nu+p_2^\nu p_1^\mu
+  -(p_2\vdot p_1)g^\munu)+
+  i\veps_{\rho\mu\sigma\nu}p_3^\rho p_4^\sigma C_VC_A]\\
+\end{align*}
+The product of the traces reduces to (after some cancellations):
+\begin{align*}
+  \Tr[\quad]=\left[(C_V^{f2}+C_A^{f2})(C_V^{e2}+C_A^{e2})
+    \qty(2(p_2\vdot p_3)(p_1\vdot p_4)+2(p_2\vdot p_4)(p_1\vdot p_3))\right.\\
+  \left.-C_V^eC_A^eC_V^fC_A^fp_{2\alpha}p_{1\beta}p_3^{\rho}p_4^\sigma
+    \veps_{\alpha\mu\beta\nu}\veps^{\rho\mu\sigma\nu}\right]
+\end{align*}
+The cross terms with the antisymmetric tensor are ignored since they would contain symmetric/antisymmetric combinations again, and the other terms have been gathered together.
+
+The Levi-Cevita product is:
+\begin{align*}
+  \veps_{\alpha\mu\beta\nu}\veps^{\rho\mu\sigma\nu}&=
+  \veps_{\munu\alpha\beta}\veps^{\munu\rho\sigma}\\
+  &=-2\qty(\delta^\rho_\alpha\delta^\sigma_\beta
+  -\delta^\rho_\beta\delta^\sigma_\alpha)\\
+  p_{2\alpha}p_{1\beta}p_3^{\rho}p_4^\sigma
+  \veps_{\alpha\mu\beta\nu}\veps^{\rho\mu\sigma\nu}&=
+  2\qty((p_2\vdot p_4)(p_1\vdot p_3)-(p_1\vdot p_4)(p_2\vdot p_3))
+\end{align*}
+Put everything together now:
+\begin{align*}
+  \Tr[\quad]=32\left[(C_V^{f2}+C_A^{f2})(C_V^{e2}+C_A^{e2})\right.
+  \qty((p_1\vdot p_4)(p_2\vdot p_3)+(p_2\vdot p_4)(p_1\vdot p_3))\\
+  \left.-C_V^eC_V^eC_A^eC_A^f\qty((p_2\vdot p_4)(p_1\vdot p_3)
+    -(p_1\vdot p_4)(p_2\vdot p_3))\right]
+\end{align*}
+If all incoming and outgoing particles are massless we get the following for kinematics:
+\begin{align*}
+  (p_1+p_2)^2=(p_3+p_4)^2\implies \boxed{p_1\vdot p_2=p_3\vdot p_4}\\
+  (p_1-p_3)^2=(p_4-p_2)^2\implies \boxed{p_1\vdot p_3=p_2\vdot p_4}\\
+  (p_1-p_4)^2=(p_3-p_2)^2\implies \boxed{p_1\vdot p_4=p_2\vdot p_3}
+\end{align*}
+The product of the traces is now:
+\begin{align*}
+  32\left[(C_V^{f2}+C_A^{f2})(C_V^{e2}+C_A^{e2})
+    \qty((p_1\vdot p_4)^2+(p_2\vdot p_4)^2)\right.\\
+  \left.-C_V^eC_V^eC_A^eC_A^f\qty((p_2\vdot p_4)^2
+    -(p_1\vdot p_4)^2)\right]
+\end{align*}
+We can assign the following momenta to the particles:
+\begin{align*}
+  p_1&=\frac{\sqrt{s}}{2}(1,0,0,1)\\
+  p_2&=\frac{\sqrt{s}}{2}(1,0,0,-1)\\
+  p_3&=\frac{\sqrt{s}}{2}(1,0,\sin\theta,\cos\theta)\\
+  p_4&=\frac{\sqrt{s}}{2}(1,0,-\sin\theta,-\cos\theta)
+\end{align*}
+Recognizing that $p_1+p_2=\sqrt{s}$ and that we have the following:
+\begin{align*}
+  p_1\vdot p_4&=\frac{s}{4}(1-\cos\theta)\\
+  p_2\vdot p_4&=\frac{s}{4}(1+\cos\theta)\\
+  (p_1\vdot p_4)^2+(p_2\vdot p_4)^2&=\frac{s^2}{8}\qty(1+\cos^2\theta)\\
+  (p_2\vdot p_4)^2-(p_1\vdot p_4)^2&=\frac{s^2}{4}\cos\theta
+\end{align*}
+Plugging all of this into the spin-summed matrix element:
+\begin{align*}
+  \sum_\lambda\abs{\mathfrak{m}}^2=\frac{g^2}{4\cos^2\theta_w}
+  \frac{4s^2}{s-m_Z^2}\qty[(C_V^{f2}+C_A^{f2})(C_V^{e2}+C_A^{e2})
+  \qty(1+\cos^2\theta)-C_V^eC_V^eC_A^eC_A^f\cos\theta]
+\end{align*}
+The differential cross section is:
+\begin{align*}
+  \dd{\sigma}&=\frac{1}{2s}\sum_\lambda\abs{\mathfrak{m}}^2\dd{PS}
+\end{align*}
+Phase space:
+\begin{align*}
+  \dd{PS}=\frac{1}{4\sqrt{s}}\abs{\bm{p}_3}\dd{\Omega}
+  =\frac{2\pi}{8}\dd{(\cos\theta)}
+\end{align*}
+Plugging all of this in, the differential cross section in terms of $\cos\theta$:
+\begin{align*}
+  \dv{\sigma}{\cos\theta}&=\frac{g^2\pi}{8\cos^2\theta_w}\frac{s}{s-m_Z^2}
+  \qty[C_2(1-\cos^2\theta)-C_3\cos\theta]\\
+  &=C_1 \qty[C_2(1-\cos^2\theta)-C_3\cos\theta]
+\end{align*}
+The full cross section $\sigma$ would integrate $z=\cos\theta$ from $-1\to1$ but we want to investigate the forward and backward part individually:
+\begin{align*}
+  \sigma_F&=\int_0^1\dd{z}\dv{\sigma}{z}\\
+  &=C_1\int_0^1\dd{z}(C_2(1+z^2)-C_3z)\\
+  &=C_1\qty(\frac{4C_2}{3}-\frac{C_3}{2})\\
+  \sigma_B&=\int_{-1}^0\dd{z}\dv{\sigma}{z}\\
+  &=C_1\int_{-1}^0\dd{z}(C_2(1+z^2)-C_3z)\\
+  &=C_1\qty(\frac{4C_2}{3}-\frac{C_3}{2})
+\end{align*}
+Finally:
+\begin{align*}
+  A_{FB}&=\frac{\sigma_F-\sigma_B}{\sigma_F+\sigma_B}\\
+  &=\frac{C_1\qty(\frac{4C_2}{3}-\frac{C_3}{2}-\frac{4C_2}{3}+\frac{C_3}{2})}
+  {C_1\qty(\frac{4C_2}{3}-\frac{C_3}{2}+\frac{4C_2}{3}-\frac{C_3}{2})}\\
+  &=\frac{3}{8}\frac{C_3}{C_2}
+\end{align*}
+Finally we get:
+\begin{align*}
+  \boxed{A_{FB}=
+    \frac{3}{8}\frac{C_V^eC_V^fC_A^eC_A^f}
+    {(C_V^{e3}+C_A^{e2})(C_V^{f2}+C_A^{f2})}}
+\end{align*}
+\newpage\section{Renormalization of $H^0$ mass}
+The correction to the Higgs mass at one loop would be:
+\begin{figure}[H]
+  \centering
+  \feynmandiagram [tree layout, horizontal=a to c] {
+    a [particle=\(H^0\)] -- [scalar, momentum=\(p\)] b
+    -- [anti fermion, half left, looseness=1.8,
+    rmomentum=\(k\), edge label'=\(t\bar t\)] c
+    -- [anti fermion, half left, looseness=1.8,
+    rmomentum=\(p+k\), edge label'=\(\bar t t\)] b,
+    c -- [scalar, momentum=\(p\)] d [particle=\(H^0\)]
+  };  
+  \caption{One Loop Correction to Higgs Mass}
+  \label{fig:3}
+\end{figure}
+The correction will be:
+\begin{align*}
+  i\Pi&=\qty(\frac{-igm_t}{2m_W})^2\int\frac{\dd[N]{k}}{(2\pi)^N}(-1)
+  \Tr[\frac{i}{\sla{k}+\sp-m_t}\frac{i}{\sla{k}-m_t}]\\
+  &=\frac{g^2m_t^2}{4m_W^2}\int\frac{\dd[N]{k}}{(2\pi)^N}
+  \frac{\Tr[(\sla{k}+\sp+m_t)(\sla{k}+m_t)]}{((k+p)^2-m_t^2)(k^2-m_t^2)}
+\end{align*}
+The trace can be evaluated fairly easily:
+\begin{align*}
+  \Tr[\sla{k}\sla{k}+\sp\sla{k}+m_t\sla{k}+\sla{k}m_t+\sp m_t+m_t^2]=
+  4\qty(k^2+p\vdot k+m_t^2)
+\end{align*}
+So the integral is:
+\begin{align*}
+  i\Pi=\frac{g^2m_t^2}{m_W^2}\int\frac{\dd[N]{k}}{(2\pi)^N}
+  \frac{k^2+p\vdot k+m_t^2}{((k+p)^2-m_t^2)(k^2-m_t^2)}
+\end{align*}
+Define constants to make the integral a bit easier to read:
+\begin{align*}
+  D_1&\equiv k^2-m_t^2\\
+  D_2&\equiv (k+p)^2-m_t^2=D_1+p^2+2p\vdot k
+\end{align*}
+The value of the numerator can be written in terms of these constants too:
+\begin{align*}
+  k^2+p\vdot k&=D_1+m_t^2+\frac12\qty(D_2-D_1-p^2)\\
+  &=\frac12D_2+\frac12D_1-\frac12p^2+m_t^2
+\end{align*}
+Ignore the leading constants:
+\begin{align*}
+  \int\frac{\dd[N]{k}}{(2\pi)^N}\frac{\frac12(D_1+D_2)+2m_t^2-\frac12p^2}{D_1D_2}
+  =\int\frac{\dd[N]{k}}{(2\pi)^N}\frac12\qty(\frac1{D_1}+\frac1{D_2})+
+  \frac{2m_t^2+\frac12p^2}{D_1D_2}
+\end{align*}
+Since $D_1$ and $D_2$ differ only by a shift of integration variable, we have the same integral for the parenthetical terms:
+\begin{align*}
+  \int\frac{\dd[N]{k}}{(2\pi)^N}\frac1{D_1}=
+  \int\frac{\dd[N]{k}}{(2\pi)^N}\frac1{D_2}=
+  \frac{-i}{(4\pi)^2}(4\pi)^\veps\Gamma(\veps-1)(m_t^2)^{1-\veps}
+\end{align*}
+Since we have $N=4-2\veps$. Call this integral $I$, with the properties of the gamma function we can eliminate the pole from $\Gamma(-1)$ to a pole of $\Gamma(0)$:
+\begin{align*}
+  I&=-\frac{im_t^2}{(4\pi)^2}(4\pi)^\veps(m_t^2)^{-\veps}\Gamma(\veps-1)\\
+  &=-\frac{im_t^2}{(4\pi)^2}\frac{(4\pi)^\veps(m_t^2)^{-\veps}\Gamma(\veps)}
+  {\veps-1}\\
+  &=-\frac{im_t^2}{(4\pi)^2}\frac{1}{\veps-1}\qty[\frac1\veps-\g+\ln4\pi
+  -\int_0^1\dd{x}\ln(m_t^2-p^2x(1-x))]
+\end{align*}
+Our expression for $\Pi$ is:
+\begin{align*}
+  \Pi=&\,\frac{g^2m_t^2}{m_W^2}\frac1{(4\pi)^2}
+  \left[\frac{-m_t^2}{\veps-1}\qty(\frac1\veps-\g+\ln4\pi-\ln m_t^2)
+    \right.\\ &\left. +\qty(2m_t^2+\frac12p^2)\qty(\frac1\veps-\g+\ln4\pi
+  -\int_0^1\dd{x}\ln(m_t^2-p^2x(1-x)))\right]
+\end{align*}
+The final form is:
+\begin{align*}
+\boxed{
+  \begin{aligned}
+    \Pi&=\frac{g^2m_t^2}{16\pi^2m_W^2}\left[
+      -\frac{m_t^2}{\veps-1}\qty{\frac1\veps-\g+\ln4\pi-\ln m_t^2}
+    \right.\\
+    &\left.+\qty(2m_t^2+\frac12p^2)
+      \qty{\frac1\veps-\g+\ln4\pi-\int_0^1\dd{x}\ln(m_t^2-p^2x(1-x))}\right]
+  \end{aligned}
+  }
+\end{align*}
+At least I think it is
+\end{document}
