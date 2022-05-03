@@ -1,13 +1,18 @@
 \documentclass[12pt]{article}
 
-\title{\vspace{-3em}PHYS 518 Final Talk}
+\title{\vspace{-3em}The Mystery of the Graviton}
 \author{Michael Cardiff}
 \date{\today}
 
 %% science symbols 
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{siunitx}
 \usepackage{physics}
+\usepackage{slashed}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{tikz}
 
 %% general pretty stuff
 \usepackage{bm}
@@ -15,6 +20,7 @@
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage[margin=1in]{geometry}
+\usepackage[labelfont=bf]{caption}
 
 % figures
 \graphicspath{ {./figs/} }
@@ -39,18 +45,25 @@
 }
 
 \renewcommand{\L}{\mathcal{L}}
+\renewcommand{\H}{\mathcal{H}}
 \newcommand{\D}{\partial}
 \newcommand{\ddst}{\dd[4]{x}}
 \newcommand{\dds}{\dd[3]{\vb{x}}}
 \newcommand{\textbm}[1]{\textbf{\emph{#1}}}
 \newcommand{\psib}{\bar{\psi}}
+\newcommand{\munu}{{\mu\nu}}
+\newcommand{\sla}[1]{\slashed{#1}}
+\newcommand*{\circd}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
 
 \begin{document}
 \maketitle
 \begin{abstract}
-  The standard model of particle physics includes gauge bosons which mediate the four fundamental forces. This includes the photon, gluon, as well as the $W^{\pm}$ and $Z^0$ bosons. The only force which is not described by the standard model is gravity. This talk will cover how these gauge bosons appear in the other three forces, specifically focusing on how the photon comes out of QED. We will use our existing knowledge of the photon and other gauge bosons to discuss what the properties of a graviton would be if we found one. This will then lead into a discussion of how we can quantize gravitational waves to get gravitons. 
+  The standard model of particle physics includes gauge bosons which mediate the four fundamental forces. This includes the photon, gluon, as well as the $W^{\pm}$ and $Z^0$ bosons. The only force which is not described by the standard model is gravity. This talk will cover how these gauge bosons appear in the other three forces, specifically focusing on how the photon comes out of QED. We will use our existing knowledge of the photon and other gauge bosons to discuss what the properties of a graviton would be if we found one. This will then lead into a discussion of how we can quantize gravitational waves to get gravitons. We will also discuss the many problems with this quantization.
 \end{abstract}
-\section{Why Should we Expect a Gravition?}
+\tableofcontents
+\newpage
+\section{Why Should We Expect to See Gravitons?}
 \subsection{The Standard Model}
 The standard model is the method by which we answer the following questions:
 \begin{itemize}
@@ -88,25 +101,25 @@ Under Lorentz transformations, the most basic Lagrangian density we know about w
   V(\phi)=\frac{1}{2}m^2\phi^2
 \end{align*}
 Using the Euler-Lagrange equations we can find the so called equations of motion for this Lagrangian:
-\begin{align*}
-  \fdv{\L}{\phi}&=m^^2\\
-  \fdv{\L}{(\D_\mu\phi)}&=\D^\mu\phi
-  \D_\mu\qty(\fdv{\L}{(\D_\mu\phi)})&=\D^2\phi
-\end{align*}
+\begin{gather*}
+  \fdv{\L}{\phi}=-m^2\phi\\
+  \fdv{\L}{(\D_\mu\phi)}=\D^\mu\phi\implies
+  \D_\mu\qty(\fdv{\L}{(\D_\mu\phi)})=\D^2\phi
+\end{gather*}
 This gives our equation of motion as:
 \begin{align*}
   (\D^2+m^2)\phi=0
 \end{align*}
-This is called the Klein-Gordon Equation, and it is essentially the quantum-upgraded version of the Einstein Energy-momentum relation.
+This is called the Klein-Gordon Equation, and it is essentially the quantum-upgraded version of the Einstein Energy-momentum relation\footnote{You can do this yourself by replacing the $E$ and $p$ in the relation with their operator equivalents}.
 
 Thus far we have discussed what is called a 'Scalar Field Theory' and it only covers the most basic of particles, and this theory explicitly will only describe scalar particles, which have spin 0. The only such \textbf{fundamental} spin 0 particle we know about is the Higgs boson, so in order to describe fermions and gauge bosons, we will have to talk about vector theories.
 
-\subsection{How Dirac Described the Electron (kind of)}
+\subsection{Global $U(1)$}
 
 \subsubsection{The Lagrangian}
 Regular Quantum mechanics is pretty darn good at describing how the electron works when you put it in various situations. The findings of quantum mechanics and trying to make it relativistic led to Dirac writing the following Lagrangian for electrons:
 \begin{align*}
-  \L=\psib\qty(i\gamma^\mu\D_\mu-m)\psi=i\psib\gamma^\mu\D_\mu\psi-m\psib\psi
+  \L=\psib\qty(i\gamma^\mu\D_\mu-m)\psi=\psib\qty(i\sla\D-m)\psi
 \end{align*}
 There are a few extra caveats here that I will not get too far into\footnote{This includes that $\psib$ and $\psi$ are treated as two different fields that have the same mass, so we no longer have some factors of a half, as well as an implicit index to sum over possible spin configurations}. If we perform the proper Euler-Lagrange prescription with these caveats, we get:
 \begin{align*}
@@ -114,16 +127,281 @@ There are a few extra caveats here that I will not get too far into\footnote{Thi
   (i\gamma^\mu\D_\mu+m)\psib=0
 \end{align*}
 Note a couple things here, instead of $\phi$ we are using $\psi$, the difference being that $\phi$ is typically a real field, while $\psi$ is a complex field.
-\subsubsection{Its Symmetry}
+\subsubsection{Symmetry of the Lagrangian}
 The full Dirac Lagrangian obeys a phase difference transformation, that is if we were to transform our $\psi$ to $\psi'$ such that:
 \begin{align*}
   \psi\to\psi'=e^{i\alpha}\psi
 \end{align*}
-With $\alpha\in\mathbb{R}$ constant. This transformation leaves the Lagrangian invariant. We say that the theory in general obeys a $U(1)$ symmetry, which is a global symmetry since $\alpha$ is the same for all of space. If we were to change this to be a local symmetry, where $\alpha=\alpha(x)$ now. This means we now have a transformation like this:
+With $\alpha\in\mathbb{R}$ constant. This transformation leaves the Lagrangian invariant. We say that the theory in general obeys a $U(1)$ symmetry, which is a global symmetry since $\alpha$ is the same for all of space.
+
+If we were to change this to be a local symmetry, where $\alpha=\alpha(x)$ now. This means we now have a transformation like this:
 \begin{align*}
   \psi\to\psi'=e^{i\alpha(x)}\psi
 \end{align*}
-However if we do this we are no longer
-\section{What do we know about a Graviton?}
+The motivation behind this is that we do not often see global symmetries, we prefer to work with so called local ones!
 
+\subsection{Local $U(1)$}
+If we now have a local $U(1)$ as opposed to a global $U(1)$, we no longer have a Lorentz invariant theory, look at the derivative:
+\begin{align*}
+  \D_\mu\psi\to\D_\mu\psi'=\D_\mu\qty(e^{i\alpha(x)}\psi)=
+  e^{i\alpha(x)}\qty(i\D_\mu\alpha(x)\psi+\D_\mu\psi)
+\end{align*}
+This is not the same as what we get in global $U(1)$!
+\begin{align*}
+  e^{i\alpha(x)}\qty(i\D_\mu\alpha(x)\psi+\D_\mu\psi)\neq e^{i\alpha(x)}\D_\mu\psi
+\end{align*}
+The solution is to add in a so called 'gauge' field which would cancel out this term when it is transformed. We have only seen fields with scalar degrees of freedom so far, but this one must be a vector field, since $\D_\mu$ is itself a vector. Since this is the first vector field we have seen we should call it $A_\mu$, it should transform like:
+\begin{align*}
+  A_\mu\to A'_\mu=A_\mu + \D_\mu\alpha
+\end{align*}
+And we must now have add the following term to our lagrangian:
+\begin{align*}
+  \L_{new}\propto-iA_\mu\psi
+\end{align*}
+So the derivative term plus this is now:
+\begin{align*}
+  \D_\mu\psi'-iA'_\mu\psi'=\D_\mu\qty(e^{i\alpha(x)}\psi)-i(A_\mu+\D_\mu\alpha)&=
+  e^{i\alpha(x)}\qty(i\D_\mu\alpha\psi+\D_\mu\psi)-iA_\mu\psi e^{i\alpha(x)}-i
+  \D_\mu\alpha\psi e^{i\alpha(x)}\\
+  \implies\D_\mu\psi'-iA'_\mu\psi' &=e^{i\alpha(x)}(\D_\mu\psi-iA_\mu\psi)
+\end{align*}
+It then helps to assign this value to a new version of the derivative, which is the gauge covarient derivative:
+\begin{align*}
+  D_\mu\equiv\D_\mu-iA_\mu
+\end{align*}
+Now our Lagrangian will look like:
+\begin{align*}
+  \L=\psib\qty(i\gamma^\mu D_\mu-m)\psi=\psib\qty(i\sla D-m)\psi
+\end{align*}
+However we have introduced this field $A$ without any regard to how its own dynamics, it represents a real thing, we call it the photon, but we have no photon dynamics, and photons definitely move about this world. This requires the introduction of the field strength tensor $F_\munu$:
+\begin{align*}
+  F_\munu\equiv\D_\mu A_\nu-\D_\nu A_\mu
+\end{align*}
+And the term we should add to our Lagrangian:
+\begin{align*}
+  \L_{eff}=-\frac{1}{4}F_\munu F^\munu&=
+  \frac{1}{4}\qty(\D_\mu A_\nu\D^\mu A^\nu-\D_\mu A_\nu\D^\nu A^\mu
+  -\D_\nu A_\mu\D^\mu A^\nu+\D_\nu A_\mu\D^\nu A^\mu)\\
+  &=\frac{1}{2}\D_\mu A_\nu\D^\mu A^\nu
+\end{align*}
+Which is exactly the form of kinetic term we need for a real vector field. If we solve the Euler Lagrange equations for this effective lagrangian we get:
+\begin{align*}
+  \D^2A_\nu=0
+\end{align*}
+This is typically called the wave equation, but because we are special we can identify it with the Klein-Gordon Equation, except with $0$ mass, and since the photon is massless we should expect that too!
+\section{What Do We Know About a Graviton?}
+\subsection{Spin Structure of Fundamental Particles}
+In field theory we construct particles as fields. This is what $\psi$ or $A_\mu$ is in our Lagragians. However we use these labels because we are explicitly not attaching ourselves to a specific particle like we see in the standard model.
+
+The convention we use is that something like $\psi$ represents a fermion, and because it is complex it will have $2$ spin degrees of freedom, so it is spin $\frac{1}{2}$. Something like a 'scalar' particle which we represent by a $\phi$ has only a single degree of freedom, so it should be spin $0$. The last form of field we have discussed so far is that of the photon $A_\mu$. All vector bosons have spin 1 that we know about in the standard model, due to their lorentz index $\mu$! So what does this tell us about the graviton?
+
+In order to construct a graviton, we would need to talk about a modification of the Einstein-Hilbert action:
+\begin{align*}
+  S=\frac{c^4}{16\pi G}\int\ddst\sqrt{-g}R
+\end{align*}
+The only 'entry' point into a modification of this Lagrangian would be to change the metric $g_\munu$ since everything else here is either a fundamental constant, or is related to the metric. This is something we have not talked about so far, a field with two Lorentz indices. This does tell us about the spin of the graviton however, it should be spin $2$. This allows us to make a table of our fundamental particles:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c|c}
+    Type of Particle&Associated Field&Spin&Example\\\hline
+    Scalar&$\phi$&0&$H^0$\\
+    Fermion&$\psi$&$\frac{1}{2}$&$e^-,\mu^-,u$\\
+    Vector Boson&$A_\mu$&1&$\gamma,g$\\
+    Graviton-Like&$h_\munu$&2&???
+  \end{tabular}
+  \caption{Spins of Fundamental Particles}
+  \label{tab:1}
+\end{table}
+\subsection{Masses of Force-Mediating Particles}
+The only massive gauge bosons in the standard model are the $W^\pm$ and $Z^0$ which govern the electroweak interactions. They get mass due to symmetry breaking (something fascinating but will not be covered in depth). However, for the other two fundamental forces the mediating particle is massless.
+
+A massless mediating boson usually means that the force has an infinite range. This is not the case in a theory like the strong force due to confinement, meaning it can only occur within short distances. However we do not have to worry about confinement for either Gravity or Electromagnetism. As far as we can tell gravity has no maximum distance where it just dies out (except for infinity of course) so the range is the same as E\&M, infinite. This tells us that we should expect a massless graviton!
+
+In terms of our eventual theory, we should expect the following form of the Klein-Gordon equation to pop out from the Euler-Lagrange equations:
+\begin{align*}
+  \D^2h_\munu=0
+\end{align*}
+
+However, it would be possible to measure the Compton wavelength $\lambda$ theoretically from gravitational wave measurements. Current estimates from \cite{compwavelen} put the wavelength at about $\SI{1.6e16}{\m}$, Using the following formula we can get an estimate for the mass:
+\begin{align*}
+  \lambda_c=\frac{2\pi\hbar}{mc}\implies m=\frac{2\pi\hbar}{\lambda_cc}
+\end{align*}
+This gives an estimate of the mass to be under $\SI{7.7e-23}{\eV}$ for all intents and purposes this is 0.
+\subsection{Quantum Numbers}
+Each of the other fundamental forces' mediating particles have usually no quantum numbers or 'charges' associated with them, or at least with theories that they do not interact with.
+
+For example the photon does not interact with the strong force, so it has no color charge. Similarly the gluon has no electric charge. The $W$ and $Z$ are a bit different since they devolve into the equivalent of E\&M. This allows us to make a pretty convincing fact table about the graviton with little to no theoretical construction:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c|c|c|c}
+    Name&Mass&Spin&Electric Charge&Color Charge&Weak Charge\\\hline
+    Graviton&0&2&0&0&0
+  \end{tabular}
+  \caption{Graviton Fact Sheet}
+  \label{tab:2}
+\end{table}
+It is no wonder that we have not seen a graviton yet! It has almost nothing that we can possibly detect, but at the same time it should exist.
+
+Gravity is a fundamental force at the end of the day, same as the Electroweak and Strong forces, so there must be some theory which in some classical limit reduces to General Relativity. Let us attempt to now construct such a theory of the graviton, using a similar approach to class. 
+\section{Field-Theoretic Construction}
+\subsection{The Lagrangian}
+Like we mentioned earlier, the most obvious entry point for adding in our graviton field would be in the metric, so let us assume that we have a flat background with a small perturbation which is our graviton field. 
+\begin{align*}
+  g_\munu=\eta_\munu+h_\munu\\
+  g^\munu=\eta^\munu-h^\munu
+\end{align*}
+We then need to construct our action:
+\begin{align*}
+  S=\kappa\int\ddst\sqrt{-g}R=\kappa\int\ddst\sqrt{1-h}R
+\end{align*}
+This requires that we also construct our Ricci Scalar and Ricci Tensor, starting with the Christoffel symbols:
+\begin{align*}
+  \Gamma^\lambda_\munu&=\frac{1}{2}g^{\lambda\sigma}
+  \qty(\D_\nu g_{\sigma\mu}+\D_\mu g_{\sigma\nu}-\D_\sigma g_{\munu})\\
+  &=\frac{1}{2}\eta^{\lambda\sigma}
+  \qty(\D_\nu h_{\sigma\mu}+\D_\mu h_{\sigma\nu}-\D_\sigma h_{\munu})
+\end{align*}
+Riemann Tensor:
+\begin{align*}
+  R^\rho_{\sigma\munu}&=\D_\mu\Gamma^\rho_{\nu\sigma}
+  -\D_\nu\Gamma^\rho_{\mu\sigma}
+  +\Gamma^\rho_{\mu\lambda}\Gamma^\lambda_{\nu\sigma}
+  -\Gamma^{\rho}_{\nu\lambda}\Gamma^{\lambda}_{\mu\sigma}\\
+  &=\circd{1}-\circd{2}+\circd{3}-\circd{4}
+\end{align*}
+Each of these terms is quite similar:
+\begin{align*}
+  \circd1&=\D_\mu\frac{1}{2}\eta^{\rho\delta}
+  \qty(\D_\sigma h_{\delta\nu}+\D_\nu h_{\delta\sigma}-\D_\delta h_{\nu\sigma})\\
+  &=\frac{1}{2}\eta^{\rho\delta}
+  \qty(\D_\mu\D_\sigma h_{\delta\nu}+\D_\mu\D_\nu h_{\delta\sigma}
+  -\D_\mu\D_\delta h_{\nu\sigma})\\
+  \circd2&=\D_\nu\frac{1}{2}\eta^{\rho\delta}
+  \qty(\D_\sigma h_{\delta\mu}+\D_\mu h_{\delta\sigma}-\D_\delta h_{\mu\sigma})\\
+  &=\frac{1}{2}\eta^{\rho\delta}
+  \qty(\D_\nu\D_\sigma h_{\delta\mu}+\D_\nu\D_\mu h_{\delta\sigma}
+  -\D_\nu\D_\delta h_{\mu\sigma})\\
+  \circd3&=\frac{1}{4}\eta^{\rho\delta}\eta^{\lambda\delta}
+  \qty(\D_\lambda h_{\delta\mu}+\D_\mu h_{\delta\lambda}-\D_\delta h_{\mu\lambda})
+  \qty(\D_\sigma h_{\delta\nu}+\D_\nu h_{\delta\sigma}-\D_\delta h_{\nu\sigma})\\
+  \circd4&=\frac{1}{4}\eta^{\rho\delta}\eta^{\lambda\delta}
+  \qty(\D_\lambda h_{\delta\nu}+\D_\nu h_{\delta\lambda}-\D_\delta h_{\nu\lambda})
+  \qty(\D_\sigma h_{\delta\mu}+\D_\mu h_{\delta\sigma}-\D_\delta h_{\mu\sigma})
+\end{align*}
+Since everything is relatively well behaved here, I am going to go on a limb and say terms \circd3 and \circd4 will cancel when we subtract them, so we are left with:
+\begin{align*}
+  R^\rho_{\sigma\munu}&=\D_\mu\Gamma^\rho_{\nu\sigma}-\D_\nu\Gamma^\rho_{\mu\sigma}\\
+  &=\frac{1}{2}\eta^{\rho\delta}\qty[
+  \D_\mu\D_\sigma h_{\delta\nu}+\D_\mu\D_\nu h_{\delta\sigma}
+  -\D_\mu\D_\delta h_{\nu\sigma}
+  -\D_\nu\D_\sigma h_{\delta\mu}-\D_\nu\D_\mu h_{\delta\sigma}
+  +\D_\nu\D_\delta h_{\mu\sigma}]
+\end{align*}
+For The Ricci Tensor we need to have Equal first and third indices, so $\rho=\mu$:
+\begin{align*}
+  R_\munu=R^\lambda_{\mu\lambda\nu}&=\frac{1}{2}\eta^{\lambda\delta}\qty[
+  \D_\lambda\D_\mu h_{\delta\nu}+\D_\lambda\D_\nu h_{\delta\mu}
+  -\D_\lambda\D_\delta h_{\nu\mu}
+  -\D_\nu\D_\mu h_{\delta\lambda}-\D_\nu\D_\lambda h_{\delta\mu}
+  +\D_\nu\D_\delta h_{\lambda\mu}]
+\end{align*}
+We can essentially use $\eta$ as our metric since we are considering small perturbations:
+\begin{align*}
+  R_\munu&=\frac{1}{2}\qty[
+  \D_\lambda\D_\mu h^\lambda_\nu+
+  \D_\lambda\D_\nu h^\lambda_\mu-
+  \D_\lambda\D^\lambda h_{\nu\mu}-
+  \D_\nu\D_\mu h^\lambda_\lambda-
+  \D_\nu\D_\lambda h^\lambda_\mu+
+  \D_\nu\D^\lambda h_{\lambda\mu}]
+\end{align*}
+Notice we sum over all $\lambda$ due to the summation convention so it is a silent index. I am also going to assume that the last two terms cancel with each other, since we can introduce a metric and shift the upper index from the $\D^\lambda$ to the $h_{\lambda\mu}$:
+\begin{align*}
+  \D_\nu\D^\lambda h_{\lambda\mu}=\D_\nu\D_\delta g^{\delta\lambda}h_{\lambda\mu}
+  =\D_\nu\D_\delta h^\delta_\mu
+\end{align*}
+Which exactly cancels out with the second to last term:
+\begin{align*}
+  R_\munu&=\frac{1}{2}\qty[
+  \D_\lambda\D_\mu h^\lambda_\nu+
+  \D_\lambda\D_\nu h^\lambda_\mu-
+  \D_\lambda\D^\lambda h_{\nu\mu}-
+  \D_\nu\D_\mu h^\lambda_\lambda]
+\end{align*}
+We then insert another metric to get our Ricci scalar:
+\begin{align*}
+  R=R^\mu_\mu&=\frac{1}{2}\qty[
+  \D_\lambda\D_\mu h^{\lambda\mu}+
+  \D_\lambda\D^\mu h^\lambda_\mu-
+  \D_\lambda\D^\lambda h^\mu_{\mu}-
+  \D^\mu\D_\mu h^\lambda_\lambda]
+\end{align*}
+This simplifies to:
+\begin{align*}
+  R=\D_\nu\D_\mu h^\munu-\D^2h
+\end{align*}
+Where $h=h^\mu_\mu$. This means our Lagrangian is:
+\begin{align*}
+  \L=\sqrt{1+h}\qty(\D_\nu\D_\mu h^\munu-\D^2h)
+\end{align*}
+\subsection{Varying the Action}
+The Action we need to vary is:
+\begin{align*}
+  S=\kappa\int\ddst\sqrt{-g}R
+\end{align*}
+The variation of everything is trivial, so we can use the Einstein Field Equations, with no source $T^\munu$:
+\begin{align*}
+  R_\munu-\frac12g_\munu R=0
+\end{align*}
+We can plug everything in to get our Klein-Gordon equation:
+\begin{align*}
+  \boxed{\D^2h_\munu=0}
+\end{align*}
+Which is exactly what we expected
+\subsection{Quantizing}
+In General Quantum Mechanics is a theory of the Hamiltonian, NOT the Lagrangian, so we need to define a momentum field $\Pi$ conjugate to $h$ so we can perform a Legendre transform on the Lagrangian, traditionally this is done as:
+\begin{align*}
+  H=p\D_0q-L
+\end{align*}
+In our field theory however we will have to do:
+\begin{align*}
+  \H=\Pi^\munu\D_0h_\munu-\L
+\end{align*}
+Where the momentum field is defined as:
+\begin{align*}
+  \Pi_\munu=\fdv{\L}{(\D_0h_\munu)}
+\end{align*}
+When we want to quantize, we perform the following steps \cite{qftga}:
+\begin{itemize}
+\item Once you have your momentum field, impose equal time commutation relations
+\item Use this to write your new Hamiltonian operator
+\item Redefine your field operators in terms of raising and lowering fields
+\item Rewrite your Hamiltonian in terms of raising and lowering operators
+\item Impose normal ordering to get a hamiltonian density of the form:
+  \begin{align*}
+    \H=\hat{a}^\dag\hat{a}+\frac{1}{2}
+  \end{align*}
+\end{itemize}
+These steps give you a perfectly valid quantum field theory, but we cannot do much in terms of particle physics with this quantization scheme, next we will go onto why all attempts to create this sort of theory fails.
+
+\section{Why We do not Have a Successful Theory}
+Graviton interactions in the scheme we derived has a glaring problem with it. Instead of quantizing canonically, we would have to look at the path integral. If we were to go through with this, we would eventually make Feynman Diagrams out of our graviton interactions. These diagrams would allow us eventually to see how gravitons interact with themselves and other matter in the universe. We have discussed surprisingly little of this!
+
+However if you were to continue along with these diagrams you would need to reach higher order diagrams. Instead of looking for diagrams that are just connected lines, we would want to calculate diagrams with loops in them. This calculations eventually will involve integrals which diverge. These divergences in theories like QED,QCD, and electroweak theory can be countered by a clever trick called renormalization. The concept of renormalization is difficult to comprehend, but it essentially allows us to absorb these divergences into the origin of our theory to make them a bit more tame. However, this only occurs if we have a finite number of these divergences.
+
+It turns out if we were to go down this route of finding the Feynman diagrams for the graviton, we would find these divergences. However we would find that there is an infinite number of these divergences. With an untameable amount of divergences we could not possibly absorb them into our theory. This makes a theory of gravitons very difficult to find. Think about the sheer number of 'infinities' we encounter in a normal physics problem:
+\begin{itemize}
+\item Infiniteness of spacetime
+\item Continuity of spacetime
+\item Continuum limits of space \& momentum
+\item Equivalence of reference frames
+\item Gauge Equivalence
+\end{itemize}
+Just to name a few, these are all \emph{\textbf{real}} infinities, some of which can and cannot be solved by renormalization.
+
+\subsection{Conclusions}
+Overall, it may be possible to find a graviton theory, but we must be careful with how it is constructed, because not only is Field Theory tricky, but General Relativity is even trickier. However it still may be possible to quantize gravity. String theory is one option which is very sound in a theoretical sense, but lacks an experimental foundation which is key to the foundations of particle physics. Another place we could search is higher order terms in our Lagrangian, believe it or not we have only considered a linearized gravity, maybe something in a higher order will cancel out the infinite infinities we see in our linear theory. Maybe you will be the one to discover it!
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{sources}
 \end{document}
