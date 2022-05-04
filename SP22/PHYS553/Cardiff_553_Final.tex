@@ -8,13 +8,17 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{physics}
+\usepackage{slashed}
 
 %% general pretty stuff
 \usepackage{bm}
+\usepackage{setspace}
 \usepackage{enumitem}
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage[margin=1in]{geometry}
+\usepackage{tikz}
+\usepackage{tikz-feynman}
 
 % figures
 \graphicspath{ {./figs/} }
@@ -53,6 +57,13 @@
 \newcommand{\A}{\hat{A}}
 \renewcommand{\d}{\delta}
 \renewcommand{\a}{\hat{a}}
+\newcommand{\sla}[1]{\slashed{#1}}
+\newcommand{\munu}{{\mu\nu}}
+\renewcommand{\sp}{\slashed{p}}
+\renewcommand{\xib}{\bar\xi}
+\newcommand{\zt}{\zeta}
+\newcommand{\ztb}{\bar\zeta}
+\newcommand{\g}{\gamma}
 
 \begin{document}
 \maketitle
@@ -188,23 +199,246 @@ Where in this case the mass is $m_0$ to not be confused with an index $m$:
   \zeta_A(s)=\frac{\beta L}{4\pi\Gamma(s)}\sum_n  \int_0^\infty
   \dd{t}t^{s-2} e^{-m^2t-(nL)^2/4t}
 \end{align*}
-I am not sure where to go from here
-\subsection{Zero-Point Fluctuations}
+The massless limit tells us:
+\begin{align*}
+  \zeta_A(s)=\frac{\beta L}{4\pi\Gamma(s)}\sum_n  \int_0^\infty
+  \dd{t}t^{s-2} e^{-(nL)^2/4t}
+\end{align*}
+Right now we are summing over all $n\in\mathbb{Z}$, but we have a quadratic $n$ term, so we can consider the individual $n=0$ and then sum from $1\to\infty$:
+\begin{align*}
+  \zeta_A(s)=\frac{\beta L}{4\pi\Gamma(s)}
+  \qty[\int_0^\infty\dd{t}t^{s-2}e^{-m^2t}+2\sum_{n=1}  \int_0^\infty
+  \dd{t}t^{s-2} e^{-(nL)^2/4t}]
+\end{align*}
+There would not be a $\Gamma$ if we got rid of the mass in the $n=0$ term, so we need it:
+\begin{align*}
+  \int_0^\infty\dd{t}t^{s-2}e^{-m^2t}=\frac{\Gamma(s-1)}{(m^2)^{s-1}}
+\end{align*}
+The other term (with a change of variables) is a product of a $\zeta$ function and a $\Gamma$ function, we can then see:
+\begin{align*}
+  \zeta_A(s)=\frac{\beta L}{4\pi\Gamma(s)}
+  \qty[\frac{\Gamma(s-1)}{(m^2)^{s-1}}+2\qty(\frac2L)^{2-2s}
+  \zeta(2-2s)\Gamma(1-s)]
+\end{align*}
+Using the defining properties of the $\Gamma$ function can simplify the first term:
+\begin{align*}
+  \frac{\Gamma(s-1)}{\Gamma(s)}=\frac1{s-1}
+\end{align*}
+This is about as far as I am going to go without Mathematica, I am going to not only differentiate but also take the limit. This is the code I used and the final algebraic simplification:
+\begin{doublespace}
+\noindent\(\pmb{\text{$\zeta $A}=\frac{\beta  L}{4\pi }\left(\frac{1}{\left(m^2\right)^{s-1}(s-1)}+2\left(\frac{2}{L}\right)^{2-2s}\text{Zeta}[2-2s]\frac{\text{Gamma}[1-s]}{\text{Gamma}[s]}\right)}\)
+\end{doublespace}
 
+\begin{doublespace}
+\noindent\(\frac{L \beta  \left(\frac{\left(m^2\right)^{1-s}}{-1+s}+\frac{2^{3-2 s} \left(\frac{1}{L}\right)^{2-2 s} \text{Gamma}[1-s] \text{Zeta}[2-2
+s]}{\text{Gamma}[s]}\right)}{4 \pi }\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{Limit}[D[\text{$\zeta $A},s],s\text{-$>$}0]\text{//}\text{FullSimplify}}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\frac{\beta  \left(-3 L^2 m^2+4 \pi ^2+3 L^2 m^2 \text{Log}\left[m^2\right]\right)}{12 L \pi }\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{-\frac{\beta  L}{4\pi }\left(-m^2\left(1-\text{Log}\left[m^2\right]\right)+\frac{4 \pi ^2}{3L^2}\right)}\)
+\end{doublespace}
+The Final expression we get for our functional determinant:
+\begin{align*}
+  \ln\det\A=-\lim_{s\to0}\dv{\zeta_A}{s}=-\frac{\beta L}{3\pi}
+  \qty[-m^2(1-\ln(m^2))+\frac{4\pi^2}{3L^2}]
+\end{align*}
+However we need the log to be dimensionless, so we have the scale $\mu^2$ introduced:
+\begin{align*}
+  \ln\det\A=-\frac{\beta L}{3\pi}
+  \qty[-m^2(1-\ln(m^2/\mu^2))+\frac{4\pi^2}{3L^2}]
+\end{align*}
+We then correspond this with our energy fluctuations $E_G-E_0$:
+\begin{align*}
+  \boxed{E_G-E_0=\frac1{2\beta}\ln\det\A=\frac{m^2L}{8\pi}\qty(1-\ln(m^2/\mu^2))
+  -\frac{\pi}{6L}}
+\end{align*}
+Which is of the form which is mentioned in the problem
+\subsection{Zero-Point Fluctuations}
+We can associate the divergent part of energy with the 'outside' energy, which would be practically infinite. This means the term that disappears when we enlarge $L$ should be the internal one, So our force should be this term over the length of the box:
+\begin{align*}
+  \boxed{F_{C}=-\frac{\pi}{6L^2}}
+\end{align*}
+This is an attractive force!
 \section{Perturbation Theory for $SU(2)$}
+The Lagrangian with the gauge-covariant derivative written out is:
+\begin{align*}
+  \L=\psib i\qty(\sla{\D}+ig\sla{A})\psi-
+  \frac12\Tr[F_\munu F^\munu]+\frac\lambda2\Tr(\D_\mu A^\mu)^2
+  -\etab_a\D_\mu D^\mu_{ab}\eta_b
+\end{align*}
+This should be fully written out:
+\begin{align*}
+  \L&=\psib i\qty(\sla{\D}+ig\sla{A})\psi\\
+  &\,-\frac12\Tr[t^a\qty(\D_\mu A^a_\nu-\D_\nu A^a_\mu+gf^{abc}A_\mu^bA_\nu^c)
+  t^b\qty(\D^\mu A^{b\nu}-\D^\nu A^{b\mu}+gf^{beg}A^{e\mu}A^{g\nu})]\\
+  &\,+\frac\lambda2\Tr[\D_\mu A^{a\mu}\D_\mu A^{a\mu}]\\
+  &\,-\etab_a\qty(\D^2\delta_{ab}+gf_{abc}\D_\mu  A^\mu_c)\eta_b
+\end{align*}
 
 \subsection{Feynman Propagators in Momentum Space}
-
+The kinetic terms are the ones that give propagators:
+\begin{align*}
+  \L_{K}&=i\psib\sla{\D}\psi\\
+  &\,-\frac12\Tr[t^at^b\{\qty(\D_\mu A^a_\nu-\D_\nu A^a_\mu)
+  \qty(\D^\mu A^{b\nu}-\D^\nu A^{b\mu})]\\
+  &\,+\frac\lambda2\Tr[\D_\mu A^{a\mu}\D_\mu A^{a\mu}\}]\\
+  &\,-\etab_a\D^2\delta_{ab}\eta_b
+\end{align*}
+The propagators are given by the following rules, we have derived at least the gauge field and fermion in class, and the ghosts should act like a scalar would, and we have derived their propagators as well:
+\begin{align*}
+  \feynmandiagram[horizontal=a to b]{
+    a 
+    -- [fermion, momentum=\(p\)]
+    b 
+  };&=\frac{i}{\sp} \\
+  \feynmandiagram[horizontal=a to b]{
+    a [particle=\(a\text{,}\mu\)]
+    -- [gluon, momentum=\(p\)]
+    b [particle=\(b\text{,}\nu\)]
+  };&=\frac{i}{p^2}\qty(-g_\munu+\frac{p_\mu p_\nu}{p^2})\delta_{ab} \\
+  \feynmandiagram[horizontal=a to b]{
+    a [particle=\(a\)]
+    -- [ghost, momentum=\(p\)]
+    b [particle=\(b\)]
+  };&=-\frac{i}{p^2}\delta_{ab}
+\end{align*}
 \subsection{Feynman Rules in Position Space}
-
+I am not entirely sure how to go about this. The diagrams are a term in a perturbative series. We need to expand the following:
+\begin{align*}
+  Z[\eta,\etab,J^a_\mu]&=\exp{-\int\dd[4]{x}
+    \L_\text{int}
+    \qty[-i\fdv{\xib},-i\fdv{\xi},-i\fdv{J^a_\mu},-i\fdv{\ztb},-i\fdv{\zt}]}\\
+  &\quad \times Z_\text{'Maxwell'}[J_\mu^a] Z_\text{Dirac}[\xi,\xib]
+  Z_\text{Ghost}[\zt,\ztb]
+\end{align*}
+The corresponding partition Functionals we need are:
+\begin{align*}
+  Z_\text{'Maxwell'}[J_\mu^a]&=\int\cD{A_\mu}\exp{i\int\dd[4]{x}
+    \qty(-\frac12\Tr[F_\munu F^\munu]+\frac\lambda2\Tr[(\D_\mu A^\mu)^2])
+    +J_\mu^aA^{a\mu}}\\
+  Z_\text{Dirac}[\xi,\xib]&=\int\cD\psi\cD\psib\exp{i\int\dd[4]{x}
+    \qty(\psib(i\sla{\D}-m)\psi+\xib\psi+\psib\xi)}\\
+  Z_\text{Ghost}[\zt,\ztb]&=\int\cD\eta\cD\etab\exp{i\int\dd[4]{x}
+    \qty(\etab(-i\sla{\D}-m)\eta+\ztb\eta+\etab\zt)}
+\end{align*}
+The tricky part now is identifying our interacting Lagrangian, which is formally:
+\begin{align*}
+  \L_\text{int}=\L-\L_K
+\end{align*}
+Mostly fully written out:
+\begin{align*}
+  \L_\text{int}&=-g\psib\sla{A}\psi\\
+  &\,-\frac12\Tr\hspace{0pt}[t^at^b\{
+  g(\D_\mu A^a_\nu-\D_\nu A^a_\mu)f^{beg}A^{e\mu}A^{g\nu} \\
+  &\qquad\qquad+g f^{abc}A_\mu^b A_\nu^c(\D^\mu A^{b\nu}-\D^\nu A^{b\mu})\\
+  &\qquad\qquad+g^2f^{abc}f^{beg}A_\mu^a A_\nu^cA^{e\mu}A^{g\nu}\}]\\
+  &\,-g\etab_af_{abc}\D_\mu A^\mu_c\eta_b
+\end{align*}
+All of the position space Feynman rules are then:
+\begin{gather*}
+  \begin{gathered}
+    \feynmandiagram [small, horizontal=d to b]{
+      a -- [anti fermion] b -- [fermion] c,
+      b -- [gluon] d,
+    }; 
+  \end{gathered}
+  = \boxed{-ig\g^\mu} \qquad
+  \begin{gathered}
+    \feynmandiagram [small, horizontal=d to b]{
+      a -- [ghost] b -- [ghost] c,
+      b -- [gluon] d,
+    };
+  \end{gathered}
+  = \boxed{-igf^{abc}\D_\mu}\\
+  \begin{gathered}
+    \feynmandiagram [small, horizontal=d to b]{
+      a -- [gluon] b -- [gluon] c,
+      b -- [gluon] d,
+    };
+  \end{gathered}
+  = \boxed{-i\frac{g}{2}t^at^bf^{abc}\D_\mu}\qquad
+  \begin{gathered}
+    \feynmandiagram [small, horizontal=i1 to f2] {
+      {i1, i2} -- [gluon] c -- [gluon] {f1, f2},
+    };
+  \end{gathered}
+  = \boxed{-i\frac{g^2}{2}t^at^bf^{abc}f^{beg}}
+\end{gather*}
 \subsection{One Loop Corrections}
-
+I am going to stop after writing the integral with the two propagators in it
 \subsubsection{Fermion Propagator}
-
+The correction to the fermion propagator would involve the following diagram:
+\begin{figure}[H]
+  \centering
+  \feynmandiagram [tree layout, horizontal=a to c] {
+    a [particle=\(\psi\)] -- [fermion, momentum=\(p\)] b
+    -- [gluon, half left, looseness=1.8,
+    rmomentum=\(k\)] c
+    -- [anti fermion, half left, looseness=1.8,
+    rmomentum=\(p+k\)] b,
+    c -- [fermion, momentum=\(p\)] d [particle=\(\psi\)]
+  };  
+  \caption{One Loop Fermion Propagator}
+\end{figure}
+The loop integral would be:
+\begin{align*}
+  \int\frac{\dd[4]k}{(2\pi)^4}\frac{i}{\sla{\D}+\sla{k}}
+  \frac{i}{\D^2}\qty(-g_\munu+\frac{\D_\mu\D_\nu}{\D^2})
+\end{align*}
+Except for most likely some factors of the coupling constant
 \subsubsection{Gauge Propagator}
-
-\subsubsection{Fermion-Gauge Vertex}
-
-\subsubsection{Three/Four Gauge Field Vertices}
-
+The correction to the gauge propagator would involve a couple diagrams:
+\begin{figure}[H]
+  \centering
+  \feynmandiagram [tree layout, horizontal=a to c] {
+    a -- [gluon, momentum=\(p\)] b
+    -- [anti fermion, half left, looseness=1.8,
+    rmomentum=\(k\)] c
+    -- [anti fermion, half left, looseness=1.8,
+    rmomentum=\(p+k\)] b,
+    c -- [gluon, momentum=\(p\)] d
+  };  
+  \caption{One Loop Gauge Propagator (Fermion)}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \feynmandiagram [tree layout, horizontal=a to c] {
+    a -- [gluon, momentum=\(p\)] b
+    -- [gluon, half left, looseness=1.8,
+    rmomentum=\(k\)] c
+    -- [gluon, half left, looseness=1.8,
+    rmomentum=\(p+k\)] b,
+    c -- [gluon, momentum=\(p\)] d
+  };  
+  \caption{One Loop Gauge Propagator (Gauge)}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \feynmandiagram [tree layout, horizontal=a to c] {
+    a -- [gluon, momentum=\(p\)] b
+    -- [ghost, half left, looseness=1.8,
+    rmomentum=\(k\)] c
+    -- [ghost, half left, looseness=1.8,
+    rmomentum=\(p+k\)] b,
+    c -- [gluon, momentum=\(p\)] d
+  };  
+  \caption{One Loop Gauge Propagator (Ghost)}
+\end{figure}
+Each of these have the same form, except with the proper propagators inserted, in the first case its two fermion propagators, then two gauge propagators, and two ghost propagators:
+\begin{gather*}
+  -\int\frac{\dd[4]k}{(2\pi)^4}\frac{i}{\sla{\D}+\sla{k}}\frac{i}{\sla{k}}\\
+  \int\frac{\dd[4]k}{(2\pi)^4}\frac{i}{(\D+k)^2}
+  \qty(-g_\munu+\frac{(\D+k)_\mu(\D+k)_\nu}{(\D+k)^2})
+  \frac{i}{\D^2}\qty(-g^\munu+\frac{\D^\mu\D^\nu}{\D^2})\\
+  \int\frac{\dd[4]k}{(2\pi)^4}\frac{i}{(\D+k)^2}\frac{i}{\D^2}
+\end{gather*}
+Which is probably not right
 \end{document}
