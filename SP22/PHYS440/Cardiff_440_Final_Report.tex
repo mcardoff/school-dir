@@ -1,22 +1,24 @@
 \documentclass[12pt,twocolumn]{article}
 
-\title{\vspace{-3em}Simulating a Racing Line}
+\title{Simulating a Racing Line}
 \author{Michael Cardiff}
 \date{\today}
 
 %% science symbols 
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{siunitx}
 \usepackage{physics}
 \usepackage{lipsum}
 
 %% general pretty stuff
 \usepackage{bm}
+\usepackage{url}
 \usepackage{enumitem}
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage[labelfont=bf]{caption}
-\usepackage[margin=1in]{geometry}
+% \usepackage[margin=1in]{geometry}
 
 % figures
 \graphicspath{ {./figs/} }
@@ -52,9 +54,195 @@
 \begin{@twocolumnfalse}
   \maketitle
   \begin{abstract}
-    \lip
+    The world of racing series is intense, there are large personalities and even faster cars. Races occur all over the world with drivers of various nationalities. Even though the actual sport of motor racing is quite glamorous, there is a breadth of physics which underlies not only the internal operation of the car, but the mechanics of the car's interaction with the track it is driving on. The drivers must take into account the grip in their car's tires, the angle of the turn, the speed at which they enter a corner, and many other factors which in the end determine whether or not they will crash out. The line which takes all of this into account, and is able to do it in the least amount of time, is called the racing line. While the racing line cannot always be taken during proper race conditions, it is important to consider in conditions where the fastest lap is critical, such as in qualifying formats. Thus it is important to have an idea of what the racing line should be in order to find the best time in these formats. In this report a computational model of race tracks and the external mechanics of racecars is presented, and using the method of nonlinear optimization via gradient descent, a racing line is produced. 
   \end{abstract}
 \end{@twocolumnfalse}
 ]
-\lipsum[1-3]
+\section{Introduction}
+The highest level of any racing series not only require the absolute peak of car performace, but the best knowledge of the mechanics of the car by drivers. This knowledge is manifest in the various overtaking maneuvers the drivers are able to perform when given the smallest opportunities. However where this knowledge is most important is when they are driving casually along the track, no obstacles, no distractions. Even in this seemingly calm situation, the drivers need to keep several conditions in mind so that they can safely and efficiently catch up to the car in front of them. The line driven in these conditions is called the racing line.
+
+A racing line must take many things (that will be discussed later) into account. However the most important is the grip status. If your tires are not gripping the ground, you will spin out and most likely crash into the nearest obstacle, whether that be a wall or another driver's car. 
+\fig{8.0}{rlexample}{Example of a Racing line through a right hander from \cite{mit}}
+This is an example of a racing line, which will ensure the driver has not only a safe drive through the corner, but one that maintains the most speed 
+\section{Theory}
+The time taken to navigate a track is the sum of all of the infinitesimal time contributions this takes the form:
+
+\begin{equation}
+  t=\int\dd{t}
+\end{equation}
+
+We can define this time differential in terms of a more sane quality, like the velocity, which is something we can calculate:
+
+\begin{equation*}
+  v=\dv{s}{t}
+\end{equation*}
+
+Where $\dd{s}$ is the differential arc length. This means the differential time can be written in terms of the velocity:
+
+\begin{equation}
+  \dd{t}=\frac{\dd{s}}{v}
+\end{equation}
+
+In the case we are investigating, a 2-Dimensional track, we can write this in terms of the curvature of the path, $k$:
+
+\begin{align}
+  v^2k\leq\mu g\implies t\geq\frac{1}{\sqrt{\mu g}}\int\sqrt{k}\dd{s}
+\end{align}
+
+This is a bit difficult to work with in a computer, this should be simplified a bit. The 'time' can arbitrarily be scaled to eliminate the leading factor, which can just  be reinserted in the end. Now introduce a retuned time factor $E$:
+
+\begin{align*}
+  E\geq\int\sqrt{k}\dd{s}
+\end{align*}
+
+Instead of using an integral, it is turned into a sum over a small interval:
+
+\begin{align*}
+  E\geq\sum_{i}\sqrt{k_i}\dd{s}_i
+\end{align*}
+The value of the curvature is then calculated with the path $(x(t),y(t))$ as a parameter, since:
+\begin{align*}
+  k=\dv{x}{s}\dv[2]{y}{s}-\dv{y}{s}\dv[2]{x}{s}
+\end{align*}
+The differentials in $x,y$ can be computed from the path, and are used to calculate the $\dd{s}$:
+\begin{align*}
+  (\dd{s})^2=(\dd{x})^2+(\dd{y})^2
+\end{align*}
+Then by the discretization performed in \cite{mit} a succinct formula for the curvature in terms of your path parameterized by time.
+
+While it is interesting to consider just this curvature of a path, in order to define a racing line it is necessary to know the limits of the car and the track. The 'car' will be approximated as a pointlike particle, which is very primitive, but is enough for a simple simulation.
+
+The first consideration is friction of the tires on the ground. There will be coefficient of static friction for each point of the track, and the limitation is that \textit{\textbf{the car cannot lose grip and spin out}}. The math codifies this as:
+
+\begin{align*}
+  a_{car}\leq \mu g
+\end{align*}
+
+Since the only consideration will be flat tracks, the weight entire weight is the normal force. In a turn, the acceleration of the car will be centripetal, which can be written in terms of the curvature $k$:
+
+\begin{align*}
+  a_{car}=v^2k
+\end{align*}
+
+This is what defines our time contribution slice above, and the condition we need to check as:
+
+\begin{equation}
+  v^2k-\mu g\leq 0
+\end{equation}
+
+A simple constraint which can improve upon our simple approximation of a pointlike car is a maximum turning curvature. For example, the wheels of a car often cannot turn exactly $\ang{90}$. This means \textit{\textbf{the car cannot exceed a maximum turning radius}}. This maximum turning radius $r_{max}$ in turn defines a maximum turning curvature $k_{max}$. This defines another constraint:
+
+\begin{equation}
+  k\leq k_{max}
+\end{equation}
+
+The car needs to be constrained to actually be on the track. In real life it is not optimal to race off of the actual tarmac as there is a different material with a different friction constant that would almost certainly cause the car to spin out. Even if the other region does not necessarily have less grip, there will still be an external punishment in the form of a time penalty. Thus \textit{\textbf{the car should not exceed track limits}}. Turning this into a physical constraint in terms of the path requires the definition of the track's center line, which will be called $(x_c(t),y_c(t))$, as well as a width of the track $w$:
+
+\begin{equation}
+  \sqrt{(x(t)-x_c(t))^2+(y(t)-y_c(t))^2}\leq \frac{w}{2}
+\end{equation}
+
+The paper \cite{mit} introduces another constraint which is completely defined in this numerical scheme:
+
+\begin{equation}
+  (x(t)-x_c(t))-k(y(t)-y_c(t))=0
+\end{equation}
+
+This then gives our full scheme of our optimization problem:
+\begin{itemize}
+\item Minimize time such that
+  \begin{itemize}
+  \item The cars acceleration is less than that allowed the the static friction
+  \item The car makes a physically possible turn less than maximum curvature
+  \item The car stays in the track limits
+  \end{itemize}
+\end{itemize}
+\section{Methodology}
+While building a numerical structure for a race track or specific corner is fairly simple, the metaphorical meat and bones of this project is the numerical optimizer. Classes are built to classify the various necessary parts of the algorithm, these include:
+\begin{itemize}
+\item \verb+EndCriteria+: Determines when to finish the Optimizing
+\item \verb+CostFunction+: Quantifies the time cost associated with a path
+\item \verb+Constraint+: Codifies the non-time related constraints
+\item \verb+Problem+: Gathers all of the above into a single class, passable to the solver
+\item \verb+GradientDescent+: Performs gradient descent with the \verb+Problem+ to find an optimal racing line.
+\end{itemize}
+This data structure topology is based off of the structure used in an old optimizer written in a different version of swift, found at \cite{swifto}\footnote{https://github.com/haginile/SwiftOptimizer}
+
+The gradient descent algorithm is completely based on the fact that the gradient of a multivariate function defines the direction of steepest descent. If we traveled down in that direction, we edge closer to a minimum. This means if we have some learning rate parameter $\lambda$, the updated values of the parameter vector $\bm{x}$ will be:
+
+\begin{equation*}
+  \bm{x}_{new}=\bm{x}_{old}-\lambda\grad{f}
+\end{equation*}
+
+Where $f$ is the cost function. This equation does not explicitly take into account the various constraints that need to be obeyed as well. It may be useful to define a specific parameter for each constraint:
+
+\begin{equation}
+  \bm{x}_{new}=\bm{x}_{old}-\lambda\grad{f}-\sum_i\lambda_i\grad{c_i}
+\end{equation}
+
+The procedure for calculating the gradient should be noted. The definition of the gradient for a particular parameter $x_i$ is:
+\begin{align*}
+  \grad{f(x_i)}\equiv\lim_{h\to0}\frac{f(x_i+h)-f(x_i)}{h}
+\end{align*}
+
+We can make a very small $h$ and cut this off to approximate the gradient:
+
+\begin{align*}
+  \grad{f(x_i)}\approx\frac{f(x_i+h)-f(x_i)}{h}
+\end{align*}
+
+This is done for the cost function as well as all of the constraints. In the actual program an overage is taken between the forward difference (the one we see above) and the backward different (subtracting $h$ instead of adding).
+\section{Application}
+Numerical optimization software was coded using SwiftUI on a Mac Mini. User input is limited to sliders which provide only valid input to the optimization algorithm. There is a picker as well which allows you to choose between three available 'tracks' listed below. 
+\begin{itemize}
+\item \verb+Left Hander+: A left handed, \ang{90} turn
+\item \verb+Hairpin+: A left handed, \ang{180} turn
+\item \verb+Oval+: A simple track with four left turns, resembling the Indianapolis Motor Speedway
+\end{itemize}
+
+The final UI element is a slider which allows you to determine how many iterations of gradient descent should be used. From testing, one iteration gives an acceptable, although not ideal line. The UI is shown below:
+\fig{5.0}{controls}{The UI for the application}
+The default values are chosen to produce a decently well-behaved optimal racing line no matter which track option is selected.
+
+The first of the track options is a classical racing line problem, a left handed \ang{90} turn. The next layout is a hairpin turn, instead of turning in a quarter circle, it turns around a half circle, so you send up going in the opposite direction from which you came in. The final option is a full track, an oval which is meant to resemble the Indianapolis Motor Speedway, as simple as it can get, four \ang{90} left handers. All of the options are shown below:
+\fig{6.0}{lefthander}{The first option, a left hander}
+\fig{6.0}{hairpin}{The second option, a hairpin}
+\vfill{*}
+\fig{8.0}{oval}{The final option, an oval track}
+
+Another feature of note in the UI is the other tab giving information on the differences between the original line given as input to the algorithm
+\fig{8.0}{UI2}{Additional Information given in a separate tab}
+
+This tab is empty on startup.
+
+The final feature of note is the two buttons in the bottom of the UI. The first button calls the gradient descent algorithm, displaying the optimal line on screen as well. The other resets the internal state of the problem and will remove the racing line from the display on the screen.
+\section{Results \& Discussion}
+A racing line can be calculated for each of the example tracks found above. The lines calculated by the basic inputs given at the startup of the program are:
+\fig{6.0}{rline3}{The first option, a left hander}
+\fig{6.0}{rline2}{The second option, a hairpin}
+\fig{8.0}{rline1}{The final option, an oval track}
+
+The overall shape of each of the lines aligns with expectations, except for the glaringly obvious and horrific discontinuities. These discontinuities are introduced due to the way in which the center line is constructed, by drawing explicit circles and straight lines. Each of these kinks cause a slight oddness when values like the curvature are numerically evaluated. This oddness comes up in every single implemented constraint, and due to the additive nature of each of the constraints this oddity gets amplified. In order to solve this problem, the best approach would be to change the initial input, so that the center line is smoothly generated, and ideally would be some racing line, one taken by a real driver on a slow lap. This would eliminate any of these nasty discontinuities.
+
+It is interesting to note when these discontinuities do NOT happen. Noteably at the entry of all of the turns in the oval, and the exit of four. This must mean these points are 'good enough' for the curvature to not blow up. This warrants future investigation.
+
+Overall the biggest improvement to be made in this project would be an improved starting point. The current algorithm will most likely get stuck on either a local minimum or saddle point if only the center line is considered.
+
+Another improvement would be to add better functionality to the track limits. This could, in principle, be done by adding a full on friction FUNCTION to the track object, which would input an $x$ and $y$ coordinate pair, and if that pair were outside of track limits, then grip would be immediately lost. This could lead to a more accurate track and car model as well.
+\newpage
+\section{Conclusion}
+Overall, the gradient descent optimization method really demonstrated its worth in this project, and Swift proved itself to be particularly efficient in the calculations necessary. The basic optimization model provided by \cite{mit} helped immensely in producing a useful model to actually optimize. The basic idea of everything also came from \cite{phors}, and while not much of the final product contains the math from this article, but it sowed the initial idea for everything so credit is nonetheless due. This project taught me a lot about optimization and gradient descent as algorithms that at first seemed like impossible mountains to climb. In the end these algorithms seem almost trivial to me now. This also gave me an overall better understanding of the physics behind car racing, something I knew absolutely nothing about beforehand. This was an amazing project, my only regret is that I did not do more of it.
+\vfill
+\appendix
+\section{Full Display Images}
+\fig{8.0}{UI4}{The Racing Line Tab on startup}
+\fig{8.0}{UI1}{The Racing Line Tab after computing a racing line}
+\fig{8.0}{UI3}{The Additional Info Tab on startup}
+\fig{8.0}{UI2}{The Additional Info Tab after computing a racing line}
+The code can be found at: \url{https://github.com/mcardoff/Racing_Line_Optimizer}
+\newpage
+\bibliographystyle{abbrv}
+\bibliography{sources}
+
 \end{document}
+
