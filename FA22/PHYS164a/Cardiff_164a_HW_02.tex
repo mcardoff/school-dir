@@ -1,0 +1,86 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}164a HW 2}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{slashed}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage[labelfont=bf]{caption}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
+\newcommand{\munu}{{\mu\nu}}
+\newcommand{\sla}[1]{\slashed{#1}}
+
+\begin{document}
+\maketitle
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c}
+    Quantity & Dimensions (MLTQ) & Dimensions (LTQE) \\ \hline
+    Mass & $M$ & $EL^{-2}T^2$ \\
+    Length & $L$ & $L$ \\
+    Time & $T$ & $T$ \\
+    Charge & $Q$ & $Q$ \\
+    Energy & $ML^2T^{-2}$ & $E$ \\
+    Power & $ML^2T^{-3}$ & $ET^{-1}$ \\
+    Force & $MLT^{-2}$ & $EL^{-1}$ \\
+    Velocity & $LT^{-1}$ & $LT^{-1}$ \\
+    Acceleration & $LT^{-2}$ & $LT^{-2}$ \\
+    Torque &  $L^2MT^{-2}$& $E$ \\
+    Momentum & $LMT^{-1}$& $ET$ \\
+    Angular Momentum & $L^2MT^{-1}$ & $ETL^{-1}$ \\
+    Mass Density & $ML^{-3}$ & $ET^2L^{-5}$ \\
+    Surface Tension & $MT^{-2}$ & $EL^{-2}$ \\
+    Electric Dipole Moment & $QL$ & $QL$ \\
+    Electric Potential & $Q^{-1}L^2MT^{-2}$ & $EQ^{-1}$ \\
+    Electric Field & $MLQ^{-1}T^{-2}$ & $EL^{-1}Q^{-1}$ \\
+    Current & $QT^{-1}$ & $QT^{-1}$ \\
+    Capacitance & $Q^2L^{-2}M^{-1}T^2$ & $Q^2E^{-1} $ \\ \hline
+    Volume & $L^3$ & $L^3$ \\
+    Area & $L^2$ & $L^2$ \\
+    Magnetic Field & $MT^{-1}Q^{-1}$ & $ETL^{-2}Q^{-1}$ \\
+    Magnetic Vector Potential & $MLT^{-1}Q^{-1}$ & $ETL^{-1}Q^{-1}$ \\
+    Magnetization &  $QT^{-1}L^{-1}$ & $QT^{-1}L^{-1} $ \\
+    Spring Constant & $MT^{-2}$ & $EL^{-2}$ \\
+    Pressure & $ML^{-1}T^{-2}$ & $EL^{-3}$ \\
+    Resistance & $ML^2T^{-1}Q^{-2}$ & $ETQ^{-2}$ \\
+    Gravitational Field & $LT^{-2}$ & $LT^{-2}$ \\
+    Moment of Inertia & $ML^2$ & $ET^2$
+  \end{tabular}
+  \caption{Quantity/Dimension Table}
+\end{table}
+\end{document}
