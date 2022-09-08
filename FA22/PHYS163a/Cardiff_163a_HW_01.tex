@@ -1,0 +1,360 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 163a HW 1}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[italicdiff]{physics}
+\usepackage{slashed}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage[labelfont=bf]{caption}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
+\newcommand{\munu}{{\mu\nu}}
+\newcommand{\sla}[1]{\slashed{#1}}
+\newcommand{\dbar}{d\hspace*{-0.08em}\bar{}\hspace*{0.1em}}
+
+\begin{document}
+\maketitle
+
+\section{Ideal Gas Carnot Engine}
+
+\subsection{Adiabatic Transformation}
+In an adiabatic transformation, we have $\dbar Q=0$, so that $\dd{E}$ is:
+\begin{align*}
+  \dd{E}=\dbar W=-P\dd{V}
+\end{align*}
+We know the form of the energy for an ideal gas, so we can take the total differential:
+\begin{align*}
+  \dd{E}=\dd{\qty(\frac{3}{2}PV)}=\frac32(P\dd{V}+V\dd{P})
+\end{align*}
+Combining this with the statement of the first law we have:
+\begin{align*}
+  \frac32P\dd{V}+\frac32V\dd{P}&=-P\dd{V}\\
+  \implies\frac52P\dd{V}+\frac32V\dd{P}&=0\\
+  \frac53P\dd{V}+V\dd{P}&=0
+\end{align*}
+We can rearrange to integrate this equation:
+\begin{align*}
+  \frac53\frac{\dd{V}}{V}+\frac{\dd{P}}{P}&=0\\
+  \frac53\int\frac{\dd{V}}{V}+\int\frac{\dd{P}}P&=\text{const}\\
+  \implies\frac53\ln{V}+\ln{P}&=\text{const}\\
+  \ln{V^{5/3}}+\ln{P}&=\text{const}\\
+  \ln{PV^{5/3}}&=\text{const}\\
+  \implies PV^{5/3}&=\text{const}
+\end{align*}
+Which means the equation obeyed through an adiabat is:
+\begin{align}
+  \boxed{PV^{5/3}=\text{const}}
+\end{align}
+\subsection{Heat Transfer Through an Isotherm}
+In an isotherm, we have:
+\begin{align*}
+  PV=\text{const}
+\end{align*}
+This means we have:
+\begin{align*}
+  P_1V_1=P_2V_2
+\end{align*}
+From this we conlude (since we have an ideal gas):
+\begin{align*}
+  E_1=\frac32 P_1V_1=\frac32P_2V_2=E_2
+\end{align*}
+This means $\dd{E}=0$, so that the first law can be written as:
+\begin{align*}
+  0=\dbar Q+\dbar W\implies\dbar Q=P\dd{V}
+\end{align*}
+Where $P$ in terms of $V$ is:
+\begin{align*}
+  P=\frac{Nk_BT}{V}
+\end{align*}
+We already know $N,k_B,T$ are constants, and can be taken out of the integral:
+\begin{align*}
+  Q_1=\int\dbar{Q}&=Nk_BT\int_{V_1}^{V_2}\frac{\dd{V}}{V}\\
+  &=Nk_BT\eval{\ln{V}}_{V_1}^{V_2}\\
+  &=Nk_BT\qty(\ln V_2-\ln V_1)\\
+  &=Nk_BT\qty(\ln\frac{V_2}{V_1})
+\end{align*}
+So the heat transfer is given as:
+\begin{align}
+  \boxed{Q_1=Nk_BT\ln\frac{V_2}{V_1}}
+\end{align}
+\subsection{Heat Transfer Through an Adiabat}
+For an adiabat, we derived:
+\begin{align*}
+  PV^{5/3}=\text{const}
+\end{align*}
+This means:
+\begin{align*}
+  P_1V_1^{5/3}=P_2V_2^{5/3}
+\end{align*}
+The first law gives:
+\begin{align*}
+  \dd{E}=\dbar{W}
+\end{align*}
+We can use this form of energy for a differential:
+\begin{align*}
+  E=\frac32Nk_BT
+\end{align*}
+Since we can assume $\dd{N}=0$, the differential is just proportional to $\dd{T}$:
+\begin{align*}
+  \dd{E}=\frac32Nk_B\dd{T}
+\end{align*}
+The work done can be found by integrating the temperature:
+\begin{align*}
+  W=\int\dbar{W}&=\frac32Nk_B\int_{T_1}^{T_2}\dd{T}\\
+  &=\frac32Nk_B\qty(T_2-T_1)
+\end{align*}
+So the work done is:
+\begin{align}
+  \boxed{W=\frac32Nk_B\qty(T_2-T_1)}
+\end{align}
+\newpage
+\section{Kardar 1.8}
+We have the Equation of State:
+\begin{align*}
+  P(V-Nb)=Nk_BT
+\end{align*}
+\subsection{Maxwell Relation}
+We can get the Maxwell Relation $\pdv{S}{V}$ using the Helmholtz free energy $F$:
+\begin{align*}
+  \dd{F}=\dd{E-TS}=-S\dd{T}-P\dd{V}
+\end{align*}
+We then see the following partials of $F$:
+\begin{align*}
+  \eval{\pdv{F}{T}}_{N}=-S\qquad
+  \eval{\pdv{F}{V}}_{N}=-P
+\end{align*}
+Then we can take the opposite partial of each and equate the mixed partial derivative:
+\begin{align*}
+  \pdv{F}{T}{V}=-\eval{\pdv{S}{V}}_{T,N}\qquad
+  \pdv{F}{V}{T}=-\eval{\pdv{P}{T}}_{V,N}
+\end{align*}
+Hence we get:
+\begin{align}
+  \boxed{\eval{\pdv{S}{V}}_{T,N}=\eval{\pdv{P}{T}}_{V,N}}
+\end{align}
+\subsection{Energy is a Function of $N,T$}
+We start with the first law for a gas:
+\begin{align*}
+  \dd{E}=T\dd{S}-P\dd{V}
+\end{align*}
+Expand $S$ as a function of $T,V$:
+\begin{align*}
+  \dd{E}=T\qty(\eval{\pdv{S}{T}}_{V,N}\dd{T}+\eval{\pdv{S}{V}}_{T,N}\dd{V})
+  -P\dd{V}
+\end{align*}
+We can use the Maxwell relation we found before:
+\begin{align*}
+  \dd{E}=T\eval{\pdv{S}{T}}_{V,N}\dd{T}+\qty(T\eval{\pdv{P}{T}}_{V,N}-P)\dd{V}
+\end{align*}
+From the equation of state we can get that:
+\begin{align*}
+  P&=\frac{Nk_BT}{V-Nb}\\
+  \pdv{P}{T}&=\frac{Nk_B}{V-Nb}=\frac{P}{T}
+\end{align*}
+This cancels the $\dd{V}$ term out of the energy differential, so we can conclude:
+\begin{align}
+  \boxed{\dd{E}=T\eval{\pdv{S}{T}}_{V,N}}
+\end{align}
+Hence it is a function of only the temperature.
+\subsection{Gamma Factor}
+The gamma factor is defined as:
+\begin{align*}
+  \gamma=\frac{C_P}{C_V}
+\end{align*}
+Where the heat capacities are:
+\begin{align*}
+  C_P&=\eval{\pdv{Q}{T}}_P\\
+  C_V&=\eval{\pdv{E}{T}}_V
+\end{align*}
+The heat capacity at constant pressure is:
+\begin{align*}
+  C_P=\eval{\pdv{Q}{T}}_P=\eval{\pdv{(E+PV)}{T}}_P
+  =\eval{\pdv{E}{T}}_P+\eval{P\pdv{V}{T}}_P
+\end{align*}
+A similar process can be done with $C_V$ as well, however the second term goes away and $E$ is only a function of $T$, so evaluating at constant pressure or volume does not matter:
+\begin{align*}
+  \eval{\pdv{E}{T}}_P=\eval{\pdv{E}{T}}_V=C_V
+\end{align*}
+Thus:
+\begin{align*}
+  C_P=C_V+P\eval{\pdv{V}{T}}_{P}
+\end{align*}
+Using the equation of state we have:
+\begin{align*}
+  \eval{\pdv{V}{T}}_P=\frac{Nk_B}{P}
+\end{align*}
+Thus our heat capacities are related by:
+\begin{align*}
+  C_P=C_V+Nk_B\implies\frac{C_P}{C_V}=\gamma=1+\frac{Nk_B}{C_V}
+\end{align*}
+Hence we get:
+\begin{align}
+  \boxed{\gamma=1+\frac{Nk_B}{C_V}}
+\end{align}
+\subsection{Adiabatic Change}
+The equation of state tells us:
+\begin{align*}
+  \dd{E}=C_V\dd{T}&=C_V\dd{\qty(\frac{P(V-Nb)}{Nk_B})}\\
+  &=\frac{C_V}{Nk_B}\qty(P\dd{V}+(V-Nb)\dd{P})
+\end{align*}
+Using our earlier information that for an adiabat, $\dd{E}+P\dd{V}=0$:
+\begin{align*}
+  0&=\frac{C_V}{Nk_B}\qty(P\dd{V}+(V-Nb)\dd{P})+P\dd{V}\\
+  &=\qty(1+\frac{C_V}{Nk_B})P\dd{(V-Nb)}\footnotemark+
+  \frac{C_V}{Nk_B}(V-Nb)\dd{P}\\
+  &=\qty(1+\frac{Nk_B}{C_V})P\dd{(V-Nb)}+(V-Nb)\dd{P}\\
+  &=\gamma P\dd{(V-Nb)}+(V-Nb)\dd{P}
+\end{align*}
+\footnotetext{Note $\dd{(V-Nb)}=\dd{V}$}
+Rearranging to get a nicer looking differential equation:
+\begin{align*}
+  \gamma\frac{\dd{(V-Nb)}}{(V-Nb)}+\frac{\dd{P}}{P}=0
+\end{align*}
+Which is exactly the same as what we saw in the first problem, hence we get with $V=(V-Nb)$ now:
+\begin{align}
+  \boxed{P(V-Nb)^\gamma=\text{const}}
+\end{align}
+\newpage
+\section{Superconductors}
+\subsection{The Third Law of Thermodynamics}
+The third law of thermodynamics is a statement of the entropy of a system:
+\begin{center}
+  \textit{The entropy of all systems at absolute zero temperature is constant}
+\end{center}
+Further, this constant can just be $0$. This allows us to use a starting point for entropy, and thus calculate an entropy at any temperature $T$ with the Second Law/Clausius Theorem.
+\subsection{Entropy of a superconductor}
+Since we have heat capacities, the relationship between heat capacities and entropies are as follow:
+\begin{align*}
+  C=T\pdv{S}{T}
+\end{align*}
+For the superconducting mode:
+\begin{align*}
+  C_s=V\alpha T^3&=T\pdv{S_s}{T}\\
+  V\alpha T^2&=\pdv{S_s}{T}\\
+  \frac{V\alpha}{3}T^3&=S_s
+\end{align*}
+And the the normal mode:
+\begin{align*}
+  C_n=V\qty(\beta T^3+\gamma T)&=T\pdv{S_n}{T}\\
+  V\qty(\beta T^2+\gamma)&=\pdv{S_n}{T}\\
+  V\qty(\frac\beta3T^3+\gamma T)&=S_n
+\end{align*}
+Thus we get:
+\begin{equation}
+  \boxed{
+    \begin{aligned}
+      S_s&=\frac{V\alpha}{3}T^3\\
+      S_n&=V\qty(\frac\beta3T^3+\gamma T)
+    \end{aligned}
+  }
+\end{equation}
+\subsection{Transistion Temperature}
+The phase transition requiring no Latent heat means we only need the $T\dd{S}$ part of the first law, expanded to a difference:
+\begin{align*}
+  0=L=T_c(S_n(T_c)-S_s(T_c))
+\end{align*}
+Using the entropies we already know:
+\begin{align*}
+  \frac{V\alpha}{3}T_c^3&=V\qty(\frac\beta3T_c^3+\gamma T_c)\\
+  \alpha T_c^3&=\beta T_c^3+3\gamma T_c\\
+  \qty(\alpha-\beta)T_c^3&=3\gamma T_c\\
+  T_c^2&=\frac{3\gamma}{\alpha-\beta}
+\end{align*}
+We can make the reduction in the last line as the phase transition does not occur at $T=0$ since there would be no entropy at all. The critical temperature is then:
+\begin{align}
+  \boxed{T_C=\sqrt{\frac{3\gamma}{\alpha-\beta}}}
+\end{align}
+\newpage
+\section{Maxwell-Like Relations}
+\subsection{Relating $\mu$ to $P$}
+First take the Gibbs-Duhem Equation:
+\begin{align*}
+  S\dd{T}-V\dd{P}+N\dd{\mu}=0
+\end{align*}
+At constant $T$, $\dd{T}=0$, leading us to get:
+\begin{align*}
+  -V\dd{P}+N\dd{\mu}&=0\\
+  V\dd{P}&=N\dd{\mu}
+\end{align*}
+Complete the differential by partial differentiating with respect to volume:
+\begin{align*}
+  V\pdv{P}{V}=N\pdv{\mu}{V}
+\end{align*}
+Giving what we need:
+\begin{align}
+  \boxed{\pdv{\mu}{V}=\frac{V}{N}\pdv{\mu}{V}}
+\end{align}
+\subsection{Relating Const Volume Heat Capacity to Pressure}
+Since $C_V$ is defined as:
+\begin{align*}
+  C_V=\pdv{E}{T}=\pdv{S}{T}
+\end{align*}
+We can write a total differential for $S$ as:
+\begin{align*}
+  \dd{S}=\frac{C_V}{T}\dd{T}+\eval{\pdv{P}{T}}_V\dd{V}
+\end{align*}
+The mixed partials must be equal, so:
+\begin{align*}
+  \pdv{C_V}{V}=T\pdv[2]{P}{T}
+\end{align*}
+Where the partial of $C_V$ is at constant $T$ and the $P$ partial is at constant $V$, while both are also at constant $N$:
+\begin{align}
+  \boxed{\eval{\pdv{C_V}{V}}_{T,N}=T\eval{\pdv[2]{P}{T}}_{V,N}}
+\end{align}
+\subsection{Relating Const Pressure Heat Capacity to Volume}
+Similarly to the previous problem, if we instead write the total differential of entropy as:
+\begin{align*}
+  \dd{S}=\frac{C_P}{T}\dd{T}+\pdv{V}{T}\dd{P}
+\end{align*}
+In the exact same way we get:
+\begin{align*}
+  \pdv{P}\qty(\frac{C_P}{T})=-\pdv{T}\pdv{V}{T}
+\end{align*}
+We can do this because the total differential in this case will not depend on the quantity which is constant in the heat capacity, or else we would not be using that heat capacity. Rearranging the above equation yields our final answer:
+\begin{align}
+  \boxed{\eval{\pdv{C_P}{P}}_{T,N}=-T\eval{\pdv[2]{V}{T}}_{P,N}}
+\end{align}
+\newpage
+\section{Does Cosmology Violate the Second Law?}
+\subsection{The Second Law SHOULD Apply}
+As of this moment in time, the universe is the largest scale which we know of, it includes everything that is happening right now. If we were to assume nothing existed outside the universe, then the universe is a closed, isolated system. If we were to find some way that an external force could act upon the universe, then we would have no reason to believe the second law should apply, however we have not found such evidence. 
+\subsection{The Second Law SHOULD NOT Apply}
+An important factor to consider in the statement of the second law in Clausius Theorem is that there is a cycle. The universe can very well be a damped oscillator, which would not have repeating conditions which would be necessary for a cycle to occur. This lack of a cycle means that we cannot use the second law in the form we know, as the Clausius Theorem. Thus, the second law should NOT apply in cosmological scales.
+
+\subsection{Do Planets Violate the Second Law?}
+The fact that orderly planets such as our very own exist in such an orderly manner seems to be in violation of the second law. However the presence of gravity changes things quite drastically. A gas cloud under the influence of gravity has lower entropy if everything is spread out, and once everything is together in a larger formation, the influence of gravity diminishes and thus we should have a higher entropy. The act of this formation of a larger structure converts the gravitational potential energy to kinetic energy, which is a direct increase in entropy. 
+\end{document}

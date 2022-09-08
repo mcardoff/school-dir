@@ -1,0 +1,186 @@
+\documentclass{beamer}
+
+\usepackage{physics}
+\usepackage{hyperref}
+\usepackage{url}
+
+\newcommand{\dbar}{d\hspace*{-0.08em}\bar{}\hspace*{0.1em}}
+
+\newenvironment{itemframe}[1]{\begin{frame}{#1}\begin{itemize}}   {\end{itemize}\end{frame}}
+
+% Changes style of actual slides
+\usetheme{Dresden}
+% Changes color of slides
+\usecolortheme{spruce}
+% removes controls at bottom right side
+\usenavigationsymbolstemplate{}
+
+% for figures
+\graphicspath{ {./figs/} }
+
+\title{Thermodynamic Potentials}
+\author{Michael Cardiff}
+% \logo{\large \LaTeX{}}
+\subtitle{PHYS 163a \\ 09/06 Prep Work}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{The Appropriate Potential}
+\begin{frame}{What is our System?}
+  \begin{itemize}
+  \item Our system is in equilibrium with a heat bath with a temperature of $T$. 
+  \item We know that $\dbar Q\neq0$ however, according to Claussius Theorem:
+    \begin{align*}
+      \dbar Q\leq T\dd{S}
+    \end{align*}
+  \item From the first law, and the fact that no work is done:
+    \begin{align*}
+      \dd{E}=\dbar Q+\dbar W\leq T\dd{S}
+    \end{align*}
+  \item Giving us the form for $F$:
+    \begin{align*}
+      \dd{F}\leq 0\implies \dd{F}=\eval{\dd{(E-TS)}}_{T}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Which one?}
+  \begin{itemize}
+  \item The Helmholtz Free Energy is the appropriate potential here
+  \item The Gibbs Free Energy is also tempting, but since the system is isolated, I am tempted to believe that $\dbar W=0$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Equilibrium Equations}
+  The Helmholtz Free energy is given as:
+  \begin{align*}
+    F=E-TS
+  \end{align*}
+  Its variations are given by:
+  \begin{align*}
+    \dd{F}=\dd{E}-\dd{(TS)}&=T\dd{S}+\vb{J}\vdot\dd{\vb{x}}-\dd{(TS)}\\
+    &=T\dd{S}+\vb{J}\vdot\dd{\vb{x}}-T\dd{S}-S\dd{T}\\
+    \dd{F}&=\vb{J}\vdot\dd{\vb{x}}-S\dd{T}
+  \end{align*}
+\end{frame}
+\begin{frame}{Equilibium Equations}
+  We can then find the Equilibrium forces and Entropy by taking partials of $F$ with respect to $(T,\vb{x})$:
+  \begin{align*}
+    J_i=\eval{\pdv{F}{x_i}}_{T,x\neq x_i}\qquad S=-\eval{\pdv{F}{T}}_{\vb{x}}
+  \end{align*}
+\end{frame}
+\section{What are These Potentials?}
+\begin{frame}{Enthalpy}
+  Mathematically:
+  \begin{align*}
+    H=E-\vb{J\vdot x}
+  \end{align*}
+  \begin{itemize}
+  \item Changes in enthalpy $\implies$ Changes in $S,\vb{J}$
+  \item Describes the energy required to establish the system
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Gibbs Free Energy}
+  Mathematically:
+  \begin{align*}
+    G = E-TS - \vb{J\vdot x}
+  \end{align*}
+  \begin{itemize}
+  \item Changes in Gibbs free energy $\implies$ Change in $T$, $\vb{J}$
+  \item Quantifies maxiumum work that can be done by the system without change in $\vb{x}$ or $S$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Chemical Potential}
+  \begin{itemize}
+  \item A Chemical Potential would be associated with changes in number of particles in a system.
+  \item Contrasts with $S,H,G,F$ as those all imply $\dd{N}=0$
+  \end{itemize}
+\end{frame}
+
+\section{Equations}
+\subsection{Gibbs-Duhem Equation}
+\begin{frame}{Gibbs-Duhem Equation}
+  The Extensive coordinates of a system tell us:
+  \begin{equation}\label{eq:1}
+    \dd{E}=T\dd{S}+\vb{J\vdot\dd{x}}+\mu\vdot\dd{\vb{N}}
+  \end{equation}
+  We fix the intensive coordinates, and find the extensive quantities are proportional to size/number of particles:
+  \begin{align*}
+    E(\lambda S,\lambda\vb{x},\lambda\vb{N})=\lambda E(S,\vb{x},\vb{N})
+  \end{align*}
+\end{frame}
+
+\begin{frame}{Gibbs-Duhem Equation}
+  Differentiating this equation with respect to $\lambda$ and setting it to 1:
+  \begin{align*}
+    \pdv{E}{S}S+\sum_ix_i\pdv{E}{x_i}+\sum_{j}N_j\pdv{E}{N_j}=E(S,\vb{x},\vb{N})
+  \end{align*}
+  Where the $S$ partial is at constant $\vb{x,N}$, the $x_i$ partial is at constant $S,\vb{N}$ and $x_{k\neq i}$, and the $N_j$ partial has constant $S,\vb{x}$ and $\vb{N}_{\ell\neq j}$
+
+  These partials can be found by using the relationship of the extensive coordinates in \eqref{eq:1} to get:
+  \begin{align*}
+    E=TS+\vb{J\vdot x}+\vb{\mu\vdot N}
+  \end{align*}
+\end{frame}
+
+\begin{frame}{Gibbs-Duhem Equation}
+  Taking the total differential of this equation and keeping in mind equation \eqref{eq:1}, get:
+  \begin{align*}
+    \dd{E}&=T\dd{S}+S\dd{T}+\vb{J\vdot\dd{x}+x\vdot\dd{J}+\mu\dd{N}+N\dd{\mu}}\\
+    &=T\dd{S}+\vb{J\vdot\dd{x}+\mu\vdot\dd{N}}
+    +S\dd{T}+\vb{x\vdot\dd{J}+N\dd{\mu}}
+  \end{align*}
+  Notice the first three terms in the second line are what we said was $\dd{E}$, meaning the next three terms must sum to $0$:
+  \begin{align*}
+    \boxed{0=S\dd{T}+\vb{x\vdot\dd{J}+N\dd{\mu}}}
+  \end{align*}
+\end{frame}
+\begin{frame}{Maxwell Relations}
+  All Maxwell Relations are simply expressions of the following rule in Multivariable Calculus:
+  \begin{align*}
+    \pdv{f}{x}{y}=\pdv{f}{y}{x}
+  \end{align*}
+  Using $f$ as one of the thermodynamic potentials and $x,y$ as an appropriate variable included in the potential, we can find various relationships between the variables of the system.
+\end{frame}
+\begin{frame}{Example Maxwell Relation}
+  For example take the internal energy of the system:
+  \begin{align*}
+    \dd{E}=T\dd{S}+\vb{J\vdot\dd{x}}
+  \end{align*}
+  The usefulness of this notation is that we can get partials very easily:
+  \begin{align*}
+    \eval{\pdv{E}{S}}_{\vb{x,N}}=T\qquad
+    \eval{\pdv{E}{x_i}}_{S,\vb{N}x_{j\neq i}}=J_i
+  \end{align*}
+\end{frame}
+\begin{frame}{Example Continued}
+  Taking the second partial of the opposite variable ($x_i$ for $S$ and vice versa):
+  \begin{align*}
+    \pdv{E}{S}{x_i}=\eval{\pdv{T}{x_i}}_{S}\qquad
+    \pdv{E}{x_i}{S}=\eval{\pdv{J_i}{S}}_{x_i}
+  \end{align*}
+  Then by the miracle of calculus we arrive at:
+  \begin{align*}
+    \boxed{\eval{\pdv{T}{x_i}}_{S}=\eval{\pdv{J_i}{S}}_{x_i}}
+  \end{align*}
+  Similar results can be obtained using the other potentials. 
+\end{frame}
+
+\begin{frame}{Gibbs Phase Rule}
+  \begin{itemize}
+  \item The Phase rule describes the number of degrees of freedom $f$ in a system with $p$ 'phases' coexisting, $n$ ways of doing work and $c$ chemical constituents. 
+  \item The $1$ comes from thermal changes
+  \item Described by the equation:
+    \begin{align*}
+      f=n+c+1-p
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\end{document}
