@@ -1,0 +1,98 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 164a HW 3}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{slashed}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage[labelfont=bf]{caption}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
+\newcommand{\munu}{{\mu\nu}}
+\newcommand{\sla}[1]{\slashed{#1}}
+
+\begin{document}
+\maketitle
+
+\section{Table of Constants}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c}
+    Quantity & Dimensions (MLTQ) & Dimensions (LTQE) \\ \hline
+    $c$             & $LT^{-1}$ & $LT^{-1}$ \\
+    $\hbar$         & $ML^2T^{-1}$ & $ET$ \\
+    $G$             & $M^{-1}L^3T^{-2}$ & $L^5E^{-1}T^{-4}$ \\
+    $\varepsilon_0$ & $M^{-1}L^{-3}T^2Q^2$ & $E^{-1}L^{-1}Q^2$ \\
+    $\mu_0$         & $LMQ^2$ & $E Q^2T^2L^{-1}$ 
+  \end{tabular}
+\end{table}
+
+\section{Trying to make Quantities}
+
+\subsection{Dimensionless}
+A dimensionless quantity in this case would be:
+\begin{align*}
+  [c^\alpha\hbar^\beta G^\gamma]=1
+\end{align*}
+This means the power of $l,m,t$ all are $0$, requiring the solution of:
+\begin{align*}
+  \alpha+2\beta+3\gamma&=0\\
+  \beta-\gamma&=0\\
+  -\alpha-\beta-2\gamma&=0
+\end{align*}
+The only solution to this is if all of $\alpha,\beta,\gamma=0$, so no, we cannot make a dimensionless quantity.
+
+\subsection{The Rest}
+We can get any quantity, if possible, by changing the corresponding value in the system of equations, with the first one corresponding to length, the second to mass and the third to time.
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c}
+    Quantity & Dimensions & In Terms of $c,\hbar,G$ \\ \hline
+    Mass             & $M$           & $\sqrt{\hbar c/G}$\\
+    Length           & $L$           & $\sqrt{\hbar G/c^3}$\\
+    Time             & $T$           & $\sqrt{\hbar G/c^5}$\\
+    Energy           & $ML^2T^{-2}$  & $\sqrt{c^5\hbar/G}$\\
+    Power            & $ML^2T^{-3}$  & $c^5/G$\\
+    Force            & $MLT^{-2}$    & $c^4/G$\\
+    Velocity         & $LT^{-1}$     & $c$\\
+    Acceleration     & $LT^{-2}$     & $\sqrt{c^7/(\hbar G)}$\\
+    Torque           & $L^2MT^{-2}$  & $\sqrt{c^5\hbar/G}$\\
+    Momentum         & $LMT^{-1}$    & $\sqrt{c^3\hbar/G}$\\
+    Angular Momentum & $L^2MT^{-1}$  & $\hbar$
+  \end{tabular}
+\end{table}
+\end{document}
