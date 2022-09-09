@@ -48,4 +48,122 @@
 \begin{document}
 \maketitle
 
+\section{Bead Constrained to a Hoop}
+First we should derive a form for the kinetic energy term in spherical coordinates, with some help from Mathematica:
+\begin{align*}
+  \dot{x}&=\dot{r}\sin\theta\cos\phi
+  +r\dot\theta\cos\theta\cos\phi
+  -r\dot\phi\sin\theta\sin\phi\\
+  \dot{y}&=\dot{r}\sin\theta\sin\phi
+  +r\dot\theta\cos\theta\sin\phi
+  +r\dot\phi\sin\theta\cos\phi\\
+  \dot{z}&=\dot{r}\cos\theta-r\dot\theta\sin\theta
+\end{align*}
+Adding the sum of their squares leaves us with the following:
+\begin{align*}
+  \dot{x}^2+\dot{y}^2+\dot{z}^2=\dot{r}^2+r^2\dot\theta+\sin^2\theta\dot\phi^2
+\end{align*}
+We can immediately recognize that we do not need to use a full spherical coordinate system, as the bead will always be kept at $r=a$ where the hoop is. We also know that $\dot{\phi}$ is fixed, at $\omega$. Leaving the $\theta$ velocity as undetermined, giving the kinetic energy as:
+\begin{align*}
+  T=\frac12ma^2\qty(\sin^2\theta\,\omega^2+\dot{\theta}^2)
+\end{align*}
+The only potential this bead is subject to is local gravity:
+\begin{align*}
+  V=-mga\cos\theta
+\end{align*}
+If we wanted to be more strict, we can add Lagrange multipliers $\lambda_i$ to impose constraints on our lagrangian as well:
+\begin{align*}
+  L_{c1}=\lambda_1(r-a)\qquad L_{c2}=\lambda_2(\dot{\phi}-\omega)
+\end{align*}
+These accomplish the same thing as simply imposing the constraints at the level of the potential/kinetic energies, however this is arbitrary.
+
+Thus the lagrangian is:
+\begin{align*}
+  L=\frac12ma^2\qty(\sin^2\theta\,\omega^2+\dot{\theta}^2)+mga\cos\theta
+\end{align*}
+We clearly will only have an equation of motion for $\theta$ which is non-trivial. The equations for $r,\phi$ are simple:
+\begin{align*}
+  r(t)=a\qquad \phi(t)=\phi_0+\omega t
+\end{align*}
+Where $\phi_0$ is whatever the initial angle is
+
+However we need to perform the Euler-Lagrange equations to get the $\theta$ equation of motion:
+\begin{align*}
+  \pdv{L}{\theta}&=m\omega^2a^2\sin\theta\cos\theta-mga\sin\theta\\
+  \pdv{L}{\dot{\theta}}&=ma^2\dot{\theta}\implies
+  \dv{t}\pdv{L}{\dot{\theta}}=ma^2\ddot{\theta}
+\end{align*}
+The last equation of motion for $\theta$ is hence:
+\begin{align*}
+  ma^2\ddot{\theta}&=m\omega^2a^2\sin\theta\cos\theta-mga\sin\theta
+\end{align*}
+More succinctly:
+\begin{align*}
+  \ddot{\theta}=\omega^2\sin\theta\cos\theta-\frac{g}{a}\sin\theta
+\end{align*}
+The full set of equations of motion are thus given by:
+\begin{equation}
+  \boxed{
+    \begin{gathered}
+      r(t)=a\\
+      \phi(t)=\phi_0+\omega t\\
+      \ddot{\theta}=\omega^2\sin\theta\cos\theta-\frac{g}{a}\sin\theta
+    \end{gathered}
+  }
+\end{equation}
+\newpage
+\section{Einsteinian Lagrangian}
+\subsection{Generalized Momenta and Forces}
+The generalized Momenta are:
+\begin{align*}
+  p_\delta=\pdv{L}{\dot{q}^\delta}
+\end{align*}
+There will be 2 sets of derivatives, where $\delta=\alpha$ and where $\delta=\beta$, however due to index shifting they will be the same, resulting in something like:
+\begin{align*}
+  p_\delta=\pdv{L}{\dot{q}^\delta}=g_{\delta\beta}\dot{q}^\beta
+\end{align*}
+The generalized forces come only from the metric, as it is the only thing which explicitly depends on $q$:
+\begin{align*}
+  F_\delta=\pdv{L}{q^\delta}&=\frac12\pdv{g_{\alpha\beta}}{q^\delta}
+  \dot{q}^\alpha\dot{q}^\beta\\
+  &\equiv\frac12g_{\alpha\beta,\delta}\dot{q}^\alpha\dot{q}^\beta
+\end{align*}
+Thus each of the generalized momenta and forces are:
+\begin{align}
+  \boxed{
+      p_\delta=g_{\delta\beta}\dot{q}^\beta\qquad
+      F_\delta=\frac12g_{\alpha\beta,\delta}\dot{q}^\alpha\dot{q}^\beta
+  }
+\end{align}
+\subsection{The Geodesic Equation}
+In order to show equivalence, we derive the Geodesic equation from Euler-Lagrange. Differentiating the momenta with respect to time gives:
+\begin{align*}
+  \dv{t}\qty(g_{\alpha\delta}(q)\dot{x}^\alpha)=g_{\alpha\delta,\gamma}
+  \dot{q}^\alpha\dot{q}^{\gamma}+g_{\alpha\delta}\ddot{q}^\alpha
+\end{align*}
+We need to do some index manipulation on the first term to get a Christoffel symbol, by switching the indices $\alpha,\gamma$ since they are silent.
+\begin{align*}
+  g_{\alpha\delta,\gamma}\dot{q}^\alpha\dot{q}^{\gamma}=
+  \frac12\qty(g_{\alpha\delta,\gamma}+g_{\gamma\delta,\alpha})
+  \dot{q}^\alpha\dot{q}^\gamma
+\end{align*}
+Combining with the generalized force we have:
+\begin{align*}
+  g_{\alpha\delta}\ddot{q}^\alpha+
+  \frac12\qty(g_{\alpha\delta,\gamma}+g_{\gamma\delta,\alpha}
+  -g_{\alpha\beta,\delta})\dot{q}^\alpha\dot{q}^\gamma=0
+\end{align*}
+We can then contract with the inverse metric to get our desired equation
+\begin{align*}
+  \ddot{q}^\sigma+\frac12g^{\sigma\delta}
+  \qty(g_{\alpha\delta,\gamma}+g_{\gamma\delta,\alpha}
+  -g_{\alpha\beta,\delta})\dot{q}^\alpha\dot{q}^\gamma=0
+\end{align*}
+After some index rearranging we can get the exact desired equation, indices and all:
+\begin{align}
+  \boxed{
+    \ddot{q}^\alpha+\Gamma^{\alpha}_{\beta\gamma}\dot{q}^\beta\dot{q}^\gamma=0
+  }
+\end{align}
+Since we used the Euler-Lagrange equations to derive the geodesic equation, they are in fact equivalent!
 \end{document}
