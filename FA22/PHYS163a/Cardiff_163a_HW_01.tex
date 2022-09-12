@@ -239,7 +239,7 @@ Using our earlier information that for an adiabat, $\dd{E}+P\dd{V}=0$:
   &=\qty(1+\frac{Nk_B}{C_V})P\dd{(V-Nb)}+(V-Nb)\dd{P}\\
   &=\gamma P\dd{(V-Nb)}+(V-Nb)\dd{P}
 \end{align*}
-\footnotetext{Note $\dd{(V-Nb)}=\dd{V}$}
+\footnotetext{Note $\dd{(V-Nb)}=\dd{V}$ since $Nb$ is constant in this case}
 Rearranging to get a nicer looking differential equation:
 \begin{align*}
   \gamma\frac{\dd{(V-Nb)}}{(V-Nb)}+\frac{\dd{P}}{P}=0
@@ -321,30 +321,56 @@ Giving what we need:
 \subsection{Relating Const Volume Heat Capacity to Pressure}
 Since $C_V$ is defined as:
 \begin{align*}
-  C_V=\pdv{E}{T}=\pdv{S}{T}
+  C_V=\frac{\dbar Q}{dT}
 \end{align*}
-We can write a total differential for $S$ as:
+Since $\dbar{Q}=T\dd{S}$:
 \begin{align*}
-  \dd{S}=\frac{C_V}{T}\dd{T}+\eval{\pdv{P}{T}}_V\dd{V}
+  C_V=\frac{\dbar Q}{dT}=T\pdv{S}{T}
 \end{align*}
-The mixed partials must be equal, so:
+Then differentiate with respect to $V$:
 \begin{align*}
-  \pdv{C_V}{V}=T\pdv[2]{P}{T}
+  \pdv{C_V}{V}=\pdv{V}\qty(T\pdv{S}{T})=T\pdv{S}{V}{T}
 \end{align*}
-Where the partial of $C_V$ is at constant $T$ and the $P$ partial is at constant $V$, while both are also at constant $N$:
+However we can swap the order of the partials to make use of a maxwell relation:
+\begin{align*}
+  \pdv{S}{V}{T}=\pdv{S}{T}{V}=\pdv{T}\pdv{S}{V}
+\end{align*}
+The maxwell relation we need to use is:
+\begin{align*}
+  \pdv{S}{V}=\pdv{P}{T}
+\end{align*}
+Hence we get:
+\begin{align*}
+  \pdv{T}\pdv{S}{V}=\pdv{T}\pdv{P}{T}=\pdv[2]{P}{T}
+\end{align*}
+Thus we end up with:
 \begin{align}
-  \boxed{\eval{\pdv{C_V}{V}}_{T,N}=T\eval{\pdv[2]{P}{T}}_{V,N}}
+  \boxed{
+    \eval{\pdv{C_V}{V}}_{T,N}=T\eval{\pdv[2]{P}{T}}_{V,N}
+  }
 \end{align}
 \subsection{Relating Const Pressure Heat Capacity to Volume}
 Similarly to the previous problem, if we instead write the total differential of entropy as:
 \begin{align*}
-  \dd{S}=\frac{C_P}{T}\dd{T}+\pdv{V}{T}\dd{P}
+  \dd{S}=\pdv{S}{T}\dd{T}+\pdv{S}{P}\dd{P}
 \end{align*}
-In the exact same way we get:
+We can identify $\pdv{S}{T}$ with the heat capacity again:
 \begin{align*}
-  \pdv{P}\qty(\frac{C_P}{T})=-\pdv{T}\pdv{V}{T}
+  \pdv{S}{T}=\frac{C_P}{T}
 \end{align*}
-We can do this because the total differential in this case will not depend on the quantity which is constant in the heat capacity, or else we would not be using that heat capacity. Rearranging the above equation yields our final answer:
+And we can use the Maxwell Relations to get:
+\begin{align*}
+  \pdv{S}{P}=-\pdv{V}{T}
+\end{align*}
+Hence:
+\begin{align*}
+  \dd{S}=\frac{C_P}{T}\dd{T}-\pdv{V}{T}\dd{P}
+\end{align*}
+A similar process to the previous problem gives:
+\begin{align*}
+  \pdv{C_P}{P}=-T\pdv[2]{V}{T}
+\end{align*}
+With everything taken constant we find the answer:
 \begin{align}
   \boxed{\eval{\pdv{C_P}{P}}_{T,N}=-T\eval{\pdv[2]{V}{T}}_{P,N}}
 \end{align}
@@ -358,3 +384,5 @@ An important factor to consider in the statement of the second law in Clausius T
 \subsection{Do Planets Violate the Second Law?}
 The fact that orderly planets such as our very own exist in such an orderly manner seems to be in violation of the second law. However the presence of gravity changes things quite drastically. A gas cloud under the influence of gravity has lower entropy if everything is spread out, and once everything is together in a larger formation, the influence of gravity diminishes and thus we should have a higher entropy. The act of this formation of a larger structure converts the gravitational potential energy to kinetic energy, which is a direct increase in entropy. 
 \end{document}
+
+

@@ -1,6 +1,6 @@
 \documentclass{beamer}
 
-\usepackage{physics}
+\usepackage[italicdiff]{physics}
 \usepackage{hyperref}
 \usepackage{url}
 
@@ -20,7 +20,6 @@
 
 \title{Thermodynamic Potentials}
 \author{Michael Cardiff}
-% \logo{\large \LaTeX{}}
 \subtitle{PHYS 163a \\ 09/06 Prep Work}
 
 \begin{document}
@@ -48,13 +47,6 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Which one?}
-  \begin{itemize}
-  \item The Helmholtz Free Energy is the appropriate potential here
-  \item The Gibbs Free Energy is also tempting, but since the system is isolated, I am tempted to believe that $\dbar W=0$
-  \end{itemize}
-\end{frame}
-
 \begin{frame}{Equilibrium Equations}
   The Helmholtz Free energy is given as:
   \begin{align*}
@@ -75,13 +67,17 @@
 \end{frame}
 \section{What are These Potentials?}
 \begin{frame}{Enthalpy}
-  Mathematically:
-  \begin{align*}
-    H=E-\vb{J\vdot x}
-  \end{align*}
   \begin{itemize}
-  \item Changes in enthalpy $\implies$ Changes in $S,\vb{J}$
-  \item Describes the energy required to establish the system
+  \item No heat exchanged $\dbar Q=0$
+  \item Constant external force
+  \item The work input to the system is given by:
+    \begin{align*}
+      \dbar W\leq \vb{J\vdot\dd{x}}
+    \end{align*}
+  \item First law:
+    \begin{align*}
+      \dd{E}=\dbar{Q}+\dbar{W}\leq
+    \end{align*}
   \end{itemize}
 \end{frame}
 
