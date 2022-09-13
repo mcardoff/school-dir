@@ -1,0 +1,100 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 164a HW 4}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{slashed}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage[labelfont=bf]{caption}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
+\newcommand{\munu}{{\mu\nu}}
+\newcommand{\sla}[1]{\slashed{#1}}
+
+\begin{document}
+\maketitle
+\section{Power Law with $G,c$}
+We can parameterize the constant $k$ in terms of powers of $G,c$:
+\begin{align*}
+  k=G^\alpha c^\beta
+\end{align*}
+The dimensions of $k$ will be:
+\begin{align*}
+  [k]=L^{3\alpha+\beta}M^{-\alpha}T^{-2\alpha-\beta}
+\end{align*}
+If we use $\alpha=1$ and $\beta=-2$, we get:
+\begin{align*}
+  \eval{[k]}_{\alpha=1,\beta=-2}=L^{3-2}M^{-1}T^{2-2}=M^{-1}L
+\end{align*}
+Which looks pretty nice! To match our desired power law:
+\begin{align*}
+  \ell=k\mu^m
+\end{align*}
+We need dimensions of $L$ at the end, and since our $k$ has dimensions of length per mass we only need a single power of mass, hence our law is:
+\begin{align}
+  \boxed{\ell=Gc^{-2}\mu}
+\end{align}
+The magnitude of this quantity:
+\begin{align*}
+  \frac{G}{c^2}\approx 10^{-27}
+\end{align*}\newpage
+\section{Power Law with $\hbar,c$}
+We can now parameterize the constant $k$ in terms of powers of $\hbar,c$:
+\begin{align*}
+  k=\hbar^\alpha c^\beta
+\end{align*}
+The dimensions of $k$ will be:
+\begin{align*}
+  [k]=M^{\alpha} L^{2\alpha+\beta} T^{-\alpha-\beta}
+\end{align*}
+If we use $\alpha=1$ and $\beta=-1$, we get:
+\begin{align*}
+  \eval{[k]}_{\alpha=1,\beta=-1}=M^{1} L^{2-1} T^{-1+1}=ML
+\end{align*}
+Which is eerily similar to what we had before, to match our power law again:
+\begin{align*}
+  \ell=k\mu^m
+\end{align*}
+We need dimensions of $L$ at the end, and since our $k$ has dimensions of length times mass, so we need $-1$ for our power of mass
+\begin{align}
+  \boxed{\ell=\hbar c^{-1}\mu^{-1}}
+\end{align}
+The magnitude of this value is:
+\begin{align*}
+  \frac{\hbar}{c}\approx 10^{-42}
+\end{align*}
+\end{document}
