@@ -1,0 +1,545 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     20921,        535]
+NotebookOptionsPosition[     18956,        494]
+NotebookOutlinePosition[     19353,        510]
+CellTagsIndexPosition[     19310,        507]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ NamespaceBox["LinguisticAssistant",
+  DynamicModuleBox[{Typeset`query$$ = "value of Planck Temperature", 
+   Typeset`boxes$$ = RowBox[{
+     TemplateBox[{"\"Planck temperature\"", 
+       RowBox[{"Entity", "[", 
+         RowBox[{"\"PhysicalConstant\"", ",", "\"PlanckTemperature\""}], 
+         "]"}], "\"Entity[\\\"PhysicalConstant\\\", \
+\\\"PlanckTemperature\\\"]\"", "\"physical constant\""}, "Entity"], "[", 
+     TemplateBox[{"\"value\"", 
+       RowBox[{"EntityProperty", "[", 
+         RowBox[{"\"PhysicalConstant\"", ",", "\"Value\""}], "]"}], 
+       "\"EntityProperty[\\\"PhysicalConstant\\\", \\\"Value\\\"]\""}, 
+      "EntityProperty"], "]"}], Typeset`allassumptions$$ = {}, 
+   Typeset`assumptions$$ = {}, Typeset`open$$ = {1, 2}, 
+   Typeset`querystate$$ = {
+   "Online" -> True, "Allowed" -> True, "mparse.jsp" -> 
+    0.9470651`7.427924826352507, "Messages" -> {}}}, 
+   DynamicBox[ToBoxes[
+     AlphaIntegration`LinguisticAssistantBoxes["", 4, Automatic, 
+      Dynamic[Typeset`query$$], 
+      Dynamic[Typeset`boxes$$], 
+      Dynamic[Typeset`allassumptions$$], 
+      Dynamic[Typeset`assumptions$$], 
+      Dynamic[Typeset`open$$], 
+      Dynamic[Typeset`querystate$$]], StandardForm],
+    ImageSizeCache->{346., {14.5, 18.5}},
+    TrackedSymbols:>{
+     Typeset`query$$, Typeset`boxes$$, Typeset`allassumptions$$, 
+      Typeset`assumptions$$, Typeset`open$$, Typeset`querystate$$}],
+   DynamicModuleValues:>{},
+   UndoTrackedVariables:>{Typeset`open$$}],
+  BaseStyle->{"Deploy"},
+  DeleteWithContents->True,
+  Editable->False,
+  SelectWithContents->True]], "Input",
+ CellChangeTimes->{3.8721941582757034`*^9},
+ CellLabel->"In[1]:=",ExpressionUUID->"7499b6b1-7ca9-4454-b6ae-eed356472ef0"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "1.41678400000000001444074305355776`4.646153665323047*^32", "\"K\"", 
+   "kelvins", "\"Kelvins\""},
+  "Quantity"]], "Output",
+ CellChangeTimes->{3.8721941753606977`*^9},
+ CellLabel->"Out[1]=",ExpressionUUID->"c5cb473b-2ae8-49f7-a76c-bec390049c9d"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$Assumptions", "=", 
+   RowBox[{"{", "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.872194861660879*^9, 3.8721949090547247`*^9}, {
+  3.87219501865808*^9, 3.872195026596557*^9}},
+ CellLabel->"In[32]:=",ExpressionUUID->"ac21c8a7-4b24-4ecd-98be-7cafd4fc1bb2"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"log", "[", 
+   RowBox[{"x_", "*", "y_", "*", "z_", "*", "w_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"log", "[", "x", "]"}], "+", 
+   RowBox[{"log", "[", "y", "]"}], "+", 
+   RowBox[{"log", "[", "z", "]"}], "+", 
+   RowBox[{"log", "[", "w", "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"log", "[", 
+   RowBox[{"a_", "^", "b_"}], "]"}], ":=", 
+  RowBox[{"b", " ", 
+   RowBox[{"log", "[", "a", "]"}]}]}]}], "Input",
+ CellLabel->
+  "In[125]:=",ExpressionUUID->"5e18c32c-6c26-44e5-83eb-a6c3a4af06a4"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[HBar]", "[", "\[Alpha]_", "]"}], ":=", " ", 
+   RowBox[{
+    SuperscriptBox["L", 
+     RowBox[{"2", "\[Alpha]"}]], 
+    SuperscriptBox["M", "\[Alpha]"], " ", 
+    SuperscriptBox["T", 
+     RowBox[{"-", "\[Alpha]"}]]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"c", "[", "\[Alpha]_", "]"}], ":=", 
+   RowBox[{
+    SuperscriptBox["L", 
+     RowBox[{" ", "\[Alpha]"}]], " ", 
+    SuperscriptBox["T", 
+     RowBox[{"-", "\[Alpha]"}]]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"G", "[", "\[Alpha]_", "]"}], ":=", 
+   RowBox[{
+    SuperscriptBox["L", 
+     RowBox[{"3", "\[Alpha]"}]], 
+    SuperscriptBox["M", 
+     RowBox[{"-", "\[Alpha]"}]], 
+    SuperscriptBox["T", 
+     RowBox[{
+      RowBox[{"-", "2"}], "\[Alpha]"}]]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"k", "[", "\[Alpha]_", "]"}], ":=", 
+   RowBox[{
+    SuperscriptBox["L", 
+     RowBox[{"2", "\[Alpha]"}]], 
+    SuperscriptBox[
+     RowBox[{"M", " "}], "\[Alpha]"], 
+    SuperscriptBox["T", 
+     RowBox[{
+      RowBox[{"-", "2"}], "\[Alpha]"}]], 
+    SuperscriptBox["\[CapitalTheta]", 
+     RowBox[{"-", "\[Alpha]"}]]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.8721941814793687`*^9, 3.8721941826372976`*^9}, {
+   3.8721942289811964`*^9, 3.8721942395851583`*^9}, {3.8721942701960535`*^9, 
+   3.8721943677140155`*^9}, {3.872194948992581*^9, 3.8721950040478325`*^9}, {
+   3.872195273207225*^9, 3.8721952743803*^9}, {3.8721955747914424`*^9, 
+   3.8721955849403095`*^9}, 3.872196227341236*^9},
+ CellLabel->
+  "In[120]:=",ExpressionUUID->"e6d5279f-e82b-4dad-a237-0ab9e0b350a6"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[HBar]", "[", "\[Alpha]", "]"}], 
+  RowBox[{"c", "[", "\[Beta]", "]"}], 
+  RowBox[{"G", "[", "\[Delta]", "]"}], 
+  RowBox[{"k", "[", "\[Gamma]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.872195068078373*^9, 3.872195085714864*^9}, 
+   3.872195255294032*^9},
+ CellLabel->
+  "In[124]:=",ExpressionUUID->"8b7c0eb4-5522-4119-9854-ed23887e39cb"],
+
+Cell[BoxData[
+ RowBox[{
+  SuperscriptBox["L", 
+   RowBox[{
+    RowBox[{"2", " ", "\[Alpha]"}], "+", "\[Beta]", "+", 
+    RowBox[{"2", " ", "\[Gamma]"}], "+", 
+    RowBox[{"3", " ", "\[Delta]"}]}]], " ", 
+  SuperscriptBox["M", 
+   RowBox[{"\[Alpha]", "+", "\[Gamma]", "-", "\[Delta]"}]], " ", 
+  SuperscriptBox["T", 
+   RowBox[{
+    RowBox[{"-", "\[Alpha]"}], "-", "\[Beta]", "-", 
+    RowBox[{"2", " ", "\[Gamma]"}], "-", 
+    RowBox[{"2", " ", "\[Delta]"}]}]], " ", 
+  SuperscriptBox["\[CapitalTheta]", 
+   RowBox[{"-", "\[Gamma]"}]]}]], "Output",
+ CellChangeTimes->{3.8721950863784323`*^9, 3.872195233430397*^9, 
+  3.8721952787494354`*^9, 3.872196238503104*^9},
+ CellLabel->
+  "Out[124]=",ExpressionUUID->"c3031aff-f107-4886-965a-7339a4ed6f6c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"log", "[", 
+  RowBox[{
+   RowBox[{"\[HBar]", "[", "\[Alpha]", "]"}], 
+   RowBox[{"c", "[", "\[Beta]", "]"}], 
+   RowBox[{"G", "[", "\[Delta]", "]"}], 
+   RowBox[{"k", "[", "\[Gamma]", "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.872195131173074*^9, 3.8721951471956887`*^9}, 
+   3.87219518152372*^9},
+ CellLabel->
+  "In[127]:=",ExpressionUUID->"e52b5550-8423-47fa-80cb-44979ded2967"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"2", " ", "\[Alpha]"}], "+", "\[Beta]", "+", 
+     RowBox[{"2", " ", "\[Gamma]"}], "+", 
+     RowBox[{"3", " ", "\[Delta]"}]}], ")"}], " ", 
+   RowBox[{"log", "[", "L", "]"}]}], "+", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"\[Alpha]", "+", "\[Gamma]", "-", "\[Delta]"}], ")"}], " ", 
+   RowBox[{"log", "[", "M", "]"}]}], "+", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", "\[Alpha]"}], "-", "\[Beta]", "-", 
+     RowBox[{"2", " ", "\[Gamma]"}], "-", 
+     RowBox[{"2", " ", "\[Delta]"}]}], ")"}], " ", 
+   RowBox[{"log", "[", "T", "]"}]}], "-", 
+  RowBox[{"\[Gamma]", " ", 
+   RowBox[{"log", "[", "\[CapitalTheta]", "]"}]}]}]], "Output",
+ CellChangeTimes->{{3.872195137409214*^9, 3.8721951477140923`*^9}, 
+   3.872195181833579*^9, 3.872195288214466*^9, 3.8721955916881723`*^9, 
+   3.8721957535299454`*^9, 3.8721962552100863`*^9},
+ CellLabel->
+  "Out[127]=",ExpressionUUID->"17c06bc5-45df-4012-9db8-72e73c1c375e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"rules", "=", 
+  RowBox[{"Solve", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"2", " ", "\[Alpha]"}], "+", "\[Beta]", "+", 
+        RowBox[{"2", " ", "\[Gamma]"}], "+", 
+        RowBox[{"3", " ", "\[Delta]"}]}], "==", "0"}], ",", 
+      RowBox[{
+       RowBox[{"\[Alpha]", "+", "\[Gamma]", "-", "\[Delta]"}], "==", "0"}], 
+      ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "\[Alpha]"}], "-", "\[Beta]", "-", 
+        RowBox[{"2", " ", "\[Gamma]"}], "-", 
+        RowBox[{"2", " ", "\[Delta]"}]}], "==", "0"}], ",", 
+      RowBox[{
+       RowBox[{"-", "\[Gamma]"}], "==", "1"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Alpha]", ",", "\[Beta]", ",", "\[Gamma]", ",", "\[Delta]"}], 
+     "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.872195194547721*^9, 3.872195210075739*^9}, {
+  3.8721952959044785`*^9, 3.872195331787939*^9}, {3.872195600031128*^9, 
+  3.8721956186243105`*^9}, {3.8721962626177287`*^9, 3.87219627735351*^9}, {
+  3.8721963107923346`*^9, 3.8721963154218473`*^9}},
+ CellLabel->
+  "In[134]:=",ExpressionUUID->"d410d8b5-2503-486e-ac42-02c71135c81f"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"\[Alpha]", "\[Rule]", 
+     FractionBox["1", "2"]}], ",", 
+    RowBox[{"\[Beta]", "\[Rule]", 
+     FractionBox["5", "2"]}], ",", 
+    RowBox[{"\[Gamma]", "\[Rule]", 
+     RowBox[{"-", "1"}]}], ",", 
+    RowBox[{"\[Delta]", "\[Rule]", 
+     RowBox[{"-", 
+      FractionBox["1", "2"]}]}]}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{3.8721953324812255`*^9, 3.872195620681156*^9, 
+  3.872196282384031*^9, 3.872196315792019*^9},
+ CellLabel->
+  "Out[134]=",ExpressionUUID->"0d1c12c5-fd71-4847-91a5-8b4ae9edff52"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[HBar]", "[", "\[Alpha]", "]"}], 
+   RowBox[{"c", "[", "\[Beta]", "]"}], 
+   RowBox[{"G", "[", "\[Delta]", "]"}], 
+   RowBox[{"k", "[", "\[Gamma]", "]"}]}], "/.", 
+  "rules"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Confirm", " ", "its", " ", "temperature"}], "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.8721953500025673`*^9, 3.8721953515069294`*^9}, 
+   3.8721956321903057`*^9, {3.872196296922901*^9, 3.8721963294043994`*^9}},
+ CellLabel->
+  "In[136]:=",ExpressionUUID->"522a6345-8c09-4514-a393-06e0801d1565"],
+
+Cell[BoxData[
+ RowBox[{"{", "\[CapitalTheta]", "}"}]], "Output",
+ CellChangeTimes->{
+  3.872195352469427*^9, 3.8721956334193983`*^9, {3.872196297744214*^9, 
+   3.8721963298937535`*^9}},
+ CellLabel->
+  "Out[136]=",ExpressionUUID->"77636338-493a-40f9-81fe-8b91982af53c"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"hbar", "=", 
+   NamespaceBox["LinguisticAssistant",
+    DynamicModuleBox[{Typeset`query$$ = "value of reduced planck constant", 
+     Typeset`boxes$$ = RowBox[{
+       TemplateBox[{"\"reduced Planck constant\"", 
+         RowBox[{"Entity", "[", 
+           RowBox[{"\"PhysicalConstant\"", ",", "\"ReducedPlanckConstant\""}],
+            "]"}], "\"Entity[\\\"PhysicalConstant\\\", \
+\\\"ReducedPlanckConstant\\\"]\"", "\"physical constant\""}, "Entity"], "[", 
+       TemplateBox[{"\"value\"", 
+         RowBox[{"EntityProperty", "[", 
+           RowBox[{"\"PhysicalConstant\"", ",", "\"Value\""}], "]"}], 
+         "\"EntityProperty[\\\"PhysicalConstant\\\", \\\"Value\\\"]\""}, 
+        "EntityProperty"], "]"}], Typeset`allassumptions$$ = {}, 
+     Typeset`assumptions$$ = {}, Typeset`open$$ = {1, 2}, 
+     Typeset`querystate$$ = {
+     "Online" -> True, "Allowed" -> True, "mparse.jsp" -> 
+      0.5702525`7.207612191405773, "Messages" -> {}}}, 
+     DynamicBox[ToBoxes[
+       AlphaIntegration`LinguisticAssistantBoxes["", 4, Automatic, 
+        Dynamic[Typeset`query$$], 
+        Dynamic[Typeset`boxes$$], 
+        Dynamic[Typeset`allassumptions$$], 
+        Dynamic[Typeset`assumptions$$], 
+        Dynamic[Typeset`open$$], 
+        Dynamic[Typeset`querystate$$]], StandardForm],
+      ImageSizeCache->{380., {14.5, 18.5}},
+      TrackedSymbols:>{
+       Typeset`query$$, Typeset`boxes$$, Typeset`allassumptions$$, 
+        Typeset`assumptions$$, Typeset`open$$, Typeset`querystate$$}],
+     DynamicModuleValues:>{},
+     UndoTrackedVariables:>{Typeset`open$$}],
+    BaseStyle->{"Deploy"},
+    DeleteWithContents->True,
+    Editable->False,
+    SelectWithContents->True]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"speedoflight", "=", 
+   NamespaceBox["LinguisticAssistant",
+    DynamicModuleBox[{Typeset`query$$ = "value of speed of light", 
+     Typeset`boxes$$ = RowBox[{
+       TemplateBox[{"\"speed of light\"", 
+         RowBox[{"Entity", "[", 
+           RowBox[{"\"PhysicalConstant\"", ",", "\"SpeedOfLight\""}], "]"}], 
+         "\"Entity[\\\"PhysicalConstant\\\", \\\"SpeedOfLight\\\"]\"", 
+         "\"physical constant\""}, "Entity"], "[", 
+       TemplateBox[{"\"value\"", 
+         RowBox[{"EntityProperty", "[", 
+           RowBox[{"\"PhysicalConstant\"", ",", "\"Value\""}], "]"}], 
+         "\"EntityProperty[\\\"PhysicalConstant\\\", \\\"Value\\\"]\""}, 
+        "EntityProperty"], "]"}], Typeset`allassumptions$$ = {}, 
+     Typeset`assumptions$$ = {}, Typeset`open$$ = {1, 2}, 
+     Typeset`querystate$$ = {
+     "Online" -> True, "Allowed" -> True, "mparse.jsp" -> 
+      0.7203437`7.309084755757279, "Messages" -> {}}}, 
+     DynamicBox[ToBoxes[
+       AlphaIntegration`LinguisticAssistantBoxes["", 4, Automatic, 
+        Dynamic[Typeset`query$$], 
+        Dynamic[Typeset`boxes$$], 
+        Dynamic[Typeset`allassumptions$$], 
+        Dynamic[Typeset`assumptions$$], 
+        Dynamic[Typeset`open$$], 
+        Dynamic[Typeset`querystate$$]], StandardForm],
+      ImageSizeCache->{311., {14.5, 18.5}},
+      TrackedSymbols:>{
+       Typeset`query$$, Typeset`boxes$$, Typeset`allassumptions$$, 
+        Typeset`assumptions$$, Typeset`open$$, Typeset`querystate$$}],
+     DynamicModuleValues:>{},
+     UndoTrackedVariables:>{Typeset`open$$}],
+    BaseStyle->{"Deploy"},
+    DeleteWithContents->True,
+    Editable->False,
+    SelectWithContents->True]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"boltzman", "=", 
+   NamespaceBox["LinguisticAssistant",
+    DynamicModuleBox[{Typeset`query$$ = "value of boltzmans constant", 
+     Typeset`boxes$$ = RowBox[{
+       TemplateBox[{"\"Boltzmann constant\"", 
+         RowBox[{"Entity", "[", 
+           RowBox[{"\"PhysicalConstant\"", ",", "\"BoltzmannConstant\""}], 
+           "]"}], "\"Entity[\\\"PhysicalConstant\\\", \\\"BoltzmannConstant\\\
+\"]\"", "\"physical constant\""}, "Entity"], "[", 
+       TemplateBox[{"\"value\"", 
+         RowBox[{"EntityProperty", "[", 
+           RowBox[{"\"PhysicalConstant\"", ",", "\"Value\""}], "]"}], 
+         "\"EntityProperty[\\\"PhysicalConstant\\\", \\\"Value\\\"]\""}, 
+        "EntityProperty"], "]"}], Typeset`allassumptions$$ = {}, 
+     Typeset`assumptions$$ = {}, Typeset`open$$ = {1, 2}, 
+     Typeset`querystate$$ = {
+     "Online" -> True, "Allowed" -> True, "mparse.jsp" -> 
+      0.5051946`7.155003693251916, "Messages" -> {}}}, 
+     DynamicBox[ToBoxes[
+       AlphaIntegration`LinguisticAssistantBoxes["", 4, Automatic, 
+        Dynamic[Typeset`query$$], 
+        Dynamic[Typeset`boxes$$], 
+        Dynamic[Typeset`allassumptions$$], 
+        Dynamic[Typeset`assumptions$$], 
+        Dynamic[Typeset`open$$], 
+        Dynamic[Typeset`querystate$$]], StandardForm],
+      ImageSizeCache->{349., {14.5, 18.5}},
+      TrackedSymbols:>{
+       Typeset`query$$, Typeset`boxes$$, Typeset`allassumptions$$, 
+        Typeset`assumptions$$, Typeset`open$$, Typeset`querystate$$}],
+     DynamicModuleValues:>{},
+     UndoTrackedVariables:>{Typeset`open$$}],
+    BaseStyle->{"Deploy"},
+    DeleteWithContents->True,
+    Editable->False,
+    SelectWithContents->True]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gravity", "=", 
+   NamespaceBox["LinguisticAssistant",
+    DynamicModuleBox[{Typeset`query$$ = "value of gravitational constant", 
+     Typeset`boxes$$ = RowBox[{
+       TemplateBox[{"\"gravitational constant\"", 
+         RowBox[{"Entity", "[", 
+           RowBox[{"\"PhysicalConstant\"", ",", "\"GravitationalConstant\""}],
+            "]"}], "\"Entity[\\\"PhysicalConstant\\\", \
+\\\"GravitationalConstant\\\"]\"", "\"physical constant\""}, "Entity"], "[", 
+       TemplateBox[{"\"value\"", 
+         RowBox[{"EntityProperty", "[", 
+           RowBox[{"\"PhysicalConstant\"", ",", "\"Value\""}], "]"}], 
+         "\"EntityProperty[\\\"PhysicalConstant\\\", \\\"Value\\\"]\""}, 
+        "EntityProperty"], "]"}], Typeset`allassumptions$$ = {}, 
+     Typeset`assumptions$$ = {}, Typeset`open$$ = {1, 2}, 
+     Typeset`querystate$$ = {
+     "Online" -> True, "Allowed" -> True, "mparse.jsp" -> 
+      0.5312474`7.17684181106085, "Messages" -> {}}}, 
+     DynamicBox[ToBoxes[
+       AlphaIntegration`LinguisticAssistantBoxes["", 4, Automatic, 
+        Dynamic[Typeset`query$$], 
+        Dynamic[Typeset`boxes$$], 
+        Dynamic[Typeset`allassumptions$$], 
+        Dynamic[Typeset`assumptions$$], 
+        Dynamic[Typeset`open$$], 
+        Dynamic[Typeset`querystate$$]], StandardForm],
+      ImageSizeCache->{360., {14.5, 18.5}},
+      TrackedSymbols:>{
+       Typeset`query$$, Typeset`boxes$$, Typeset`allassumptions$$, 
+        Typeset`assumptions$$, Typeset`open$$, Typeset`querystate$$}],
+     DynamicModuleValues:>{},
+     UndoTrackedVariables:>{Typeset`open$$}],
+    BaseStyle->{"Deploy"},
+    DeleteWithContents->True,
+    Editable->False,
+    SelectWithContents->True]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.872195363938016*^9, 3.8721954239096365`*^9}, {
+  3.8721957723922358`*^9, 3.8721957753960514`*^9}, {3.8721963018082952`*^9, 
+  3.872196303471566*^9}},
+ CellLabel->
+  "In[130]:=",ExpressionUUID->"8d3efe44-0168-42fa-b076-6c26f3ab5c9d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SuperscriptBox["hbar", "\[Alpha]"], 
+   SuperscriptBox["speedoflight", "\[Beta]"], 
+   SuperscriptBox["gravity", "\[Delta]"], 
+   SuperscriptBox["boltzman", "\[Gamma]"], "*", 
+   RowBox[{"(", "1.0", ")"}]}], "/.", "rules"}]], "Input",
+ CellChangeTimes->{{3.872195439052026*^9, 3.872195469307295*^9}, {
+  3.8721956492536955`*^9, 3.872195666321288*^9}, {3.8721959546704574`*^9, 
+  3.8721959589574895`*^9}, {3.8721963368630857`*^9, 
+  3.8721963615477533`*^9}},ExpressionUUID->"ac9de678-f085-452f-b6a4-\
+d14734a37406"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  TemplateBox[{"1.4167841621573432`*^32", 
+    RowBox[{
+      SqrtBox["\"kg\""], "\[InvisibleSpace]", "\"m\"", "\[ThinSpace]", 
+      "\"K\"", "\[InvisibleSpace]", "\"/(\"", "\[InvisibleSpace]", "\"s\"", 
+      "\[ThinSpace]", 
+      SqrtBox["\"J\""], "\[InvisibleSpace]", "\")\""}], 
+    "square root kilogram meter kelvins per second square root joule", 
+    FractionBox[
+     RowBox[{"\"Kelvins\"", " ", 
+       SqrtBox["\"Kilograms\""], " ", "\"Meters\""}], 
+     RowBox[{
+       SqrtBox["\"Joules\""], " ", "\"Seconds\""}]]},
+   "Quantity"], "}"}]], "Output",
+ CellChangeTimes->{{3.872195458197023*^9, 3.8721954697595577`*^9}, 
+   3.8721956668997045`*^9, 3.8721959595085335`*^9, 3.8721963382360992`*^9},
+ CellLabel->
+  "Out[137]=",ExpressionUUID->"a3fd9fe8-1516-479f-a784-cbc8cb73489f"]
+}, Open  ]]
+},
+WindowSize->{958, 1028},
+WindowMargins->{{Automatic, -7}, {Automatic, 0}},
+FrontEndVersion->"12.3 for Microsoft Windows (64-bit) (May 11, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"74ebcab6-b173-4424-ab09-a721fc1007b2"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 1725, 37, 48, "Input",ExpressionUUID->"7499b6b1-7ca9-4454-b6ae-eed356472ef0"],
+Cell[2308, 61, 278, 6, 45, "Output",ExpressionUUID->"c5cb473b-2ae8-49f7-a76c-bec390049c9d"]
+}, Open  ]],
+Cell[2601, 70, 292, 6, 29, "Input",ExpressionUUID->"ac21c8a7-4b24-4ecd-98be-7cafd4fc1bb2"],
+Cell[2896, 78, 541, 15, 50, "Input",ExpressionUUID->"5e18c32c-6c26-44e5-83eb-a6c3a4af06a4"],
+Cell[3440, 95, 1660, 48, 91, "Input",ExpressionUUID->"e6d5279f-e82b-4dad-a237-0ab9e0b350a6"],
+Cell[CellGroupData[{
+Cell[5125, 147, 374, 9, 29, "Input",ExpressionUUID->"8b7c0eb4-5522-4119-9854-ed23887e39cb"],
+Cell[5502, 158, 746, 19, 34, "Output",ExpressionUUID->"c3031aff-f107-4886-965a-7339a4ed6f6c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6285, 182, 409, 10, 29, "Input",ExpressionUUID->"e52b5550-8423-47fa-80cb-44979ded2967"],
+Cell[6697, 194, 1005, 26, 33, "Output",ExpressionUUID->"17c06bc5-45df-4012-9db8-72e73c1c375e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7739, 225, 1162, 29, 29, "Input",ExpressionUUID->"d410d8b5-2503-486e-ac42-02c71135c81f"],
+Cell[8904, 256, 579, 16, 50, "Output",ExpressionUUID->"0d1c12c5-fd71-4847-91a5-8b4ae9edff52"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9520, 277, 582, 14, 50, "Input",ExpressionUUID->"522a6345-8c09-4514-a393-06e0801d1565"],
+Cell[10105, 293, 268, 6, 33, "Output",ExpressionUUID->"77636338-493a-40f9-81fe-8b91982af53c"]
+}, Open  ]],
+Cell[10388, 302, 7152, 153, 174, "Input",ExpressionUUID->"8d3efe44-0168-42fa-b076-6c26f3ab5c9d"],
+Cell[CellGroupData[{
+Cell[17565, 459, 552, 12, 30, "Input",ExpressionUUID->"ac9de678-f085-452f-b6a4-d14734a37406"],
+Cell[18120, 473, 820, 18, 49, "Output",ExpressionUUID->"a3fd9fe8-1516-479f-a784-cbc8cb73489f"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
