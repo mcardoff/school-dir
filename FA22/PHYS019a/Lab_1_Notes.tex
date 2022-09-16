@@ -1,0 +1,92 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}Lab 1 Notes}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{slashed}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage[labelfont=bf]{caption}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
+\newcommand{\munu}{{\mu\nu}}
+\newcommand{\sla}[1]{\slashed{#1}}
+
+\begin{document}
+\maketitle
+\section{Statistics Formulae}
+Mean
+\begin{equation}
+  \bar{x}=\frac{1}{N}\sum_{i=1}^Nx_i
+\end{equation}
+Variance
+\begin{equation}
+  \sigma^2=\frac{1}{N-1}\sum_{i=1}^N\qty(x_i-\bar{x})^2
+\end{equation}
+Standard Deviation
+\begin{equation}
+  \sigma=\sqrt{\sigma^2}
+\end{equation}
+Uncertainty in the mean:
+\begin{equation}
+  \sigma_{\bar{x}}=\frac{\sigma}{\sqrt{N}}
+\end{equation}
+Error propagation in general
+\begin{gather*}
+  z=f(x,y)\\
+  \sigma_z=\sqrt{\qty(\pdv{f}{x})^2\sigma_x^2+\qty(\pdv{f}{y})^2\sigma_y^2}
+\end{gather*}
+Where $\sigma_x,\sigma_y,\sigma_z$ are the uncertainties on a measurement of $x,y,z$
+\section{Lab Formulae}
+Finding $g$ from free fall:
+\begin{equation}
+  g=2\frac{L}{t^2}
+\end{equation}
+For error propagation, $g=f(L,t)$:
+\begin{equation}
+  \sigma_g=\sqrt{\qty(\frac{4L}{t^3})\sigma_t^2+\qty(\frac{2}{t^2})^2\sigma_L^2}
+\end{equation}
+
+\section{Other Notes}
+\begin{enumerate}
+\item Lab report due in 2 weeks
+\item Just answer questions in writeup
+\item Ignore error propagation questions
+\item 'Reasonable number of significant digits' = Least number of significant digits shown by any of your measurement devices
+\item You do not in fact have to use python
+\item Do 20-30 measurements
+\end{enumerate}
+\end{document}
