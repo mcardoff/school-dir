@@ -135,11 +135,11 @@ In terms of its fourier series, the first and second derivatives are:
     \end{aligned}
   }
 \end{equation}
-In the analytical form of $g$ the height of the discontinuity is $0$ so we only need the $\delta$ sum. However for the derivative, we need a factor of $2\pi$ which constitutes the height of the discontinuity there:
+Note that there is no disncontinuity in $g$, so we only need the classical derivative. However the derivative $g'$ is discontinuous, so we do in fact need the sum of $\delta$ functions, note the height of the discontinuity is $2\pi$:
 \begin{equation}
   \boxed{
     \begin{aligned}
-      g'(t)&=-(t-\pi)-\sum_{k=-\infty}^\infty\delta(t-2k\pi)\\
+      g'(t)&=-(t-\pi)\\
       g''(t)&=-1-2\pi\sum_{k=-\infty}^\infty\delta(t-2k\pi)
     \end{aligned}
   }
@@ -152,29 +152,38 @@ The following is a single period of each function:
   \label{fig:1}
 \end{figure}
 \subsection*{Part 3}
-We can identify $f(t)$ as the second derivative of $g(t)$, and $g(t)$ converges in the classical sense so it will converge in the distributional sense, hence $g''(t)$ converges in the distributional sense.
+First we need to see if this sum will converge in the distributional sense. The most important thing to notice is that $f(t)=g''(t)$. We know that the sum in $g(t)$ converges in the classical sense. This means it should converge in the distributional sense as well:
+\begin{align*}
+  -\sum_{n=-\infty,\neq0}^\infty\frac{e^{int}}{n^2}\quad\text{converges}
+\end{align*}
+We can also realize that if a distributional sum converges, so should its derivatives, not in the classical sense, but in the distributional sense, we can do this by realizing:
+\begin{align*}
+  \ip{g''(t)}{\phi(t)}=-\ip{g'(t)}{\phi'(t)}=\ip{g(t)}{\phi''(t)}
+\end{align*}
+And since $\phi\in C^\infty$, its second derivative is also a properly defined test function. Therefore this sum DOES converge. 
+% We can identify $f(t)$ as the second derivative of $g(t)$, and $g(t)$ converges in the classical sense so it will converge in the distributional sense, hence $g''(t)$ converges in the distributional sense.
 
-As for what it will converge to we need to compute the following
-\begin{align*}
-  \ip{f(t)}{\phi(t)}&=\int_{-\infty}^\infty f(t)\phi(t)\dd{t}\\
-  &=\int_{-\infty}^\infty\sum_{-\infty}^{\infty} e^{int}\phi(t)\dd{t}\\
-\end{align*}
-We know the convergence of the sum as the second derivative of $g(x)$, and we would pick up 2 derivatives on $\phi$:
-\begin{align*}
-  \int_{-\infty}^\infty\sum_{-\infty}^{\infty} e^{int}\phi(t)\dd{t}&=
-  \int_{-\infty}^\infty\qty(-1-2\pi\sum_{k=-\infty}^\infty\delta(t-2k\pi))
-  \phi''(t)\dd{t}\\
-  &=-\int_{-\infty}^\infty\phi''(t)\dd{t}-2\pi\sum_{-\infty}^\infty\phi''(2k\pi)
-\end{align*}
-We found an identity for the sum in class:
-\begin{align*}
-  -\int_{-\infty}^\infty\phi''(t)\dd{t}-2\pi\sum_{-\infty}^\infty\phi''(2k\pi)&=
-  -\int_{-\infty}^\infty\phi''(t)\dd{t}-\int_{-\infty}^\infty\phi''(t)\dd{t}
-  -2\frac1\pi\sum_{k=1}^\infty\int_{-\infty}^\infty\cos(kt)\phi''(t)\dd{t}\\
-  &=-2\qty(\int_{-\infty}^\infty\phi''(t)\dd{t}
-  +\frac1\pi\sum_{k=1}^\infty\int_{-\infty}^\infty\cos(kt)\phi''(t)\dd{t})
-\end{align*}
-If we go back, the first term should be the zero distribution, so we only have the second term remaining
+% As for what it will converge to we need to compute the following
+% \begin{align*}
+%   \ip{f(t)}{\phi(t)}&=\int_{-\infty}^\infty f(t)\phi(t)\dd{t}\\
+%   &=\int_{-\infty}^\infty\sum_{-\infty}^{\infty} e^{int}\phi(t)\dd{t}\\
+% \end{align*}
+% We know the convergence of the sum as the second derivative of $g(x)$, and we would pick up 2 derivatives on $\phi$:
+% \begin{align*}
+%   \int_{-\infty}^\infty\sum_{-\infty}^{\infty} e^{int}\phi(t)\dd{t}&=
+%   \int_{-\infty}^\infty\qty(-1-2\pi\sum_{k=-\infty}^\infty\delta(t-2k\pi))
+%   \phi''(t)\dd{t}\\
+%   &=-\int_{-\infty}^\infty\phi''(t)\dd{t}-2\pi\sum_{-\infty}^\infty\phi''(2k\pi)
+% \end{align*}
+% We found an identity for the sum in class:
+% \begin{align*}
+%   -\int_{-\infty}^\infty\phi''(t)\dd{t}-2\pi\sum_{-\infty}^\infty\phi''(2k\pi)&=
+%   -\int_{-\infty}^\infty\phi''(t)\dd{t}-\int_{-\infty}^\infty\phi''(t)\dd{t}
+%   -2\frac1\pi\sum_{k=1}^\infty\int_{-\infty}^\infty\cos(kt)\phi''(t)\dd{t}\\
+%   &=-2\qty(\int_{-\infty}^\infty\phi''(t)\dd{t}
+%   +\frac1\pi\sum_{k=1}^\infty\int_{-\infty}^\infty\cos(kt)\phi''(t)\dd{t})
+% \end{align*}
+% If we go back, the first term should be the zero distribution, so we only have the second term remaining
 \section*{Problem 3}
 
 \section*{Problem 4}
@@ -194,23 +203,28 @@ The only non-zero dot product would be $\vb{E}\vdot\vu{r}$:
   &=\frac1{r^2}\qty(E_0r\qty(2H(a-r)-rH'(a-r)))\\
   &=\frac{E_0}{r}\qty(2H(a-r)-rH'(a-r))
 \end{align*}
+If we work in a distributional sense, we know the derivative of the Heaviside function $H$ is a $\delta$:
+\begin{align*}
+  \div{\vb{E}}&=\frac{E_0}{r}\qty(2H(a-r)-r\delta(a-r))
+\end{align*}
 Multiplying by $\varepsilon_0$ gives the charge density:
 \begin{align}
   \boxed{
-    \rho=\varepsilon_0\frac{E_0}{r}\qty(2H(a-r)-rH'(a-r))
+    \rho=\varepsilon_0\frac{E_0}{r}\qty(2H(a-r)-r\delta(a-r))
   }
 \end{align}
 The definition of total charge is the integral of the charge density over the volume:
 \begin{align*}
   Q=\iiint\rho\dd{V}&=\int_0^{2\pi}\int_0^\pi\int_0^\infty
-  \frac{E_0\varepsilon_0}{r}\qty(2H(a-r)-rH'(a-r))r^2
+  \frac{E_0\varepsilon_0}{r}\qty(2H(a-r)-r\delta(a-r))r^2
   \sin\theta\dd{r}\dd{\theta}\dd{\phi}\\
   &=\varepsilon_0E_0\int_0^{2\pi}\int_0^\pi\int_0^\infty
-  \qty(2rH(a-r)-r^2H'(a-r))\sin\theta\dd{r}\dd{\theta}\dd{\phi}\\
-  &=\varepsilon_0E_0\int\dd{\Omega}\int_0^\infty\qty(2rH(a-r)-r^2H'(a-r))\dd{r}\\
-  &=4\pi\varepsilon_0E_0\int_0^\infty\pdv{r}\qty(r^2H(a-r))\dd{r}\\
-  &=4\pi\varepsilon_0E_0\lim_{b\to\infty}b^2H(a-b)
+  \qty(2rH(a-r)-r^2\delta(a-r))\sin\theta\dd{r}\dd{\theta}\dd{\phi}\\
+  &=\varepsilon_0E_0\int\dd{\Omega}\int_0^\infty
+  \qty(2rH(a-r)-r^2\delta(a-r))\dd{r}\\
+  &=4\pi\varepsilon_0E_0
 \end{align*}
+T
 \section*{Problem 5}
 We can immediately move the laplacian over to the test function $\phi$:
 \begin{align*}
