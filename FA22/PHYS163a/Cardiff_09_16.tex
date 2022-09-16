@@ -172,31 +172,37 @@
       \varphi_X(t)=\int\exp{iXt}\rho(X)\dd{X}
     \end{equation}
   \item This looks an awful lot like the Fourier transform of the probability density $\rho$, not sure of the implication of this.
-  \item Useful for determining if variables are independent (what does that mean?)
   \end{itemize}
 \end{frame}
 
-% \section{Moments are hard}
-% \begin{frame}{Anything else we can do?}
-%   \begin{itemize}
-%   \item Moments seem hard, is there anything else we can do? \pause \textbf{YES} \pause
-%   \item Take the characteristic function, but without an $i$
-%   \item This way we directly get all of the moments:
-%     \begin{equation}
-%       K=\log\qty[\int\exp{tX}\rho(X)\dd{X}]
-%     \end{equation}
-%   \item Using the series expansion:
-%     \begin{equation}
-%       K(t)=\sum_{n=1}^\infty\kappa_n\frac{t^n}{n!}
-%     \end{equation}
-%   \item Where $\kappa_n$ is the $n^\text{th}$ moment!
-%   \end{itemize}
-% \end{frame}
-% \begin{frame}{What do these mean?}
-%   \begin{itemize}
-%   \item The $n^\text{th}$ cumulant can be calculated by taking the $n^\text{th}$ derivative of the generating function $K$ and evaluating at $t=0$
-%   \end{itemize}
-% \end{frame}
+\section{Cumulants}
+\begin{frame}{An Alternative to Moments?}
+  \begin{itemize}
+  \item Take the log of characteristic function
+  \item This way we directly get all of the moments:
+    \begin{equation}
+      K=\log\qty[\int\exp{tX}\rho(X)\dd{X}]
+    \end{equation}
+  \item Using the series expansion:
+    \begin{equation}
+      K(t)=\sum_{n=1}^\infty\kappa_n\frac{t^n}{n!}
+    \end{equation}
+  \item Where $\kappa_n$ is the $n^\text{th}$ moment!
+  \end{itemize}
+\end{frame}
+\begin{frame}{What do these mean?}
+  \begin{itemize}
+  \item The $n^\text{th}$ cumulant can be calculated by taking the $n^\text{th}$ derivative of the generating function $K$ and evaluating at $t=0$
+  \item Expanding the $\log$ gives an idea of how each of the moments relates to the corresponding cumulant
+  \item The first four cumulants are as follows:
+    \begin{enumerate}
+    \item The mean/expectation value: Where is the data centered?
+    \item Variance: How spread out is the data?
+    \item Skewness: Does the data favor one end?
+    \item Kurtosis: How much do the tails contribute compared to the center
+    \end{enumerate}
+  \end{itemize}
+\end{frame}
 
 \section{Binomial Distribution}
 \begin{frame}{What is a Binomial Distribution?}
