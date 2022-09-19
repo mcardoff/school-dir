@@ -50,7 +50,6 @@
 
 \begin{document}
 \maketitle
-
 \section*{Problem 1}
 \subsection*{Part 1}
 This generalization theorem involves a rank 2 tensor instead of a vector, which is a rank 1 tensor. However, this is a fairly simple problem, we can see one index of the tensor is a vector. The transformation laws of a rank 2 tensor are:
@@ -64,14 +63,14 @@ This is most likely not right with index contractions and such. However, if we c
 We are left with one index remaining, which means this is a vector quantity. For all values of $k=0...n$ we have the following:
 \begin{gather*}
   \int\pdv{T_{i0}}{x_i}\dd{V}\\
-  \int\pdv{T_{i1}}{x_i}\dd{V}\\
+  % \int\pdv{T_{i1}}{x_i}\dd{V}\\
   \vdots\\
   \int\pdv{T_{in}}{x_i}\dd{V}
 \end{gather*}
-Each of these individual quantities can be treated as an instance of the divergence theorem. Which means we can replace the partial and $\dd{V}$ with a dot into $\dd{S}$, which in index notation would be $A_i\dd{S_i}$ for a vector $A$. Meaning we have:
+Each of these individual quantities can be treated as an instance of the divergence theorem, with the partial with respect to $x_i$ being the gradient, and we can contract it with the $i$ in  $T_{ik}$. Which means we can replace the partial and $\dd{V}$ with a dot into $\dd{S}$, which in index notation would be $A_i\dd{S_i}$ for a vector $A$. Meaning we have:
 \begin{gather*}
   \int_V\pdv{T_{i0}}{x_i}\dd{V}=\int_S T_{i0}\dd{S_i}\\
-  \int_V\pdv{T_{i1}}{x_i}\dd{V}=\int_S T_{i1}\dd{S_i}\\
+  % \int_V\pdv{T_{i1}}{x_i}\dd{V}=\int_S T_{i1}\dd{S_i}\\
   \vdots\\
   \int_V\pdv{T_{in}}{x_i}\dd{V}=\int_S T_{in}\dd{S_i}
 \end{gather*}
@@ -80,16 +79,57 @@ We realize that we simply have $n$ independent divergence theorems, and since we
   \boxed{\int_V\pdv{T_{ik}}{x_i}\dd{V}=\int_S T_{ik}\dd{S_i}}
 \end{gather}
 \subsection*{Part 2}
-I am not sure if this is right, but using the following convolution identity we can rewrite the integral:
-\begin{gather*}
-  \int g(t)h(t-\tau)\dd{\tau}=\int g(t-\tau)h(\tau)\dd{\tau}
-\end{gather*}
-Therefore we can take $t-\tau=\vb{r}-\vb{r}'$ and $\tau=\vb{r}'$:
+First we need to move the divergence into the integral:
 \begin{align*}
-  \int\frac{\vb{A}(\vb{r'})}{\abs{\vb{r-r'}}}\dd[3]{r'}=
-  \int\frac{\vb{A}(\vb{r-r'})}{\abs{\vb{r'}}}\dd[3]{r'}
+  \grad_{\vb{r}}\vdot\int\frac{\vb{A}(\vb{r}')}{\abs{\vb{r}-\vb{r}'}}\dd[3]{r'}=
+  \int\grad_{\vb{r}}\vdot
+  {\qty(\frac{\vb{A}(\vb{r}')}{\abs{\vb{r}-\vb{r}'}})}\dd[3]{r'}
 \end{align*}
-Thus, when we take the divergence, we can split it up as to wheteher or not the value $r-r'$ is within the bounding surface or not. If it is we can simply say the divergence disappears. Otherwise I am not sure :)
+Note that $\vb{A}$'s argument is primed, and the divergence is not, so it is constant with respect to the divergence, and hence we can turn it into a gradient of the scalar function $1/\abs{\vb{r-r}'}$ times a constant vector. In essence, we need to use this identity:
+\begin{align*}
+  \div{(\psi\vb{A})}=\psi\div{\vb{A}}+\vb{A}\vdot\grad{\psi}
+\end{align*}
+However, we can immediately say $\div{\vb{A}=0}$ here because $A$ is not a function of the divergence's coordinates:
+\begin{align*}
+  \grad_{\vb{r}}\vdot\qty(\frac{\vb{A}(\vb{r}')}{\abs{\vb{r-r}'}})=
+  \qty(\grad_{\vb{r}}{\frac1{\abs{\vb{r-r}'}}})\vdot\vb{A}(\vb{r}')
+\end{align*}
+However, now we need to make use of the following identity, for a function $f(x-x')$
+\begin{align*}
+  \pdv{f(x-x')}{x'}=-\pdv{f(x-x')}{x}
+\end{align*}
+Then we can move the gradient from a $r\to r'$ using the following:
+\begin{align*}
+  \grad_{\vb{r}}=-\grad_{\vb{r}'}
+\end{align*}
+Which turns our quantity into:
+\begin{align*}
+  \qty(\grad_{\vb{r}}{\frac1{\abs{\vb{r-r}'}}})\vdot\vb{A}(\vb{r}')=
+  -\qty(\grad_{\vb{r}'}{\frac1{\abs{\vb{r-r}'}}})\vdot\vb{A}(\vb{r}')
+\end{align*}
+Using the same vector calculus identity as before but with a no longer constant $\vb{A}$:
+\begin{align*}
+  -(\grad{\psi})\vdot\vb{A}=-\div{(\psi\vb{A})}+\psi\div\vb{A}
+\end{align*}
+Now that we have the same coordinates on the divergence as we have in the field $\vb{A}$, we can use our first condition, that $\div{\vb{A}}=0$, leaving us with:
+\begin{align*}
+  -\int_V\grad_{\vb{r}'}\vdot\qty(\frac{\vb{A}(\vb{r}')}{\abs{\vb{r-r}'}})
+  \dd[3]{r'}
+\end{align*}
+We can then use the divergence theorem:
+\begin{align*}
+  -\int_V\grad_{\vb{r}'}\vdot\qty(\frac{\vb{A}(\vb{r}')}{\abs{\vb{r-r}'}})
+  \dd[3]{r'}=\oint_{\D V}\qty(\frac{\vb{A}(\vb{r}')}{\abs{\vb{r-r}'}})
+  \vdot\dd{\vb{S}}
+\end{align*}
+Note that the form of $\dd{\vb{S}}=\vu{n}\dd{S}$, and since $\vb{A}\vdot\vu{n}=A_n=0$ is our other condition, we can conclude that the integral is in fact $0$:
+\begin{align}
+  \boxed{
+    \grad_{\vb{r}}\vdot\int
+    \frac{\vb{A}(\vb{r}')}{\abs{\vb{r}-\vb{r}'}}\dd[3]{r'}=0
+  }
+\end{align}
+\newpage
 \section*{Problem 2}
 \subsection*{Part 1}
 The Fourier series for a function in terms of $e^{int}$ is given by:
@@ -196,6 +236,7 @@ It should converge then in the distributional sense, to the Dirac Comb, and we c
     \sum_{-\infty}^\infty e^{int}=-1+2\pi\sum_{k=-\infty}^{\infty}\delta(t-2k\pi)
   }
 \end{align}
+\newpage
 \section*{Problem 3}
 \subsection*{Part 1}
 Since $\sin$ is a normally defined function, and $\phi$ is a test function, we can realistically write:
@@ -220,10 +261,12 @@ With the definition of $\chi$ as the derivative above, we get:
   -a\cos(0)\phi(0)-\sin(0)\phi'(0)=-a\phi(0)
 \end{align*}
 Hence:
+\begin{align*}
+  \ip{\sin(at)\delta^{(1)}}{\phi(t)}=-a\phi(0)=\ip{-a\delta}{\phi}
+\end{align*}
+Thus we can conclude:
 \begin{align}
-  \boxed{
-    \ip{\sin(at)\delta^{(1)}}{\phi(t)}=-a\phi(0)=\ip{-a\delta}{\phi}
-  }
+  \boxed{\sin(at)\delta^{(1)}=-a\delta}
 \end{align}
 \subsection*{Part 2}
 This requires we prove the product rule holds for a smooth function $g$ times a distribution $T$. Start with the definition of the distributional derivative:
@@ -266,9 +309,10 @@ Thus we can apply it here:
 Using our result for the derivative of the $\delta$ times sine in the previous part, we can write a since form:
 \begin{align}
   \boxed{
-    \dv[2]{t}\qty(H(t)\sin(at))=-a^2\sin(at)H(t)+2a\cos(at)\delta(t)-a\delta(t)
+    \dv[2]{t}\qty(H(t)\sin(at))=-a^2\sin(at)H(t)+(2\cos(at)-1)a\delta(t)
   }
 \end{align}
+\newpage
 \section*{Problem 4}
 Using Gauss's Law, we have that the charge density and the electric field are related by:
 \begin{align*}
@@ -350,6 +394,7 @@ The second integral is $0$ as the argument of the heaviside function will be $0$
     \end{cases}
   }
 \end{equation}
+\newpage
 \section*{Problem 5}
 We can immediately move the laplacian over to the test function $\phi$:
 \begin{align*}
