@@ -1,0 +1,97 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 164a HW 5}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{slashed}
+\usepackage{siunitx}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage[labelfont=bf]{caption}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
+\newcommand{\munu}{{\mu\nu}}
+\newcommand{\sla}[1]{\slashed{#1}}
+
+\begin{document}
+\maketitle
+
+\section{Significance}
+The formula for the compton length is:
+\begin{equation}
+  \lambda= \frac{\hbar}{mc}
+\end{equation}
+It is the wavelength of a photon whose energy is the same as the rest energy of that particle, so it is inherently a relativistic quantity.
+
+It is not the wavelength of some wave, more of a hypothetical wavelength.
+\section{Comparison to de Broglie}
+The formula for the de Broglie wavelength is:
+\begin{equation}
+  \lambda=\frac{\hbar}{p}
+\end{equation}
+Which is not necessarily relativistic.
+
+The de Broglie wavelength is an actual wavelength of a wave. It describes the wave nature of particles, and was shown experimental using electrons, specifically diffracting a large number of them, and there was an explicit wavelike diffraction pattern shown, demonstrating a wave nature.
+
+Since the Compton length explicitly uses $c$ as a velocity, the difference in the Compton length and de Broglie wavelength actually depends on the system.
+\section{Who was Compton?}
+The Compton length is named after Arthur Compton, who showed the sort of converse statement that the de Broglie wavelength demonstrates, that electromagnetic radiation is inherently particle-like. He won the Nobel Prize in Physics for this effect, called the Compton effect. 
+\section{Comparison}
+We already have a table of 'physical' sizes and masses of objects, we should calculate the compton length (at least to order of magnitude:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c|c}
+    Object & Mass (kg) & Size (m) & Compton Length \\ \hline
+    Photon           & \num{0}       & Point         & Undefined?    \\
+    Electron         & \num{9.0e-31} & Point         & \num{2.4e-11} \\
+    Proton           & \num{1.6e-27} & \num{8.4e-16} & \num{6.2e-16} \\
+    Hydrogen Atom    & \num{1.7e-27} & \num{1.2e-10} & \num{5.9e-16} \\
+    Carbon Atom      & \num{2.0e-26} & \num{1.7e-10} & \num{5.0e-17} \\
+    Bacterium        & \num{1.0e-15} & \num{1.1e-6 } & \num{1.0e-27} \\
+    Blood Cell       & \num{2.7e-14} & \num{3.8e-6 } & \num{3.7e-29} \\
+    Baseball         & \num{1.4e-1}  & \num{2.3e-1 } & \num{7.1e-42} \\
+    People           & \num{6.2e1  } & \num{1.6e1  } & \num{1.6e-44} \\
+    Antartic Whale   & \num{1.8e5  } & \num{2.0e1  } & \num{5.6e-48} \\
+    Moon             & \num{7.3e22 } & \num{1.7e6  } & \num{1.4e-65} \\
+    Earth            & \num{5.9e24 } & \num{6.4e6  } & \num{1.7e-67} \\
+    Sun              & \num{1.9e30 } & \num{7.0e8  } & \num{5.3e-73} \\
+    Solar System     & \num{2.0e30 } & \num{1.4e14 } & \num{5.0e-73} \\
+    Milky Way Galaxy & \num{2.9e42 } & \num{5.0e20 } & \num{2.9e-85}
+  \end{tabular}
+  \caption{Mass, Size, Compton Length}
+\end{table}
+
+\end{document}
