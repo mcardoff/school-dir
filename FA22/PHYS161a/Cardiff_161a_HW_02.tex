@@ -53,9 +53,43 @@
 
 \section*{Problem 1}
 \subsection*{Part 1}
-
+This generalization theorem involves a rank 2 tensor instead of a vector, which is a rank 1 tensor. However, this is a fairly simple problem, we can see one index of the tensor is a vector. The transformation laws of a rank 2 tensor are:
+\begin{align*}
+  T_{AB}=T_{\alpha\beta}\pdv{x_\alpha}{x_A}\pdv{x_\beta}{x_B}
+\end{align*}
+This is most likely not right with index contractions and such. However, if we contract one index, that is, take a tensor dot product with a vector
+\begin{align*}
+  T_{AB}\dd{S}_A
+\end{align*}
+We are left with one index remaining, which means this is a vector quantity. For all values of $k=0...n$ we have the following:
+\begin{gather*}
+  \int\pdv{T_{i0}}{x_i}\dd{V}\\
+  \int\pdv{T_{i1}}{x_i}\dd{V}\\
+  \vdots\\
+  \int\pdv{T_{in}}{x_i}\dd{V}
+\end{gather*}
+Each of these individual quantities can be treated as an instance of the divergence theorem. Which means we can replace the partial and $\dd{V}$ with a dot into $\dd{S}$, which in index notation would be $A_i\dd{S_i}$ for a vector $A$. Meaning we have:
+\begin{gather*}
+  \int_V\pdv{T_{i0}}{x_i}\dd{V}=\int_S T_{i0}\dd{S_i}\\
+  \int_V\pdv{T_{i1}}{x_i}\dd{V}=\int_S T_{i1}\dd{S_i}\\
+  \vdots\\
+  \int_V\pdv{T_{in}}{x_i}\dd{V}=\int_S T_{in}\dd{S_i}
+\end{gather*}
+We realize that we simply have $n$ independent divergence theorems, and since we want to write compactly, we can label it with an index $k$, therefore:
+\begin{gather}
+  \boxed{\int_V\pdv{T_{ik}}{x_i}\dd{V}=\int_S T_{ik}\dd{S_i}}
+\end{gather}
 \subsection*{Part 2}
-
+I am not sure if this is right, but using the following convolution identity we can rewrite the integral:
+\begin{gather*}
+  \int g(t)h(t-\tau)\dd{\tau}=\int g(t-\tau)h(\tau)\dd{\tau}
+\end{gather*}
+Therefore we can take $t-\tau=\vb{r}-\vb{r}'$ and $\tau=\vb{r}'$:
+\begin{align*}
+  \int\frac{\vb{A}(\vb{r'})}{\abs{\vb{r-r'}}}\dd[3]{r'}=
+  \int\frac{\vb{A}(\vb{r-r'})}{\abs{\vb{r'}}}\dd[3]{r'}
+\end{align*}
+Thus, when we take the divergence, we can split it up as to wheteher or not the value $r-r'$ is within the bounding surface or not. If it is we can simply say the divergence disappears. Otherwise I am not sure :)
 \section*{Problem 2}
 \subsection*{Part 1}
 The Fourier series for a function in terms of $e^{int}$ is given by:
@@ -140,11 +174,11 @@ Note that there is no disncontinuity in $g$, so we only need the classical deriv
   \boxed{
     \begin{aligned}
       g'(t)&=-(t-\pi)\\
-      g''(t)&=-1-2\pi\sum_{k=-\infty}^\infty\delta(t-2k\pi)
+      g''(t)&=-1+2\pi\sum_{k=-\infty}^\infty\delta(t-2k\pi)
     \end{aligned}
   }
 \end{equation}
-The following is a single period of each function:
+The following is two periods of each function:
 \begin{figure}[H]
   \centering
   \includegraphics[width=10cm]{fourierplot.png}
@@ -152,40 +186,89 @@ The following is a single period of each function:
   \label{fig:1}
 \end{figure}
 \subsection*{Part 3}
-First we need to see if this sum will converge in the distributional sense. The most important thing to notice is that $f(t)=g''(t)$. We know that the sum in $g(t)$ converges in the classical sense. This means it should converge in the distributional sense as well:
+First we need to see if this sum will converge in the distributional sense. If we can identify a function $h(t)$ such that $f(t)$ is one of the derivatives of that function, and that function converges classically, then that function $h(t)$ will converge distributionally, so its derivatives will converge distributionally as well. We can recognize one such function is the Fourier series of $g(t)$. Mainly that:
 \begin{align*}
-  -\sum_{n=-\infty,\neq0}^\infty\frac{e^{int}}{n^2}\quad\text{converges}
+  \dv[2]{t}\qty(-\sum_{n=-\infty,\neq0}^\infty\frac{e^{int}}{n^2})=\sum e^{int}
 \end{align*}
-We can also realize that if a distributional sum converges, so should its derivatives, not in the classical sense, but in the distributional sense, we can do this by realizing:
-\begin{align*}
-  \ip{g''(t)}{\phi(t)}=-\ip{g'(t)}{\phi'(t)}=\ip{g(t)}{\phi''(t)}
-\end{align*}
-And since $\phi\in C^\infty$, its second derivative is also a properly defined test function. Therefore this sum DOES converge. 
-% We can identify $f(t)$ as the second derivative of $g(t)$, and $g(t)$ converges in the classical sense so it will converge in the distributional sense, hence $g''(t)$ converges in the distributional sense.
-
-% As for what it will converge to we need to compute the following
-% \begin{align*}
-%   \ip{f(t)}{\phi(t)}&=\int_{-\infty}^\infty f(t)\phi(t)\dd{t}\\
-%   &=\int_{-\infty}^\infty\sum_{-\infty}^{\infty} e^{int}\phi(t)\dd{t}\\
-% \end{align*}
-% We know the convergence of the sum as the second derivative of $g(x)$, and we would pick up 2 derivatives on $\phi$:
-% \begin{align*}
-%   \int_{-\infty}^\infty\sum_{-\infty}^{\infty} e^{int}\phi(t)\dd{t}&=
-%   \int_{-\infty}^\infty\qty(-1-2\pi\sum_{k=-\infty}^\infty\delta(t-2k\pi))
-%   \phi''(t)\dd{t}\\
-%   &=-\int_{-\infty}^\infty\phi''(t)\dd{t}-2\pi\sum_{-\infty}^\infty\phi''(2k\pi)
-% \end{align*}
-% We found an identity for the sum in class:
-% \begin{align*}
-%   -\int_{-\infty}^\infty\phi''(t)\dd{t}-2\pi\sum_{-\infty}^\infty\phi''(2k\pi)&=
-%   -\int_{-\infty}^\infty\phi''(t)\dd{t}-\int_{-\infty}^\infty\phi''(t)\dd{t}
-%   -2\frac1\pi\sum_{k=1}^\infty\int_{-\infty}^\infty\cos(kt)\phi''(t)\dd{t}\\
-%   &=-2\qty(\int_{-\infty}^\infty\phi''(t)\dd{t}
-%   +\frac1\pi\sum_{k=1}^\infty\int_{-\infty}^\infty\cos(kt)\phi''(t)\dd{t})
-% \end{align*}
-% If we go back, the first term should be the zero distribution, so we only have the second term remaining
+It should converge then in the distributional sense, to the Dirac Comb, and we can absorb the -1 as an additive term:
+\begin{align}
+  \boxed{
+    \sum_{-\infty}^\infty e^{int}=-1+2\pi\sum_{k=-\infty}^{\infty}\delta(t-2k\pi)
+  }
+\end{align}
 \section*{Problem 3}
-
+\subsection*{Part 1}
+Since $\sin$ is a normally defined function, and $\phi$ is a test function, we can realistically write:
+\begin{align*}
+  \ip{\sin(at)\delta^{(1)}}{\phi(t)}=\ip{\delta^{(1)}}{\sin(at)\phi(t)}
+\end{align*}
+Since $\phi(t)$ has compact support, so will $\sin(at)\phi(t)$, thus we can use identities for distributions on this, namely that the derivative is given by:
+\begin{align*}
+  \ip{\delta^{(1)}}{\sin(at)\phi(t)}=-\ip{\delta}{(\sin(at)\phi(t))'}
+\end{align*}
+From which we can compute a classical derivative:
+\begin{align*}
+  (\sin(at)\phi(t))'=a\cos(at)\phi(t)+\sin(at)\phi'(t)
+\end{align*}
+Then we can use the definition of the delta:
+\begin{align*}
+  \ip{\delta}{\chi(t)}=\chi(0)
+\end{align*}
+With the definition of $\chi$ as the derivative above, we get:
+\begin{align*}
+  -\ip{\delta}{a\cos(at)\phi(t)+\sin(at)\phi'(t)}=
+  -a\cos(0)\phi(0)-\sin(0)\phi'(0)=-a\phi(0)
+\end{align*}
+Hence:
+\begin{align}
+  \boxed{
+    \ip{\sin(at)\delta^{(1)}}{\phi(t)}=-a\phi(0)=\ip{-a\delta}{\phi}
+  }
+\end{align}
+\subsection*{Part 2}
+This requires we prove the product rule holds for a smooth function $g$ times a distribution $T$. Start with the definition of the distributional derivative:
+\begin{align*}
+  \ip{(gT)'}{\phi}=-\ip{gT}{\phi'}
+\end{align*}
+We can move $g$ onto the test function by the definition of a distribution by a smooth function:
+\begin{align*}
+  -\ip{gT}{\phi'}=-\ip{T}{g\phi'}
+\end{align*}
+These are now two classical functions, so the regular product rule applies:
+\begin{align*}
+  g\phi'=(g\phi)'-g'\phi
+\end{align*}
+Plugging this in:
+\begin{align*}
+  -\ip{T}{g\phi'}=-\ip{T}{(g\phi)'-g'\phi}
+\end{align*}
+Distributions are linear functionals:
+\begin{align*}
+  -\ip{T}{(g\phi)'-g'\phi}=-\qty(\ip{T}{(g\phi)'}-\ip{T}{g'\phi})
+\end{align*}
+We can then use the definition of the distributional derivative the other way now:
+\begin{align*}
+  -\ip{T}{(g\phi)'}+\ip{T}{g'\phi}=\ip{T'}{g\phi}+\ip{T}{g'\phi}
+\end{align*}
+Using the property of multiplying by a smooth function again in the other direction yields the distributional product rule:
+\begin{align*}
+  \ip{T'}{g\phi}+\ip{T}{g'\phi}=\ip{gT'}{\phi}+\ip{g'T}{\phi}
+\end{align*}
+Using linearity one last time is the explicit rule:
+\begin{align*}
+  \boxed{\ip{(gT)'}{\phi}=\ip{(gT'+g'T)}{\phi}}
+\end{align*}
+Thus we can apply it here:
+\begin{align*}
+  \dv[2]{t}\qty(H(t)\sin(at))&=\dv{t}\qty(a\cos(at)H(t)+\delta(t)\sin(at))\\
+  &=-a^2H(t)\sin(at)+2a\cos(at)\delta(t)+\sin(at)\delta^{(1)}(t)
+\end{align*}
+Using our result for the derivative of the $\delta$ times sine in the previous part, we can write a since form:
+\begin{align}
+  \boxed{
+    \dv[2]{t}\qty(H(t)\sin(at))=-a^2\sin(at)H(t)+2a\cos(at)\delta(t)-a\delta(t)
+  }
+\end{align}
 \section*{Problem 4}
 Using Gauss's Law, we have that the charge density and the electric field are related by:
 \begin{align*}
@@ -213,18 +296,60 @@ Multiplying by $\varepsilon_0$ gives the charge density:
     \rho=\varepsilon_0\frac{E_0}{r}\qty(2H(a-r)-r\delta(a-r))
   }
 \end{align}
-The definition of total charge is the integral of the charge density over the volume:
+We can use the integral form of Gauss's law to get the total charge:
 \begin{align*}
-  Q=\iiint\rho\dd{V}&=\int_0^{2\pi}\int_0^\pi\int_0^\infty
-  \frac{E_0\varepsilon_0}{r}\qty(2H(a-r)-r\delta(a-r))r^2
-  \sin\theta\dd{r}\dd{\theta}\dd{\phi}\\
-  &=\varepsilon_0E_0\int_0^{2\pi}\int_0^\pi\int_0^\infty
-  \qty(2rH(a-r)-r^2\delta(a-r))\sin\theta\dd{r}\dd{\theta}\dd{\phi}\\
-  &=\varepsilon_0E_0\int\dd{\Omega}\int_0^\infty
-  \qty(2rH(a-r)-r^2\delta(a-r))\dd{r}\\
-  &=4\pi\varepsilon_0E_0
+  Q=\varepsilon_0\oint E_0H(a-r)\vu{r}\vdot\dd{\vb{S}}
 \end{align*}
-T
+The differential surface element at some $r$ is:
+\begin{align*}
+  \vu{r}\vdot\dd{\vb{S}}=r^2\sin\theta\dd{\theta}\dd{\phi}
+\end{align*}
+Integrating:
+\begin{align*}
+  Q&=\varepsilon_0E_0\int_0^\pi\int_0^{2\pi}H(a-r)
+  r^2\sin\theta\dd{\theta}\dd{\phi}\\
+  &=\varepsilon_0E_0r^2H(a-r)\int\dd{\Omega}\\
+  &=4\pi\varepsilon_0r^2E_0H(a-r)
+\end{align*}
+The charge is:
+\begin{align}
+  \boxed{
+    Q=4\pi\varepsilon_0r^2E_0H(a-r)
+  }
+\end{align}
+Now the potential, which can be calculated by:
+\begin{align*}
+  \varphi(r)=-\int_{r_0}^r\vb{E}\vdot\dd{\bm{\ell}}
+\end{align*}
+Arbitrarily set $r_0=0$, and $r=r'$ to avoid confusion. The differential line element in spherical coordinates is:
+\begin{align*}
+  \dd{\bm{\ell}}=\vu{r}\dd{r}
+  +\hat{\bm{\phi}}r\dd{\phi}
+  +\hat{\bm{\theta}}r\sin\theta\dd{\theta}
+\end{align*}
+Therefore the only got that counts is the $\vu{r}$:
+\begin{align*}
+  \varphi(r')=-\int_0^{r'}E_0H(a-r)\dd{r}
+\end{align*}
+Then if $r'<a$ we can directly integrate:
+\begin{align*}
+  \varphi(r')_{r'<a}=-E_0r'
+\end{align*}
+If $r'>a$ then we have:
+\begin{align*}
+  \varphi(r')&=-\int_0^{r'}E_0H(a-r)\dd{r}\\
+  &=-\int_0^aE_0H(a-r)\dd{r}-\int_a^{r'}E_0H(a-r)\dd{r}
+\end{align*}
+The second integral is $0$ as the argument of the heaviside function will be $0$ that entire region, the other is the same as before just evaluated at $a$:
+\begin{equation}
+  \boxed{
+    \varphi(r)=
+    \begin{cases}
+      -E_0r & r<a \\
+      -E_0a & r\geq a
+    \end{cases}
+  }
+\end{equation}
 \section*{Problem 5}
 We can immediately move the laplacian over to the test function $\phi$:
 \begin{align*}
@@ -235,27 +360,28 @@ There is a discontinuity at $r=0$ so we can write:
   \ip{\ln(r)}{\laplacian{\phi}}=\lim_{\epsilon\to0}
   \int_{\abs{r}>\epsilon}\ln(r)\laplacian{\phi}\dd{r}
 \end{align*}
-We want to make use of Green's Identity:
+We want to make use of Green's Identities:
 \begin{align*}
-  \int\div{\vb{F}}\dd[2]{r}=\oint\vb{F}\vdot\vu{n}\dd{S}
+  \int\div{\vb{F}}\dd[2]{r}=\oint\vb{F}\vdot\vu{n}\dd{\ell}
 \end{align*}
-So that we end up with something of the form:
+Note our volume is now an area and the surface is now a curve.
+We want to end up with something of the form:
 \begin{align*}
   \int\qty(\phi\laplacian{\psi}-\psi\laplacian\phi)\dd[2]{r}=
-  \int\qty(\phi\grad{\psi}-\psi\grad{\phi})\vdot\dd{\vb{S}}
+  \int\qty(\phi\grad{\psi}-\psi\grad{\phi})\vdot\dd{\vb{\ell}}
 \end{align*}
 We then take $\psi=\ln(r)$ and $\laplacian{\psi}=0$:
 \begin{align*}
   \int\ln(r)\laplacian{\phi}\dd[2]{r}=\int(\ln(r)\grad\phi-\phi\grad{\ln(r)})
-  \vdot\vu{n}\dd{S}
+  \vdot\vu{n}\dd{\ell}
 \end{align*}
-We realize that $\vu{n}\vdot\gradient=\pdv{r}$ since we are using polar coordinates.
+We realize that $\vu{n}\vdot\gradient=-\pdv{r}$ since we are using polar coordinates and our curve is oriented opposite to the normal.
 \begin{align*}
-  \int(\ln(r)\grad\phi-\phi\grad{\ln(r)})\vdot\vu{n}\dd{S}=
-  \int\qty(\ln(\epsilon)\pdv{\phi}{r}-\phi\frac{1}{r})
+  \int(\ln(r)\grad\phi-\phi\grad{\ln(r)})\vdot\vu{n}\dd{\ell}=
+  \int\qty(-\ln(\epsilon)\pdv{\phi}{r}+\phi\frac{1}{r})
   r\dd{\varphi}
 \end{align*}
-The $\phi$ integration is what gives us the factor of $2\pi$, and in the same way as before we get a $\phi(0)$ by integrating by parts again:
+The logic follows exactly the same as when we did the laplacian of $1/r$ in class:
 \begin{align*}
   \ip{\laplacian{\ln(r)}}{\phi}=\ip{2\pi\delta}{\phi}
 \end{align*}
