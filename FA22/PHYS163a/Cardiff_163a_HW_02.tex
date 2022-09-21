@@ -1,0 +1,173 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 163a HW 2}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{slashed}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage[labelfont=bf]{caption}
+\usepackage{siunitx}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\newcommand{\fig}[3]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+  \end{figure}
+}
+
+\newcommand{\figref}[4]
+{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1cm]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
+\newcommand{\munu}{{\mu\nu}}
+\newcommand{\sla}[1]{\slashed{#1}}
+
+\begin{document}
+\maketitle
+
+\section{Poisson Distribution For Grades}
+We can indicate that within the overall population of students, 10\% of them receive an A, that means in a population of 24 students, we expect $0.10\times24=2.4$ students to get an A, this will be $\lambda$ for our Poisson Distribution:
+\begin{align*}
+  P(X=k)=\eval{\frac{\lambda^k}{k!}e^{-\lambda}}_{\lambda=2.4}
+\end{align*}
+Plugging in $k=12$ gives us the probability of 12 students getting an A:
+\begin{align*}
+  P(X=12)=\frac{(2.4)^{12}}{12!}e^{-2.4}=\num{6.9e-6}
+\end{align*}
+Which is a $0.00069\%$ chance that 12 students get an A:
+\begin{align}
+  \boxed{P(X=12)=\num{6.9e-6}}
+\end{align}
+\section{Vegas Game}
+We can make a table with all of the outcomes:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c}
+    Option & Outcome & Probability \\\hline
+    1 & -2\$ & $p_1$\\
+    2 & +0\$ & $p_2$\\
+    3 & +4\$ & $p_3$
+  \end{tabular}
+  \caption{Possible Outcomes/Probabilities}
+\end{table}
+The various outcomes are $x_i$ and $p_i$ is $p(x_i)$ in short. We have two different constraints we need to enforce:
+\begin{gather*}
+  \sum_ip_i=1\\
+  \sum_ix_ip_i=0
+\end{gather*}
+We can add these as the following Lagrange multipliers to our entropy:
+\begin{align*}
+  S_\alpha&=-\alpha\qty[\qty(\sum_{i=1}^3p_i)-1]\\
+  S_\beta &=-\beta\qty[\qty(\sum_{i=1}^3x_ip_i)-0]
+\end{align*}
+And the total entropy is:
+\begin{align*}
+  S=-\qty[\sum_{i=1}^3p_i\ln p_i]-\alpha\qty[\qty(\sum_{i=1}^3p_i)-1]
+  -\beta\qty[\qty(\sum_{i=1}^3x_ip_i)-0]
+\end{align*}
+To minimize entropy with respect to $p_i$ and $\alpha,\beta$, we need the gradient to be $0$:
+\begin{align*}
+  \grad_{\{p_i\},\alpha,\beta}S(\{p_i\},\alpha,\beta)=0
+\end{align*}
+Note that this odd looking gradient is:
+\begin{align*}
+  \grad_{\{p_i\},\alpha,\beta}=\qty(\qty{\pdv{p_i}},\pdv{\alpha},\pdv{\beta})
+\end{align*}
+That is, for this case:
+\begin{align*}
+  \grad_{\{p_i\},\alpha,\beta}=
+  \qty(\pdv{p_1},\pdv{p_2},\pdv{p_3},\pdv{\alpha},\pdv{\beta})
+\end{align*}
+Taking the $\alpha$ and $\beta$ components first we get:
+\begin{align*}
+  \pdv{S}{\alpha}&=-\qty(p_1+p_2+p_3-1)=0\implies p_1+p_2+p_3=1\\
+  \pdv{S}{\beta}&=-\qty(-2p_1+4p_3)=0\implies p_3=\frac{p_1}{2}
+\end{align*}
+We can use the second to get a bound of $p_2$ in terms of $p_1$, completely parameterizing our system:
+\begin{align*}
+  p_1+p_2+p_3=p_1+p_2+\frac{p_1}{2}=\frac32p_1+p_2=1\implies p_2=1-\frac32p_1
+\end{align*}
+Therefore the relationship between each of these is:
+\begin{align*}
+  (p_1,p_2,p_3)=\qty(p_1,1-\frac32p_1,\frac12p_1)
+\end{align*}
+Now we should rewrite the entropy in terms of this parameterization of solutions, knowing that it satisfies our constraints by construction, we have effectively eliminated $\alpha,\beta$:
+\begin{align*}
+  S(p_1)=-\sum_{i=1}^3p_i(p_1)\ln p_i(p_1)
+\end{align*}
+Where $p_i(p_1)$ is an element of the above vector:
+\begin{align*}
+  S(p_1)=-p_1\ln p_1-\qty(1-\frac32p_1)\ln(1-\frac32p_1)-\frac12p_1\ln\frac12p_1
+\end{align*}
+Differentiating with respect to $p_1$:
+\begin{align*}
+  \pdv{S(p_1)}{p_1}=\frac32\ln(1-\frac32p_1)-\frac32\ln(\frac{p_1}2)-\ln(p_1)
+\end{align*}
+This needs to be $0$, and since this is a transcendental equation I will solve it using numerical methods (a.k.a. Mathematica):
+\begin{align*}
+  \frac32\ln(1-\frac32p_1)-\frac32\ln(\frac{p_1}2)-\ln(p_1)=0\implies
+  p_1=0.435977
+\end{align*}
+Thus giving the following probability distribution:
+\begin{equation}
+  \boxed{
+    \begin{aligned}
+      p_1&=0.435977\\
+      p_2&=0.346035\\
+      p_3&=0.217988
+    \end{aligned}
+  }
+\end{equation}
+\section{Dice Information Theory}
+The unbiased probabilities require optimization of the entropy with the constraints that $\sum p_i=1$ and that $p_6=2p_1$. We know the other values $p_2...p_5$ should still all be equal like a normal dice. We can call this $p_0$ as it is an already optimized probability, so we need to optimize:
+\begin{align*}
+  S(p_1,p_o)=-p_1\ln p_1-2p_1\ln 2p_1-4p_o\ln(p_o)
+\end{align*}
+The probability of something else happening besides 1 or 6 is $p_o$, and we should be able to find it using the sum constraint:
+\begin{align*}
+  \sum_{i=1}^6p_i=3p_1+p_2+p_3+p_4+p_5=1
+\end{align*}
+If we all call them individually $p_o$:
+\begin{align*}
+  3p_1+p_2+p_3+p_4+p_5=1\implies3p_1+4p_o=1\implies p_o=\frac{1-3p_1}{4}
+\end{align*}
+Hence the entropy is:
+\begin{align*}
+  S(p_1)=-p_1\ln p_1-2p_1\ln 2p_1-(1-3p_1)\ln(\frac{1-3p_1}{4})
+\end{align*}
+The minimum is given by:
+\begin{align*}
+  \pdv{S}{p_1}&=-\ln p_1-2\ln 2p_1+3\ln(\frac{1-3p_1}{4})\\
+  &=-\ln p_1-\ln((2p_1)^2)+\ln(\qty(\frac{1-3p_1}{4})^3)\\
+  &=-\ln(2^2p_1^3)+\ln(\frac{(1-3p_1)^3}{2^6})\\
+  &=3\ln(\frac{1-3p_1}{2^{8/3}p_1})
+\end{align*}
+\section{Random Matrices}
+
+\section{Water Weed}
+
+\end{document}
