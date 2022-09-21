@@ -230,12 +230,27 @@ First we need to see if this sum will converge in the distributional sense. If w
 \begin{align*}
   \dv[2]{t}\qty(-\sum_{n=-\infty,\neq0}^\infty\frac{e^{int}}{n^2})=\sum e^{int}
 \end{align*}
-It should converge then in the distributional sense, to the Dirac Comb, and we can absorb the -1 as an additive term:
+It will then converge in the distributional sense. The value can be found by applying to a test function:
+\begin{align}
+  \ip{\sum_{-\infty}^\infty e^{int}}{\phi}
+  =\ip{-1+2\pi\sum_{k=-\infty}^{\infty}\delta(t-2k\pi)}{\phi}
+\end{align}
+Thus, we find:
+\begin{align*}
+  \ip{-1+2\pi\sum_{k=-\infty}^{\infty}\delta(t-2k\pi)}{\phi}
+  =-\ip{\mathbb{I}}{\phi}+2\pi\sum_{k=-\infty}^{\infty}\phi(2k\pi)
+\end{align*}
+The sum was found to be:
+\begin{align*}
+  2\pi\sum_{-\infty}^\infty\phi(2k\pi)=\ip{\mathbb{I}}{\phi}+2\ip{\cos(nt)}{\phi}
+\end{align*}
+Hence:
 \begin{align}
   \boxed{
-    \sum_{-\infty}^\infty e^{int}=-1+2\pi\sum_{k=-\infty}^{\infty}\delta(t-2k\pi)
+    \ip{\sum_{-\infty}^\infty e^{int}}{\phi}=2\sum_{n=0}^\infty\ip{\cos(nt)}{\phi}
   }
 \end{align}
+I am giving up at this point
 \newpage
 \section*{Problem 3}
 \subsection*{Part 1}
