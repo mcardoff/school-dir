@@ -143,6 +143,7 @@ Thus giving the following probability distribution:
   }
 \end{equation}
 \section{Dice Information Theory}
+\subsection{Probability Distribution}
 The unbiased probabilities require optimization of the entropy with the constraints that $\sum p_i=1$ and that $p_6=2p_1$. We know the other values $p_2...p_5$ should still all be equal like a normal dice. We can call this $p_0$ as it is an already optimized probability, so we need to optimize:
 \begin{align*}
   S(p_1,p_o)=-p_1\ln p_1-2p_1\ln 2p_1-4p_o\ln(p_o)
@@ -164,10 +165,134 @@ The minimum is given by:
   \pdv{S}{p_1}&=-\ln p_1-2\ln 2p_1+3\ln(\frac{1-3p_1}{4})\\
   &=-\ln p_1-\ln((2p_1)^2)+\ln(\qty(\frac{1-3p_1}{4})^3)\\
   &=-\ln(2^2p_1^3)+\ln(\frac{(1-3p_1)^3}{2^6})\\
+  &=\ln(\frac{(1-3p_1)^3}{2^8p_1^3})\\
   &=3\ln(\frac{1-3p_1}{2^{8/3}p_1})
 \end{align*}
+Solving for when this is $0$:
+\begin{align*}
+  3\ln(\frac{1-3p_1}{2^{8/3}p_1})&=0\\
+  \frac{1-3p_1}{2^{8/3}p_1}&=1\\
+  1-3p_1&=2^{8/3}p_1\\
+  \qty(2^{8/3}+3)p_1&=1\\
+  p_1&=\frac1{2^{8/3}+3}
+\end{align*}
+Then $p_1$ and $p_6$ are:
+\begin{align*}
+  p_1&=\frac1{2^{8/3}+3}\\
+  p_6=2p_1&=\frac2{2^{8/3}+3}
+\end{align*}
+The remaining probabilities:
+\begin{align*}
+  p_2=p_3=p_4=p_5&=\frac{1-3p_1}4=
+  \frac14\qty(\frac{2^{8/3}+3}{2^{8/3}+3}-\frac3{2^{8/3}+3})\\
+  &=\frac{2^{8/3}/2^2}{2^{8/3}+3}\\
+  &=\frac{2^{2/3}}{2^{8/3}+3}
+\end{align*}
+Hence the probability distribution is:
+\begin{equation}
+  \boxed{
+    \begin{aligned}
+      p_1&=\frac1{2^{8/3}+3}\\
+      p_2=p_3=p_4=p_5&=\frac{2^{2/3}}{2^{8/3}+3}\\
+      p_6&=\frac2{2^{8/3}+3}
+    \end{aligned}
+  }
+\end{equation}
+
+\subsection{Information Content}
+The 'language' here is dice, with $M=6$, and the information content is:
+\begin{align*}
+  I&=\log_26+\sum_{i=1}^{6}p_i\log_2p_i\\
+  &\approx 0.03
+\end{align*}
+The work from this:
+\begin{center}
+  \includegraphics[width=15.0cm]{work.png}
+\end{center}
+Thus:
+\begin{align}
+  \boxed{I\approx 0.03\text{ bits}}
+\end{align}
 \section{Random Matrices}
+\subsection{Characteristic Function of Each Element}
+Each element has the same probability distribution in the interval $(-a,a)$, its even properly normalized, so the characteristic function $\tilde{p}(k)$ is:
+\begin{align*}
+  \tilde{p}_{ij}(k)&=\int_{-a}^a\frac{e^{-ikx}}{2a}\dd{x}\\
+  &=\eval{\frac{e^{-ikx}}{-2ika}}_{-a}^a\\
+  &=\frac{e^{ika}-e^{-ika}}{2ika}
+\end{align*}
+This can be reduced to $\sin(ka)$ using euler's identity:
+\begin{align}
+  \boxed{\tilde{p}_{ij}(k)=\frac{\sin ka}{ka}}
+\end{align}
+\subsection{Characteristic Function for the Trace}
+Note that the trace is found by adding together diagonal elements of of a matrix, and since this matrix is $N$ by $N$, we are adding $N$ elements to get the trace.
 
-\section{Water Weed}
-
+If we want to find the characteristic function for a random variable that can be described as the sum of other random variables where we already know the characteristic functions, we can simply take the product of all the ones we know to get the one we dont. Hence, since we have $N$ of the same function, we get that:
+\begin{align}
+  \boxed{\tilde{p}_{Trace}=\qty(\frac{\sin ka}{ka})^N}
+\end{align}
+\subsection{Central Limit Theorem}
+The central limit theorem states that for a large number of summed independent random variables, it is approximately normally distributed. This means that the cumulants of the sum is just the sum of the individual cumulants. This means the leading order cumulants are:
+\begin{equation}
+  \boxed{
+    \begin{aligned}
+      \ev{Trace}_c=N\ev{M_{ij}}&=0\\
+      \ev{Trace^2}_c=N\ev{M_{ij}^2}=N\int_{-a}^a\frac{x^2}{2a}\dd{x}&=
+      \frac{Na^2}{3}
+    \end{aligned}
+  }
+\end{equation}
+\subsection{Variance of Wigner Semicircle Rule}
+For the following probability distribution we want to find the variance:
+\begin{align*}
+  \sigma^2_\lambda=\ev{\lambda^2}-\ev{\lambda}^2
+\end{align*}
+The first expectation value is:
+\begin{align*}
+  \ev{\lambda}&=\frac2{\pi\lambda_0}\int_{-\lambda_0}^{\lambda_0}\lambda
+  \sqrt{1-\frac{\lambda^2}{\lambda_0^2}}\dd{\lambda}\\
+  x&=\frac\lambda{\lambda_0}\qquad \dd{x}=\dd{\lambda}/\lambda_0\\
+  &=\frac{2\lambda_0}{\pi}\int_{-1}^1x\sqrt{1-x^2}\dd{x}\\
+  u&=1-x^2 \qquad \dd{u}=-2x\dd{x}\\
+  &=-\frac{\lambda_0}\pi\int_0^0\sqrt{u}\dd{u}=\boxed{0}
+\end{align*}
+The second:
+\begin{align*}
+  \ev{\lambda^2}&=\frac2{\pi\lambda_0}\int_{-\lambda_0}^{\lambda_0}\lambda^2
+  \sqrt{1-\frac{\lambda^2}{\lambda_0^2}}\dd{\lambda}\\
+  x&=\frac\lambda{\lambda_0} \qquad \dd{x}=\dd{\lambda}/\lambda_0\\
+  &=\frac{2\lambda_0^2}\pi\int_{-1}^1x^2\sqrt{1-x^2}\dd{x}\\
+  x&=\sin\theta\qquad\dd{x}=\cos\theta\dd{\theta}\\
+  &=\frac{2\lambda_0^2}\pi\int_{-\pi/2}^{\pi/2}\sin^2\theta\cos^2\theta\dd{\theta}
+\end{align*}
+This is a standard integral we can put in mathematica:
+\begin{align*}
+  \frac{2\lambda_0^2}\pi\int_{-\pi/2}^{\pi/2}\sin^2\theta\cos^2\theta\dd{\theta}
+  &=\frac{\lambda_0^2}{4}
+\end{align*}
+Hence the variance is just this term:
+\begin{align}
+  \boxed{\sigma^2_\lambda=\frac{\lambda_0^2}{4}}
+\end{align}
+\subsection{Independent Eigenvalues?}
+The eigenvalues are related to the trace by a sum:
+\begin{align*}
+  Trace=\sum_{i}\lambda_i
+\end{align*}
+So the expectation of the trace squared is going to be:
+\begin{align*}
+  \ev{Trace^2}=\sum_i\ev{\lambda_i^2}+\sum_{i\neq j}\ev{\lambda_i\lambda_j}
+\end{align*}
+We already have a form for the expectation of the trace squared via the central limit theorem, and we just calculated the expectation of $\lambda_i^2$, so its sum will be $N$ times that. However:
+\begin{align*}
+  \ev{Trace^2}-\sum_i\ev{\lambda_i^2}=\frac{Na^2}{3}-\frac{N^2a^2}{3}
+\end{align*}
+In order for the eigenvalues to be independent, the cross correlations must be $0$, which this is not!
+\section{Water Weeds}
+Each day will have a different, yet equally distributed random increase of the number density, meaning we can write the number density as a function of number of days $N>0$:
+\begin{align*}
+  n(N)=n_0\prod_{i=1}^N(1+\Delta_i)
+\end{align*}
+This product for large $n$ will contain at the very least the sum of all of the individual $\Delta_i$ as well as mixed products between all of them. And since the value of $\Delta$ will always be small, so will mixed products such as $\Delta_i\Delta_j$, so we can ignore them. According to the central limit theorem, since we have such a large sum over independent variables, the sum should be Normally Distributed, with mean $N\mu_{\Delta}=0$ and standard deviation $N\sigma_\Delta$.
 \end{document}

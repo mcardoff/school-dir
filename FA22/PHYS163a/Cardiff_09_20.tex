@@ -5,6 +5,7 @@
 \usepackage{url}
 
 \newcommand{\dbar}{d\hspace*{-0.08em}\bar{}\hspace*{0.1em}}
+\newcommand{\D}{\partial}
 \renewcommand{\L}{\mathcal{L}}
 
 \newenvironment{itemframe}[1]{\begin{frame}{#1}\begin{itemize}}   {\end{itemize}\end{frame}}
@@ -19,7 +20,7 @@
 % for figures
 \graphicspath{ {./figs/} }
 
-\title{Functional Derivatives \& Lagrange Multipliers}
+\title{Lagrange Multipliers}
 \author{Michael Cardiff}
 \subtitle{PHYS 163a \ 09/20 Prep Work}
 
@@ -28,55 +29,26 @@
 \begin{frame}
   \titlepage
 \end{frame}
-\section{Functional Derivatives}
-\begin{frame}{Functional Derivatives}
-  We have met total derivatives, partial derivatives and more. Now what is this functional derivative?
-  \begin{itemize}
-  \item Works on functionals, which have functions as inputs, so they look like:
-    \begin{align*}
-      A[q]=\int_a^b f(r,q(r),\grad{q(r)})\dd{r}
-    \end{align*}
-  \item The functional derivative is a generalization of the Euler-Lagrange Equations:
-    \begin{align*}
-      \fdv{A}{q}=\pdv{f}{q}-\div{\pdv{f}{\grad{q}}}
-    \end{align*}
-  \end{itemize}
-\end{frame}
-\begin{frame}{Functional Derivatives}
-  \begin{itemize}
-  \item How do we find $\delta A$?
-  \item Similar to the way we derive Euler-Lagrange Equations, only vary $q$:
-    \begin{align*}
-      \delta A&=\int_a^b\qty(\pdv{f}{q}\delta q(r)+\pdv{f}{\grad{q(r)}}
-      \grad{\delta q(r)})\dd{r}\\
-      &=\int_a^b\qty(\pdv{f}{q}\delta q(r)+\div{\pdv{f}{\grad{q(r)}}})
-      \delta q(r)\dd{r}
-    \end{align*}
-  \item Therefore we can identify the parenthetical term as $\fdv{A}{q}$
-  \end{itemize}
-\end{frame}
-\begin{frame}{Another Way}
-  \begin{itemize}
-  \item Define with an aribitrary function $\phi(x)$:
-    \begin{align*}
-      \int\fdv{F[\rho]}{\rho}(x)\phi(x)\dd{x}
-    \end{align*}
-  \item The derivative is then:
-    \begin{align*}
-      \int\fdv{F[\rho]}{\rho}(x)\phi(x)\dd{x}=\qty[\dv{\epsilon}
-      F[\rho+\epsilon\phi]]_{\epsilon=0}
-    \end{align*}
-  \end{itemize}
-\end{frame}
-\begin{frame}{Why are they useful?}
-  \begin{itemize}
-  \item Probability theory makes use of functionals
-  \item Functional derivative is how the functional changes with a certain change in the configuration, that is with a change in the input
-  \item In order to get the least biased probability dostribution, we may need to minimize or maximize a functional
-  \item This may require making use of the functional derivative.
-  \end{itemize}
-\end{frame}
 \section{Lagrange Multipliers}
+\begin{frame}{Intuition}
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      \begin{itemize}
+      \item How do we usually find extrema of $f(x)$ on any interval?
+      \item Take the derivative, set it equal to $0$, solve for $x$
+      \item Can easily generalize to functions of multiple variables
+      \item Lagrange multipliers help with \textbf{constraints}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.6\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=5.0cm]{minmax.png}
+        \caption{Typical Example of Maxima finding}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
 \begin{frame}{Lagrange Multipliers}
   \begin{itemize}
   \item Find extrema of a function $f(\vb{x})$ subject to constraints $g_i(\vb{x})=0$.
@@ -112,10 +84,13 @@
 \end{frame}
 \begin{frame}{Example Continued}
   \begin{itemize}
-  \item Note increasing value of $k$ is moving the contour line to the right
-  \item Notice the largest value of $k$ that still has a values on the red circle is the one that that is barely touches it without going over.
-  \item In math talk, they are tangent. 
-  \item Gradient can quantify this tangency.
+  \item Note $k$ increases as the contour line moves to the right
+  \item Maxima (Minima): Largest (smallest) value of $k$
+  \item Matching constraint: Contour line intersects contraint
+  \item Notice the largest (smallest) value of $k$ that still has a values on the red circle is the one that that is barely touches it without going over.
+  \item In math talk, they are tangent.
+  \item In 1-D, tangent=derivative, in $n$ dimensions, it is the gradient
+  \item Idea of Lagrange multipliers: Gradient of $f$ and $g$ are parallel at a maximum
   \end{itemize}
 \end{frame}
 \begin{frame}{Equations of Lagrange Multipliers}
@@ -184,8 +159,8 @@
   \end{itemize}
 \end{frame}
 
-\section{Takeaways}
-\begin{frame}{Takeaways and Generalizations}
+\section{Takeaways \& Generalizations}
+\begin{frame}{Takeaways}
   \begin{itemize}
   \item A function is maximized with respect to another function when their gradients are in the same direction.
   \item Mathematically:
@@ -196,5 +171,17 @@
   \item For each constraint you will get another $\lambda$, but the constraint equation provides an equation, giving a solveable system. 
   \end{itemize}
 \end{frame}
-
+\begin{frame}{Generalization}
+  \begin{itemize}
+  \item Doing Lagrange Multipliers does not really look like normal optimization
+  \item Introduce Lagrangian $\L$:
+    \begin{align*}
+      \L=f(\vb{x})-\lambda_i(g_i(\vb{x})-c_i)
+    \end{align*}
+    Where constraints are $g_i=c_i$
+  \item Notice $\D_{\lambda_i}\L$ gives te constraint equation.
+  \item So if we modify the gradient to include derivatives of $\lambda_i$, we can encode the constraints via this Lagrangian.
+  \item Normally we do $\grad=\ev{\pdv{x},\pdv{y},\pdv{z}}$, now use $\grad_{\vb{x},\{\lambda_i\}}$ with a component for each of $\vb{x}$ and each constraint
+  \end{itemize}
+\end{frame}
 \end{document}
