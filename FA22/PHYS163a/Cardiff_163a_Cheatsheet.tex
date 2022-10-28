@@ -1,0 +1,168 @@
+\documentclass[8pt]{article}
+
+% -------------------------------------------------------------------
+% packages 
+% -------------------------------------------------------------------
+
+\usepackage{geometry}
+\usepackage{multicol}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,physics,bm}
+\usepackage{graphicx,float}
+% margins & spacing 
+\geometry{margin = 0.5in}
+\pagestyle{empty}
+\setlength{\parindent}{0pt} 
+\setlength{\parskip}{0pt}
+
+% multicol parameters
+\setlength{\premulticols}{2pt}
+\setlength{\postmulticols}{2pt}
+\setlength{\multicolsep}{2pt}
+\setlength{\columnsep}{20pt}
+
+\begin{document}
+\small
+\begin{multicols*}{2}
+  \begin{center}
+    \normalsize{Axiomatic Thermodynamics}
+  \end{center}
+    \hrule~\\
+  The laws of thermodynamics are:
+  \begin{enumerate}
+  \setcounter{enumi}{-1}
+  \item Thermal equilibrium is transitive
+  \item Two ways to put $E$ in a sys, $\dd{Q},\dd{W}$
+  \item Cant 100\% turn $Q\to W$, $Q$ flows $T_H$ to $T_C$
+  \item $S$ goes to 0 as $T$ goes to 0
+  \end{enumerate}
+  Extensive=External size, Intensive=Intrinsic.
+
+  Thermodynamic Potentials:
+  \begin{gather*}
+    \footnotesize
+    F=E-TS \qquad \dd{F}=-S\dd{T}+J\dd{x}\\
+    G=E-TS-Jx \qquad \dd{G}=-S\dd{T}-x\dd{J}\\
+    H=E-Jx \qquad \dd{H}=-S\dd{T}+J\dd{x}
+  \end{gather*}
+  Table 1.2:
+  \begin{table}[H]
+    \footnotesize
+    \centering
+    \begin{tabular}{|c|cc|}
+      \hline&$\dd{Q}=0$ & const $T$ \\\hline
+      $\dd{W}=0$ & $\dd{S}\geq0$ & $\dd{F}\leq0$\\
+      const $J$ & $\dd{H}\leq0$ & $\dd{G}\leq0$ \\\hline
+    \end{tabular}
+  \end{table}
+
+   Gibbs-Duhem, take $\partial$: $E(\lambda\text{Ex})=\lambda E(\text{Ex})$ and T1\\
+   Maxwell relations: Take mixed $\partial$ of potentials\\
+   Stability: $\dd{T}\dd{S}+\dd{J}\dd{x}+\dd{\mu}\dd{N}\geq 0$ or $C_V\geq0$
+   \\\textbf{or}\\ second partial of potential is positive
+  \begin{center}
+    \normalsize{Probability}
+  \end{center}
+    \hrule~\\
+  Characteristic function: $\tilde{p}(k)=\ev{e^{-ikx}}$ \\
+  Cumulant generating function: $\ln\tilde{p}(k)$
+  \begin{gather*}
+    \tilde{p}(k)=\int\dd{x}p(x)e^{ikx}=\sum_{n}\frac{(-ik)^n}{n!}\ev{x^n}\\
+    \ln\tilde{p}(k)=\sum_n\frac{(-ik)^n}{n!}\ev{x^n}_c
+  \end{gather*}
+  Central Limit Thm: Sum of many random vars $\sim$ normal distro
+  Saddle point: Integral of exponential times $N\phi$ can be done by expanding about $x_{max}$:
+  \begin{align*}
+    \int\dd{x}\exp{N\phi(x)}\approx e^{N\phi(x_{m})}
+    \sqrt{\frac{2\pi}{N\abs{\phi''(x_{m})}}}
+  \end{align*}
+  Information entropy:
+  \begin{align*}
+    S=-\sum_ip_i\ln p_i=-\int\dd{p}p\ln p
+  \end{align*}
+  To take a functional derivative, use
+  \begin{gather*}
+    \fdv{f(x)}{f(y)}=\delta(x-y)
+  \end{gather*}
+  To maximize entropy, Add $\mathcal{L}$ multipliers, take functional derivative with respect to $p$ and apply constraints
+  \begin{center}
+    \normalsize{Kinetic Theory}
+  \end{center}
+    \hrule~\\
+  Liouville Thm: At diff times, $\dd{\vb{p}'}\dd{\vb{q}'}=\dd{\vb{p}}\dd{\vb{q}}$
+  Liouville Eqn: bc of Liouville thm, $\dv{\rho}{t}=0$, get
+  \begin{gather*}
+    \pdv{\rho}{t}+\{\rho,H\}=0\\
+    \{\rho_{eq},H\}=0
+  \end{gather*}
+  First Equation of BBGKY has longer relaxation time than all of the other ones, so when first eqn relaxes, all others have as well\\
+  Coarse Graining in Time: limited range of $V_{int}$, Reduction to separation and center of mass, Center of mass deriv is small \\
+  Coarse Graining in space: Change of vars to scattering notation, assumption of molecular chaos:
+  \begin{gather*}
+    f_2(\Gamma_1,\Gamma_2,t)=f_1(\Gamma_1,t)f_1(\Gamma_2,t)
+  \end{gather*}
+  only really unjustified assumption\\
+  H-Theorem: $\dv{H(t)}{t}\leq0$:
+    \begin{gather*}
+      H(t)=\int\dd{\vb{p}}\dd{\vb{q}}f_1\ln f_1
+    \end{gather*}
+    Irreversible as we are treating $f_2(+)$ and $f_2(-)$ (b/f and after the col) differently, one IS the product of 2 $f_1$s, the other is not\\
+  Necessary condition for $\dv{H}{t}=0$:
+  \begin{gather*}
+    f_1(\vb{p}_1,\vb{q})f_1(\vb{p}_2,\vb{q})=
+    f_1(\vb{p}_1',\vb{q})f_1(\vb{p}_2',\vb{q})
+  \end{gather*}
+  Described by additive quantities conserved in collision, giving:
+  \begin{align*}
+    f_1(\vb{p},\vb{q})&=N(\vb{q})\exp{-\alpha(\vb{q})\vdot\vb{p}
+      -\beta(\vb{q})\qty(p^2/2m+U(\vb{q}))}\\
+    &=n\qty(\frac{\beta}{2\pi m})^{3/2}\exp[-\beta(\vb{p-p}_0)^2/2m]
+  \end{align*}
+  With $\vb{p}_0=m\bm{\alpha}/\beta$
+  \begin{center}
+    \normalsize{Classical Statistical Mechanics}
+  \end{center}
+    \hrule~\\
+  Fundamental Postulate: equal a priori probabilities for $\mu$states for isolated systems
+  \begin{gather*}
+    p(\mu)=\frac1{\Omega(E)}
+  \end{gather*}
+  $\Omega(E)=$ \# of states with energy $E$\\
+  Information Entropy definition gives $S=k_B\log\Omega$\\
+  Canonical Ensemble: Heat sink in EQL with smaller system, get:
+  \begin{align*}
+    p(\mu)=Z^{-1}e^{-\beta H(\mu)}\quad
+    Z=\sum_\mu e^{-\beta H(\mu)}\quad
+    F=-k_BT\log Z
+  \end{align*}
+  To derive T0:
+  \begin{itemize}
+  \item Get expression for total $S$, saddle pt, etc
+  \item Find $\pdv{S_i}{E_i}$ are equal, conclude it is temp
+  \end{itemize}
+  To derive T1:
+  \begin{itemize}
+  \item Expand differential of $S$
+  \item Find form for $\pdv{S}{x}$, use T0 and rewrite 
+  \end{itemize}
+  To derive T2:
+  \begin{itemize}
+  \item The EQL point has greater $\Omega$
+  \item From lower energies to higher, there is a loss of info $\implies\dd{S}\geq0$
+  \end{itemize}
+  \begin{center}
+    \normalsize{Misc}
+  \end{center}
+  \hrule~\\
+  \begin{itemize}
+  \item Sterling Approx:
+    \begin{gather*}
+      \ln N!\approx N\ln N-N
+    \end{gather*}
+  \item Gaussian normalization:
+  \begin{gather*}
+    \int\dd{x}\exp{-\alpha(x-\beta)^2}=\sqrt{\frac{\pi}{\alpha}}
+  \end{gather*}
+  
+  \end{itemize}
+\end{multicols*}
+\end{document}

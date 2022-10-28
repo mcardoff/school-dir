@@ -1,0 +1,401 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 161a HW 04}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{slashed}
+
+%% general pretty stuff
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage[labelfont=bf]{caption}
+\usepackage{tikz}
+
+% figures
+\graphicspath{ {./figs/} }
+
+\renewcommand{\L}{\mathcal{L}}
+
+\newcommand{\D}{\partial}
+\newcommand{\munu}{{\mu\nu}}
+\newcommand{\sla}[1]{\slashed{#1}}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\begin{document}
+\maketitle
+
+\section{Dipole Moment Practice}
+\subsection{Charged Ring}
+The charge density of a ring must reduce the integral by two, so we get a length instead of a volume multiplying the charge density. By analysis and from discussions in class, we get:
+\begin{align*}
+  \sigma(r,\theta)=\frac1{r\sin\theta}\delta\qty(\theta-\frac\pi2)\delta(r-R)
+\end{align*}
+Where the ring is a radius $R$. This is the surface charge density associated with the line density $\lambda$, with units such that:
+\begin{align*}
+  \rho(\vb{r})=\lambda(\phi)\sigma(r,\theta)
+\end{align*}
+The dipole moment is a vector $\vb{p}$, defined by:
+\begin{align*}
+  \vb{p}=\int\dd[3]{r}\vb{r}\rho(\vb{r})
+\end{align*}
+Where $\vb{r}$ is the standard position vector in terms $\vu{x},\vu{y},\vu{z}$:
+\begin{align*}
+  \vb{r}=
+  \qty(\sin\theta\cos\phi)\vu{x}+
+  \qty(\sin\theta\sin\phi)\vu{y}+
+  \qty(\cos\theta)\vu{z}
+\end{align*}
+Note that $p_z$ has the following integral:
+\begin{align*}
+  p_z\propto\int_0^\pi\dd{\theta}\delta\qty(\theta-\frac\pi2)\cos\theta
+\end{align*}
+By the definition of the $\delta$, we have $\cos\pi/2$, which is $0$, so $p_z=0$
+\begin{align*}
+  \vb{p}\vdot\vu{z}=0
+\end{align*}
+The integral for $y$ requires that we sub in the charge density:
+\begin{align*}
+  \rho(\vb{r})=\frac{\lambda_0\cos\phi}{r\sin\theta}
+  \delta\qty(\theta-\frac\pi2)\delta(r-R)
+\end{align*}
+The $\phi$ integral for $p_y$ is:
+\begin{align*}
+  p_y\propto\int_0^{2\pi}\dd{\phi}\cos\phi\sin\phi
+\end{align*}
+Since $\sin$ and $\cos$ are orthogonal functions over a single period, this integral is 0, and so is $p_y$:
+\begin{align*}
+  \vb{p}\vdot\vu{y}=0
+\end{align*}
+This leaves only $p_x$:
+\begin{align*}
+  p_x=\int_0^{2\pi}\dd{\phi}\int_0^\pi\dd{\theta}\sin\theta\int_0^\infty\dd{r}r^2
+  \qty[r\sin\theta\cos\phi]\qty[\frac{\lambda_0\cos\phi}{r\sin\theta}
+  \delta\qty(\theta-\frac\pi2)\delta(r-R)]
+\end{align*}
+Simplifying a bit:
+\begin{align*}
+  p_x=\lambda_0\int_0^{2\pi}\dd{\phi}\cos^2\phi
+  \int_0^\pi\dd{\theta}\sin\theta\delta\qty(\theta-\frac\pi2)
+  \int_0^\infty\dd{r}r^2\delta(r-R)
+\end{align*}
+The second two integrals are trivial by definition of the $\delta$, and the first we can use the properties of $\cos$ as a complete set to get that it is simply $\pi$, leaving us with:
+\begin{align*}
+  p_x=\lambda_0(\pi)\qty(\sin(\frac\pi2))R^2=\lambda_0\pi R^2
+\end{align*}
+Thus the dipole moment is:
+\begin{align}
+  \boxed{\vb{p}=\lambda_0\pi R^2\vu{x}}
+\end{align}
+\subsection{Charged Sphere}
+Now we have a surface charge density $\sigma(\theta)$. We only need the result:
+\begin{align*}
+  Q=4\pi R^2\sigma=\int\dd{\Omega}\int\dd{r}r^2\delta(r-R)\sigma
+\end{align*}
+Thus, we need 
+\begin{align*}
+  \rho(\vb{r})=\sigma(\theta)\delta(r-R)=\sigma_0\cos\theta\delta(r-R)
+\end{align*}
+Thus the dipole moment is:
+\begin{align*}
+  \vb{p}=\int\dd[3]{r}\vb{r}\rho(\vb{r})
+\end{align*}
+With the $\vb{r}$ the same as in the previous part. Since our charge density has a $\cos\theta$ in it, immediately, the $\vu{x}$ and $\vu{y}$ integrals must be $0$, since they contain $\sin\theta$, which is orthogonal to $\cos\theta$, hence:
+\begin{align*}
+  \vb{p}\vdot\vu{x}&=0\\
+  \vb{p}\vdot\vu{y}&=0
+\end{align*}
+The $z$ integral is the only non-zero one then:
+\begin{align*}
+  p_z&=\int_0^{2\pi}\dd{\phi}\int_0^\pi\dd{\theta}\sin\theta\int_0^\infty\dd{r}r^2
+  \qty(r\cos\theta)\qty[\sigma_0\cos\theta\delta(r-R)]\\
+  &=\sigma_0\int_0^{2\pi}\dd{\phi}
+  \int_0^\pi\dd{\theta}\sin\theta\cos^2\theta
+  \int_0^\infty\dd{r}r^3\delta(r-R)
+\end{align*}
+The trivial integrals are:
+\begin{align*}
+  \int_0^{2\pi}\dd{\phi}&=2\pi\\
+  \int_0^\infty\dd{r}r^3\delta(r-R)&=R^3
+\end{align*}
+The only remaining one is:
+\begin{align*}
+  p_z&=2\pi R^3\sigma_0\int_0^\pi\dd{\theta}\sin\theta\cos^2\theta\\
+  u&=\cos\theta\quad\dd{u}=-\sin\theta\dd{\theta}\\
+  p_z&=2\pi R^3\sigma_0\int_{-1}^{1}\dd{u}u^2\\
+  &=\frac43\pi R^3\sigma_0
+\end{align*}
+Thus the dipole moment is:
+\begin{align}
+  \boxed{\vb{p}=\frac43\pi R^3\sigma_0\vu{z}}
+\end{align}
+\section{Cartesian Multipole Practice}
+\subsection{Charges in a square}
+The total charge is the 'multipole moment', since there are 2 plus charges and 2 minus charges, the total is $0$:
+\begin{align}
+  \boxed{Q=0}
+\end{align}
+The dipole moment from the plus charges would cancel out that of the minus charges, so the dipole moment is also $0$:
+\begin{align}
+  \boxed{\vb{P}=\bm{0}}
+\end{align}
+The quadrupole moment must be calculated by the charge density:
+\begin{align*}
+  Q_{ij}=\frac12\int\dd[3]{r}\qty(r_ir_j)\rho(\vb{r})
+\end{align*}
+There are 4 total charges, at each corner of a square, the density is:
+\begin{align*}
+  \rho(\vb{r})&=q\delta(z)(\delta(x-a)\delta(y-a)+\delta(x+a)\delta(y+a)
+  -\delta(x-a)\delta(y+a)-\delta(x+a)\delta(y-a))\\
+  &=q\delta(z)\qty(
+  \delta^{(2)}(a,a)+
+  \delta^{(2)}(-a,-a)-
+  \delta^{(2)}(a,-a)-
+  \delta^{(2)}(-a,a))
+\end{align*}
+All terms with a $z$ will go away because of $\delta(z)$ which means:
+\begin{align*}
+  Q_{iz}=Q_{zi}=Q_{zz}=0
+\end{align*}
+Thus all that is left is $Q_{xx},Q_{yy},Q_{yx},Q_{xy}$:
+\begin{align*}
+  Q_{ii}=\frac12\int\dd{x}\dd{y}\dd{z}r_i^2\rho(\vb{r})
+\end{align*}
+Notice for each of the diagonal terms, we will get the same for all 4 terms, except the second 2 will be opposite sign of the first two, so it will all go to $0$:
+\begin{align*}
+  Q_{ii}=0
+\end{align*}
+The last one is $Q_{xy}=Q_{yx}$ by symmetry:
+\begin{align*}
+  Q_{yx}=Q_{xy}=\frac12\int\dd{x}\dd{y}\dd{z}xy^2\rho(\vb{r})
+\end{align*}
+The $z$ integral is immediately $1$:
+\begin{align*}
+  Q_{xy}&=\frac12\int\dd{x}x\int\dd{y}y\rho(\vb{r})\\
+  &=q\frac12\int\dd{x}x\int\dd{y}y\qty(\delta^{(2)}(a,a)+
+  \delta^{(2)}(-a,-a)-
+  \delta^{(2)}(a,-a)-
+  \delta^{(2)}(-a,a))
+\end{align*}
+Hence we get a reduction of these $\delta$:
+\begin{align*}
+  Q_{xy}&=q\frac12\int\dd{x}x
+  \qty(a\delta(x-a)-a\delta(x+a)+a\delta(x-a)-a\delta(x+a))\\
+  &=qa\int\dd{x}x\qty(\delta(x-a)-\delta(x+a))\\
+  &=qa\qty(a-(-a))=2qa^2
+\end{align*}
+Thus our quadrupole moment tensor is:
+\begin{align}
+  \boxed{
+    \va{\vb{Q}}=2qa^2
+    \begin{bmatrix}
+      0 & 1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 0
+    \end{bmatrix}
+  }
+\end{align}
+Where I have noted the tensor object as bold with an arrow above it.
+\subsection{Finite rod of charge}
+The rod has a charge density $\lambda$ and length $2\ell$, so the monopole moment $Q$ is:
+\begin{align*}
+  \boxed{Q=2\lambda\ell}
+\end{align*}
+The distribution is symmetric about the origin, and the multiplier for the dipole moment is odd, so the integral for the dipole moment is $0$:
+\begin{align}
+  \boxed{\vb{P}=\bm{0}}
+\end{align}
+Thus the quadrupole moment is the only nonzero. The rod only exists in the $z$ axis, so it can only be spread out in the $z$ axis, which is what the quadrupole moment measures, like the variance of a probability distribution. Thus the only nonzero one is:
+\begin{align*}
+  Q_{zz}=\frac12\int\dd[3]{r}z^2\rho(\vb{r})
+\end{align*}
+The $x,y$ integrals go away, and we get:
+\begin{align*}
+  Q_{zz}=\frac12\lambda\int_{-\ell}^\ell\dd{z}z^2=\frac\lambda3\ell^3
+\end{align*}
+So the quadrupole moment tensor is:
+\begin{align}
+  \boxed{
+    \va{\vb{Q}}=\frac\lambda3\ell^3
+    \begin{bmatrix}
+      0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1
+    \end{bmatrix}
+  }
+\end{align}
+\subsection{Charged Ring}
+First we must for Our charge density. It is in the $x-y$ plane, with $z=0$, so we need a $\delta(z)$. Since we have circular symmetry in the plane, we should use cylindrical coordinates, with $r=R$ being the radius of the ring. Then we have:
+\begin{align*}
+  \rho(r,\phi,z)=\lambda\delta(z)\delta(r-R)
+\end{align*}
+Just like the first one, since the charge is in the $x-y$ plane, all of the $Q_{iz}=Q_{zi}=Q_{zz}=0$, leaving $Q_{xx},Q_{yy},Q_{xy}$. Recall that $x=r\cos\phi$ and $y=r\sin\phi$ in cylindrical coordinates. We also must remember the Jacobian for cylindrical coordinates, which is $\dd{x}\dd{y}\dd{z}=r\dd{r}\dd{\phi}\dd{z}$:
+\begin{align*}
+  Q_{xy}&=\frac\lambda2\int_{-\infty}^\infty\dd{z}
+  \int_0^{2\pi}\dd{\phi}\int_0^{\infty}\dd{r}
+  (r\cos\phi)(r\sin\phi)\delta(z)\delta(r-R)\\
+  &=\frac\lambda2\int_{-\infty}^\infty\dd{z}\delta(z)
+  \int_0^{2\pi}\dd{\phi}\cos\phi\sin\phi
+  \int_0^\infty\dd{r}r^3\delta(r-R)
+\end{align*}
+Which is $0$ by orthogonality of $\sin,\cos$:
+\begin{align*}
+  Q_{xy}=Q_{yx}=0
+\end{align*}
+We can recognize that $Q_{xx}$ and $Q_{yy}$ will be the same except for one will have a sine and one will have cosine. However since:
+\begin{align*}
+  \int_0^{2\pi}\dd{\theta}\cos^2\theta=\int_0^{2\pi}\dd{\theta}\sin^2\theta=\pi
+\end{align*}
+We are then left with 2 identical $r$ integrals:
+\begin{align*}
+  Q_{xx}=Q_{yy}=\frac\lambda2\pi\int_0^\infty\dd{r}r^3\delta(r-R)=
+  \frac12\lambda\pi R^3
+\end{align*}
+Hence the quadrupole moment tensor is:
+\begin{align}
+  \boxed{
+    \va{\vb{Q}}=\frac12\lambda\pi R^3
+    \begin{bmatrix}
+      1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0
+    \end{bmatrix}
+  }
+\end{align}
+\section{Spherical Multipole Moment Example}
+Notice that the spherical harmonics are orthogonal with respect to each other, such that:
+\begin{align*}
+  \int_0^{2\pi}\dd{\phi}\int_0^\pi\dd{\theta}\sin\theta
+  \qty(Y^*_{\ell m}(\theta,\phi)Y_{\ell'm'}(\theta,\phi))
+  =\delta_{\ell\ell'}\delta_{mm'}
+\end{align*}
+There are 2 different types of multipole moments for spherical expansions, first the interior, and then the exterior ones. This is important since the charge distribution is:
+\begin{align*}
+  \rho(\vb{r})=
+  \begin{cases}
+    \alpha(R-r)\qty[1-\cos\theta]^2 & \abs{\vb{r}}\leq R\\
+    0 & \abs{\vb{r}}\geq R
+  \end{cases}
+\end{align*}
+The interior spherical multipole moments are given by:
+\begin{align*}
+  B_{\ell m}=\frac{4\pi}{2\ell+1}\int\dd[3]{r'}
+  \frac{\rho(\vb{r'})}{(r^{\prime\ell+1})}Y_{\ell m}(\theta',\phi')
+\end{align*}
+This is strictly in a regime where $r<r'$, so we have:
+\begin{align*}
+  B_{\ell m}=\frac{4\pi}{2\ell+1}\int_0^{2\pi}\dd{\phi'}
+  \int_0^\pi\dd{\theta'}\sin\theta'
+  \int_0^\infty\dd{r'}\alpha(R-r')(r')^{1-\ell}(1-\cos\theta')^2
+  Y_{\ell m}(\theta',\phi')
+\end{align*}
+However we can notice immediately that the $\theta$ dependence of the charge density we are limited on which moments we have to consider. First notice the lack of $\phi$ dependence anywhere, this immediately gives us the hint that $m=0$, since $m$ is what controls whether or not we have dependence on $\phi$:
+\begin{align*}
+  B_{\ell0}=\frac{4\pi}{2\ell+1}\int_0^{2\pi}\dd{\phi'}
+  \int_0^\pi\dd{\theta'}\sin\theta'(1-\cos\theta')^2Y_{\ell0}(\theta',\phi')
+  \int_0^\infty\dd{r'}\alpha(R-r')(r')^{1-\ell}
+\end{align*}
+We know the angular integrals are what will choose $\ell,m$, so we see:
+\begin{align*}
+  \int_0^{2\pi}\dd{\phi'}\int_0^\pi\dd{\theta'}\sin\theta'
+  (1-\cos\theta')^2Y_{\ell0}(\theta',\phi')
+\end{align*}
+We notice that there will be $3$ terms in this integral which contribute:
+\begin{align*}
+  (1-\cos\theta')^2=1-2\cos\theta'+\cos^2\theta'
+\end{align*}
+Note that $Y_{00}$ is a constant, $Y_{10}$ is proportional to $\cos\theta$, and $Y_{20}$ is proportional to $\cos^2\theta$, so the only contributing interior multipole moments are $\ell=0,1,2$ and $m=0$. Thus the angular integrals will mostly disappear due to the normalization of the spherical harmonics:
+\begin{align*}
+  B_{00}&=4\pi\int_0^{2\pi}\dd{\phi'}\int_0^\pi\dd{\theta'}\sin\theta'
+  Y_{00}(1-\cos\theta')^2
+  \int_0^s\dd{r'}\alpha(R-r')(r')^{1-0}\\
+  &=\frac{32\pi^{3/2}}3\int_0^s\dd{r'}\alpha(R-r')r'\\
+  &=\frac{16\pi^{3/2}}9s^2(3R-2s)\\
+  B_{10}&=\frac{4\pi}3\int_0^{2\pi}\dd{\phi'}\int_0^\pi\dd{\theta'}\sin\theta'
+  Y_{10}(1-\cos\theta')^2
+  \int_0^s\dd{r'}\alpha(R-r')(r')^{1-1}\\
+  &=-\frac{16\pi^{3/2}}{3\sqrt{3}}\int_0^s\dd{r'}\alpha(R-r')\\
+  &=-\frac{8\pi^{3/2}}{3\sqrt{3}}s(2R-s)\\
+  B_{20}&=\frac{4\pi}5\int_0^{2\pi}\dd{\phi'}\int_0^\pi\dd{\theta'}\sin\theta'
+  Y_{20}(1-\cos\theta')^2
+  \int_0^s\dd{r'}\alpha(R-r')(r')^{1-2}\\
+  &=\frac{16\pi^{3/2}}{15\sqrt{5}}\int_0^s\dd{r'}\alpha\frac{(R-r')}{r'}
+\end{align*}
+Recall these are only valid for $s\leq R$, and I am not sure how we should go about the third one...
+
+Therefore the only interior multipole moments are:
+\begin{equation}
+  \boxed{
+  \begin{aligned}
+    B_{00}&=\frac{\alpha16\pi^{3/2}}9s^2(3R-2s)\\
+    B_{10}&=-\frac{\alpha8\pi^{3/2}}{3\sqrt{3}}s(2R-s)\\
+    B_{20}&=\frac{\alpha16\pi^{3/2}}{15\sqrt{5}}\int_0^s\dd{r'}\frac{(R-r')}{r'}
+  \end{aligned}
+  }
+\end{equation}
+This leaves the exterior moments:
+\begin{align*}
+  A_{\ell m}=\frac{4\pi}{2\ell+1}\int\dd[3]{r'}
+  \rho(\vb{r}')(r')^{\ell}Y_{\ell m}^*(\theta',\phi')
+\end{align*}
+The integrals separate to:
+\begin{align*}
+  A_{\ell m}&=\frac{4\pi}{2\ell+1}
+  \int_0^{2\pi}\dd{\phi'}
+  \int_0^\pi\dd{\theta'}\sin\theta'
+  \int_0^R\dd{r'}
+  \rho(\vb{r}')(r')^{2+\ell}Y_{\ell m}^*(\theta',\phi')\\
+  &=\frac{4\pi}{2\ell+1}
+  \int_0^{2\pi}\dd{\phi'}
+  \int_0^\pi\dd{\theta'}\sin\theta'(1-\cos\theta')^2Y_{\ell m}^*(\theta',\phi')
+  \int_0^R\dd{r'}\alpha(R-r')(r')^{2+\ell}
+\end{align*}
+Once again the only valid values of $\ell$ and $m$ are $0,1,2$ and $0$, the only different thing is the $r'$ integrals:
+\begin{align*}
+  A_{00}&=4\pi\int_0^{2\pi}\dd{\phi'}\int_0^\pi\dd{\theta'}\sin\theta'
+  Y_{00}(1-\cos\theta')^2\int_0^R\dd{r'}\alpha(R-r')(r')^{2+0}\\
+  &=\frac{32\pi^{3/2}}3\int_0^R\dd{r'}\alpha(R-r')(r')^{2}\\
+  &=\frac89\pi^{3/2}\alpha R^4\\
+  A_{10}&=\frac{4\pi}3\int_0^{2\pi}\dd{\phi'}\int_0^\pi\dd{\theta'}\sin\theta'
+  Y_{10}(1-\cos\theta')^2\int_0^R\dd{r'}\alpha(R-r')(r')^{2+1}\\
+  &=-\frac{16\pi^{3/2}}{3\sqrt{3}}\int_0^R\dd{r'}\alpha(R-r')(r')^{3}\\
+  &=-\frac{4}{15\sqrt{3}}\pi^{3/2}\alpha R^5\\
+  A_{20}&=\frac{4\pi}5\int_0^{2\pi}\dd{\phi'}\int_0^\pi\dd{\theta'}\sin\theta'
+  Y_{20}(1-\cos\theta')^2\int_0^R\dd{r'}\alpha(R-r')(r')^{2+2}\\
+  &=\frac{16\pi^{3/2}}{15\sqrt{5}}\int_0^R\dd{r'}\alpha(R-r')(r')^4\\
+  &=\frac{8}{225\sqrt{5}}\pi^{3/2}\alpha R^6
+\end{align*}
+Thus the exterior moments are:
+\begin{equation}
+  \boxed{
+    \begin{aligned}
+      A_{00}&=\frac89\pi^{3/2}\alpha R^4\\
+      A_{10}&=-\frac{4}{15\sqrt{3}}\pi^{3/2}\alpha R^5\\
+      A_{20}&=\frac{8}{225\sqrt{5}}\pi^{3/2}\alpha R^6
+    \end{aligned}
+  }
+\end{equation}
+The potential exterior to the distribution is then given by:
+\begin{align*}
+  \varphi(\vb{r})&=\frac1{4\pi\varepsilon_0}\sum_{\ell=0}^2
+  A_{\ell0}\frac{Y_{\ell0}}{r^{\ell+1}}\\
+  &=\frac1{4\pi\varepsilon_0}
+  \qty(\frac49\pi\alpha R^4
+  -\frac2{15}\pi\alpha R^5\cos\theta
+  +\frac2{225}\pi\alpha R^6(2\cos^2\theta-1))\\
+  &=\frac{2\pi\alpha R^4}{4\pi\varepsilon_0}
+  \qty(\frac29-\frac{R}{15}\cos\theta-
+  \frac{R^2}{225}+\frac{R^2}{75}\cos^2\theta)\\
+  &=\frac{\alpha R^4}{2\varepsilon_0}
+  \qty(\frac29-\frac{R}{15}\cos\theta-
+  \frac{R^2}{225}+\frac{R^2}{75}\cos^2\theta)
+\end{align*}
+Hence the potential outside of the sphere is:
+\begin{align}
+  \boxed{\varphi(\vb{r})=\frac{\alpha R^4}{2\varepsilon_0}
+  \qty(\frac29-\frac{R}{15}\cos\theta-
+  R^2\qty(\frac1{225}-\frac1{75}\cos^2\theta))}
+\end{align}
+\end{document}

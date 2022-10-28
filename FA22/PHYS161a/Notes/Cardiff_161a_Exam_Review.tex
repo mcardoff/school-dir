@@ -1,0 +1,302 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 161a\\Electromagnetic Theory I}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amssymb,amsthm,bm,physics,slashed}
+
+%% general pretty stuff
+\usepackage{caption,enumitem,float,geometry,graphicx,tikz}
+
+% setups
+\graphicspath{ {./figs/} }
+\captionsetup{labelfont=bf}
+\geometry{margin=1in}
+
+% theorem defns
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+% macros
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
+\newcommand{\veps}{\varepsilon}
+\newcommand{\vphi}{\varphi}
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+
+\begin{document}
+\maketitle
+\section{Generalized Functions}
+The language of electrodynamics does not necessarily need an advanced language of functions, as it can be solved using traditional calculus, however with the need to reconcile with discontinuities, which are not handled very well in this calculus.
+
+However in the language of mathematics there is a way to formalize this. This leads to the notion of a generalized function, sometimes called distributions, which solve many of these problems.
+
+\subsection{The Main Difficulty}
+Coulomb's Law provides the following formula for a point charge at the point $\vb{r}'$:
+\begin{equation}
+  \label{eq:cl}
+  \vb{E}(\vb{r})=\frac{q}{4\pi\veps_0}\frac{\vb{r-r}'}{\abs{\vb{r-r}'}}
+\end{equation}
+With the caveat that $\vb{r\neq r}'$.
+
+However if we were to use Maxwell's Equations to find $\vb{E}$, we would find the following formula:
+\begin{equation}
+  \label{eq:mxe}
+  \vb{E}(\vb{r})=\frac1{4\pi\veps_0}\int
+  \rho(\vb{r}')\frac{\vb{r-r}'}{\abs{\vb{r-r}'}}\dd[3]{r'}
+\end{equation}
+The main idea is that traditional functions do not have the capacity to define such a function $\rho$ that satisfies \eqref{eq:mxe}, in order to provide \eqref{eq:cl}.
+
+We know about the $\delta$ function, however it violates many principles of functions we know and love, mainly, that the function $\delta(x-a)$ is not continuous, as by definition:
+\begin{align*}
+  \lim_{x\to a^+}\delta(x-a)=\lim_{x\to a^-}\neq\delta(a-a)
+\end{align*}
+Thus we can only define the $\delta$ in terms of an integral:
+\begin{definition}[Dirac Delta]
+  The delta function $\delta_a$ is a formal symbol, which is only defined in terms of a formal inner product space, however it can be represented in the following way with an integral:
+  \begin{equation}
+    \label{eq:delta}
+    \int_Vf(x)\delta_a(x)\dd{x}=
+    \begin{cases}
+      f(a) & a\in V\\
+      0    & a\,\slashed{\in}\,V
+    \end{cases}
+  \end{equation}
+\end{definition}
+As seen in the definition, this is more of a formal symbol than anything, it is not at all a function and should not be used in this way.
+
+\subsection{Distributions}
+We start with defining what a distribution is:
+\begin{definition}[Distributions]
+  Distributions are linear functions which permeate on a space of functions, that is if $T$ is a distribution, it is described only in terms of of a test function $\vphi$.
+\end{definition}
+The space of functions is usually called $\mathcal{D}$, and is composed of functions $\mathbb{R}^n\to\mathbb{R}$. The test space is a set of infinitely continuous functions with bounded support:
+\begin{definition}[Bounded Support]
+  A function with bounded support vanishes outside of some region, meaning integrating this function over all of its domain is finite.
+\end{definition}
+Thus we can formally define distributions now that we have the purpose and their space defined:
+\begin{definition}[Formal Distributions]
+  A distribution on $\mathbb{R}^n$ is a linear functional defined on $\mathcal{D}$ which form a vector space called the dual of $\mathcal{D}$, called $\mathcal{D}'$.
+
+  We define the value of a distribution $T$ at test function $\vphi$ by the complex number $\ip{T}{\vphi}$
+\end{definition}
+The distributions are linear:
+\begin{align*}
+  \ip{T}{\alpha\psi_1+\beta\psi_2}=\alpha\ip{T}{\psi_1}+\beta\ip{T}{\psi_2}
+\end{align*}
+Continuity is only obtained for a distribution if for any sequence of test functions $\vphi_n\in\mathcal{D}$ for $n\in\mathbb{N}$, if such sequence converges to $\vphi$ in $\mathcal{D}$, then the sequence $\ip{T}{\vphi_n}$ converges to $\ip{T}{\vphi}$ in $\mathbb{C}$.
+
+\begin{definition}[Regular Distribution]
+  A distribution which is definde by a locally integrable function on $\mathbb{R}^n$ is called a regular distribution. The distribution associated with a function $f$ is either referred to also as $f$ but more clearly $T_f$
+\end{definition}
+The value of $\ip{T_f}{\vphi}$ is given via an integral:
+\begin{align*}
+  \ip{T_f}{\vphi}=\int_{-\infty}^\infty f(x)\vphi(x)\dd{x}
+\end{align*}
+Due to the bounded support of $\vphi$ and because $f$ is locally integrable, this integral is well defined.
+
+An example of a regular distribution is the identity distribution $\mathbb{I}$, its value at $\vphi$ in 1-D is defined as:
+\begin{align*}
+  \ip{\mathbb{I}}{\phi}=\int_{-\infty}^\infty\phi(x)\dd{x}
+\end{align*}
+
+\subsection{Singular Distributions}
+Now we get to the fun stuff:
+\begin{definition}[Singular Distribution]
+  A singular distribution is any other distribution that is NOT regular 
+\end{definition}
+For example, the delta distribution:
+\begin{definition}[Delta Distribution]
+  The delta distribution is the distribution which the output of $\ip{\delta}{\vphi}$ is the function value at $0$:
+  \begin{align*}
+    \ip{\delta}{\vphi}\equiv\vphi(0)
+  \end{align*}
+  It can also be defined at any point in the domain:
+  \begin{align*}
+    \ip{\delta_a}{\vphi}\equiv\vphi(a)
+  \end{align*}
+  And can be generalized to many dimensions:
+  \begin{align*}
+    \ip{\delta_{\vb{a}}}{\vphi}=\vphi(\vb{a})
+  \end{align*}
+\end{definition}
+
+\subsection{Examples of Singular Distributions}
+The principal value distribution is given by:
+\begin{align*}
+  \ip{\mathrm{pv}\qty(\frac1x)}{\vphi}\equiv\mathrm{pv}\int\frac{\vphi}x\dd{x}
+\end{align*}
+Parameterized as:
+\begin{align*}
+  \ip{\mathrm{pv}\qty(\frac1x)}{\vphi}=\lim_{\eta\to0^+}
+  \qty[\int_{-\infty}^{-\eta}\dd{x}\frac{\vphi(x)}{x}+
+  \int_\eta^\infty\dd{x}\frac{\vphi(x)}{x}]
+\end{align*}
+One use of this is to define a related distribution $\log\abs{x}$:
+\begin{align*}
+  T=\log\abs{x}\implies T'=\dv{x}\log\abs{x}=\mathrm{pv}\qty(\frac1x)
+\end{align*}
+This is a derivative in the distributional sense, not a normal one, and we need not provide any caveats, since we are using the generalixed notion of functions.
+
+The heaviside function is notable as well:
+\begin{align*}
+  H(x)=
+  \begin{cases}
+    1 & x > 0\\
+    \frac12 & x = 0\\
+    0 & x < 0
+  \end{cases}
+\end{align*}
+Thus:
+\begin{align*}
+  \ip{H}{\vphi(x)}=\int_0^\infty\vphi(x)\dd{x}
+\end{align*}
+Since we need to use the delta distribution in physical quantities, we need to find its units, some dimensional analysis should lead to:
+\begin{align*}
+  [\delta]=\frac1L
+\end{align*}
+
+\subsection{Properties of Distributions}
+We can multiply a distribution by any $C^\infty$ function $\psi$, and its value is defined by:
+\begin{align*}
+  \ip{T\psi}{\vphi}=\ip{T}{\psi\vphi}
+\end{align*}
+This is easily proven by moving into the integral formalism, but it is not necessary, and is important to keep in the inner product formalism for singular distributions which may not be defined by classical functions.
+
+We can differentiate a distribution using the fact that $\vphi$ has compact support and integration by parts:
+\begin{align*}
+  \ip{\dv{T}{x}}{\vphi}=-\ip{T}{\dv{\vphi}{x}}
+\end{align*}
+For the $n^{th}$:
+\begin{align*}
+  \ip{\dv[n]{T}{x}}{\vphi}=(-1)^n\ip{T}{\dv[n]{\vphi}{x}}
+\end{align*}
+The same rules apply for functions of several variables, simply for every derivative we must get a factor of $-1$ on the overall scalar.
+
+If a classical function $f$ has a discontinuity in it, we can quantify its derivative using $\delta$, if $\sigma_0$ is the height of the finite discontinuity, then the distributional derivative of $f$ is $f'$:
+\begin{align*}
+  f'=\{f'\}+\sigma_0\delta_a
+\end{align*}
+Where the discontinuity occurs at $a$ and $\{f'\}$ is the normal derivative
+\subsection{Fourier Transforms of Distributions}
+Not every classical function has a fourier transform. It is not enough for a function to just be locally integrable, they need to have a finite norm. In terms of distributions:
+\begin{align*}
+  \ip{\tilde{f}}{\vphi}=\ip{f}{\tilde{\vphi}}
+\end{align*}
+These functions $f$ must be rapidly decaying instead of have compact support, so these define so-called tempered distributions.
+
+Note that the fourier transform of $\mathbb{I}$ is a $\delta$
+\section{Other Mathematical Preliminaries}
+\subsection{Fourier Analysis}
+Any periodic function (that is subject to $f(x+L)=f(x)$) has a Fourier series representation:
+\begin{align*}
+  f(x)=\sum_{m=-\infty}^\infty\hat{f}_me^{i2\pi mx/L}
+\end{align*}
+With the expansion coefficients being given as:
+\begin{align*}
+  \hat{f}_m=\frac1L\int_0^L\dd{x}f(x)e^{-i2\pi mx/L}
+\end{align*}
+For non-periodic functions, the sum turns into an integral, forming a Fourier Transform pair of functions:
+\begin{align*}
+  f(x)&=\frac1{2\pi}\int_{-\infty}^\infty\dd{k}\hat{f}(k)e^{ikx}\\
+  \hat{f}(k)&=\mathcal{F}\qty{f(x)}(k)=\int_{-\infty}^\infty\dd{x}f(x)e^{-ikx}
+\end{align*}
+For time domains, it is convention for the transform to be $f(x)\to\hat{f}(\omega)$:
+\begin{align*}
+  f(t)&=\frac1{2\pi}\int_{-\infty}^\infty\dd{\omega}\hat{f}(\omega)e^{i\omega t}\\
+  \hat{f}(\omega)&=\int_{-\infty}^\infty\dd{t}f(t)e^{-i\omega t}
+\end{align*}
+\begin{theorem}[Parseval's Theorem]
+  For a pair of functions and their fourier transforms, we have:
+  \begin{align*}
+    \int_{-\infty}^\infty\dd{t}g_1^*(t)g_2(t)=
+    \frac1{2\pi}\int_{-\infty}^\infty\dd{\omega}
+    \hat{g}_1^*(\omega)\hat{g}_2(\omega)
+  \end{align*}
+\end{theorem}
+\begin{definition}[Convolution]
+  The convolution of two functions $(f*g)(t)$ is defined as:
+  \begin{align*}
+    (f*g)(t)=\int_{-\infty}^\infty\dd{t'}f(t-t')g(t')
+  \end{align*}
+\end{definition}
+The Fourier transform of this type of function is special, it is called the Convolution Theorem:
+\begin{theorem}[Convolution Theorem]
+  For a function $h(t)$ defined as the convolution of two other functions $f(t),g(t)$, the Fourier Transform $h(t)$ is:
+  \begin{align*}
+    \hat{h}(\omega)=\hat{f}(\omega)\hat{g}(\omega)
+  \end{align*}
+\end{theorem}
+This is all the relevant theorems we need for fourier analysis
+\subsection{Cartesian Tensors}
+A tensor, specifically a dyadic is composed of a linear combination of pairs of juxtaposed vectors. Relevant examples look like:
+\begin{align*}
+  \va{\vb{T}}\equiv\vu{e}_iT_{ij}\vu{e}_j
+\end{align*}
+That is, tensors have multiple indices.
+
+Some notes, mainly that dotting a dyadic with a vector provides a vector. 
+\section{Electrostatics}
+Maxwell's equations notably permeate through time and space, however if we have any time-independent solutions satisfy the equations:
+\begin{align*}
+  \curl{\vb{E}}&=0\\
+  \div{\vb{E}}&=\frac{\rho}{\veps_0}
+\end{align*}
+\subsection{Coulomb's Law}
+The electric field from those Maxwell equations we had can lead to a solution of the form:
+\begin{align*}
+  \vb{E(r)}=\frac1{4\pi\veps_0}\int\dd[3]{r'}\rho(\vb{r}')
+  \frac{\vb{r-r}'}{\abs{\vb{r-r}'}}
+\end{align*}
+\subsection{The Scalar Potential}
+The electric field integral is difficult to evaluate, however it is derived from the following:
+\begin{align*}
+  E=\grad{\frac1{4\pi\veps_0}}\int\dd[3]{r'}
+  \frac{\rho(\vb{r}')}{\abs{\vb{r-r}'}}
+\end{align*}
+Since we know that the curl of $\vb{E}$ is $0$, we know it can be written as a gradient of a scalar function $\vphi$, such that:
+\begin{align*}
+  \vb{E(r)}=-\grad{\vphi(\vb{r})}
+\end{align*}
+This turns the second given Maxwell equation into:
+\begin{align*}
+  \laplacian{\vphi(\vb{r})}=-\rho(\vb{r})/\veps_0
+\end{align*}
+Which is Poisson's Equation
+
+\subsection{Gauss' Law and Solid Angle}
+
+********** GOAL
+
+\subsection{Electrostatic Potential Energy}
+
+\subsection{Electrostatic Total Energy}
+
+\subsection{The Electric Stress Tensor}
+
+\section{Electric Multipoles}
+
+\subsection{The Electric Dipole}
+
+\subsection{Electric Dipole Layers}
+
+\subsection{The Electric Quadrupole}
+
+\subsection{Spherical Mathematics}
+
+\subsection{Spherical and Azimuthal Multipoles}
+
+\subsection{Primitive and Traceless Multipole Moments}
+
+\section{Conducting Matter}
+
+\subsection{Electrostatic Induction}
+
+\subsection{Screening and Shielding}
+
+\end{document}

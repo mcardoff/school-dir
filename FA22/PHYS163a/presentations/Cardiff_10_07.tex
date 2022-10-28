@@ -1,0 +1,171 @@
+\documentclass{beamer}
+
+\usepackage[italicdiff]{physics}
+\usepackage{siunitx}
+\usepackage{hyperref}
+\usepackage{url}
+
+\newcommand{\dbar}{d\hspace*{-0.08em}\bar{}\hspace*{0.1em}}
+
+\newenvironment{itemframe}[1]{\begin{frame}{#1}\begin{itemize}}   {\end{itemize}\end{frame}}
+
+% Changes style of actual slides
+\usetheme{Dresden}
+% Changes color of slides
+\usecolortheme{spruce}
+% removes controls at bottom right side
+\usenavigationsymbolstemplate{}
+
+% for figures
+\graphicspath{ {./figs/} }
+
+\title{Kinetic Theory II}
+\author{Michael Cardiff}
+\subtitle{PHYS 163a \ 10/07 Prep Work}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Estimation of Parameters}
+\begin{frame}{Estimating Size Parameters}
+  \begin{itemize}
+  \item In order to find what we are dealing with, we should use dimensional analysis to find units for the following:
+    \begin{align*}
+      \pdv{U}{\vb{q}}\pdv{f_s}{\vb{p}}
+    \end{align*}
+  \item The density $f_s$ is a number density, so it is dimensionless.
+  \item We have the other dimensions:
+    \begin{align*}
+      [\vb{q}]=L\quad[\vb{p}]=MLT^{-1}\quad[U]=[E]=ML^2T^{-2}
+    \end{align*}
+  \item The dimensions for a derivative are:
+    \begin{align*}
+      \qty[\pdv{f}{x}]=[x^{-1}][f(x)]
+    \end{align*}
+  \end{itemize}
+\end{frame}
+\begin{frame}{The First Quantity}
+  \begin{itemize}
+  \item Thus, we are looking for:
+    \begin{align*}
+      \pdv{U}{\vb{q}}\pdv{f_s}{\vb{p}}=T^{-1}
+    \end{align*}
+  \item Since you can only add quantities with the same units, every other quantity is also an inverse time, that is the only way the equality can work out.
+  \end{itemize}
+\end{frame}
+\section{Finding Time Scales}
+\begin{frame}{How do we find a time scale?}
+  \begin{itemize}
+  \item Since each term has a potential energy $U$ or $V$, which is dependent on the distance between particles, so we have a length scale $L$
+  \item We are also considering a particle of momentum $p$, or more importantly, a velocity $v$
+  \item To find a time from a length and velocity, we can take
+    \begin{align*}
+      t=\frac{L}{v}
+    \end{align*}
+  \item The typical velocity of a gas particle at room temperature is on the order of $\SI{100}{\m\per\s}$
+  \end{itemize}
+\end{frame}
+
+\section{External Potential}
+\begin{frame}{Time scale for the External Potential}
+  \begin{itemize}
+  \item We can think of the derivative $\pdv{U}{\vb{q}}$ as large scale variations of the particle, so for the typical length of $\SI{1}{\mm}$, we get a time scale of:
+    \begin{align*}
+      t_U\approx\frac{10^{-3}}{10^2}= 10^{-5}\unit{\s}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\section{Interaction Potential}
+\begin{frame}{Time scale for the Interaction Potential}
+  \begin{itemize}
+  \item We have the exact same term as before except with the interaction potential $V$
+  \item These are typically some form of collision, so they occur at the scale of atomic size $\sim10^{-10}\unit{\m}$
+  \item Time scale is then:
+    \begin{align*}
+      t_V\approx\frac{10^{-10}}{10^2}= 10^{-12}\unit{\s}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+\begin{frame}{Other time scale for the Interaction Potential}
+  \begin{itemize}
+  \item The last term is a bit different, it is a volume integral
+  \item How will it be non-zero?
+  \item This scale should be related to the previous one we found
+    \begin{align*}
+      t_f\approx\alpha t_V
+    \end{align*}
+  \item $f_{s+1}/f_s$ should be a quantity per unit volume
+  \item Number of particles per unit volume is $n=10^{26}\unit{\m}$
+    \begin{align*}
+      t_f\approx\frac{t_V}{nV}=\frac{1}{nvd^2}= 10^{-8}\unit{\s}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\section{Reduced Distributions}
+\begin{frame}{Reduced Distribution Function}
+  \begin{itemize}
+  \item For the $m$ particle reduced distribution, find $m$ particles with specific position and momenta $\vb{q}$, $\vb{p}$
+  \item Do this with an average:
+    \begin{align*}
+      f_1(\vb{p},\vb{q},t)=
+      \ev{\sum_{i=1}^N\delta^3(\vb{p-p}_i)\delta^3(\vb{q-q}_i)}
+    \end{align*}
+  \item For $m=1$, you get $N$ equations, since you dont care which specific particle has momentum $p$ or position $q$, just that one does. 
+  \item For $m$ particles, you will have $m$ sums with $2m$ delta functions, however you must sum over less and less terms each time. 
+  \end{itemize}
+\end{frame}
+\begin{frame}{Liouville Equation}
+  \begin{itemize}
+  \item We use the typical Hamiltonian $H$
+  \item The Liouville Equation states:
+    \begin{align*}
+      \pdv{\rho}{t}=-\{\rho,H\}_{PB}
+    \end{align*}
+  \item We want to consider the density $\rho_s$, but Liouville only talks about $\rho$, so we find:
+    \begin{align*}
+      \pdv{\rho_s}{t}=\int\prod_{i=s+1}^N\dd{V}_i\pdv{\rho}{t}=
+      -\int\prod_{i=s+1}^N\dd{V}_i\{\rho,H\}_{PB}
+    \end{align*}
+  \item The Poisson Bracket has the following form:
+    \begin{align*}
+      \{H,\rho\}_{PB}=\sum_i\qty(
+      \pdv{H}{q_i}\pdv{\rho}{p_i}-\pdv{H}{p_i}\pdv{\rho}{q_i}
+      )
+    \end{align*}
+  \end{itemize}
+\end{frame}
+\begin{frame}{Liouville Equation}
+  \begin{itemize}
+  \item If we split the Hamiltonian into the form of:
+    \begin{align*}
+      H=H_s+H_{N-s}+H^{int}
+    \end{align*}
+  \item The sums in $H_s$ go from $i=1,s$ and $H_{N-s}$ covers the rest. 
+  \item If we only consider this, we can rewrite the Poisson Bracket as:
+    \begin{align*}
+      \int\prod_{i=s+1}^N\dd{V}_i\{\rho,H_s\}_{PB}=\{\rho_s,H_s\}_{PB}
+    \end{align*}
+    Since the Hamiltonian has the same number of sum variables as the PB now
+  \end{itemize}
+\end{frame}
+\begin{frame}{Continued}
+  \begin{itemize}
+  \item We must also now consider the PB with $H_{N-s}$, which has the following partials:
+    \begin{gather*}
+      \pdv{H_{N-s}}{\vb{q}_j}=\pdv{U}{\vb{q}_j}+
+      \frac12\sum_{k=s+1}^N\pdv{V(\vb{q}_j-\vb{q}_k)}{\vb{q}_j}\\
+      \pdv{H_{N-s}}{\vb{p}_j}=\frac{\vb{p}_j}{m}
+    \end{gather*}
+  \item From here you will find that the interaction hamiltonian term is proportional to $\rho_{s+1}$, such that:
+    \begin{align*}
+      \pdv{\rho_s}{t}-\{H_s,\rho_s\}_{PB}=(N-s)\sum_{n=1}^s\int\dd{V_{s+1}}
+      \frac{V(\vb{q}_n-\vb{q}_{s+1})}{\vb{q}_n}\pdv{\rho_{s+1}}{\vb{p}_n}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+\end{document}
