@@ -1,0 +1,324 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 163a HW 4}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amssymb,amsthm,bm,physics,slashed}
+
+%% general pretty stuff
+\usepackage{caption,enumitem,float,geometry,graphicx,tikz}
+
+% setups
+\graphicspath{ {./figs/} }
+\captionsetup{labelfont=bf}
+\geometry{margin=1in}
+
+% macros
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+
+\begin{document}
+\maketitle
+
+\section{Hard Sphere Gas}
+\subsection{Entropy}
+In order to compute the entropy we should calculate the number of microstates, then use:
+\begin{align*}
+  S=k_B\log\Omega
+\end{align*}
+To find the corresponding entropy.
+
+We find the number of microstates by integrating over the phase space:
+\begin{align*}
+  \Omega=\frac1{N!}\frac1{h^{3N}}\int\prod_{i=1}^N\dd{\vb{p}}_i\dd{\vb{q}}_i
+  \delta\qty(\sum_{i=1}^N\frac{\vb{p}_i^2}{2m}-E)\Delta_E
+\end{align*}
+Where $\Delta_E$ is some constant with dimensions of energy.
+
+The momentum integrals are the exact same as in the ideal gas, the surface area of a $3N$-sphere, so we get:
+\begin{align*}
+  \Omega=\frac{\Delta_E}{N!h^{3N}}
+  \frac{(2\pi)^{3N}(2mE)^{\frac{3N}2-1}}{(\frac{3N}{2}-1)!}
+  \int\prod\dd{\vb{q}}_i
+\end{align*}
+In the case of the ideal gas, the $N$ molecules were just integrated over the volume $V$, since they did not interact with one another, so they can occupy the entire volume. Only the first molcule inserted can explore the entire volume, so $\int\dd{\vb{q}}_1=V$. The next nested integral has similar bounds, however the only difference is that it can occupy $\omega$ less volume. The next will have $2\omega$ less volume. This continues until we add the last particle and it has $V-(N-1)\omega$ volume, so the position integrals are:
+\begin{align*}
+  \int\prod\dd{\vb{q}}_i=V(V-\omega)(V-2\omega)\cdots(V-(N-1)\omega)
+\end{align*}
+Applying the hint given in the problem, we can rewrite the $N$ terms as:
+\begin{align*}
+  V(V-\omega)(V-2\omega)\cdots(V-(N-1)\omega)\approx\qty(V-\frac{N\omega}{2})^N
+\end{align*}
+Thus the number of microstates are:
+\begin{align*}
+  \Omega=\frac{\Delta_E}{N!h^{3N}}
+  \frac{(2\pi)^{3N}(2mE)^{\frac{3N}2-1}}{(\frac{3N}{2}-1)!}
+  \qty(V-\frac{N\omega}{2})^N
+\end{align*}
+Simplifying:
+\begin{align*}
+  \Omega&=\frac{\Delta_E}{N!h^{3N}}
+  \frac{(2\pi)^{3N}(2mE)^{\frac{3N}2-1}}{(\frac{3N}{2}-1)!}
+  \qty(V-\frac{N\omega}{2})^N\\
+  &=\frac{\Delta_E(2mE)^{-1}}{N!(\frac{3N}{2}-1)!}
+  \qty(\frac{(2\pi)^3(2mE)^{3/2}}{h^3}\qty(V-\frac{N\omega}{2}))^N
+\end{align*}
+We can ignore the constants in front, then we have:
+\begin{align*}
+  S&=k_B\log\Omega\approx k_B\log\frac{\Delta_E(2mE)^{-1}}{N!(\frac{3N}{2}-1)!}
+  \qty(\frac{(2\pi)^3(2mE)^{3/2}}{h^3}\qty(V-\frac{N\omega}{2}))^N\\
+  &=k_B\log\frac{\Delta_E}{2mE}
+  -\log(N!)-\log(\qty(\frac{3N}{2}-1)!)
+  +Nk_B\log(\qty(\frac{2\pi\sqrt{2mE}}h)^3\qty(V-\frac{N\omega}{2}))
+\end{align*}
+Using the Sterling Approximation gives:
+\begin{align*}
+  \log(N!)+\log(\qty(\frac{3N}{2}-1)!)=N\log N-N+
+  \qty(\frac{3N}{2}-1)\log(\frac{3N}{2}-1)-\frac{3N}{2}+1
+\end{align*}
+We can then write the entropy as:
+\begin{align}
+  \boxed{S=k_B\log(\text{const})
+    +Nk_B\log(\frac1N\qty(\frac{2\pi\sqrt{2mE}}h)^3\qty(V-\frac{N\omega}{2}))}
+\end{align}
+\subsection{Equation of State}
+The equation of state can be found using:
+\begin{align*}
+  \frac{P}{T}=\eval{\pdv{S}{V}}_{E,N}
+\end{align*}
+The derivative with respect to $V$ is fairly simply, as the only term that survives is the constant in front then the actual volume term:
+\begin{align*}
+  \eval{\pdv{S}{V}}_{E,N}=\frac{Nk_B}{V-\frac{N\omega}{2}}
+\end{align*}
+Hence the equation of state is:
+\begin{align}
+  \boxed{P\qty(V-\frac{N\omega}{2})=Nk_BT}
+\end{align}
+\subsection{Isothermal Compressibility}
+This quantity is given by the following:
+\begin{align*}
+  \kappa_T=-\frac1V\eval{\pdv{V}{P}}_{T,N}
+\end{align*}
+The derivative with respect to $P$ of $V-N\omega/2$ is the same as just the derivative of just $V$, so we can ignore the rest. Hence the derivative is:
+\begin{align*}
+  \pdv{V}{P}=-\frac{Nk_BT}{P^2}
+\end{align*}
+And the compressibility is:
+\begin{align}
+  \boxed{\kappa_T=\frac{Nk_BT}{P^2V}}
+\end{align}
+\section{Molecular Oxygen}
+The Hamiltonian we want to consider:
+\begin{align*}
+  H=\sum_{i=1}^N\qty[\frac{\vb{p}_i^2}{2m}-\mu BS_i^z]
+\end{align*}
+\subsection{Partition Function}
+The partition function is defined as:
+\begin{align*}
+  Z=\sum_{\mu}e^{-\beta H}
+\end{align*}
+However for non-quantized degrees of freedom we have integrals:
+\begin{align*}
+  Z_{\vb{p,q}}=\int\prod_{i=1}^N\dd{\vb{q}}_i\dd{\vb{p}}_ie^{-\beta H_{\vb{p,q}}}
+\end{align*}
+Substituting the Hamiltonian in:
+\begin{align*}
+  Z_{\vb{p,q}}=\int\prod_{i=1}^N\dd{\vb{q}}_i\dd{\vb{p}}_i
+  e^{-\beta\sum\vb{p}_i^2/2m}
+\end{align*}
+The $\vb{q}_i$ integrals are identical to the ones we did for the previous problem/ideal gas since there is no $q$ dependence in the Hamiltonian, so we can simply take out the $V^N$:
+\begin{align*}
+  Z_{\vb{p,q}}=V^N\int\prod_{i=1}^N\dd{\vb{p}}_i
+  e^{-\beta\sum\vb{p}_i^2/2m}
+\end{align*}
+Realize that one individual momentum integral is simply a Gaussian:
+\begin{align*}
+  Z_{\vb{p,q}}\propto\int\dd{\vb{p}}_1e^{-\beta \vb{p}_1^2/2m}\equiv I
+\end{align*}
+This one integral gives:
+\begin{align*}
+  I=\qty(\frac{2\pi}{\beta})^{3/2}
+\end{align*}
+And since we have $N$ of them, we can say:
+\begin{align*}
+  Z_{\vb{p,q}}=V^N\qty(\frac{2\pi}{\beta})^{3N/2}
+\end{align*}
+However we also need to take into account the fact that these particles are identical, and that $Z$ needs to be dimensionless, so we need a factor of $h^{-3N}$ and an inverse $N!$:
+\begin{align*}
+  Z_{\vb{p,q}}&=\frac1{h^{3N}N!}V^N\qty(\frac{2\pi}{\beta})^{3N/2}\\
+  &=\frac1{N!}\qty(\frac{V}{\lambda^3})^N
+\end{align*}
+Where the second line uses the $\lambda$ factor defined in Kardar's Equation 4.80:
+\begin{align*}
+  \lambda=\frac{h}{\sqrt{2\pi k_BT}}=h\sqrt{\frac{\beta}{2\pi}}
+\end{align*}
+The partial partition function for the spin degrees of freedom is instead a sum:
+\begin{align*}
+  Z_S=\sum_{S^z}e^{\beta\sum_i\mu BS_i^z}
+\end{align*}
+The sum is over all of the spin configurations of each particle. This means there are $N$ sums each summing $S^z=-1,0,1$, one of these sums is:
+\begin{align*}
+  Z_S\propto\sum_{S^z}e^{\beta\mu BS^z_1}&=
+  e^{-\beta\mu B}+e^{\beta\mu B(0)}+e^{\beta\mu B}\\
+  &=e^{-\beta\mu B}+1+e^{\beta\mu B}
+\end{align*}
+There are $N$ of these sums, and each are multiplied from the fact that:
+\begin{align*}
+  e^{\sum_ia_i}=\prod_ie^{a_i}
+\end{align*}
+Hence the spin partial partition function is:
+\begin{align*}
+  Z_S=\qty(e^{-\beta\mu B}+1+e^{\beta\mu B})^N
+\end{align*}
+We do not need to do the fixing again since we already did it for the position and momentum partial partition functions.
+
+The total partition function is:
+\begin{align}
+  \boxed{
+    Z=\frac{1}{N!}\qty(\frac{V}{\lambda^3}(e^{-\beta\mu B}+1+e^{\beta\mu B}))^N
+  }
+\end{align}
+\subsection{Spin Probabilities}
+The probability for a specific spin can be calculated analagously to the energy probability distribution for the ideal gas, however instead of an energy $E$ corresponding to the Hamiltonian, it is a particular spin $S$ corresponding to the spin part of the Hamiltonian specifically:
+\begin{align*}
+  p(S)=\frac{e^{-\beta\mu B S}}{Z}\sum_\mu\delta(S^z-S)
+\end{align*}
+Since it is a specific molecule, we need a 1-particle partition function:
+\begin{align*}
+  Z=e^{-\beta\mu B}+1+e^{\beta\mu B}
+\end{align*}
+The sum just evaluates to 1 each time, and thus the probabilities are:
+\begin{equation}
+  \boxed{
+  \begin{aligned}
+    p(S=-1)&=\frac{e^{-\beta\mu B}}{e^{-\beta\mu B}+1+e^{\beta\mu B}}\\
+    p(S= 0)&=\frac0{e^{-\beta\mu B}+1+e^{\beta\mu B}}\\
+    p(S= 1)&=\frac{e^{\beta\mu B}}{e^{-\beta\mu B}+1+e^{\beta\mu B}}
+  \end{aligned}
+  }
+\end{equation}
+\subsection{Average Dipole Moment}
+The dipole moment is given by:
+\begin{align*}
+  M=\mu\sum_{i=1}^NS_i^z
+\end{align*}
+Using the partition function, we can get $\ev{M}$ by differentiating $\log Z$ with respect to the magnetic field $B$, and dividing out the extra $\beta$.
+\begin{align*}
+  \ev{M}=\frac1\beta\pdv{\log Z}B
+\end{align*}
+The division by volume in the problem means we are ignoring the other degrees of freedom.
+
+The derivative is:
+\begin{align*}
+  \pdv{\log Z}B&=\pdv{B}\qty(N\ln(e^{\beta\mu B}+1+e^{-\beta\mu B}))\\
+  &=N\beta\mu\frac{e^{\beta\mu B}-e^{-\beta\mu B}}
+  {e^{\beta\mu B}+1+e^{-\beta\mu B}}
+\end{align*}
+Thus the average magnetic moment is:
+\begin{align}
+  \boxed{\ev{M}=
+    N\mu\frac{e^{\beta\mu B}-e^{-\beta\mu B}}
+    {e^{\beta\mu B}+1+e^{-\beta\mu B}}}
+\end{align}
+\subsection{Zero Field Susceptibility}
+The derivative of the average moment is:
+\begin{align*}
+  \pdv{\ev{M}}{B}=N\beta\mu^2e^{\beta\mu B}
+  \frac{1+4e^{\beta\mu B}+e^{2\beta\mu B}}
+  {\qty(1+e^{\beta\mu B}+e^{2\beta\mu B})^2}
+\end{align*}
+Evaluating at $B=0$:
+\begin{align}
+  \boxed{\chi=\eval{\pdv{\ev{M}}{B}}_{B=0}=\frac23N\beta\mu^2}
+\end{align}
+\section{Polar Rods}
+Hamiltonian:
+\begin{align*}
+  H_{rot}=\frac1{2I}\qty(p_\theta^2+\frac{p_\phi^2}{\sin^2\theta})
+\end{align*}
+\subsection{Rotational Degrees of Freedom}
+Since we are working with the two angles of spherical coordinates, we have:
+\begin{align*}
+  \int\dd{\vb{q}}=\int_0^\pi\dd{\theta}\int_0^{2\pi}\dd{\phi}
+\end{align*}
+While the momentum integrals are their normal $(-\infty,\infty)$ bounds for each of $p_\theta,p_\phi$, so the rotational classical partition function is:
+\begin{align*}
+  Z_{rot}=\frac1{h^2}\int_0^\pi\dd{\theta}\int_0^{2\pi}\dd{\phi}
+  \int_{-\infty}^\infty\dd{p}_\theta\int_{-\infty}^\infty\dd{p}_\phi
+  \exp{-\frac{\beta}{2I}\qty(p_\theta^2+\frac{p_\phi^2}{\sin^2\theta})+\beta\mu E\cos\theta}
+\end{align*}
+Since the $\cos\theta$ term in the exponential is independent of momentum, so we can take it out:
+\begin{align*}
+  Z_{rot}=\frac1{h^2}\int_0^\pi\dd{\theta}\int_0^{2\pi}\dd{\phi}
+  e^{\beta\mu E\cos\theta}
+  \int_{-\infty}^\infty\int_{-\infty}^\infty\dd{p}_\theta\dd{p}_\phi
+  \exp{-\frac{\beta}{2I}\qty(p_\theta^2+\frac{p_\phi^2}{\sin^2\theta})}
+\end{align*}
+We should integrate the momentum integrals first, as they are just Gaussians:
+\begin{align*}
+  \int_{-\infty}^\infty\int_{-\infty}^\infty\dd{p}_\theta\dd{p}_\phi
+  \exp{-\frac{\beta}{2I}\qty(p_\theta^2+\frac{p_\phi^2}{\sin^2\theta})}
+  =\frac{2\pi I}{\beta}\sin\theta
+\end{align*}
+hence the position integrals are:
+\begin{align*}
+  \frac{2\pi I}{\beta}\int_0^\pi\dd{\theta}\int_0^{2\pi}\dd{\phi}
+  e^{\beta\mu E\cos\theta}\sin\theta
+\end{align*}
+Notice that there is no $\phi$ dependence, so it can be integrated out:
+\begin{align*}
+  \frac{2\pi I}{\beta}\int_0^\pi\dd{\theta}\int_0^{2\pi}\dd{\phi}
+  e^{\beta\mu E\cos\theta}\sin\theta=
+  \frac{(2\pi)^2 I}{\beta}\int_0^\pi\dd{\theta}
+  e^{\beta\mu E\cos\theta}\sin\theta
+\end{align*}
+This integral is easy if we use $x=\cos\theta$, giving the integral:
+\begin{align*}
+  \frac{(2\pi)^2 I}{\beta}\int_0^\pi\dd{\theta}
+  e^{\beta\mu E\cos\theta}\sin\theta&=
+  \frac{(2\pi)^2 I}{\beta}\int_{-1}^1\dd{x}
+  e^{\beta\mu Ex}\\
+  &=\frac2{\beta\mu E}\sinh(\beta\mu E)
+\end{align*}
+Hence the partition function is simply:
+\begin{align}
+  \boxed{Z_{rot}=\frac{8\pi^2I}{h^2\beta^2\mu E}\sinh(\beta\mu E)}
+\end{align}
+\subsection{Mean Polarization}
+The mean polarization is the average of $\mu\cos\theta$, which we can get from the log of the partition function if we differentiate with respect to $\beta E$ (if we use the original integral formulation). Hence:
+\begin{align*}
+  \ev{\mu\cos\theta}=\pdv{\log Z}{\beta E}=
+  \mu\qty[\coth\beta\mu E-\frac1{\beta\mu E}]
+\end{align*}
+Which is our answer:
+\begin{align}
+  \boxed{P=\mu\qty[\coth\beta\mu E-\frac1{\beta\mu E}]}
+\end{align}
+\subsection{Zero Field Polarizability}
+This is the same deal as the susceptibility from before:
+\begin{align*}
+  \pdv{P}{E}=\mu\qty(-\beta\mu\mathrm{csch}^2(\beta\mu E)+\frac1{\beta\mu E^2})
+\end{align*}
+Where $\mathrm{csch}\equiv(\sinh)^{-1}$
+
+Subbing in $E=0$ is not enough, but it is possible with taking a limit (done with Mathematica):
+\begin{align}
+  \boxed{\chi_T=\frac13\beta\mu^2}
+\end{align}
+\subsection{Rotational Energy per Particle}
+We can differentiate $\log Z_{rot}$ with respect to $\beta$ to find the energy associated with these degrees of freedom:
+\begin{align*}
+  \ev{E}=-\pdv{\log Z_{rot}}{\beta}=\frac2\beta-\mu E\coth(\beta\mu E)
+\end{align*}
+Writing out $\beta$ here is helpful:
+\begin{align}
+  \boxed{\ev{E}=2k_BT-\mu E\coth(\frac{\mu E}{k_BT})}
+\end{align}
+At high temperatures we should expect $\ev{E}=k_BT$, only kinetic energy, and at low temperatures, the $\coth$ goes to 1, so $\ev{E}=2k_BT-\mu E$
+\subsection{Heat Capacity per Dipole}
+Classical heat capacity at low temperatures is $2k_B$, and $k_B$ at high temperatures from simply taking a temperature derivative of the above relations. There should be some shifting behavior, whether it is a step function or other similar kink, it will be at $k_BT\approx\mu E$.
+\end{document}
