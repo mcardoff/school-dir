@@ -1,0 +1,83 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 161a HW 05}
+\author{Michael Cardiff}
+\date{\today}
+
+% science symbols 
+\usepackage{amssymb,amsthm,bm,physics,slashed}
+
+% general pretty stuff
+\usepackage{caption,enumitem,float,geometry,graphicx,tikz}
+
+% setups
+\graphicspath{ {./figs/} }
+\captionsetup{labelfont=bf}
+\geometry{margin=1in}
+
+% macros
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+
+\begin{document}
+\maketitle
+
+\section{Point Charge Between two Conducting Plates}
+\subsection{Reduced Green Function}
+We start by assuming the following form of the Green Function:
+\begin{align*}
+  G(\vb{r,r}')=\int\frac{\dd{k_{\perp}}}{(2\pi)^2}
+  e^{-i\vb{k}_\perp\vdot(\vb{r-r}')_\perp}g(z,z',k_\perp)
+\end{align*}
+We want to use the defining differential equation of the Green function:
+\begin{align*}
+  \laplacian_{\vb{r}}G(\vb{r,r}')=-4\pi\delta^3\qty(\vb{r-r}')
+\end{align*}
+Since the form of the $\delta$ is:
+\begin{align*}
+  \delta^3\qty(\vb{r-r}')=\delta(x-x')\delta(y-y')\delta(z-z')
+\end{align*}
+We can use the Laplacian directly on the Green Function:
+\begin{align*}
+  \laplacian_{\vb{r}}G(\vb{r,r}')=\int\frac{\dd{k_{\perp}}}{(2\pi)^2}
+  e^{-i\vb{k}_\perp\vdot(\vb{r-r}')_\perp}\qty(-k_\perp^2+\pdv[2]{z})g(z,z',k_\perp)
+\end{align*}
+Since the only dependence of the other $\vb{r}$ variables are in the exponential. We can recognize the other products as $\delta$ functions in $x,y$ as long as the following is true:
+\begin{align*}
+  \qty(-k_\perp^2+\pdv[2]{z})g(z,z',k_\perp)=-\delta(z-z')
+\end{align*}
+Then we have the following boundary conditions:
+\begin{gather*}
+  g(0,z',k_\perp)=g(a,z',k_\perp)=0\\
+  \text{Continuity of $g$ at $z=z'$}\\
+  \text{Continuity of $\pdv{g}{z}$ at $z=z'$}
+\end{gather*}
+The equation we need to solve for $z\neq z'$
+\begin{align*}
+  \pdv[2]{g}{z}\qty(z,z',k_\perp) =k_\perp^2g(z,z',k_\perp)
+\end{align*}
+The solution to this equation in general is typically written as a sum of exponentials with opposite sign arguments, however we can also write it as:
+\begin{align*}
+  g(z,z',k_\perp)=A(z')\sinh(k_\perp z)+B(z')\cosh(k_\perp z)
+\end{align*}
+The first boundary condition gives:
+\begin{align*}
+  g(0,z',k_\perp)&=A(z')\sinh(0)+B(z')\cosh(0)=0\\
+  &\implies B(z')=0
+\end{align*}
+The continuity of the first 
+\subsection{Induced Charge}
+
+\subsection{Taking Limits}
+
+\subsubsection{Right Plate to $\infty$}
+
+\subsubsection{Both Plates Far Away}
+
+\subsubsection{Justification}
+
+\section{Potential Inside a Sphere}
+
+\end{document}
