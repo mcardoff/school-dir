@@ -1,0 +1,800 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}Qualifying Exam Notes}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amssymb,amsthm,bm,physics,slashed}
+\usepackage{cancel}
+
+%% general pretty stuff
+\usepackage{caption,enumitem,float,geometry,graphicx,tikz}
+
+% setups
+\graphicspath{ {./figs/} }
+\captionsetup{labelfont=bf}
+\geometry{margin=1in}
+
+% theorem defns
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+% macros
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+\newcommand{\veps}{\varepsilon}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+\section{Classical Mechanics}
+
+\subsection{Angular Momentum is Conserved for all Central Potentials}
+A general central potential Hamiltonian has the form given in the problem:
+\begin{align*}
+  H=\frac{p^2}{2m}+U(\abs{r})
+\end{align*}
+And the angular momentum is defined as:
+\begin{align*}
+  \vb{L}=\vb{r}\times\vb{p}
+\end{align*}
+I define the components of any vector $\vb{a}$ to be $a_i$ with $i$ ranging from 1 to 3.
+
+Also important to note, the Poisson Bracket is computed by:
+\begin{align*}
+  \{A,B\}_{PB}=
+  \sum_{i=1}^3\qty(\pdv{A}{q_i}\pdv{B}{p_i}-\pdv{B}{q_i}\pdv{A}{p_i})
+\end{align*}
+If we decompose the individual terms from the Poisson Bracket, we find that each component of the sum for example $\{H,L_1\}$ is:
+\begin{align*}
+  \eval{\{H,L_1\}}_{i=1}&=
+  0 \\
+  \eval{\{H,L_1\}}_{i=2}&=
+  \frac{p_2(t) p_3(t)}{m}+q_2(t) q_3(t)\frac{U'(r)}{r} \\
+  \eval{\{H,L_1\}}_{i=3}&=-\frac{p_2(t) p_3(t)}{m}-q_2(t) q_3(t)\frac{U'(r)}{r}
+\end{align*}
+With $r\equiv\abs{\vb{q}}$.
+
+The first term is obviously zero since $\vb{L}$ is a cross product of $\vb{r,p}$, so it will contain combinations of $p_2,p_3,q_2,$ and $q_3$.
+
+The other two terms are negative with respect to each other, since $L_1$ will have a negative $p_2$ where $H$ will always have a positive component of $p_i$.
+
+Thus, using similar reasoning for each component, we will find that the Poisson Bracket of the Hamiltonian with $\vb{L}$ is:
+\begin{align*}
+  \{H,\vb{L}\}_{PB}=\vb{0}
+\end{align*}
+Meaning Angular momentum is conversed by the system, as a quick check:
+\begin{align*}
+  \dv{\vb{L}}{t}&=\cancel{\{H,\vb{L}\}_{PB}}^0+\pdv{\vb{L}}{t}\\
+  \implies\dv{\vb{L}}{t}&=\pdv{\vb{L}}{t}=0
+\end{align*}
+And since we made no reference to a specific potential, this is true for all central potentials
+
+\subsection{Angular Momentum Generates Rotations}
+For Rotations about the $z$ axis, the coordinates are rotated by some small amount $\theta$ by the following matrix:
+\begin{align*}
+  R(\theta)=\pmqty{\cos\theta&-\sin\theta&0\\\sin\theta&\cos\theta&0\\0&0&1}
+\end{align*}
+If $\theta$ is sufficiently small, this matrix can be written as:
+\begin{align*}
+  R(\theta)\approx\pmqty{1&-\theta&0\\\theta&1&0\\0&0&1}
+\end{align*}
+Meaning if we rotate $\vb{q}$ to $\vb{q}'$ we will have:
+\begin{align*}
+  \vb{q}'=R(\theta)\vb{q}&=\pmqty{1&-\theta&0\\\theta&1&0\\0&0&1}
+  \pmqty{q_1\\q_2\\q_3}\\
+  &=\pmqty{q_1-q_2\theta\\q_2+q_1\theta\\q_3}
+\end{align*}
+In more convential notation:
+\begin{align*}
+  q_1'&=q_1+\dd{q_1}=q_1-q_2\dd{\theta}\\
+  q_2'&=q_2+\dd{q_2}=q_2+q_1\dd{\theta}\\
+  q_3'&=q_3
+\end{align*}
+The same transformation is applied to the momentum degrees of freedom:
+\begin{align*}
+  p_1'&=p_1+\dd{p_1}=p_1+p_2\dd{\theta}\\
+  p_2'&=p_2+\dd{p_2}=p_2-p_1\dd{\theta}\\
+  p_3'&=p_3
+\end{align*}
+This defines our transformation that will be performed to the Hamiltonian, with the convention that:
+\begin{align*}
+  q_i'&=q_i+\dd{q_i}\\
+  p_i'&=p_1+\dd{p_i}
+\end{align*}
+With the differentials as:
+\begin{gather*}
+  \dd{q_1}=-q_2\dd{\theta}\qquad\dd{p_1}= p_2\dd{\theta}\\
+  \dd{q_2}= q_1\dd{\theta}\qquad\dd{p_2}=-p_1\dd{\theta}\\
+  \dd{q_3}=-q_2\qquad\dd{p_3}=0
+\end{gather*}
+Applying this transformation and then calculate the transformed Hamiltonian:
+\begin{align*}
+  H(\vb{p}',\vb{q}')=\frac{(1+(\dd\theta)^2)(p_1^2+p_2^2)+p_3^2}{2m}+
+  U\qty(\sqrt{(1+(\dd\theta)^2)(q_1^2+q_2^2)+q_3^2})
+\end{align*}
+However, since $\dd\theta$ is small, its square is even smaller, so we can set it to $0$:
+\begin{align*}
+  H(\vb{p}',\vb{q}')&=\frac{p_1^2+p_2^2+p_3^2}{2m}+
+  U\qty(\sqrt{q_1^2+q_2^2+q_3^2})\\
+  &=\frac{p^2}{2m}+U(r)
+\end{align*}
+We can think of this transformation as having come from a generating function $G$, such that:
+\begin{align*}
+  \dd{q}_i&=\pdv{G}{p_i}\dd{\theta}\\
+  \dd{p}_i&=\pdv{G}{q_i}\dd{\theta}
+\end{align*}
+This comes from a parameterization of the dynamics in the Poisson Bracket Formalism.
+
+Hence our generator must have the following partial derivatives:
+\begin{gather*}
+  \pdv{G}{p_1}=-q_2\qquad\pdv{G}{q_1}= p_2\\
+  \pdv{G}{p_2}= q_1\qquad\pdv{G}{q_2}=-p_1\\
+  \pdv{G}{p_3}=0\qquad\pdv{G}{q_3}=0
+\end{gather*}
+And by a quick inspection check, we can see that $L_z$ is a perfect match for these conditions! Hence, $L_3$ generates rotations about $z$, and similar $\vu{n}\vdot\vb{L}$ generates rotations about the unit vector $\vu{n}$
+\subsection{LRL Vector Conserved}
+Decomposing the Poisson Bracket for the first component, with fairly loose use of $r$ and the components:
+\begin{align*}
+  \{H,A_1\}_{PB}=
+  -\frac{p_1\left(\frac{k m q_1^2}{r^3}-\frac{km}{r}+p_2^2+p_3^2\right)}{m}
+  -\frac{p_2 \left(\frac{k m q_1q_2}{r^3}-p_1 p_2\right)}{m}
+  -\frac{p_3 \left(\frac{k m q_1 q_3}{r^3}-p_1p_3\right)}{m}\\
+  +\frac{k q_2 (2 p_2 q_1-p_1 q_2)}{r^3}
+  +\frac{k q_3 (2 p_3q_1-p_1 q_3)}{r^3}+\frac{k q_1 (-p_2 q_2-p_3 q_3)}{r^3}\\
+  =-\frac{kq_1^2p_1}{r^3}+\frac{kp_1}{r}-\frac{p_1(p_2^2+p_3^2)}{m}
+  -\frac{kq_1q_2p_2}{r^3}+\frac{p_1p_2^2}{m}
+  -\frac{kq_1q_3p_3}{r^3}+\frac{p_1p_3^2}{m}\\
+  +2\frac{kq_1q_2p_2}{r^3}-\frac{kq_2^2p_1}{r^3}
+  +2\frac{kq_1q_3p_3}{r^3}-\frac{kq_3^2p_1}{r^3}
+  -\frac{kq_1q_2p_2}{r^3}-\frac{kq_1q_3p_3}{r^3}\\
+  =kp_1\qty(\frac{1}{r}-\frac{q_1^2}{r^3}-\frac{q_2^2}{r^3}-\frac{q_3^2}{r^3})
+  =kp_1\qty(\frac{r^2-q_1^2-q_2^2-q_3^2}{r^3})=0
+\end{align*}
+A similar process can be done for each of the other components, yielding:
+\begin{align*}
+  \{H,\vb{A}\}_{PB}=\vb{0}
+\end{align*}
+Hence, the value of $A$ is conserved!
+
+This can be seen visually here:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10.0cm]{lrl}
+  \caption{LRL Vector Visually on an Orbit}
+\end{figure}
+\subsection{LRL Relation to Energy and Eccentricity}
+We can start by finding the magnitude of $A$
+\begin{align*}
+  \vb{A}\vdot\vb{A}&=
+  \qty(\vb{p}\times\vb{L}-mk\vu{r})\vdot\qty(\vb{p}\times\vb{L}-mk\vu{r})\\
+  &=m^2k^2-2mk \vu{r}\vdot(\vb{p}\times\vb{L})
+  +(\vb{p}\times\vb{L})\vdot(\vb{p}\times\vb{L})
+\end{align*}
+Using the following vector identity:
+\begin{align*}
+  \vb{A}\vdot(\vb{B}\times\vb{C})
+  =\vb{B}\vdot(\vb{C}\times\vb{A})
+  =\vb{C}\vdot(\vb{A}\times\vb{B})
+\end{align*}
+We can rewrite the last part as:
+\begin{align*}
+  \vu{r}\vdot\vb{p}\times\vb{L}
+  =\vb{L}\vdot(\vu{r}\times\vb{p})
+  =\frac{\vb{L}\vdot(\vb{r}\times \vb{p})}{r}=\frac{L^2}{r}
+\end{align*}
+So the dot of $\vb{A}$ with itself is:
+\begin{align*}
+  \vb{A\vdot A}&=m^2k^2-\frac{2mkL^2}{r}
+  +(\vb{p}\times\vb{L})\vdot(\vb{p}\times\vb{L})\\
+  &=m^2k^2+2m\qty(
+  (\vb{p\times L})\vdot(\vb{p\times L})-k\frac{L^2}{r})\\
+\end{align*}
+Using another vector identity:
+\begin{align*}
+  (\vb{A\times B})\vdot(\vb{A\times B})=A^2 B^2-(\vb{A\vdot B})^2
+\end{align*}
+Since $\vb{L}$ is defined as a cross product of $\vb{p}$, their dot product is zero, and hence we just get:
+\begin{align*}
+  \vb{A\vdot A}&=m^2k^2+2 m\left(\frac{L^2 p^2}{2 m}-\frac{k L^2}{r}\right)\\
+  &=m^2k^2+2mL^2\qty(\frac{p^2}{2m}-\frac{k}{r})\\
+  A^2&=m^2k^2+2mL^2E
+\end{align*}
+Hence:
+\begin{align*}
+  E=\frac{A^2-m^2k^2}{2mL^2}
+\end{align*}
+The general form of an orbit is a conic section of eccentricity $\veps$, which has the form:
+\begin{align*}
+  \frac1r=C(1+\veps\cos\theta)
+\end{align*}
+We can relate the LRL vector to $r$ or even $r^{-1}$ by taking a dot product with $r$:
+\begin{align*}
+  \vb{A\vdot r}&=Ar\cos\theta\\
+  \vb{A\vdot r}&=\vb{r\vdot(p\times L)}-mkr
+\end{align*}
+We can again rearrange this triple product using the same identity as above:
+\begin{align*}
+  \vb{r\vdot(p\times L)}=\qty(\vb{r\times p})\vdot\vb{L}=L^2
+\end{align*}
+We can then rearrange the equality:
+\begin{align*}
+  Ar\cos\theta=L^2-mkr\implies \frac{L^2}{r}&=mk+A\cos\theta\\
+  \frac{1}{r}&=\frac{mk}{L^2}\qty(1+\frac{A}{mk}\cos\theta)
+\end{align*}
+We then identify the fact that this is an orbit where:
+\begin{align*}
+  C&=\frac{mk}{L^2}\\
+  \veps&=\frac{A}{mk}
+\end{align*}
+Meaning we can also relate the eccentricity to the energy, making use of:
+\begin{align*}
+  A^2=m^2k^2\veps^2
+\end{align*}
+To get:
+\begin{align*}
+  E&=\frac{m^2k^2\veps^2-m^2k^2}{2mL^2}\\
+  &=\frac{mk^2}{2L^2}\qty(\veps^2-1)
+\end{align*}
+\subsection{Extension to Quantum Problem}
+I am not very sure about this, but you can define the quantum LRL vector for a hydrogen-like atom:
+\begin{align*}
+  \vb{M}=\frac{1}{2m}\qty(\vb{p\times L-L\times p})-Ze^2\frac{\vb{r}}{r}
+\end{align*}
+The reversed product is placed in order to ensure Hermiticity. Since the classical vector has a 0 Poisson bracket with the Hamiltonian, the quantum version should commute with the Hydrogen-like Hamiltonian:
+\begin{align*}
+  H=\frac{p^2}{2m}-\frac{Ze^2}{r}
+\end{align*}
+The commutator would be:
+\begin{align*}
+  \comm{H}{M_i}=0
+\end{align*}
+Due to the fact that $\vb{L}$ and $\vb{p}$ do not commute, we can rewrite the vector as:
+\begin{align*}
+  \vb{M}=-\frac{Ze^2}{r}\vb{r}+\frac1m\qty(\vb{p\times L})
+  -\frac{i\hbar}{m}\vb{p}
+\end{align*}
+Using similar relationships to before when we related the classical vector to the energy, we find:
+\begin{align*}
+  M^2=Z^2e^4+\frac2mH\qty(L^2+\hbar^2)
+\end{align*}
+The commutator algebra for everything thus involves the Hamiltonian in $M$'s case, redefine it to not include the energy $E$, cancelling out the Hamiltonian:
+\begin{align*}
+  \vb{N}&=\qty(-\frac{m}{2E})^{1/2}M\\
+  \comm{L_i}{L_j}&=i\hbar\veps_{ijk}L_k\\
+  \comm{N_i}{L_j}&=i\hbar\veps_{ijk}N_k\\
+  \comm{N_i}{N_j}&=i\hbar\veps_{ijk}L_k
+\end{align*}
+Making a closed Lie Algebra equivalent to the algebra of $O(4)$, rotations in 4-D.
+
+Define new generators:
+\begin{align*}
+  I_i=\frac12\qty(L_i+N_i)\qquad K_i=\frac12\qty(L_i-N_i)
+\end{align*}
+With the following algebra:
+\begin{align*}
+  \comm{I_i}{I_j}&=i\hbar\veps_{ijk}I_k\\
+  \comm{K_i}{K_j}&=i\hbar\veps_{ijk}K_k\\
+  \comm{I_i}{K_j}&=0
+\end{align*}
+These commute with the Hamiltonian, meaning they are conserved quantities. They are pseudo angular momentum operators, so they have eigenvalues of $\hbar^2i(i+1)$.
+
+Lets refind the energy $E$:
+\begin{align*}
+  -\frac{2E}{m}N^2=Z^2e^4-\frac{2E}{m}\qty(L^2+\hbar^2)
+\end{align*}
+We can write this as:
+\begin{align*}
+  \frac12\qty(L^2+N^2)=-\frac{mZ^2e^4}{4E}-\frac{\hbar^2}{2}=2\hbar^2k(k+1)
+\end{align*}
+Solving for $E$:
+\begin{align*}
+  E=-\frac{mZ^2e^4}{2\hbar^2(2k+1)^2}
+\end{align*}
+Which is the hydrogen spectrum.
+\newpage
+\section{Electrodynamics}
+\subsection{$\vb{E}$ and $\vb{P}$ everywhere}
+We can use Gauss's Law in the following form to find $\vb{D}$ and from there calculate $\vb{E}$ and $\vb{P}$:
+\begin{align*}
+  \oint\vb{D}\vdot\dd{\vb{a}}=Q_f
+\end{align*}
+The free charge is the charge embedded in the center:
+\begin{align*}
+  Q_f=q
+\end{align*}
+Using a spherically symmetric Gaussian Surface, we find $\vb{D}$ is:
+\begin{align*}
+  \vb{D}=\frac{q}{4\pi r^2}\vu{r}
+\end{align*}
+From $\vb{D}=\veps\vb{E}$, we can find $\vb{E}$:
+\begin{align*}
+  \vb{E}=\frac{\vb{D}}{\veps}=\boxed{\frac{q}{4\pi\veps_0(1+\chi_e)r^2}\vu{r}}
+\end{align*}
+This is fair to say if we count the susceptibility as a function of $r$, with the caveat that it drops off to $0$ when $r>R$.
+
+Since we have a susceptibility, the Polarization field is proportional to the electric field:
+\begin{align*}
+  \vb{P}=\veps_0\chi_e\vb{E}
+\end{align*}
+Giving the value of:
+\begin{align*}
+  \vb{P}&=\frac{q\veps_0\chi_e}{4\pi\veps_0(1+\chi_e)r^2}\vu{r}\\
+  &=\frac{q\chi_e}{4\pi(1+\chi_e)r^2}\vu{r}\\
+  &=\boxed{\qty(\frac{\chi_e}{1+\chi_e})\frac{q}{4\pi r^2}\vu{r}}
+\end{align*}
+\subsection{Bound Charge Densities}
+There are two bound charge densities, a volume and surface charge density:
+\begin{align*}
+  \rho_b&=-\div{\vb{P}}\\
+  \sigma_b&=\vu{n}\vdot\vb{P}
+\end{align*}
+With the $\vu{n}$ in this case being $\vu{r}$ since it is normal to the sphere's surface at all points.
+
+The volume density is proportional to the following term:
+\begin{align*}
+  \rho_b\propto \div{\frac{\vu{r}}{r^2}}
+\end{align*}
+Since this is proportional to the charge density of a point charge its value is given as:
+\begin{align*}
+  \div{\frac{\vu{r}}{r^2}}=4\pi\delta^3(\vb{r})
+\end{align*}
+Hence the volume bound charge density is:
+\begin{align*}
+  \boxed{\rho_b=-q\qty(\frac{\chi_e}{1+\chi_e})\delta^3(\vb{r})}
+\end{align*}
+And the surface charge density:
+\begin{align*}
+  \sigma_b&=\eval{\vu{r}\vdot\qty(\frac{\chi_e}{1+\chi_e}\frac{q}{4\pi r^2}\vu{r})}_{r=R}\\
+  &=\boxed{q\qty(\frac{\chi_e}{1+\chi_e})\frac{1}{4\pi R^2}}
+\end{align*}
+\subsection{Total Bound Charge on the Surface}
+The total bound charge is given by the sum of the bound surface and volume charges:
+\begin{align*}
+  Q_V&=\int\dd{V}\rho_b=-q\qty(\frac{\chi_e}{1+\chi_e})
+  \int\delta^3(\vb{r})\dd{V}=\boxed{-q\qty(\frac{\chi_e}{1+\chi_e})}\\
+  Q_s&=\oint\dd{A}\sigma_b=q\qty(\frac{\chi_e}{1+\chi_e})
+  \frac{1}{4\pi R^2}\oint\dd{A}=q\qty(\frac{\chi_e}{1+\chi_e})
+  \qty(\frac{4\pi R^2}{4\pi R^2})=\boxed{q\qty(\frac{\chi_e}{1+\chi_e})}
+\end{align*}
+\subsection{Net Charge on Object, Why?}
+The net charge is given by:
+\begin{align*}
+  Q_{net}=Q_f+Q_V+Q_s
+\end{align*}
+Where $Q_f$ is the free charge, $Q_V$ and $Q_s$ are the bound charges calculated before:
+\begin{equation*}
+  \boxed{
+    Q_{net}=q-q\qty(\frac{\chi_e}{1+\chi_e})+q\qty(\frac{\chi_e}{1+\chi_e})=q
+  }
+\end{equation*}
+The dielectric is neutrally charged, so the only actual charge present is the one we placed there in the first place.
+
+\newpage
+\section{Quantum Mechanics}
+\subsection{Factoring Eigenfunctions}
+The Hamiltonian in equation 2 has no spin operators in it, so any wavefunction with spin variables in it will not get acted on by this Hamiltonian:
+\begin{align*}
+  \boxed{H\psi\chi=(\chi)(H\psi)}
+\end{align*}
+So the Schrodinger equation reads:
+\begin{align*}
+  H\psi\chi=E\psi\chi\implies \chi(H\psi-E\psi)=0
+\end{align*}
+So we have eigenstates of position, and a separate eigenstate of spin, which has a separate Schrodinger equation to solve if something like eq (1) was involved.
+\subsection{Eigenstates of Total Spin, Symmetry Properties}
+The eigenstates of total spin can be found in numerous ways, such as ladder operators, but the easiest way is to read off the Clebsch Gordan Coefficients for 2 spin $\frac12$ particles:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10.0cm]{CG}
+  \caption{Clebsch Gordan Table}
+\end{figure}
+This gives a triplet of states with total spin 1:
+\begin{align*}
+  \ket{1, 1}&=\ket{+}_1\ket{+}_2\\
+  \ket{1, 0}&=\frac{1}{\sqrt{2}}\qty(\ket{+}_1\ket{-}_2+\ket{-}_1\ket{+}_2)\\
+  \ket{1,\bar{1}}&=\ket{-}_1\ket{-}_2
+\end{align*}
+And a singlet state of total spin 0:
+\begin{align*}
+  \ket{0,0}=\frac{1}{\sqrt{2}}\qty(\ket{+}_1\ket{-}_2-\ket{-}_1\ket{+}_2)
+\end{align*}
+
+Note that the total wavefunction must be antisymmetric under exchange of particle 1 and 2, since it is a fermionic state of two electrons.
+
+The singlet state is antisymmetric under exchange, and the triplet states are all symmetric. Since the total wavefunction is a product of position and spin wavefunctions, if the spin wavefunction is in the triplet/singlet, the corresponding position wavefunction must be antisymmetric/symmetric:
+\begin{itemize}
+\item \textbf{Triplet} spin wavefunction means
+  \textbf{antisymmetric} position wavefunction
+\item \textbf{Singlet} spin wavefunction means
+  \textbf{symmetric} position wavefunction
+\end{itemize}
+\subsection{Two Particle Wavefunctions}
+These electrons are indistinguishable from one another, so we need to symmetrize or antisymmetrize the position wavefunction based on the corresponding spin wavefunction.
+
+It is also reasonable to assume that $\psi_a$ and $\psi_b$ are orthogonal even though it is not explicitly stated.
+
+Let the combinations be given by $\psi_\pm(\vb{r}_1,\vb{r}_2)$:
+\begin{align*}
+  \psi_\pm(\vb{r}_1,\vb{r}_2)=\frac1{\sqrt{2}}
+  \qty(\psi_a(\vb{r}_1)\psi_b(\vb{r}_2)\pm\psi_a(\vb{r}_2)\psi_b(\vb{r}_1))
+\end{align*}
+Much like before, the triplet and singlet states of spin are associated with one of $\psi_\pm$:
+\begin{itemize}
+\item \textbf{Triplet} spin wavefunction has
+  $\psi_-$ as position wavefunction
+\item \textbf{Singlet} spin wavefunction has
+  $\psi_+$ as position wavefunction
+\end{itemize}
+Thus, the possible 2 particle wavefunctions are given as:
+\begin{equation}
+\boxed{  \begin{aligned}
+    \ket{1}=\psi_-\ket{1,1}\\
+    \ket{2}=\psi_-\ket{1,0}\\
+    \ket{3}=\psi_-\ket{1,\bar{1}}\\
+    \ket{4}=\psi_+\ket{0,0}
+  \end{aligned}}
+\end{equation}
+\subsection{Lifting Degeneracy with Coulomb}
+All of $\ket{i}$ have the same energy, since $\psi_a$ and $\psi_b$ appear the same number of times in $\psi_\pm$, and the Hamiltonian in eq. (2) has no explicit spin dependence, so they all have the same energy $E$.
+
+This is a problem in degenerate time-independent perturbation theory, with a 4-fold degeneracy being considered. However, since this is supposed to mimic a spin interaction, we have reason to suspect that the degeneracy will not be completely lifted, but rather turned into one three fold degeneracy corresponding with spin 1, and a nondengerate state of spin 0.
+
+In order to solve this problem, we need to diagonalize the degeneracy matrix $W$, with elements given by:
+\begin{align*}
+  W_{ij}=\mel**{i}{-\frac{e^2}{\abs{\vb{r}_1-\vb{r}_2}}}{j}
+\end{align*}
+Where $\ket{i}$ and $\ket{j}$ are one of the states $\ket{1}\to\ket{4}$ seen above. Note that since the eigenstates factor, the action of the spin inner product is separate from the position 1.
+
+Take $W_{11}$ for example:
+\begin{align*}
+  W_{11}=-\ip{1,1}{1,1}\int\dd[3]{\vb{r}_1}\dd[3]{\vb{r}_2}
+  \psi^*_-(\vb{r}_1,\vb{r}_2)
+  \frac{e^2}{\abs{\vb{r}_1-\vb{r}_2}}\psi_-(\vb{r}_1,\vb{r}_2)
+\end{align*}
+The Spin inner product is simply 1 due to our careful construction:
+\begin{align*}
+  W_{11}&=-\int\dd[3]{\vb{r}_1}\dd[3]{\vb{r}_2}\psi^*_-(\vb{r}_1,\vb{r}_2)
+  \frac{e^2}{\abs{\vb{r}_1-\vb{r}_2}}\psi_-(\vb{r}_1,\vb{r}_2)\\
+  &=-\int\dd[3]{\vb{r}_1}\dd[3]{\vb{r}_2}\psi^*_-(\vb{r}_1,\vb{r}_2)
+  \psi_-(\vb{r}_1,\vb{r}_2)\frac{e^2}{\abs{\vb{r}_1-\vb{r}_2}}
+\end{align*}
+The product $\psi^*_-\psi_-$:
+\begin{align*}
+  \psi^*_-\psi_-&=\frac12
+  \qty(\psi^*_a(\vb{r}_1)\psi^*_b(\vb{r_2})
+  -\psi^*_a(\vb{r}_2)\psi^*_b(\vb{r_1}))
+  \qty(\psi_a(\vb{r}_1)\psi_b(\vb{r_2})
+  -\psi_a(\vb{r}_2)\psi_b(\vb{r_1}))\\
+  &=\frac12\left(\abs{\psi_a(\vb{r}_1)}^2\abs{\psi_b(\vb{r}_2)}^2
+    +\abs{\psi_a(\vb{r}_2)}^2\abs{\psi_b(\vb{r}_1)}^2\right.\\
+  &\left.-\psi^*_a(\vb{r}_1)\psi^*_b(\vb{r_2})\psi_a(\vb{r}_2)\psi_b(\vb{r_1})
+  -\psi^*_a(\vb{r}_2)\psi^*_b(\vb{r_1})\psi_a(\vb{r}_1)\psi_b(\vb{r_2})\right)
+\end{align*}
+For sake of sanity, let $\psi_a(\vb{r}_1)=\ket{\psi_a^1}$ and $\bra{\psi_a^1}$ denote its conjugate:
+\begin{align*}
+  \psi^*_-\psi_-&=\frac12\qty(\abs{\psi_a(\vb{r}_1)}^2\abs{\psi_b(\vb{r}_2)}^2
+  +\abs{\psi_a(\vb{r}_2)}^2\abs{\psi_b(\vb{r}_1)}^2
+  -\ip{\psi_a^1}{\psi_b^1}\ip{\psi_b^2}{\psi_a^2}
+  -\ip{\psi_a^2}{\psi_b^2}\ip{\psi_b^1}{\psi_a^1})
+\end{align*}
+Those last two things should be the same due to symmetry, including symmetry of the coulomb repulsion:
+\begin{align*}
+  \psi^*_-\psi_-&=\frac12\qty(\abs{\psi_a(\vb{r}_1)}^2\abs{\psi_b(\vb{r}_2)}^2
+  +\abs{\psi_a(\vb{r}_2)}^2\abs{\psi_b(\vb{r}_1)}^2
+  -2\ip{\psi_a^1}{\psi_b^1}\ip{\psi_b^2}{\psi_a^2})
+\end{align*}
+Similarly for $\psi_+$:
+\begin{align*}
+  \psi^*_+\psi_+&=\frac12\qty(\abs{\psi_a(\vb{r}_1)}^2\abs{\psi_b(\vb{r}_2)}^2
+  +\abs{\psi_a(\vb{r}_2)}^2\abs{\psi_b(\vb{r}_1)}^2
+  +2\ip{\psi_a^1}{\psi_b^1}\ip{\psi_b^2}{\psi_a^2})
+\end{align*}
+Meaning $W_{11}$ has the form:
+\begin{align*}
+  W_{11}&=A-B\\
+  A&=-\frac12\int\dd[3]{\vb{r}_1}\dd[3]{\vb{r}_2}
+  \qty(\abs{\psi_a^1}^2\abs{\psi_b^2}^2+\abs{\psi_a^2}^2\abs{\psi_b^1}^2)
+  \frac{e^2}{\abs{\vb{r}_1-\vb{r}_2}}\\
+  B&=-\frac12\int\dd[3]{\vb{r}_1}\dd[3]{\vb{r}_2}
+  \qty((\psi_a^1)^*\psi_b^1(\psi_b^2)^*\psi_a^2
+  +(\psi_a^2)^*\psi_b^2(\psi_b^1)^*\psi_a^1)
+  \frac{e^2}{\abs{\vb{r}_1-\vb{r}_2}}
+\end{align*}
+Note that since the only difference between $\ket{1},\ket{2},$ and $\ket{3}$ is the spin state, and it is the same orthogonality for each $W_{ii}$ so we have:
+\begin{align*}
+  \boxed{W_{11}=W_{22}=W_{33}=A-B}
+\end{align*}
+However, $W_{44}$ has the other position wavefunction, $\psi_+$, which instead of giving $A-B$, will have:
+\begin{align*}
+  W_{44}=A+B
+\end{align*}
+
+It is now important to note that $W$, the matrix, is diagonal, this is because the off diagonal elements contain orthogonal spin states, so it does not matter what the value of the position matrix element is, it will be multiplied by zero, hence:
+\begin{align*}
+  W=\pmqty{\dmat[0]{W_{11},W_{22},W_{33},W_{44}}}
+\end{align*}
+Since this matrix is diagonal already, the eigenvalue equation is quite simple:
+\begin{align*}
+  W\pmqty{a\\b\\c\\d}=E'\pmqty{a\\b\\c\\d}
+\end{align*}
+This means the good states of each energy have the form:
+\begin{align*}
+  \psi_1'&=a\ket{1}+b\ket{2}+c\ket{3}\\
+  \psi_2'&=d\ket{4}
+\end{align*}
+If $E_0$ is the energy of the unperturbed Hamiltonian (with Coulomb repulsion turned off), then the energy of these states with the perturbed Hamiltonian $H'$ is:
+\begin{align*}
+  H'\psi_1'&=(E_0+A-B)\psi_1'\\
+  H'\psi_2'&=(E_0+A+B)\psi_2'
+\end{align*}
+If we parameterize the Hamiltonian by some parameter $\lambda$, we can visualize the energy split (not to scale):
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10.0cm]{split1}
+  \caption{Coulomb Energy Split}
+\end{figure}
+This is with the parameterization of:
+\begin{align*}
+  H'=H+\lambda\qty(-\frac{e^2}{\abs{\vb{r}_1-\vb{r}_2}})
+\end{align*}
+The energy gap is the difference between the two levels, given by:
+\begin{align*}
+  \delta E=(E_0+A+B)-(E_0+A-B)=2B
+\end{align*}
+\subsection{Lifting Degeneracy with Spin}
+Now instead, we want to parameterize the Hamiltonian in the following way:
+\begin{align*}
+  H'=H+\lambda\qty(\kappa\vb{S}_1\vdot\vb{S}_2)
+\end{align*}
+We can rewrite the dot product of the $\vb{S}$ operators in terms of operators which we have the eigenstates of:
+\begin{align*}
+  S_{Tot}^2&=S_1^2+S_2^2+2\vb{S}_1\vdot\vb{S}_2\\
+  \implies\kappa\vb{S}_1\vdot\vb{S}_2&=\frac\kappa2\qty(S_{Tot}^2-S_1^2-S_2^2)
+\end{align*}
+Once again, the degeneracy matrix will be diagonal, except this time it is because of the position wavefunctions, since they are orthogonal as well.
+
+This means we only need calculate elements of the form $W_{ii}$ again:
+\begin{align*}
+  W_{ii}=\frac\kappa2\mel{\chi_i}{S_{Tot}^2-S_1^2-S_2^2}{\chi_i}
+\end{align*}
+Since only total spin matters, once again $W_{11},W_{22},W_{33}$ will be equal:
+\begin{table}[H]
+  \centering
+  \begin{tabular}[H]{c|c|c|c|c}
+    State & $s$ & $s_1$ & $s_2$ & $\vb{S}_1\vdot\vb{S}_2$\\\hline
+    $\ket{1,1}$       & $1$ & $1/2$ & $1/2$ & $ 1/4$\\\hline
+    $\ket{1,0}$       & $1$ & $1/2$ & $1/2$ & $ 1/4$\\\hline
+    $\ket{1,\bar{1}}$ & $1$ & $1/2$ & $1/2$ & $ 1/4$\\\hline
+    $\ket{0,0}$       & $0$ & $1/2$ & $1/2$ & $-3/4$
+  \end{tabular}
+  \caption{Calculation of Spin Matrix Element}
+\end{table}
+We take the value to be given by:
+\begin{align*}
+  \vb{S}_1\vdot\vb{S}_2=\hbar^2\qty(s(s+1)-s_1(s_1+1)-s_2(s_2+1))
+\end{align*}
+In each case.
+
+The degeneracy matrix can then be formed:
+\begin{align*}
+  W=\frac{\hbar^2\kappa}4\pmqty{\dmat[0]{1,1,1,-3}}
+\end{align*}
+The same principle applies to the good states:
+\begin{align*}
+  \psi_1'&=a\ket{1}+b\ket{2}+c\ket{3}\\
+  \psi_2'&=d\ket{4}
+\end{align*}
+With energies:
+\begin{align*}
+  H'\psi_1'&=\qty(E_0+\hbar^2\frac\kappa4)\psi_1'\\
+  H'\psi_2'&=\qty(E_0-3\hbar^2\frac\kappa4)\psi_2'
+\end{align*}
+The gap $\delta E$ is then:
+\begin{align*}
+  \delta E=\hbar^2\kappa
+\end{align*}
+Visualized in terms of our parameterization:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10.0cm]{split2}
+  \caption{Spin Interaction Energy Split}
+\end{figure}
+From there we can Relate our two forms of $\delta E$:
+\begin{align*}
+  \hbar^2\kappa=2B\implies \kappa=\frac{2B}{\hbar^2}
+\end{align*}
+\subsection{Sign of $\kappa$}
+The easiest way to determine the sign of $\kappa$ is to identify which state would lead to the lower energy.
+
+Recall the concept of the exchange force between two identical indistinguishable particles:
+\begin{align*}
+  \ev{(\Delta x)^2}_\pm&=\ev{(\Delta x)^2}_d\mp\abs{\ev{x}_{ab}}^2\\
+  \ev{x}_{ab}&=\int\dd{x}\psi^*_a(x)x\psi_b(x)
+\end{align*}
+Where the particles are in one of $\{\psi_a,\psi_b\}$.
+
+Notice that the symmetric state has a lower average square separation. This means that the Coulomb interaction energy would be higher, meaning it is less energetically favorable.
+
+This means that the state with the lower overall energy is the one with an antisymmetric position state and symmetric spin state. This would be the triplet state, meaning that $\kappa$ is in fact negative, since the singlet had a energy difference proportional to $-\kappa$ in the spin interaction case. 
+\newpage
+\section{Statistical Mechanics}
+\subsection{Spin Up/Down Fermi Wavevectors}
+The ground state Fermi seas are filled up to some vector $k_F$, thus to find the values for $N_\pm$, we should sum over them:
+\begin{align*}
+  N_\pm&=\sum_{\text{spins}}1=V\int_{k<k_{F_\pm}}\frac{\dd[3]{\vb{k}}}{(2\pi)^3}
+  =\frac{4\pi V}{(2\pi)^3}\int_0^{k_{F_\pm}}\dd{k}k^2\\
+  \implies n_\pm&=\frac{k_{F_\pm}^3}{6\pi^2}\\
+  \implies k_{F_\pm}&=\qty(6\pi n_\pm)^{1/3}
+\end{align*}
+That is:
+\begin{align*}
+  \boxed{k_{F_\pm}=\qty(6\pi n_\pm)^{1/3}}
+\end{align*}
+\subsection{Ground State Kinetic Energy Density}
+In this same vein, we can calculate the kinetic energy from evaluating the expectation of the kinetic energy operator in $k$ space:
+\begin{align*}
+  E_k&=\ev{\frac{\hbar^2k^2}{2m}}\\
+  &=V\int_{k<k_{F_\pm}}\frac{\dd[3]{\vb{k}}}{(2\pi)^3}\frac{\hbar^2k^2}{2m}\\
+  \frac{E_k}{V}&=\frac{4\pi\hbar^2}{16\pi^3m}\int_0^{k_F}\dd{k}k^4\\
+  &=\frac{\hbar^2}{4\pi^2m}\qty(\frac{k_F^5}{5})\\
+  &=\frac{\hbar^2k_F^5}{20m\pi^2}
+\end{align*}
+Now we must find the ground state energy with both Fermi seas, that is:
+\begin{align*}
+  \frac{E_k^0}{V}&=\frac{\hbar^2}{20m\pi^2}\qty(k_{F_+}^5+k_{F_-}^5)\\
+  &=\frac{\hbar^2(6\pi^2)^{5/3}}{20m\pi^2}\qty(n_+^{5/3}+n_-^{5/3})\\
+\end{align*}
+Hence
+\begin{align*}
+  \boxed{\frac{E_k^0}{V}
+    =\frac{\hbar^2(6\pi^2)^{5/3}}{20m\pi^2}\qty(n_+^{5/3}+n_-^{5/3})}
+\end{align*}
+\subsection{Small Deviations from Symmetric State}
+
+\subsubsection{On Actual Qual}
+If we rewrite $n_\pm$ as:
+\begin{align*}
+  n_\pm=\frac{n}2\qty(1\pm\delta)
+\end{align*}
+We need to expand
+\begin{align*}
+  n_\pm^{5/3}=\qty(\frac{n}{2})^{5/3}(1\pm\delta)^{5/3}
+\end{align*}
+To do this we can use the Binomial series (or Mathematica in my case), up to fourth order:
+\begin{align*}
+  (n_+)^{5/3}&=\qty(\frac{n}2)^{5/3}\qty(1+\frac53\delta+\frac59\delta^2
+  -\frac5{81}\delta^3+\frac5{243}\delta^4+\order{\delta^5})\\
+  (n_-)^{5/3}&=\qty(\frac{n}2)^{5/3}\qty(1-\frac53\delta+\frac59\delta^2
+  +\frac5{81}\delta^3+\frac5{243}\delta^4+\order{\delta^5})
+\end{align*}
+The sum is:
+\begin{align*}
+  (n_+)^{5/3}+(n_-)^{5/3}\approx\qty(\frac{n}2)^{5/3}
+  \qty(2+\frac{10}9\delta^2+\frac{10}{243}\delta^4+\order{\delta^5})
+\end{align*}
+So the Kinetic Energy density to the fourth order is:
+\begin{align*}
+  \frac{E^0_k}{V}=\frac{\hbar^2(6\pi^2)^{5/3}}{20m\pi^2}\qty(\frac{n}2)^{5/3}
+  \qty(2+\frac{10}9\delta^2+\frac{10}{243}\delta^4+\order{\delta^5})
+\end{align*}
+\subsubsection{In case it is the wrong form}
+In case it is actually:
+\begin{align*}
+  n_\pm=\frac{n}2\pm\delta
+\end{align*}
+The expansion would be
+\begin{align*}
+  (n_+)^{5/3}&=
+  \qty(\frac{n}2)^{5/3}
+  +\frac53\qty(\frac{n}2)^{2/3}\delta
+  +\frac59\qty(\frac{n}2)^{1/3}\delta^2
+  -\frac5{81}\qty(\frac{n}2)^{-4/3}\delta^3
+  +\frac5{243}\qty(\frac{n}2)^{-7/3}\delta^4+\order{\delta^5}\\
+  (n_-)^{5/3}&=
+  \qty(\frac{n}2)^{5/3}
+  -\frac53\qty(\frac{n}2)^{2/3}\delta
+  +\frac59\qty(\frac{n}2)^{1/3}\delta^2
+  +\frac5{81}\qty(\frac{n}2)^{-4/3}\delta^3
+  +\frac5{243}\qty(\frac{n}2)^{-7/3}\delta^4+\order{\delta^5}
+\end{align*}
+The sum would be:
+\begin{align*}
+  (n_+)^{5/3}+(n_-)^{5/3}=2\qty(\frac{n}{2})^{5/3}
+  +\frac{10}9\qty(\frac2n)^{1/3}\delta^2
+  +\frac{10}{243}\qty(\frac2n)^{7/3}\delta^4
+  +\order{\delta^5}
+\end{align*}
+Thus the kinetic energy density:
+\begin{align*}
+  \frac{E^0_k}{V}=\frac{\hbar^2(6\pi^2)^{5/3}}{20m\pi^2}
+  \qty(2\qty(\frac{n}{2})^{5/3}
+  +\frac{10}9\qty(\frac2n)^{1/3}\delta^2
+  +\frac{10}{243}\qty(\frac2n)^{7/3}\delta^4
+  +\order{\delta^5})
+\end{align*}
+\subsection{Interaction Density and Critical Value of $\alpha$}
+\subsubsection{case 1}
+The interaction energy $U$ is given in the problem:
+\begin{align*}
+  U=\alpha\frac{N_+N_-}{V}
+\end{align*}
+Thus the interaction energy density is:
+\begin{align*}
+  \frac{U}{V}=\alpha\frac{N_+N_-}{V^2}=\alpha n_+n_-
+\end{align*}
+Expanded:
+\begin{align*}
+  \frac{U}{V}=\alpha\frac{n^2}{4}\qty(1-\delta^2)
+\end{align*}
+The total energy will give us a clue to find a nontrivial minimum, such is required for a phase transition:
+\begin{align*}
+  \frac{E^0_{Tot}}{V}&=\frac{E_k^0}{V}+\frac{U}{V}\\
+  &=2\gamma+\alpha\frac{n^2}{4}
+  +\qty(\frac{10\gamma}{9}-\alpha\frac{n^2}{4})\delta^2
+  +\frac{10\gamma}{243}\delta^4\\
+  \gamma&=\frac{\hbar^2(6\pi^2)^{5/3}}{20m\pi^2}\qty(\frac{n}{2})^{5/3}
+\end{align*}
+The only thing which can change sign here is the $\order{\delta^2}$ term, so it can give rise to a nontrivial minimum value above some $\alpha_c$ defined by:
+\begin{align*}
+  \frac{10}{9}\gamma=\frac{n^2}{4}\alpha_c\quad\implies\quad
+  \alpha_c=\frac{40}{9n^2}\gamma=2\frac{\hbar^2}{m}\qty(\frac{\pi^4}{3n})^{1/3}
+\end{align*}
+Thus $\alpha_c$ is:
+\begin{align*}
+  \boxed{\alpha_c=2\frac{\hbar^2}{m}\qty(\frac{\pi^4}{3n})^{1/3}}
+\end{align*}
+\subsubsection{case 2}
+The interaction energy $U$ is given in the problem:
+\begin{align*}
+  U=\alpha\frac{N_+N_-}{V}
+\end{align*}
+Thus the interaction energy density is:
+\begin{align*}
+  \frac{U}{V}=\alpha\frac{N_+N_-}{V^2}=\alpha n_+n_-
+\end{align*}
+Expanded:
+\begin{align*}
+  \frac{U}{V}=\alpha\qty(\frac{n^2}{4}-\delta^2)
+\end{align*}
+The total energy will give us a clue to find a nontrivial minimum, such is required for a phase transition:
+\begin{align*}
+  \frac{E^0_{Tot}}{V}&=\frac{E_k^0}{V}+\frac{U}{V}\\
+  &=2\gamma\qty(\frac{n}{2})^{5/3}+\alpha\frac{n^2}{4}
+  +\qty(\gamma\frac{10}9\qty(\frac2n)^{1/3}-\alpha)\delta^2
+  +\gamma\frac{10}{243}\qty(\frac2n)^{7/3}\delta^4\\
+  \gamma&=\frac{\hbar^2(6\pi^2)^{5/3}}{20m\pi^2}
+\end{align*}
+The only thing which can change sign here is the $\order{\delta^2}$ term, so it can give rise to a nontrivial minimum value above some $\alpha_c$ defined by:
+\begin{align*}
+  \gamma\frac{10}{9}\qty(\frac2n)^{1/3}=\alpha_c\quad\implies\quad
+  \alpha_c=\frac{40}{9n^2}\gamma=2\frac{\hbar^2}{m}\qty(\frac{\pi^4}{3n})^{1/3}
+\end{align*}
+Thus $\alpha_c$ is:
+\begin{align*}
+  \boxed{\alpha_c=2\frac{\hbar^2}{m}\qty(\frac{\pi^4}{3n})^{1/3}}
+\end{align*}
+Which is the same :)
+\subsection{Magnetization Behavior}
+Since it is what determines when the sign changes, we must have:
+\begin{align*}
+  \delta^2\propto \alpha-\alpha_c
+\end{align*}
+Thus it is our order parameter, meaning our Magnetization is proportional to $\delta$, and above $\alpha_c$, we have:
+\begin{align*}
+  \delta\propto\sqrt{\alpha-\alpha_c}
+\end{align*}
+Meaning the behavior of the Magnetization is given by:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10cm]{magnetization}
+  \caption{Magnetization Behavior}
+\end{figure}
+
+\end{document}
