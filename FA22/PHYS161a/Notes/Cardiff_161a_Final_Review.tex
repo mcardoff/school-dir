@@ -1,0 +1,408 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 161a}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amssymb,amsthm,bm,physics,slashed}
+
+%% general pretty stuff
+\usepackage{caption,enumitem,float,geometry,graphicx,tikz}
+
+% setups
+\graphicspath{ {./figs/} }
+\captionsetup{labelfont=bf}
+\geometry{margin=1in}
+
+% theorem defns
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+% macros
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\k}{\frac1{4\pi\varepsilon_0}}
+\newcommand{\D}{\partial}
+\newcommand{\veps}{\varepsilon}
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+
+\let\temp\phi
+\let\phi\varphi
+\let\varphi\temp
+
+\begin{document}
+\maketitle
+\section{Green Functions}
+\subsection{Definitions and Boundary Conditions}
+Before, we solved for potentials using the following:
+\begin{align*}
+  \phi(\vb{r})=\k\int\dd[3]{\vb{r}'}\frac{\rho(\vb{r'})}{\abs{\vb{r-r}'}}
+\end{align*}
+However, this is a more specific case, as this is the 'Green function' for a point charge. The general solution is the following:
+\begin{align*}
+  \phi(\vb{r})=\k\int\dd[3]{\vb{r}'}\rho(\vb{r}')G(\vb{r,r}')
+\end{align*}
+Depending on whether you have Dirichlet or Neumann Boundary conditions, you have the following, which should be subtracted from the above:
+\begin{align*}
+  \phi_D&=\frac1{4\pi}\oint\dd{S'}[\phi(\vb{r}')]_S\pdv{G}{n'}(\vb{r,r}')\\
+  \phi_N&=\frac1{4\pi}\oint\dd{S'}\eval{\pdv{\phi(\vb{r}')}{n'}}_SG(\vb{r,r}')
+\end{align*}
+With the following boundary conditions being in each case:
+\begin{itemize}
+\item Dirichlet BC: Value of $\phi$ on the bounding surface is specified
+\item Neumann BC: Value of $\pdv{\phi}{n}$ on the bounding surface is specified
+\end{itemize}
+In each case, the corresponding Green Function boundary condition changes.
+
+For Dirichlet Boundary Conditions, we have that the green function of the value is $0$ at the boundaries, and for Neumann Boundary conditions the derivative is a constant.
+
+Here is a summary:
+\begin{definition}[Dirichlet Green Functions]
+  The corresponding conditions for the Dirichlet Boundary Conditions are:
+  \begin{itemize}
+  \item The Green function $G_D$ satisfies the following differential equation:
+    \begin{align*}
+      \laplacian_{\vb{r}}G_D(\vb{r,r}')=-4\pi\delta(\vb{r-r}')
+    \end{align*}
+  \item At the boundaries, we have the following condition
+    \begin{align*}
+      \eval{G(\vb{r,r}')}_{\vb{r}\in S}=0
+    \end{align*}
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Neumann Green Functions]
+  The corresponding conditions for the Neumann Boundary Conditions are:
+  \begin{itemize}
+  \item The Green function $G_S$ satisfies the following differential equation:
+    \begin{align*}
+      \laplacian_{\vb{r}}G_S(\vb{r,r}')=-4\pi\delta(\vb{r-r}')
+    \end{align*}
+  \item At the boundaries, we have the following condition
+    \begin{align*}
+      \eval{\pdv{G(\vb{r,r}')}{n}}_{\vb{r}\in S}=-\frac{4\pi}{A}
+    \end{align*}
+    Where $A$ is the surface area.
+  \end{itemize}
+\end{definition}
+
+Something to note about Green functions is that they are solutions to potential problems in certain cases. If your charge density was that of a point charge, surface terms nonwithstanding, the potential would simply be:
+\begin{align*}
+  \phi(\vb{r})&=\k\int\dd[3]{\vb{r}'}Q\delta^3(\vb{r'-a})G(\vb{r,r}')\\
+  &=\frac{Q}{4\pi\veps_0}G(\vb{r,a})
+\end{align*}
+Which leads to an interesting interpretation of the Green Function. It is the potential (units not counting) if instead of a volume of charge, there was a single point charge at $\vb{r}'$, and the integration means the entire volume of charge can be found by adding the contributions of point charges.
+
+\subsection{The Reduced Green Function Method}
+This section borders on going into the next seciton, however, it is important to note the important details here.
+
+We start by noticing that we can expand the delta functions in terms of integrals:
+\begin{align*}
+  \delta(x-x')\int\dd{k}e^{ik(x-x')}
+\end{align*}
+So, given a structure which is symmetrix in $x,y$ but contains the conducting surfaces on the z-axis, the only part that matters is on the $z$ axis. This suggests our differential equation in Cartesian coordinates is:
+\begin{align*}
+  \laplacian{G(\vb{r,r}')}&=-4\pi\delta(x-x')\delta(y-y')\delta(z-z')\\
+  &=-4\pi\int\frac{\dd[2]{\vb{k}_\perp}}{(2\pi)^2}
+  e^{i\vb{k}_\perp\vdot(\vb{r-r'})_\perp}\delta(z-z')
+\end{align*}
+This suggests that we write the solution in terms of a reduced green function $g$
+\begin{align*}
+  G(\vb{r,r}')=4\pi\int\frac{\dd[2]{\vb{k}_\perp}}{(2\pi)^2}
+  e^{i\vb{k}_\perp\vdot(\vb{r-r'})_\perp}g(z,z',k_\perp)
+\end{align*}
+Applying the laplacian gives the differential equation for $g$, which will look like the following:
+\begin{align*}
+  L(z)\{g(z,z',k_\perp)\}=\delta(z-z')
+\end{align*}
+Where $L(z)$ is some differential operator.
+
+The boundary conditions that $g$ follows (minus Dirichlet/Neumann conditions) are the following:
+\begin{definition}[General Boundary Conditions for $g/G$]
+  The general boundary conditions which either or $g$ or $G$ follow are:
+  \begin{itemize}
+  \item Continuity of $g(z,z')$ at $z=z'$ or $G(\vb{r,r}')$ at $\vb{r=r}'$
+  \item Discontinuity of normal derivative, that is $\pdv{g}{z}$ pr $\pdv{G}{\vb{n}}$ for $z=z'$, which is defined by the coefficient of the delta function
+  \end{itemize}
+\end{definition}
+
+The general method for solving Green Function problems is the following:
+\begin{itemize}
+\item Use symmetry to determine which direction(s) do and do not matter
+\item Expand the delta functions of the non-important directions in complete sets of functions, whether this be fourier transforms, fourier series, sines and cosines, or anything else we encounter later on, this is dependent on the coordinate system you choose. 
+\item Write the choice of solution for $G$ as the complete set of functions found before, but instead of having a delta function for the direction that matters, write the last one as a reduced green function $g$.
+\item Apply the Laplacian operator to your guess for $G$, acting on unprimed coordinates. 
+\item This should lead to a differential equation for $g$ with a delta function. 
+\item To find the solution for $g$:
+  \begin{itemize}
+  \item Split the solution into one where $z>z'$ and one where $z<z'$, they may be the same, that is okay
+  \item Solve the differential equation for $g_>$ and $g_<$
+  \item Use the Dirichlet/Neumann boundary conditions to solve for two of the coefficients, one from $g_>$, one form $g_<$
+  \item Use the continuity at $z=z'$ to solve for the coefficient of $g_{>/<}$ in terms of the coefficient of $g_{</>}$
+  \item Use the discontinuity of the derivative at $z=z'$ to solve for the last coefficient. 
+  \end{itemize}
+\item Compute the first integral if given a charge distribution
+\item Compute the proper Dirichlet/Neumann Boundary condition integral and subtract it from the previous one. 
+\end{itemize}
+
+\section{Completeness of Functions}
+This was covered before. A function can be expanded in a set of orthogonal functions $\{g_n\}$ in the following series:
+\begin{align*}
+  f(x)&=\sum_{n=1}^\infty a_ng_n\\
+  a_n&=\int\dd{x'}g_n^*(x')f(x')
+\end{align*}
+This assumes the function should look like:
+\begin{align*}
+  f(x)&=\sum_{n=1}^\infty\qty[\int\dd{x'}g_n^*(x')f(x')]g_n
+\end{align*}
+The sum and integral can be interchanged to give:
+\begin{align*}
+  f(x)&=\int\dd{x'}\sum_{n=1}^\infty g_n^*(x')g_n(x)f(x')
+\end{align*}
+Notice that in order for the integral to yield the function $f$, we need the following to be true:
+\begin{align*}
+  \boxed{\sum_{n=1}^\infty g_n^*(x')g_n(x)=\delta(x-x')}
+\end{align*}
+This is the completeness condition.
+\section{Cartesian Separation of Variables}
+We separate variables of the following equation:
+\begin{align*}
+  \laplacian{\phi(\vb{r})}=0
+\end{align*}
+By assuming the following form for $\phi$:
+\begin{align*}
+  \phi(\vb{r})=X(x)Y(y)Z(z)
+\end{align*}
+The laplacian becomes:
+\begin{align*}
+  \laplacian{\phi}=YZ\dv[2]{X}{x}+XZ\dv[2]{Y}{y}+XY\dv[2]{Z}{z}
+\end{align*}
+Dividing through by $XYZ$ on the original equation gives:
+\begin{align*}
+  0=\frac1X\dv[2]{X}{x}+\frac1Y\dv[2]{Y}{y}+\frac1Z\dv[2]{Z}{z}
+\end{align*}
+We then introduce separation constants, $\alpha^2_n,\beta^2_m,$ and $\gamma^2_{nm}$ with:
+\begin{align*}
+  \gamma^2_{nm}=\alpha_n^2+\beta_m^2
+\end{align*}
+For which we now have 3 separate equations for each coordinate:
+\begin{align*}
+  \frac1X\dv[2]{X}{x}&=-\alpha_n^2\\
+  \frac1Y\dv[2]{Y}{y}&=-\beta_m^2\\
+  \frac1Z\dv[2]{Z}{z}&=\gamma_{mn}^2
+\end{align*}
+Which can be solved fairly easily, with the boundary conditions of a box, mainly that:
+\begin{align*}
+  X(0)=X(a)=0\qquad Y(0)=Y(b)=0\qquad Z(0)=Z(c)=V(x,y)
+\end{align*}
+And it is easy to solve from here
+
+\section{Polar Separation of Variables}
+This is similar to before, however the Laplacian now looks like:
+\begin{align*}
+  \laplacian{\phi}=\frac1\rho\pdv{\rho}\qty(\rho\pdv{\phi}{\rho})
+  +\frac1{\rho^2}\pdv[2]{\phi}{\theta}
+\end{align*}
+Applying separation of variables $\phi=R(r)\Theta(\theta)$ gives:
+\begin{align*}
+  \frac{\Theta}\rho\pdv\rho\qty(\rho\pdv{R}{\rho})
+  +\frac{R}{\rho^2}\pdv[2]{\Theta}{\theta}
+\end{align*}
+The proper separation constant is $m^2$:
+\begin{align*}
+  \frac{\rho}{R}\dv{\rho}\qty(\rho\dv{R}{\rho})=m^2\quad
+  \frac1{\Theta}\pdv[2]{\Theta}{\theta}=-m^2
+\end{align*}
+The full solution is:
+\begin{align*}
+  \phi(\rho,\theta)=(a_0+b_0\ln\frac\rho{\rho_0})(A_0+B_0\theta)
+  +\sum_m\qty(a_m\rho^m+b_m\rho^{-m})(A_m\cos m\theta+B_m\sin m\theta)
+\end{align*}
+
+\section{Cylindrical Separation of Variables}
+The Laplacian in cylindrical coordinates is:
+\begin{align*}
+  \laplacian{\phi}=\frac1\rho\pdv{\rho}\qty(\rho\pdv{\phi}{\rho})
+  +\frac1{\rho^2}\pdv[2]{\phi}{\theta}
+  +\pdv[2]{\phi}{z}
+\end{align*}
+The equations we get from separating variables are:
+\begin{gather*}
+  \dv[2]{Z}{z}-k^2Z=0\\
+  \dv[2]{\Theta}{\theta}+m^2\Theta=0\\
+  \dv[2]{R}{\rho}+\frac1\rho\dv{R}{\rho}+\qty(k^2-\frac{m^2}{r^2})R=0
+\end{gather*}
+For which the solutions are:
+\begin{align*}
+  Z(z)&=Ae^{kz}+Be^{-kz} \text{ or } C\sinh(kz)+D\cosh(kz)\\
+  \Theta(\theta)&=\sum_{m=-\infty}^\infty e^{im\theta}\\
+  R(\rho)&=\sum_mJ_m(k\rho)
+\end{align*}
+Note that the correct delta function to use in these cases are:
+\begin{align*}
+  \delta(x-x')\delta(y-y')\delta(z-z')=\delta(\vb{r-r}')=
+  \frac{\delta(\rho-\rho')}{\rho}\delta(\theta-\theta')\delta(z-z')
+\end{align*}
+\section{Bessel Functions}
+The Bessel functions can be found if we examine the following a bit more closely:
+\begin{align*}
+  e^{i\vb{k}\vdot\vb{r}}=\qty[e^{ik_\perp\rho\cos(\theta-\alpha)}]e^{ik_zz}
+\end{align*}
+If we define $t=k_\perp\rho$ and $u=ie^{i(\theta-\alpha)}$, we can write the argument of the first exponential as:
+\begin{align*}
+  ik_\perp\rho\cos(\theta-\alpha)=\frac{t}{2}\qty(u-\frac1u)
+\end{align*}
+If we expand the exponential with $k_\perp$ and $\theta$ in powers of $u$, we find:
+\begin{align*}
+  e^{i\frac{t}{2}(u-1/u)}=\sum_{m=-\infty}^\infty u^mJ_m(t)
+\end{align*}
+This means that this function is the generating function for the Bessel functions $J_m$. For integer $m$, they are given by the series:
+\begin{align*}
+  J_m(t)=\sum_{n=0}^\infty(-1)^n\frac{(t/2)^{m+2n}}{n!(n+m)!}
+\end{align*}
+
+\subsection{Properties of Bessel Functions}
+Manipulating the series from the generating function yields:
+\begin{align*}
+  J_{-m}(t)=(-1)^mJ_m(t)
+\end{align*}
+Again manipulating the generating function yields:
+\begin{align*}
+  J_m(t)=i^{-m}\int_0^{2\pi}\frac{\dd{\theta}}{2\pi}e^{i(t\cos\theta-n\theta)}
+\end{align*}
+And equivalent form is:
+\begin{align*}
+  J_m(t)=\int_{-\pi}^{\pi}\frac{\dd{\theta}}{2\pi}e^{i(t\sin\theta-n\theta)}
+\end{align*}
+Combined, these give:
+\begin{align*}
+  J_m(t)=\frac1\pi\int_0^\pi\cos(t\sin\theta-n\theta)\dd\theta
+\end{align*}
+The Bessel Differential equation in dimensionless form is:
+\begin{align*}
+  \dv[2]{J_m}{t}+\frac1t\dv{J_m}{t}+\qty(1-\frac{m^2}{t^2})J_m(t)=0
+\end{align*}
+The differential operator changes if you sub in the fact that $t=k\rho$:
+\begin{align*}
+  \qty[\dv[2]{\rho}+\frac1\rho\dv{\rho}+\qty(k^2-\frac{m^2}{\rho^2})]
+  J_m(k\rho)=0
+\end{align*}
+The Bessel functions are complete:
+\begin{align*}
+  \int_0^\infty\dd{k}kJ_n(k\rho)J_n(k\rho')=\frac{\delta(\rho-\rho')}{\rho}
+\end{align*}
+As a bonus from the derivation of this, we get:
+\begin{align*}
+  \frac1{2\pi}\sum_{m=-\infty}^\infty e^{im(\theta-\theta')}=
+  \delta(\theta-\theta')
+\end{align*}
+Another relation using the appropriate zeros of the Bessel function $k_{mn}$:
+\begin{align*}
+  \sum_{n=1}^\infty J_{1m}(k_{mn}\rho')J_{1m}(k_{mn}\rho)
+  =\frac{\delta(\rho-\rho')}\rho
+\end{align*}
+Where $J_{1m}$ are the normalized Bessel functions
+
+\subsection{Non-Integer Order Bessel Functions}
+So far we have restricted $m$ to be in $\mathbb{Z}$, but this is not necessary, using the typical definition of the $\Gamma$ function and a non-integer $\nu$:
+\begin{align*}
+  J_\nu(t)=\sum_{n=0}^\infty(-1)^n\frac{(t/2)^{\nu+2n}}{n!\Gamma(\nu+n+1)}
+\end{align*}
+This is simple, as the $\Gamma$ simply replaces where the factorial was. However a limitation of this is that $\nu$ cannot be a negative integer, since the Gamma function has poles at all of the negative integers.
+
+We can define a function linearly independent from the Bessel Functions, The Neumann Functions $N_\nu$:
+\begin{align*}
+  N_\nu=\frac{J_\nu(t)\cos\nu\pi-J_{-\nu}}{\sin\nu\pi}
+\end{align*}
+If $\nu$ is an integer, define the corresponding Neumann Function as a limit approaching the integer $m$
+
+\subsection{Bessel Functions of Imaginary Argument}
+Introduce the modified Bessel Functions $I_\nu$ and $K_\nu$:
+\begin{align*}
+  I_\nu(k\rho)&=i^{-\nu}J_\nu(ik\rho)\\
+  K_\nu(k\rho)&=\frac\pi2 i^{\nu+1}H_\nu^{(1)}(ik\rho)
+\end{align*}
+Where $H^{(1)}$ is the Hankel Function of the first kind:
+\begin{align*}
+  H^{(1)}_{\nu}(k\rho)&=J_\nu+iN_\nu(k\rho)\\
+  H^{(2)}_{\nu}(k\rho)&=J_\nu-iN_\nu(k\rho)
+\end{align*}
+
+\subsection{Limiting Behaviors}
+The following are useful in defining some limits:
+\begin{align*}
+  \lim_{k\rho\gg 1}J_\nu(k\rho)&\to\sqrt{\frac{2}{\pi k\rho}}
+  \cos(k\rho-\frac{\nu\pi}{2}-\frac{\pi}{4})\\
+  \lim_{k\rho\gg 1}N_\nu(k\rho)&\to\sqrt{\frac{2}{\pi k\rho}}
+  \sin(k\rho-\frac{\nu\pi}{2}-\frac{\pi}{4})\\
+  \lim_{k\rho\gg 1}I_\nu(k\rho)&\to\frac{e^{k\rho}}{\sqrt{2\pi k\rho}}\\
+  \lim_{k\rho\gg 1}K_\nu(k\rho)&\to\sqrt{\frac{\pi}{2k\rho}}e^{-k\rho}
+\end{align*}
+And the other side:
+\begin{align*}
+  \lim_{k\rho\ll 1}J_\nu(k\rho)&\to
+  \frac1{\Gamma{\nu+1}}\qty(\frac{k\rho}{2})^\nu\\
+  \lim_{k\rho\ll 1}N_\nu(k\rho)&\to
+  -\frac{\Gamma{\nu}}{\pi}\qty(\frac{2}{k\rho})^\nu\\
+  \lim_{k\rho\ll 1}N_0(k\rho)&\to\frac2\pi(\ln(\frac{k\rho}{2})+\gamma)\\
+  \lim_{k\rho\ll 1}I_\nu(k\rho)&\to
+  \frac1{\Gamma{\nu+1}}\qty(\frac{k\rho}{2})^\nu\\
+  \lim_{k\rho\ll 1}K_\nu(k\rho)&\to
+  -\frac{\Gamma{\nu}}{2}\qty(\frac{2}{k\rho})^\nu\\
+  \lim_{k\rho\ll 1}K_0(k\rho)&\to \ln(\frac{k\rho}{2})+\gamma\\
+\end{align*}
+Unlike $J_\nu$, $I_\nu$ are not complete.
+
+\section{Spherical Separation of Variables}
+Now we have the Laplacian:
+\begin{align*}
+  \laplacian{\phi}=\frac1{r^2}\pdv{r}\qty(r^2\pdv{\phi}{r})
+  +\frac1{r^2\sin\theta}\pdv{\theta}(\sin\theta\pdv{\phi}{\theta})
+  +\frac1{r^2\sin^2\theta}\pdv[2]{\phi}{\varphi}
+\end{align*}
+Separation of Variables is done a bit differently, separating distance from angles, however the solutions are:
+\begin{align*}
+  R_\ell=A_\ell r^\ell+B_\ell r^{-(\ell+1)}
+\end{align*}
+And the angular solutions are the spherical harmonics. The spherical harmonics are Complete:
+\begin{align*}
+  \sum_{\ell,m}Y_{\ell,m}^*(\theta',\varphi')Y_{\ell,m}(\theta,\varphi)=
+  \frac{\delta(\theta-\theta')\delta(\varphi-\varphi')}{\sin\theta}
+\end{align*}
+
+\section{Dielectrics}
+Dielectrics can be anything that is non-conducting: solid, liquid, or gas. Typical properties are:
+\begin{itemize}
+\item Insulators
+\item Can be Polarized
+\item Electrically neutral
+\end{itemize}
+If we apply an external $\vb{E}$ field, we find:
+\begin{itemize}
+\item Atoms/molecules get displaced
+\item Positive and negative charges now result in non-zero volume and surface charge densities, this is a Polarization. 
+\end{itemize}
+Since the dielectric is charge neutral, we have:
+\begin{align*}
+  \int_V\rho_b\dd{V}+\int_S\sigma_b\dd{S}=0
+\end{align*}
+Use Gauss's Theorem to write this as:
+\begin{align*}
+  \int-\div{\vb{P}}\dd{V}+\oint\vb{P}(\vb{r}_S)\vdot\vu{n}(\vb{r}_S)\dd{S}=0
+\end{align*}
+Therefore the three conditions we must use to define $\vb{P}$ are:
+\begin{itemize}
+\item The polarization should not be $0$ for $\vb{r}\in V$ or $\vb{r}\in S$
+\item The bound volume charge density is: $\rho_b=-\div{\vb{P}}$
+\item The bound surface charge density is: $\sigma_b=\vb{P}(\vb{r}_S)\vdot\vu{n}(\vb{r}_S)$
+\end{itemize}
+
+\subsection{Lorentz Model}
+The Lorentz model assumes dielectrics are continuous distributions of point dipoles. This is inaccurate for most dielectrics, however once you know $\vb{P}$, this assumption holds some weight. 
+
+\section{Green Functions for Dielectrics}
+
+\end{document}

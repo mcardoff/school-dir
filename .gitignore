@@ -14,6 +14,7 @@
 *.snm
 *_.tex
 *.org
+*.png
 !README.org
 octave-workspace
 *#

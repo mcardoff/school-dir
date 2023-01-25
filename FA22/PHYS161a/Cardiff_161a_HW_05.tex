@@ -62,22 +62,294 @@ The solution to this equation in general is typically written as a sum of expone
 \begin{align*}
   g(z,z',k_\perp)=A(z')\sinh(k_\perp z)+B(z')\cosh(k_\perp z)
 \end{align*}
-The first boundary condition gives:
+We have two situations, when $z>z'$ and when $z'>z>0$:
 \begin{align*}
-  g(0,z',k_\perp)&=A(z')\sinh(0)+B(z')\cosh(0)=0\\
-  &\implies B(z')=0
+  g_<(z,z',k_\perp)&=A(z')\sinh(k_\perp z)+B(z')\cosh(k_\perp z)\\
+  g_>(z,z',k_\perp)&=C(z')\sinh(k_\perp (z-a))+D(z')\cosh(k_\perp (z-a))
 \end{align*}
-The continuity of the first 
+The boundary conditions require:
+\begin{align*}
+  g_<(0,z',k_\perp)&=A(z')\sinh(k_\perp 0)+B(z')\cosh(k_\perp 0)=0\\
+  g_>(a,z',k_\perp)&=C(z')\sinh(k_\perp 0)+D(z')\cosh(k_\perp 0)=0
+\end{align*}
+Since $\sinh(0)=0$ but $\cosh(0)=1$, this eliminates both $B$ and $D$:
+\begin{align*}
+  g_<(z,z',k_\perp)&=A(z')\sinh(k_\perp z)\\
+  g_>(z,z',k_\perp)&=C(z')\sinh(k_\perp (z-a))
+\end{align*}
+For continuity at $z=z'$, we need the following:
+\begin{align*}
+  A(z')\sinh(k_\perp z')&=C(z')\sinh(k_\perp(z'-a))\\
+  A(z')&=C(z')\frac{\sinh(k_\perp(z'-a))}{\sinh(k_\perp z')}
+\end{align*}
+We also need the discontinuity of the first derivative to be the coefficient of the delta function:
+\begin{align*}
+  \lim_{z\to z}\qty[\dv{g_>(z,z')}{z}-\dv{g_<(z,z')}{z}]=-1
+\end{align*}
+The derivatives are:
+\begin{align*}
+  \dv{g_<}{z}&=\frac{A(z')}{k_\perp}\cosh(k_\perp z)\\
+  \dv{g_>}{z}&=\frac{C(z')}{k_\perp}\cosh(k_\perp(z-a))
+\end{align*}
+The continuity condition is then:
+\begin{align*}
+  \frac{C(z')}{k_\perp}\cosh(k_\perp(z'-a))
+  -\frac{A(z')}{k_\perp}\cosh(k_\perp z')=-1
+\end{align*}
+Using the above information we get:
+\begin{align*}
+  A(z')&=\frac{\sinh(k_\perp (a-z'))}{k_\perp\sinh(k_\perp a)}\\
+  C(z')&=\frac{\sinh(k_\perp z')}{k_\perp\sinh(k_\perp a)}
+\end{align*}
+The solution in two equations is:
+\begin{align*}
+  g_<(z,z',k_\perp)&=\frac{\sinh(k_\perp(a-z'))\sinh(k_\perp z)}
+  {k_\perp\sinh(k_\perp a)}\\
+  g_>(z,z',k_\perp)&=\frac{\sinh(k_\perp z')\sinh(k_\perp(a-z))}
+  {k_\perp\sinh(k_\perp a)}
+\end{align*}
+In one, using the convention of $z_>$ and $z_<$:
+\begin{align*}
+  g(z,z',k_\perp)=\frac{\sinh(k_\perp z_<)\sinh(k_\perp(a-z_>))}
+  {k_\perp\sinh(k_\perp a)}
+\end{align*}
+And the total Green Function is:
+\begin{align}
+  \boxed{
+    G(\vb{r,r}')=4\pi\iint\frac{\dd{\vb{k}_\perp}}{(2\pi)^2}
+    e^{i\vb{k}_\perp\vdot\qty(\vb{r-r}')_\perp}
+    \frac{\sinh k_\perp z_<\sinh k_\perp(a-z_>)}{k_\perp\sinh k_\perp a}
+  }
+\end{align}
 \subsection{Induced Charge}
-
+For a unit point charge, we have:
+\begin{align*}
+  \phi(\vb{r})&=\frac1{4\pi\varepsilon_0}G(\vb{r,r}')\\
+  &=\frac1{\varepsilon_0}\iint\frac{\dd{\vb{k}_\perp}}{(2\pi)^2}
+    e^{i\vb{k}_\perp\vdot\qty(\vb{r-r}')_\perp}
+    \frac{\sinh k_\perp z_<\sinh k_\perp(a-z_>)}{k_\perp\sinh k_\perp a}
+\end{align*}
+The induced surface charge density will be given by:
+\begin{align*}
+  \frac{\sigma}{\varepsilon_0}=\eval{-\pdv{\phi}{z}}_{z=0}
+\end{align*}
+And to find the induced charge we integrate over $x$ and $y$:
+\begin{align*}
+  Q=\int\sigma\dd{x}\dd{y}
+\end{align*}
+For the conductor at $z=0$:
+\begin{align*}
+  \eval{\pdv{\phi}{z}}_{z=0}=\frac1{\varepsilon_0}\int
+  \frac{\dd{k_\perp}}{(2\pi)^2}\frac{e^{i\vb{k}_\perp\vdot\qty(\vb{r-r}')_\perp}}
+  {\sinh(k_\perp a)}\sinh(k_\perp(a-z'))
+\end{align*}
+So the total charge is:
+\begin{align*}
+  Q_{z=0}=-\int\dd{x}\dd{y}\int\frac{\dd{k_\perp}}{(2\pi)^2}
+  \frac{e^{i\vb{k}_\perp\vdot\qty(\vb{r-r}')_\perp}}{\sinh(k_\perp a)}
+  \sinh(k_\perp(a-z'))
+\end{align*}
+This integral through a change of variables $x\to x-x',y\to y-y'$ gives simply a delta function for the $k_\perp$ integral:
+\begin{align*}
+  Q_{z=0}\propto\int\dd{k_\perp}\delta(\vb{k_\perp})\frac{\sinh k_\perp(a-z')}{\sinh(k_\perp a)}
+\end{align*}
+and we can take a limit as $k_\perp\to0$ to evaluate it:
+\begin{align*}
+  Q_{z=0}=-\lim_{k_\perp\to0}\frac{\sinh k_\perp(a-z')}{\sinh(k_\perp a)}
+\end{align*}
+We can then evaluate this limit:
+\begin{align*}
+  Q_{z=0}=-\qty(1-\frac{z'}{a})
+\end{align*}
+This makes sense, as the induced charge should be opposite in sign from the charge we placed initially. We can go through an identical process for the conductor at $z=a$ to end up with:
+\begin{align*}
+  Q_{z=a}=-\lim_{k_\perp\to0}\frac{\sinh k_\perp z'}{\sinh(k_\perp a)}
+\end{align*}
+Evaluating the limit:
+\begin{align*}
+  Q_{z=a}=-\frac{z'}{a}
+\end{align*}
+Hence our answer is:
+\begin{equation}
+  \boxed{
+  \begin{aligned}
+    Q_{z=0}&=-\qty(1-\frac{z'}{a})\\
+    Q_{z=a}&=-\frac{z'}{a}
+  \end{aligned}
+  }
+\end{equation}
 \subsection{Taking Limits}
-
 \subsubsection{Right Plate to $\infty$}
-
+If the right plate goes to $\infty$, this should be the same as the example done in class, since the potential being $0$ at infinity is identical to this limit:
+\begin{align*}
+  G(\vb{r,r}')=4\pi\int\frac{\dd{\vb{k}}}{(2\pi)^2}
+  e^{i\vb{k}_\perp\vdot(\vb{r-r}')_\perp}\frac{e^{-\abs{z-z'}-e^{-(z'+z)}}}{2k_\perp}
+\end{align*}
 \subsubsection{Both Plates Far Away}
-
+This should be a point charge in free space, since we are removing both plates, and the standard boundary conditions for a charged particle in free space are found, that the Green function just disappears outright at $\pm\infty$. In this limit, $\sinh$ is replaces by the dominating exponential out to infinity:
+\begin{align*}
+  G(\vb{r,r}')=\frac1{4\pi}\int\frac{\dd{\vb{k}}}{(2\pi)^2}
+  e^{i\vb{k}_\perp\vdot(\vb{r-r}')_\perp}\frac{e^{-k_\perp\abs{z-z'}}}{2k_\perp}
+\end{align*}
+This is what we found for free space in class, in the 2+1 dimensional case. 
 \subsubsection{Justification}
-
+This is in the first part with the text in the previous part
 \section{Potential Inside a Sphere}
-
+In class, we did the Green function for a point charge outside a conducting sphere, which we did by the image charge method. We used the following formula:
+\begin{align*}
+  G^{out}=\frac1{\abs{\vb{r-r}'}}+\frac{q'}{\abs{\vb{r-r}''}}
+\end{align*}
+The formula for the Green function for the charge on the inside should just be the case where we swap $\vb{r}'$ and $\vb{r}''$ since the image charge is now the one outside of the sphere instead of the other way around:
+\begin{align*}
+  G^{in}=\frac1{\abs{\vb{r-r}''}}+\frac{q'}{\abs{\vb{r-r}'}}
+\end{align*}
+We have the same boundary conditions:
+\begin{gather*}
+  G(\vb{r,r}')\to0 \text{ as } \vb{r}\to\infty\\
+  G(\vb{R,r}')=0
+\end{gather*}
+The second condition gives:
+\begin{align*}
+  \frac1{\abs{R\vu{n}-r''\vu{n}''}}+\frac{q'}{\abs{R\vu{n}-\r'\vu{n}'}}&=0\\
+  \frac1R\frac1{\abs{\vu{n}-\frac{r''}{R}\vu{n}'}}
+  +\frac{q'}R\frac1{\abs{\vu{n}-\frac{r'}{R}\vu{n}'}}&=
+\end{align*}
+Define $\theta$ as the angle between $\vu{n}$ and $\vu{n}'$ such that we can write:
+\begin{align*}
+  \abs{\vu{n}-\frac{r''}R\vu{n}'}&=
+  \qty(1-\frac{2r''}R\cos\theta+\qty(\frac{r''}R)^2)^{1/2}\\
+  \abs{\vu{n}-\frac{r'}R\vu{n}'}&=
+  \qty(1-\frac{2r'}R\cos\theta+\qty(\frac{r'}R)^2)^{1/2}
+\end{align*}
+We can then reduce our formula a bit:
+\begin{align*}
+  \frac1{\abs{\vu{n}-\frac{r''}{R}\vu{n}'}}&=-
+  q'\frac1{\abs{\vu{n}-\frac{r'}{R}\vu{n}'}}\\
+  \abs{\vu{n}-\frac{r'}{R}\vu{n}'}&=-q'\abs{\vu{n}-\frac{r''}{R}\vu{n}'}\\
+  \qty(1-\frac{2r'}R\cos\theta+\qty(\frac{r'}R)^2)^{1/2}&=
+  -q'\qty(1-\frac{2r''}R\cos\theta+\qty(\frac{r''}R)^2)^{1/2}\\
+\end{align*}
+These should hold for all $\theta$, so we can choose $\theta=0$ and $\theta=\pi/2$. For $\frac\pi2$:
+\begin{align*}
+  \qty(1+\qty(\frac{r'}R)^2)^{1/2}&=-q'\qty(1+\qty(\frac{r''}R)^2)^{1/2}\\
+  \circled{1}\equiv
+  (q')^2\qty(1+\qty(\frac{r''}R)^2)&=\qty(1+\qty(\frac{r'}R)^2)
+\end{align*}
+And $0$:
+\begin{align*}
+  \qty(1-\frac{2r'}R+\qty(\frac{r'}R)^2)^{1/2}&=
+  -q'\qty(1-\frac{2r''}R+\qty(\frac{r''}R)^2)^{1/2}\\
+  \circled{2}\equiv
+  (q')^2\qty(1-\frac{2r''}R+\qty(\frac{r''}R)^2)&=
+  \qty(1-\frac{2r'}R+\qty(\frac{r'}R)^2)
+\end{align*}
+Since they are equally valid, we can subtract $\circled{2}$ from $\circled{1}$:
+\begin{align*}
+  (q')^2\qty(1+\qty(\frac{r''}R)^2-1+\frac{2r''}{R}-\qty(\frac{r''}R)^2)&=
+  \qty(1+\qty(\frac{r'}R)^2-1+\frac{2r'}R-\qty(\frac{r'}R)^2)\\
+  (q')^2\qty(\frac{2r''}{R})&=\qty(\frac{2r'}R)\\
+  (q')^2r''&=r'\\
+  (q')^2&=\frac{r'}{r''}
+\end{align*}
+Use this value for the square of the image charge in $\circled{1}$:
+\begin{align*}
+  \circled{1}\implies
+  \qty(\frac{r'}{r''})\qty(1+\qty(\frac{r''}R)^2)&=\qty(1+\qty(\frac{r'}R)^2)\\
+  \implies r''&=\frac{R^2}{r'}
+\end{align*}
+This gives the value of the image charge as $q'=a/r'$
+Hence the green function is:
+\begin{align*}
+  G^{in}(\vb{r,r}')&=\frac1{\abs{\vb{r-r}''}}+\frac{q'}{\abs{\vb{r-r}'}}\\
+  &=\frac1{\abs{\vb{r}-\frac{R^2}{r'}\vu{n}'}}+\frac{R}{r'\abs{\vb{r-r}'}}\\
+  &=\frac1{\abs{\vb{r}-\qty(\frac{R}{r'})^2\vb{r}'}}
+  +\frac{R}{r'\abs{\vb{r-r}'}}\\
+  &=\frac1{\qty(r^2-(2R^2r/r')\cos\theta+R^4/(r')^2)^{1/2}}+
+  \frac{R}{r'}\frac1{\qty(r^2-2rr'\cos\theta+(r')^2)^{1/2}}
+\end{align*}
+We are now in a position to find the actual potential, given by:
+\begin{align*}
+  \phi(\vb{r})=\frac1{4\pi\varepsilon_0}
+  \int\dd[3]{\vb{r}'}\rho(\vb{r}')G(\vb{r,r}')
+  -\frac1{4\pi}\oint\dd{S'}\phi_S(\vb{r}')\pdv{G}{n'}
+\end{align*}
+With the following:
+\begin{align*}
+  \rho(\vb{r})=q\delta\qty(\vb{r}-\frac{R}{3}\vu{x})\\
+  \phi_S=\phi_0\sin\theta\cos\phi
+\end{align*}
+The first integral is trivial:
+\begin{align*}
+  \frac1{4\pi\varepsilon_0}\int\dd[3]{\vb{r}'}\rho(\vb{r}')G(\vb{r,r}')=
+  \frac1{4\pi\varepsilon_0}\qty(\frac1{\abs{\vb{r}-3\vu{x}}}
+  +\frac{3}{\abs{\vb{r}-\frac{R}{3}\vu{x}}})\\
+\end{align*}
+For the other integral, I want to make use of the spherical harmonics expansion of the normal derivative, from Jackson Eq 3.127:
+\begin{align*}
+  \pdv{G}{n'}=\eval{\pdv{G}{r'}}_{r'=R}
+  =-\frac{4\pi}{R^2}\sum_{\ell,m}\qty(\frac{r}{R})^\ell
+  Y^*_{\ell,m}(\Omega')Y_{\ell,m}(\Omega)
+\end{align*}
+It may be useful then to expand $\phi_S$ in terms of spherical harmonics. We know that $m$ must be non-zero since we have $\phi$ dependence. Inspection of $Y_{11}$ reveals:
+\begin{align*}
+  Y_{1,1}(\theta,\phi)&=-\sqrt{\frac{3}{8\pi}}e^{i\phi}\sin\theta\\
+  Y_{1,-1}(\theta,\phi)&=\sqrt{\frac{3}{8\pi}}e^{-i\phi}\sin\theta
+\end{align*}
+Some algebra reveals:
+\begin{align*}
+  Y_{1,-1}-Y_{1,1}=\sqrt{\frac{3}{2\pi}}\cos\phi\sin\theta
+\end{align*}
+Hence we have:
+\begin{align*}
+  \cos\phi\sin\theta&=\sqrt{\frac{2\pi}{3}}\qty(Y_{1,-1}-Y_{1,1})
+\end{align*}
+Putting all of this together so far we have:
+\begin{align*}
+  \oint\dd{S'}\phi_S(\vb{r}')\pdv{G}{n'}&=
+  -\phi_0\frac{4\pi}{R^2}\sqrt{\frac{2\pi}{3}}\oint\dd{S'}
+  \qty(Y_{1,-1}(\theta',\phi')-Y_{1,1}(\theta',\phi'))
+  \sum_{\ell,m}\qty(\frac{r}{R})^\ell
+  Y^*_{\ell,m}(\theta',\phi')Y_{\ell,m}(\theta,\phi)\\
+  &=\phi_0\frac{4\pi}{R^2}\sqrt{\frac{2\pi}{3}}\oint\dd{S'}
+  \qty(Y_{1,1}(\theta',\phi')-Y_{1,-1}(\theta',\phi'))
+  \sum_{\ell,m}\qty(\frac{r}{R})^\ell
+  Y^*_{\ell,m}(\theta',\phi')Y_{\ell,m}(\theta,\phi)
+\end{align*}
+We can exchange the sum and the integral since everything is well-behaved:
+\begin{align*}
+  &\phi_0\frac{4\pi}{R^2}\sqrt{\frac{2\pi}{3}}
+  \sum_{\ell,m}\qty(\frac{r}{R})^\ell Y_{\ell,m}(\theta,\phi)\oint\dd{S'}
+  \qty(Y_{1,1}(\theta',\phi')-Y_{1,-1}(\theta',\phi'))
+  Y^*_{\ell,m}(\theta',\phi')
+\end{align*}
+We are integrating over the solid angle $\Omega$ since we are fixed at the surface, this is luckily the necessary condition for the orthogonality of spherical harmonics, so we only get out two separate Kronecker Deltas for the integrals:
+\begin{align*}
+  \oint\dd{S'}\qty(Y_{1,1}(\theta',\phi')-Y_{1,-1}(\theta',\phi'))
+  Y^*_{\ell,m}(\theta',\phi')&=
+  \qty(\delta_{\ell,1}\delta_{m,1}-\delta_{\ell,1}\delta_{m,-1})
+\end{align*}
+Hence the sum becomes:
+\begin{align*}
+  \phi_0\frac{4\pi}{R^2}\sqrt{\frac{2\pi}{3}}
+  \sum_{\ell,m}\qty(\frac{r}{R})^\ell Y_{\ell,m}(\theta,\phi)
+  \qty(\delta_{\ell,1}\delta_{m,1}-\delta_{\ell,1}\delta_{m,-1})&=
+  \phi_0\frac{4\pi}{R^2}\sqrt{\frac{2\pi}{3}}\frac{r}{R}
+  \qty(Y_{1,1}(\theta,\phi)-Y_{1,-1}(\theta,\phi))\\
+  &=\phi_0\frac{4\pi r}{R^3}\sqrt{\frac{2\pi}{3}}
+  \qty(Y_{1,1}(\theta,\phi)-Y_{1,-1}(\theta,\phi))
+\end{align*}
+Hence the final integral is:
+\begin{align*}
+  \frac1{4\pi}\oint\dd{S'}\phi_S(\vb{r}')\pdv{G}{n'}=
+  \phi_0\sqrt{\frac{2\pi}{3}}\frac{r}{R^3}
+  \qty(Y_{1,1}(\theta,\phi)-Y_{1,-1}(\theta,\phi))
+\end{align*}
+And the total potential is:
+\begin{align}
+  \boxed{\phi(\vb{r})=\frac1{4\pi\varepsilon_0}
+    \qty(\frac1{\abs{\vb{r}-3\vu{x}}}
+    +\frac{3}{\abs{\vb{r}-\frac{R}{3}\vu{x}}})-
+    \phi_0\sqrt{\frac{2\pi}{3}}\frac{r}{R^3}
+    \qty(Y_{1,1}(\theta,\phi)-Y_{1,-1}(\theta,\phi))}
+\end{align}
 \end{document}

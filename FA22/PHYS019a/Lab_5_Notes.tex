@@ -1,0 +1,65 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 19a Lab 5 Notes}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amssymb,amsthm,bm,physics,slashed}
+
+%% general pretty stuff
+\usepackage{caption,enumitem,float,geometry,graphicx,tikz}
+
+% setups
+\graphicspath{ {./figs/} }
+\captionsetup{labelfont=bf}
+\geometry{margin=1in}
+
+% macros
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+
+\begin{document}
+\maketitle
+
+\section{Notes for Lab}
+\begin{itemize}
+\item Finding $l_{cm}$:
+  \begin{itemize}
+  \item Scales to measure mass of the ball
+  \item Mass of pendulum on the launcher
+  \item Rulers throughout to measure lengths
+  \item Center of mass of pendulum arm with ball should be marked on the arm
+  \end{itemize}
+\item Calculate Period of Pendulum
+  \begin{itemize}
+  \item Can count number of swings using phone
+  \item Use LoggerPro to do it
+  \end{itemize}
+\item Calculate Theta from LoggerPro
+  \begin{itemize}
+  \item Open LoggerPro
+  \item Click icon under file
+  \item On CH1, choose raw voltage (0-5)V
+  \item You can modify scales using Right Click menu $\to$ AutoScale
+  \item Measure theta 10 times
+  \item Note: Due to the circular nature of the potential device, you may encounter a discontinuity where it jumps from $\sim0$ to the max of about $3.5$, this can be fixed by properly rotating the measurement device
+  \end{itemize}
+\item BEFORE LAUNCHING: Check tightness/looseness of bolt holding Pendulum arm to the pivot
+\item For range measurement, find distance to paper then paper to impact crater
+  \begin{itemize}
+  \item Note, error propagation will be large for this.
+  \end{itemize}
+\end{itemize}
+\section{Equations}
+$\Delta H$ from $\theta$:
+\begin{align*}
+  \Delta H= l_{cm}(1-\cos\theta)
+\end{align*}
+Determining $\theta$ from $V_{min}$ and $V_0$:
+\begin{align*}
+  V_{min}=V_0-\frac\theta{100}
+\end{align*}
+\end{document}

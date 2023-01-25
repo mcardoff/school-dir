@@ -12,6 +12,7 @@ log_y_vals = np.log(y_vals)
 def objective(x,a,b):
     return a * x + b
 
+sp.curve_fit(objective,x_vals,y_vals)
 slope1, intercept1, r1, p1, se1 = stat.linregress(x_vals, y_vals)
 slope2, intercept2, r2, p2, se2 = stat.linregress(log_x_vals, log_y_vals)
 

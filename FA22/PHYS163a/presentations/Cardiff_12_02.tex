@@ -1,0 +1,105 @@
+\documentclass{beamer}
+
+\usepackage[italicdiff]{physics}
+\usepackage{siunitx}
+\usepackage{hyperref}
+\usepackage{url}
+
+\newcommand{\dbar}{d\hspace*{-0.08em}\bar{}\hspace*{0.1em}}
+
+\newenvironment{itemframe}[1]{\begin{frame}{#1}\begin{itemize}}   {\end{itemize}\end{frame}}
+
+% Changes style of actual slides
+\usetheme{Dresden}
+% Changes color of slides
+\usecolortheme{spruce}
+% removes controls at bottom right side
+\usenavigationsymbolstemplate{}
+
+% for figures
+\graphicspath{ {./figs/} }
+
+\title{Phase Transitions!}
+\author{Michael Cardiff}
+\subtitle{PHYS 163a \ 12/02 Prep Work}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{What is a Phase transition?}
+  \begin{itemize}
+  \item Example: Water freezing!
+  \item At \SI{0.01}{\degreeCelsius}, we have water, but all of a sudden, once we go to \SI{-0.01}{\degreeCelsius}, it has turned into ice!
+  \item For infinitesimal changes in temperature, there is a more grand change in physical properties. 
+  \item Example: Water boiling
+  \item All of a sudden, the volume increases with no a lot of change in the overall temperature. 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Simplifying Ising Hamiltonian}
+  \begin{itemize}
+  \item Immediately We can change the Hamiltonian given our assumptions about $J_{ij}$:
+    \begin{align*}
+      H=-\frac{J}{2N}\sum_{i,j=1}^N\sigma_i\sigma_j-h\sum_i\sigma_i
+    \end{align*}
+  \item We can then separate the double sum since the two spins are multiplied:
+    \begin{align*}
+      H=-\frac{J}{2N}\sum_{i=1}^N\sigma_i\sum_{j}\sigma_j-h\sum_i\sigma_i
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Continued}
+  \begin{itemize}
+  \item Then Define the quantity $M$ as the sum of the spins:
+    \begin{align*}
+      H=-\frac{J}{2N}M^2-hM
+    \end{align*}
+  \item Now define $m=N/N$:
+    \begin{align*}
+      H=-\frac{JN}{2}m^2-hmN=\boxed{-N\qty(\frac{Jm^2}{2}+hm)}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Uniformity and Isotropy}
+  \begin{itemize}
+  \item Kardar Specifically Says that Uniformity and Isotropy = "All locations and directions in $\vb{x}$ are equivalent"
+  \item This means if we were to rotate and shift around our system, we would not be able to tell the difference.
+  \item The idea is to show that under a transformation $T$, whether that be rotations or translations, the ending computation is the same, i.e.:
+    \begin{align*}
+      \partial_\alpha (T\vb{m})\partial_\alpha(T \vb{m})=
+      \partial_\alpha m_i\partial_\alpha m_i
+    \end{align*}
+  \end{itemize}
+\end{frame}
+\begin{frame}{Rotations}
+  \begin{itemize}
+  \item For rotations, the transformation is just a matrix multiplication.
+  \item Since we are rotating by an arbitrary constant, the derivative commutes with the rotation operation
+  \item Since we are taking the dot product of these, one will have a transpose on it
+  \item Effectively, these will out, since for a rotation Matrix $R$: $R^TR=I$, the transpose is the inverse. 
+    
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Translations}
+  \begin{itemize}
+  \item This is much simpler
+  \item The action of translation is adding a constant to everything
+  \item Since it is just a constant vector, it has no derivative.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Ginzburg Landau Hamiltonian}
+  \begin{itemize}
+  \item We are integrating:
+    \begin{align*}
+      \beta H=\int\dd[d]{\vb{x}}\qty[\frac{t}{2}m^2(\vb{x})+um^4(x)]
+    \end{align*}
+  \end{itemize}
+\end{frame}
+\end{document}

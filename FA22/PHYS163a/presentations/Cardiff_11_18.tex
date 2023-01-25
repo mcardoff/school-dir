@@ -1,0 +1,111 @@
+\documentclass{beamer}
+
+\usepackage[italicdiff]{physics}
+\usepackage{hyperref}
+\usepackage{url}
+
+\newcommand{\dbar}{d\hspace*{-0.08em}\bar{}\hspace*{0.1em}}
+
+\newenvironment{itemframe}[1]{\begin{frame}{#1}\begin{itemize}}   {\end{itemize}\end{frame}}
+
+% Changes style of actual slides
+\usetheme{Dresden}
+% Changes color of slides
+\usecolortheme{spruce}
+% removes controls at bottom right side
+\usenavigationsymbolstemplate{}
+
+% for figures
+\graphicspath{ {./figs/} }
+
+\title{Grand Canonical Ensemble}
+\author{Michael Cardiff}
+\subtitle{PHYS 163a \ 11/18 Prep Work}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Deriving the Ensemble}
+\begin{frame}{Grand Canonical Ensemble}
+  \begin{itemize}
+  \item Describes macrostates of the form $(T,\mu,\vb{x})$
+  \item Microstates have an unknown number of particles
+  \item Like canonical ensemble, system is in equilibrium with a Reservoir at temperature $T$ and Chemical Potential $\mu$
+  \item Integrating out the reservoir microstates leads to:
+    \begin{align*}
+      p(\mu_S)=\frac{\Omega_{R}(E_{Tot}-H_S(\mu_S),N_{Tot}-N_S)}
+      {\Omega_{S+R}(E_{Tot},N_{Tot})}
+    \end{align*}
+  \item Using the same expansion of $\Omega=\frac1{k_B}\exp{S}$ we did in the canonical enseble, we find:
+    \begin{align*}
+      S(E_{Tot}-H_S,N_{Tot}-N_S)\approx S(E_{Tot},N_{Tot})
+      -H_S\pdv{S}{E}-N_S\pdv{S}{N}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+\begin{frame}{Continued}
+  \begin{itemize}
+  \item First law with $E,N$ gives:
+    \begin{align*}
+      \dd{S}=\frac1T\dd{E}-\frac\mu{T}\dd{N}
+    \end{align*}
+  \item So Our entropy in the exponential is:
+    \begin{align*}
+      S(E_{Tot}-H_S,N_{Tot}-N_S)\approx
+      S(E_{Tot},N_{Tot})-\frac{H_S}{T}+\frac{\mu N_S}{T}
+    \end{align*}
+  \item So the probabilities look like:
+    \begin{align*}
+      p(\mu_S)=\frac1{\Omega_{S+R}}\exp{\frac1{k_BT}
+        \qty(S(E_{Tot},N_{Tot})-H_S+\mu N_S)}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+\begin{frame}{Grand Partition Function}
+  \begin{itemize}
+  \item Hence the normalized probabilities are given by:
+    \begin{align*}
+      p_{T,\mu,\vb{x}}(\mu)=\frac{e^{\beta\mu N-\beta H}}{Q}
+    \end{align*}
+  \item With $Q$ as the grand Partition function:
+    \begin{align*}
+      Q=\sum_{\mu_S}\exp{\beta\mu N(\mu_S)-\beta H(\mu_S)}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\section{How to get to Thermodynamics}
+\begin{frame}{Thermodyamics}
+  \begin{itemize}
+  \item Variance of the number of particles is proportional to $N$:
+    \begin{align*}
+      \ev{N^2}_C=\pdv{\ev{N}}{(\beta\mu)}=\pdv[2]{(\beta\mu)}\log Q
+    \end{align*}
+  \item Since $N\sim10^{23}$, we know the distribution is sharply peaked, and the grand partition function can be approximated by its largest term, $\ev{N}$:
+    \begin{align*}
+      Q=\sum_Ne^{\beta\mu N}Z=e^{\beta\mu \ev{N}}Z(T,\ev{N},\vb{x})
+    \end{align*}
+  \item Where $Z$ is the canonical partition function of fixed $N,T,\vb{x}$ 
+  \end{itemize}
+\end{frame}
+\begin{frame}{Continued}
+  \begin{itemize}
+  \item The Canonical Ensemble gives us the Helmholtz free energy $F$ as:
+    \begin{align*}
+      F=-k_BT\log Z\implies Z=e^{-\beta F}
+    \end{align*}
+  \item Hence we can write the grand partition function as:
+    \begin{align*}
+      Q=e^{\beta\mu \ev{N}}e^{-\beta F}=\exp{\beta\qty(\mu \ev{N}-F)}
+    \end{align*}
+  \item The potential in the argument is the Grand Potential $\mathcal{G}$:
+    \begin{align*}
+      Q=\exp{-\beta\mathcal{G}}x\implies\mathcal{G}=-k_BT\log Q
+    \end{align*}
+  \item They describe the same thermodynamics, they are equivalent!
+  \end{itemize}
+\end{frame}
+\end{document}

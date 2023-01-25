@@ -1,0 +1,599 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 163a HW 5}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amssymb,amsthm,bm,physics,slashed}
+
+%% general pretty stuff
+\usepackage{caption,enumitem,float,geometry,graphicx,tikz}
+
+% setups
+\graphicspath{ {./figs/} }
+\captionsetup{labelfont=bf}
+\geometry{margin=1in}
+
+% macros
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\absk}{\abs{\vb{k}}}
+\newcommand{\D}{\partial}
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+
+\begin{document}
+\maketitle
+
+\section{Phonons Revisited}
+\subsection{Isotropic vs Anisotropic Oscillator}
+We have the following Hamiltonian for each case:
+\begin{align*}
+  H_{is}&=\sum_{i=1}^N\qty(\frac{p_i^2}{2m}+\frac12m\omega q_i^2)\\
+  H_{an}&=\sum_{i=1}^N\qty(\frac{p_i^2}{2m}+\frac12m\omega_iq_i^2)
+\end{align*}
+The heat capacity is found using:
+\begin{align*}
+  C_V=\eval{\pdv{\ev{E}}{T}}_V
+\end{align*}
+Where we can find $\ev{E}$ with:
+\begin{align*}
+  \ev{E}=-\pdv{\ln Z}{\beta}
+\end{align*}
+The normal derivation for the partition function goes as:
+\begin{align*}
+  Z_{is}&=\frac1{N!h^3}\int\prod_{i=1}^N\dd{\vb{p}_i}\dd{\vb{q}_i}
+  e^{-\beta H_{is}}=\frac1{N!h^3}\int\prod_{j=1}^N\dd{\vb{p}_j}\dd{\vb{q}_j}
+  \exp{-\beta\sum_{i=1}^N\qty(\frac{p_i^2}{2m}+\frac12m\omega q_i^2)}\\
+  Z_{an}&=\frac1{N!h^3}\int\prod_{i=1}^N\dd{\vb{p}_i}\dd{\vb{q}_i}
+  e^{-\beta H_{an}}=\frac1{N!h^3}\int\prod_{j=1}^N\dd{\vb{p}_j}\dd{\vb{q}_j}
+  \exp{-\beta\sum_{i=1}^N\qty(\frac{p_i^2}{2m}+\frac12m\omega_iq_i^2)}
+\end{align*}
+Clearly the momentum integrals are all the same:
+\begin{align*}
+  \int\prod_j\dd{\vb{p}_j}\exp{-\beta\sum_i\frac{p_i^2}{2m}}
+  &=\qty(\frac{2m\pi}{\beta})^{3N/2}
+\end{align*}
+The position integrals in the case where all $\omega_i=\omega$ is given by:
+\begin{align*}
+  \int\prod_j\dd{\vb{q}_j}\exp{-\beta\sum_i\frac{m\omega q_i^2}{2}}
+  &=\qty(\frac{2\pi}{m\beta\omega})^{3N/2}
+\end{align*}
+However, for the case where they are different, we have:
+\begin{align*}
+  \int\prod_j\dd{\vb{q}_j}\exp{-\beta\sum_i\frac{m\omega_iq_i^2}{2}}
+  &=\int\prod_j\dd{\vb{q}_j}\prod_ie^{-\frac{\beta m\omega_iq_i^2}{2}}
+\end{align*}
+We can exchange the product and the integral seeing as everything behaves well:
+\begin{align*}
+  \int\prod_j\dd{\vb{q}_j}\prod_ie^{-\frac{\beta m\omega_iq_i^2}{2}}=
+  \prod_i\int\prod_j\dd{\vb{q}_j}e^{-\frac{\beta m\omega_iq_i^2}{2}}
+\end{align*}
+So for a single integral we get the usual result of:
+\begin{align*}
+  \int\dd{\vb{q}_j}e^{-\frac{\beta m\omega_iq_i^2}{2}}=
+  \qty(\frac{2\pi}{m\beta\omega_i})^{3/2}
+\end{align*}
+And the total product is:
+\begin{align*}
+  \prod_i\int\prod_j\dd{\vb{q}_j}e^{-\frac{\beta m\omega_iq_i^2}{2}}=
+  \prod_{i=1}^N\qty(\frac{2\pi}{m\beta\omega_i})^{3/2}
+\end{align*}
+However notice the only thing which depends on $i$ is the $\omega_i$, so all of the other factors just get carried along in the process:
+\begin{align*}
+  \prod_{i=1}^N\qty(\frac{2\pi}{m\beta\omega_i})^{3/2}=
+  \qty(\frac{2\pi}{m\beta})^{3N/2}\prod_{i=1}^N\frac1{\omega_i}
+\end{align*}
+Now we only need to notice that the only thing which is dependent on temperature, $\beta$, have the same powers in each case, hence when we take the $\beta$ derivative of $\ln Z$ and after the $T$ derivative of that, we will get the exact same heat capacity.
+
+For a more explicit calculation, note the full partition functions:
+\begin{align*}
+  Z_{is}&=\qty(\frac{2m\pi}{\beta})^{3N/2}
+  \qty(\frac{2\pi}{m\beta\omega})^{3N/2}\\
+  &=\qty(\frac{2\pi}{\beta})^{3N}\omega^{-3N/2}\\
+  Z_{an}&=\qty(\frac{2m\pi}{\beta})^{3N/2}
+  \qty(\frac{2\pi}{m\beta})^{3N/2}\prod_i\frac1{\omega_i}\\
+  &=\qty(\frac{2\pi}{\beta})^{3N}\prod_i\frac1{\omega_i}
+\end{align*}
+Expanding out the Log:
+\begin{align*}
+  \log Z_{is}&=3N\log(2\pi)-3N\log\beta-\frac{3N}{2}\log\omega\\
+  \log Z_{an}&=3N\log(2\pi)-3N\log\beta-\sum_i\log\omega_i
+\end{align*}
+Differentiating with respect to $\beta$:
+\begin{align*}
+  \ev{H_{is}}&=-\pdv{\log Z_{is}}{\beta}=\frac{3N}{\beta}=3Nk_BT\\
+  \ev{H_{an}}&=-\pdv{\log Z_{an}}{\beta}=\frac{3N}{\beta}=3Nk_BT
+\end{align*}
+Giving the exact same heat capacity:
+\begin{equation}
+  \boxed{
+    \begin{aligned}
+      (C_V)_{is}&=\pdv{\ev{H_{is}}}{T}=3Nk_B\\
+      (C_V)_{an}&=\pdv{\ev{H_{an}}}{T}=3Nk_B
+    \end{aligned}
+  }
+\end{equation}
+\subsection{Dulong-Petit From High Temperature Limit}
+The Einstein Law for the heat capacity of solids is:
+\begin{align*}
+  C_V=3Nk_B\qty(\frac{T_E}{T})^2\frac{e^{-T_E/T}}{(1-e^{-T_E/T})^2}
+\end{align*}
+When $T$ is large, $T^{-1}$ is small, so we can use the standard Taylor series for the exponential:
+\begin{align*}
+  e^x\approx 1+x\implies e^{-T_E/T}\approx 1-\frac{T_E}{T}
+\end{align*}
+Plugging this in for both exponentials we have:
+\begin{align*}
+  C_V&\approx3Nk_B\qty(\frac{T_E}T)^2\frac{1-\frac{T_E}{T}}{(1-(1-T_E/T))^2}\\
+  &=3Nk_B\qty(\frac{T_E}T)^2\frac{1-\frac{T_E}{T}}{(T_E/T)^2}\\
+  &=3Nk_B\qty(1-\frac{T_E}{T})
+\end{align*}
+And if $T$ is large enough, $T^{-1}$ is just 0, hence:
+\begin{align}
+  \boxed{C_V\approx 3Nk_B}
+\end{align}
+For large $T$ in the Einstein law, we find the Dulong-Petit law.
+
+\subsection{Low Temperature Limit}
+Again The Einstein Law is:
+\begin{align*}
+  C_V=3Nk_B\qty(\frac{T_E}{T})^2\frac{e^{-T_E/T}}{(1-e^{-T_E/T})^2}
+\end{align*}
+The only 'problematic' term is the denominator, which if we simply ignore the $1$, we would get an exponentially diverging quantity. Hence we should examine this quantity a bit more, possibly by graphing it:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=8.0cm]{exponential.png}
+  \caption{Behavior of Denominator near $T=0$}
+\end{figure}
+While the limit near $0$ is ill defined from either side, since temperature is positive definite, we can reasonably say we are approaching from above, giving the limit as $1$, hence the behavior near $0$ is that of an exponential:
+\begin{align*}
+  C_V\approx3Nk_B\qty(\frac{T_E}{T})^2e^{-T_E/T}
+\end{align*}
+Near $T=0$, the exponential will clearly dominate, hence the overall behavior is exponential:
+\begin{align}
+  \boxed{C_V\propto e^{-T_E/T}\text{ Near $T=0$}}
+\end{align}
+
+\section{Black Body Radiation}
+\subsection{E\&M Wave Equations}
+The vector calculus identity for a curl of a curl is:
+\begin{align*}
+  \curl{\curl{\vb{A}}}=\grad{(\div{\vb{A}})}-\laplacian{\vb{A}}
+\end{align*}
+For the specific fields; applying the free space conditions:
+\begin{align*}
+  \curl{\curl{\vb{E}}}&=\grad{(\div{\vb{E}})}-\laplacian{\vb{E}}
+  =-\laplacian{\vb{E}}\\
+  \curl{\curl{\vb{B}}}&=\grad{(\div{\vb{B}})}-\laplacian{\vb{B}}
+  =-\laplacian{\vb{B}}
+\end{align*}
+The Maxwell Equations then become:
+\begin{align*}
+  -\laplacian{\vb{E}}&=-\pdv{t}\qty(\curl{\vb{B}})\\
+  -\laplacian{\vb{B}}&=\mu_0\varepsilon_0\pdv{t}\qty(\curl{\vb{E}})
+\end{align*}
+We can then use the original equations to uncouple the equations:
+\begin{align*}
+  -\laplacian{\vb{E}}&=-\mu_0\varepsilon_0\pdv{t}\qty(\pdv{\vb{E}}{t})\\
+  \implies\laplacian{\vb{E}}&=\mu_0\varepsilon_0\pdv[2]{\vb{E}}{t}\\
+  -\laplacian{\vb{B}}&=-\mu_0\varepsilon_0\pdv{t}\qty(\pdv{\vb{B}}{t})\\
+  \implies\laplacian{\vb{B}}&=\mu_0\varepsilon_0\pdv[2]{\vb{B}}{t}
+\end{align*}
+If we write $\mu_0\varepsilon_0$ in terms of $c$ we have:
+\begin{equation}
+  \boxed{
+    \begin{aligned}
+      \laplacian{\vb{E}}&=\frac1{c^2}\pdv[2]{\vb{E}}{t}\\
+      \laplacian{\vb{B}}&=\frac1{c^2}\pdv[2]{\vb{B}}{t}
+    \end{aligned}
+  }
+\end{equation}
+Fourier transforming should change the differentiation to multiplication, specifically by $\vb{k}$, we should verify this by fourier transforming both sides of one equation, since they are practically identical:
+\begin{align*}
+  \int\dd{\vb{r}}e^{i\vb{k}\vdot\vb{r}}\laplacian{\vb{E}}
+  =\int\dd{\vb{r}}e^{i\vb{k}\vdot\vb{r}}\frac1{c^2}\pdv[2]{\vb{E}}{t}
+\end{align*}
+So long as the electric field disappears out to $\pm\infty$, we can integrate by parts twice to move the laplacian from the $\vb{E}$ to the exponential, which we know the derivative of:
+\begin{align*}
+  \int\dd{\vb{r}}e^{i\vb{k}\vdot\vb{r}}\laplacian{\vb{E}}=
+  \int\dd{\vb{r}}\qty[\laplacian{(e^{i\vb{k}\vdot\vb{r}})}]\vb{E}
+\end{align*}
+From this we will simply get a factor of $-\abs{\vb{k}}^2$ due to the complex exponential:
+\begin{align*}
+  \int\dd{\vb{r}}e^{i\vb{k}\vdot\vb{r}}\laplacian{\vb{E}}=
+  -\abs{\vb{k}}^2\int\dd{\vb{r}}e^{i\vb{k}\vdot\vb{r}}\vb{E}
+  =-\abs{\vb{k}}^2\widetilde{\vb{E}}
+\end{align*}
+Where we have defined the fourier transform of $\vb{E}$:
+\begin{align*}
+  \widetilde{\vb{E}}\equiv\int\dd{\vb{r}}e^{i\vb{k}\vdot\vb{r}}\vb{E}
+\end{align*}
+Thus we have the left hand side of our equation, the other side is simple as we are not integrating with respect to $t$, only $\vb{r}$:
+\begin{align*}
+  \int\dd{\vb{r}}e^{i\vb{k}\vdot\vb{r}}\frac1{c^2}\pdv[2]{\vb{E}}{t}=
+  \frac1{c^2}\pdv[2]{t}\int\dd{\vb{r}}e^{i\vb{k}\vdot\vb{r}}\vb{E}=
+  \frac1{c^2}\pdv[2]{\widetilde{\vb{E}}}{t}
+\end{align*}
+The equation of motion is then:
+\begin{align*}
+  \frac1{c^2}\pdv[2]{\widetilde{\vb{E}}}{t}+\abs{\vb{k}}^2\widetilde{\vb{E}}=0
+\end{align*}
+Rearranging to look like the harmonic oscillator equation in time, we have:
+\begin{align*}
+  \pdv[2]{\widetilde{\vb{E}}}{t}+c^2\abs{\vb{k}}^2\widetilde{\vb{E}}=0
+\end{align*}
+Where we can identify the dispersion relation $\omega(\vb{k})$:
+\begin{equation}
+  \boxed{
+    \begin{aligned}
+      \omega(\vb{k})=c\abs{\vb{k}}
+    \end{aligned}
+  }
+\end{equation}
+
+\subsection{Partition Function}
+The Hamiltonian is:
+\begin{align*}
+  H=\frac12\sum_{\vb{k}}\qty(p_{\vb{k}}^2+c^2\abs{\vb{k}}^2q^2_{\vb{k}})
+\end{align*}
+However, since we are calculating the quantum partition function, it may be more useful to use the occupation number formalism:
+\begin{align*}
+  H=\sum_{i,\vb{k}}\hbar c\abs{\vb{k}}\qty(n_i(\vb{k})+\frac12)
+\end{align*}
+So the partition function becomes:
+\begin{align*}
+  Z_{ph}=\sum_{\{n_i\}}\exp{-\beta\sum_{i,\vb{k}}\hbar c\abs{\vb{k}}
+    \qty(n_i(\vb{k})+\frac12)}
+\end{align*}
+Which is the same as the phonon partition function, which looks like:
+\begin{align*}
+  Z_{ph}=e^{-\beta\hbar c\absk/2}\prod_{\vb{k},i}\sum_{\{n_{\vb{k},i}\}}
+  e^{-\beta\hbar c\absk n_{\vb{k},i}}=
+  e^{-\beta\hbar c\absk/2}\prod_{\vb{k},i}
+  \qty[\frac1{1-e^{-\beta\hbar c\absk}}]
+\end{align*}
+Which is our final answer:
+\begin{align}
+  \boxed{
+    Z_{ph}=e^{-\beta\hbar c\absk/2}\prod_{\vb{k},i}
+  \qty[\frac1{1-e^{-\beta\hbar c\absk}}]
+  }
+\end{align}
+
+\subsection{Average Energy}
+The average energy, much the same as phonons, is given as:
+\begin{align*}
+  \ev{H}=E_0+\sum_{\vb{k},i}\hbar c\absk\ev{n_{\vb{k},i}}
+\end{align*}
+With the average occupation number being exactly the same, only with the dispersion relation inserted:
+\begin{align*}
+  \ev{n_{\vb{k},i}}=\frac1{e^{\beta\hbar c\absk}-1}
+\end{align*}
+The calculation being:
+\begin{align*}
+  \ev{n}&=-\pdv{(\beta\hbar c\absk)}\ln(\frac1{1-e^{-\beta\hbar c\absk}})\\
+  &=\frac{e^{-\beta\hbar c\absk}}{1-e^{-\beta\hbar c\absk}}=
+  \frac1{e^{\beta\hbar c\absk}-1}
+\end{align*}
+Hence the average energy is:
+\begin{align}
+  \boxed{\ev{H}=E_0+\sum_{\vb{k}}\frac{\hbar c\absk}{e^{\beta\hbar c\absk}-1}}
+\end{align}
+If we are in the limit where we can integrate over $\vb{k}$:
+\begin{align*}
+  \ev{H}&=E_0+\frac{V}{(2\pi)^3}
+  \int\dd[3]{\vb{k}}\frac{\hbar c\absk}{e^{\beta\hbar c\absk}-1}
+  =\frac{V}{(2\pi)^3}\int\dd{k}\frac{\hbar ck^3}{e^{\beta\hbar ck}-1}
+  \int\dd{\Omega}\\
+  &=E_0+\frac{4\pi V}{(2\pi)^3}\frac{\pi^4}{15\hbar^3c^3\beta^4}\\
+  &=E_0+\frac{\pi^2V}{30\hbar^3c^3\beta^4}
+\end{align*}
+\subsection{Average Pressure}
+The Helmholtz free energy is related to the pressure by the following relationship:
+\begin{align*}
+  -\pdv{F}{V}=P
+\end{align*}
+And the Free energy is related to the partition function:
+\begin{align*}
+  F=-k_BT\log{Z}
+\end{align*}
+The log of the partition function is:
+\begin{align*}
+  -\log Z_{ph}=\beta\frac{\hbar c\absk}{2}
+  +\sum_{\absk}\log(1-e^{-\beta\hbar c\absk})
+\end{align*}
+We can ignore the zero point term, and we can take the continuum limit, where $k$ sum turns into an integral:
+\begin{align*}
+  F&=-k_BT\log Z_{ph}=\frac{V}{(2\pi)^3}
+  -k_BT\int\dd[3]{\vb{k}}\log(1-e^{-\hbar c\absk/k_BT})\\
+  &=-\frac{Vk_BT}{2\pi^2}\int\dd{k}k^2\log(1-e^{-\hbar ck/k_BT})\\
+  &=\frac{V(k_BT)^4}{2\pi^2}\frac{\pi^4}{45c^3\hbar^3}\\
+  &=\frac{V\pi^2k_B^4}{90\hbar^3c^3}T^4
+\end{align*}
+So the pressure is:
+\begin{align}
+  \boxed{P=-\frac{\pi^2k_B^4}{90\hbar^3c^3}T^4}
+\end{align}
+
+\subsection{Energy Density}
+From earlier, we found the energy density per $k$ to be:
+\begin{align*}
+  \ev{H}_{\vb{k}}=\frac{\hbar c\absk}{e^{\beta\hbar c\absk}-1}
+\end{align*}
+Which looks like:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=8.0cm]{energydensity}
+  \caption{Energy Density vs Wavenumber}
+\end{figure}
+At Low $k$, which would be short wavelengths, we do not see a divergence, but rather a constant, so we do not have a UV catastrophe.
+
+At high $k$, which is long wavelengths, the distribution tapers off, which is expected.
+
+\section{Electron Spin}
+Note a couple properties of the Pauli matrices $\sigma_i$:
+\begin{align*}
+  \sigma_i^2=I_2\qquad\Tr{\sigma_i}=0
+\end{align*}
+
+\subsection{$\rho$ for Spin along $z$}
+In the canonical ensemble, the density matrix is given by:
+\begin{align*}
+  \rho=\frac{\exp{-\beta H}}{\Tr[\exp{-\beta H}]}
+\end{align*}
+In this case, the Hamiltonian is:
+\begin{align*}
+  H=-\mu B_z\sigma_z
+\end{align*}
+To calculate $\exp{\beta\mu B_z\sigma_z}$ we need to use the Taylor series:
+\begin{align*}
+  \exp{\beta\mu B_z\sigma_z}=\sum_{n=1}^\infty
+  \frac{(\beta\mu B_z)^n}{n!}\sigma_z^n
+\end{align*}
+We can split this up by odd and even sums, because of the property that $\sigma_z^2=I$, we get that further powers of $\sigma_z$ are:
+\begin{align*}
+  \sigma_i^{2n}=I_2\qquad \sigma_i^{2n+1}=\sigma_i
+\end{align*}
+Split into odd and even sums then:
+\begin{align*}
+  \exp{-\mu B_z\sigma_z}=\sum_{m=1}^\infty
+  \qty(\frac{(\beta\mu B_z)^{2m}}{(2m)!}I_2
+  +\frac{(\beta\mu B_z)^{2m+1}}{(2m+1)!}\sigma_z)
+\end{align*}
+Ignoring the matrices, the series simply converge to $\cosh$ and $\sinh$:
+\begin{align*}
+  \exp{\mu\beta B_z\sigma_z}=\cosh(\mu\beta B_z)I_2+\sinh(\mu\beta B_z)\sigma_z
+\end{align*}
+Since the pauli matrices are traceless, the trace of this is simply:
+\begin{align*}
+  \Tr[\exp{\mu\beta B_z\sigma_z}]=
+  \Tr[\cosh(\mu\beta B_z)I_2+\sinh(\mu\beta B_z)\sigma_z]=2\cosh(\mu\beta B_z)
+\end{align*}
+So the density matrix is:
+\begin{align*}
+  \rho=\frac{\cosh(\mu\beta B_z)I_2+\cosh(\mu\beta B_z)\sigma_z}
+  {2\cosh(\mu\beta B_z)}
+\end{align*}
+The hyperbolic trig functions have the following identities:
+\begin{align*}
+  e^x=\cosh(x)+\sinh(x)\\
+  e^{-x}=\cosh(x)-\sinh(x)
+\end{align*}
+Hence in matrix form, we have:
+\begin{align*}
+  \cosh(x)I_2+\cosh(x)\sigma_z&=
+  \bmqty{\cosh(x)+\sinh(x)&0\\0&\cosh(x)-\sinh(x)}\\
+  &=\bmqty{e^x&0\\0&e^{-x}}
+\end{align*}
+So the density matrix in matrix form is:
+\begin{align}
+  \boxed{\rho=\frac1{2\cosh(\mu\beta B_z)}
+  \bmqty{e^{\mu\beta B_z}&0\\0&e^{-\mu\beta B_z}}}
+\end{align}
+
+\subsection{Spin Along $x$}
+The only thing that changes is that we now have $B_x$ and $\sigma_x$:
+\begin{align*}
+  \rho=\frac{\cosh(\mu\beta B_x)I_2+\cosh(\mu\beta B_x)\sigma_x}
+  {2\cosh(\mu\beta B_x)}=
+  \frac12\qty(I_2+\tanh(\mu\beta B_x)\sigma_x)
+\end{align*}
+In matrix form:
+\begin{align}
+  \boxed{\rho=\frac12\bmqty{1&\tanh\mu\beta B_x\\\tanh\mu\beta B_x&1}}
+\end{align}
+
+\subsection{Average Energy}
+The Expectation value of an operator in Quantum Stat mech is:
+\begin{align*}
+  \ev{H}=\Tr[H\rho]
+\end{align*}
+For each case we have:
+\begin{align*}
+  \ev{H_z}&=-\frac{\mu B_z}{2\cosh(\mu\beta B_z)}
+  \Tr[\bmqty{1&0\\0&-1}\bmqty{e^{\mu\beta B_z}&0\\0&e^{-\mu\beta B_z}}]\\
+  &=-\frac{\mu B_z}{2\cosh(\mu\beta B_z)}
+  \Tr\bmqty{e^{\mu\beta B_z}&0\\0&-e^{-\mu\beta B_z}}\\
+  &=-\frac{\mu B_z}{2\cosh(\mu\beta B_z)}
+  \qty(e^{\mu\beta B_z}-e^{-\mu\beta B_z})\\
+  &=-\mu B_z\frac{2\sinh(\mu\beta B_z)}{2\cosh(\mu\beta B_z)}\\
+  &=-\mu B_z\tanh(\mu\beta B_z)\\
+  \ev{H_x}&=-\frac{\mu B_x}{2}
+  \Tr[\bmqty{0&1\\1&0}\bmqty{1&\tanh(\mu\beta B_x)\\\tanh(\mu\beta B_x)&1}]\\
+  &=-\frac{\mu B_x}{2}
+  \Tr\bmqty{\tanh(\mu\beta B_x)&1\\1&\tanh(\mu\beta B_x)}\\
+  &=-\mu B_x\tanh(\mu\beta B_x)\\
+\end{align*}
+Hence:
+\begin{equation}
+  \boxed{
+    \begin{aligned}
+      \ev{H_z}&=-\mu B_z\tanh(\mu\beta B_z)\\
+      \ev{H_x}&=-\mu B_x\tanh(\mu\beta B_x)
+    \end{aligned}
+  }
+\end{equation}
+
+\section{Quantum Mechanical Entropy}
+\subsection{Time Evolution of the Density Matrix}
+The time evolution equation for quantum mechanics is:
+\begin{align*}
+  i\hbar\pdv{\rho}{t}=\comm{H}{\rho}\implies
+  \pdv{\rho}{t}=\frac{i}{\hbar}\comm{\rho}{H}
+\end{align*}
+The time derivative of $S$ is then:
+\begin{align*}
+  \dv{S}{t}&=-\dv{t}\qty(\Tr[\rho\log\rho])=
+  -\Tr[(1+\log\rho)\pdv{\rho}{t}]=-\frac{i}{\hbar}
+  \Tr[(1+\log\rho)\comm{\rho}{H}]\\
+  &=\frac{i}{\hbar}\qty(\Tr[H\rho]-\Tr[\rho H]+\Tr[(\log\rho)H\rho]
+  -\Tr[(\log\rho)\rho H])
+\end{align*}
+However since the trace is cyclic, All of these terms cancel out, giving:
+\begin{align}
+  \boxed{\dv{S}{t}=0}
+\end{align}
+
+\subsection{Maximizing $S$}
+We need two total constants in our equation, seeing as we need normalization of the density matrix, and average energy $E$, our $S(t)$ is:
+\begin{align*}
+  S&=\Tr[-\rho\ln\rho]-\alpha\qty(\Tr[\rho]-1)-\beta\qty(\Tr[\rho H]-E)\\
+  &=\Tr{\rho\qty[-\ln\rho-\alpha-\beta H]}+\alpha+\beta E
+\end{align*}
+The derivative is a functional one due to the trace, but we will simply get
+\begin{align*}
+  \fdv{S(\rho)}{\rho_{max}}=-\ln\rho_{max}-1-\alpha-\beta H
+\end{align*}
+This is because the functional derivative produces a $\delta(\rho-\rho_{max})$ and the trace is trivial then. If this is to be maximum we need:
+\begin{align*}
+  \fdv{S}{\rho_m}=0\implies\ln\rho_{max}=-\qty(\alpha+1)-\beta H
+\end{align*}
+Solving for $\rho_{max}$:
+\begin{align}
+  \boxed{\rho_{max}=e^{-(\alpha+1)}e^{-\beta H}}
+\end{align}
+Which looks an awful lot like the canonical ensemble
+
+\subsection{Stationary Solution}
+Since the prefactor with $\alpha$ is simply a number, we have only a function of the Hamiltonian, which will commute with the Hamiltonian, a proof of which will look something like:
+\begin{align*}
+  H^nH=H H^{n-1}H=H H^n\implies H^n H=HH^n\implies \comm{H^n}{H}=0
+\end{align*}
+And Since the exponential is a convergent sum over many powers of $H$, we get:
+\begin{align*}
+  \pdv{\rho_{max}}{t}=i\hbar e^{-(\alpha+1)}\comm{e^{-\beta H}}{H}=0
+\end{align*}
+Hence the solution is stationary:
+\begin{align}
+  \boxed{\pdv{\rho_{max}}{t}=0}
+\end{align}
+
+\section{Ortho/para-hydrogen}
+\subsection{Para Rotational Partition Function}
+The partition function should be a simple sum, since angular momentum takes integer values:
+\begin{align*}
+  Z_p=\sum_{\text{even }\ell}\exp{-\beta\frac{\hbar^2}{2I}\ell(\ell+1)}
+\end{align*}
+Since for each $\ell$, there are $2\ell+1$ microstates with different $m$ values with the same $H$, we have:
+\begin{align*}
+  Z_p=\sum_{\text{even }\ell}(2\ell+1)\exp{-\beta\frac{\hbar^2}{2I}\ell(\ell+1)}
+\end{align*}
+Exchaning $\ell$ for an even integer $2n$:
+\begin{align*}
+  Z_p=\sum_{n=0}^\infty(4n+1)\exp{-\frac{\beta\hbar^2}{I}n(2n+1)}
+\end{align*}
+At low $T$, the largest contribution will be the terms near $n=0$, take the $n=0,1$ terms:
+\begin{align}
+  \boxed{Z_p\approx1+5\exp{-\frac{3\beta\hbar^2}{I}}}
+\end{align}
+And at high temperatures the sum turns into an integral since $\beta$ is small, writing it more suggestively:
+\begin{align*}
+  Z_p\approx\frac{I}{\beta\hbar^2}\sum_{n=0}^\infty
+  \exp{-2\qty(\sqrt{\frac{\beta}{I}}\hbar n)^2}
+  4\qty(\sqrt{\frac{\beta}{I}}\hbar n)
+  \qty(\sqrt{\frac{\beta}{I}}\hbar)
+\end{align*}
+The first two terms in this product would be our integrand, and then the last one will act as our differential:
+\begin{align*}
+  \sum_{n=0}^\infty\exp{-2\qty(\sqrt{\frac{\beta}{I}}\hbar n)^2}
+  4\qty(\sqrt{\frac{\beta}{I}}\hbar n)
+  \qty(\sqrt{\frac{\beta}{I}}\hbar)
+  =\int_0^\infty 4e^{-2x^2}x\dd{x}
+\end{align*}
+This integral is trivially evaluated:
+\begin{align*}
+  \int_0^\infty 4xe^{-2x^2}\dd{x}=1
+\end{align*}
+Giving:
+\begin{align}
+  \boxed{Z_p\approx\frac{I}{\beta\hbar^2}}
+\end{align}
+
+\subsection{Ortho Rotational Partition Function}
+Once again we should get:
+\begin{align*}
+  Z_o=\sum_{\text{odd }\ell}(2\ell+1)\exp{-\beta\frac{\hbar^2}{2I}\ell(\ell+1)}
+\end{align*}
+However we are told it is triply degenerate, so we need to multiply by 3:
+\begin{align*}
+  Z_o=3\sum_{\text{odd }\ell}(2\ell+1)\exp{-\beta\frac{\hbar^2}{2I}\ell(\ell+1)}
+\end{align*}
+Replacing $\ell$ by an odd integer $2n+1$:
+\begin{align*}
+  Z_o=3\sum_{n=0}^\infty(4n+3)\exp{-\beta\frac{\hbar^2}{I}(2n+1)(n+1)}
+\end{align*}
+Taking the $n=0$ term for the low temperature limit since it is non-trivial:
+\begin{align}
+  \boxed{Z_o\approx9e^{-\beta\hbar^2/I}}
+\end{align}
+The high temperature limit will have the same argument, only multiplied by three:
+\begin{align*}
+  \boxed{Z_o\approx\frac{3I}{\beta\hbar^2}}
+\end{align*}
+
+\subsection{Equilibrium Gas Partition Function}
+We should sum over various possible mixtures of each hydrogen, we should account for all the various combinations of each $N_p$ para hydrogen and $N-N_p$ ortho hydrogen:
+\begin{align*}
+  \sum_{N_p}\frac1{(N-N_P)!N_P!}
+\end{align*}
+We will also get 1 $Z_p$ for each para hydrogen, and 1 $Z_o$ for each ortho, giving the total:
+\begin{align*}
+  Z=\sum_{N_p}\frac1{(N-N_P)!N_P!}Z_p^{N_p}Z_o^{N-N_p}
+\end{align*}
+Note the similarity to the binomial expansion:
+\begin{align*}
+  (x+y)^n=\sum_k\frac{n!}{n!(n-k)!}x^{n-k}y^k
+\end{align*}
+If we simply divide out $N!$ we will have:
+\begin{align*}
+  (Z_o+Z_p)^N=\sum_{N_p}\frac{N!}{(N-N_P)!N_P!}Z_p^{N_p}Z_o^{N-N_p}
+\end{align*}
+Hence the partition function is:
+\begin{align}
+  \boxed{Z=\frac1{N!}(Z_o+Z_p)^N}
+\end{align}
+
+\subsection{Rotational Contribution to Internal Energy}
+The average energy is simply:
+\begin{align*}
+  \ev{E_{rot}}=-\pdv{\log Z}{\beta}=-N\pdv{\beta}\log(Z_o+Z_p)
+\end{align*}
+The low energy limit:
+\begin{align*}
+  Z_o+Z_p\approx1+9e^{-\beta\hbar^2/I}
+\end{align*}
+Giving:
+\begin{align}
+  \boxed{\ev{E_{rot}}\approx9N\frac{\hbar^2}Ie^{-\beta\hbar^2/I}}
+\end{align}
+The high energy limits:
+\begin{align*}
+  Z_o+Z_p\approx\frac{4I}{\beta\hbar^2}
+\end{align*}
+Giving:
+\begin{align}
+  \boxed{\ev{E_{rot}}\approx Nk_BT}
+\end{align}
+\end{document}
+

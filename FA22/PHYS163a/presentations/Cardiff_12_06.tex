@@ -1,0 +1,101 @@
+\documentclass{beamer}
+
+\usepackage[italicdiff]{physics}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{siunitx}
+
+\newcommand{\dbar}{d\hspace*{-0.08em}\bar{}\hspace*{0.1em}}
+
+\newenvironment{itemframe}[1]{\begin{frame}{#1}\begin{itemize}}   {\end{itemize}\end{frame}}
+
+% Changes style of actual slides
+\usetheme{Dresden}
+% Changes color of slides
+\usecolortheme{spruce}
+% removes controls at bottom right side
+\usenavigationsymbolstemplate{}
+
+% for figures
+\graphicspath{ {./figs/} }
+
+\title{Spontaneous Symmetry Breaking}
+\author{Michael Cardiff}
+\subtitle{PHYS 163a \ 12/06 Prep Work}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{What is Spontaneous Symmetry Breaking?}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item Magnet Example, $(\vb{h}\to0)$, Hamiltonian should have rotational symmetry
+      \item However, past the phase transition, it does not.
+      \item That is, the symmetry is broken spontaneously
+      \item Minima at $m=0$ is local and unstable
+      \item There is a lower energy state in a specific direction
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=5.0cm]{potential.png}
+        \caption{Example for Spontaneous Symmetry Breaking}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+\begin{frame}{Magnets}
+  \begin{itemize}
+  \item Magnets above $T_C$ obey rotational symmetry
+  \item Below, it is energetically favorable to break this symmetry
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Freezing Liquids}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item Microdynamics of a liquid are rotationally invariant
+      \item A solid only has a discrete symmetry
+      \item The same effect can only be achieved if you rotate by a fixed amount
+      \item Figure A: Invariant under Rotations of $\ang{120}$
+      \item Figure B: Invariant under any Rotation
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=2.4cm]{ice}
+        \includegraphics[width=2.0cm]{water}
+        \caption{Ice Vs Water}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Liquid Crystal}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item Same as normal liquids and Magnets
+      \item Rotational Invriance in isotropic liquid phase
+      \item Alignment along some axis $\vu{n}$ in the nematic phase
+      \item Translational symmetry maintained
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=5.0cm]{lc}
+        \caption{Phases of a Liquid Crystal}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\end{document}

@@ -141,20 +141,20 @@ Realize that one individual momentum integral is simply a Gaussian:
 \end{align*}
 This one integral gives:
 \begin{align*}
-  I=\qty(\frac{2\pi}{\beta})^{3/2}
+  I=\qty(\frac{2m\pi}{\beta})^{3/2}
 \end{align*}
 And since we have $N$ of them, we can say:
 \begin{align*}
-  Z_{\vb{p,q}}=V^N\qty(\frac{2\pi}{\beta})^{3N/2}
+  Z_{\vb{p,q}}=V^N\qty(\frac{2m\pi}{\beta})^{3N/2}
 \end{align*}
 However we also need to take into account the fact that these particles are identical, and that $Z$ needs to be dimensionless, so we need a factor of $h^{-3N}$ and an inverse $N!$:
 \begin{align*}
-  Z_{\vb{p,q}}&=\frac1{h^{3N}N!}V^N\qty(\frac{2\pi}{\beta})^{3N/2}\\
+  Z_{\vb{p,q}}&=\frac1{h^{3N}N!}V^N\qty(\frac{2m\pi}{\beta})^{3N/2}\\
   &=\frac1{N!}\qty(\frac{V}{\lambda^3})^N
 \end{align*}
 Where the second line uses the $\lambda$ factor defined in Kardar's Equation 4.80:
 \begin{align*}
-  \lambda=\frac{h}{\sqrt{2\pi k_BT}}=h\sqrt{\frac{\beta}{2\pi}}
+  \lambda=\frac{h}{\sqrt{2m\pi k_BT}}=h\sqrt{\frac{\beta}{2\pi}}
 \end{align*}
 The partial partition function for the spin degrees of freedom is instead a sum:
 \begin{align*}
@@ -196,7 +196,7 @@ The sum just evaluates to 1 each time, and thus the probabilities are:
   \boxed{
   \begin{aligned}
     p(S=-1)&=\frac{e^{-\beta\mu B}}{e^{-\beta\mu B}+1+e^{\beta\mu B}}\\
-    p(S= 0)&=\frac0{e^{-\beta\mu B}+1+e^{\beta\mu B}}\\
+    p(S= 0)&=\frac1{e^{-\beta\mu B}+1+e^{\beta\mu B}}\\
     p(S= 1)&=\frac{e^{\beta\mu B}}{e^{-\beta\mu B}+1+e^{\beta\mu B}}
   \end{aligned}
   }

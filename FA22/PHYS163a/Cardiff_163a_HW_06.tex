@@ -1,0 +1,413 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 163a HW 6}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amssymb,amsthm,bm,physics,slashed}
+
+%% general pretty stuff
+\usepackage{caption,enumitem,float,geometry,graphicx,tikz}
+
+% setups
+\graphicspath{ {./figs/} }
+\captionsetup{labelfont=bf}
+\geometry{margin=1in}
+
+% macros
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+
+\begin{document}
+\maketitle
+
+\section{White Dwarfs}
+\subsection{Fermi Energy and Temperature}
+We know that the fermi energy is given in terms of the density $n$ and the degeneracy $g$:
+\begin{align*}
+  E_F=\frac{\hbar^2}{2m}\qty(\frac{6\pi^2 n}{g})
+\end{align*}
+Since these are electrons $g=2,m=m_e$, and we are given $n$:
+\begin{align*}
+  n&=10^{33}{cc}^{-1}=10^{33}\frac{1}{cc}
+  \times\frac{100cm}{1m}\times\frac{100cm}{1m}\times\frac{100cm}{1m}\\
+  &=10^{39}m^{-3}
+\end{align*}
+So the fermi energy in SI units is:
+\begin{align*}
+  E_F\approx5.84\times10^{-12}\text{J}
+\end{align*}
+Dividing by the elementary charge gives the value in $eV$:
+\begin{align}
+  \boxed{E_F\approx3.6\times10^7\text{eV}}
+\end{align}
+Then Divide instead by the Boltzmann constant in Joules, we get the Fermi Temperature:
+\begin{align}
+  \boxed{T_F\approx4.2\times10^{11}\text{K}}
+\end{align}
+We can directly see that $T/T_F$ is small here as:
+\begin{align*}
+  \frac{T}{T_F}=\frac{10^7}{4.2\times10^{11}}\approx2.4\times10^{-5}\ll 1
+\end{align*}
+\subsection{Ground State Energy}
+We can find the ground state energy by calculating the average energy directly
+\begin{align*}
+  E_0&=\frac1{h^3}\int\dd{V}\int\dd[3]{p}\epsilon(p)\\
+  &=\frac{V}{h^3}8\pi\int_0^{p_F}\dd{p}p^2\epsilon(p)\\
+  &=\frac{V}{h^3}8\pi\int_0^{p_F}\dd{p}p^2\sqrt{(pc)^2+(m_ec^2)^2}\\
+\end{align*}
+We get an extra factor of $2$ by compressing the integral from $\pm p_F$ to just $0\to p_F$.
+
+If we introduce the substitution $p=xm_ec$, we find:
+\begin{align*}
+  E_0&=\frac{V}{h^3}8\pi\int_0^{p_F}\dd{p}p^2\sqrt{(pc)^2+(m_ec^2)^2}\\
+  &=\frac{8\pi V}{h^3}
+  \int_0^{x_F}\dd{(xm_ec)}(xm_ec)^2\sqrt{(xm_ec^2)^2+(m_ec^2)^2}\\
+  &=\frac{8\pi V}{h^3}(m_ec)^3\int_0^{x_F}\dd{x}x^2\sqrt{(m_ec^2)^2(1+x^2)}\\
+  &=\frac{V}{\pi^2\hbar^3}m_e^4c^5\int_0^{x_F}\dd{x}x^2\sqrt{(1+x^2)}
+\end{align*}
+If we define the Fermi momentum in terms of the $p_F=\sqrt{2m_eE_F}$, we find:
+\begin{align*}
+  p_F=\hbar\qty(3\pi^2n)^{1/3}
+\end{align*}
+We get the following for $x_F$:
+\begin{align*}
+  x_F=\frac{\hbar}{m_ec}\qty(3\pi^2n)^{1/3}
+\end{align*}
+We then can define the $f(x_F)$ and write the 
+\begin{equation}
+  \boxed{
+    \begin{gathered}
+      \frac{E_0}{V}=\frac{m_e^4c^5}{\pi^2\hbar^3}f(x_F)\\
+      f(x_F)=\int_0^{x_F}\dd{x}x^2\sqrt{1+x^2}
+    \end{gathered}
+  }
+\end{equation}
+\subsection{Ground State Pressure}
+The Obvious dependence on volume is from:
+\begin{align*}
+  E_0=\boxed{V}\frac{m_e^4c^5}{\pi^2\hbar^3}f(x_F)
+\end{align*}
+However, we know that $x_F$ has a dependence on $V$ via $n$:
+\begin{align*}
+  x_F=\frac{\hbar}{m_ec}\qty(3\pi^2n)^{1/3}=
+  \frac{\hbar}{m_ec}\qty(3\pi^2\frac{N}{V})^{1/3}
+\end{align*}
+So the Ground state pressure should be:
+\begin{align}
+  \boxed{
+    P=-\pdv{E_0}{V}=-\frac{m_e^4c^5}{\pi^2\hbar^3}\qty(f(x_F)+\pdv{f(x_F)}{V})
+  }
+\end{align}
+\subsection{Rewriting}
+Since $M_s\approx2m_eN$, we should try to rewrite $x_F$:
+\begin{align*}
+  x_F=\frac{\hbar}{m_ec}\qty(3\pi^2 \frac{N}{V})^{1/3}
+\end{align*}
+We can write $N$ as $M_S/2m_e$ and $V=\frac43\pi R^3$:
+\begin{align*}
+  x_F&=\frac{\hbar}{m_ec}\qty(3\pi^2\frac{3M_S}{8m_e\pi R^3})^{1/3}\\
+  &=\frac{\hbar}{m_ec}\frac1R\qty(\frac{9\pi M_S}{8m_e})^{1/3}
+\end{align*}
+Giving:
+\begin{align*}
+  \boxed{x_F=\frac{\hbar}{cR}\qty(\frac{9\pi M_S}{8m_e^4})^{1/3}}
+\end{align*}
+\subsection{Zero Point Pressure}
+If we are assuming that $x_F$ is very large, then:
+\begin{align*}
+  f(x_F)\approx\frac14x_F^4
+\end{align*}
+In terms of the volume:
+\begin{align*}
+  f(x_F)\approx\frac{\hbar}{4m_ec}\qty(3\pi^2 \frac{N}{V})^{4/3}
+\end{align*}
+Such that:
+\begin{align*}
+  \pdv{f}{V}&\approx-\frac{\hbar}{3Vm_ec}\qty(3\pi^2 \frac{N}{V})^{4/3}\\
+  &=-\frac1{3V}x_F^4
+\end{align*}
+Plugging into our form from a previous part, we get
+\begin{align*}
+  P&=\frac{m_e^4c^5}{\pi^2\hbar^3}\qty(\frac1{3V}x_F^4-\frac14x_F^4)\\
+  &=\frac{m_e^4c^5}{\pi^2\hbar^3}
+  \qty(\frac{\hbar}{cR}\qty(\frac{9\pi M_S}{8m_e^4})^{1/3})^4
+  \qty(\frac1{4\pi R^3}-\frac14)\\
+  &=\frac{\hbar c}{4R^4\pi^{2/3}}\qty(\frac{9M_S}{8m_e})^{4/3}
+  \qty(\frac1{\pi R^3}-1)
+\end{align*}
+Barring any more boring simplification, we get:
+\begin{align}
+  \boxed{P=\frac{\hbar c}{4R^4\pi^{2/3}}\qty(\frac{9M_S}{8m_e})^{4/3}
+  \qty(\frac1{\pi R^3}-1)}
+\end{align}
+\subsection{Relationship Between Radius and Mass}
+If the Pressure is $P$, then the force due to the pressure should be $4\pi R^2 P$, and if this is what balances out gravity we have:
+\begin{align*}
+  \frac{GM_S^2}{R^2}&=4\pi\frac{\hbar c}{4R^2\pi^{2/3}}
+  \qty(\frac{9M_S}{8m_e})^{4/3}\qty(\frac1{\pi R^3}-1)\\
+  GM_S^2&=\hbar c\pi^{1/3}
+  \qty(\frac{9M_S}{8m_e})^{4/3}\qty(\frac1{\pi R^3}-1)\\
+  GM_S^2&=CM_S^{4/3}\qty(\frac{1}{\pi R^3}-1)\\
+  \frac{G}{C}M^{2/3}&=\frac{1}{\pi R^3}-1\\
+  \pi\frac{G}{C}M^{2/3}+\pi&=\frac{1}{R^3}\\
+  R^3&=\frac1\pi\frac1{1+GM^{2/3}/C}
+\end{align*}
+Hence:
+\begin{align}
+  \boxed{R=\sqrt[3]{\frac1\pi\frac1{1+GM^{2/3}/C}}}
+\end{align}
+
+\subsection{Chandrashekar Mass}
+I have no clue how to go about this
+
+\section{Numerical Estimates}
+\subsection{Ratio of Heat Capacities}
+For the Fermi gas, the heat capacity was found to follow the form of:
+\begin{align*}
+  C_V\approx\frac{\pi^2}{2}Nk_B\qty(\frac{T}{T_F})
+\end{align*}
+Given room temperature is about $300$K we can calculate the heat capacity to be:
+\begin{align*}
+  C_{el}\approx\frac{\pi^2}2\frac{300}{5\times10^4}Nk_B\approx0.0296Nk_B
+\end{align*}
+
+And since the Debye temperature in a metal like iron is $470$K, we can just say the phonon heat capacity is:
+\begin{align*}
+  C_{ph}\approx 3Nk_B
+\end{align*}
+So the ratio is:
+\begin{align}
+  \boxed{
+    \frac{C_{el}}{C_{ph}}\approx\frac{0.0296Nk_B}{3Nk_B}\approx 9.8\times10^{-3}
+  }
+\end{align}
+
+\subsection{Comparing Wavelengths}
+For a neutron we have a mass of $1.67\times10^{-27}$kg, room temperature of $300$K, and the values of $h=6.67\times10^{-34}$Js as well as $k_B=1.38\times10^{-23}$JK$^{-1}$, simply plug into the formula:
+\begin{align}
+  \boxed{\lambda=\frac{h}{\sqrt{2\pi mk_BT}}\approx1.01\text{\AA}}
+\end{align}
+The minimum phonon wavelength is on the order of the lattice constant $a$, which is usually a few angstrom, which is comparable to the neutron thermal wavelength.
+
+\subsection{Degeneracy Discriminant}
+Note that this problem calls for room temperature and pressure:
+\begin{align*}
+  T_R=300\text{K}\\
+  P_R=101325\text{Pa}
+\end{align*}
+The formula for the degeneracy discriminant is:
+\begin{align*}
+  n\lambda^3=\frac{N}{V}\frac{h^3}{\qty(2\pi mk_BT)^{3/2}}
+\end{align*}
+We can rearrange the ideal gas law to solve for $n$:
+\begin{align*}
+  PV=Nk_BT\implies\frac{P}{k_BT}=\frac{N}{V}
+\end{align*}
+Subbing this in yields:
+\begin{align*}
+  n\lambda^3=\frac{P}{k_BT}\frac{h^3}{\qty(2\pi mk_BT)^{3/2}}=
+  \frac{Ph^3}{\qty(k_BT)^{5/2}\qty(2\pi m)^{3/2}}
+\end{align*}
+Everything here is fixed say for the mass, so we can lump everything into a single constant $\alpha$:
+\begin{gather*}
+  \frac{Ph^3}{\qty(k_BT)^{5/2}\qty(2\pi m)^{3/2}}=\alpha m^{-3/2}\\
+  \alpha=\frac{P_Rh^3}{\qty(k_BT_R)^{5/2}\qty(2\pi)^{3/2}}\approx
+  1.73\times10^{-45}
+\end{gather*}
+We then use the following values of the masses in kg:
+\begin{gather*}
+  m_{H^2}=3.34\times10^{-27}\\
+  m_{He}=6.65\times10^{-27}\\
+  m_{O^2}=5.31\times10^{-26}
+\end{gather*}
+Giving the following values of the discriminant:
+\begin{equation}
+  \boxed{
+    \begin{aligned}
+      (n\lambda^3)_{H^2}=8.9\times10^{-6}\\
+      (n\lambda^3)_{He}=3.2\times10^{-6}\\
+      (n\lambda^3)_{O^2}=1.4\times10^{-7}
+    \end{aligned}
+  }
+\end{equation}
+We should call the temperature where quantum effects become relevant (When the discriminant is order 1) $T_Q$, and we can solve for it by setting the discriminant equal to $1$ and solving for $T$:
+\begin{align*}
+  1&=\frac{Ph^3}{\qty(k_BT_Q)^{5/2}\qty(2\pi m)^{3/2}}\\
+  T_Q&=\qty(\frac{Ph^3}{\qty(k_B)^{5/2}\qty(2\pi m)^{3/2}})^{2/5}
+\end{align*}
+For each of the gases, $T_Q$ in Kelvin is:
+\begin{equation}
+\boxed{  \begin{aligned}
+    (T_Q)_{H^2}=2.9\\
+    (T_Q)_{He}=1.9\\
+    (T_Q)_{O^2}=0.5
+  \end{aligned}}
+\end{equation}
+
+\subsection{Low Temp Heat Capacity}
+We expect the energy excitations to scale as:
+\begin{align*}
+  \mathcal{E}\propto k^s
+\end{align*}
+And the heat capacity should vanish as:
+\begin{align*}
+  C\propto T^{3/s}
+\end{align*}
+Hence $s=1$ since we are given a $T^3$ heat capacity law, so the phonon energy spectrum should look like:
+\begin{align*}
+  \mathcal{E}(k)=\hbar v_sk
+\end{align*}
+
+\section{Bose Condensation in $d$-Dimensions}
+\subsection{Grand Potential and Density}
+The grand partition function is given by:
+\begin{align*}
+  Q=\sum_{N=0}^\infty e^{\beta\mu N}\sum_{\{n_i\}}\exp{-\beta\sum_in_i\epsilon_i}
+\end{align*}
+With the constraint that the sum of $n_i$ must be $N$. We can split the $N$ with the chemical potential into a sum over $i$ of $n_i$, and split the exponentials into a product of exponentials. This all gives:
+\begin{align*}
+  Q=\prod_i\sum_{\{n_i\}}\exp{\beta(\mu-\epsilon_i)n_i}
+\end{align*}
+Using the sum of a geometric series:
+\begin{align*}
+  Q=\prod_i\frac1{1-e^{\beta(\mu-\epsilon_i)}}
+\end{align*}
+Using the relation given that $\mathcal{G}=-k_BT\log Q$, we get:
+\begin{align*}
+  \mathcal{G}=k_BT\sum_i\log(1-e^{\beta(\mu-\epsilon_i)})
+\end{align*}
+However we want to find it in terms of the integral given, so we instead do an integral over $k$, since it is in $d$ dimensions, we get the following:
+\begin{align*}
+  \sum_i\to V\int\frac{\dd[d]{k}}{(2\pi)^d}
+\end{align*}
+We can eliminate $d-1$ of the integrals using the appropriate equivalent of spherical coordinates solid angle integrals. From those we will simply get a surface area term $A(d)$, which will be given by:
+\begin{align*}
+  A(d)=\frac{2\pi^{d/2}}{\Gamma(d/2)}
+\end{align*}
+And the remaining factor will be $k^{d-1}$:
+\begin{align*}
+  \implies\log Q=-\frac{V A(d)}{(2\pi)^d}\int\dd{k}k^{d-1}
+  \log(1-ze^{-\beta\hbar^2k^2/2m})
+\end{align*}
+Where the fugacity $z$ has been introduced. Introducing a change of variables $x$ where $x$ is the argument of the exponential, we get:
+\begin{align*}
+  \log Q=-\frac{V A(d)}{(2\pi)^d}\frac12\qty(\frac{2m}{\hbar^2\beta})^{d/2}
+  \int\dd{x}x^{d/2-1}\log(1-ze^{-x})
+\end{align*}
+Integrating by parts will give:
+\begin{align*}
+  \log Q&=\frac{V A(d)}{(2\pi)^d}\frac1d\qty(\frac{2m}{\hbar^2\beta})^{d/2}
+  \int\dd{x}\frac{x^{d/2}ze^{-x}}{1-ze^{-x}}\\
+  &=\frac{V A(d)}{(2\pi)^dd}\qty(\frac{2m}{\hbar^2\beta})^{d/2}
+  \int\dd{x}\frac{x^{d/2}}{z^{-1}e^x-1}\\
+\end{align*}
+Hence the grand potential is:
+\begin{align*}
+  \mathcal{G}=-\frac{V A(d)}{d}\qty(\frac{2m}{h^2\beta})^{d/2}k_BT
+  \Gamma\qty(\frac{d}{2}+1)f^+_{d/2+1}(z)
+\end{align*}
+Using the definition of the thermal wavelength, we can find:
+\begin{align*}
+  \mathcal{G}=-\frac{V A(d)}{(2\pi)^{d/2}\lambda^dd}k_BT
+  \Gamma\qty(\frac{d}{2}+1)f^+_{d/2+1}(z)
+\end{align*}
+Using the property of the Gamma function that $\gamma(x+1)=x\gamma(x)$, and the definition of the surface area term, we can eliminate all of the misc. factors, just to find:
+\begin{align}
+  \boxed{\mathcal{G}=-\frac{V}{\lambda^d}k_BTf^+_{d/2+1}(z)}
+\end{align}
+We can easily calculate the average number of particles using the log of the partition function:
+\begin{align*}
+  N=\pdv{(\beta\mu)}\log Q=V\frac{A(d)}{d}\qty(\frac{2m}{h^2\beta})^{d/2}
+  \int\dd{x}x^{d/2-1}\frac{ze^{-x}}{1-ze^{-x}}
+\end{align*}
+We can do the same manipulations, however we will have $f^+_{d/2}$ now:
+\begin{align}
+  \boxed{N=\frac{V}{\lambda^d}f^+_{d/2}(z)}
+\end{align}
+
+\subsection{Energy Value}
+We know $PV=-\mathcal{G}$, and the energy $E$ is:
+\begin{align*}
+  E=-\pdv{\beta}\log{Q}=\frac{d}{2}\frac{\ln Q}{\beta}=-\frac{d}{2}\mathcal{G}
+\end{align*}
+Hence:
+\begin{align*}
+  \frac{PV}{E}=\frac{-\mathcal{G}}{-d\mathcal{G}/2}=\frac2d
+\end{align*}
+Which is the exact classical value:
+\begin{align}
+  \boxed{\frac{PV}{E}=\frac2d}
+\end{align}
+
+\subsection{Critical Temperature}
+The critical temperature is when $z=1$:
+\begin{align*}
+  T_c\equiv n=\frac{1}{\lambda^d}f^+_{d/2}(1)
+\end{align*}
+With $f^+_{d/2}(1)$ having its own special function definition:
+\begin{align*}
+  f^+_{m}(1)\equiv\zeta_{m}=\frac{1}{(m-1)!}\int\dd{x}\frac{x^{m-1}}{e^x-1}
+\end{align*}
+We can find the temperature via the thermal wavelength:
+\begin{align*}
+  \lambda=\frac{h}{\sqrt{2\pi mk_BT}}\implies \lambda^{-d}=
+  \frac{(2\pi mk_BT)^{d/2}}{h^d}
+\end{align*}
+So the critical temperature as a function of $n$ can be solved for:
+\begin{align*}
+  n&=\frac{(2\pi mk_BT_C)^{d/2}}{h^d}\zeta_{d/2}\\
+  \frac{n}{\zeta_{d/2}}&=\frac{(2\pi mk_BT_C)^{d/2}}{h^d}\\
+  \qty(\frac{n}{\zeta_{d/2}})^{2/d}&=\frac{2\pi mk_BT_C}{h^2}\\
+  T_C&=\frac{h^2}{2\pi mk_B}\qty(\frac{n}{\zeta_{d/2}})^{2/d}
+\end{align*}
+Hence the final answer is:
+\begin{align}
+  \boxed{T_C=\frac{h^2}{2\pi mk_B}\qty(\frac{n}{\zeta_{d/2}})^{2/d}}
+\end{align}
+
+\subsection{Heat Capacity Calculation}
+We simply need to calculate the following from previous calculations:
+\begin{align*}
+  C=\pdv{E}{T}=-\frac{d}{2}\pdv{\mathcal{G}}{T}=
+  -\frac{d}{2}\qty(\frac{d}{2}+1)\frac{\mathcal{G}}{T}
+\end{align*}
+This is simply:
+\begin{align}
+  \boxed{C=\frac{d}{2}\qty(\frac{d}{2}+1)\frac{V}{\lambda^d}k_B\zeta_{d/2+1}}
+\end{align}
+The reason we have $\zeta$ instead of $f^+$ is because we are evaluating below the critical point, so $z=1$.
+
+\subsection{Heat Capacity Graph}
+Far above the critical temperature, we have the normal heat capacity, so it should have the following form:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10.0cm]{heatcap}
+  \caption{Heat Capacity Behavior}
+\end{figure}
+
+\subsection{Ratio of Max $C$ to Limit}
+The max heat capacity occurs at the transition:
+\begin{align*}
+  C_{max}&=\frac{d}{2}\qty(\frac{d}{2}+1)\frac{V}{\qty(\zeta_{d/2}/n)}k_B
+  \zeta_{d/2+1}\\
+  &=\frac{d}{2}\qty(\frac{d}{2}+1)Nk_B\frac{\zeta_{d/2+1}}{\zeta_{d/2}}
+\end{align*}
+The limit as $T$ approaches infinite is going to just be $\frac{d}{2}Nk_B$ as calculated earlier, hence:
+\begin{align}
+  \boxed{\frac{C_{max}}{C(T\to\infty)}=\qty(\frac{d}{2}+1)
+  \frac{\zeta_{d/2+1}}{\zeta_{d/2}}\approx1.284}
+\end{align}
+Evaluating this in mathematica gives about $1.284$ for $d=3$:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10.0cm]{math}
+  \caption{Mathematica for Above}
+\end{figure}
+
+\subsection{Behavior in $d=2$}
+Note that the denominator for the ratio has a $\zeta_1$ in the ratio, which is infinity. This suggests the fugacity is always smaller than 1, so we cannot have a bose-einstein condensation in $d\leq 2$ and our results are only valid if $d>2$
+\end{document}

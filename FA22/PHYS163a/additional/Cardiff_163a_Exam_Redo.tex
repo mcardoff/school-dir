@@ -1,0 +1,138 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 163a Midterm Do-Over}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amssymb,amsthm,bm,slashed}
+\usepackage[italicdiff]{physics}
+
+%% general pretty stuff
+\usepackage{caption,enumitem,float,geometry,graphicx,tikz}
+
+% setups
+\graphicspath{ {./figs/} }
+\captionsetup{labelfont=bf}
+\geometry{margin=1in}
+
+% macros
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\dbar}{d\hspace*{-0.08em}\bar{}\hspace*{0.1em}}
+\newcommand{\D}{\partial}
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+
+\begin{document}
+\maketitle
+
+\section{Thermodynamics}
+\subsection{Hot Water in a Sealed Room}
+The assumptions we made in this problems in class, we said there was no work done, and we assumed the room would be held at constant temperature $T$ hence we could say:
+\begin{align*}
+  \dd{E}=\dbar{Q}\leq T\dd{S}\implies \dd{(E-TS)}\leq0
+\end{align*}
+And if we define the Helmholtz free energy as $F=E-TS$, then we have the condition of $\dd{F}\leq0$.
+We did not consider possible chemical changes in the water, in which case we would have:
+\begin{align*}
+  \dd{E}\leq T\dd{S}+\mu\dd{N}\implies\dd{(E-TS-\mu N)}\leq0
+\end{align*}
+The term in the parentheses is defined as the Grand Potential in Kardar
+\subsection{Entropy Example}
+The molar entropy we are given is:
+\begin{align*}
+  s=s_0+R\ln\qty[\frac{v-b}{v_0-b}]+\frac32R\ln(\sinh[c(u+a/v)])
+\end{align*}
+\subsubsection{Equation of State}
+I am going to assume $N$ is constant since it is divided out of everythin in the Entropy. We know entropy $s$ is a function of $u,v$, so we can write its differential as:
+\begin{align*}
+  \dd{s}=\eval{\pdv{s}{u}}_v\dd{u}+\eval{\pdv{s}{v}}_u\dd{v}
+\end{align*}
+From the first law we can get that:
+\begin{align*}
+  \dd{S}=\frac1T\dd{E}-\frac{P}{T}\dd{V}
+\end{align*}
+Dividing this through by $N$:
+\begin{align*}
+  \dd{s}=\frac1T\dd{u}-\frac{P}{T}\dd{v}
+\end{align*}
+We can then match these two expressions:
+\begin{align*}
+  \pdv{s}{u}=\frac1T\qquad\pdv{s}{v}=\frac{P}{T}
+\end{align*}
+The derivatives are:
+\begin{align*}
+  \pdv{s}{u}&=\frac32Rc\coth[c(u+a/v)]\\
+  \pdv{s}{c}&=\frac{R}{v-b}-\frac{a}{v^2}\qty(\frac32Rc\coth[c(u+a/v)])
+\end{align*}
+Since the top expression is just $T^{-1}$, we can replace the parenthetical expression with it to get:
+\begin{align*}
+  \frac{P}{T}&=\frac{R}{v-b}-\frac{a}{Tv^2}\\
+  \implies RT&=\qty(P+\frac{a}{v^2})(v-b)
+\end{align*}
+\subsubsection{Specific Heat at Constant Volume}
+The specific heat at constant volume is defined as:
+\begin{align*}
+  C_v=\eval{\pdv{u}{T}}_v
+\end{align*}
+From calculus we know that:
+\begin{align*}
+  \pdv{u}{T}=\qty(\pdv{T}{u})^{-1}
+\end{align*}
+Since we have $T^{-1}$, we need to invert it:
+\begin{align*}
+  T=\frac2{3Rc}\tanh(c(u+a/v))
+\end{align*}
+The derivative with respect to $u$ is:
+\begin{align*}
+  \pdv{T}{u}=\frac{2}{3R}\sech^2\qty(c(u+a/v))
+\end{align*}
+Then finally invert again:
+\begin{align*}
+  \pdv{u}{T}=\qty(\pdv{T}{u})^{-1}=\frac32R\cosh^2\qty(c(u+a/v))
+\end{align*}
+% TO FINISH
+\subsection{Type I Superconductor, Clausius Clapeyron}
+
+\section{Probability and Kinetic Theory}
+\subsection{Loaded Die}
+If someone else does not know the information we do, they assume that all $p_i$ are equal, specifically to $1/6$. So the information content is:
+\begin{align*}
+  I=\log 6+\sum_{i=1}^6p_i\log p_i=\log 6+6\qty(\frac16\log\frac16)=
+  \log6-\log6=0
+\end{align*}
+However, if we know that $p_6=2p_1$, we can calculate the maximum entropy probability distribution, with the following:
+\begin{gather*}
+  p_1=p_1\\
+  p_6=2p_1\\
+  p_2=p_3=p_4=p_5=\frac14(1-3p_1)
+\end{gather*}
+So the entropy is:
+\begin{align*}
+  S=-p_1\log p_1-2p_1\log(2p_1)-(1-3p_1)\log(\frac{1-3p_1}{4})
+\end{align*}
+We need to minimize:
+\begin{align*}
+  \pdv{S}{p_1}
+\end{align*}
+\subsection{H Theorem Connection to Thermodynamics}
+
+\subsection{Traffic Jams}
+
+\subsubsection{Average Speed}
+
+\subsubsection{Average Speed vs Most Probable Speed}
+
+\section{Classical Statistical Mechanics}
+
+\subsection{Two Level System}
+
+\subsection{Polymers}
+
+\subsubsection{Possible Microstates}
+
+\subsubsection{Average Energy}
+
+\subsubsection{Average Length}
+
+\end{document}

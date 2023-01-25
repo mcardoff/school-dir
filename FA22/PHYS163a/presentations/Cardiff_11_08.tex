@@ -1,0 +1,158 @@
+\documentclass{beamer}
+
+\usepackage[italicdiff]{physics}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{url}
+
+\newcommand{\dbar}{d\hspace*{-0.08em}\bar{}\hspace*{0.1em}}
+
+\newenvironment{itemframe}[1]{\begin{frame}{#1}\begin{itemize}}   {\end{itemize}\end{frame}}
+
+% Changes style of actual slides
+\usetheme{Dresden}
+% Changes color of slides
+\usecolortheme{spruce}
+% removes controls at bottom right side
+\usenavigationsymbolstemplate{}
+
+% for figures
+\graphicspath{ {./figs/} }
+
+\title{Introductory Quantum Stat Mech}
+\author{Michael Cardiff}
+\subtitle{PHYS 163a \\ 11/08 Prep Work}
+
+\begin{document}
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Blackbody Radiation}
+\begin{frame}{Blackbody Radiation? Huh?}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item First, what is a blackbody?
+        \begin{itemize}
+        \item Absorbs all incident electromagnetic radiation
+        \item Idealized
+        \end{itemize}
+      \item Radiation spectrum at equilibrium described only by temperature
+      \item Classical mechanics describes it poorly, distribution diverges when $\lambda\to0$
+      \item We can estimate the temp of an object based on its color. 
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=5.0cm]{blackbody}
+        \caption{Actual Blackbody Spectrum}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Why is it special}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item All matter emits EM radiation
+      \item However all matter does not absorb it in the same way
+        \begin{itemize}
+        \item Glass is see-through in visible spectrum, but acts like a mirror in the UV
+        \end{itemize}
+      \item Blackbodies absorb at all wavelengths
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=5.0cm]{transmittance}
+        \caption{Transmittance of Glass, NOT a Black Body}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+\section{Rayleigh-Jean's Law}
+\begin{frame}{Rayleigh-Jean's Solution}
+  \begin{itemize}
+  \item One attempt to describe the spectrum of blackbody radiation was done by Rayleigh and Jeans, which gives the following form:
+    \begin{align*}
+      B_\lambda(T)=\frac{2ck_BT}{\lambda^4}
+    \end{align*}
+  \item The actual answer is a limit of this, so it agrees at high wavelengths
+  \item This law is the origin of the UV-catastrophe
+  \end{itemize}
+\end{frame}
+\begin{frame}{Outline of Derivation}
+  \begin{columns}
+    \begin{column}{0.6\textwidth}
+      \begin{itemize}
+      \item Solve wave equation for standing EM waves in a cubical cavity
+      \item Solution is an infinite number of normal modes:\small
+        \begin{align*}
+          E=\sin(n_xx)\sin(n_yy)\sin(n_zz)\sin(2\pi ct/\lambda)
+        \end{align*}\normalsize
+      \item Find the number of modes possible in the cavity
+      \item Find modes per wavelength
+      \item Relate modes per wavelength to energy per wavelength using equipartition theorem
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=4.0cm]{modes}
+        \caption{Counting Modes}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+\section{UV Catastrophe}
+\begin{frame}{UV Disaster!}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item In the Rayleigh-Jeans Law, take $\lambda\to0$, the radiation blows up!
+      \item Indication that this is not the correct law
+      \item This is clearly not the behavior of something like the sun, which emits UV radiation similarly to a blackbody
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=5.0cm]{catastrophe}
+        \caption{Demonstration of UV Catastrophe from Rayleigh-Jeans}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Stefan Boltzmann Law}
+\begin{frame}{Stefan Boltzmann}
+  \begin{itemize}
+  \item Rayleigh-Jean's Law talks about a Power per unit area, per unit wavelength, aka Energy Flux per wavelength
+  \item Stefan-Boltzmann Talks about Energy flux across all wavelengths, so the Law simply integrates out the wavelength 
+  \item Expressed as:
+    \begin{align*}
+      \frac{P}{A}=\sigma T^4
+    \end{align*}
+  \item $\sigma$ is a fixed constant on the order of $5.0\times10^{-8}$ W/(m$^2$K$^4$)
+  \end{itemize}
+\end{frame}
+
+\section{Quantum Harmonic Oscillator?}
+\begin{frame}{What does this have to do with Harmonic Oscillators?}
+  \begin{itemize}
+  \item Radiation and Photons: Electromagnetic Waves
+  \item Classical Potential for Waves: Harmonic Oscillator
+  \item Photons and Blackbody radiation are quantum effects
+    \begin{itemize}
+    \item Photons: Quantized Excitations of EM Field: waves!
+    \item Radiation: Waves resulting from accelerating charges
+    \end{itemize}
+  \item Waves, especially EM waves and radiation obey Harmonic Oscillator Equations
+  \item This makes the Harmonic Oscillator Potential one of the most important ones in Physics
+  \end{itemize}
+\end{frame}
+\end{document}
