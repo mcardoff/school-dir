@@ -5,7 +5,7 @@
 \date{\today}
 
 %% science symbols 
-\usepackage{amssymb,amsthm,bm,physics,slashed}
+\usepackage{amssymb,amsthm,bm,physics,slashed,cancel}
 
 %% general pretty stuff
 \usepackage{caption,enumitem,float,geometry,graphicx,tikz}
@@ -18,16 +18,424 @@
 % macros
 \renewcommand{\L}{\mathcal{L}}
 \newcommand{\D}{\partial}
+\newcommand{\kd}[2]{\delta_{#1,#2}}
+\newcommand{\veps}{\varepsilon}
 \newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
     \node[shape=circle,draw,inner sep=2pt](char){#1};}}
 
 \begin{document}
 \maketitle
-
 \section{Contractions}
+Instead of a single quanta $\ket{n}$, we now have two quanta $\ket{n_1,n_2}$, so we need to find the energy as given by:
+\begin{align*}
+  H\ket{n_1,n_2}=\sum_{n=-\infty}^\infty\hbar\omega_n
+  \qty(\hat{a}_n^\dag\hat{a}_n)\ket{n_1,n_2}
+\end{align*}
+Note the definition of the state $\ket{n_1,n_2}$:
+\begin{align*}
+  \ket{n_1,n_2}=\hat{a}^\dag_{n_1}\hat{a}^\dag_{n_2}\ket{0}
+\end{align*}
+And the action of the annihilation operator $\hat{a}_n$ on the vacuum $\ket{0}$:
+\begin{align*}
+  \hat{a}_{n}\ket{0}=0
+\end{align*}
+We then need to evaluate the following:
+\begin{align*}
+  H\ket{n_1,n_2}=\sum_{n=-\infty}^\infty\hbar\omega_n
+  \hat{a}_n^\dag\hat{a}_n\hat{a}^\dag_{n_1}\hat{a}^\dag_{n_2}\ket{0}
+\end{align*}
+Isolate the operators:
+\begin{align*}
+  \hat{a}_n^\dag\hat{a}_n\hat{a}^\dag_{n_1}\hat{a}^\dag_{n_2}
+\end{align*}
 
+The goal is to make use of the following commutation relation for the creation and annihilation operators to be left with the eigenvalues provided by the state $\ket{n_1,n_2}$:
+\begin{align*}
+  \comm{\hat{a}_n}{\hat{a}^\dag_m}=\delta_{n,m}
+\end{align*}
+With the definition of the commutator we can rewrite one ordering of the operators in terms of the other and the commutator:
+\begin{align*}
+  \hat{a}_m\hat{a}_n^\dag=
+  \comm{\hat{a}_m}{\hat{a}^\dag_n}+\hat{a}^\dag_n\hat{a}_m
+\end{align*}
+The first switch we need to make is the annihilation operator and the creation operator directly to its right:
+\begin{align*}
+  \hat{a}_n^\dag\hat{a}_n\hat{a}^\dag_{n_1}\hat{a}^\dag_{n_2}&=
+  \hat{a}_n^\dag \qty(\comm{\hat{a}_n}{\hat{a}^\dag_{n_1}}
+  +\hat{a}^\dag_{n_1}\hat{a}_n)\hat{a}^\dag_{n_2}\\
+  &=\hat{a}_n^\dag \qty(\kd{n}{n_1}
+  +\hat{a}^\dag_{n_1}\hat{a}_n)\hat{a}^\dag_{n_2}\\
+  &=\kd{n}{n_1}\hat{a}_n^\dag\hat{a}^\dag_{n_2}
+  +\hat{a}_n^\dag\hat{a}^\dag_{n_1}\hat{a}_n\hat{a}^\dag_{n_2}
+\end{align*}
+We are now done with the first term, and can do a similar operation with the second:
+\begin{align*}
+  \hat{a}_n^\dag\hat{a}^\dag_{n_1}\hat{a}_n\hat{a}^\dag_{n_2}&=
+  \hat{a}_n^\dag\hat{a}^\dag_{n_1}\qty(\comm{\hat{a}_n}{\hat{a}^\dag_{n_2}}
+  +\hat{a}^\dag_{n_2}\hat{a}_n)\\
+  &=\hat{a}_n^\dag\hat{a}^\dag_{n_1}\qty(\kd{n}{n_2}
+  +\hat{a}^\dag_{n_2}\hat{a}_n)\\
+  &=\kd{n}{n_2}\hat{a}_n^\dag\hat{a}^\dag_{n_1}+
+  \hat{a}_n^\dag\hat{a}^\dag_{n_1}\hat{a}^\dag_{n_2}\hat{a}_n
+\end{align*}
+The total effect of performing these two commutations is then:
+\begin{align*}
+  \hat{a}_n^\dag\hat{a}_n\hat{a}^\dag_{n_1}\hat{a}^\dag_{n_2}=
+  \kd{n}{n_1}\hat{a}_n^\dag\hat{a}^\dag_{n_2}
+  +\kd{n}{n_2}\hat{a}_n^\dag\hat{a}^\dag_{n_1}
+  +\hat{a}_n^\dag\hat{a}^\dag_{n_1}\hat{a}^\dag_{n_2}\hat{a}_n
+\end{align*}
+If we act this on the vacuum state:
+\begin{align*}
+  \hat{a}_n^\dag\hat{a}_n\hat{a}^\dag_{n_1}\hat{a}^\dag_{n_2}\ket{0}&=
+  \qty(\kd{n}{n_1}\hat{a}_n^\dag\hat{a}^\dag_{n_2}
+  +\kd{n}{n_2}\hat{a}_n^\dag\hat{a}^\dag_{n_1}
+  +\hat{a}_n^\dag\hat{a}^\dag_{n_1}\hat{a}^\dag_{n_2}\hat{a}_n)\ket{0}\\
+  &=\kd{n}{n_1}\hat{a}_n^\dag\hat{a}^\dag_{n_2}\ket{0}
+  +\kd{n}{n_2}\hat{a}_n^\dag\hat{a}^\dag_{n_1}\ket{0}
+  +\cancel{\hat{a}_n^\dag\hat{a}^\dag_{n_1}\hat{a}^\dag_{n_2}\hat{a}_n\ket{0}}\\
+  &=\kd{n}{n_1}\hat{a}_n^\dag\hat{a}^\dag_{n_2}\ket{0}
+  +\kd{n}{n_2}\hat{a}_n^\dag\hat{a}^\dag_{n_1}\ket{0}
+\end{align*}
+In order to continue we need to work in the sum of the Hamiltonian:
+\begin{align*}
+  H\ket{n_1,n_2}=\sum_{n=-\infty}^\infty\hbar\omega_n
+  \qty(\kd{n}{n_1}\hat{a}_n^\dag\hat{a}^\dag_{n_2}
+  +\kd{n}{n_2}\hat{a}_n^\dag\hat{a}^\dag_{n_1})\ket{0}
+\end{align*}
+The first kronecker delta sets the value of $n$ to $n_1$, and the second sets it to $n_2$, giving:
+\begin{align*}
+  H\ket{n_1,n_2}=\hbar\omega_1\hat{a}_{n_1}^\dag\hat{a}^\dag_{n_2}\ket{0}
+  +\hbar\omega_2\hat{a}_{n_2}^\dag\hat{a}^\dag_{n_1}\ket{0}
+\end{align*}
+Since it should not matter whether we create $n_1$ or $n_2$ first, the commutator of $\comm{\hat{a}^\dag_{n_1}}{\hat{a}^\dag_{n_2}}=0$:
+\begin{align*}
+  H\ket{n_1,n_2}&=\hbar\omega_1\hat{a}_{n_1}^\dag\hat{a}^\dag_{n_2}\ket{0}
+  +\hbar\omega_2\hat{a}_{n_1}^\dag\hat{a}^\dag_{n_2}\ket{0}\\
+  &=\hbar\qty(\omega_1+\omega_2)\hat{a}_{n_1}^\dag\hat{a}^\dag_{n_2}\ket{0}\\
+  &=\hbar\qty(\omega_1+\omega_2)\ket{n_1,n_2}
+\end{align*}
+Which gives the desired result:
+\begin{align}
+  \boxed{H\ket{n_1,n_2}=\qty(\hbar\omega_1+\hbar\omega_2)\ket{n_1,n_2}}
+\end{align}
 \section{Field Quantization on Disk}
+The Lagrangian we are given is:
+\begin{align*}
+  \L=\frac12\qty(\pdv{\phi}{t})^2-\frac12\qty(\grad\phi)^2
+\end{align*}
+In order to quantize, we must find solutions of the equations of motion, given by the generalized form of the Euler-Lagrange Equations:
+\begin{align*}
+  \pdv{t}\qty(\pdv{\L}{\dot{\phi}})
+  +\div\qty(\pdv{\L}{(\grad{\phi})})
+  -\pdv{\L}{\phi}
+\end{align*}
+The derivatives of the Lagrangian Density are:
+\begin{align*}
+  \pdv{\L}{\dot{\phi}}&=\pdv{\phi}{t}\\
+  \pdv{\L}{(\grad{\phi})}&=-\grad{\phi}\\
+  \pdv{\L}{\phi}&=0
+\end{align*}
+Taking the proper outside derivatives of each term we get:
+\begin{align*}
+  \pdv{t}\qty(\pdv{\L}{\dot{\phi}})&=\pdv[2]{\phi}{t}\\
+  \div\qty(\pdv{\L}{(\grad{\phi})})&=-\div{(\grad{\phi})}=-\laplacian{\phi}
+\end{align*}
+So the equations of motion are:
+\begin{align*}
+  \pdv[2]{\phi}{t}-\laplacian{\phi}=0
+\end{align*}
+In this specific problem we are taking $\phi$ to be a function of $t,r,\theta$, so when we separate variables, we will have three functions, called $T(t),R(r)$, and $\Theta(\theta)$. If we assume the function takes the form of $\phi(t,r,\theta)=T(t)R(r)\Theta(\theta)$, we have the following form:
+\begin{align*}
+  R\Theta\dv[2]{T}{t}-T\laplacian{R\Theta}=0
+\end{align*}
+We can then separate position and time variables:
+\begin{align*}
+  \frac1T\dv[2]{T}{t}-\frac{\laplacian{R\Theta}}{R\Theta}=0
+\end{align*}
+The only way these two terms can add up to a constant is if they are each equal to a constant, call it $-k^2$, we then have two separate equations for time and position variables:
+\begin{align*}
+  \frac1T\dv[2]{T}{t}&=-k^2\\
+  \frac{\laplacian{R\Theta}}{R\Theta}&=-k^2
+\end{align*}
+The first equation is fairly simple to solve:
+\begin{gather*}
+  \dv[2]{T}{t}=-k^2T\\
+  \boxed{T(t)=a_1e^{ikt}+a_2e^{-ikt}}
+\end{gather*}
+We can reduce this further since the two coefficients need to be complex conjugates of one another:
+\begin{align*}
+  T(t)=ae^{ikt}+a^*e^{-ikt}
+\end{align*}
+
+The second requires that we expand the laplacian in terms of polar coordinates:
+\begin{align*}
+  \laplacian{R\Theta}&=-k^2R\Theta\implies
+  \Theta\dv[2]{R}{r}+\Theta\frac1r\dv{R}{r}+
+  \frac{R}{r^2}\dv[2]{\Theta}{\theta}=-k^2R\Theta
+\end{align*}
+We can separate variables again if we first multiply through by $r^2$:
+\begin{align*}
+  r^2\qty(\Theta\dv[2]{R}{r}+\Theta\frac1r\dv{R}{r}+
+  \frac{R}{r^2}\dv[2]{\Theta}{\theta})&=-k^2r^2R\Theta\\
+  r^2\Theta\dv[2]{R}{r}+r\Theta\dv{R}{r}+
+  R\dv[2]{\Theta}{\theta}&=-k^2r^2R\Theta
+\end{align*}
+Then dividing through by $R\Theta$:
+\begin{align*}
+  r^2\frac1R\dv[2]{R}{r}+r\frac1R\dv{R}{r}+
+  \frac1\Theta\dv[2]{\Theta}{\theta}&=-k^2r^2\\
+  r^2\frac1R\dv[2]{R}{r}+r\frac1R\dv{R}{r}+k^2r^2
+  +\frac1\Theta\dv[2]{\Theta}{\theta}&=0
+\end{align*}
+Once again we can introduce a separation constant to the system, $m^2$, meaning we have two more equations of motion:
+\begin{align*}
+  r^2\frac1R\dv[2]{R}{r}+r\frac1R\dv{R}{r}+k^2r^2&=m^2\\
+  \frac1\Theta\dv[2]{\Theta}{\theta}&=-m^2
+\end{align*}
+The second equation is exactly the same as the solution for time, but with $\theta$ and $m$:
+\begin{gather*}
+  \dv[2]{\Theta}{\theta}=-m^2\Theta\\
+  \boxed{\Theta(\theta)=b_1e^{im\theta}+b_2e^{-im\theta}}
+\end{gather*}
+The equation for $R$ is then:
+\begin{align*}
+  r^2\dv[2]{R}{r}+r\dv{R}{r}+\qty(k^2r^2-m^2)R&=0
+\end{align*}
+The solution in general, for any $m$, is a combination of Bessel Functions of the first and second kind:
+\begin{align*}
+  R(r)=c_1J_m(kr)+c_2N_m(kr)
+\end{align*}
+However, one of the conditions we have in a polar coordinates system is that the system is periodic in $\theta$:
+\begin{align*}
+  \Theta(\theta)=\Theta(\theta+2\pi n);\quad \text{with } n\in\mathbb{Z}
+\end{align*}
+In terms of our solution this means:
+\begin{align*}
+  b_1e^{im\theta}+b_2e^{-im\theta}&=
+  b_1e^{im(\theta+2\pi n)}+b_2e^{-im(\theta+2\pi n)}\\
+  0&=b_1\qty(e^{im(\theta+2\pi n)}-e^{im\theta})
+  +b_2\qty(e^{-im(\theta+2\pi n)}-e^{-im\theta})\\
+  &=b_1\qty(e^{im\theta}e^{2\pi imn}-e^{im\theta})
+  +b_2\qty(e^{-im\theta}e^{-2\pi imn}-e^{-im\theta})
+\end{align*}
+In order for the terms in the parentheticals to be $0$, we need the argument of the multiplied exponential to be a multiple of $2\pi$:
+\begin{align*}
+  2\pi mn&=2\pi l\implies m n = l;\quad l\in\mathbb{Z}\\
+  -2\pi mn&=2\pi l'\implies -m n = l';\quad l'\in\mathbb{Z}
+\end{align*}
+In order for these conditions to be met, $m$ needs to be an integer. This also means if we label our coefficients to be indexed by $m$, we only need to make use of the positive exponential:
+\begin{align*}
+  \Theta(\theta)=b_me^{im\theta}
+\end{align*}
+Since $m$ runs from $\pm\infty$
+
+This means the solution to our $R$ equations are Bessel functions of integer order. We can also note that the Neumann functions $Y_m$ are singular at the origin, which would not bode well for our solution, so we can set $c_2=0$:
+\begin{align*}
+  R(r)=c_1J_m(kr)
+\end{align*}
+We can now apply the Boundary conditions to $R$, mainly that $R(R)=0$:
+\begin{align*}
+  R(R)=c_1J_m(kR)=0\implies J_m(kR)=0
+\end{align*}
+Hence $kR$ is a zero of the corresponding Bessel function, call the zeros $x_{mn}$, which corresponds to the $n^{th}$ zero of the order $m$ Bessel Function:
+\begin{align*}
+  k R= x_{mn}\implies k=k_{mn}= \frac{x_{mn}}{R}
+\end{align*}
+Hence:
+\begin{align*}
+  R(r)=c_1J_m\qty(k_{mn}r)
+\end{align*}
+So the most general solution to the equation is:
+\begin{align*}
+  \phi(t,r,\theta)=\sum_{m,n}N_{mn}\qty(a_{mn}e^{ik_{mn}t}+a^*_{mn}e^{-ik_{mn}t})
+  J_m(k_{mn}r)e^{im\theta}
+\end{align*}
+Where we have taken $J_{m}=J_{-m}$ and absorbed the missing $(-1)^m$ into the normalization $N_{mn}$. This means our solutions look like:
+\begin{align*}
+  \phi(t,r,\theta)=\sum_{m,n}N_{mn}
+  \qty(a_{mn}e^{i(k_{mn}t+m\theta)}+a^*_{mn}e^{-i(k_{mn}t-m\theta)})J_m(k_{mn}r)
+\end{align*}
+Therefore the quantization of the field $\phi$ into the field operator $\hat\phi$ is:
+\begin{align*}
+  \hat\phi(t,r,\theta)=\sum_{m,n}N_{mn}\qty(
+  \hat{a}_{mn}e^{i(k_{mn}t+m\theta)}+\hat{a}^\dag_{mn}e^{-i(k_{mn}t-m\theta)})
+  J_m(k_{mn}r)
+\end{align*}
+And the conjugate momentum density to this is $\Pi$:
+\begin{align*}
+  \Pi=\pdv{\L}{\dot{\phi}}=\pdv{\phi}{t}
+\end{align*}
+So the field expansion of the momentum density is:
+\begin{align*}
+  \Pi(t,r,\theta)&=\sum_{m,n}N_{mn}ik_{mn}\qty(
+  a_{mn}e^{i(k_{mn}t+m\theta)}-a^*_{mn}e^{-i(k_{mn}t-m\theta)})J_m(k_{mn}r)\\
+  \hat\Pi(t,r,\theta)&=\sum_{m,n}N_{mn}ik_{mn}\qty(
+  \hat{a}_{mn}e^{i(k_{mn}t+m\theta)}-\hat{a}^\dag_{mn}e^{-i(k_{mn}t-m\theta)})
+  J_m(k_{mn}r)
+\end{align*}
+In order to enforce equal-time commutation relations, we need the following:
+\begin{align*}
+  \comm{\hat\phi(t,r,\theta)}{\hat\Pi(t,r',\theta')}=i\hbar\delta(\vb{x-x}')
+\end{align*}
+Where in polar coordinates, we have:
+\begin{align*}
+  \delta(\vb{x-x}')=\frac1r\delta(r-r')\delta(\theta-\theta')
+\end{align*}
+So the commutator is:
+\begin{align*}
+  \comm{\hat\phi(t,r,\theta)}{\hat\Pi(t,r',\theta')}
+  =\sum_{m,n,m',n'}N_{mn}N_{m'n'}J_{m}(k_{mn}r)J_{m'}(k_{m'n'}r')(ik_{mn})\\
+  \times\comm
+  {\hat{a}_{mn}e^{-i(k_{mn}t+m\theta)}
+    +\hat{a}^\dag_{mn}e^{i(k_{mn}t-m\theta)}}
+  {\hat{a}_{m'n'}e^{-i(k_{m'n'}t+m'\theta')}
+    -\hat{a}^\dag_{m'n'}e^{i(k_{m'n'}t-m'\theta')}}\\
+  =\sum_{m,n,m',n'}N_{mn}N_{m'n'}J_{m}(k_{mn}r)J_{m'}(k_{m'n'}r')(2ik_{mn})
+  \comm{a_{mn}}{a_{m'n'}^\dag}
+\end{align*}
+Using the logic from eq. 2.29.
+
+If we want $\comm{a_{mn}}{a_{m'n'}^\dag}=\delta_{n,n'}\delta_{m,m'}$, we could get:
+\begin{align*}
+  \comm{\hat\phi(t,r,\theta)}{\hat\Pi(t,r',\theta')}=
+  2i\sum_{m,n}N_{mn}N_{mn}J_{m}(k_{mn}r)J_{m}(k_{mn}r')k_{mn}
+  e^{im(\theta-\theta')}
+\end{align*}
+In order to identify what the normalization $N_{mn}$ should be, we can use the following completeness relation for the Bessel functions:
+\begin{align*}
+  \sum_{n}J^{(1)}_m(k_{mn}r)J^{(1)}_m(k_{mn}r')=\frac{\delta(r-r')}{r}
+\end{align*}
+Where the Normalized bessel functions $J_m^{(1)}$ are defined by:
+\begin{align*}
+  J^{(1)}_m(kr)=\frac{\sqrt{2}}{R}\frac{J_m(kr)}{J_{m+1}(k_{mn}R)}
+\end{align*}
+Hence we can rewrite the completeness relation as:
+\begin{align*}
+  \frac{2}{R^2}\sum_{n}\frac{J_m(k_{mn}r)J_m(k_{mn}r')}{(J_{m+1}(k_{mn}R))^2}
+  =\frac{\delta(r-r')}{r}
+\end{align*}
+The other completeness relation we need to use is that for $\theta$, given by:
+\begin{align*}
+  \frac1{2\pi}\sum_me^{im(\theta-\theta')}=\delta(\theta-\theta')
+\end{align*}
+Therefore in order to get the correct completeness relations to satisfy the commutation relations, we need:
+\begin{align*}
+  2i\sum_{m,n}N_{mn}^2J_{m}(k_{mn}r)J_{m}(k_{mn}r')k_{mn}
+  e^{im(\theta-\theta')}=\frac{i\hbar}{\pi R^2}
+  \sum_{m,n}\frac{J_m(k_{mn}r)J_m(k_{mn}r')}{(J_{m+1}(k_{mn}R))^2}
+  e^{im(\theta-\theta')}
+\end{align*}
+We can then identify:
+\begin{align*}
+  2iN_{mn}^2k_{mn}&=\frac{i\hbar}{\pi R^2}\frac1{(J_{m+1}(k_{mn}R))^2}\\
+  N_{mn}^2&=\frac\hbar{2\pi R^2k_{mn}(J_{m+1}(k_{mn}R))^2}\\
+  N_{mn}&=\frac1{R J_{m+1}(k_{mn}R)}\sqrt{\frac{\hbar}{2\pi k_{mn}}}
+\end{align*}
+Hence the full field expansions are:
+\begin{equation}
+  \boxed{\begin{aligned}
+      \hat\phi(t,r,\theta)&=\sum_{m,n}N_{mn}\qty(
+      \hat{a}_{mn}e^{i(k_{mn}t+m\theta)}+\hat{a}^\dag_{mn}e^{-i(k_{mn}t-m\theta)})
+      J_m(k_{mn}r)\\
+      \hat\Pi(t,r,\theta)&=\sum_{m,n}N_{mn}ik_{mn}\qty(
+      \hat{a}_{mn}e^{i(k_{mn}t+m\theta)}-\hat{a}^\dag_{mn}e^{-i(k_{mn}t-m\theta)})
+      J_m(k_{mn}r)\\
+      N_{mn}&=\frac1{R J_{m+1}(k_{mn}R)}\sqrt{\frac{\hbar}{2\pi k_{mn}}}
+    \end{aligned}}
+\end{equation}
+I am not sure if my reasoning using the completeness relations is correct, but it makes sense to me, so I am going with this.
 
 \section{Casimir Effect}
+\subsection{Vacuum Energy Value}
+The normal ordered Hamiltonian takes the form:
+\begin{align*}
+  \hat{H}=\sum_{n=-\infty}^\infty\omega_n\qty(\hat{a}^\dag_n\hat{a}_n+\frac12)
+\end{align*}
+Where we have used the commutation relation provided to put the Hamiltonian in this form.
+
+The vacuum expectation value is the expected value when acting on the vacuum $\ket{0}$:
+\begin{align*}
+  \ev{H}_0=\ev{H}{0}&=
+  \ev**{\sum_{n=-\infty}^\infty\omega_n\qty(\hat{a}^\dag_n\hat{a}_n+\frac12)}{0}
+\end{align*}
+Which is distributed to each operator in the Hamiltonian:
+\begin{align*}
+  \ev{H}_0&=\sum_{n=-\infty}^\infty\omega_n
+  \qty(\cancel{\ev{\hat{a}^\dag_n\hat{a}_n}{0}}+\ev{\frac12}{0})\\
+  &=\sum_{n=-\infty}^\infty\frac{\omega_n}{2}\ip{0}\\
+  &=\frac{\pi}{L}\sum_{n=-\infty}^\infty\abs{n}
+\end{align*}
+Note that the sum over the absolute value of $n$ can be rewritten as:
+\begin{align*}
+  \sum_{n=0}^\infty n+\sum_{n=-\infty}^0(-n)=2\sum_{n=0}^\infty n
+\end{align*}
+Such that the vacuum expectation value is:
+\begin{align}
+  \boxed{\ev{H}_0=\frac{2\pi}{L}\sum_{n=0}^\infty n}
+\end{align}
+\subsection{Regularization Examples}
+\subsubsection{Exponential Regularization}
+The bad term in the vacuum energy is the sum of the integers. We can remedy this by summing over $ne^{-n\veps}$, which is significantly smaller than the original sum term, it allows us to do some creative calculus:
+\begin{align*}
+  \sum_{n=0}^\infty n
+  \approx\sum_{n=0}^\infty n e^{-n\veps}
+  =\sum_{n=0}^\infty \qty(-\pdv{\veps}e^{-n\veps})
+  =-\pdv{\veps}\sum_{n=0}^\infty e^{-n\veps}
+\end{align*}
+The sum on the right hand side is simply a geometric series:
+\begin{align*}
+  \sum_{n=0}^\infty e^{-n\veps}=\frac{e^\veps}{e^\veps-1}
+\end{align*}
+Of which the epsilon derivative is:
+\begin{align*}
+  \pdv{\veps}\qty(\frac{e^\veps}{e^\veps-1})=\frac{e^\veps}{(e^\veps-1)^2}
+\end{align*}
+Since we are going to inevitably send $\veps\to0$, we should taylor expand this function, which I did in Mathematica:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10cm]{casimir1}
+  \caption{Mathematica calculation for Taylor Series}
+\end{figure}
+This means we have the following:
+\begin{align*}
+  \sum_{n=0}^\infty n\approx
+  \qty(\frac1{\veps^2}-\frac1{12}+\order{\veps^2})_{\veps\to0}
+\end{align*}
+The higher order terms of order $\veps^2$ or greater will not contribute when we set $\veps\to0$, so they are ommitted. This means the only finite term in this sum is the constant second term:
+\begin{align*}
+  \sum_{n=0}^\infty n\approx-\frac1{12}
+\end{align*}
+Thus the vacuum energy is:
+\begin{align*}
+  \ev{H}_0=-\frac{\pi}{6L}
+\end{align*}
+And the force is:
+\begin{align}
+  \boxed{F_0=-\dv{\ev{H}_0}{L}=-\frac{\pi}{6L^2}}
+\end{align}
+\subsubsection{Zeta Function Regularization}
+Here the Reimann Zeta function is introduced:
+\begin{align*}
+  \zeta(s)=\sum_{n=1}^\infty n^{-s}
+\end{align*}
+And our sum is:
+\begin{align*}
+  \sum_{n=0}^\infty n=0+\sum_{n=1}^\infty n=\sum_{n=1}^\infty n^{-(-1)}=\zeta(-1)
+\end{align*}
+Mathematica can numerically evaluate the analytic continuation of the zeta function:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5.0cm]{casimir2}
+  \caption{Mathematica calculation for $\zeta(-1)$}
+\end{figure}
+Giving the value of the vacuum energy as:
+\begin{align*}
+  \ev{H}_0=-\frac{\pi}{6L}
+\end{align*}
+And the same value for the force:
+\begin{align}
+  \boxed{F_0=-\frac{\pi}{6L^2}}
+\end{align}
 
 \end{document}

@@ -1,0 +1,134 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 202a HW 2}
+\author{ATLAS All-Stars}
+\date{\today}
+
+%% science symbols 
+\usepackage{amssymb,amsthm,bm,physics,slashed}
+
+%% general pretty stuff
+\usepackage{caption,enumitem,float,geometry,graphicx,tikz}
+
+% setups
+\graphicspath{ {./figs/} }
+\captionsetup{labelfont=bf}
+\geometry{margin=1in}
+
+% macros
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+
+\begin{document}
+\maketitle
+\section{Higher Order Euler-Lagrange}
+We are given two different forms of the Euler-Lagrange Equations:
+\begin{gather*}
+  \D_\mu\qty(\pdv{\L}{(\D_\mu\phi)})-\pdv{\L}{\phi}=0\\
+  \Box\qty(\pdv{\L}{(\Box\phi)})
+  -\D_\mu\qty(\pdv{\L}{(\D_\mu\phi)})+\pdv{\L}{\phi}=0
+\end{gather*}
+With the first coming from eq. 3.30 and the second from eq. 3.29.
+
+We then have two Lagrangian densities to evaluate with one of these, each with either first or second order terms, designated by the superscript:
+\begin{align*}
+  \L^{(1)}&=\frac12\qty(\D_\mu\phi\D^\mu\phi-m^2\phi^2)\\
+  \L^{(2)}&=-\frac12\phi\qty(\Box+m^2)\phi=-\frac12\qty(\phi\Box\phi+m^2\phi^2)
+\end{align*}
+We will use the ELE with only the $\D_\mu$ term for the first order Lagrangian $\L^{(1)}$. The derivative with respect to $\D_\mu\phi$ must be handled carefully since the $\mu$ indices in the Lagrangian are contracted:
+\begin{align*}
+  \pdv{\L^{(1)}}{(\D_\mu\phi)}&=
+  \frac12\pdv{(\D_\mu\phi)}\qty(\D_\nu\phi\D^\nu\phi)
+  =\frac12\pdv{(\D_\mu\phi)}\qty(\eta_{\nu\lambda}\D_\nu\phi\D_\lambda\phi)\\
+  &=\frac12\qty(\eta_{\nu\lambda}\D_\nu\phi\delta_{\mu\lambda}
+  +\eta_{\nu\lambda}\delta_{\mu\nu}\D_\lambda\phi)
+  =\frac12\qty(\eta_{\nu\mu}\D_\nu\phi
+  +\eta_{\mu\lambda}\D_\lambda\phi)\\
+  &=\frac12\qty(2\D^\mu\phi)=\D^\mu\phi
+\end{align*}
+The rest is more trivial derivatives
+\begin{gather*}
+  \pdv{\L^{(1)}}{(\D_\mu\phi)}=\D^\mu\phi\implies
+  \D_\mu\qty(\pdv{\L^{(1)}}{(\D_\mu\phi)})=\D_\mu\D^\mu\phi=\Box\phi\\
+  \pdv{\L^{(1)}}{\phi}=-m^2\phi
+\end{gather*}
+We then find the equations of motion are;
+\begin{align}
+  \D_\mu\qty(\pdv{\L^{(1)}}{(\D_\mu\phi)})-\pdv{\L^{(1)}}{\phi}=0
+  \implies\boxed{\Box\phi+m^2\phi=0}
+\end{align}
+Now with $\L^{(2)}$ and the ELE with the $\Box$ term:
+\begin{gather*}
+  \pdv{\L^{(2)}}{(\Box\phi)}=-\frac12\phi\implies
+  \Box\qty(\pdv{\L^{(2)}}{(\Box\phi)})=-\frac12\Box\phi\\
+  \pdv{\L^{(2)}}{(\D_\mu\phi)}=0\implies
+  \D_\mu\qty(\pdv{\L^{(2)}}{(\D_\mu\phi)})=0\\
+  \pdv{\L^{(2)}}{\phi}=-m^2\phi-\frac12\Box\phi
+\end{gather*}
+Which has equations of motion:
+\begin{align}
+  \Box\qty(\pdv{\L^{(2)}}{(\Box\phi)})-\D_\mu\qty(\pdv{\L^{(2)}}{(\D_\mu\phi)})
+  +\pdv{\L^{(2)}}{\phi}=0&\implies-\Box\phi-m^2\phi=0\nonumber\\
+  &\implies\boxed{\Box\phi+m^2\phi=0}
+\end{align}
+Which means for all intents and purposes these Lagrangians are the same, they give identical equations of motion.
+\section{Landau Theory}
+The free energy for the Landau theory is given by:
+\begin{align*}
+  \mathcal{E}=\frac12\qty(\grad{\phi})^2+\frac12m^2\phi^2
+  +\frac14\lambda_4\phi^4+\frac16\lambda_6\phi^6
+\end{align*}
+With the following conditions:
+\begin{itemize}
+\item The constant $\lambda_6>0$
+\item The parameter $m^2$ has the form of $m^2=a(T-T_0)$ with $a$, $T$, and $T_0$ all positive. 
+\item Assume $\lambda_4$ and $\lambda_6$ do not depend on $T$
+\end{itemize}
+
+\subsection{Configuration of Minimum Energy}
+The form of the Free energy is such that the contribution by the gradient is always positive, so in a minimum configuration, the gradient term can only at minimum be $0$, which motivates us to say that $\grad{\phi}=0$, or:
+\begin{align*}
+  \phi_{min}(t,\vb{x})=\bar{\phi}
+\end{align*}
+Where $\bar{\phi}$ is a constant.
+
+We can then minimize the following with respect to constant $\bar\phi$:
+\begin{align*}
+  m^2\phi+\lambda_4\phi^3+\lambda_6\phi^6&=0\\
+  \bar\phi\qty(m^2+\lambda_4\bar\phi^2+\lambda_6\bar\phi^4)&=0\\
+  \implies\left\{
+  \begin{array}[H]{c}
+    \bar\phi\\
+    m^2+\lambda_4\bar\phi^2+\lambda_6\bar\phi^4  
+  \end{array}\right\}
+  &=0
+\end{align*}
+The first solution is trivial, however the other has the following solution in terms of $\bar\phi^2$:
+\begin{align*}
+  \bar\phi^2=\frac{-\lambda_4\pm\sqrt{\lambda_4^2-4m^2\lambda_6}}{2\lambda_6}
+\end{align*}
+The number of additional solutions is dependent on the discriminant:
+\begin{align*}
+  \Delta=\lambda_4^2-4m^2\lambda_6
+\end{align*}
+The value of the discriminant has meaning:
+\begin{itemize}
+\item If $\Delta>0$, there are two distinct real solutions
+\item If $\Delta=0$, the two solutions are real, but degenerate
+\item If $\Delta<0$, there are two complex solutions
+\end{itemize}
+Note that since $\phi$ is a real valued field, the complex solutions are not minima, so the only minimum would be $\bar\phi=0$. We can then use the temperature dependence of $m^2$ to solve for some $T_c>T_0$ below which there exists a minimum value of $\bar\phi$ that is not at $\bar\phi=0$, which is suggested by the fact that the discriminant is positive above this $T_c$:
+\begin{align*}
+  \Delta=0\implies4a(T_c-T_0)\lambda_6&=\lambda_4^2\\
+  T_c-T_0&=\frac{\lambda_4^2}{4a\lambda_6}
+\end{align*}
+Therefore, in terms of $T_0$, $T_c$ is given by:
+\begin{align}
+  \boxed{T_c=T_0+\frac{\lambda_4^2}{4a\lambda_6}}
+\end{align}
+\section{A Theory with Higher Derivatives}
+
+
+\end{document}
