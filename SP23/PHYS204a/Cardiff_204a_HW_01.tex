@@ -1,0 +1,76 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 204 HW 1}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amssymb,amsthm,bm,physics,slashed}
+
+%% general pretty stuff
+\usepackage{caption,enumitem,float,geometry,graphicx,tikz}
+
+% setups
+\graphicspath{ {./figs/} }
+\captionsetup{labelfont=bf}
+\geometry{margin=1in}
+
+% macros
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+
+\begin{document}
+\maketitle
+
+\section{Spin Echo}
+The Hamiltonian we are using is given by:
+\begin{align*}
+  H=-\sum_i\qty(B+\Delta B_i)\sigma_i^z
+\end{align*}
+And the operator $X$, the site averaged $x$ component spin is:
+\begin{align*}
+  X=\frac1n\sum_i\sigma_i^x
+\end{align*}
+\subsection{Quantum average of $X$}
+The initial stae of the system is that all spins are aligned in the $\ket{+x}$ direction:
+\begin{align*}
+  \ket{\psi}=\underbrace{\ket{+x}\otimes\cdots\otimes\ket{+x}}_{n\text{ times}}
+\end{align*}
+We then want to measure $x$ in this state, but we note that the operator evolves according to the time evolution operator $U(t)$:
+\begin{align*}
+  U(t)&=e^{-itH}\\
+  X(t)&=U^\dag(t)XU(t)
+\end{align*}
+\subsection{Ensemble average of $X$}
+
+\subsection{Ensemble variance}
+
+\subsection{Decay Time}
+
+\subsection{Quantum Average after $T$}
+
+\subsection{Transformation as Time Reversal}
+
+\subsection{Ising Hamiltonian}
+
+
+\section{Environmental Effects}
+
+\subsection{Completely Depolarizing Channel}
+
+\subsection{Properties of a Depolarizing Channel}
+
+\subsection{Kraus Operators which Depolarize}
+
+\subsection{Depolarized Quantum Average}
+
+\subsection{Quantum Average after One Depolarization}
+
+\subsection{Expectation value over time}
+
+\subsection{Rate of Change of von Neumann Entropy}
+
+
+\end{document}
