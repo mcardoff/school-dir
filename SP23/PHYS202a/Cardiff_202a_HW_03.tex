@@ -1,0 +1,206 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 202a HW 3}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amssymb,amsthm,bm,physics,slashed}
+
+%% general pretty stuff
+\usepackage{caption,enumitem,float,geometry,graphicx,tikz,varwidth}
+
+% setups
+\graphicspath{ {./figs/} }
+\captionsetup{labelfont=bf}
+\geometry{margin=1in}
+
+% macros
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+
+\begin{document}
+\maketitle
+
+\section{Maxwell Energy Momentum Tensor}
+The Lagrangian Density from the book with no source is given by:
+\begin{align*}
+  \L=-\frac14F_{\mu\nu}F^{\mu\nu}
+\end{align*}
+With $F_{\mu\nu}$ given by:
+\begin{align*}
+  F_{\mu\nu}=\D_\mu A_\nu-\D_\nu A_\mu
+\end{align*}
+So the contraction in the Lagrangian is given by:
+\begin{align*}
+  F_{\mu\nu}F^{\mu\nu}&=(\D_\mu A_\nu-\D_\nu A_\mu)(\D^\mu A^\nu-\D^\nu A^\mu)\\
+  &=2(\D_\mu A_\nu\D^\mu A^\nu-\D_\mu A_\nu\D^\nu A^\mu)
+\end{align*}
+So the more useful Lagrangian for the purpose of doing derivatives is:
+\begin{align*}
+  \L=\frac12(\D_\mu A_\nu\D^\nu A^\mu-\D_\mu A_\nu\D^\mu A^\nu)
+\end{align*}
+
+\subsection{Form of $T_{\mu\nu}$}
+The energy momentum tensor is given as:
+\begin{align*}
+  T^{\mu\nu}=\pdv{\L}{(\D_\mu A_\alpha)}\D^\nu A_\alpha-\eta^{\mu\nu}\L
+\end{align*}
+The derivative is given by:
+\begin{align*}
+  \pdv{\L}{(\D_\beta A_\alpha)}&=\frac12
+  \pdv{(\D_\beta A_\alpha)}(\D_\mu A_\nu\D^\nu A^\mu-\D_\mu A_\nu\D^\mu A^\nu)\\
+  &=\frac12\qty(2\D^\alpha A^\beta-2\D^\beta A^\alpha)\\
+  &=\D^\alpha A^\beta-\D^\beta A^\alpha=F^{\alpha\beta}
+\end{align*}
+Hence what we have in the energy momentum tensor is:
+\begin{align*}
+  \pdv{\L}{(\D_\mu A_\alpha)}\D^\nu A_\alpha=F^{\alpha\mu}\D^\nu A_\alpha
+\end{align*}
+So the Energy Momentum tensor is:
+\begin{align}
+  \boxed{T^{\mu\nu}=F^{\alpha\mu}\D^\nu A_\alpha
+    +\frac14\eta^{\mu\nu}F^{\alpha\beta}F_{\alpha\beta}}
+\end{align}
+
+\subsection{Conservation}
+We can check it is conserved by finding the equations of motion for our Lagrangian $\L$:
+\begin{align*}
+  \D_\mu\qty(\pdv{\L}{(\D_\mu A_\nu)})-\pdv{\L}{A_\nu}=0
+\end{align*}
+Note we have already calculated the first derivative, and the second one is $0$:
+\begin{align*}
+  \D_\mu\qty(\pdv{\L}{(\D_\mu A_\nu)})=\D_\mu F^{\nu\mu}
+\end{align*}
+And then we have the equations of motion:
+\begin{align*}
+  \D_\mu F^{\mu\nu}=0
+\end{align*}
+Since the field strength tensor is antisymmetric in $\mu,\nu$. Apply the derivative to the energy momentum tensor. The derivative of the first term is zero due to the equations of motion above, the second term is $0$ since $\eta_{\mu\nu}$ is a constant with respect to position variables, since we have a flat spacetime. 
+\begin{align}
+  \boxed{\D_\mu T^{\mu\nu}=0}
+\end{align}
+
+\subsection{Bad Properties of $T_{\mu\nu}$}
+\subsubsection{Non-Symmetric in Indices}
+We can check that it is not symmetric by seeing:
+\begin{align*}
+  T^{\mu\nu}\neq T^{\nu\mu}
+\end{align*}
+From above we have:
+\begin{align*}
+  T^{\mu\nu}&=F^{\alpha\mu}\D^\nu A_\alpha
+  +\frac14\eta^{\mu\nu}F^{\alpha\beta}F_{\alpha\beta}\\
+  T^{\nu\mu}&=F^{\alpha\nu}\D^\mu A_\alpha
+  +\frac14\eta^{\nu\mu}F^{\alpha\beta}F_{\alpha\beta}
+\end{align*}
+We should take the difference of these two to see if it is $0$, noting that the terms with the metric will cancel out since it is symmetric
+\begin{align*}
+  \Delta T\equiv T^{\mu\nu}-T^{\nu\mu}=
+  (\D^\nu A^\alpha\D^\mu A_\alpha-\D^\alpha A^\nu\D^\mu A_\alpha)-
+  (\D^\mu A^\alpha\D^\nu A_\alpha-\D^\alpha A^\mu\D^\nu A_\alpha)
+\end{align*}
+Note that the first two terms are equal by inserting a metric:
+\begin{align*}
+  \D^\mu A^\alpha\D^\nu A_\alpha=\D^\mu\eta^{\alpha\gamma}A_\gamma\D^\nu A_\alpha=
+  \D^\mu A_\gamma\D^\nu\eta^{\alpha\gamma}A_\alpha=
+  \D^\mu A_\gamma\D^\nu A^\gamma
+\end{align*}
+This is equal to the second term of the second parenthetical, since multiplication commutes. Therefore the difference is:
+\begin{align*}
+  \Delta T=\D^\alpha(A^\mu \D^\nu-A^\nu\D^\mu)A_\alpha
+\end{align*}
+Which is clearly not symmetrix in its indices, and therefore not 0, so $T^{\mu\nu}$ is NOT symmetric
+
+\subsubsection{Gauge Dependence}
+We can check the lack of Gauge Invariance by imposing a gauge transformation on $A_\mu$:
+\begin{align*}
+  A_\mu\to A'_\mu=A_\mu+\D_\mu\chi
+\end{align*}
+Which means the Field Strength Tensor transforms like:
+\begin{align*}
+  F^{\mu\nu}\to (F')^{\mu\nu}&=
+  \D^\mu(A^\nu+\D^\nu\chi)-\D^\nu(A^\mu+\D^\mu\chi)\\
+  &=F^{\mu\nu}+\D^\mu\D^\nu\chi-\D^\nu\D^\mu\chi
+\end{align*}
+However since mixed partial derivatives commute, this cancels out to something nice:
+\begin{align*}
+  F^{\mu\nu}\to (F')^{\mu\nu}&=F^{\mu\nu}
+\end{align*}
+This means the Energy Momentum tensor transforms like:
+\begin{align*}
+  T^{\mu\nu}\to (T')^{\mu\nu}&=F^{\mu\alpha}\D^\nu\qty(A_\alpha+\D_\alpha\chi)
+  +\frac14\eta^{\mu\nu}F^{\alpha\beta}F_{\alpha\beta}\\
+  &=T^{\mu\nu}+F^{\mu\alpha}\D^\nu\D_\alpha\chi
+\end{align*}
+Hence it is NOT gauge invariant.
+
+\subsection{Modified Energy Momentum Tensor}
+\subsubsection{Ensuring Index Symmetry}
+First we should expand the derivative using the product rule in order to take advantage of the equations of motion:
+\begin{align*}
+  \D_\alpha(F^{\mu\alpha}A^\nu)=(\D_\alpha F^{\mu\alpha})A^\nu+
+  F^{\mu\alpha}\D_\alpha A^\nu=F^{\mu\alpha}\D_\alpha A^\nu=-F^{\alpha\mu}
+  \D_\alpha A^\nu
+\end{align*}
+If we add this to our energy momentum tensor we now have:
+\begin{align*}
+  \tilde{T}^{\mu\nu}=F^{\alpha\mu}(\D^\nu A_\alpha-\D_\alpha A^\nu)
+  +\frac14\eta^{\mu\nu}F^{\alpha\beta}F_{\alpha\beta}
+\end{align*}
+We then calculate $\tilde{T}^{\mu\nu}$ and $\tilde{T}^{\nu\mu}$:
+\begin{align*}
+  \tilde{T}^{\mu\nu}&=
+  \underbrace{\D_\alpha A^\nu\D^\mu A^\alpha}_1
+  -\underbrace{\D^\mu A_\alpha\D^\nu A^\alpha}_2
+  -\underbrace{\D_\alpha A^\mu\D^\alpha A^\nu}_3
+  +\underbrace{\D^\mu A_\alpha\D^\alpha A^\nu}_4\\
+  \tilde{T}^{\nu\mu}&=
+  \underbrace{\D^\alpha A^\nu\D^\mu A_\alpha}_5
+  -\underbrace{\D^\nu A^\alpha\D^\mu A_\alpha}_6
+  -\underbrace{\D^\alpha A^\nu\D_\alpha A^\mu}_7
+  +\underbrace{\D^\nu A^\alpha\D_\alpha A^\mu}_8
+\end{align*}
+Where we have swapped the upper and lower dummy indices by inserting a Minkowski metric.
+
+We can see by commutativity of multiplication here that the following pairs will cancel when we subtract the two:
+\begin{center}
+  \begin{varwidth}{\textwidth}
+    \begin{itemize}
+    \item 1 and 8
+    \item 2 and 6
+    \item 3 and 7
+    \item 4 and 5
+    \end{itemize}
+  \end{varwidth}
+\end{center}
+Therfore we can conclude that $\tilde{T}^{\mu\nu}$ is in fact symmetric:
+\begin{align*}
+  \boxed{\tilde{T}^{\mu\nu}=\tilde{T}^{\nu\mu}}
+\end{align*}
+
+\subsubsection{Verifying Gauge Invariance}
+
+\subsection{Connecting to $E$ and $B$ Fields}
+
+\subsection{Field Theoretic Form}
+
+\section{Most General Lorentz-Invariant Langrangian}
+
+\subsection{Field Redefinition}
+
+\section{Proca Fields}
+
+\subsection{Gauge Invariance}
+
+\subsection{Classical Equation of Motion}
+
+\section{Charge Lie Algebra}
+
+\subsection{Noether Charges}
+
+\section{Noether Charge for Boosts}
+
+\end{document}
