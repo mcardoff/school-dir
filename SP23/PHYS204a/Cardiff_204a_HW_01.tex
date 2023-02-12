@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 
-\title{\vspace{-3em}PHYS 204 HW 1}
+\title{\vspace{-3em}PHYS 204a HW 1}
 \author{Michael Cardiff}
 \date{\today}
 
@@ -37,40 +37,231 @@ And the operator $X$, the site averaged $x$ component spin is:
 The initial stae of the system is that all spins are aligned in the $\ket{+x}$ direction:
 \begin{align*}
   \ket{\psi}=\underbrace{\ket{+x}\otimes\cdots\otimes\ket{+x}}_{n\text{ times}}
+  =\ket{+x}^{\otimes n}
 \end{align*}
-We then want to measure $x$ in this state, but we note that the operator evolves according to the time evolution operator $U(t)$:
+We then want to measure $X$ in this state, but we note that the operator evolves according to the time evolution operator $U(t)$:
 \begin{align*}
   U(t)&=e^{-itH}\\
   X(t)&=U^\dag(t)XU(t)
 \end{align*}
+So the time dependent average value would be given by:
+\begin{align*}
+  \ev{X}=\mel{\psi}{X(t)}{\psi}
+\end{align*}
+The form of the time evolution operator $U$ can be found:
+\begin{align*}
+  U&=\exp{-it\qty(-\sum_i(B+\Delta B_i)\sigma_i^z)}\\
+  &=\exp{it\sum_i(B+\Delta B_i)\sigma_i^z}
+\end{align*}
+Note that since all of the $\sigma_i^z$ commute, we can write this as a product instead:
+\begin{align*}
+  U=\prod_j\exp{it(B+\Delta B_j)\sigma_j^z}\equiv \prod_jU_j
+\end{align*}
+We can then introduce the $X$ operator to find the full time dependent operator:
+\begin{align*}
+  X(t)=\frac1n\qty(\prod_kU_k^\dag)\sum_j\sigma_j^x\qty(\prod_iU_i^\dag)
+\end{align*}
+Lets expand the products a bit:
+\begin{align*}
+  nX(t)=U_1^\dag\cdots U_n^\dag\qty(\sigma_1^x+\cdots+\sigma_n^x)U_1\cdots U_n
+\end{align*}
+Note that due to the commutation relations between the various $\sigma_i^\alpha$ matrices, the only product which will have an effect on $\sigma_1^x$ will be the exponential of $\sigma_1^z$ on both sides, so this product is effectively:
+\begin{align*}
+  nX(t)=\qty(U_1^\dag\sigma_1^xU_2^\dag\cdots U_n^\dag)\qty(
+  U_1\cdots U_n)+\cdots
+\end{align*}
+And we can take this further by commuting the remaining matrices to take advantage of the fact that the exponential of the Hermitian matrices $\sigma_i^z$ is unitary to find:
+\begin{align*}
+  nX(t)&=U_1^\dag\sigma_1^xU_1U_2^\dag U_2\cdots U_n^\dag U_n+\cdots\\
+  &=U_1^\dag\sigma_1^xU_1+U_2^\dag\sigma_2^xU_2+\cdots+U_n^\dag\sigma_n^xU_n\\
+  &=\sum_iU_i^\dag\sigma_i^xU_i
+\end{align*}
+We can then take the inner product:
+\begin{align*}
+  \ev{X(t)}&=\frac1n\mel{\psi}{\sum_iU_i^\dag\sigma_i^xU_i}{\psi}\\
+  &=\frac1n
+  \qty(\ev{U_1^\dag\sigma_1^xU_1}{+x_1}\ip{+x_2}\cdots\ip{+x_n}+\cdots)\\
+  &=\frac1n\sum_i\ev{U_i^\dag\sigma_i^xU_i}{+x_i}
+\end{align*}
+We can then investigate a single element of the entire system since it factors out to find what the expected value is. For a single spin, we have the following operators:
+\begin{align*}
+  \ket{+x}&=\frac1{\sqrt{2}}\pmqty{1\\1}\\
+  \sigma^x&=\pmqty{0&1\\1&0}\\
+  U&=\pmqty{e^{it(B+\Delta{B}_1)}&0\\0&e^{-it(B+\Delta{B}_1)}}
+\end{align*}
+We then compute the inner product:
+\begin{align*}
+  \ev{U^\dag\sigma^xU}{+x}=\cos(2t(B+\Delta B_1))
+\end{align*}
+Then the entire quantum average is:
+\begin{align}
+  \boxed{\ev{X(t)}=\frac1n\sum_i\cos(2t(B+\Delta B_i))}
+\end{align}
+Which is off from what is on the assignment sheet by a factor of 2, but I am not sure where the error is.
+
 \subsection{Ensemble average of $X$}
+In order to find the ensemble average, we simply have to average out the $\Delta{B}_i$, using the probability density function:
+\begin{align*}
+  \rho(x)=\frac{e^{-x^2/2\sigma_B^2}}{\sqrt{2\pi\sigma_B^2}}
+\end{align*}
+And so the expected value of $\ev{X}$ is given by:
+\begin{align*}
+  \mathbb{E}[\ev{X}]&=
+  \frac1n\int_{-\infty}^\infty\sum_i\cos((B+\Delta{B}_i)t)
+  \rho(\Delta B_i)\dd{\Delta{B}_i}
+\end{align*}
+However, note that we are integrating out all of the $\Delta B_i$, so we will be left with $n$ times whatever we have:
+\begin{align*}
+  \mathbb{E}[\ev{X}]&=\int_{-\infty}^\infty\cos((B+x)t)\rho(x)\dd{x}
+\end{align*}
+This integral can be calculated to be:
+\begin{align}
+  \boxed{\mathbb{E}[\ev{X}]=\cos(Bt)e^{-t^2\sigma_B^2/2}}
+\end{align}
 
 \subsection{Ensemble variance}
+Following the lines of above, the ensemble variance will be:
+\begin{align*}
+  \mathrm{var}(\ev{X})=\mathbb{E}[\ev{X}^2]-\mathbb{E}[\ev{X}]^2
+\end{align*}
+Where the first expectation value is given by the integral:
+\begin{align*}
+  \mathbb{E}[\ev{X}]&=\int_{-\infty}^\infty\cos((B+x)t)^2\rho(x)\dd{x}
+\end{align*}
+We already computed the second expectation value, and the first can be done in mathematica:
+\begin{align*}
+  \mathbb{E}[\ev{X}^2]=\frac14\qty(2+e^{-2t\qty(i B\sigma^2t)}\qty(1+e^{4iBt}))
+\end{align*}
+Hence the Value of the Variance is:
+\begin{align*}
+  \boxed{\mathrm{var}(\ev{X})=\frac12e^{-2t^2\sigma_B^2}
+    \qty(e^{t^2\sigma_B^2}-1)\qty(e^{t^2\sigma_B^2}-\cos(2Bt))}
+\end{align*}
 
 \subsection{Decay Time}
+I am not sure here.
 
 \subsection{Quantum Average after $T$}
+After some time $T$, we apply the Pauli $X$ operator to each site. This means that We are applying operator $U(T)VU(T)$. So we want to calculate:
+\begin{align*}
+  \ev{X}&=\ev{U^\dag(T)VU^\dag(T)X(t)U(T)VU(T)}\\
+  &=\frac1n\ev{U^\dag(T)VU^\dag(T)\qty(\sum_i\sigma_i^x)U(T)VU(T)}
+\end{align*}
+I am not sure about the math here, but this should be 1 since all of the time evolution operators will cancel, and the operation of $VXV$ will leave only a net $\sigma^x_i$ operation for all elements of the ensemble.
 
 \subsection{Transformation as Time Reversal}
+The main reason for this is because when we have $VUV$, we are transforming the operator $U$ to instead be something like $\sigma^x\sigma^z\sigma^x$, which will flip the sign on the Pauli $z$ matrix to give $-\sigma^z$, meaning the unitary time evolution will have the opposite sign on the time.
 
 \subsection{Ising Hamiltonian}
-
+I am unsure of how to do this, but I am guessing it would be some Pauli chain of $\sigma^y$ since it is the only one not included in the Hamiltonian.
 
 \section{Environmental Effects}
-
 \subsection{Completely Depolarizing Channel}
-
+We know the form of a density matrix for spin $\frac12$ is given by:
+\begin{align*}
+  \rho=\frac12\qty(\mathbb{I}+\vu{n}\vdot\bm\sigma)
+\end{align*}
+Hence the completely depolarizing channel is given by:
+\begin{align*}
+  D(\rho)&=\frac18\qty(\mathbb{I}+\vu{n}\vdot\bm\sigma+
+  \sum_i\sigma^i\qty(\mathbb{I}+\vu{n}\vdot\bm\sigma)\sigma^i)\\
+  &=\frac18\qty(\mathbb{I}+\vu{n}\vdot\bm\sigma+
+  \sum_i\qty((\sigma^i)^2+\sigma^i\vu{n}\vdot\bm\sigma)\sigma^i)\\
+  &=\frac18\qty(\mathbb{I}+\vu{n}\vdot\bm\sigma+3\mathbb{I}+
+  \sum_i\sigma^i\vu{n}\vdot\bm\sigma\sigma^i)
+\end{align*}
+Note that from this we can calculate what the final sum is, using the properties that:
+\begin{align*}
+  \sigma^i\sigma^i\sigma^i&=\sigma^i\\
+  \sigma^i\sigma^j\sigma^i&=-\sigma^j
+\end{align*}
+Where the second property is only if $i\neq j$
+\begin{align*}
+  \sum_i\sigma^i\vu{n}\vdot\bm\sigma\sigma^i=
+  \sum_i\sigma^in_j\sigma^j\sigma^i
+\end{align*}
+From this we will get one copy of the original $\vu{n}\vdot\bm\sigma$, and then two oppositely signed versions, leading to a net of
+\begin{align*}
+  \sum_i\sigma^i\vu{n}\vdot\bm\sigma\sigma^i=-\vu{n}\vdot\bm\sigma
+\end{align*}
+Hence the overall form of $D(\rho)$ is:
+\begin{align*}
+  D(\rho)&=\frac18\qty(4\mathbb{I}+\vu{n}\vdot\bm\sigma-\vu{n}\vdot\bm\sigma)
+\end{align*}
+Which can be reduced to:
+\begin{align*}
+  \boxed{D(\rho)=\frac{\mathbb{I}}{2}}
+\end{align*}
 \subsection{Properties of a Depolarizing Channel}
-
+First sub in what we have for $\rho$ and $D(\rho)$ from the previous part:
+\begin{align*}
+  \mathcal{N}_p(\rho)&=\frac{(1-p)}{2}(\mathbb{I}-\vu{n}\vdot\bm\sigma)
+  +\frac{p}{2}\mathbb{I}\\
+  &=\frac12\qty(\mathbb{I}+(1-p)\vu{n}\vdot\bm\sigma)
+\end{align*}
+Note this will definitely be a Hermitian matrix since all of the $\sigma^i$ are as well the identity matrix, but it will only be positive definite if $p\in[0,1]$, this can be demonstrated in Mathematica:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10.0cm]{pin01}
+  \caption{Always True if $p\in[0,1]$}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10.0cm]{pin110}
+  \caption{Not Always True if $p\in[1,10]$}
+\end{figure}
 \subsection{Kraus Operators which Depolarize}
+We know that these must be proportional to the operator basis $\{\mathbb{I},\bm\sigma\}$, and they must be normalized according to:
+\begin{align*}
+  \sum_iK_i^\dag K_i=\mathbb{I}
+\end{align*}
+And the following set accomplishes that:
+\begin{equation*}
+  \boxed{\begin{aligned}
+      K_0&=\sqrt{1-\frac{3p}4}\mathbb{I}\\
+      K_{1,2,3}&=\sqrt{\frac{p}{4}}\sigma^{x,y,z}
+    \end{aligned}}
+\end{equation*}
 
 \subsection{Depolarized Quantum Average}
+We are now measuring the value of $\sigma^\alpha$ in the states $\rho$ and in $\mathcal{N}_p(\rho)$. We can see that the only difference between $\rho$ and $\mathcal{N}(\rho)$ is going to be the multiplicative factor of $(1-p)$ in the factor of $\vu{n}\vdot\bm\sigma$, so whatever the value is in the state $\rho$, the depolarized value will be reduced by $(1-p)$
 
-\subsection{Quantum Average after One Depolarization}
-
-\subsection{Expectation value over time}
+\subsection{Change in State After One Depolarization}
+Now we are taking:
+\begin{align*}
+  \mathcal{N}(\rho)=(1-\gamma\Delta t)\rho+\frac{\gamma\Delta t}{2}\mathbb{I}
+\end{align*}
+So $\Delta\rho$ is:
+\begin{align*}
+  \Delta\rho=\mathcal{N}(\rho)-\rho=\gamma\Delta t\qty(\frac12\mathbb{I}-\rho)
+\end{align*}
+Hence:
+\begin{align*}
+  \frac{\Delta\rho}{\Delta t}=\gamma\qty(\frac12\mathbb{I}-\rho)
+\end{align*}
+If $\Delta t=1$:
+\begin{align*}
+  \Delta\rho=\gamma\qty(\frac12\mathbb{I}-\rho)
+\end{align*}
+\subsection{Density Matrix Dynamics}
+If we take the limit as $\Delta{t}$ goes to 0, we find instead:
+\begin{align*}
+  \pdv{\rho}{t}=\gamma\qty(\frac12\mathbb{I}-\rho)
+\end{align*}
 
 \subsection{Rate of Change of von Neumann Entropy}
-
+We found before that
+\begin{align*}
+  \pdv{\rho}{t}=\gamma\qty(\frac12\mathbb{I}-\rho)
+\end{align*}
+Applying this to the time derivative of the von Neumann entropy:
+\begin{align*}
+  \pdv{S}{t}&=\pdv{t}\Tr[\rho\log\rho]=\Tr[\pdv{\rho}{t}
+  \qty(\mathbb{I}+\log\rho)]\\
+  &=\gamma\Tr[\qty(\frac12\mathbb{I}-\rho)\qty(\mathbb{I}+\log\rho)]\\
+  &=\gamma\Tr[\frac12\mathbb{I}+\log\rho-\rho-\rho\log\rho]\\
+  &=\gamma\qty(\Tr[\log\rho]-S[\rho])
+\end{align*}
+Which contains the original von Neumann entropy and is proportional to $\gamma$
 
 \end{document}

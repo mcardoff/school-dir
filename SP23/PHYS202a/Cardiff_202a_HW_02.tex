@@ -96,7 +96,7 @@ Where $\bar{\phi}$ is a constant.
 
 We can then minimize the following with respect to constant $\bar\phi$:
 \begin{align*}
-  m^2\phi+\lambda_4\phi^3+\lambda_6\phi^6&=0\\
+  m^2\bar\phi+\lambda_4\bar\phi^3+\lambda_6\bar\phi^5&=0\\
   \bar\phi\qty(m^2+\lambda_4\bar\phi^2+\lambda_6\bar\phi^4)&=0\\
   \implies\left\{
   \begin{array}[H]{c}
@@ -106,9 +106,13 @@ We can then minimize the following with respect to constant $\bar\phi$:
   &=0
 \end{align*}
 The first solution is trivial, however the other has the following solution in terms of $\bar\phi^2$:
-\begin{align*}
-  \bar\phi^2=\frac{-\lambda_4\pm\sqrt{\lambda_4^2-4m^2\lambda_6}}{2\lambda_6}
-\end{align*}
+\begin{align}
+  \boxed{
+    \bar\phi^2=\frac{-\lambda_4\pm\sqrt{\lambda_4^2-4m^2\lambda_6}}{2\lambda_6}
+  }
+\end{align}
+
+\subsection{Critical Temperature $\lambda_4<0$}
 The number of additional solutions is dependent on the discriminant:
 \begin{align*}
   \Delta=\lambda_4^2-4m^2\lambda_6
@@ -128,7 +132,133 @@ Therefore, in terms of $T_0$, $T_c$ is given by:
 \begin{align}
   \boxed{T_c=T_0+\frac{\lambda_4^2}{4a\lambda_6}}
 \end{align}
+Here is a plot of $\bar\phi$ vs $\mathcal{E}[\bar\phi]$ at various temperatures, with the middle one being Approximately $T_c$:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10.0cm]{CritPlot}
+  \caption{Various Temperature Plots of $\mathcal{E}$}
+\end{figure}
+However, This is not guaranteed to be a minimum, The overall solution could be an inflection point or a local maximum. First enumerate all of the possible solutions to the quartic equation:
+\begin{align*}
+  \bar\phi&=
+  \pm\sqrt{\frac{-\lambda_4\pm\sqrt{\lambda_4^2-4m^2\lambda_6}}{2\lambda_6}}\\
+  \bar\phi&=0
+\end{align*}
+We then need to plug this into the Free Energy, noting that due to it being even, two of the solutions will be the same as the other two:
+\begin{align*}
+  \mathcal{E}[\bar\phi]&=
+  \frac{\lambda_4^3-6a(T-T_0)\lambda_4\lambda_6
+    \pm\qty(\lambda_4^2-4a(T-T_0)\lambda_6)
+    \sqrt{\lambda_4^2-4a(T-T_0)\lambda_6}}
+  {24\lambda_6^2}\\
+  \mathcal{E}[\bar\phi]&=0
+\end{align*}
+If we have $T\gg T_0$, the argument under the square root will almost certainly be negative, meaning an invalid imaginary energy, so at high enough temperature, the minimum is $\bar\phi=0$, However, in this case the critical temperature is a maximum. We did this by using explicit values in Mathematica, The case where $\lambda_4<0$ has the following minimum energy values for $0<T<T_0+0.3$, and the values of the remaining constants are as in figure 1 above:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10.0cm]{extrema1code}
+  \caption{Mathematica Code for Determining if $T<T_c$ Produces a Minimum}
+\end{figure}
+Notice that even when $T>T_0$ (which would correspond to $\dd{T}>0$ in the code above) there is a minimum not at $\bar\phi=0$. This is easier to see on a full plot like figure 1 above:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10.0cm]{NotCritPlot}
+  \caption{No critical behavior at the same $T_c$ when $\lambda_4>0$}
+\end{figure}
+
+We can then plot the value of $\bar\phi$ that minimizes $\mathcal{E}$ at temperature $T$, like the following:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10.0cm]{l4l0}
+  \caption{$\phi$ vs $T$ when $\lambda_4<0$}
+\end{figure}
+Do not be fooled by the fact that Mathematica wants this to be a continuous function, there is a discontinuity at $T=T_c$, making this a \textbf{first order} phase transition.
+
+\subsection{(Not so) Critical Temperature $\lambda_4>0$}
+If instead we have $\lambda_4>0$, we can repeat the same calculation, however $T_c$ no longer represents a minimum, and instead it is only when $T<T_0$ that we see an extra minimum:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10.0cm]{extrema2code}
+  \caption{Mathematica Code for Determining if $T<T_c$ produces a minimum}
+\end{figure}
+Now, we immediately see when $\dd{T}>0$, which means $T>T_0$, we no longer have an extra minimum, because instead the extra solutions to $\phi$ from when $T$ is between $T_0$ and $T_c$ are inflection points, not minima.
+
+The plot for $\phi$ v $T$ now looks like:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10.0cm]{l4g0}
+  \caption{$\phi$ vs $T$ when $\lambda_4>0$}
+\end{figure}
+The transition clearly occurs at $T_0$ in this case. Note that the graph also is continuous at $T_0$, however there is a kink, so there will be a discontinuity at $T=T_0$ in the first derivative, meaning this is a \textbf{second order} phase transition.
+
 \section{A Theory with Higher Derivatives}
+We can first insert a Lagrange multiplier into the Lagrangian density by asserting the following:
+\begin{align*}
+  \lambda\qty(\chi-\Box\phi)=0
+\end{align*}
+Meaning our new Lagrangian density is:
+\begin{align*}
+  \L=\frac{\sigma}{\Lambda^2}\chi^2-\lambda\qty(\chi-\Box\phi)
+\end{align*}
+The $\chi$ field has no derivatives on it, and is thus a non-dynamical field, so it can be eliminated by enforcing the following:
+\begin{align*}
+  \pdv{\L}{\chi}=0
+\end{align*}
+The derivative is simple:
+\begin{align*}
+  \pdv{\L}{\chi}=2\frac\sigma{\Lambda^2}\chi-\lambda&=0\\
+  \implies\chi&=\frac{\Lambda^2}{2\sigma}\lambda
+\end{align*}
+We can then substitute this into the Lagrangian density to get a density with only dynamical fields:
+\begin{align*}
+  \L=-\frac{\Lambda^2}{4\sigma}\lambda^2+\lambda\Box\phi
+\end{align*}
+We can then 'diagonalize' the kinetic term by writing the $\lambda$ and $\phi$ fields in the following ways:
+\begin{align*}
+  \lambda&=\frac{\psi_1+\psi_2}{\sqrt{2}}\\
+  \phi&=\frac{\psi_1-\psi_2}{\sqrt{2}}
+\end{align*}
+So the Langrangian density now looks like:
+\begin{align*}
+  \L&=-\frac{\Lambda^2}{8\sigma}\qty(\psi_1+\psi_2)^2
+  +\frac12\qty(\psi_1+\psi_2)\Box\qty(\psi_1-\psi_2)\\
+  &=-\frac{\Lambda^2}{8\sigma}\qty(\psi_1+\psi_2)^2
+  +\frac12\qty(\psi_1+\psi_2)\qty(\Box\psi_1-\Box\psi_2)\\
+  &=-\frac{\Lambda^2}{8\sigma}\qty(\psi_1+\psi_2)^2
+  +\frac12
+  \qty(\psi_1\Box\psi_1+\psi_2\Box\psi_1-\psi_2\Box\psi_2-\psi_1\Box\psi_2)
+\end{align*}
+The cross terms from multiplying out the kinetic term can be cancelled out. Because they are related by integration by parts, ignoring the boundary term. This means our Lagrangian density is effectively:
+\begin{align*}
+  \L&=-\frac{\Lambda^2}{8\sigma}\qty(\psi_1+\psi_2)^2
+  +\frac12\qty(\psi_1\Box\psi_1-\psi_2\Box\psi_2)
+\end{align*}
+We can then identify the masses by multiplying out the first term:
+\begin{align*}
+  \L&=-\frac{\Lambda^2}{8\sigma}\qty(\psi_1^2+\psi_2^2+2\psi_1\psi_2)
+  +\frac12\qty(\psi_1\Box\psi_1-\psi_2\Box\psi_2)\\
+  &=-\frac{\Lambda^2}{8\sigma}\psi_1^2-\frac{\Lambda^2}{8\sigma}\psi_2^2
+  -\frac{\Lambda^2}{4\sigma}\psi_1\psi_2
+  +\frac12\qty(\psi_1\Box\psi_1-\psi_2\Box\psi_2)
+\end{align*}
+We can then group the terms to make it look more like Lagrangians that we know:
+\begin{align}
+  \boxed{\L=\underbrace{
+    -\frac12\psi_1\qty(-\Box+\frac{\Lambda^2}{4\sigma})\psi_1
+  }_{\text{Free Scalar}}
+  -\underbrace{
+    \frac12\psi_2\qty(\Box+\frac{\Lambda^2}{4\sigma})\psi_2
+  }_{\text{Free Scalar}}
+  -\frac{\Lambda^2}{4\sigma}\psi_1\psi_2}
+\end{align}
+Notice that depending on whether $\sigma$ is $\pm1$ one of $\psi_1$ or $\psi_2$ fields has the wrong sign on the kinetic term.
 
-
+If we identify the mass by matching it with the free Lagrangian from problem 1
+\begin{align*}
+  \L^{FS}=-\frac12\phi\qty(\Box+m^2)\phi
+\end{align*}
+The mass is identified as:
+\begin{align}
+  \boxed{m=\frac{\Lambda}{2\sqrt{\sigma}}}
+\end{align}
 \end{document}
