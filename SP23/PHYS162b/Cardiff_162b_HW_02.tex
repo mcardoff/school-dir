@@ -1,0 +1,305 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 162b HW 2}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amssymb,amsthm,bm,physics,slashed,cancel}
+
+%% general pretty stuff
+\usepackage{caption,enumitem,float,geometry,graphicx,tikz}
+
+% setups
+\graphicspath{ {./figs/} }
+\captionsetup{labelfont=bf}
+\geometry{margin=1in}
+
+% macros
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\l}{\ell}
+\newcommand{\veps}{\varepsilon}
+\newcommand{\D}{\partial}
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+\newcommand{\ua}{\uparrow}
+\newcommand{\da}{\downarrow}
+
+\begin{document}
+\maketitle
+
+\section{Clebsch Gordan Coefficients}
+We are coupling an orbital angular momentum $\vb{L}$ and a spin angular momentum $\vb{S}$. It is given that the spin angular momentum eigenvalue is $\frac12$, but the orbital angular momentum is left undetermined. We still have the following states:
+\begin{align*}
+  \ket{jm}=C_{1/2}\ket{m_j-1/2;1/2}+C_{-1/2}\ket{m+1/2;-1/2}
+\end{align*}
+Where the reduced kets are in reality:
+\begin{align*}
+  \ket{m_\l m_s}&=\ket{\l s m_\l m_s}\\
+  \ket{m_j-1/2;1/2}&=\ket{\l,1/2,(m_j-1/2),1/2}\\
+  \ket{m_j+1/2;-1/2}&=\ket{\l,1/2,(m_j+1/2),-1/2}
+\end{align*}
+When we apply $\vb{J}^2$ to both sides, the left hand side is fairly easy to evaluate since it is an eigensate of $\vb{J}$:
+\begin{align*}
+  \vb{J}^2\ket{jm}=\hbar^2j(j+1)\ket{jm}
+\end{align*}
+However on the other side we need to expand the $\vb{J}^2$ operator in terms of $\vb{L}$ and $\vb{S}$:
+\begin{align*}
+  \vb{J}^2=\qty(\vb{L+S})^2=\vb{L}^2+\vb{S}^2+2\vb{L\vdot S}
+\end{align*}
+Since $\vb{L}$ and $\vb{S}$ commute.
+
+The dot product term can be written as:
+\begin{align*}
+  \vb{L}\vdot\vb{S}=L_xS_x+L_yS_y+L_zS_z
+\end{align*}
+If we define the ladder operators $L_\pm$ and $S_\pm$ as:
+\begin{align*}
+  L_\pm&=L_x\pm iL_y\\
+  S_\pm&=S_x\pm iS_y
+\end{align*}
+We then note the following sum:
+\begin{align*}
+  L_+S_-+L_-S_+=2\qty(L_xS_x+L_yS_y)
+\end{align*}
+So we can rewrite the total angular momentum operator squared as:
+\begin{align*}
+  \vb{J}^2=\vb{L}^2+\vb{S}^2+2L_zS_z+\qty(L_+S_-+L_-S_+)
+\end{align*}
+Then we note the action of these operators on their respective angular momentum eigenstates:
+\begin{align*}
+  \vb{L}^2\ket{\l,s,m_\l,m_s}&=\hbar^2\l(\l+1)\ket{\l,s,m_\l,m_s}\\
+  L_z\ket{\l,s,m_\l,m_s}&=\hbar m_\l\ket{\l,s,m_\l,m_s}\\
+  L_\pm\ket{\l,s,m_\l,m_s}&=\hbar
+  \sqrt{(\l\mp m_\l)(\l\pm m_\l+1)}\ket{\l,s,m_\l\pm1,m_s}\\
+  \vb{S}^2\ket{\l,s,m_\l,m_s}&=\hbar^2s(s+1)\ket{\l,s,m_\l,m_s}\\
+  &=\frac{3\hbar^2}4\ket{\l,1/2,m_\l,\pm1/2}\\
+  S_z\ket{\l,s,m_\l,m_s}&=\hbar m_s\ket{\l,s,m_\l,m_s}\\
+  &=\pm\frac\hbar2\ket{\l,1/2,m_\l,\pm1/2}\\
+  S_\pm\ket{\l,s,m_\l,m_s}&=\hbar
+  \sqrt{(s\mp m_s)(s\pm m_s+1)}\ket{\l,s,m_\l,m_s\pm1}
+\end{align*}
+We have extra rules for the ladder operators acting on states of maximum $m_\l/m_s$
+\begin{gather*}
+  S_+\ket{m_s=1/2}=0\quad S_-\ket{m_s=-1/2}=0\\
+  L_+\ket{m_\l=\l}=0\quad L_-\ket{m_\l=-\l}=0
+\end{gather*}
+Hence we can find the action of the operator $\vb{J}^2$ on the linear combination:
+\begin{align*}
+  (\vb{L}^2+\vb{S}^2+2\vb{L\vdot S})
+  \qty(C_{1/2}\ket{m_j-1/2;1/2}+C_{-1/2}\ket{m+1/2;-1/2})
+\end{align*}
+The terms with $C_{1/2}$ are:
+\begin{align*}
+  C_{1/2}\qty(\vb{L}^2+\vb{S}^2+2L_zS_z+L_+S_-+L_-S_+)\ket{m_j-1/2;1/2}
+\end{align*}
+Immediately we can throw out the term with $S_+$ since we cannot raise $m_s$ above $\frac12$:
+\begin{align*}
+  C_{1/2}\qty(\vb{L}^2+\vb{S}^2+2L_zS_z+L_+S_-)\ket{m_j-1/2;1/2}
+\end{align*}
+The eigenvalues of the square operators are easy to insert:
+\begin{align*}
+  C_{1/2}\qty(\hbar^2\l(\l+1)+\hbar^2\frac34+2L_zS_z+L_+S_-)\ket{m_j-1/2;1/2}
+\end{align*}
+Then the $z$ component operators are the only ones that do not change the state:
+\begin{align*}
+  C_{1/2}\qty(\hbar^2\qty(\l(\l+1)+m_j+\frac14)\ket{m_j-1/2;1/2}
+  +L_+S_-\ket{m_j-1/2;1/2})
+\end{align*}
+Then the ladder operators:
+\begin{align*}
+  L_+S_-\ket{m_j-1/2;1/2}&=\hbar L_+\ket{m_j-1/2;-1/2}\\
+  &=\hbar^2\sqrt{(\l-m_j+1/2)(\l+m_j+1/2)}\ket{m_j+1/2;-1/2}
+\end{align*}
+Hence in total we have:
+\begin{align*}
+  \hbar^2C_{1/2}&\left(\qty(\l(\l+1)+m_j+\frac14)\ket{m_j-1/2;1/2}\right. \\
+  &\left.+\sqrt{\qty(\l-m_j+\frac12)\qty(\l+m_j+\frac12)}
+    \ket{m_j+1/2;-1/2}\right)
+\end{align*}
+For the $C_{-1/2}$ terms we will have the same results for $\vb{S}^2$ and $\vb{L}^2$:
+\begin{align*}
+  C_{-1/2}\qty(\hbar^2\l(\l+1)+\hbar^2\frac34+2L_zS_z+L_+S_-+L_-S_+)
+  \ket{m_j+1/2;-1/2}
+\end{align*}
+The $S_-$ operator term is what gets thrown out this time, since we can't lower $m_s=-1/2$, and we can evaluate the $z$ component terms:
+\begin{align*}
+  \hbar^2C_{-1/2}\qty(\l(\l+1)+\frac14-m_j+L_-S_+)\ket{m_j+1/2;-1/2}
+\end{align*}
+Then the action of the ladder operators is:
+\begin{align*}
+  L_-S_+\ket{m_j+1/2;-1/2}&=\hbar L_-\ket{m_j+1/2;1/2}\\
+  &=\hbar^2\sqrt{\qty(\l-m_j+\frac32)\qty(\l+m_j-\frac12)}\ket{m_j-1/2;1/2}
+\end{align*}
+In total:
+\begin{align*}
+  \hbar^2C_{-1/2}&\left(\qty(\l(\l+1)-m_j+\frac14)\ket{m_j+1/2;-1/2}\right. \\
+  &\left.+\sqrt{\qty(\l-m_j+\frac32)\qty(\l+m_j-\frac12)}
+    \ket{m_j-1/2;1/2}\right)
+\end{align*}
+Hence the total right hand side of the original equation is:
+\begin{gather*}
+  j(j+1)\qty(C_{1/2}\ket{m_j-1/2;1/2}+C_{-1/2}\ket{m_j+1/2;-1/2})=
+  \\\qty(C_{1/2}\qty(\l(\l+1)+m_j+\frac14)
+  +C_{-1/2}\sqrt{\qty(\l-m_j+\frac32)\qty(\l+m_j-\frac12)})\ket{m_j-1/2;1/2}\\
+  +\qty(C_{-1/2}\qty(\l(\l+1)-m_j+\frac14)
+  +C_{1/2}\sqrt{\qty(\l-m_j+\frac12)\qty(\l+m_j+\frac12)})\ket{m_j+1/2;-1/2}
+\end{gather*}
+Assume that the value of $m_j$ is at its max, $j$:
+\begin{align*}
+  j(j+1)\qty(C_{1/2}\ket{j-1/2;1/2}+C_{-1/2}\ket{j+1/2;-1/2})=
+  \\\qty(C_{1/2}\qty(\l(\l+1)+j+\frac14)
+  +C_{-1/2}\sqrt{\qty(\l-j+\frac32)\qty(\l+j-\frac12)})\ket{j-1/2;1/2}\\
+  +\qty(C_{-1/2}\qty(\l(\l+1)-j+\frac14)
+  +C_{1/2}\sqrt{\qty(\l-j+\frac12)\qty(\l+j+\frac12)})\ket{j+1/2;-1/2}
+\end{align*}
+We know that we cannot have a $j$ state with $m_j$ greater than $j$, so the second ket is $0$:
+\begin{align*}
+  j(j+1)C_{1/2}\ket{j-1/2;1/2}=
+  \\\qty(C_{1/2}\qty(\l(\l+1)+j+\frac14)
+  +C_{-1/2}\sqrt{\qty(\l-j+\frac32)\qty(\l+j-\frac12)})\ket{j-1/2;1/2}  
+\end{align*}
+In order to match coefficients on both sides, the coefficient of $C_2$ needs to be $0$ in this case, so we get the max value of $j$
+\begin{align*}
+  j_{max}=\l+\frac12
+\end{align*}
+And then a similar argument can be done to find the min:
+\begin{align*}
+  j_{min}=\abs{\l-\frac12}
+\end{align*}
+I am not sure where to go from here, specifically in solving for the coefficients, since they would be functions of $j,m_j,\l,m_\l$ so I am just unsure.
+
+\section{Three Spins}
+
+\subsection{Probability of Measuring Spin Up}
+We are given $S_{tot},M_{tot}$. Construct a ladder operator $S_-$:
+\begin{align*}
+  S_-=S_{1-}+S_{2-}+S_{3-}
+\end{align*}
+The action of $S_-$ on a $\ket{sm}$ state is to lower the total spin. We are told to consider the state $\ket{\frac32,\frac32}$. Note that:
+\begin{align*}
+  S_{-}\ket{\frac32,\frac32}=
+  \hbar\sqrt{\frac34+\frac14}\ket{\frac12,\da\ua\ua}
+  +\hbar\sqrt{\frac34+\frac14}\ket{\frac12,\ua\da\ua}
+  +\hbar\sqrt{\frac34+\frac14}\ket{\frac12,\ua\ua\da}
+\end{align*}
+In total we can construct the state $\ket{\frac32,\frac12}$ as:
+\begin{align*}
+  \ket{\frac32,\frac12}=\frac1{\sqrt{3}}\qty(\ket{\frac12,\da\ua\ua}+
+  \ket{\frac12,\ua\da\ua}+\ket{\frac12,\ua\ua\da})
+\end{align*}
+We can separate the first two particle's states into the triplet states:
+\begin{align*}
+  \ket{\frac32,\frac12}=\frac{\sqrt{2}}{\sqrt{3}}
+  \qty(\frac{\ket{\da\ua}+\ket{\ua\da}}{\sqrt{2}})\ket{\ua}
+  +\frac1{\sqrt{3}}\ket{\ua\ua}\ket{\da}
+\end{align*}
+In terms of the total two particle angular momentum:
+\begin{align*}
+  \ket{\frac32,\frac12}=\frac{\sqrt{2}}{\sqrt{3}}\ket{1,0}\ket\ua+
+  \ket{1,1}\ket{\da}
+\end{align*}
+Note that since the $s$ value for the state $\ket{\frac12,\frac12}$ is different, so it should be an orthogonal state, of the form:
+\begin{align*}
+  \ket{\frac12,\frac12}&=\frac1{\sqrt{3}}\ket{1,0}\ket{\ua}-\sqrt{\frac{2}{3}}
+  \ket{1,1}\ket{\da}\\
+  &=\frac1{\sqrt{6}}\qty(\ua\da\ua+\da\ua\ua)-\sqrt{\frac{2}{3}}\ua\ua\da
+\end{align*}
+Hence the probability it is spin up is:
+\begin{align*}
+  \boxed{\frac16+\frac23=\frac56}
+\end{align*}
+
+\subsection{Probability of B $x$ up}
+Now we are measuring $S_x$ for particle B. In the $x$ basis we have:
+\begin{align*}
+  \ket{\ua}_z&=\frac1{\sqrt{2}}\qty(\ket{\ua}_x+\ket{\da}_x)\\
+  \ket{\da}_z&=\frac1{\sqrt{2}}\qty(\ket{\ua}_x-\ket{\da}_x)
+\end{align*}
+And the atate $\ket{\Psi}$:
+\begin{align*}
+  \ket{\Psi}_x=\frac1{\sqrt{6}}
+  \qty(\ket{\ua}_z\ket{\da}_{z\to x}\ket{\ua}_z
+  +\ket{\da}_z\ket{\ua}_{z\to x}\ket{\ua}_{z})-
+  \sqrt{\frac23}\ket{\ua}_z\ket{\ua}_{z\to x}\ket{\da}_z
+\end{align*}
+The probability of spin $x$ being up is then:
+\begin{align*}
+  \boxed{2\qty(\frac1{\sqrt{6*2}})^2+\qty(\sqrt{\frac{2}{2*3}})^2=\frac12}
+\end{align*}
+
+\subsection{Particle C in $X-Z$}
+The rotation matrix is given as:
+\begin{align*}
+  S_{zx}=\frac\hbar2
+  \pmqty{\cos\theta/2&\sin\theta/2\\\sin\theta/2&-\cos\theta/2}
+\end{align*}
+I used mathematica to find the eigenvectors and values of this matrix: we get the following eigenvector with eigenvalues $\pm1$:
+\begin{align*}
+  \ket{+}_{xz}&=\pmqty{cos\theta/4\\\sin\theta/4}\\
+  \ket{-}_{xz}&=\pmqty{-\sin\theta/4\\\cos\theta/4}
+\end{align*}
+Hence we can write the $z$ basis in terms of this one:
+\begin{align*}
+  \ket{+}_z=\cos\theta/4\ket{+}_{xz}-\sin\theta/4\ket{-}_{xz}
+  \ket{-}_z=\sin\theta/4\ket{+}_{xz}+\cos\theta/4\ket{-}_{xz}
+\end{align*}
+Then in our state with particle C in this basis is:
+\begin{align*}
+  \ket{\psi}=\frac1{\sqrt{6}}\qty(\ket{\ua_z\da_z\ua_{z\to xz}}+
+  \ket{\da_z\ua_z\ua_{z\to xz}})-\sqrt{\frac23}\ket{\ua_z\ua_z\da_{z\to xz}}
+\end{align*}
+The coefficients of spin up in the xz direction are:
+\begin{align*}
+  \boxed{\frac{2\cos^2\theta/4}{6}+\frac23\sin^2\theta/4
+    =\frac13\qty(1+\sin^2\theta/4)}
+\end{align*}
+
+\section{General Vector Operators}
+First, we should expect this to commute with the vector operator, since $\vb{A}\vdot\vb{B}$ is a scalar operator like $\vb{J}^2$, so we should expect it to commute with the angular momentum operators.
+
+The commutation relations are given in Sakurai:
+\begin{align*}
+  \comm{A_i}{J_j}&=i\hbar\veps_{ijk}A_k\\
+  \comm{B_i}{J_j}&=i\hbar\veps_{ijk}B_k
+\end{align*}
+We can denote the dot product of $\vb{A}$ and $\vb{B}$ by:
+\begin{align*}
+  \vb{A\vdot B}=\sum_iA_iB_i
+\end{align*}
+We can then evaluate the commutator:
+\begin{align*}
+  \comm{\vb{A\vdot B}}{J_j}&=\sum_i\comm{A_iB_i}{J_j}
+  =\sum_i\qty(A_iB_iJ_j-J_jA_iB_i)
+  =\sum_i\qty(A_i(J_jB_i+\comm{B_i}{J_j})-J_jA_iB_i)\\
+  &=\sum_i\qty(A_i(J_jB_i+i\hbar\veps_{ijk}B_k)-J_jA_iB_i)
+  =\sum_i\qty((A_iJ_j-J_jA_i)B_i+i\hbar\veps_{ijk}A_iB_k)\\
+  &=\sum_i\qty(\comm{A_i}{J_j}B_i+i\hbar\veps_{ijk}A_iB_k)
+  =\sum_i\qty(i\hbar\veps_{ijk}A_kB_i+i\hbar\veps_{ijk}A_iB_k)\\
+  &=i\hbar\sum_i\qty(\veps_{ijk}A_kB_i+\veps_{ijk}A_iB_k)
+  =i\hbar\sum_i\veps_{ijk}\qty(A_kB_i+A_iB_k)
+\end{align*}
+Note in addition to summing over $i$, we are implicitly summing over $k$:
+\begin{align*}
+  \sum_i\veps_{ijk}\qty(A_kB_i+A_iB_k)=\sum_{ik}\veps_{ijk}\qty(A_kB_i+A_iB_k)
+\end{align*}
+Since the only free index is $j$, we can swap the $i,k$ indices without loss of generality, specifically we should inspect the term with $A_iB_k$:
+\begin{align*}
+  \sum_{ik}\veps_{ijk}A_iB_k=\sum_{ki}\veps_{kji}A_kB_i
+\end{align*}
+By properties of the Levi-Cevita symbol we can relate this back to $\veps_{ijk}$:
+\begin{align*}
+  \sum_{ki}\veps_{kji}A_kB_i=\sum_{ki}(-\veps_{ijk})A_kB_i
+\end{align*}
+Hence if we reinsert this into our sum we will get terms that cancel out:
+\begin{align*}
+  \comm{\vb{A\vdot B}}{J_j}&=i\hbar\sum_i\veps_{ijk}\qty(A_kB_i+A_iB_k)\\
+  &=i\hbar\sum_i\veps_{ijk}\qty(A_kB_i-A_kB_i)\\
+  &=0
+\end{align*}
+Therefore:
+\begin{align}
+  \boxed{\comm{\vb{A\vdot B}}{J_1}=\vb{0}}
+\end{align}
+
+\end{document}
