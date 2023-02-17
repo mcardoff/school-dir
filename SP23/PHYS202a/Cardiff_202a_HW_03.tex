@@ -18,6 +18,7 @@
 % macros
 \renewcommand{\L}{\mathcal{L}}
 \newcommand{\D}{\partial}
+\newcommand{\veps}{\varepsilon}
 \newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
     \node[shape=circle,draw,inner sep=2pt](char){#1};}}
 
@@ -138,7 +139,6 @@ This means the Energy Momentum tensor transforms like:
 Hence it is NOT gauge invariant.
 
 \subsection{Modified Energy Momentum Tensor}
-\subsubsection{Ensuring Index Symmetry}
 First we should expand the derivative using the product rule in order to take advantage of the equations of motion:
 \begin{align*}
   \D_\alpha(F^{\mu\alpha}A^\nu)=(\D_\alpha F^{\mu\alpha})A^\nu+
@@ -147,13 +147,16 @@ First we should expand the derivative using the product rule in order to take ad
 \end{align*}
 If we add this to our energy momentum tensor we now have:
 \begin{align*}
-  \tilde{T}^{\mu\nu}=F^{\alpha\mu}(\D^\nu A_\alpha-\D_\alpha A^\nu)
-  +\frac14\eta^{\mu\nu}F^{\alpha\beta}F_{\alpha\beta}
+  \tilde{T}^{\mu\nu}&=F^{\alpha\mu}(\D^\nu A_\alpha-\D_\alpha A^\nu)
+  +\frac14\eta^{\mu\nu}F^{\alpha\beta}F_{\alpha\beta}\\
+  &=F^{\alpha\mu}F^\nu_\alpha+\frac14\eta^{\mu\nu}F^{\alpha\beta}F_{\alpha\beta}
 \end{align*}
-We then calculate $\tilde{T}^{\mu\nu}$ and $\tilde{T}^{\nu\mu}$:
+
+\subsubsection{Ensuring Index Symmetry}
+To ensure symmetry we then calculate $\tilde{T}^{\mu\nu}$ and $\tilde{T}^{\nu\mu}$:
 \begin{align*}
   \tilde{T}^{\mu\nu}&=
-  \underbrace{\D_\alpha A^\nu\D^\mu A^\alpha}_1
+  \underbrace{\D_\alpha A^\mu\D^\nu A^\alpha}_1
   -\underbrace{\D^\mu A_\alpha\D^\nu A^\alpha}_2
   -\underbrace{\D_\alpha A^\mu\D^\alpha A^\nu}_3
   +\underbrace{\D^\mu A_\alpha\D^\alpha A^\nu}_4\\
@@ -182,10 +185,165 @@ Therfore we can conclude that $\tilde{T}^{\mu\nu}$ is in fact symmetric:
 \end{align*}
 
 \subsubsection{Verifying Gauge Invariance}
+We have already proven that $F^{\mu\nu}$ on its own is Gauge invariant, and we can see from simple index switching that $F^\mu_\nu$ is as well:
+\begin{align*}
+  F^\mu_\nu=\eta_{\nu\alpha}F^{\mu\alpha}
+\end{align*}
+And since the metric and $F^{\mu\nu}$ are already gauge invariant, we explicitly have $\tilde{T}^{\mu\nu}$ as gauge invariant
 
-\subsection{Connecting to $E$ and $B$ Fields}
+\subsection{Connecting to E and B Fields}
+Recall the classical formulae for the $E$ and $B$ fields in terms of the scalar and vector potentials $\phi$ and $\vb{A}$:
+\begin{align*}
+  E_i&=-\grad_i\phi-\pdv{A_i}{t}\\
+  B_i&=\veps_{ijk}\grad_jA_k
+\end{align*}
+We can write this in the usual relativistic notation:
+\begin{align*}
+  E_i&=-\D_iA^0-\D_0A^i\\
+  &=\D^iA^0-\D^0A^i=F^{0i}\\
+  B_i&=\veps_{ijk}\D_jA_k
+\end{align*}
+Since we found $\vb{E}$ in terms of $F$, it makes sense to write out the components of $F^{ij}$ in order to see if they relate to $\vb{B}$:
+\begin{align*}
+  F^{ij}&=\D^iA^j-\D^jA^i=\veps_{klm}\veps^{kij}\D^lA^m\\
+  &=-\veps_{kij}(\curl{\vb{A}})^k=-\veps_{ijk}B^k
+\end{align*}
+Where in the first line we used the identity:
+\begin{align*}
+  \veps_{klm}\veps^{kij}=(\delta^i_l\delta^j_m-\delta^j_l\delta^i_m)
+\end{align*}
+We can then write the field strength tensor in matrix form in terms of the field, noting that the diagonal elements of an antisymmetric matrix is $0$:
+\begin{align*}
+  [F^{\mu\nu}]&=
+  \pmqty{
+    0  & -E^1& -E^2& -E^3\\
+    E^1&  0  & -B^3&  B^2\\
+    E^2&  B^3&  0  & -B^1\\
+    E^3& -B^2&  B^1&  0
+  }\\
+  [F^{\mu\nu}]&=
+  \pmqty{
+     0  &  E^1&  E^2&  E^3\\
+    -E^1&  0  & -B^3&  B^2\\
+    -E^2&  B^3&  0  & -B^1\\
+    -E^3& -B^2&  B^1&  0
+  }
+\end{align*}
+We can then identify the Lagrangian term as:
+\begin{align*}
+  F^{\alpha\beta}F_{\alpha\beta}=-F^{\alpha\beta}F_{\beta\alpha}
+\end{align*}
+In this form we identify this as a trace over the product of the two matrices:
+\begin{align*}
+  -F^{\alpha\beta}F_{\beta\alpha}=2\qty(\vb{B}^2-\vb{E}^2)
+\end{align*}
+Then the Lagrangian is:
+\begin{align*}
+  \L=\frac12\qty(\vb{B}^2-\vb{E}^2)
+\end{align*}
+The other term in our stress-energy tensor can be identified as:
+\begin{align*}
+  F^{\alpha\mu}F^\nu_\alpha=-F^{\mu\alpha}F^\nu_\alpha
+\end{align*}
+Since we only need $T^{00}$, we can calculate the following dot product:
+\begin{align*}
+  -F^{0\alpha}F^0_\alpha=\vb{E}^2
+\end{align*}
+We calculated this in Mathematica, meaning the $00$ term of the Energy Momentum Tensor is:
+\begin{align*}
+  T^{00}=\vb{E}^2-\eta^{00}\L=\vb{E}^2-\frac12\qty(\vb{B}^2-\vb{E}^2)=
+  \frac12\qty(\vb{E}^2+\vb{B}^2)
+\end{align*}
+Which is exactly the classical eletromagnetic Hamiltonian Density, the first equation in 3.81. So the Hamiltonian is:
+\begin{align*}
+  \boxed{H=\int\dd[3]{x}T^{00}=\int\dd[3]{x}\frac12\qty(\vb{E}^2+\vb{B}^2)}
+\end{align*}
+Which is the first equation in 3.81
 
 \subsection{Field Theoretic Form}
+The mode expansion we need to use is:
+\begin{align*}
+  A_\mu=\sum_\lambda\int\frac{\dd[3]{p}}{(2\pi)^3}\frac1{\sqrt{2\omega_p}}
+  \qty[
+  \hat{a}_{\vb{p},\lambda}\veps_\mu(\vu{p},\lambda)e^{-ip\vdot x}+
+  \hat{a}^\dag_{\vb{p},\lambda}\veps^*_\mu(\vu{p},\lambda)e^{ip\vdot x}]
+\end{align*}
+The polarization vectors used are:
+\begin{align*}
+  \veps_\mu(p,\pm1)=\frac1{\sqrt{2}}\qty(0,1,\pm i,0)
+\end{align*}
+Which has the following properties:
+\begin{gather*}
+  \veps_\mu\veps^\mu=\veps^*_\mu\veps^{*\mu}=0\\
+  \veps^*_\mu(\vu{p},\lambda)\veps^\mu(\vu{p},\lambda')
+  =\veps_\mu(\vu{p},\lambda)\veps^{*\mu}(\vu{p},\lambda')=
+  \delta_{\lambda,\lambda'}\\
+  p^\mu\veps_\mu=0
+\end{gather*}
+
+Note the Explicit form of $T^{00}$:
+\begin{align*}
+  \tilde{T}^{00}&=
+  F^{\alpha0}F^0_\alpha+\frac14\eta^{00}F^{\alpha\beta}F_{\alpha\beta}\\
+  &=F^{\alpha0}F^0_\alpha+\frac14F^{\alpha\beta}F_{\alpha\beta}\\
+  &=(\D^\alpha A^0-\D^0A^\alpha)(\D^0A_\alpha-\D_\alpha A^0)
+  +\frac14
+  \qty(\D^\alpha A^\beta-\D^\beta A^\alpha)
+  \qty(\D_\alpha A_\beta-\D_\beta A_\alpha)\\
+  &=(\D^\alpha A^0-\D^0A^\alpha)(\D^0A_\alpha-\D_\alpha A^0)
+  +\frac12\qty(\D_\alpha A_\beta\D^\alpha A^\beta
+  -\D_\alpha A_\beta\D^\beta A^\alpha)
+\end{align*}
+Note that since we are in the Radiation gauge, we have $A^0=0$, so the only surviving term from the contraction $F^{\alpha0}F_{\alpha}^0 is$:
+\begin{align*}
+  F^{\alpha0}F^0_\alpha&=-\D^0A^\alpha\D^0A_\alpha\\
+  &=-\D^0A^0\D^0A_0+\D^0A^i\D^0A_i\\
+  &=\D^0A^i\D^0A_i
+\end{align*}
+We can then expand out the Lagrangian term in space and time components in order to find a similar result, if we cancel terms with $A^0$ as they come along:
+\begin{align*}
+  \D_\alpha A_\beta\D^\alpha A^\beta-\D_\alpha A_\beta\D^\beta A^\alpha&=
+  \D^0A^\beta\D_0A_\beta-\D^iA^\beta\D_iA_\beta
+  -\D^0A^\beta\D_\beta A_0+\D^iA^\beta\D_\beta A_i\\
+  &=\D^0A^0\D_0A_0-\D^0A^i\D_0A_i-\D^iA^0\D_iA_0\\
+  &+\D^iA^j\D_iA_j-\D^iA^0\D_0A_i-\D^iA^j\D_jA_i\\
+  &=-\D^0A^i\D_0A_i+\D^iA^j\D_iA_j-\D^iA^j\D_jA_i
+\end{align*}
+This combines quite well with our other surviving term:
+\begin{align*}
+  \tilde{T}^{00}&=\D^0A^i\D^0A_i
+  +\frac12\qty(-\D^0A^i\D_0A_i+\D^iA^j\D_iA_j-\D^iA^j\D_jA_i)\\
+  &=\frac12\D^0A^i\D_0A_i+\frac12\D^iA^j(\D_iA_j-\D_jA_i)
+\end{align*}
+We should then calculate these derivatives:
+\begin{align*}
+  \D^0A^i&=\sum_\lambda\int\frac{\dd[3]{p}}{(2\pi)^3}
+  \frac1{\sqrt{2\omega_p}}
+  \qty[\hat{a}_{\vb{p},\lambda}\veps^i(\vu{p},\lambda)(\D^0e^{-ip\vdot x})+
+  \hat{a}^\dag_{\vb{p},\lambda}\veps^{*i}(\vu{p},\lambda)(\D^0e^{ip\vdot x})]\\
+  &=\boxed{\sum_\lambda\int\frac{\dd[3]{p}}{(2\pi)^3}
+  \frac{-i\omega_p}{\sqrt{2\omega_p}}
+  \qty[\hat{a}_{\vb{p},\lambda}\veps^i(\vu{p},\lambda)e^{-ip\vdot x}-
+  \hat{a}^\dag_{\vb{p},\lambda}\veps^{*i}(\vu{p},\lambda)e^{ip\vdot x}]}\\
+  \D^iA^j&=\sum_\lambda\int\frac{\dd[3]{p}}{(2\pi)^3}
+  \frac1{\sqrt{2\omega_p}}
+  \qty[\hat{a}_{\vb{p},\lambda}\veps^j(\vu{p},\lambda)(\D^ie^{-ip\vdot x})+
+  \hat{a}^\dag_{\vb{p},\lambda}\veps^{*j}(\vu{p},\lambda)(\D^ie^{ip\vdot x})]\\
+  &=\boxed{\sum_\lambda\int\frac{\dd[3]{p}}{(2\pi)^3}
+  \frac{-ip^i}{\sqrt{2\omega_p}}
+  \qty[\hat{a}_{\vb{p},\lambda}\veps^j(\vu{p},\lambda)e^{-ip\vdot x}-
+  \hat{a}^\dag_{\vb{p},\lambda}\veps^{*j}(\vu{p},\lambda)e^{ip\vdot x}]}
+\end{align*}
+First we should perform the product of the two $\D^0$s:
+\begin{align*}
+  \D^0A^i\D_0A_i=\sum_{\lambda',\lambda}\int\frac{\dd[3]{p}\dd[3]{p}'}{(2\pi)^6}
+  \frac{-\omega_p\omega_{p'}}{2\sqrt{\omega_p\omega_{p'}}}
+  &\qty[\hat{a}_{\vb{p},\lambda}\veps^i(\vu{p},\lambda)e^{-ip\vdot x}-
+  \hat{a}^\dag_{\vb{p},\lambda}\veps^{*i}(\vu{p},\lambda)e^{ip\vdot x}]\\
+  \times&\qty[\hat{a}_{\vb{p'},\lambda'}\veps_i(\vu{p}',\lambda')e^{-ip'\vdot x}-
+  \hat{a}^\dag_{\vb{p'},\lambda'}\veps^*_i(\vu{p}',\lambda')e^{ip'\vdot x}]
+\end{align*}
+By expanding these products, We will find a few delta functions in 
 
 \section{Most General Lorentz-Invariant Langrangian}
 
