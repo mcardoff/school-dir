@@ -1,0 +1,171 @@
+\documentclass{beamer}
+
+\usepackage[italicdiff]{physics}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{float,multicol}
+
+\newcommand{\dbar}{d\hspace*{-0.08em}\bar{}\hspace*{0.1em}}
+
+\newenvironment{itemframe}[1]{\begin{frame}{#1}\begin{itemize}}   {\end{itemize}\end{frame}}
+
+% Changes style of actual slides
+\usetheme{Dresden}
+% Changes color of slides
+\usecolortheme{spruce}
+% removes controls at bottom right side
+\usenavigationsymbolstemplate{}
+
+% for figures
+\graphicspath{ {./figs/} }
+
+\title{Lab 3}
+\author{Michael Cardiff}
+\subtitle{Equipotential Surfaces}
+
+\begin{document}
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{What is Potential?}
+\begin{frame}{Electric Potential}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item The Electric Potential is to the Electric Potential Energy what the Electric Field is to the Electric Force:
+        \begin{align*}
+          \vb{E}\equiv\frac{\vb{F}}{q}\iff V=\frac{U}{q}
+        \end{align*}
+      \item Where $V$ is the electric potential, and $U$ the energy
+      \item When you use a \textbf{voltmeter}, you are measuring electric potential differences
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=4.0cm]{dmm}
+        \caption{Digital Multimeter}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{What is an Equipotential?}
+\begin{frame}{Equipotential Lines}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item This lab has you finding \textbf{Equipotential Lines} for different arrangement of charges. 
+      \item An Equipotential line is are like the lines on a contour map that shows altitude.
+        \begin{itemize}
+        \item Map: Same Altitude along line
+        \item Equipotential Lines: Same Potential along line
+        \end{itemize}
+      \item The next slide has some examples for equipotentials
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=5.0cm]{topomap}
+        \caption{Example of Contour Map}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Examples of Equipotential Lines}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=5.0cm]{eq1}
+        \caption{Equiptential for a Capacitor}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=5.0cm]{eq2}
+        \caption{Equiptentials for a Charge}
+      \end{figure}
+    \end{column}
+  \end{columns}
+  \begin{itemize}
+  \item Note that the equipotentials are perpendicular to the field lines
+  \end{itemize}
+\end{frame}
+\begin{frame}{How Do We Find Them?}
+  \begin{itemize}
+  \item Simply determined by the formula for the potential of the geometry you are working with. 
+  \item For example, for the Parallel Plate Capacitor and Point Charge
+    \begin{align*}
+      V_{cap}(x)=\frac{\sigma}{2\varepsilon_0}x\qquad
+      V_{chg}(r)=\frac{1}{4\pi\varepsilon_0}\frac{q}{r}
+    \end{align*}
+  \item Since $V_{cap}$ only depends on $x$, the equipotential lines should be perpendicular to $x$
+  \item Similarly $V_{chg}$ depends on $r$, so equipotential lines should be circles with radius $r$
+  \item This is simple when we know the form of the field
+  \end{itemize}
+\end{frame}
+
+\section{Experiment}
+\begin{frame}{Details of Experiment}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item Areas with no sound correspond to equipotential lines
+      \item Connecting a banana jack to the top part of the board picks out an equipotential to measure
+      \item Lab Manual has more details/Questions you need to answer
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=5.0cm]{mapping_device}
+        \caption{Mapping Device}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Setup}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=5.0cm]{upsidedown}
+        \caption{Upside Down Setup}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=5.0cm]{rightsideup}
+        \caption{Rightside Up Setup}
+      \end{figure}
+    \end{column}
+  \end{columns}
+  \begin{itemize}
+  \item In the righthand side figure, we will have a signal generator instead of a voltage supply, and the headphones instead of a voltmeter
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Key Notes of Experiment}
+  \begin{itemize}
+  \item Technically, the waveform you use (on signal generator) does not matter, but the other two included produce odd sounds, so play at your own risk
+  \item There are 7 places to put your banana jacks, but the 2 on the edge may be hard to find, so try to find the inner 5
+  \end{itemize}
+\end{frame}
+
+\section{Reminders}
+\begin{frame}{Reminders}
+  \begin{itemize}
+  \item This lab is due Friday, March 10
+  \item This is a short report, there are questions littered throughout the lab manual
+  \item Labs 1 and 2 Will be graded soon.
+  \end{itemize}
+\end{frame}
+
+\end{document}
