@@ -36,8 +36,7 @@ With $F_{\mu\nu}$ given by:
 \end{align*}
 So the contraction in the Lagrangian is given by:
 \begin{align*}
-  F_{\mu\nu}F^{\mu\nu}&=(\D_\mu A_\nu-\D_\nu A_\mu)(\D^\mu A^\nu-\D^\nu A^\mu)\\
-  &=2(\D_\mu A_\nu\D^\mu A^\nu-\D_\mu A_\nu\D^\nu A^\mu)
+  F_{\mu\nu}F^{\mu\nu}&=2(\D_\mu A_\nu\D^\mu A^\nu-\D_\mu A_\nu\D^\nu A^\mu)
 \end{align*}
 So the more useful Lagrangian for the purpose of doing derivatives is:
 \begin{align*}
@@ -53,7 +52,6 @@ The derivative is given by:
 \begin{align*}
   \pdv{\L}{(\D_\beta A_\alpha)}&=\frac12
   \pdv{(\D_\beta A_\alpha)}(\D_\mu A_\nu\D^\nu A^\mu-\D_\mu A_\nu\D^\mu A^\nu)\\
-  &=\frac12\qty(2\D^\alpha A^\beta-2\D^\beta A^\alpha)\\
   &=\D^\alpha A^\beta-\D^\beta A^\alpha=F^{\alpha\beta}
 \end{align*}
 Hence what we have in the energy momentum tensor is:
@@ -84,8 +82,8 @@ Since the field strength tensor is antisymmetric in $\mu,\nu$. Apply the derivat
   \boxed{\D_\mu T^{\mu\nu}=0}
 \end{align}
 
-\subsection{Bad Properties of $T_{\mu\nu}$}
-\subsubsection{Non-Symmetric in Indices}
+\subsection{Non-Ideal Properties of $T_{\mu\nu}$}
+\subsubsection{Not Symmetric in Indices}
 We can check that it is not symmetric by seeing:
 \begin{align*}
   T^{\mu\nu}\neq T^{\nu\mu}
@@ -113,7 +111,7 @@ This is equal to the second term of the second parenthetical, since multiplicati
 \begin{align*}
   \Delta T=\D^\alpha(A^\mu \D^\nu-A^\nu\D^\mu)A_\alpha
 \end{align*}
-Which is clearly not symmetrix in its indices, and therefore not 0, so $T^{\mu\nu}$ is NOT symmetric
+Which is clearly not symmetric in its indices, and therefore not 0, so $T^{\mu\nu}$ is NOT symmetric
 
 \subsubsection{Gauge Dependence}
 We can check the lack of Gauge Invariance by imposing a gauge transformation on $A_\mu$:
@@ -152,7 +150,41 @@ If we add this to our energy momentum tensor we now have:
   &=F^{\alpha\mu}F^\nu_\alpha+\frac14\eta^{\mu\nu}F^{\alpha\beta}F_{\alpha\beta}
 \end{align*}
 
-\subsubsection{Ensuring Index Symmetry}
+\subsubsection{Same Energy and Momenta}
+The energy density we obtain by modifying $T^{\mu\nu}$ is given by:
+\begin{align*}
+  H&=\int_V\dd[3]{x}\tilde{T}^{00}=\int_V\dd[3]{x}T^{00}
+  +\int\dd[3]{x}\D_\lambda F^{0\lambda}A^0
+\end{align*}
+We can show these are the same by demonstrating that the second term is 0:
+\begin{align*}
+  \int_V\dd[3]{x}\D_\lambda F^{0\lambda}A^0=
+  \int_V\dd[3]{x}\qty(\D_0 F^{00}A^0-\D_iF^{0i}A^0)
+\end{align*}
+The first term in the parentheses is 0 simply because $F$ is antisymmetric so its diagonal elements are $0$, the other term:
+\begin{align*}
+  -\int_{V}\dd[3]{x}\D_iF^{0i}A^0=-\int_{\D V}\dd{a}\vu{n}_iF^{0i}A^0
+\end{align*}
+Where $\vu{n}$ is some normal vector. However this is 0 since the fields fall off sufficiently fast on the boundary, so we find that:
+\begin{align}
+  \boxed{\int_V\dd[3]{x}\tilde{T}^{00}=\int_V\dd[3]{x}T^{00}}
+\end{align}
+As for the momenta we can perform the same process
+\begin{align*}
+  P^i&=\int_V\dd[3]{x}\tilde{T}^{0i}=\int_V\dd[3]{x}T^{0i}
+  +\int\dd[3]{x}\D_\lambda F^{0\lambda}A^i
+\end{align*}
+Where the integral that needs to be $0$ now is:
+\begin{align*}
+  \int\dd[3]{x}\D_\lambda F^{0\lambda}A^i&=
+  \int\dd[3]{x}\qty(\D_0F^{00}A^i-\D_jF^{0j}A^i)\\
+  -\int\dd[3]{x}\D_jF^{0j}A^i&=-\int_{\D V}\dd{a}\vu{n}_jF^{0j}A^i=0
+\end{align*}
+For the exact same reasons as before:
+\begin{align}
+  \boxed{\int_V\dd[3]{x}\tilde{T}^{0i}=\int_V\dd[3]{x}T^{0i}}
+\end{align}
+\subsubsection{Verifying Index Symmetry}
 To ensure symmetry we then calculate $\tilde{T}^{\mu\nu}$ and $\tilde{T}^{\nu\mu}$:
 \begin{align*}
   \tilde{T}^{\mu\nu}&=
@@ -170,19 +202,12 @@ Where we have swapped the upper and lower dummy indices by inserting a Minkowski
 
 We can see by commutativity of multiplication here that the following pairs will cancel when we subtract the two:
 \begin{center}
-  \begin{varwidth}{\textwidth}
-    \begin{itemize}
-    \item 1 and 8
-    \item 2 and 6
-    \item 3 and 7
-    \item 4 and 5
-    \end{itemize}
-  \end{varwidth}
+ (1 and 8), (2 and 6), (3 and 7), (4 and 5)
 \end{center}
-Therfore we can conclude that $\tilde{T}^{\mu\nu}$ is in fact symmetric:
-\begin{align*}
+Therefore we can conclude that $\tilde{T}^{\mu\nu}$ is in fact symmetric:
+\begin{align}
   \boxed{\tilde{T}^{\mu\nu}=\tilde{T}^{\nu\mu}}
-\end{align*}
+\end{align}
 
 \subsubsection{Verifying Gauge Invariance}
 We have already proven that $F^{\mu\nu}$ on its own is Gauge invariant, and we can see from simple index switching that $F^\mu_\nu$ is as well:
@@ -190,6 +215,18 @@ We have already proven that $F^{\mu\nu}$ on its own is Gauge invariant, and we c
   F^\mu_\nu=\eta_{\nu\alpha}F^{\mu\alpha}
 \end{align*}
 And since the metric and $F^{\mu\nu}$ are already gauge invariant, we explicitly have $\tilde{T}^{\mu\nu}$ as gauge invariant
+
+\subsubsection{Verifying Conservation}
+We can verify this easily using the fact that $F^{\mu\lambda}$ is antisymmetric:
+\begin{align*}
+  \D_\mu\tilde{T}^{\mu\nu}&=\D_\mu T^{\mu\nu}+
+  \D_\mu\D_\lambda(F^{\mu\lambda}A^\nu)\\
+  &=0
+\end{align*}
+Since the first term was already shown to be 0, and the second term is a contraction of an antisymmetric tensor $F^{\mu\lambda}$ with a symmetric one $\D_\mu\D_\lambda$, since mixed partials commute, hence:
+\begin{align}
+  \boxed{\D_\mu\tilde{T}^{\mu\nu}=0}
+\end{align}
 
 \subsection{Connecting to E and B Fields}
 Recall the classical formulae for the $E$ and $B$ fields in terms of the scalar and vector potentials $\phi$ and $\vb{A}$:
@@ -221,7 +258,7 @@ We can then write the field strength tensor in matrix form in terms of the field
     E^2&  B^3&  0  & -B^1\\
     E^3& -B^2&  B^1&  0
   }\\
-  [F^{\mu\nu}]&=
+  [F_{\mu\nu}]&=
   \pmqty{
      0  &  E^1&  E^2&  E^3\\
     -E^1&  0  & -B^3&  B^2\\
@@ -255,9 +292,9 @@ We calculated this in Mathematica, meaning the $00$ term of the Energy Momentum 
   \frac12\qty(\vb{E}^2+\vb{B}^2)
 \end{align*}
 Which is exactly the classical eletromagnetic Hamiltonian Density, the first equation in 3.81. So the Hamiltonian is:
-\begin{align*}
+\begin{align}
   \boxed{H=\int\dd[3]{x}T^{00}=\int\dd[3]{x}\frac12\qty(\vb{E}^2+\vb{B}^2)}
-\end{align*}
+\end{align}
 Which is the first equation in 3.81
 
 \subsection{Field Theoretic Form}
@@ -281,11 +318,11 @@ Which has the following properties:
   p^\mu\veps_\mu=0
 \end{gather*}
 
-Note the Explicit form of $T^{00}$:
+Note the Explicit form of $\tilde{T}^{00}$:
 \begin{align*}
   \tilde{T}^{00}&=
-  F^{\alpha0}F^0_\alpha+\frac14\eta^{00}F^{\alpha\beta}F_{\alpha\beta}\\
-  &=F^{\alpha0}F^0_\alpha+\frac14F^{\alpha\beta}F_{\alpha\beta}\\
+  F^{\alpha0}F^0_\alpha+\frac14\eta^{00}F^{\alpha\beta}F_{\alpha\beta}
+  =F^{\alpha0}F^0_\alpha+\frac14F^{\alpha\beta}F_{\alpha\beta}\\
   &=(\D^\alpha A^0-\D^0A^\alpha)(\D^0A_\alpha-\D_\alpha A^0)
   +\frac14
   \qty(\D^\alpha A^\beta-\D^\beta A^\alpha)
@@ -296,17 +333,13 @@ Note the Explicit form of $T^{00}$:
 \end{align*}
 Note that since we are in the Radiation gauge, we have $A^0=0$, so the only surviving term from the contraction $F^{\alpha0}F_{\alpha}^0 is$:
 \begin{align*}
-  F^{\alpha0}F^0_\alpha&=-\D^0A^\alpha\D^0A_\alpha\\
-  &=-\D^0A^0\D^0A_0+\D^0A^i\D^0A_i\\
-  &=\D^0A^i\D^0A_i
+  F^{\alpha0}F^0_\alpha&=-\D^0A^\alpha\D^0A_\alpha
+  =-\D^0A^0\D^0A_0+\D^0A^i\D^0A_i
+  =\D^0A^i\D^0A_i
 \end{align*}
-We can then expand out the Lagrangian term in space and time components in order to find a similar result, if we cancel terms with $A^0$ as they come along:
+We can then expand out the Lagrangian term in space and time components in order to find a similar result, if we cancel terms with $A^0$ as they come along, skipping some rather boring algebra:
 \begin{align*}
-  \D_\alpha A_\beta\D^\alpha A^\beta-\D_\alpha A_\beta\D^\beta A^\alpha&=
-  \D^0A^\beta\D_0A_\beta-\D^iA^\beta\D_iA_\beta
-  -\D^0A^\beta\D_\beta A_0+\D^iA^\beta\D_\beta A_i\\
-  &=\D^0A^0\D_0A_0-\D^0A^i\D_0A_i-\D^iA^0\D_iA_0\\
-  &+\D^iA^j\D_iA_j-\D^iA^0\D_0A_i-\D^iA^j\D_jA_i\\
+  \D_\alpha A_\beta\D^\alpha A^\beta-\D_\alpha A_\beta\D^\beta A^\alpha
   &=-\D^0A^i\D_0A_i+\D^iA^j\D_iA_j-\D^iA^j\D_jA_i
 \end{align*}
 This combines quite well with our other surviving term:
@@ -314,6 +347,10 @@ This combines quite well with our other surviving term:
   \tilde{T}^{00}&=\D^0A^i\D^0A_i
   +\frac12\qty(-\D^0A^i\D_0A_i+\D^iA^j\D_iA_j-\D^iA^j\D_jA_i)\\
   &=\frac12\D^0A^i\D_0A_i+\frac12\D^iA^j(\D_iA_j-\D_jA_i)
+\end{align*}
+We can also eliminate one element of the term in the parentheses since $\vb{p\vdot\bm\veps}=0$:
+\begin{align*}
+  \tilde{T}^{00}&=\frac12\D^0A^i\D_0A_i+\frac12\D^iA^j\D_iA_j
 \end{align*}
 We should then calculate these derivatives:
 \begin{align*}
@@ -341,9 +378,42 @@ First we should perform the product of the two $\D^0$s:
   &\qty[\hat{a}_{\vb{p},\lambda}\veps^i(\vu{p},\lambda)e^{-ip\vdot x}-
   \hat{a}^\dag_{\vb{p},\lambda}\veps^{*i}(\vu{p},\lambda)e^{ip\vdot x}]\\
   \times&\qty[\hat{a}_{\vb{p'},\lambda'}\veps_i(\vu{p}',\lambda')e^{-ip'\vdot x}-
-  \hat{a}^\dag_{\vb{p'},\lambda'}\veps^*_i(\vu{p}',\lambda')e^{ip'\vdot x}]
+  \hat{a}^\dag_{\vb{p'},\lambda'}\veps^*_i(\vu{p}',\lambda')e^{ip'\vdot x}]\\
+  \D^iA^j\D_iA_j=\sum_{\lambda',\lambda}\int\frac{\dd[3]{p}\dd[3]{p}'}{(2\pi)^6}
+  \frac{-p^i(p')_i}{2\sqrt{\omega_p\omega_{p'}}}
+  &\qty[\hat{a}_{\vb{p},\lambda}\veps^j(\vu{p},\lambda)e^{-ip\vdot x}-
+  \hat{a}^\dag_{\vb{p},\lambda}\veps^{*j}(\vu{p},\lambda)e^{ip\vdot x}]\\
+  \times&\qty[\hat{a}_{\vb{p'},\lambda'}\veps_j(\vu{p}',\lambda')e^{-ip'\vdot x}-
+  \hat{a}^\dag_{\vb{p'},\lambda'}\veps^*_j(\vu{p}',\lambda')e^{ip'\vdot x}]
 \end{align*}
-By expanding these products, We will find a few delta functions in 
+By expanding these products, We will find a few delta functions in $p,p'$, however this means that the only surviving terms will be ones with the same $\vu{p}$, and since only $\bm\veps(\lambda)\vdot\bm\veps^*(\lambda')=\delta_{\lambda\lambda'}$, we get:
+\begin{align*}
+  \D^0A^i\D_0A_i&=\boxed{
+  \sum_{\lambda}\int\frac{\dd[3]{p}}{(2\pi)^3}\frac{\omega_p}2
+  \qty[\hat{a}_{\vb{p},\lambda}\hat{a}^\dag_{\vb{p},\lambda}+
+  \hat{a}^\dag_{\vb{p},\lambda}\hat{a}_{\vb{p},\lambda}]}\\
+  \D^iA^j\D_iA_j&=\sum_{\lambda}\int\frac{\dd[3]{p}}{(2\pi)^3}
+  \frac{\vb{p}^2}{2\omega_p}
+  \qty[\hat{a}_{\vb{p},\lambda}\hat{a}^\dag_{\vb{p},\lambda}+
+  \hat{a}^\dag_{\vb{p},\lambda}\hat{a}_{\vb{p},\lambda}]\\
+  &=\boxed{\sum_{\lambda}\int\frac{\dd[3]{p}}{(2\pi)^3}\frac{\omega_p}{2}
+  \qty[\hat{a}_{\vb{p},\lambda}\hat{a}^\dag_{\vb{p},\lambda}+
+  \hat{a}^\dag_{\vb{p},\lambda}\hat{a}_{\vb{p},\lambda}]}
+\end{align*}
+Where from the second to the third line we used the dispersion relation $\omega_p=\abs{\vb{p}}$. We can then add these together (multiplied by a half) to get the Hamiltonian density:
+\begin{align}
+  \boxed{\tilde{T}^{00}=\mathcal{H}=
+  \sum_{\lambda}\int\frac{\dd[3]{p}}{(2\pi)^3}\omega_p
+  \hat{a}^\dag_{\vb{p},\lambda}\hat{a}_{\vb{p},\lambda}}
+\end{align}
+Which is the other half of 3.81, besides a factor of $\hbar$ which is set to 1.
+
+\section{Most General Lorentz-Invariant Langrangian}
+
+\subsection{Field Redefinition}
+
+\section{Proca Fields}
+
 
 \section{Most General Lorentz-Invariant Langrangian}
 
