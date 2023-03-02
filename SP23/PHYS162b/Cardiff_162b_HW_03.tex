@@ -17,7 +17,9 @@
 
 % macros
 \renewcommand{\L}{\mathcal{L}}
+\renewcommand{\l}{\ell}
 \newcommand{\D}{\partial}
+\newcommand{\cD}{\mathcal{D}}
 \newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
     \node[shape=circle,draw,inner sep=2pt](char){#1};}}
 
@@ -25,11 +27,211 @@
 \maketitle
 \section{Matrix Elements as Integrals}
 
+\subsection{Wigner-Eckart For Restrictions}
+The integral is equivalent to the following Matrix Element:
+\begin{align*}
+  \mel{\l_3m_3}{\hat{Y}^{(\l_2)}_{m_2}}{\l_1m_1}=
+  \int\dd{\Omega}Y^*_{\l_3m_3}(\theta,\phi)
+  Y_{\l_2m_2}(\theta,\phi)Y_{\l_1m_1}(\theta,\phi)
+\end{align*}
+Wigner-Eckart tells us the integral is given by:
+\begin{align*}
+  \int\dd{\Omega}Y^*_{\l_3m_3}(\theta,\phi)
+  Y_{\l_2m_2}(\theta,\phi)Y_{\l_1m_1}(\theta,\phi)
+  =\mel{\l_3}{|\hat{Y}^{(\l_2)}|}{\l_1}\ip{\l_3m_3}{\l_2m_2\l_1m_1}
+\end{align*}
+This integral will vanish unless the following conditions are met:
+\begin{equation}
+  \boxed{
+    \begin{gathered}
+      m_3=m_2+m_1\\
+      \abs{\l_2-\l_1}\leq\l_3\leq\l_2+\l_1
+    \end{gathered}
+  }
+\end{equation}
+
+\subsection{Additional Evaluation}
+Use the hint, consider the given Matrix element we evaluated in the previous part:
+\begin{align*}
+  \mel{\l_30}{\hat{Y}^{(\l_2)}_0}{\l_10}
+  =\int\dd{\Omega}Y^*_{\l_30}(\theta,\phi)Y_{\l_20}(\theta,\phi)
+  Y_{\l_10}(\theta,\phi)
+\end{align*}
+And note the form of the spherical harmonics with $m=0$:
+\begin{align*}
+  Y_0^{\l}(\theta,\phi)=\sqrt{\frac{2\l+1}{4\pi}}P_\l(\cos\theta)
+\end{align*}
+We can substitute this into our integral:
+\begin{align*}
+  \mel{\l_30}{\hat{Y}^{(\l_2)}_0}{\l_10}
+  =\sqrt{\frac{(2\l_1+1)(2\l_2+1)(2\l_3+1)}{(4\pi)^3}}
+  \int\dd{\Omega}P_{\l_3}(\cos\theta)P_{\l_2}(\cos\theta)P_{\l_1}(\cos\theta)
+\end{align*}
+The addition rule states:
+\begin{align*}
+  P_{\l_1}(x)P_{\l_2}(x)=\sum_{\l_3}\ip{\l_30}{\l_10\l_20}^2P_{\l_3}(x)
+\end{align*}
+In our case it may be more useful to use:
+\begin{align*}
+  P_{\l_1}(\cos\theta)P_{\l_2}(\cos\theta)=
+  \sum_{\l'}\ip{\l'0}{\l_10\l_20}^2P_{\l'}(\cos\theta)
+\end{align*}
+Hence we can turn two Legendre polynomials into a single one:
+\begin{align*}
+  \mel{\l_30}{\hat{Y}^{(\l_2)}_0}{\l_10}&\propto
+  \int\dd{\Omega}P_{\l_3}(\cos\theta)\sum_{\l'}\ip{\l'0}{\l_10\l_20}^2
+  P_{\l'}(\cos\theta)\\
+  &=\sum_{\l'}\ip{\l'0}{\l_10\l_20}^2\int\dd{\Omega}
+  P_{\l_3}(\cos\theta)P_{\l'}(\cos\theta)
+\end{align*}
+We can then use the orthogonality relation for the Legendre Polynomials to evaluate this:
+\begin{align*}
+  \sum_{\l'}\ip{\l'0}{\l_10\l_20}^2\int\dd{\Omega}
+  P_{\l_3}(\cos\theta)P_{\l'}(\cos\theta)&=
+  2\pi\sum_{\l'}\ip{\l'0}{\l_10\l_20}^2\int_{-1}^1\dd{x}P_{\l_3}(x)P_{\l'}(x)\\
+  &=\sum_{\l'}\ip{\l'0}{\l_10\l_20}^2\frac{4\pi}{2\l_3+1}\delta_{\l'\l_3}\\
+  &=\ip{\l_30}{\l_10\l_20}^2\frac{4\pi}{2\l_3+1}
+\end{align*}
+Hence we find a relationship for the reduced matrix element
+\begin{align*}
+  \mel{\l_30}{\hat{Y}_0^{(\l_2)}}{\l_10}&=
+  \sqrt{\frac{(2\l+1)(2\l_2+1)}{4\pi(2\l_3+1)}}\ip{\l_30}{\l_10\l_20}^2\\
+  &=\mel{\l_3}{|\hat{Y}^{(\l_2)}|}{\l_1}\ip{\l_30}{\l_10\l_20}
+\end{align*}
+We can then say:
+\begin{equation}
+  \boxed{
+  \begin{aligned}
+    \int\dd{\Omega}&Y^*_{\l_3m_3}(\theta,\phi)
+    Y_{\l_2m_2}(\theta,\phi)Y_{\l_1m_1}(\theta,\phi)\\
+    &=\sqrt{\frac{(2\l_2+1)(2\l_1+1)}{4\pi(2\l_3+1)}}\ip{\l_30}{\l_10\l_20}
+    \ip{\l_3m_3}{\l_2m_2\l_1m_1}
+  \end{aligned}}
+\end{equation}
 \section{Matrix Elements as Ket Outer Products}
+In class, we found the definition of an irreducible operator is of the form:
+\begin{align*}
+  \cD^\dag(R)T_q^{(k)}\cD(R)=
+  \sum_{q'=-k}^k\cD^{k^*}_{qq'}(R)T^{(k)}_{q'}
+\end{align*}
+Let $\hat{O}^{(\l)}_m$ be an element of the set $\{\dyad{\l m}{00}\}$, we should transformed operator $\hat{O}^{(\l)}_m$:
+\begin{align*}
+  \cD^\dag\hat{O}^{(\l)}_m\cD=\cD^\dag\dyad{\l m}{00}\cD=
+  \qty(\cD^\dag\ket{\l m})\qty(\cD^\dag\ket{00})^\dag
+\end{align*}
+We know how a ket transforms under a rotation:
+\begin{align*}
+  \cD(R)\ket{\l m}=\sum_{m'}\ket{\l m'}\cD^{(\l)}_{m'm}(R)
+\end{align*}
+Note the special case of $\ket{00}$:
+\begin{align*}
+  \cD(R)\ket{00}=\sum_{m'}\ket{0 m'}\cD^{(0)}_{m'0}(R)
+\end{align*}
+The only possible value of $m'$ in this sum is 0:
+\begin{align*}
+  \cD(R)\ket{00}=\ket{0 0}\cD^{(0)}_{00}(R)
+\end{align*}
+Since $\cD(R)$ must have determinant 1, this specific vector transforms like:
+\begin{align*}
+  \cD(R)\ket{00}=\ket{0 0}
+\end{align*}
+Therefore we can rewrite $\hat{O}$ as:
+\begin{align*}
+  \cD^\dag\hat{O}^{(\l)}_m\cD&=\qty(\cD^\dag\ket{\l m})\ket{00}^\dag\\
+  &=\sum_{m'}\ket{\l m'}\cD^{(\l)}_{m'm}(R)\bra{00}\\
+  &=\sum_{m'}\dyad{\l m'}{00}\cD^{(\l)}_{m'm}\\
+  &=\sum_{m'}\hat{O}^{(\l)}_m\cD^{(\l)}_{m'm}
+\end{align*}
+Hence the set of operators are the elements of an irreducible tensor operator, namely since:
+\begin{align}
+  \boxed{\cD^\dag\dyad{\l m}{00}\cD=\sum_{m'}\dyad{\l m'}{00}\cD^{(\l)}_{m'm}}
+\end{align}
 
 \section{Wigner-Eckhart in A Central Force}
-
+\subsection{Relating Matrix Elements}
+From eq. 3.459, we have:
+\begin{align*}
+  T^{(1)}_{\pm1}&=\mp\frac{x\pm iy}{\sqrt{2}}\\
+  T^{(1)}_{0}&=z
+\end{align*}
+The Wigner-Eckart Theorem says these operators are related by the reduced matrix element:
+\begin{align*}
+  \mel{n'\l'm'}{T^{(1)}_q}{n\l m}=\ip{\l m 1 q}{\l \l' 1m'}
+  \frac{\mel{n'\l'}{|T^{(1)}|}{n\l}}{\sqrt{2\l+1}}
+\end{align*}
+Note that the reduced matrix element is the same for all of these operators, so the only dependence is in the Clebsch-Gordan Coefficient, so their ratio is:
+\begin{align*}
+  \frac{\mel{n'\l'm'}{T^{(1)}_{\pm1}}{n\l m}}{\mel{n'\l'm'}{T^{(1)}_0}{n\l m}}
+  =\frac{\ip{\l1;m \pm1}{\l1;\l'm'}}{\ip{\l1;m 0}{\l1;l'm'}}
+\end{align*}
+These are subject to the usual conditions, mainly:
+\begin{gather*}
+  m'=m+q\\
+  \abs{\l-1}\leq\l'\leq\l+1
+\end{gather*}
+\subsection{Relating Wavefunctions}
+In this case, we are explicitly talking about spherical harmonics by resolving the identity:
+\begin{align*}
+  \mel{n'\l'm'}{\hat{O}}{n\l m}=\int\dd[3]{x}\ip{n'\l'm'}{\vb{x}}\hat{O}
+  \ip{\vb{x}}{n\l m}
+\end{align*}
+We can then identify:
+\begin{align*}
+  \ip{\vb{x}}{n\l m}=\psi(\vb{x})
+\end{align*}
+We then have the matrix element:
+\begin{align*}
+  \mel{n'\l'm'}{T^{(1)}_q}{n\l m}&=\int_0^\infty\dd{r} r^3R_{n'\l'}(r)R_{n\l}(r)
+  \int\dd{\Omega}Y_{\l'}^{m'*}(\theta,\phi)Y_\ell^m(\theta,\phi)
+  Y_1^q(\theta,\phi)\\
+  &=\int_0^\infty\dd{r} r^3R_{n'\l'}(r)R_{n\l}(r)
+  \sqrt{\frac{2\l+1}{2\l'+1}}\ip{\l1;00}{\l1;l'0}\ip{\l1;mq}{\l1;\l'm'}
+\end{align*}
+The second Clebsch Gordan Coefficient is the same as before, and $q=0,\pm1$
 \section{Rank 2 Spherical Tensor}
+\subsection{Cartesian Products as Irreducible Tensors}
+From Appendix B, we have:
+\begin{align*}
+  Y_2^0&=\sqrt{\frac{5}{16\pi}}\frac{3z^2-r^2}{r^2}\\
+  Y_2^{\pm1}&=\mp\sqrt{\frac{15}{8\pi}}(x\pm iy)\frac{z}{r^2}
+  Y_2^{\pm2}&=\mp\sqrt{\frac{15}{32\pi}}\frac{x^2-y^2\pm2ixy}{r^2}
+\end{align*}
+We can then solve for the asked terms by adding these:
+\begin{equation}
+  \boxed{
+  \begin{aligned}
+    xy &= i\sqrt{\frac{2\pi}{15}}\qty(Y_2^{-2}-Y_2^2)r^2\\
+    xz &= \sqrt{\frac{2\pi}{15}}\qty(Y_2^{-1}-Y_2^1)r^2\\
+    x^2-y^2 &= \sqrt{\frac{8\pi}{15}}\qty(Y_2^{-2}+Y_2^2)r^2
+  \end{aligned}}
+\end{equation}
 
-
+\subsection{Quadrupole Moment}
+Using our favorite theorem at this point:
+\begin{align*}
+  e\mel{\alpha jm'}{(x^2-y^2)}{\alpha jj}=
+  e\sqrt{\frac{8\pi}{15}}\mel{\alpha j m'}{\qty(Y_2^{-2}+Y_2^2)r^2}{\alpha jj}
+\end{align*}
+We can evaluate this fairly easily since we have spherical harmonics:
+\begin{align*}
+  e\sqrt{\frac{8\pi}{15}}\mel{\alpha j m'}{\qty(Y_2^{-2}+Y_2^2)r^2}{\alpha jj}
+  =e\sqrt{\frac{8\pi}{15}}
+  \frac{\mel{\alpha j}{|Y^{(2)}|}{\alpha j}}{\sqrt{2j+1}}
+  \qty[\ip{j2;j,-2}{j2;jm'}+\ip{j2;j,2}{j2ljm'}]
+\end{align*}
+However the second term in the sum is 0 since $m'$ is already at the max in $Q$, hence for $Q$ we have:
+\begin{align*}
+  Q=e\sqrt{\frac{16\pi}{5}}\mel{\alpha jj}{Y_2^0r^2}{\alpha jj}
+\end{align*}
+Which according to WE:
+\begin{align*}
+  Q=e\sqrt{\frac{16\pi}{5}}
+  \frac{\mel{\alpha j}{|Y^{(2)}|}{\alpha j}}{\sqrt{2j+1}}
+  \ip{j2;j,0}{j2;jj}
+\end{align*}
+So we can relate the 2 by:
+\begin{equation}
+  \boxed{e\mel{\alpha jm'}{(x^2-y^2)}{\alpha jj}
+  =\frac{Q}{\sqrt{2}}\frac{\ip{j2;j,-2}{j2;j,m'}}{\ip{j2;j,0}{j2;j,j}}}
+\end{equation}
 \end{document}
