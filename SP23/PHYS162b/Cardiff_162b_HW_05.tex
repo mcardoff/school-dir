@@ -1,0 +1,254 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 162b HW 5}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amssymb,amsthm,bm,physics,slashed}
+
+%% general pretty stuff
+\usepackage{caption,enumitem,float,geometry,graphicx,tikz}
+
+% setups
+\graphicspath{ {./figs/} }
+\captionsetup{labelfont=bf}
+\geometry{margin=1in}
+
+% macros
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\D}{\partial}
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+
+\begin{document}
+\maketitle
+
+\section{Sakurai 5.13}
+\subsection{Energies for 3 Lowest States}
+The energy spectrum for this system is simply the sum of two independent infinite square wells:
+\begin{align*}
+  E_{nm}=\frac{\hbar^2}{2ma^2}\qty(n^2+m^2)
+\end{align*}
+With $n$ corresponding to $x$ and $m$ to $y$, the wavefunctions are:
+\begin{align*}
+  \psi_{nm}=\frac2a\sin(\frac{n\pi}ax)\sin(\frac{m\pi}ay)
+\end{align*}
+Thus the first three states by their $n$ and $m$ labels are:
+\begin{align}
+\boxed{\{n,m\}=
+  \begin{cases}
+    \{1,1\} &\text{non-degenerate} \\
+    \{1,2\} &\text{twice degenerate} \\
+    \{2,2\} &\text{non-degenerate}
+  \end{cases}}
+\end{align}
+
+\subsection{Adding Perturbation}
+\subsubsection{Energy Shift order in $\lambda$}
+For each of the states, we have $\lambda$ times the correction, so it should only be linear in $\lambda$
+
+\subsubsection{Order $\lambda$ Corrections}
+For the non-degenerate corrections we have:
+\begin{align*}
+  \Delta_1^{(1)}&=\lambda\qty[\frac2a\int_0^ax\sin^2\frac{\pi x}a\dd{x}]
+  \qty[\frac2a\int_0^ay\sin^2\frac{\pi y}a\dd{y}]=
+  \lambda\frac{a^2}4\\
+  \Delta_3^{(1)}&=\lambda\qty[\frac2a\int_0^ax\sin^2\frac{2\pi x}a\dd{x}]
+  \qty[\frac2a\int_0^ay\sin^2\frac{2\pi y}a\dd{y}]=
+  \lambda\frac{a^2}4
+\end{align*}
+For the Degenerate case, we have the 2 states we need to construct the degeneacy matrix from:
+\begin{align*}
+  \psi_a&=\frac2a\sin\frac{\pi x}a\sin\frac{2\pi y}a\\
+  \psi_b&=\frac2a\sin\frac{2\pi x}a\sin\frac{\pi y}a
+\end{align*}
+The diagonal elements of the degeneracy matrix are:
+\begin{align*}
+  W_{aa}=\lambda\frac4{a^2}\int_0^a\int_0^a\dd{x}\dd{y}
+  xy\sin^2\frac{\pi x}a\sin^2\frac{2\pi y}a
+\end{align*}
+Which is easily done in mathematica:
+\begin{align*}
+  W_{bb}=W_{aa}=\lambda\frac{a^2}{4}
+\end{align*}
+Due to renaming integration variables we can say $W_{bb}=W_{aa}$, the off diagonal elements are found in mathematica
+\begin{align*}
+  W_{ab}=W_{ba}=\frac{256a^2\lambda}{81\pi^4}
+\end{align*}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10.0cm]{integral1}
+  \caption{Mathematica for Integral}
+\end{figure}
+We then construct $[W]$:
+\begin{align*}
+  [W]=\frac{\lambda a^2}{4}\pmqty{1 & 1024/81\pi^2 \\ 1024/81\pi^2 & 1}
+\end{align*}
+And can diagonalize it in Mathematica:
+\begin{align*}
+  \ket{w_\pm}=\frac1{\sqrt{2}}\qty(\psi_a\pm\psi_b)\\
+  w_\pm=\frac{\lambda a^2}{4}\qty(1\pm\frac{1024}{81\pi^4})
+\end{align*}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10.0cm]{diagw}
+  \caption{Mathematica for Diagonalization}
+\end{figure}
+To summarize:
+\begin{equation}
+  \boxed{\begin{aligned}
+      \Delta_1^{(1)}&=\lambda\frac{a^2}{4}\\
+      \Delta_{2a}^{(1)}&=\lambda\frac{a^2}{4}\qty(1+\frac{1024}{81\pi^4})\\
+      \Delta_{2b}^{(1)}&=\lambda\frac{a^2}{4}\qty(1-\frac{1024}{81\pi^4})\\
+      \Delta_1^{(1)}&=\lambda\frac{a^2}{4}
+  \end{aligned}}
+\end{equation}
+
+\subsubsection{Energy Diagram}
+This is fairly simple, since $\Delta_1^{(1)}$ and $\Delta_3^{(1)}$ increase the eenergy by a fixed amount, and $\Delta_2^{(1)}$ increases by that same amount before adding or subtracting the same amount, we find that:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10.0cm]{ediagram}
+  \caption{Energy Diagram}
+\end{figure}
+
+\section{Sakurai 5.14}
+As a reminder, we are working with the following Hamiltonian:
+\begin{align*}
+  \H=\pmqty{E_1^0&\lambda\Delta\\\lambda\Delta&E_2^0}
+\end{align*}
+
+\subsection{Exact Solution}
+For the exact solution we need to solve:
+\begin{align*}
+  \H\ket{\psi}=E\ket{\psi}
+\end{align*}
+So we need to solve:
+\begin{align*}
+  \det{H-I\mu}&=0\\
+  E_1^0E_2^0-\Delta^2\lambda^2-(E_1^0+E_2^0)\mu+\mu^2&=0
+\end{align*}
+We then find the eigenvalues are:
+\begin{align}
+  \boxed{E_{1,2}=\frac{E_1^0+E_{2}^0}2\pm
+  \sqrt{\frac{(E_1^0-E_2^0)^2}{4}+\lambda^2\Delta^2}}
+\end{align}
+And the Eigenvectors can we written as:
+\begin{align}
+  \boxed{\begin{aligned}
+    \psi_1&=\pmqty{\cos(\beta/2)\\\sin(\beta/2)}\\
+    \psi_2&=\pmqty{-\sin(\beta/2)\\\cos(\beta/2)}
+  \end{aligned}}
+\end{align}
+Where
+\begin{align*}
+  \tan\beta=\frac{2\lambda\Delta}{E_1^0-E_2^0}
+\end{align*}
+Equating this essentially to a spin system.
+
+\subsection{Perturbative Solution}
+We now have the following for $H_0$ and $V$:
+\begin{align*}
+  H_0&=\pmqty{\dmat[0]{E_1^0,E_2^0}}\\
+  V&=\pmqty{0&\lambda\Delta\\\lambda\Delta&0}
+\end{align*}
+With the unperturbed basis states as:
+\begin{align*}
+  \phi_1^{0}=\pmqty{1\\0}\quad\phi_2^{0}=\pmqty{0\\1}
+\end{align*}
+We can immediately see that the first order correction to the energies are $0$, since $V_{11}=V_{22}=0$. The second order energy shifts are given by eq. 5.42:
+\begin{align*}
+  \Delta_n^{(1)}&=\sum_{k\neq n}\frac{(V_{nk})^2}{E_{n}^0-E_k^0}\\
+  \Delta_1^{(1)}&=\sum_{k\neq 1}\frac{(V_{1k})^2}{E_{1}^0-E_k^0}
+  =\frac{(V_{12})^2}{E_{1}^0-E_2^0}\\
+  \Delta_2^{(1)}&=\sum_{k\neq 2}\frac{(V_{2k})^2}{E_{2}^0-E_k^0}
+  =\frac{(V_{21})^2}{E_{2}^0-E_1^0}
+\end{align*}
+Note that $V_{12}=V_{21}=\lambda\Delta$, so the energy corrections are:
+\begin{align}
+  \boxed{\begin{aligned}
+    \Delta_1^{(1)}&=\frac{(\lambda\Delta)^2}{E_1^0-E_2^0}\\
+    \Delta_2^{(1)}&=-\frac{(\lambda\Delta)^2}{E_1^0-E_2^0}
+  \end{aligned}}
+\end{align}
+Then the corrections to the wavefunctions:
+\begin{align}
+  \ket{n^{(1)}}&=\sum_{k\neq n}\ket{k^{0}}\frac{V_{kn}}{E_{n}^0-E_k^0}\notag\\
+  \ket{\phi_1^{(1)}}&=\phi_1^0\notag
+  \sum_{k\neq 1}\ket{k^{0}}\frac{V_{k1}}{E_1^0-E_k^0}\\
+  &=\phi_1^0+\phi_2^0\frac{V_{21}}{E_1^0-E_2^0}=
+  \boxed{\pmqty{1\\\frac{\lambda\Delta}{E_1^0-E_2^0}}}\\
+  \ket{\phi_2^{(1)}}&=\sum_{k\neq 2}\ket{k^{0}}\frac{V_{k2}}{E_2^0-E_k^0}\notag\\
+  &=\phi_2^0-\phi_1^0\frac{V_{12}}{E_1^0-E_2^0}=
+  \boxed{\pmqty{-\frac{\lambda\Delta}{E_1^0-E_2^0}\\1}}
+\end{align}
+Which if we take $\beta\to0$ in our exactly solved eigenstates, we will get $\cos\beta/2\to1$ and $\sin\beta/2\to\beta/2$ The energy Eigevalues in this limit goes to:
+\begin{align*}
+  E_{1/2}=\frac{E_1^0+E_2^0}{2}\pm\frac{E_1^0-E_2^0}{2}
+  \sqrt{1+\frac{4\lambda^2\Delta^2}{(E_1^0-E_2^0)}}
+\end{align*}
+The square root reduces to:
+\begin{align*}
+  E_{1/2}=\frac{E_1^0+E_2^0}{2}\pm\frac{E_1^0-E_2^0}{2}
+  \qty[1+\frac{2\lambda^2\Delta^2}{(E_1^0-E_2^0)}]
+\end{align*}
+Which isz the same as we found in second order PT
+
+\subsection{Almost Degenerate Limit}
+If we instead take an opposite limit, we have:
+\begin{align*}
+  \tan\beta\to\infty\implies\beta=\pi/2
+\end{align*}
+Giving the following eigenvectors:
+\begin{align}
+  \boxed{\psi_{1,2}=\frac1{\sqrt{2}}\pmqty{\pm1\\1}}
+\end{align}
+And the Eigenvalues now become:
+\begin{align*}
+  E_{1,2}&=\frac{E_1^0+E_2^0}{2}\pm\lambda\Delta
+  \sqrt{1+\frac{(E_1^0-E_2^0)^2}{4\lambda^2\Delta^2}}\\
+  &\to \frac{E_1^0+E_2^0}{2}\pm\lambda\Delta
+  \qty[1+\frac{(E_1^0-E_2^0)^2}{8\lambda^2\Delta^2}]
+\end{align*}
+So to first order in the degenerate case where $E_1^0=E_2^0$, we have splitting $\pm\lambda\Delta$, but in this limit we have:
+\begin{align}
+  \boxed{E_{1,2}=\frac{E_1^0+E_2^0}{2}\pm\lambda\Delta
+  \qty[1+\frac{(E_1^0-E_2^0)^2}{8\lambda^2\Delta^2}]}
+\end{align}
+
+\section{Sakurai 3.5}
+\subsection{Turning off Interaction}
+Denote the state $\chi^{e^-}_+\chi^{e^+}_-$ as $\ket{+-}$, if $A=0$ we have:
+\begin{align*}
+  H\ket{+-}=\frac{eB}{mc}\qty[S_z^{e^-}-S_z^{e^+}]\ket{+-}
+\end{align*}
+The $\ket{+-}$ is simply $\ket{+}^{e^{-}}\ket{-}^{e^{+}}$, which are eigenfunctions of both spin operators with eigenvalues $\pm\frac\hbar2$:
+\begin{align*}
+  \frac{eB}{mc}\qty[S_z^{e^-}-S_z^{e^+}]\ket{+-}=
+  \frac{eB}{mc}\qty[\frac\hbar2-\qty(-\frac\hbar2)]\ket{+-}
+\end{align*}
+Hence we do have an eigenstate of $H$, since:
+\begin{align}
+  \boxed{H\ket{+-}=\hbar\frac{eB}{mc}\ket{+-}}
+\end{align}
+
+\subsection{Making Interaction Stronger}
+If we instead of turning the interaction off, make it strong enough to overpower the previous term, we get:
+\begin{align*}
+  H\ket{+-}=A
+  \qty[S_z^{e^-}S_z^{e^+}+\frac12S_+^{e^-}S_-^{e^+}+\frac12S^{e^-}_-S^{e^+}_+]
+  \ket{+-}=
+  -A\frac{\hbar^2}4\ket{+-}+0+\frac{A\hbar^2}2\ket{-+}
+\end{align*}
+The term from raising the $e^{-}$ spin and lowering the $e^{-}$ spin comes from the fact that you cannot lower further than $-$ and cannot raise $+$. We then do not have an eigenstate, instead we have:
+\begin{align}
+  \boxed{H\ket{+-}=A\frac{\hbar^2}4\qty(2\ket{-+}-\ket{+-})}
+\end{align}
+We can then find the expected value of the Hamiltonian:
+\begin{align}
+  \boxed{\ev{+-}{H}{+-}=-A\frac{\hbar^2}{4}}
+\end{align}
+
+\end{document}

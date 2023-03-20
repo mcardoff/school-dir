@@ -1,0 +1,328 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 162b HW 4}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amssymb,amsthm,bm,physics,slashed}
+
+%% general pretty stuff
+\usepackage{caption,enumitem,float,geometry,graphicx,tikz}
+
+% setups
+\graphicspath{ {./figs/} }
+\captionsetup{labelfont=bf}
+\geometry{margin=1in}
+
+% macros
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\l}{\ell}
+\newcommand{\D}{\partial}
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+
+\begin{document}
+\maketitle
+
+\section{Bouncing Electron}
+
+\subsection{Schrodinger Equation}
+The only force this charge experiences is due to its image charge. So the total potential of the system is:
+\begin{align*}
+  V(r)&=\frac12\sum_iq_iV_i=\frac12\qty(e\frac{-e}{2y}-e\frac{e}{2y})\\
+  &=-\frac{e^2}{4y}
+\end{align*}
+The Time independent Schrodinger equation is then fairly simple:
+\begin{align}
+  \boxed{\qty(-\frac{\hbar^2}{2m}\laplacian-\frac{e^2}{4y})\psi=E\psi}
+\end{align}
+
+\subsection{Separating Variables}
+We want to write the solution as:
+\begin{align*}
+  \psi(x,y,z)=Y(y)X(x)Z(z)
+\end{align*}
+The $y$ equation gives:
+\begin{align*}
+  -\frac{\hbar^2}{2m}\dv[2]{Y}{y}-\frac{e^2}{4y}Y=E_yY(y)
+\end{align*}
+The other two equations are essentially the same:
+\begin{align*}
+  -\frac{\hbar^2}{2m}\dv[2]{X}{x}&=\frac{\lambda_x^2}{2m}X(x)\\
+  -\frac{\hbar^2}{2m}\dv[2]{Z}{z}&=\frac{\lambda_z^2}{2m}Z(z)
+\end{align*}
+Where we have the condition on the eigenvalues:
+\begin{align*}
+  E_y+\frac{\lambda_x^2}{2m}+\frac{\lambda^2_z}{2m}=E
+\end{align*}
+The potential is only in $y$, so $x$ and $z$ transformations leave the system invariant, so we can write their solutions as plane waves:
+\begin{align*}
+  X(x)Z(z)=e^{i(\lambda_xx+\lambda_zz)/\hbar}
+\end{align*}
+We then Note that for the $y$ equation we have that $Y(y\leq0)=0$, so we can solve the $y$ equation, considering the radial schrodinger equation for hydrogen-like atoms, we can set $\l=0$ since we need to find the ground state:
+\begin{align*}
+  -\frac{\hbar^2}{2mr^2}\dv{r}\qty(r^2\dv{R}{r})-\frac{Ze^2}{r}R=ER
+\end{align*}
+If we then have the replacement $r\to y$ and $R\to Y/y$, the equation is the same:
+\begin{align*}
+  -\frac{\hbar^2}{2m}\dv[2]{Y}{y}-\frac{Ze^2}{y}Y=EY
+\end{align*}
+Except we have $Z=\frac14$, so the ground state should be $yR_{10}(y)$ of Hydrogen atom fame:
+\begin{align*}
+  Y(y)=yR_{10}(y)=2y\frac1{(4a)^{3/2}}e^{-y/4a}
+\end{align*}
+Where $a$ is the Bohr radius.
+
+The energy spectrum for the $y$ ground state is simply hydrogen-like
+\begin{align*}
+  E_y=-\frac{me^4}{32\hbar^2}
+\end{align*}
+The ground state for $x$ and $y$ will simply have $\lambda_{x/z}=0$, hence we get:
+\begin{equation}
+\boxed{  \begin{gathered}
+    \psi_1=2y\qty(\frac{me^2}{4\hbar^2})^{3/2}e^{-me^2y/4\hbar^2}\\
+    E_y=-\frac{me^4}{32\hbar^2}
+  \end{gathered}}
+\end{equation}
+\subsection{Full Energy Spectrum and States}
+The remaining states and energies are simply continued from hydrogen:
+\begin{equation}
+  \boxed{\begin{gathered}
+      \psi_{n,\lambda_x,\lambda_z}=AyR_{n0}(y)e^{i(\lambda_xx+\lambda_zz)/\hbar}\\
+      E_{n,\lambda_x,\lambda_y}=-\frac{me^4}{32\hbar^2n^2}+
+      \frac{\lambda_x^2+\lambda_z^2}{2m}
+  \end{gathered}}
+\end{equation}
+
+\section{Stark Effect for a Rigid Rotor}
+\subsection{Selection Rules}
+The matrix element we need to resolve is given by:
+\begin{align*}
+  \mel{\l'm'}{-d\mathcal{E}\cos\theta}{\l m}=
+  -d\mathcal{E}\mel{\l'm'}{\cos\theta}{\l m}
+\end{align*}
+We know from the form of the spherical harmonics, we know that $\cos\theta\propto Y_0^1(\theta,\phi)$, so we can use the Wigner-Eckart theorem to talk about the related matrix element:
+\begin{align*}
+  \mel{\l'm'}{Y^1_0}{\l m}
+\end{align*}
+We need the following values for $m,m',\l,\l'$:
+\begin{equation}
+  \boxed{\begin{gathered}
+      m'=m\\
+      \abs{\l-1}\leq\l'\leq\l+1\\
+      -\l\leq m\leq\l
+  \end{gathered}}
+\end{equation}
+
+\subsection{First Non-Zero Energy Contribution}
+The first order energy correction is:
+\begin{align*}
+  \Delta_{n}^{(1)}&=\mel{n^{(0)}}{V}{n^{(0)}}\\
+  \Delta_{\l m}^{(1)}&=\mel{\l m}{V}{\l m}
+\end{align*}
+However if we apply the party operation to this, we note that:
+\begin{align*}
+  P\ket{\l m}=(-1)^\l\ket{\l m}
+\end{align*}
+Hence, the first order $\Delta$ should be $0$, since we will get a net negative sign when acting on $V$, which is negative under parity, hence:
+\begin{align}
+  \boxed{\mel{\l m}{V}{\l m}=0}
+\end{align}
+The second order correction:
+\begin{align*}
+  \Delta_{\l m}^{(2)}&=\mel{(\l m)^{(0)}}{V}{(\l m)^{(1)}}
+\end{align*}
+To calculate the first order correction to the wavefunctions we can use eq 5.40 in Sakurai which is later derived:
+\begin{align*}
+  \Delta_n^{(2)}=\sum_{k\neq\l}\frac{\abs{\mel{(km)^{0}}{V}{(\l m)^0}}^2}
+  {E_\l^{(0)}-E_k^{(0)}}
+\end{align*}
+This requires doing the integral:
+\begin{align*}
+  \mel{(km)^{0}}{V}{(\l m)^0}&=r\int\dd{\Omega}Y^k_m(\cos\theta)Y^\l_m\\
+  &=2r\sqrt{\frac{3}{\pi}}\int\dd{\Omega}Y^k_mY_0^1Y^\l_m
+\end{align*}
+We did something similar in the last homework, finding the result for general $\l$ and $m$ to be:
+\begin{align*}
+  \sqrt{\frac{(2\l_2+1)(2\l_1+1)}{4\pi(2\l_3+1)}}
+  \ip{\l_30}{\l_10\l_20}\ip{\l_3m_3}{\l_2m_2\l_1m_1}
+\end{align*}
+Where we have the following:
+\begin{gather*}
+  \l_3=k, \quad m_3=m\\
+  \l_2=1, \quad m_2=0\\
+  \l_1=\l, \quad m_1=m
+\end{gather*}
+Plug these in:
+\begin{align*}
+  \sqrt{\frac{(2+1)(2\l+1)}{4\pi(2k+1)}}
+  \ip{k0}{\l010}\ip{km}{10\l m}
+\end{align*}
+We can then use the Clebsch Gordan Coefficients as substitutes for these, giving:
+\begin{align}
+  \boxed{\Delta_n^{(2)}=\sum_{k\neq\l}\frac{24Ir^2}{\pi\hbar^2}
+  \qty(\frac{3(2\l+1)}{4\pi(2k+1)})
+  \frac{(\ip{k0}{\l010}\ip{km}{10\l m})^2}{\l(\l+1)-k(k+1)}}
+\end{align}
+
+\section{Making Sure Sakurai is Right}
+\subsection{5.22 and 5.25}
+To verify 5.22, we simply need to act on 5.21 on the left with $\bra{n^{(0)}}$:
+\begin{align*}
+  \mel{n^{(0)}}{(E_n^{(0)}-H_0)}{n}=\mel{n^{(0)}}{(\lambda V-\Delta_n)}{n}
+\end{align*}
+We then use 5.18 and the hermiticity of $H_0$ to say:
+\begin{align*}
+  \bra{n^{(0)}}H_0=\bra{n^{(0)}}E_n^{(0)}
+\end{align*}
+Hence the $H_0$ can be replaced with another $E_n^{(0)}$:
+\begin{align*}
+  \mel{n^{(0)}}{(E_n^{(0)}-E_n^{(0)})}{n}=\mel{n^{(0)}}{(\lambda V-\Delta_n)}{n}
+\end{align*}
+Hence we can arrive at 5.22:
+\begin{align}
+  \label{eq:5.22}
+  \boxed{\mel{n^{(0)}}{(\lambda V-\Delta_n)}{n}=0}
+\end{align}
+To verify 5.25, we should expand $\phi_n$:
+\begin{align*}
+  \phi_n(\lambda V-\Delta_n)\ket{n}&=
+  (1-\dyad{n^{(0)}})(\lambda V-\Delta_n)\ket{n}\\
+  &=((\lambda V-\Delta_n)-\dyad{n^{(0)}}(\lambda V-\Delta_n))\ket{n}\\
+  &=(\lambda V-\Delta_n)\ket{n}-\dyad{n^{(0)}}(\lambda V-\Delta_n)\ket{n}
+\end{align*}
+The second term is eq \eqref{eq:5.22} times the $\ket{n^{(0)}}$, but since 5.22 equals 0, we only get:
+\begin{align}
+  \label{eq:5.25}
+  \boxed{\phi_n(\lambda V-\Delta_n)\ket{n}=(\lambda V-\Delta_n)\ket{n}}
+\end{align}
+Which is eq 5.25
+
+\subsection{5.33}
+We can write the inverse operator as an infinite sum:
+\begin{align*}
+  \frac{1}{E_n^{(0)}-H_0}=\sum_{i=0}^\infty\qty(\frac{E_i^{(0)}}{E^{(0)}_n})^i
+\end{align*}
+So since we can write this in terms of eigenvalues of $H_0$, the dyads simply pass through this, and we add $\phi_n$ to the left, right, or both sides without loss of generality:
+\begin{align}
+  \boxed{\frac{1}{E_n^{(0)}-H_0}\phi_n=\phi_n\frac{1}{E_n^{(0)}-H_0}=
+    \phi_n\frac{1}{E_n^{(0)}-H_0}\phi_n}
+\end{align}
+
+\subsection{5.39 and 5.40}
+On the 'left' hand side of eq 5.38, we have only one term of order $\lambda$:
+\begin{align*}
+  \lambda\ket{n^{(1)}}
+\end{align*}
+The next terms with only single powers of $\lambda$ will only include the vector $\ket{n^{(0)}}$ since all higher order terms have at least one more $\lambda$:
+\begin{align*}
+  \frac{\phi_n}{E_n^{(0)}-H_0}\qty(\lambda V-\lambda\Delta_n^{(1)})
+\end{align*}
+Since $\Delta_n^{(1)}=\mel{n^{(0)}}{V}{n^{(0)}}$, we can write:
+\begin{align*}
+  \phi_n\Delta_n^{(1)}=\sum_{k\neq n}\dyad{k^{(0)}}\Delta_n^{(1)}=0
+\end{align*}
+Since $\phi_n$ contains only states that are not $n$, whereas $\Delta_n^{(1)}$ includes only $\ket{n}$, so it must be $0$, giving us 5.39:
+\begin{align}
+  \label{eq:5.39}
+  \boxed{\ket{n^{(1)}}=\frac{\phi_n}{E_n^{(0)}-H_0}V\ket{n^{(0)}}}
+\end{align}
+
+We then go 5.40, where we take the definition of $\Delta_n^{(2)}$ and include eq \eqref{eq:5.39} for $\ket{n^{(1)}}$:
+\begin{align*}
+  \Delta_n^{(2)}=\mel{n^{(0)}}{V}{n^{(1)}}
+  &=\mel{n^{(0)}}{V\qty(\frac{\phi_n}{E_n^{(0)}-H_0}V)}{n^{(0)}}\\
+  &=\mel{n^{(0)}}{V\frac{\phi_n}{E_n^{(0)}-H_0}V}{n^{(0)}}
+\end{align*}
+Which is 5.40:
+\begin{align}
+  \boxed{\Delta_n^{(2)}=\mel{n^{(0)}}{V\frac{\phi_n}{E_n^{(0)}-H_0}V}{n^{(0)}}}
+\end{align}
+We can use the sum definition of the inverse operator acting on $\phi_n$:
+\begin{align*}
+  \Delta_n^{(2)}=\mel{n^{(0)}}{V\qty(\sum_{k\neq n}
+    \frac1{E_n^{(0)}-E_k^{(0)}}\dyad{k^{(0)}})V}{n^{(0)}}
+\end{align*}
+Then we can apply linearity of the inner product:
+\begin{align*}
+  \sum_{k\neq n}\frac1{E_n^{(0)}-E_k^{(0)}}
+  \mel{n^{(0)}}{V}{k^{(0)}}\mel{k^{(0)}}{V}{n^{(0)}}=
+  \sum_{k\neq n}\frac{\abs{\mel{k^{(0)}}{V}{n^{(0)}}}^2}{E_n^{(0)}-E_k^{(0)}}
+\end{align*}
+Hence as a sum over unperturbed states we have:
+\begin{align}
+  \boxed{\Delta_n^{(2)}=
+  \sum_{k\neq n}\frac{\abs{\mel{k^{(0)}}{V}{n^{(0)}}}^2}{E_n^{(0)}-E_k^{(0)}}}
+\end{align}
+
+\subsection{5.41 and 5.44}
+The second order terms in 5.38's left hand side are:
+\begin{align*}
+  \ket{n^{(2)}}
+\end{align*}
+And then the right hand side:
+\begin{align*}
+  \frac{\phi_n}{E_n^{(0)}-H_0}\qty((V-\Delta_n^{(1)})\ket{n^{(1)}}
+  -\Delta_n^{(2)}\ket{n^{(0)}})
+\end{align*}
+From before we know $\phi_n\Delta_n^{(1)}=0$, and we know the form of $\ket{n^{(1)}}$:
+\begin{align*}
+  \frac{\phi_n}{E_n^{(0)}-H_0}(V-\Delta_n^{(1)})\ket{n^{(1)}}=
+  \frac{\phi_n}{E_n^{(0)}-H_0}V\ket{n^{(1)}}=
+  \frac{\phi_n}{E_n^{(0)}-H_0}V\frac{\phi_n}{E_n^{(0)}-H_0}V\ket{n^{(0)}}
+\end{align*}
+The other term is given by:
+\begin{align*}
+  \frac{\phi_n}{E_n^{(0)}-H_0}
+  \mel{n^{(0)}}{V\frac{\phi_n}{E_n^{(0)}-H_0}V}{n^{(0)}}\ket{n^{(0)}}=
+  \frac{\phi_n}{E_n^{(0)}-H_0}
+  \mel{n^{(0)}}{V}{n^{(0)}}\frac{\phi_n}{E_n^{(0)}-H_0}V\ket{n^{(0)}}
+\end{align*}
+We can go from the left from to the right side by using the series definition from above.
+
+The first two terms of 5.44 come from what we have already done:
+\begin{align*}
+  \ket{n^{(1)}}=\sum_{n\neq k}
+  \frac{\dyad{k^{(0)}}V\ket{n^{(0)}}}{E_n^{(0)}-E_k^{(0)}}=
+  \boxed{\sum_{n\neq k}\ket{k^{(0)}}\frac{V_{kn}}{E_n^{(0)}-E_k^{(0)}}}
+\end{align*}
+The second term simply comes from expanding the various forms of $\phi_n$ composed with the inverse operator:
+\begin{align*}
+  \frac{\phi_n}{E_n^{(0)}-H_0}V\frac{\phi_n}{E_n^{(0)}-H_0}V\ket{n^{(0)}}
+  &=\sum_{k\neq n}\frac{\dyad{k^{(0)}}V}{E_n^{(0)}-E_k^{(0)}}
+  \sum_{l\neq n}\frac{\dyad{l^{(0)}}V}{E_n^{(0)}-E_l^{(0)}}\ket{n^{(0)}}\\
+  &=\sum_{k\neq n}\sum_{l\neq n}
+  \frac{\dyad{k^{(0)}}V\dyad{l^{(0)}}V\ket{n^{(0)}}}
+  {(E_n^{(0)}-E_k^{(0)})(E_n^{(0)}-E_l^{(0)})}\\
+  &=\boxed{\sum_{k\neq n}\sum_{l\neq n}\ket{k^{(0)}}
+  \frac{V_{kl}V_{ln}}{(E_n^{(0)}-E_k^{(0)})(E_n^{(0)}-E_l^{(0)})}}
+\end{align*}
+The next term:
+\begin{align*}
+  -\frac{\phi_n}{E_n^{(0)}-H_0}\mel{n^{(0)}}{V}{n^{(0)}}
+  \frac{\phi_n}{E_n^{(0)}-H_0}V\ket{n^{(0)}}&=
+  \sum_{k\neq n}\frac{V_{nn}\dyad{k^{(0)}}}{E_n^{(0)}-E_k^{(0)}}
+  \sum_{l\neq n}\frac{\dyad{l^{(0)}}V\ket{n^{(0)}}}{E_n^{(0)}-E_l^{(0)}}\\
+  &=\sum_{k\neq n}\sum_{l\neq n}
+  \frac{V_{nn}\dyad{k^{(0)}}\dyad{l^{(0)}}V\ket{n^{(0)}}}
+  {(E_n^{(0)}-E_k^{(0)})(E_n^{(0)}-E_l^{(0)})}\\
+  &=\sum_{k\neq n}\sum_{l\neq n}
+  \frac{V_{nn}\ket{k^{(0)}}\delta_{kl}\mel{l^{(0)}}{V}{n^{(0)}}}
+  {(E_n^{(0)}-E_k^{(0)})(E_n^{(0)}-E_l^{(0)})}\\
+  &=\sum_{k\neq n}\ket{k^{(0)}}
+  \frac{V_{nn}V_{kn}}
+  {(E_n^{(0)}-E_k^{(0)})^2}
+\end{align*}
+Hence we have 5.44:
+\begin{equation}
+  \boxed{\begin{aligned}
+    \ket{n}=\ket{n^{(0)}}&+
+    \lambda\qty(\sum_{n\neq k}\ket{k^{(0)}}\frac{V_{kn}}{E_n^{(0)}-E_k^{(0)}})\\
+    &+\lambda^2\qty(\sum_{k\neq n}\sum_{l\neq n}\ket{k^{(0)}}
+    \frac{V_{kl}V_{ln}}{(E_n^{(0)}-E_k^{(0)})(E_n^{(0)}-E_l^{(0)})}
+    -\sum_{k\neq n}\ket{k^{(0)}}\frac{V_{nn}V_{kn}}{(E_n^{(0)}-E_k^{(0)})^2})
+  \end{aligned}}
+\end{equation}
+
+\end{document}
