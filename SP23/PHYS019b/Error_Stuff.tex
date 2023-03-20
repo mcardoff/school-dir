@@ -1,0 +1,231 @@
+\documentclass{beamer}
+
+\usepackage[italicdiff]{physics}
+\usepackage{hyperref}
+\usepackage{url}
+
+\newcommand{\dbar}{d\hspace*{-0.08em}\bar{}\hspace*{0.1em}}
+
+\newenvironment{itemframe}[1]{\begin{frame}{#1}\begin{itemize}}   {\end{itemize}\end{frame}}
+
+% Changes style of actual slides
+\usetheme{Dresden}
+% Changes color of slides
+\usecolortheme{spruce}
+% removes controls at bottom right side
+\usenavigationsymbolstemplate{}
+
+% for figures
+\graphicspath{ {./figs/} }
+
+\title{Error Analysis Review}
+\author{Michael Cardiff}
+\subtitle{PHYS 19b}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{What is This?}
+  \begin{itemize}
+  \item I am going to hopefully be periodically updating this set of slides with review material for the error analysis needed in your labs.
+  \item This is meant to be a quick reference so you can refresh yourself on how to calculate certain error statistics
+  \end{itemize}
+\end{frame}
+
+\section{Error Propagation}
+\begin{frame}{Error Propagation}
+  \begin{itemize}
+  \item We have certain measurements $x,y,z$ with associated errors $\sigma_x,\sigma_y,\sigma_z$
+  \item We want to calcuate $a$, which is related to $x,y,z$ by some function $f$, we could say that:
+    \begin{align*}
+      a = f(x,y,z)
+    \end{align*}
+  \item Since $a$ is found through measurements with error, it should have its own error.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Continued}
+  \begin{itemize}
+  \item We calculate the error on a by \textbf{propagating} the error from $x,y,z$
+  \item In order to calculate it, we use the following formula:
+    \begin{align*}
+      \sigma_a^2=\qty(\pdv{f}{x})^2\sigma_x^2
+      +\qty(\pdv{f}{y})^2\sigma_y^2
+      +\qty(\pdv{f}{z})^2\sigma_z^2
+    \end{align*}
+  \item So if a calculated variable depends on some number of measured variables, you will have a partial derivative for each measurement the calculation depends on, multiplied by the square of the error for that measurement.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Interpreting the Formula}
+  \begin{itemize}
+  \item The formula we use has the basic unit of:
+    \begin{align*}
+      \qty(\pdv{f}{x})^2\sigma_x^2
+    \end{align*}
+  \item We can intepret this using the basic definition of derivatives:
+  \item $\pdv{f}{x}$ is the change in $f$  when we make a small change to $x$
+  \item $\sigma_x$ is how uncertain we are in that change of $x$
+  \item This means the basic unit above determines how uncertain we are in $f$ when we specifically change $x$.
+  \item So the reason we need to square everything is because we are finding a distance in errors, we want the end result to be an error after all
+  \end{itemize}
+\end{frame}
+
+\section{How good is your answer?}
+\begin{frame}{Why Should we care?}
+  \begin{itemize}
+  \item The whole purpose of our experiments is to see if the mathematical framework we use to describe real events is accurate
+  \item Essentially, when we describe how 'good' a fit is, we want to compare the error between the mathematical answer in the fit, to our measured data
+  \item There are a number of ways to determine goodness of a fit
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Goodness of Fit}
+  \begin{itemize}
+  \item The $\chi^2$ statistic is one way to determine if your fit is 'good'
+  \item Another way we can say if a fit is good is the $R$ or $R^2$ value
+    \begin{itemize}
+    \item Excel can instantly give you the $R^2$ value
+    \end{itemize}
+  \item These both are ways of determining how good your fit is
+  \item Let's Discuss each of these
+  \end{itemize}
+\end{frame}
+
+\section{$R^2$ Statistic}
+\begin{frame}{The $R^2$ Statistic}
+  \begin{itemize}
+  \item This statistic refers only to a fit
+  \item It tells you how well, on a scale of 0 to 1, your data fits the curve
+  \item Classical example: figure below:
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=7.0cm]{rval}
+      \caption{Different Values of $R^2$}
+    \end{figure}
+  \item We can put any number of lines through the middle one, but only one line captures all the points in the other two
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{How to Calculate}
+  \begin{itemize}
+  \item Given by the Formula:
+    \begin{align*}
+      R^2=1-\frac{\sum_i\qty(y^{data}_i-y^{fit}_i)^2}
+      {\sum_i\qty(y^{data}_i-\bar{y})^2}
+    \end{align*}
+  \item Where $y^{data}$ is your data, $y^{fit}$ is your fitted data, and $\bar{y}$ is the mean of your data.
+  \item Numerator is called the Sum Squared of the residuals
+  \item Denominator is the total of the sum of squares, and is related to the variance of the data.
+  \item Since the variance is related to the error on the mean, we are trying to see how well the fit residuals mimic the error on the mean.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Pros and Cons}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \textbf{Pros}
+      \begin{itemize}
+      \item Gives an idea if your guess for the fit was right
+      \item Quantifies how big the fit residuals are
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \textbf{Cons}
+      \begin{itemize}
+      \item Does not take into account error of measurements
+      \item Only a relationship between chosen fit to data
+      \item Multiple different fits can give a good value of $R^2$
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{$\chi^2$ Statistic}
+\begin{frame}{The $\chi^2$ statistic}
+  \begin{itemize}
+  \item This refers to 3 pieces of data:
+    \begin{itemize}
+    \item Your Data
+    \item Your Fit
+    \item Your Errors
+    \end{itemize}
+  \item The Formula to find it is:
+    \begin{align*}
+      \chi^2=\sum_{i=1}^N\frac{(y_i^{data}-y_i^{fit})^2}{\sigma_i^2}
+    \end{align*}
+  \item $\sigma_i$ is the error on the $i^{th}$ measurement, $y^{data}$ are your measurement values, and $y^{curve}$ are your fit evaluated at the same data points that your $y^{data}$ were measured at. 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Continued}
+  \begin{itemize}
+  \item The numerator and denominator are both errors
+    \begin{align*}
+      \chi^2=\sum_{i=1}^N\frac{(y_i^{data}-y_i^{fit})^2}{\sigma_i^2}
+    \end{align*}
+  \item The numerator is how far off your data is from the supposed mathematical answer (your fit)
+  \item The denominator describes the error you said it should be based on either error propagation or error on your measurement devices.
+  \item How to Interpret the value of $\chi^2$:
+    \begin{itemize}
+    \item $\chi^2<1$ You overestimated the error
+    \item $\chi^2\approx1$ You estimated the error correctly
+    \item $\chi^2>1$ You underestimated the error 
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+\begin{frame}{Pros and Cons}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \textbf{Pros}
+      \begin{itemize}
+      \item Includes all relevant measurements in a science experiment
+      \item Tells you if your choice of error is correct
+      \item Fairly easy to calculate
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \textbf{Cons}
+      \begin{itemize}
+      \item Overall value of statistic changes based on number of points (this is why we have $\chi^2/N_{dof}$)
+      \item Not well defined when there are small amounts of degrees of freedom
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Which to Choose}
+  \begin{itemize}
+  \item If you just want to comment on how good your fit is, use $R^2$
+  \item If you want to discuss experimental results, i.e. errors, use $\chi^2$
+  \item Most of the time in lab we have errors, so most of the time we are looking to calculate $\chi^2$
+  \end{itemize}
+\end{frame}
+
+\section{Dangers}
+\begin{frame}{Why Does it Matter?}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item To the right are 4 data sets with different Data, but
+        \begin{itemize}
+        \item The same fit params
+        \item The same $R^2$ value
+        \end{itemize}
+      \item So Completely different data gives the same overall results
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=5cm]{anscombe}
+        \caption{Anscombe Data Sets}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\end{document}

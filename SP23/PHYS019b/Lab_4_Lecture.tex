@@ -1,0 +1,248 @@
+\documentclass{beamer}
+
+\usepackage[italicdiff]{physics}
+\usepackage{amsmath,amsthm}
+\usepackage{hyperref,url}
+\usepackage{multicol}
+
+\newcommand{\dbar}{d\hspace*{-0.08em}\bar{}\hspace*{0.1em}}
+
+\theoremstyle{remark}
+\newtheorem{law}{Law}
+
+\newenvironment{itemframe}[1]{\begin{frame}{#1}\begin{itemize}}   {\end{itemize}\end{frame}}
+
+% Changes style of actual slides
+\usetheme{Dresden}
+% Changes color of slides
+\usecolortheme{spruce}
+% removes controls at bottom right side
+\usenavigationsymbolstemplate{}
+
+% for figures
+\graphicspath{ {./figs/} }
+
+\title{Lab 4}
+\author{Michael Cardiff}
+\subtitle{DC Circuits}
+
+\begin{document}
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Ohm's Law}
+\begin{frame}{Ohm's Law}
+  \begin{itemize}
+  \item Central to any circuit with resistors, it relates the current and resistance to the voltage drop:
+    \begin{align*}
+      V=IR
+    \end{align*}
+  \item Using Ohm's Law, and Kirchhoff's Laws, we can solve any circuit, no matter how complex
+  \end{itemize}
+\end{frame}
+
+\section{Kirchhoff's Laws}
+\begin{frame}{Kirchhoff's Loop Law}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{law}[Kirchhoff's Loop Law]
+        The sum of voltages around a loop is 0:
+        \begin{align*}
+          \sum V=0
+        \end{align*}
+        Due to this, the current around a loop is equal
+      \end{law}
+      \begin{itemize}
+      \item Used at every single loop in conjunction with the next law
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=5.0cm]{loop}
+        \caption{Circuit with a loop}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Kirchhoff's Junction Law}
+  \begin{columns}
+    \begin{column}{0.6\textwidth}
+      \begin{law}[Kirchhoff's Junction Law]
+        The sum of currents at a junction is 0:
+        \begin{align*}
+          \sum I=0
+        \end{align*}
+      \end{law}
+      \begin{itemize}
+      \item Used to solve parallel circuits with multiple loops
+      \item In the figure, we know: $I_1+I_2+I_3=0$
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=4.0cm]{junction}
+        \caption{Circuit with a junction}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{What do they mean?}
+  \begin{itemize}
+  \item Loop Law: The circuit is a closed system, so summing voltages is like summing energies
+  \item Just energy conservation!
+  \item Junction Law: If they did not sum to $0$, then one end has more charge than the other
+  \item So the junction law is just conservation of charge!
+  \item All Kirchhoff did was apply these general principles to circuit systems
+  \end{itemize}
+\end{frame}
+
+\section{Measuring Current/Voltage}
+\begin{frame}{How does an Ammeter work?}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item Because of the loop law, components connected in series see the same current
+      \item Essentially, an ammeter must be placed \textbf{within the circuit} to see the current
+      \item Ideally, the ammeter does not affect the rest of the circuit, so it has $0$ resistance
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=5.0cm]{ammeter}
+        \caption{Ammeter in a circuit}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{How does a Voltmeter work?}
+  \begin{columns}
+    \begin{column}{0.6\textwidth}
+      \begin{itemize}
+      \item Voltmeters work because they have very high resistances
+      \item Due to this, if we placed it in series, not voltage would be measured
+      \item Instead, the loop and junction law allows us to put it in parallel
+      \item Essentially, the voltmeter must \textbf{externally probe the circuit} to measure a voltage
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=4.0cm]{voltmeter}
+        \caption{Voltmeter in a circuit}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Wheatstone Bridge}
+\begin{frame}{Example Circuit}
+  \begin{columns}
+    \begin{column}{0.6\textwidth}
+      \begin{itemize}
+      \item The Lab Manual tells you to solve the Wheatstone Bridge circuit to find the following:
+        \begin{align*}
+          \frac{R_2}{R_1}=\frac{R_x}{R_3}
+        \end{align*}
+      \item The circuit can be solved using everything we have gone over so far!
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=4.0cm]{wheat}
+        \caption{Wheatstone Bridge Circuit}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Junctions}
+  \begin{columns}
+    \begin{column}{0.6\textwidth}
+      \begin{itemize}
+      \item Consider Junctions $B$ and $D$, use the junction law:
+        \begin{align*}
+          \text{B:}\quad I_3+I_g+I_x=0\\
+          \text{D:}\quad I_1+I_g+I_2=0
+        \end{align*}
+      \item Lab manual: Bridge is 'balanced' when $I_g=0$, so we can use these equations:
+        \begin{align*}
+          I_3=-I_x\\
+          I_1=-I_2
+        \end{align*}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=4.0cm]{wheat}
+        \caption{Wheatstone Bridge Circuit}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Loops}
+  \begin{columns}
+    \begin{column}{0.6\textwidth}
+      \begin{itemize}
+      \item Now consider the voltages in loops ABD and DCB:
+        \begin{align*}
+          \text{ABD:}\quad 0=I_1R_1+I_3R_3+I_gR_g\\
+          \text{DCB:}\quad 0=I_2R_2+I_xR_x+I_gR_g
+        \end{align*}
+      \item Take $I_g=0$, and do some algebra:
+        \begin{align*}
+          \frac{I_3R_3}{I_1R_1}=-1=\frac{I_xR_x}{I_2R_2}
+        \end{align*}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=4.0cm]{wheat}
+        \caption{Wheatstone Bridge Circuit}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Finishing up}
+  \begin{itemize}
+  \item Plug the equations from the junction laws:
+    \begin{align*}
+      \frac{I_xR_3}{I_2R_1}&=\frac{I_xR_x}{I_2R_2}\\
+      \frac{I_x}{I_2}\frac{R_3}{R_1}&=\frac{I_x}{I_2}\frac{R_x}{R_2}
+    \end{align*}
+  \item Thus for a balanced bridge, we have what is in the manual:
+    \begin{align*}
+      \boxed{\frac{R_3}{R_1}=\frac{R_x}{R_2}\implies
+      \frac{R_2}{R_1}=\frac{R_x}{R_3}}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\section{The Lab}
+\begin{frame}
+  \frametitle{The Lab}
+  \begin{itemize}
+  \item 3 Experiments Total
+    \begin{itemize}
+    \item Measuring internal resistance of a battery
+    \item Measuring the EMF of a Lemon (How strong is a lemon battery?)
+    \item Simulating a Wheatstone Bridge circuit
+    \end{itemize}
+  \item All are fairly simple
+  \item Short Lab Report!
+  \item Due Next Week, March 24
+  \end{itemize}
+\end{frame}
+
+\end{document}
