@@ -31,5 +31,107 @@
 \section{Crossing}
 
 \section{Propagator in a Heat Bath}
+\section{Propagator in a Heat Bath}
+\subsection{Deriving the Propagator}
+We can start by the given definition of the propagator:
+\begin{align*}
+    D_\beta(x)=\ev{T(\phi(x)\phi(0)}
+\end{align*}
+And the definition of time ordering is:
+\begin{align*}
+    T(\phi(x)\phi(0))=\theta(-t)\phi(0)\phi(x)+\theta(t)\phi(x)\phi(0)
+\end{align*}
+Using the mode expansion, we can see that:
+\begin{align*}
+    \phi(x)&=\int\frac{\dd[3]{p}}{(2\pi)^3}\frac1{\sqrt{2\omega_p}}
+    \qty(\hat{a}_{\vb{p}}e^{-ip\vdot x}+\hat{a}^\dag_{\vb{p}}e^{ip\vdot x})\\
+    \phi(0)&=\int\frac{\dd[3]{p}}{(2\pi)^3}\frac1{\sqrt{2\omega_p}}
+    \qty(\hat{a}_{\vb{p}}+\hat{a}^\dag_{\vb{p}})
+\end{align*}
+Such that their products are:
+\begin{align*}
+    \phi(x)\phi(0)&=\int\frac{\dd[3]{p}\dd[3]{p'}}{(2\pi)^6}\frac{1}{2\sqrt{\omega_p\omega_{p'}}}
+    \qty(\hat{a}_{\vb{p}}\hat{a}_{\vb{p}'}e^{-ip\vdot x}+\hat{a}_{\vb{p}}\hat{a}^\dag_{\vb{p}'}e^{-ip\vdot x}
+    +\hat{a}^\dag_{\vb{p}}\hat{a}_{\vb{p}'}e^{ip\vdot x}+\hat{a}^\dag_{\vb{p}}\hat{a}^\dag_{\vb{p}'}e^{ip\vdot x})\\
+    \phi(0)\phi(x)&=\int\frac{\dd[3]{p}\dd[3]{p'}}{(2\pi)^6}\frac{1}{2\sqrt{\omega_p\omega_{p'}}}
+    \qty(\hat{a}_{\vb{p}}\hat{a}_{\vb{p}'}e^{-ip'\vdot x}+\hat{a}_{\vb{p}}\hat{a}^\dag_{\vb{p}'}e^{ip'\vdot x}
+    +\hat{a}^\dag_{\vb{p}}\hat{a}_{\vb{p}'}e^{-ip'\vdot x}+\hat{a}^\dag_{\vb{p}}\hat{a}^\dag_{\vb{p}'}e^{ip'\vdot x})
+\end{align*}
+Note that upon taking the inner product with the $\ket{\beta}$ state, the first and last terms will disappear since they will end up with a different number of particles than $\ket{\beta}$, and we can rewrite the middle terms as:
+\begin{align*}
+    \hat{a}_{\vb{p}}\hat{a}^\dag_{\vb{p}'}e^{-ip\vdot x}+\hat{a}^\dag_{\vb{p}}\hat{a}_{\vb{p}'}e^{ip\vdot x}
+    &=\hat{a}^\dag_{\vb{p}}\hat{a}_{\vb{p}'}(e^{ip\vdot x}+e^{-ip\vdot x})+(2\pi)^3\delta^{(3)}(\vb{p-p}')e^{-ip\vdot x}\\
+    \hat{a}_{\vb{p}}\hat{a}^\dag_{\vb{p}'}e^{ip'\vdot x}+\hat{a}^\dag_{\vb{p}}\hat{a}_{\vb{p}'}e^{-ip'\vdot x}
+    &=\hat{a}^\dag_{\vb{p}}\hat{a}_{\vb{p}'}(e^{ip'\vdot x}+e^{-ip'\vdot x})+(2\pi)^3\delta^{(3)}(\vb{p-p}')e^{ip'\vdot x}
+\end{align*}
+From the commutator of the creation and annihilation operators. Hence when we evaluate $\ev{T(\phi(x)\phi(0))}$ we will have the following two terms:
+\begin{align*}
+    \ev{\phi(x)\phi(0)}_\beta &= \int\frac{\dd[3]{p}\dd[3]{p'}}{(2\pi)^6}\frac{1}{2\sqrt{\omega_p\omega_{p'}}}
+    \qty(\ev{\hat{a}^\dag_{\vb{p}}\hat{a}_{\vb{p}'}}_\beta(e^{ip\vdot x}+e^{-ip\vdot x})+
+    (2\pi)^3\delta^{(3)}(\vb{p-p}')e^{-ip\vdot x}\ip{\beta})\\
+    &= \int\frac{\dd[3]{p}\dd[3]{p'}}{(2\pi)^6}\frac{(2\pi)^3\delta^{(3)}(\vb{p-p}')}{2\sqrt{\omega_p\omega_{p'}}}
+    \qty(n_B(E_p)(e^{ip\vdot x}+e^{-ip\vdot x})+e^{-ip\vdot x})\\
+    \ev{\phi(0)\phi(x)}_\beta &= \int\frac{\dd[3]{p}\dd[3]{p'}}{(2\pi)^6}\frac{1}{2\sqrt{\omega_p\omega_{p'}}}
+    \qty(\ev{\hat{a}^\dag_{\vb{p}}\hat{a}_{\vb{p}'}}_\beta(e^{ip'\vdot x}+e^{-ip'\vdot x})+
+    (2\pi)^3\delta^{(3)}(\vb{p-p}')e^{ip'\vdot x}\ip{\beta})\\
+    &= \int\frac{\dd[3]{p}\dd[3]{p'}}{(2\pi)^6}\frac{(2\pi)^3\delta^{(3)}(\vb{p-p}')}{2\sqrt{\omega_p\omega_{p'}}}
+    \qty(n_B(E_p)(e^{ip'\vdot x}+e^{-ip'\vdot x})+e^{ip'\vdot x})
+\end{align*}
+We can then reduce these a bit using the delta function:
+\begin{align*}
+    \ev{\phi(x)\phi(0)}_\beta &= \int\frac{\dd[3]{p}}{(2\pi)^3}\frac{1}{2\omega_p}
+    \qty(n_B(E_p)(e^{ip\vdot x}+e^{-ip\vdot x})+e^{-ip\vdot x})\\
+    \ev{\phi(0)\phi(x)}_\beta &= \int\frac{\dd[3]{p}}{(2\pi)^3}\frac{1}{2\omega_p}
+    \qty(n_B(E_p)(e^{ip\vdot x}+e^{-ip\vdot x})+e^{ip\vdot x})
+\end{align*}
+So the form of the original definition is:
+\begin{align*}
+    \ev{T(\phi(x)\phi(0))}_\beta=\theta(-t)\ev{\phi(0)\phi(x)}_\beta+\theta(t)\ev{\phi(x)\phi(0)}_\beta
+\end{align*}
+Note that we have 2 distinct terms, the first being that which includes the Boson distribution $n_B$, and the one with only a complex exponential. We can identify the bare complex exponential with the solution we found using the vacuum, giving:
+\begin{align*}
+    \int\frac{\dd[3]{p}}{(2\pi)^3}\frac1{2\omega_p}\qty(\theta(-t)e^{ip\vdot x}+\theta(t)e^{-ip\vdot x})=
+    \int\frac{\dd[4]{p}}{(2\pi)^4}\frac{e^{-ip\vdot x}}{p^2-m^2+i\epsilon}
+\end{align*}
+All that is left is the other term:
+\begin{align*}
+    \int\frac{\dd[3]{p}}{(2\pi)^3}\frac1{2\omega_p}n_B(E_p)(e^{ip\vdot x}+e^{-ip\vdot x})(\theta(t)+\theta(-t))
+\end{align*}
+Note that the second parenthetical term, the sum of heaviside functions, is just 1:
+\begin{align*}
+    \int\frac{\dd[3]{p}}{(2\pi)^3}\frac1{2\omega_p}n_B(E_p)(e^{ip\vdot x}+e^{-ip\vdot x})
+\end{align*}
+We note that the dot product in the exponentials can be written as:
+\begin{align*}
+    \int\frac{\dd[3]{p}}{(2\pi)^3}\frac{e^{i\vb{p}\vdot\vb{x}}}{2\omega_p}n_B(E_p)(e^{i\omega_pt}+e^{-i\omega_p t})
+\end{align*}
+We can then define a dummy integration variable, $p_0$, which will allow us to integrate over off-shell particles as well as on-shell ones:
+\begin{align*}
+    2\pi\int\frac{\dd[3]{p}}{(2\pi)^3}\frac{e^{i\vb{p}\vdot\vb{x}}}{2\omega_p}n_B(E_p)
+    \int\frac{\dd{p_0}}{2\pi}e^{-ip_0t}(\delta(p_0-\omega_p)+\delta(p_0+\omega_p))
+\end{align*}
+Then we can use the delta function identity:
+\begin{align*}
+    \frac1{2\omega_p}\qty(\delta(p_0-\omega_p)+\delta(p_0+\omega_p))=\delta(p_0^2-\omega_p^2)=\delta(p_0-\vb{p}^2-m^2)=\delta(p^2-m^2)
+\end{align*}
+We then get:
+\begin{align*}
+    2\pi\int\frac{\dd[3]{p}}{(2\pi)^3}\frac{\dd{p_0}}{2\pi}e^{-ip_0t}e^{i\vb{p}\vdot\vb{x}}n_B(E_p)
+    \delta(p^2-m^2)
+    =2\pi \int\frac{\dd[4]{p}}{(2\pi)^4}e^{-ip_0t}e^{i\vb{p}\vdot\vb{x}}n_B(E_p)\delta(p^2-m^2)
+\end{align*}
+Which is the remaining term we need. The total term we then get, taking into account that this specific term is $iD_\beta$:
+\begin{align}
+    \boxed{D_\beta(x)=\int\frac{\dd[4]{p}}{(2\pi)^4}\qty[\frac1{p^2-m^2+i\epsilon}-2\pi i\delta(p^2-m^2)n_B(E_p)]e^{-ip\vdot x}}
+\end{align}
+\subsection{Verifying it is a Green Function}
+We already know that the first term is a Green function, so we need only check that:
+\begin{align*}
+    (\Box+m^2)\qty(-2\pi i\int\frac{\dd[4]{p}}{(2\pi)^4}\delta(p^2-m^2)n_B(E_p)e^{-ip\vdot x})=0
+\end{align*}
+This is because the other term already includes the delta, so this should contribute nothing. 
 
+The action of the Box operator will only bring a $-p^2$. The delta function will then do all of the work, replacing the $p^2$ with an $m^2$, contributing the opposite sign term, giving us $0$.
+
+Therefore $D_\beta$ is in fact a Green function
 \end{document}
