@@ -1,0 +1,618 @@
+\documentclass[12pt]{article}
+
+\input{../template.tex}
+
+\title{\vspace{-3em}PHYS 162b HW 6}
+\date{\today}
+
+% setups
+\graphicspath{ {./figs/} }
+
+\begin{document}
+\maketitle
+\section{Hydrogen Ground State in an $\vb{E}$ Field}
+\begin{problem}
+  A hydrogen atom in its ground state $[(n,\l,m)=(1,0,0)]$ is placed between the plates of a capacitor. A time-dependent but spatial uniform electric field (not potential!) is applied as follows:
+  \begin{align*}
+    \vb{E}=
+    \begin{cases}
+      0 & \text{for }t<0\\
+      \vb{E}_0e^{-t/\tau} & \text{for} t>0
+    \end{cases}
+    (\vb{E}_0\text{ in the positive $z$-direction})
+  \end{align*}
+  Using first-order time dependent perturbation theory, compute the probability for the atom to be found at $t\gg\tau$ in each of the three $2p$ states: $(n,\l,m)=(2,1,\pm1\text{ or }0)$, repeat the problem for the $2s$ state with $(n,\l,m)=(2,0,0)$. Consider the limit $\tau\to\infty$.
+\end{problem}
+
+The potential energy can be computed quite simply, as it is analogous to the field and potential for a capacitor, we have:
+\begin{align*}
+  V=-ezE_0e^{-t/\tau}
+\end{align*}
+Note the parity of $\ket{100}$ and $\ket{200}$ are both $+1$, so if we take a matrix element with something of negative parity, such as $z$, the matrix element is 0, so:
+\begin{equation}
+  \label{eq:1}
+  \mel{200}{z}{100}=0
+\end{equation}
+The next possible transition would be to $\ket{210}$, which is easily done in Mathematica:
+\begin{figure}[H]
+  \centering
+  \begin{mmaCell}[moredefined={MatrixElement},morefunctionlocal={\#1, \#2, \#3, r}]{Input}
+    MatrixElement=
+    Integrate[Conjugate[#1] #2 #3 \mmaSup{r}{2}Sin[\mmaFnc{\(\theta\)}]
+    \{r, 0, \(\infty\)\},\{\mmaFnc{\(\theta\)}, 0, \(\pi\)\},   \{\mmaFnc{\(\phi\)}, 0, \(2\pi\)\}]\&
+
+  \end{mmaCell}
+  \begin{mmaCell}[moredefined={MatrixElement}]{Input}
+    MatrixElement[\mmaDef{\(\pmb{\psi}210\)}, r Cos[\mmaUnd{\(\pmb{\theta}\)}],\mmaDef{\(\pmb{\psi}100\)}]
+  \end{mmaCell}
+  \begin{mmaCell}{Output}
+    \mmaFrac{128 \mmaSqrt{2} \mmaSub{a}{0}}{243}
+  \end{mmaCell}
+    \caption{Calculation for $\mel{210}{z}{100}$}
+\end{figure}
+Hence we have:
+\begin{align*}
+  \mel{210}{z}{100}=\frac{128\sqrt{2}}{243}a_0  
+\end{align*}
+Where $a_0$ is the Bohr radius.
+
+The final possible transition is to $\ket{21\pm1}$, which is forbidden by the Wigner-Eckart Theorem, so:
+\begin{align*}
+  \mel{21\pm1}{z}{100}=0
+\end{align*}
+\begin{thebook*}
+  We invoke eq (5.276):
+  \begin{align*}
+    c_{n}^{(1)}(t)=-\frac{i}{\hbar}\int_0^t e^{i\omega_{ni}t'}V_{ni}(t')\dd{t'}
+  \end{align*}
+  Where $\omega_{ni}\equiv(E_n-E_i)/\hbar$
+\end{thebook*}
+We specifically have:
+  \begin{align*}
+    c_{\{2p\}}^{(1)}(t)=-\frac{i}{\hbar}\int_0^t e^{i\omega_{ni}t'}V_{\{2p\}i}(t')\dd{t'}
+  \end{align*}
+With the only element of concern is:
+\begin{align*}
+  V_{(210)i}(t)=-eE_0e^{-t/\tau}\mel{210}{z}{100}=
+  -eE_0a_0\frac{128\sqrt{2}}{243}e^{-t/\tau}
+\end{align*}
+The integral that we need to compute is then:
+\begin{align*}
+  c_{\{2p\}}^{(1)}(t)=c_{210}^{(1)}(t)&=-\frac{i}{\hbar}
+  \int_0^t e^{i\omega_{ni}t'}V_{(210)i}(t')\dd{t'}\\
+  &=-\frac{i}{\hbar}\int_0^t\dd{t'}\qty(-eE_0a_0\frac{128\sqrt{2}}{243})
+  e^{i\omega t'-t'/\tau}
+\end{align*}
+Which is fairly easy to evaluate since it is an exponential:
+\begin{align*}
+  c_{210}^{(1)}(t)&=\frac{128\sqrt{2}}{243}\frac{ieE_0a_0}\hbar
+  \frac{e^{(i\omega-1/\tau)t}-1}{i\omega-1/\tau}
+\end{align*}
+The probability is then this squared:
+\begin{align*}
+  \abs{c_{210}^{(1)}(t)}^2=
+  \frac{2^{15}}{3^{10}}\qty(\frac{eE_0a_0}\hbar)^2
+  \frac{e^{-2t/\tau}-2e^{-t/\tau}\cos(\omega t)+1}{\omega^2+\tau^{-2}}
+\end{align*}
+When we take $t\gg\tau$, we can say $t\to\infty$, which means all of the exponential decays go away:
+\begin{align*}
+  \abs{c_{210}^{(1)}(\infty)}^2=
+  \frac{2^{15}}{3^{10}}\qty(\frac{eE_0a_0}\hbar)^2\frac1{\omega^2+\tau^{-2}}
+\end{align*}
+Gathering everything we have:
+\begin{equation}
+\boxed{  \begin{aligned}
+    \abs{c_{\{2p\}}^{(1)}(t)}^2&=\frac{2^{15}}{3^{10}}\qty(\frac{eE_0a_0}\hbar)^2
+    \frac{e^{-2t/\tau}-2e^{-t/\tau}\cos(\omega t)+1}{\omega^2+\tau^{-2}}\\
+    \abs{c_{\{2p\}}^{(1)}(\infty)}^2&=\frac{2^{15}}{3^{10}}
+    \qty(\frac{eE_0a_0}\hbar)^2\frac1{\omega^2+\tau^{-2}}\\
+    \abs{c_{\{2s\}}^{(1)}(t)}^2&=\abs{c_{\{2s\}}^{(1)}(\infty)}^2=0
+  \end{aligned}}
+\end{equation}
+
+\section{Spin-Spin Interaction}
+\begin{problem}
+  Consider a composite system made up of two spin $\frac12$ objects. For $t<0$, the Hamiltonian does not depend on spin and can be taken to be zero by suitably adjusting the energy scale. For $t>0$, the Hamiltonian is given by:
+  \begin{align*}
+    H=\qty(\frac{4\Delta}{\hbar^2}\vb{S}_1\vdot\vb{S}_2)
+  \end{align*}
+  Suppose the system is in $\ket{+-}$ for $t\leq0$. Find, as a function of time, the probability for being found in each of the following states $\ket{++},\ket{+-},\ket{-+}$ and $\ket{--}$.
+  \begin{enumerate}[label=\alph*]
+  \item By solving the problem exactly
+  \item By solving the problem assuming the validity of first-order time-dependent perturbation theory with $H$ as a perturbation switched on at $t=0$. Under what condition does (b) give the correct results
+  \end{enumerate}
+\end{problem}
+\subsection{Exact Solution}
+We can decompose the dot product in terms of the total and individual spins:
+\begin{align*}
+  \vb{S}_1\vdot\vb{S}_2=\frac12\qty(\vb{S}^2-\vb{S}_1^2-\vb{S}_2^2)
+\end{align*}
+
+This motivates us to use basis states of total spin, with $\vb{S}_1\vdot\vb{S}_2$ having values of $\hbar^2/4$ for the triplet state $\ket{1,0}$ and $-3\hbar^2/4$ for singlet state $\ket{0,0}$, so for each of these states we have:
+\begin{align*}
+  H\ket{1,0}=\Delta\ket{1,0}\\
+  H\ket{0,0}=-3\Delta\ket{0,0}
+\end{align*}
+Then the initial state is:
+\begin{align*}
+  \ket{+-}=\frac{\ket{1,0}+\ket{0,0}}{\sqrt{2}}
+\end{align*}
+We can then use the time evolution operator:
+\begin{align*}
+  \ket{\alpha,t}=e^{-iHt/\hbar}\ket{\alpha,0}
+  =e^{-iHt/\hbar}\frac{1}{\sqrt{2}}\qty(\ket{1,0}+\ket{0,0})
+\end{align*}
+Since $\ket{1,0}$ and $\ket{0,0}$ are both eigenfunctions of $H$, their action under the time evolution operator is defined as just the exponential of the eigenvalue:
+\begin{align*}
+  e^{-iHt/\hbar}\ket{1,0}=e^{-i\Delta t/\hbar}\ket{1,0}
+  e^{-iHt/\hbar}\ket{0,0}=e^{3i\Delta t/\hbar}\ket{0,0}
+\end{align*}
+Hence the general state is:
+\begin{align*}
+  \ket{\alpha,t}
+  =\frac{1}{\sqrt{2}}\qty(e^{-i\Delta t/\hbar}\ket{1,0}+e^{3i\Delta t/\hbar}\ket{0,0})
+\end{align*}
+Note that When we are trying to find the coefficients $\ip{\pm\mp}{\alpha,t}$ and subsquent probabilities, we can use their decomposition into spin-$\frac12$ states, hence we have:
+\begin{align*}
+  \abs{\ip{+-}{\alpha,t}}^2&=\frac14
+  \abs{e^{-i\Delta t/\hbar}+e^{3i\Delta t/\hbar}}^2
+  =\frac{1+\cos(4\Delta t/\hbar)}2\\
+  \abs{\ip{-+}{\alpha,t}}^2&=\frac14
+  \abs{e^{-i\Delta t/\hbar}-e^{3i\Delta t/\hbar}}^2
+  =\frac{1-\cos(4\Delta t/\hbar)}2
+\end{align*}
+And the other states do not appear so their probabilities are 0:
+\begin{equation}
+  \boxed{\begin{aligned}
+    \abs{\ip{\pm\mp}{\alpha,t}}^2&=\frac{1\pm\cos(4\Delta t/\hbar)}2\\
+    \abs{\ip{\pm\pm}{\alpha,t}}^2&=0
+  \end{aligned}}
+\end{equation}
+\subsection{Perturbation Theory}
+Here, the initial state is the same, $\ket{+-}$, for the same reason as before, we have no transition to either of $\ket{\pm\pm}$. Therefore the perturbation theory agrees in this case. The other element is simple:
+\begin{align*}
+  V_{(-+),(+-)}=\mel{-+}{H}{+-}=\frac12\qty[\qty(\bra{1,0}-\bra{0,0})
+  \qty(\Delta\ket{1,0}-3\Delta\ket{0,0})]=
+  2\Delta
+\end{align*}
+Also note that these states have the same energy, so $\omega=0$, giving a fairly simple integral:
+\begin{align*}
+  c_{-+}^{(1)}(t)=-\frac{i}{\hbar}\int_0^t2\Delta\dd{t'}=
+  -\frac{2i\Delta t}\hbar
+\end{align*}
+Giving the probability:
+\begin{align}
+  \boxed{\abs{c_{-+}^{(1)}(t)}^2=\frac{4\Delta^2t^2}{\hbar^2}}
+\end{align}
+Which is an expansion of the exact solution for small $\Delta$ or $t$ However, this is not quite true for the other coefficient.
+
+\section{Variational Method}
+\begin{problem}
+  Find the eigenfunctions and eigenvalues for a particle in the potential $U(x)=F_0x$ for $x\geq 0$ and $U(x)=\infty$ for $x<0$. Using the variational method find the energy of the ground state using the trial functions below and compare the exact value.
+  \begin{enumerate}[label=(\arabic*)]
+  \item $\psi(x)=Ax\exp(-\alpha x)$
+  \item $\psi(x)=Bx\exp(-\alpha x^2/2)$
+  \end{enumerate}
+\end{problem}
+
+\subsection{Exact Solution}
+The Schrodinger Equation to solve can be Summarized as:
+\begin{align*}
+  -\laplacian{\psi(x)}-\alpha x\psi(x)=\beta \psi(x)
+\end{align*}
+With:
+\begin{align*}
+  \alpha=\frac{2mF_0}{\hbar^2}\qquad \beta=\frac{2mE}{\hbar^2}
+\end{align*}
+And Boundary conditions:
+\begin{align*}
+  \psi(0)=0\qquad\lim_{x\to\infty}\psi(x)=0
+\end{align*}
+The general solution (from Mathematica) is:
+\begin{align*}
+  \psi(x)=c_1\mathrm{Ai}\qty(-\frac{\alpha x+\beta}{(-\alpha)^{2/3}})
+  +c_2\mathrm{Bi}\qty(-\frac{\alpha x+\beta}{(-\alpha)^{2/3}})
+\end{align*}
+Found from:
+\begin{figure}[H]
+  \centering
+  \begin{mmaCell}[addtoindex=39]{Input}
+  FullSimplify[DSolve[\{-\mmaUnd{\(\pmb{\psi}\)}''[x]- \mmaUnd{\(\pmb{\alpha}\)}x \mmaUnd{\(\pmb{\psi}\)}[x]== \mmaUnd{\(\pmb{\beta}\)} \mmaUnd{\(\pmb{\psi}\)}[x]\},\mmaUnd{\(\pmb{\psi}\)}[x],x]]
+  \end{mmaCell}
+  \begin{mmaCell}{Output}
+  \{\{\(\psi\)[x]\(\to\)AiryAi[-\mmaFrac{x \(\alpha\)+\(\beta\)}{\mmaSup{(-\(\alpha\))}{2/3}}]\mmaSub{c}{1}+AiryBi[-\mmaFrac{x \(\alpha\)+\(\beta\)}{\mmaSup{(-\(\alpha\))}{2/3}}]\mmaSub{c}{2}\}\}
+\end{mmaCell}
+  \caption{Mathematica for Solving analytically}
+\end{figure}
+However if we check the behavior of these ``Airy'' functions, we find the following:
+\begin{align*}
+  \lim_{x\to\infty}\mathrm{Ai}(x)&=0\\
+  \lim_{x\to\infty}\mathrm{Bi}(x)&=\infty
+\end{align*}
+So we should ignore the $c_2$ term, giving the solution:
+\begin{align*}
+  \psi(x)=c_1\mathrm{Ai}\qty(-\frac{\alpha x+\beta}{(-\alpha)^{2/3}})
+\end{align*}
+We should then satisfy the other boundary condition:
+\begin{align*}
+  \psi(0)=0\implies\mathrm{Ai}\qty(-\frac{\beta}{(-\alpha)^{2/3}})=0
+\end{align*}
+Which in Mathematica Gives:
+\begin{figure}[H]
+  \centering
+  \begin{mmaCell}[addtoindex=2]{Input}
+    Solve[AiryAi[-\mmaFrac{\mmaFnc{\(\pmb{\beta}\)}}{\mmaSup{(-\mmaUnd{\(\pmb{\alpha}\)})}{2/3}}] ==0,\mmaFnc{\(\pmb{\beta}\)}]//Quiet
+\end{mmaCell}
+
+\begin{mmaCell}{Output}
+  \{\{\(\beta\to\)-\mmaSup{(-\(\alpha\))}{2/3} AiryAiZero[1]\}\}
+\end{mmaCell}
+  \caption{Mathematica for Boundary Condition}
+\end{figure}
+This would correspond to the ground state since it is the first zero, call the value $x_0$ such that:
+\begin{align*}
+  \mathrm{Ai}(x_0)=0
+\end{align*}
+If we subbed in for the constants above we would have:
+\begin{align*}
+  -\frac{2mE}{\hbar^2}\qty(-\frac{\hbar^2}{2mF_0})^{2/3}=x_0
+\end{align*}
+Giving the ground state energy as:
+\begin{align*}
+  E=-x_0F_0^{2/3}\qty(\frac{\hbar^2}{2m})^{1/3}
+\end{align*}
+Where $x_0$ is the first zero of the Airy function $\mathrm{Ai}$.
+
+If we numerically evaluate all constants, we have:
+\begin{align}
+  \boxed{E\approx1.86F_0^{2/3}\qty(\frac{\hbar^2}{m})^{1/3}}
+\end{align}
+
+\subsection{First Test Function}
+We should find the normalization constant by integrating from $0$ to $\infty$:
+\begin{align*}
+  1=A^2\int\dd{x}x^2e^{-2\alpha x}
+\end{align*}
+Where Mathematica gives:
+\begin{figure}[H]
+  \centering
+\begin{mmaCell}[addtoindex=5]{Input}
+  \mmaDef{\(\pmb{\psi}\)}=A x Exp[-\mmaUnd{\(\pmb{\alpha}\)} x];
+  Integrate[\mmaSup{\mmaDef{\(\pmb{\psi}\)}}{2},\{\mmaFnc{x},0,\(\infty\)\},Assumptions->\mmaUnd{\(\pmb{\alpha}\)}>0]
+  
+\end{mmaCell}
+
+\begin{mmaCell}[addtoindex=1]{Output}
+  \mmaFrac{\mmaSup{A}{2}}{4 \mmaSup{\(\alpha\)}{3}}
+\end{mmaCell}
+  \caption{Mathematica for Normalization}
+\end{figure}
+Hence we can solve for $A$:
+\begin{align*}
+  \implies A^2=4\alpha^3\implies A=2\alpha^{3/2}
+\end{align*}
+We can then find the expected values of kinetic and potential energies:
+\begin{align*}
+  \ev{T}&=A^2\int_0^\infty(xe^{-\alpha x})
+  \qty(-\frac{\hbar^2}{2m}\dv[2]{x}xe^{-\alpha x})\dd{x}\\
+  &=\frac{\hbar^2A^2}{2m}\int_0^\infty(xe^{-\alpha x})
+  \qty(2\alpha e^{-\alpha x}-\alpha^2xe^{\alpha x})\dd{x}\\
+  &=\frac{\hbar^2A^2}{2m}\int_0^\infty
+  \qty(2\alpha xe^{-2\alpha x}-x^2\alpha^2e^{-2\alpha x})\dd{x}
+\end{align*}
+In terms of $A^2$, we have:
+\begin{align*}
+  \ev{T}=\frac{A^2\hbar^2}{8m\alpha}
+\end{align*}
+Now for the expectation of the potential $U(x)$:
+\begin{align*}
+  \ev{U}&=A^2\int_0^\infty(xe^{-\alpha x})\qty(F_0x)\qty(xe^{-\alpha x})\dd{x}\\
+  &=F_0A^2\int_0^\infty x^3e^{-2\alpha x}\dd{x}\\
+  &=\frac{3A^2F_0}{8\alpha^4}
+\end{align*}
+The Hamiltonian is then
+\begin{align*}
+  \ev{H}(\alpha)&=\ev{T}+\ev{U}\\
+  &=A^2\qty(\frac{\hbar^2}{8m\alpha}+\frac{3F_0}{8\alpha^4})\\
+  &=4\alpha^3\qty(\frac{\hbar^2}{8m\alpha}+\frac{3F_0}{8\alpha^4})\\
+  &=\frac{\hbar^2\alpha^2}{2m}+\frac{3F_0}{2\alpha}
+\end{align*}
+Minimizing with respect to $\alpha$:
+\begin{align*}
+  \pdv{\ev{H}}{\alpha}=\frac{\hbar^2\alpha}{m}-\frac{3F_0}{2\alpha^2}&=0\\
+  \frac{\hbar^2\alpha^3}{m}-\frac{3F_0}{2}&=0\\
+  \frac{3mF_0}{2\hbar^2}&=\alpha^3
+\end{align*}
+The value of $\ev{H}$ with this value of $\alpha$ is then the expected ground state energy:
+\begin{equation}
+  \boxed{\begin{aligned}
+    \ev{H}_{gs}&=\qty(\frac32)^{5/3}F_0^{2/3}\qty(\frac{\hbar^2}{m})^{1/3}\\
+    &\approx 1.97F_0^{2/3}\qty(\frac{\hbar^2}{m})^{1/3}
+  \end{aligned}}
+\end{equation}
+Which has the exact same constants as the original solution, but the coefficient is different!
+
+\subsection{Second Test Function}
+I did most of this in the accompanying mathematica notebook, since the same process holds, but with a gaussian now:
+\begin{align*}
+  B^2=\frac{4\alpha^{3/2}}{\sqrt{\pi}}
+\end{align*}
+The expectation of the kinetic energy:
+\begin{align*}
+  \ev{T}=B^2\frac{3\hbar^2}{16m}\sqrt{\frac\pi\alpha}
+\end{align*}
+And the potential:
+\begin{align*}
+  \ev{U}=B^2\frac{F_0}{2\alpha^2}
+\end{align*}
+The Hamiltonian is:
+\begin{align*}
+  \ev{H}(\alpha)&=\ev{T}+\ev{U}\\
+  &=B^2\qty(\frac{3\hbar^2}{16m}\sqrt{\frac{\pi}{\alpha}}+
+  \frac{F_0}{2\alpha^2})\\
+  &=\frac{3\hbar^2\alpha}{4m}+\frac{2F_0}{\sqrt{\pi\alpha}}
+\end{align*}
+Minimizing:
+\begin{align*}
+  \pdv{\ev{H}}{\alpha}&=\frac{3\hbar^2}{4m}-\frac{F_0}{\sqrt{\pi\alpha^3}}=0\\
+  \frac{3\hbar^2}{4m}&=\frac{F_0}{\sqrt{\pi\alpha^3}}\\
+  \alpha^{3/2}\frac{3\hbar^2}{4m}&=\frac{F_0}{\sqrt{\pi}}\\
+  \alpha&=\qty(\frac{4mF_0}{3\hbar^2\sqrt{\pi}})^{2/3}
+\end{align*}
+Plugging this into $\ev{H}$ gives our answer:
+\begin{equation}
+  \boxed{\begin{aligned}
+    \ev{H}_{gs}&=\frac{3^{4/3}}{(4\pi)^{1/3}}
+    F_0^{2/3}\qty(\frac{\hbar^2}{m})^{1/3}\\
+    &\approx1.86F_0^{2/3}\qty(\frac{\hbar^2}{m})^{1/3}
+  \end{aligned}}
+\end{equation}
+Don't think this is the exact solution, rather it is off by about $1\%$, here is a combination of all our answers, with higher precision:
+\begin{equation}
+\boxed{  \begin{aligned}
+    \ev{H}_{gs}^{exact}&=1.85576\qty(\frac{\hbar^2}m)^{1/3}\\
+    \ev{H}_{gs}^{decay}&=1.96556\qty(\frac{\hbar^2}m)^{1/3}\\
+    \ev{H}_{gs}^{gauss}&=1.86105\qty(\frac{\hbar^2}m)^{1/3}
+  \end{aligned}}
+\end{equation}
+So $2$ is a lot better than $1$, but still not exact
+
+\section{Sakurai: Classical Radiation Field}
+\begin{problem}
+  Fill in all the blanks that start at the beginning of section 5.8.1 and ends up with equations 5.332, section 5.8.2.
+
+  Along the way, explain where this energy flux comes from, deriving the formulas 5.317 and 5.318. You may have to consult Jackson to do this properly.
+
+  Once you have 5.320, verifying (adding parts as you go along if needed to explain a calculation) 5.328 and the following.
+\end{problem}
+% Note, explain where flux comes from in 5.317 and 5.318
+% Start with 5.307 then go to 5.332
+The Hamiltonian we are considering is:
+\begin{equation}
+  \label{eq:hamiltonian}
+  H=\frac{\vb{p}^2}{2m_e}+e\phi(\vb{x})-\frac{e}{m_e c}\vb{A\vdot p}
+\end{equation}
+I believe the Gauge choice is given as the Radiation (Coulomb?) gauge:
+\begin{align*}
+  \div{\vb{A}}=0\qquad \phi=0
+\end{align*}
+We should verify that $\div{\vb{A}}=0$ with $\vb{A}$ as:
+\begin{align*}
+  \vb{A}=2A_0\bm{\hat{\veps}}\cos(\frac{\omega}{c}\vu{n}\vdot\vb{x}-\omega t)
+\end{align*}
+We get:
+\begin{align*}
+  \div{\vb{A}}=\frac{2A_0\omega}c\bm{\hat{\veps}}\vdot\vu{n}
+  \cos(\frac{\omega}{c}\vu{n}\vdot\vb{x}-\omega t)=0
+\end{align*}
+Because electromagnetic waves are transverse, there is no polarization in the direction of motion, hence we have $\bm{\hat{\veps}}\vdot\vu{n}=0$.
+
+Equations 5.310 and 5.311 simply apply the exponential form of $\cos$ to the expression above, so we can just expand this out:
+\begin{align*}
+  \vb{A}=A_0\bm{\hat{\veps}}\qty(
+  e^{i(\omega/c)\vu{n}\vdot\vb{x}-i\omega t}
+  e^{-i(\omega/c)\vu{n}\vdot\vb{x}+i\omega t})
+\end{align*}
+We can then treat the $\vb{A\vdot p}$ term in~\eqref{eq:hamiltonian} as a perturbation to the classical hamiltonian, with the form:
+\begin{align*}
+  -\qty(\frac{e}{m_e c})\vb{A\vdot p}=
+  -\qty(\frac{e}{m_e c})A_0\bm{\hat{\veps}}\vdot\vb{p}\qty(
+  e^{i(\omega/c)\vu{n}\vdot\vb{x}-i\omega t}
+  e^{-i(\omega/c)\vu{n}\vdot\vb{x}+i\omega t})
+\end{align*}
+The book then references the harmonic perturbation:
+\begin{align*}
+  V(t)=\mcV e^{i\omega t}+\mcV^\dag e^{-i\omega t}
+\end{align*}
+Where it was found that the term with positive exponential argument is responsible for stimulated emission, where the term with negative exponential argument is responsible for absorption.
+
+The perturbation for absorption is given by:
+\begin{align*}
+  \mcV^\dag_{ni}=-\frac{eA_0}{m_e c}\mel{n}
+  {e^{i(\omega/c)(\vu{n}\vdot\vb{x})}\bm{\hat{\veps}}\vdot\vb{p}}{i}
+\end{align*}
+We can then calculate the transition rate using the Fermi's Golden Rule:
+\begin{align*}
+  w_{i\to n}=\frac{2\pi}{\hbar}\abs{V_{ni}}^2\rho(E_f)
+\end{align*}
+With analogy to (5.294), the density of states for absorption is given as:
+\begin{align*}
+  \rho(E_n)=\delta(E_n-E_i-\hbar\omega)
+\end{align*}
+Combining this with what we had before:
+\begin{align*}
+  w_{i\to n}=\frac{2\pi}{\hbar}\frac{e^2\abs{A_0}^2}{m_e^2c^2}
+  \abs{
+    \mel{n}{e^{i(\omega/c)(\vu{n}\vdot\vb{x})}\bm{\hat{\veps}}\vdot\vb{p}}{i}}^2
+  \delta(E_n-E_i-\hbar\omega)
+\end{align*}
+The book then goes on to describe an absorption cross section as:
+\begin{thebook*}
+  An absorption cross section (in words) is:
+  \begin{align*}
+    \frac{\text{(Energy/unit time) absorbed by the atom ($i\to n$)}}
+    {\text{Energy flux of the radiation field}}
+  \end{align*}
+\end{thebook*}
+This energy flux inherently comes from the fact that we are subjecting the hydrogen atom to radiation, in the form of accelerating charges. The absorption cross section is the portion of those accelerating charges which actually gets absorbed by the hydrogen atom or whatever system.
+
+We then want to derive the following:
+\begin{thebook*}
+  Sakurai claims that we can write the energy density $\mathcal{U}$ as:
+  \begin{align*}
+    \mathcal{U}=\frac1{16\pi}\qty(E_{max}^2+B_{max}^2)
+  \end{align*}
+  Such that the flux is then:
+  \begin{align*}
+    c\mathcal{U}=\frac{\omega^2}{2\pi c}\abs{A_0}^2
+  \end{align*}
+\end{thebook*}
+From E\& M, we have Poynting's Theorem:
+\begin{theorem}[Poynting's Theorem]
+  The rate of energy transfer per unit volume is given as:
+  \begin{align*}
+    \pdv{\mathcal{U}}{t}=-\div{\vb{S}}
+  \end{align*}
+  Where $\vb{S}$ is the Poynting vector:
+  \begin{align*}
+    \vb{S}=\frac{c}{4\pi}\vb{E\times B}
+  \end{align*}
+\end{theorem}
+We should expand the divergence of the cross product to make our life easier:
+\begin{align*}
+  \div{(\vb{E\times B})}=(\curl{\vb{E}})\vdot \vb{B}
+  -\vb{E}\vdot(\curl{\vb{B}})
+\end{align*}
+Note the form of Ampere's and Faraday's Laws, giving:
+\begin{align*}
+  \div{(\vb{E\times B})}&=\qty(-\frac1c\pdv{\vb{B}}{t})\vdot \vb{B}
+  -\vb{E}\vdot\qty(\frac1c\pdv{\vb{E}}{t})\\
+  &=-\frac1c\pdv{t}\qty(B^2+E^2)
+\end{align*}
+Adding the factors to make this $\vb{S}$:
+\begin{align*}
+  \div{\vb{S}}&=-\frac1{4\pi}\pdv{t}\qty(B^2+E^2)
+\end{align*}
+We then see that the conservation law is given as:
+\begin{align*}
+  \pdv{\mathcal{U}}{t}=-\div{\vb{S}}&=\frac1{4\pi}\pdv{t}\qty(B^2+E^2)
+\end{align*}
+The energy density can then be read off as:
+\begin{align*}
+  \mathcal{U}=\frac1{4\pi}\qty(B^2+E^2)
+\end{align*}
+Since $E$ and $B$ are approximated by their maxes, I believe that is where the factor of $4$ comes in, but I am not entirely sure.
+\begin{align*}
+  \mathcal{U}=\frac1{16\pi}\qty(E^2_{max}+B^2_{max})
+\end{align*}
+We can then write out what $\vb{E}$ and $\vb{B}$ would be in the case of our vector potential:
+\begin{align*}
+  \vb{E}&=-\frac1c\pdv{\vb{A}}{t}=-\frac{2A_0\omega}c
+  \sin(\frac{\omega}{c}\vu{n}\vdot\vb{x}-\omega t)\bm{\hat{\veps}}\\
+  \vb{B}&=\curl{\vb{A}}=-\frac{2A_0\omega}c
+  \sin(\frac{\omega}{c}\vu{n}\vdot\vb{x}-\omega t)
+  \qty(\vu{n}\times\bm{\hat{\veps}})
+\end{align*}
+And since the sine function varies from -1 to 1, the max is simply when:
+\begin{align*}
+  E_{max}=B_{max}=\frac{2A_0\omega}{c}
+\end{align*}
+Hence $\mathcal{U}$ is:
+\begin{align*}
+  \mathcal{U}=\frac{A_0^2\omega^2}{2\pi c^2}
+\end{align*}
+Since the energy transfer is uniform, we can say the flux is simply the propagation speed $(c)$ times the energy density, hence the flux is $c\mathcal{U}$:
+\begin{align*}
+  c\mathcal{U}=\frac{A_0^2\omega^2}{2\pi c}=
+  \frac1{2\pi}\frac{\omega^2}c\abs{A_0}^2
+\end{align*}
+We then identify the terms from the book, with:
+\begin{align*}
+  \text{Absorption Rate }&=w_{i\to n}\\
+  \text{Flux of Rad. Field}&=c\mathcal{U}
+\end{align*}
+Overall, the absorption cross section simplies to:
+\begin{align*}
+  \sigma_{abs}=\frac{4\pi^2\hbar}{m_e^2\omega}\frac{e^2}{\hbar c}
+  \abs{\mel{n}{e^{-(\omega/c)\vu{n}\vdot\vb{x}}\bm{\hat{\veps}}\vdot\vb{p}}{i}}^2
+  \delta(E_n-E_i-\hbar\omega)
+\end{align*}
+The justification for the dipole approximation is fairly straightforward, so we are replacing:
+\begin{align*}
+  e^{-(\omega/c)\vu{n}\vdot\vb{x}}\to 1
+\end{align*}
+so the matrix element we need to find is:
+\begin{align*}
+  \mel{n}{e^{-(\omega/c)\vu{n}\vdot\vb{x}}\bm{\hat{\veps}}\vdot\vb{p}}{i}
+  \to\mel{n}{\bm{\hat{\veps}}\vdot\vb{p}}{i}
+\end{align*}
+Choose $\vu{n}=\vu{z}$ and $\bm{\hat\veps}=\vu{x}$.
+
+We can find $\comm{x}{H_0}$ quite easily:
+\begin{align*}
+  \comm{x}{H_0}&=\comm{x}{\frac{p_ip_i}{2m}}+e\comm{x}{\phi(\vb{x})}\\
+  &=\frac1{2m}\comm{x}{p_x^2+p_y^2+p_z^2}+0\\
+  &=\frac1{2m}\comm{x}{p_x^2}=\frac1{2m}\qty(p_x\comm{x}{p_x}+\comm{x}{p_x}p_x)
+\end{align*}
+Where the following identity hsa been used:
+\begin{align*}
+  \comm{A}{BC}=B\comm{A}{C}+\comm{A}{B}C
+\end{align*}
+We can then use the canonical commutator to get:
+\begin{align*}
+  \comm{x}{H_0}&=\frac1{2m}\qty(i\hbar p_x+i\hbar p_x)
+  =\frac{i\hbar p_x}{m}
+\end{align*}
+This is useful, because in the matrix element we will have:
+\begin{align*}
+  \mel{n}{p_x}{i}&=\frac{m}{i\hbar}\mel{n}{xH_0-H_0x}{i}\\
+  &=\frac{m}{i\hbar}\mel{n}{(E_n-E_i)x}{i}\\
+  &=im\omega_{ni}\mel{n}{x}{i}
+\end{align*}
+We can then greatly simplify the cross section:
+\begin{align*}
+  \sigma_{abs}&=\frac{4\pi^2\hbar\alpha}{m_e^2\omega_{ni}}
+  \abs{im_e\omega_{ni}\mel{n}{x}{i}}^2
+  \delta(E_n-E_i-\hbar\omega)\\
+  &=4\pi^2\hbar\alpha\omega_{ni}\abs{\mel{n}{x}{i}}^2
+  \delta(E_n-E_i-\hbar\omega)\\
+  &=4\pi^2\alpha\omega_{ni}\abs{\mel{n}{x}{i}}^2
+  \delta(\omega-\omega_{ni})
+\end{align*}
+Then 5.329 is quite simple, applying the definition of the delta function integral:
+\begin{align*}
+  \int\sigma_{abs}\dd{\omega}=
+  4\pi^2\alpha\sum_{n}\omega_{ni}\abs{\mel{n}{x}{i}}^2
+\end{align*}
+Where $i$ represents the ground state, so descreases in energy are not possible.
+
+For the sum rule, if we consider:
+\begin{align*}
+  \comm{x}{\comm{x}{H_0}}=\frac{i\hbar}{m}\comm{x}{p_x}=-\frac{\hbar^2}{m}
+\end{align*}
+If we explicitly expand the commutator out, we have:
+\begin{align*}
+  \comm{x}{\comm{x}{H_0}}=x^2H_0-2xH_0x+H_0x^2
+\end{align*}
+Now consider an inner product with the initial state $i$, we must have:
+\begin{align*}
+  \mel{i}{x^2H_0-2xH_0x+H_0x^2}{i}&=\mel{i}{-\frac{\hbar^2}{m}}{i}\\
+  2E_i\mel{i}{x^2}{i}-2\mel{i}{xH_0x}{i}&=-\frac{\hbar^2}m
+\end{align*}
+Resolving the identity in both gives:
+\begin{align*}
+  \sum_n2(E_i-E_n)\abs{\mel{n}{x}{i}}^2=-\frac{\hbar^2}{m}
+\end{align*}
+or that
+\begin{align*}
+  \sum_n\frac{2m(E_n-E_i)}{\hbar^2}\abs{\mel{n}{x}{i}}^2&=1\\
+  \sum_n\frac{2m\omega_{ni}}{\hbar}\abs{\mel{n}{x}{i}}^2&=1\\
+  \sum_nf_{ni}&=1
+\end{align*}
+Now because of this, we can get rid of the $\omega_{ni}$ from the cross section, such that we have:
+\begin{align*}
+  4\pi^2\alpha\sum_{n}\omega_{ni}\abs{\mel{n}{x}{i}}^2=
+  \frac{4\pi^2\alpha\hbar}{2m_e}=2\pi^2\frac{e^2}{m_ec}
+\end{align*}
+Which is eq. 5.332
+\end{document}

@@ -1,0 +1,189 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 162b Exam 1 Prep}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols 
+\usepackage{amssymb,amsthm,bm,physics,slashed}
+
+%% general pretty stuff
+\usepackage{caption,enumitem,float,geometry,graphicx,tikz}
+
+% setups
+\graphicspath{ {./figs/} }
+\captionsetup{labelfont=bf}
+\geometry{margin=1in}
+
+% macros
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\partial}
+\newcommand{\veps}{\varepsilon}
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+
+\begin{document}
+\maketitle
+
+\section{Angular Momentum}
+\subsection{Rotations and Angular Momentum}
+A rotation by the unit vector $\vu{n}$ by amount $\dd{\phi}$ is given by:
+\begin{align*}
+  \mathfrak{D}(\vu{n},\dd{\phi})=1-i\frac{\vu{n}\vdot\vb{J}}{\hbar}\dd{\phi}
+\end{align*}
+Which can be combined a number of times to add up to a finite rotation:
+\begin{align*}
+  \mathfrak{D}_{\vu{n}}(\phi)=
+  \lim_{N\to\infty}\qty(1-i\frac{\vu{n}\vdot\vb{J}}{\hbar}\frac{\phi}{N})^N
+  =\exp{-i\frac{\vu{n}\vdot\vb{J}}{\hbar}\phi}
+\end{align*}
+
+Recall the angular momentum commutation relations:
+\begin{align*}
+  \comm{J_i}{J_j}=i\hbar\veps_{ijk}J_k
+\end{align*}
+
+The Eigenvalues of the angular momentum operators are:
+\begin{gather*}
+  \vb{J}^2\ket{j,m}=\hbar^2j(j+1)\ket{j,m}\\
+  J_z\ket{j,m}=\hbar m\ket{j,m}
+\end{gather*}
+And for the ladder operators:
+\begin{align*}
+  J_\pm=\hbar\sqrt{(j\mp m)(j\pm m+1)}\ket{j,m\pm1}
+\end{align*}
+\section{Time Independent Perturbation Theory}
+In both of these sections, we are considering A Hamiltonian of the form:
+\begin{align*}
+  H=H_0+\lambda V
+\end{align*}
+Where $H_0$ is a system where we know the eigenstates $\ket{n^{(0)}}$ and Energies $E_n^{(0)}$:
+\begin{align*}
+  H_0\ket{n^{(0)}}=E_n^{(0)}\ket{n^{(0)}}
+\end{align*}
+And we want to find:
+\begin{align*}
+  H\ket{n}=(H_0+\lambda V)\ket{n}=E_n\ket{n}
+\end{align*}
+
+\subsection{Non-Degenerate Case}
+We want to solve for the corrections to the unperturbed energy $E_n^{(0)}$ $\Delta_n$:
+\begin{align*}
+  \Delta_n\equiv E_n-E_n^{(0)}
+\end{align*}
+Hence, we need to solve:
+\begin{equation}
+  \label{eq:ndtipt}
+  (E_n^{(0)}-H_0)\ket{n}=(\lambda V-\Delta_n)\ket{n}
+\end{equation}
+Note that the inverse operator of $(E_n^{(0)}-H_0)$ is ill defined if it acts on the $\ket{n^{(0)}}$ state:
+\begin{align*}
+  (E_n^{(0)}-H_0)\ket{n^{(0)}}&=(E_n^{(0)}-E_n^{(0)})\ket{n^{(0)}}=0\\
+  \frac{1}{E_n^{(0)}-H_0}\ket{n^{(0)}} &= ??
+\end{align*}
+However, we can ail this problem by introducing the operator $\phi_n$:
+\begin{align*}
+  \phi_n:=1-\dyad{n^{(0)}}=\sum_{k\neq n}\dyad{k^{(0)}}
+\end{align*}
+We can then define the inverse opertor acting on this operator:
+\begin{align*}
+  \frac1{E_n^{(0)}-H_0}\phi_n=\sum_{k\neq n}
+  \frac1{E_n^{(0)}-E_k^{(0)}}\dyad{k^{(0)}}
+\end{align*}
+We can also say:
+\begin{align*}
+  (\lambda V-\Delta_n)\ket{n}=\phi_n(\lambda V-\Delta_n)\ket{n}
+\end{align*}
+We can then write the perturbed vector $\ket{n}$ as:
+\begin{align*}
+  \ket{n}=c_n(\lambda)\ket{n^{(0)}}
+  +\frac{\phi_n}{E_n^{(0)}-H_0}(\lambda V-\Delta_n)\ket{n}
+\end{align*}
+Note we need that $c_n(\lambda)$ to be $1$ as $\lambda\to0$ since we need to recover the unperturbed states if we set $\lambda=0$, So this means a convenient choice of normalization is:
+\begin{align*}
+  c_n(\lambda)=\ip{n^{(0)}}{n}=1
+\end{align*}
+
+Now with this, as well as eq. \eqref{eq:ndtipt}, we can find out how to get the energy corrections, by acting on the left with $\bra{n^{(0)}}$:
+\begin{align*}
+  \mel{n^{(0)}}{(E_n^{(0)}-H_0)}{n}&=\mel{n^{(0)}}{(\lambda V-\Delta_n)}{n}\\
+  \mel{n^{(0)}}{(E_n^{(0)}-E_n^{(0)})}{n}&=
+  \lambda\mel{n^{(0)}}{V}{n}-\Delta_n\ip{n^{(0)}}{n}\\
+  \Delta_n&=\lambda\mel{n^{(0)}}{V}{n}
+\end{align*}
+Leaving the key equation:
+\begin{equation}
+  \label{eq:thekey}
+  \Delta_n=\lambda\mel{n^{(0)}}{V}{n}
+\end{equation}
+Then we can expand the corrections and states in terms of $\lambda$:
+\begin{equation}
+  \label{eq:expansions}
+  \begin{aligned}
+    \ket{n}&=\ket{n^{(0)}}+\lambda\ket{n^{(1)}}+\lambda^2\ket{n^{(2)}}
+    +\cdots+\lambda^m\ket{n^{(m)}}+\cdots\\
+    \Delta_n&=\lambda\Delta_n^{(1)}+\lambda^2\Delta_n^{(2)}
+    +\cdots+\lambda^m\Delta_n^{(m)}+\cdots
+  \end{aligned}
+\end{equation}
+Note that the zero order energy correction is $0$ by definition
+
+Now we want to insert the expansion in eq. \eqref{eq:expansions} into eq. \eqref{eq:thekey}, for now keep first and second order terms:
+\begin{align*}
+  \lambda\Delta_n^{(1)}+\lambda^2\Delta_n^{(2)}
+  &=\lambda\bra{n^{(0)}}V
+  \qty(\ket{n^{(0)}}+\lambda\ket{n^{(1)}}+\lambda^2\ket{n^{(2)}})\\
+  \lambda\Delta_n^{(1)}+\lambda^2\Delta_n^{(2)}&=
+  \lambda\qty(\mel{n^{(0)}}{V}{n^{(0)}})
+  +\lambda^2\qty(\mel{n^{(0)}}{V}{n^{(1)}})
+  +\lambda^3\qty(\mel{n^{(0)}}{V}{n^{(2)}})
+\end{align*}
+Matching powers of $\lambda$ gives specific equations:
+\begin{align*}
+  \Delta_n^{(1)}&=\mel{n^{(0)}}{V}{n^{(0)}}\\
+  \Delta_n^{(2)}&=\mel{n^{(0)}}{V}{n^{(1)}}
+\end{align*}
+So the general term of order $\lambda^N$ is:
+\begin{align*}
+  \Delta_n^{(N)}&=\mel{n^{(0)}}{V}{n^{(N-1)}}
+\end{align*}
+We can then apply what we found for the perturbed states to find the form of $\ket{n^{(N-1)}}$:
+\begin{align*}
+  \ket{n^{(1)}}=\frac{\phi_n}{E_n^{(0)}-H_0}V\ket{n^{(0)}}
+\end{align*}
+We then can find the form of $\Delta_n^{(2)}$ in terms of unperturbed states:
+\begin{align*}
+  \Delta_n^{(2)}=\mel{n^{(0)}}{V\frac{\phi_n}{E_n^{(0)}-H_0}V}{n^{(0)}}
+\end{align*}
+Which can be written as a series using the expansion of $\phi_n$:
+\begin{align*}
+  \Delta_n^{(2)}&=\sum_{k\neq n}
+  \mel{n^{(0)}}{V\frac{\dyad{k^{(0)}}}{E_n^{(0)}-E_k^{(0)}}V}{n^{(0)}}\\
+  &=\sum_{k\neq n}\frac{\mel{n^{(0)}}{V}{k^{(0)}}\mel{k^{(0)}}{V}{n^{(0)}}}
+  {E_n^{(0)}-E_k^{(0)}}\\
+  &=\sum_{k\neq n}\frac{\abs{V_{nk}}^2}
+  {E_n^{(0)}-E_k^{(0)}}
+\end{align*}
+Any other higher order terms can be calculated using the series expansion and the expansion of $\phi_n$ in unperturbed states.
+
+\subsection{Degenerate Case}
+The only problem with the non-degenerate case is that we encounter fractions of the form:
+\begin{align*}
+  \frac{V_{nk}}{E_n^{(0)}-E_k^{(0)}}
+\end{align*}
+We avoid the trivial zero denominator by not including $n$ in our sums, but what if we have degenerate energy levels? This means that there are $n$ and $m$ such that:
+\begin{align*}
+  E_n^{(0)}=E_m^{(0)}\text{ BUT }m\neq n
+\end{align*}
+To solve this problem, we need to diagonalize the subspace of degenerate states.
+
+Construct the matrix $W$ by taking matrix elements of $V$ with the degenerate kets $\ket{\ell^{(0)}}$:
+\begin{align*}
+  W_{ij}=\mel{i^{(0)}}{V}{j^{(0)}}=V_{ij}
+\end{align*}
+We then solve the diagonalization problem:
+\begin{align*}
+  W\ket{\ell}=\Delta_\ell^{(1)}\ket{\ell}
+\end{align*}
+Where $\ket{\ell}$ is a linear combination of the various $\ket{\ell^{(0)}}$
+\end{document}
