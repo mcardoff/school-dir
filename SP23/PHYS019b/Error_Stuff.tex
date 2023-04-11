@@ -95,6 +95,28 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}{Why Does it Matter?}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item To the right are 4 data sets with different Data, but
+        \begin{itemize}
+        \item The same fit params
+        \item The same $R^2$ value
+        \end{itemize}
+      \item So Completely different data gives the same overall results
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=5cm]{anscombe}
+        \caption{Anscombe Data Sets}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
 \section{$R^2$ Statistic}
 \begin{frame}{The $R^2$ Statistic}
   \begin{itemize}
@@ -203,29 +225,6 @@
   \item If you want to discuss experimental results, i.e. errors, use $\chi^2$
   \item Most of the time in lab we have errors, so most of the time we are looking to calculate $\chi^2$
   \end{itemize}
-\end{frame}
-
-\section{Dangers}
-\begin{frame}{Why Does it Matter?}
-  \begin{columns}
-    \begin{column}{0.5\textwidth}
-      \begin{itemize}
-      \item To the right are 4 data sets with different Data, but
-        \begin{itemize}
-        \item The same fit params
-        \item The same $R^2$ value
-        \end{itemize}
-      \item So Completely different data gives the same overall results
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.5\textwidth}
-      \begin{figure}[H]
-        \centering
-        \includegraphics[width=5cm]{anscombe}
-        \caption{Anscombe Data Sets}
-      \end{figure}
-    \end{column}
-  \end{columns}
 \end{frame}
 
 \end{document}
