@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+
+\input{../template.tex}
+
+\title{\vspace{-3em}PHYS 202a HW 07}
+\date{\today}
+
+% setups
+\graphicspath{ {./figs/} }
+
+\begin{document}
+\maketitle
+
+\section{Renormalization for two scalars}
+\begin{problem}
+  Repeat the one-loop renormalization procedure of section 7.1 for two scalar field $\phi_{1,2}$ with the same mass $m_1=m_2=m$ and a quartic interaction of the form
+  \begin{align*}
+    \mathcal{L}_I=-\frac{\lambda_1}{4 !} \phi_1^4-\frac{\lambda_2}{4 !} \phi_2^4-\frac{g}{4} \phi_1^2 \phi_2^2
+  \end{align*}
+  There are now three renormalized couplings $\lambda_{1,2}^{\text {ren }}, g^{\text {ren }}$. Considering all five 2-to-2 scattering processes $1+1 \rightarrow 1+1,2+2 \rightarrow 2+2,1+2 \rightarrow 1+2,1+1 \rightarrow 2+2,2+2 \rightarrow 1+1$, and using the symmetric renormalization point $s=t=u=0$, write the equivalent of $(7.15)$ and express the renormalized couplings in terms of the original ones (to quadratic order). Show that they have the following features:
+  \begin{itemize}
+  \item If $g=0$ then $g^{\text{ren}}=0$.
+  \item If $\lambda_1=\lambda_2$ then
+    $\lambda_1^{\text{ren}}=\lambda_2^ {\text{ren}}$.
+  \item If $\lambda_1=\lambda_2=3 g$ then
+    $\lambda_1^{\text{ren}}=\lambda_2^{\text{ren}}=3 g^{\text{ren}}$.
+  \end{itemize}
+  Give a qualitative explanation for each of these features.
+
+  The above feature show that the renormalized couplings are constrained by properties of the original Lagrangian. Nonetheless, renormalization can generate new couplings not present in the original Lagrangian. For example, if $\lambda_1=0$, can it happen that $\lambda_1^{\text {ren }} \neq 0$? Can renormalization also introduce a quartic coupling of the form $\phi_1 \phi_2^3$ in this theory? Why or why not?
+\end{problem}
+The Equations in the book are:
+\begin{thebook*}
+  First we have 7.15:
+  \begin{align*}
+    \mathcal{M}=\lambda^{\text{ren}}_{\text{sym}}
+    \qty[1-\frac{\lambda^{\text{ren}}_{\text{sym}}}
+    2\qty(\Delta I(s)+\Delta I(t)+\Delta I(u))]
+  \end{align*}
+\end{thebook*}
+\newpage
+\section{Counterterms}
+\begin{problem}
+  Consider a scalar field with a cubic self-interaction:
+  \begin{align*}
+    \mathcal{L}=\frac{1}{2} \partial_\mu \phi \partial^\mu \phi-\frac{m^2}{2} \phi^2-\frac{\lambda}{3 !} \phi^3
+  \end{align*}
+  Compute the one-loop counterterms, as a function of the physical mass $m$ and the physical coupling $\lambda$, in dimensional regularization, for the mass and the wave function of $\phi$.
+\end{problem}
+\end{document}
