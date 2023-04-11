@@ -1,0 +1,133 @@
+\documentclass{beamer}
+
+\usepackage[italicdiff]{physics}
+\usepackage{hyperref}
+\usepackage{url}
+
+\newcommand{\dbar}{d\hspace*{-0.08em}\bar{}\hspace*{0.1em}}
+
+\newenvironment{itemframe}[1]{\begin{frame}{#1}\begin{itemize}}   {\end{itemize}\end{frame}}
+
+% Changes style of actual slides
+\usetheme{Dresden}
+% Changes color of slides
+\usecolortheme{spruce}
+% removes controls at bottom right side
+\usenavigationsymbolstemplate{}
+
+% for figures
+\graphicspath{ {./figs/} }
+
+\title{Lab 5, Capacitors and RC Circuits}
+\author{Michael Cardiff}
+\subtitle{PHYS 19b}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage{}
+\end{frame}
+
+\section{Reminders}
+\begin{frame}{Important Notes!}
+  \begin{itemize}
+  \item For Experiment 4 we will be using different capacitors, get one from me at the front
+  \item In case you didn't get questions 2 and 3 on the Quiz:
+    \begin{align*}
+     C_{parallel}=C_1+C_2\\
+     \frac1{C_{series}}=\frac1{C_1}+\frac1{C_2}
+    \end{align*}
+  \item The switches for the circuit are a bit confusing:
+    \begin{itemize}
+    \item The switch is open when it is touching neither side
+    \item When the switch is closed on one side, the same color leads on either side are connected to one another (figure 2)
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Other Reminders}
+  \begin{itemize}
+  \item Short Lab Due Next Friday, April 7th (If you have problems with this email me)
+  \item Notes on Capacitors? Specifically Deriving (1) in manual?
+  \end{itemize}
+\end{frame}
+
+\section{Derivation}
+\begin{frame}{Equation in the Manual}
+  \begin{itemize}
+  \item An important equation in the lab manual is the decay of the RC Circuit in Fig. 1:
+    \begin{align*}
+      V(t)=V_0 e^{-t/\tau}
+    \end{align*}
+  \item It is important to look at what happens first when we have S1 closed and S2 Open, lets examine that first
+  \end{itemize}
+\end{frame}
+\begin{frame}{What does S1 do?}
+  \begin{itemize}
+  \item In this case, a battery is simply acting as a current source to the capacitor, which stores voltage equal to:
+    \begin{align*}
+      V=\frac{q}{C}
+    \end{align*}
+  \item A charge can be thought of in terms of a current times a time
+  \item So if we supply a constant current to the capacitor, it will charge up to the voltage of the battery
+  \item So once everything settles, $V_{cap}$ when S1 is closed is the same as $V_{battery}$
+  \item We can now open S1 and examine the circuit with S2 Closed
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Closing S2}
+  \begin{itemize}
+  \item Initially, the capacitor simply acts as a voltage source, but it does NOT keep its voltage as time goes on, it discharges.
+  \item However, the loop rule tells us that the voltage in the closed loop should be 0, so:
+    \begin{align*}
+      V_{cap}+V_{res}=0
+    \end{align*}
+  \item We know a relationship between charge and capacitance:
+    \begin{align*}
+      V_{cap}=\frac{q}{C}
+    \end{align*}
+  \item And a relationship between current and resistance:
+    \begin{align*}
+      V_{res}=iR=R\dv{q}{t}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+\begin{frame}{Continued}
+  \begin{itemize}
+  \item Put these in the original equation to get an equation for $q(t)$:
+    \begin{align*}
+      \frac{1}{C}q(t)+R\dv{q(t)}{t}=0
+    \end{align*}
+  \item ODEs are hard, so I'm just going to guess the solution:
+    \begin{align*}
+      q(t)=Ae^{Bt}
+    \end{align*}
+  \item Since $e^t$ is a nice function in physics, we get:
+    \begin{align*}
+      \frac{A}{C}e^{Bt}+RABe^{Bt}=0
+    \end{align*}
+  \item Some Algebra can give you one of the constants:
+    \begin{align*}
+      B=-\frac{1}{RC}
+    \end{align*}
+  \item Hey, thats the time constant!
+  \end{itemize}
+\end{frame}
+\begin{frame}{The Charge}
+  \begin{itemize}
+  \item The Next step is applying the initial condition, which gives us $A$ from the capacitor relationship:
+    \begin{align*}
+      q(0)=CV_0\implies q(t)=CV_0e^{-t/RC}
+    \end{align*}
+  \item However notice that the same capacitor relationship gives us the voltage law we want:
+    \begin{align*}
+      V(t)=\frac{q(t)}{C}=V_0e^{-t/RC}
+    \end{align*}
+  \item Which is exactly eq. (2) in the manual:
+    \begin{align*}
+      \boxed{V(t)=V_0e^{-t/RC}}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\end{document}
