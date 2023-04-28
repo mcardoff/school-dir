@@ -1,0 +1,121 @@
+\documentclass{beamer}
+
+\title{Lab 6: Faraday's Law}
+\author{Michael Cardiff}
+\subtitle{PHYS 19b}
+
+\usepackage[italicdiff]{physics}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{multicol}
+
+% Changes style of actual slides
+\usetheme{Dresden}
+% Changes color of slides
+\usecolortheme{spruce}
+% removes controls at bottom right side
+\usenavigationsymbolstemplate{}
+
+% for figures
+\graphicspath{ {./figs/} }
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Faraday's Law}
+  \begin{itemize}
+  \item Faraday's Law of Induction is given by:
+    \begin{align*}
+      \mathcal{E}=-\frac{\Delta \Phi_B}{\Delta t}=-\dv{\Phi_B}{t}
+    \end{align*}
+  \item In words: a change in magnetic flux induces an EMF\@.
+  \item Magnetic Flux is given by:
+    \begin{align*}
+      \Phi_B=\int\vb{B}\vdot\dd{\vb{a}}=\int\vb{B}\vdot\dv{\vb{a}}{t}\dd{t}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{What Does this Mean?}
+  \begin{itemize}
+  \item Many ways to change the magnetic flux:
+    \begin{itemize}
+    \item Change the magnet you're using (Changing $\vb{B}$)
+    \item Change the area the magnet is going through (Change $\vb{a}$)
+    \item Change the way the magnet is moving through $\vb{a}$ (Change $\dd{\vb{a}}$)
+    \end{itemize}
+  \item If I generate magnetic flux through some area which is conducting, current will be generated!
+  \item The minus sign in Faraday's law tells you the direction the current will be in! 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Basics of Magnets}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item Two types of magnets we will encounter: electromagnets and  permanent magnets
+      \item Permanent magnets are always magnets
+      \item Electromagnets are only magnets when a current is supplied
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=4.0cm]{magnet}
+        \includegraphics[width=4.0cm]{solenoid}
+        \caption{Permanent vs Electromagnet}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Continued}
+  \begin{itemize}
+  \item Electromagnets Work the other way too!
+  \item Put a magnetic field in a wire loop
+  \item There will be an induced current. 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{What the Manual Left out}
+  \begin{itemize}
+  \item The type of electromagnet we are using is many loops of wire (a solenoid)
+  \item Think of one loop of wire as the smallest unit of magnetic field
+  \item More loops = stronger magnetic field
+  \item This way, we can say Faraday's Law is:
+    \begin{align*}
+      \mathcal{E}=-N\dv{\Phi^1_{B}}{t}
+    \end{align*}
+  \item Where $\Phi_B^1$ is the magnetic flux through a single loop:
+    \begin{align*}
+      \Phi_B^1=B*A_{circle}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Lab Reminders}
+  \begin{itemize}
+  \item Part 1 is Qualitative
+  \item Part 2 is kinda messed up
+  \item Only 5 working setups for part 2
+  \item You may have to get into bigger groups
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Misc. Reminders}
+  \begin{itemize}
+  \item This is the last lab
+  \item Long Report
+  \item Hints throughout manual for how to write report
+  \item Due Date of Lab?
+    \begin{itemize}
+    \item Friday April 28 (normal date)
+    \item Friday May 5 (Friday before finals week)
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\end{document}
