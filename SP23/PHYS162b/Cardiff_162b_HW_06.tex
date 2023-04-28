@@ -37,16 +37,15 @@ The next possible transition would be to $\ket{210}$, which is easily done in Ma
 \begin{figure}[H]
   \centering
   \begin{mmaCell}[moredefined={MatrixElement},morefunctionlocal={\#1, \#2, \#3, r}]{Input}
-    MatrixElement=
-    Integrate[Conjugate[#1] #2 #3 \mmaSup{r}{2}Sin[\mmaFnc{\(\theta\)}]
+MatrixElement=Integrate[Conjugate[#1] #2 #3 \mmaSup{r}{2}Sin[\mmaFnc{\(\theta\)}]
     \{r, 0, \(\infty\)\},\{\mmaFnc{\(\theta\)}, 0, \(\pi\)\},   \{\mmaFnc{\(\phi\)}, 0, \(2\pi\)\}]\&
 
   \end{mmaCell}
   \begin{mmaCell}[moredefined={MatrixElement}]{Input}
-    MatrixElement[\mmaDef{\(\pmb{\psi}210\)}, r Cos[\mmaUnd{\(\pmb{\theta}\)}],\mmaDef{\(\pmb{\psi}100\)}]
+MatrixElement[\mmaDef{\(\pmb{\psi}210\)}, r Cos[\mmaUnd{\(\pmb{\theta}\)}],\mmaDef{\(\pmb{\psi}100\)}]
   \end{mmaCell}
   \begin{mmaCell}{Output}
-    \mmaFrac{128 \mmaSqrt{2} \mmaSub{a}{0}}{243}
+\mmaFrac{128 \mmaSqrt{2} \mmaSub{a}{0}}{243}
   \end{mmaCell}
     \caption{Calculation for $\mel{210}{z}{100}$}
 \end{figure}
@@ -60,13 +59,13 @@ The final possible transition is to $\ket{21\pm1}$, which is forbidden by the Wi
 \begin{align*}
   \mel{21\pm1}{z}{100}=0
 \end{align*}
-\begin{thebook*}
+\begin{thebook}
   We invoke eq (5.276):
   \begin{align*}
     c_{n}^{(1)}(t)=-\frac{i}{\hbar}\int_0^t e^{i\omega_{ni}t'}V_{ni}(t')\dd{t'}
   \end{align*}
   Where $\omega_{ni}\equiv(E_n-E_i)/\hbar$
-\end{thebook*}
+\end{thebook}
 We specifically have:
   \begin{align*}
     c_{\{2p\}}^{(1)}(t)=-\frac{i}{\hbar}\int_0^t e^{i\omega_{ni}t'}V_{\{2p\}i}(t')\dd{t'}
@@ -447,17 +446,17 @@ Combining this with what we had before:
   \delta(E_n-E_i-\hbar\omega)
 \end{align*}
 The book then goes on to describe an absorption cross section as:
-\begin{thebook*}
+\begin{thebook}
   An absorption cross section (in words) is:
   \begin{align*}
     \frac{\text{(Energy/unit time) absorbed by the atom ($i\to n$)}}
     {\text{Energy flux of the radiation field}}
   \end{align*}
-\end{thebook*}
+\end{thebook}
 This energy flux inherently comes from the fact that we are subjecting the hydrogen atom to radiation, in the form of accelerating charges. The absorption cross section is the portion of those accelerating charges which actually gets absorbed by the hydrogen atom or whatever system.
 
 We then want to derive the following:
-\begin{thebook*}
+\begin{thebook}
   Sakurai claims that we can write the energy density $\mathcal{U}$ as:
   \begin{align*}
     \mathcal{U}=\frac1{16\pi}\qty(E_{max}^2+B_{max}^2)
@@ -466,7 +465,7 @@ We then want to derive the following:
   \begin{align*}
     c\mathcal{U}=\frac{\omega^2}{2\pi c}\abs{A_0}^2
   \end{align*}
-\end{thebook*}
+\end{thebook}
 From E\& M, we have Poynting's Theorem:
 \begin{theorem}[Poynting's Theorem]
   The rate of energy transfer per unit volume is given as:

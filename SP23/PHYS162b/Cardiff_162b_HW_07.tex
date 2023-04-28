@@ -1,0 +1,316 @@
+\documentclass[12pt]{article}
+
+\input{../template.tex}
+
+\title{\vspace{-3em}PHYS 162b HW 7}
+\date{\today}
+
+% setups
+\graphicspath{ {./figs/} }
+
+\begin{document}
+\maketitle
+
+\section{Photoelectric Effect Cross Section}
+\begin{problem}
+  Using the quantized E\&M field find the cross section for the photoelectric effect in which an electron in the ground state of hydrogen is ejected when the atom absorbs a photon. Assume the ejected electron is sufficiently energetic that the wave function for the electron can be taken to be the plane wave
+  \begin{align*}
+    \ip{\vb{r}}{\vb{k}_f}=\frac{e^{i\vb{k}_f\vdot\vb{r}}}{\sqrt{\Omega}}
+  \end{align*}
+  Where $\vb{p}_f=\hbar\vb{k}_f$ is the momentum of the electron, $\vb{p}_i=\hbar\vb{k}_i$ is the momentum of the incident photon, and $\bm{\veps}$ its polarization vector.
+
+  \emph{Suggestion}: The cross section is the transition rate divided by the incident photon flux, which is equal to $c/\Omega$ in the box normalization.
+\end{problem}
+Note we have the following conditions:
+\begin{align*}
+  \ket{i}&=\ket{100}\\
+  \ip{\vb{r}}{i}&=\frac{e^{-r/a}}{\sqrt{\pi a^3}}\\
+  \ket{f}&=\ket{\vb{k}_f}\\
+  \ip{\vb{r}}{f}&=\frac{e^{i\vb{k}_f\vdot\vb{r}}}{\sqrt{\Omega}}
+\end{align*}
+And the transition rate:
+\begin{align*}
+  R=\sum_\lambda\int\frac{2\pi}{\hbar}\abs{\mel{f}{H_I}{i}}^2\rho\dd{\Omega}
+\end{align*}
+The interaction Hamiltonian we should use is from the book:
+\begin{align*}
+  H_I=\frac{e}{mc}\vb{A\vdot p}
+\end{align*}
+Note that the matrix element is reduced as per the previous homework:
+\begin{align*}
+  \mel{f}{H_I}{i}=-\frac{e}{m}\sqrt{\frac{2\pi\hbar}{\Omega\omega_{k}}}
+  \mel{f}{e^{i\vb{k\vdot r}}\bm{\hat{\veps}}\vdot\vb{p}}{i}
+\end{align*}
+This matrix element is fairly simple to do given that we have analytic forms for everything:
+\begin{align*}
+  \mel{f}{H_I}{i}=-\frac{2\pi\hbar e}{m\Omega}
+  \sqrt{\frac{2\hbar a^3}{\omega_k}}
+  \frac{(\vb{k-k}_f)\vdot\hat{\bm{\veps}}a^3}{(1+a^2(\vb{k-k}_f)^2)^2}
+\end{align*}
+The differential scattering cross section is this divided by $c/\Omega$
+\begin{align}
+  \boxed{\dv{\sigma}{\Omega}=\frac{32e^2a^3k_f(\vb{k}\vdot\hat{\bm{\veps}})^2}
+  {mc\omega_k(a^2(\vb{k-k}_f)^2)^2}}
+\end{align}
+
+\section{The Klein-Gordan Equation}
+\begin{problem}
+  A model for spin zero bosons is the Klein-Gordan equation
+  \begin{align*}
+    \laplacian{\varphi}-\frac1{c^2}\pdv[2]{\varphi}{t}
+    -\qty(\frac{mc}{\hbar})^2\varphi=0
+  \end{align*}
+  The idea is to make $\varphi$ an operator, much in the same way as fone for the electromagnetic vector potential.
+  \begin{enumerate}[label=(\alph*)]
+  \item Verify that if we write
+    \begin{align*}
+      \varphi(\vb{r},t)=\sum_{\vb{k}}c\sqrt{\frac{\hbar}{2\omega}}
+      \qty(\hat{a}_{\vb{k}}\frac{e^{i(\vb{k\vdot r}-\omega t)}}{\sqrt{\Omega}}
+      +\hat{a}^\dag_{\vb{k}}\frac{e^{-i(\vb{k\vdot r}-\omega t)}}{\sqrt{\Omega}})
+    \end{align*}
+    $\varphi$ is a solution to the Klein-Gordan equation provided $\omega=c\sqrt{\vb{k}^2+(mc/\hbar)^2}$
+  \item One can show that the hamiltonian for this system is given by
+    \begin{align*}
+      H=\frac12\int\dd[3]{r}\qty[\qty(\frac1c\pdv{\varphi}{t})^2
+      +\grad{\varphi}\vdot\grad{\varphi}+\qty(\frac{mc}{\hbar})^2\varphi^2]
+    \end{align*}
+    if $\comm{\hat{a}_{\vb{k}}}{\hat{a}_{\vb{k}'}}=0$, $\comm{\hat{a}^\dag_{\vb{k}}}{\hat{a}^\dag_{\vb{k}'}}=0$,
+    and $\comm{\hat{a}_{\vb{k}}}{\hat{a}^\dag_{\vb{k}'}}=\delta_{\vb{k},\vb{k}'}$ find the Hamiltonian in terms of the operators $\hat{a}_{\vb{k}}$ and $\hat{a}_{\vb{k}}^\dag$
+  \item Argue that the field $\hat{\varphi}$ creates and annihilates (spin-0) particles of mass $m$ and energy $E=\sqrt{\vb{p}^2c^2+m^2c^4}$ and that these particles are indeed bosons.
+  \end{enumerate}
+\end{problem}
+\subsection{Mode Expansion Solution}
+There are three terms in the Klein-Gordon equation, the easiest is the second time derivative:
+\begin{align*}
+  \pdv{\varphi}{t}&=
+  \sum_{\vb{k}}c\sqrt{\frac{\hbar}{2\omega}}
+  \qty(\hat{a}_{\vb{k}}
+  \pdv{t}\qty(\frac{e^{i(\vb{k\vdot r}-\omega t)}}{\sqrt{\Omega}})
+  +\hat{a}^\dag_{\vb{k}}
+  \pdv{t}\qty(\frac{e^{-i(\vb{k\vdot r}-\omega t)}}{\sqrt{\Omega}}))\\
+  &=\sum_{\vb{k}}c\sqrt{\frac{\hbar}{2\omega}}
+  \qty(-i\omega\hat{a}_{\vb{k}}
+  \qty(\frac{e^{i(\vb{k\vdot r}-\omega t)}}{\sqrt{\Omega}})
+  +i\omega\hat{a}^\dag_{\vb{k}}
+  \qty(\frac{e^{-i(\vb{k\vdot r}-\omega t)}}{\sqrt{\Omega}}))\\
+  \pdv[2]{\varphi}{t}&=\sum_{\vb{k}}c\sqrt{\frac{\hbar}{2\omega}}
+  \qty((-i\omega)^2\hat{a}_{\vb{k}}
+  \qty(\frac{e^{i(\vb{k\vdot r}-\omega t)}}{\sqrt{\Omega}})
+  +(i\omega)^2\hat{a}^\dag_{\vb{k}}
+  \qty(\frac{e^{-i(\vb{k\vdot r}-\omega t)}}{\sqrt{\Omega}}))\\
+  &=\sum_{\vb{k}}(-\omega^2c)\sqrt{\frac{\hbar}{2\omega}}
+  \qty(\hat{a}_{\vb{k}}
+  \qty(\frac{e^{i(\vb{k\vdot r}-\omega t)}}{\sqrt{\Omega}})
+  +\hat{a}^\dag_{\vb{k}}
+  \qty(\frac{e^{-i(\vb{k\vdot r}-\omega t)}}{\sqrt{\Omega}}))
+\end{align*}
+Similarly, the laplacian will give a $\vb{k}\vdot\vb{k}=k^2$, meaning:
+\begin{align*}
+  \laplacian{\varphi}=\sum_{\vb{k}}(-k^2c)\sqrt{\frac{\hbar}{2\omega}}
+  \qty(\hat{a}_{\vb{k}}
+  \qty(\frac{e^{i(\vb{k\vdot r}-\omega t)}}{\sqrt{\Omega}})
+  +\hat{a}^\dag_{\vb{k}}
+  \qty(\frac{e^{-i(\vb{k\vdot r}-\omega t)}}{\sqrt{\Omega}}))
+\end{align*}
+Adding each of the terms in the KG equation, we have:
+\begin{align*}
+  \laplacian{\varphi}-\frac1{c^2}\pdv[2]{\varphi}{t}
+  -\qty(\frac{mc}{\hbar})^2\varphi=
+  \sum_{\vb{k}}\qty(-k^2+\frac{\omega^2}{c^2}-\qty(\frac{mc}{\hbar})^2)c
+  \sqrt{\frac{\hbar}{2\omega}}\qty(\hat{a}_{\vb{k}}
+  \qty(\frac{e^{i(\vb{k\vdot r}-\omega t)}}{\sqrt{\Omega}})
+  +\hat{a}^\dag_{\vb{k}}
+  \qty(\frac{e^{-i(\vb{k\vdot r}-\omega t)}}{\sqrt{\Omega}}))
+\end{align*}
+The only way for this to be $0$ is if we have:
+\begin{align*}
+  0&=-k^2+\frac{\omega^2}{c^2}-\frac{m^2c^2}{\hbar^2}\\
+  \frac{\omega^2}{c^2}&=k^2+\frac{m^2c^2}{\hbar^2}
+\end{align*}
+Or, if:
+\begin{align}
+  \boxed{\omega^2=c^2\qty(\vb{k}^2+(mc/\hbar)^2)}
+\end{align}
+
+\subsection{Hamiltonian}
+Note from before the derivatives we have are:
+\begin{align*}
+  \frac1c\pdv{\varphi}{t}&=
+  \sum_{\vb{k}}\sqrt{\frac{\hbar}{2\omega}}(-i\omega)
+  \qty(\hat{a}_{\vb{k}}\frac{e^{i(\vb{k\vdot r}-\omega t)}}{\sqrt{\Omega}}
+  -\hat{a}^\dag_{\vb{k}}\frac{e^{-i(\vb{k\vdot r}-\omega t)}}{\sqrt{\Omega}})\\
+  \grad{\varphi}&=\sum_{\vb{k}}c\sqrt{\frac{\hbar}{2\omega}}(i\vb{k})
+  \qty(\hat{a}_{\vb{k}}\frac{e^{i(\vb{k\vdot r}-\omega t)}}{\sqrt{\Omega}}
+  -\hat{a}^\dag_{\vb{k}}\frac{e^{-i(\vb{k\vdot r}-\omega t)}}{\sqrt{\Omega}})
+\end{align*}
+We should individually square $\varphi$, then go on to the others:
+\begin{align*}
+  \varphi^2=\sum_{\vb{k},\vb{k}'}\hbar c^2\frac1{2\Omega\sqrt{\omega\omega'}}
+  &\qty(\hat{a}_{\vb{k}}e^{i(\vb{k\vdot r}-\omega t)}
+  +\hat{a}^\dag_{\vb{k}}e^{-i(\vb{k\vdot r}-\omega t)})
+  \qty(\hat{a}_{\vb{k}'}e^{i(\vb{k'\vdot r}-\omega' t)}
+  +\hat{a}^\dag_{\vb{k}'}e^{-i(\vb{k'\vdot r}-\omega' t)})\\
+  =\sum_{\vb{k},\vb{k}'}\frac{\hbar c^2}{2\Omega\sqrt{\omega\omega'}}
+  &\left(\hat{a}_{\vb{k}}\hat{a}_{\vb{k}'}
+    e^{i(\vb{k\vdot r}-\omega t)}e^{i(\vb{k'\vdot r}-\omega' t)}+
+    \hat{a}_{\vb{k}}\hat{a}^\dag_{\vb{k}'}
+    e^{i(\vb{k\vdot r}-\omega t)}e^{-i(\vb{k'\vdot r}-\omega' t)}\right.\\
+  &\left.+\hat{a}^\dag_{\vb{k}}\hat{a}_{\vb{k}'}
+    e^{-i(\vb{k\vdot r}-\omega t)}e^{i(\vb{k'\vdot r}-\omega' t)}
+    +\hat{a}^\dag_{\vb{k}}\hat{a}^\dag_{\vb{k}'}
+    e^{-i(\vb{k\vdot r}-\omega t)}e^{-i(\vb{k'\vdot r}-\omega' t)}\right)
+\end{align*}
+Since we are integrating over position variables, we realize that we have the completeness of the complex exponentials, so we can get rid of all of them, and we are only left with terms with one non-dagger and one dagger, as well as one less sum:
+\begin{align*}
+  \varphi^2&=\sum_{\vb{k}}\frac{\hbar c^2}{2\omega}
+  \qty(\hat{a}_{\vb{k}}\hat{a}^\dag_{\vb{k}}
+  +\hat{a}^\dag_{\vb{k}}\hat{a}_{\vb{k}})
+\end{align*}
+This same logic applies to every other term in the hamiltonian, we only get different coefficients:
+\begin{align*}
+  \qty(\frac1c\pdv{\varphi}{t})^2&=
+  \sum_{\vb{k}}\frac{\hbar \omega}{2}
+  \qty(\hat{a}_{\vb{k}}\hat{a}^\dag_{\vb{k}}
+  +\hat{a}^\dag_{\vb{k}}\hat{a}_{\vb{k}})\\
+  \grad{\varphi}\vdot\grad{\varphi}&=
+  \sum_{\vb{k}}\frac{\hbar c^2k^2}{2\omega}
+  \qty(\hat{a}_{\vb{k}}\hat{a}^\dag_{\vb{k}}
+  +\hat{a}^\dag_{\vb{k}}\hat{a}_{\vb{k}})
+\end{align*}
+And the last term is:
+\begin{align*}
+  \qty(\frac{mc}{\hbar})^2\varphi^2&=
+  \sum_{\vb{k}}\qty(\frac{mc}{\hbar})^2\frac{\hbar c^2}{2\omega}
+  \qty(\hat{a}_{\vb{k}}\hat{a}^\dag_{\vb{k}}
+  +\hat{a}^\dag_{\vb{k}}\hat{a}_{\vb{k}})
+\end{align*}
+Adding all of these terms, we can find the Hamiltonian is:
+\begin{align*}
+  H&=\sum_{\vb{k}}\qty(-\omega^2+c^2k^2+\frac{m^2c^4}{\hbar^2})
+  \frac{\hbar}{2\omega}\qty(\hat{a}_{\vb{k}}\hat{a}^\dag_{\vb{k}}
+  +\hat{a}^\dag_{\vb{k}}\hat{a}_{\vb{k}})\\
+  &=\sum_{\vb{k}}\frac{\hbar\omega}{2}\qty(\hat{a}_{\vb{k}}\hat{a}^\dag_{\vb{k}}
+  +\hat{a}^\dag_{\vb{k}}\hat{a}_{\vb{k}})\\
+  &=\sum_{\vb{k}}\hbar\omega\qty(\hat{a}^\dag_{\vb{k}}\hat{a}_{\vb{k}}+\frac12)
+\end{align*}
+
+\subsection{Interpretation}
+If we look at the dispersion relation $\omega$, it is a frequency, so if we multiply through by $\hbar$, we should have an energy:
+\begin{align*}
+  \hbar\omega=c\sqrt{\hbar^2\vb{k}^2+m^2c^2}=
+  \sqrt{c^2\hbar^2\vb{k}^2+m^2c^4}=
+\end{align*}
+We can then define the momentum and energy as $\vb{p}=\hbar\vb{k}$ and $E=\hbar\omega$ respectively:
+\begin{align*}
+  E=\sqrt{(\vb{p}c)^2+(mc^2)^2}
+\end{align*}
+So the field $\varphi$ can be expanded as a series of connected harmonic oscillators, and which are particles! They should be spin-zero since the only degree of freedom is the position! 
+
+\section{Particle in $\delta$ Potential}
+\begin{problem}
+  A particle of charge $q$ in one dimension is initially bound to a delta function potential at the origin. From time $t=0$ to $t=\tau$ it is exposed to a constant electric field $\mathcal{E}$ in the $x$-direction (It is turned off at $t=\tau$).  Find the probability that at $\tau$ the particle will be found in an unbound state with energy between $E_{\vb{k}}$ and $E_{\vb{k}}+\dd{E_{\vb{k}}}$. Do the problem as follows.
+  \begin{enumerate}[label = (\alph*)]
+  \item Find the normalized bound state eigenfunction and eigenvalue for the potential $V(x)=-A\delta(x)$
+  \item Assume the unbound states (for the delta function potential) may be approximated by free particle states with periodic boundary conditions in a box of length $L$. Find the normalized wave function of wave vector $k$, $\psi_k(x)$, the density of states as a function of $k$, $\rho(k)$, and the density of states as a function of the free-particle energy $E_k$, $\rho(E_k)$
+  \item Assume that the electric field may be treated as a perturbation. Write the perturbed Hamiltonian. Find the matrix elements of $H_1$, the perturbation, between the initial and final states $\mel{0}{H_1}{k}$
+  \item Find the probability of transition between $\ket{0}$ and $\ket{k}$ to first order in perturbation theory. This is not a golden rule problem. It is quite straightforward.
+  \end{enumerate}
+\end{problem}
+
+\subsection{Analytic Bound State Solution}
+We need to solve the Schrodinger equation:
+\begin{align*}
+  -\frac{\hbar^2}{2m}\dv[2]{\psi}{x}-A\delta(x)\psi(x)=E\psi(x)
+\end{align*}
+We can solve this by considering the region to the left and right of the delta function, call the solution to the left $\psi^-$ and the solution to the right $\psi^+$:
+\begin{align*}
+  -\frac{\hbar^2}{2m}\dv[2]{\psi^-}{x}&=E\psi^-\\
+  -\frac{\hbar^2}{2m}\dv[2]{\psi^+}{x}&=E\psi^+
+\end{align*}
+These give simple exponentials as solutions, continuity of the function and discontinuity of the first derivative to get the constant
+\begin{align*}
+  \psi^-&=Ae^{\kappa x}\\
+  \psi^+&=Be^{-\kappa x}
+\end{align*}
+These can be normalized to find $A,B$:
+\begin{align*}
+  A=B=\sqrt{\kappa}
+\end{align*}
+Then we have $\kappa$ from the basic free equation:
+\begin{align*}
+  E=-\frac{\hbar^2\kappa^2}{2m}\implies\kappa^2=-\frac{2mE}{\hbar^2}
+\end{align*}
+Since this the bound state, the negative sign here does not matter.
+
+We can then (re)-use the discontinuity in order to find the energy in terms of $A$:
+\begin{align*}
+  \dv{\psi^+}{x}-\dv{\psi^-}{x}=-2\kappa=-\frac{2mA}{\hbar^2}
+\end{align*}
+We then solve for $E$ in terms of constants in the Schrodinger equation:
+\begin{align*}
+  E=-\frac{mA^2}{2\hbar^2}
+\end{align*}
+And this is manifestly negative, as $m,\hbar,A$ are all definitely positive, hence our bound state solution is given as:
+\begin{align}
+  \boxed{\begin{aligned}
+      \psi(x)&=\sqrt{\kappa}e^{-\kappa\abs{x}}\\
+      \kappa&=\sqrt{-2mE/\hbar^2}\\
+      E&=-\frac{mA^2}{2\hbar^2}
+    \end{aligned}}
+\end{align}
+
+\subsection{Unbound Solutions}
+Note now the Schrodinger equation is restricted to a box, and we can assume the states are free particle states of wavevector $\vb{k}$, or $k$ in this case.
+\begin{align*}
+  \psi_{k}=\ip{x}{k}=\frac1{\sqrt{2\pi}}e^{ikx}
+\end{align*}
+Thus for the density of states we have the free density of states using the standard:
+\begin{align*}
+  E=\frac{\hbar^2k^2}{2m}
+\end{align*}
+Where one state occupies a line of length $k$, in the 1-D unit sphere we have:
+\begin{align*}
+  N=\frac{kL}{\pi}
+\end{align*}
+States, such that:
+\begin{align*}
+  \dv{N}{k}=\frac{L}{\pi}
+\end{align*}
+So $\rho(k)$ is:
+\begin{align}
+  \boxed{\rho(k)\dd{k}=\frac{L}{\pi}\dd{k}}
+\end{align}
+In terms of the energy, we simply need to convert $\dd{k}$ to $\dd{E}$:
+\begin{align*}
+  \dd{k}&=\dd{E}\dv{k}{E}=\dd{E}\dv{E}\qty(\sqrt{\frac{2mE}{\hbar^2}})\\
+  \dv{k}{E}&=\sqrt{\frac{m}{2\hbar^2E}}
+\end{align*}
+Overall then, $\rho(E)\dd{E}$ is:
+\begin{align}
+  \boxed{\rho(E)\dd{E}=\frac{L}\pi\sqrt{\frac{m}{2\hbar^2E}}}
+\end{align}
+
+\subsection{Matrix Element}
+The electric field is constant, so the potential is going to be $V=-q\phi=-q\mathcal{E}x$, so the interaction Hamiltonian is:
+\begin{align*}
+  H_I=-q\mathcal{E}x
+\end{align*}
+We have the following states
+\begin{align*}
+  \ket{0}:\ip{x}{0}&=\sqrt{\kappa}e^{-\kappa \abs{x}}\\
+  \ket{k}:\ip{x}{k}&=\frac1{\sqrt{2\pi}}e^{ikx}
+\end{align*}
+I did the integral in Mathematica:
+\begin{align}
+  \boxed{\mel{0}{H_I}{k}=2i \frac{qk\mathcal{E}}{(k^2+\kappa^2)^2}
+  \sqrt{\frac{2\kappa^3}{\pi}}}
+\end{align}
+
+\subsection{Probability To First Order}
+I believe it is just the square of what we found before:
+\begin{align*}
+  \boxed{p_{0\to k}=-\frac{8q^2k^2\mathcal{E}^2\kappa^3}{\pi(k^2+\kappa^2)^4}}
+\end{align*}
+Which is well defined since $\kappa$ is negative, so $\kappa^3$ will be negative as well
+
+\end{document}

@@ -10,186 +10,14 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    130663,       3195]
-NotebookOptionsPosition[    121059,       3032]
-NotebookOutlinePosition[    121458,       3048]
-CellTagsIndexPosition[    121415,       3045]
+NotebookDataLength[     69652,       1722]
+NotebookOptionsPosition[     61777,       1578]
+NotebookOutlinePosition[     62353,       1599]
+CellTagsIndexPosition[     62310,       1596]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-
-Cell[CellGroupData[{
-Cell[BoxData[{
- RowBox[{
-  RowBox[{
-  "Import", "[", 
-   "\"\<https://raw.githubusercontent.com/jkuczm/MathematicaSyntaxAnnotations/\
-master/SyntaxAnnotations/SyntaxAnnotations.m\>\"", "]"}], 
-  "\n"}], "\[IndentingNewLine]", 
- RowBox[{"Import", "[", 
-  "\"\<https://raw.githubusercontent.com/jkuczm/MathematicaCellsToTeX/master/\
-NoInstall.m\>\"", "]"}]}], "Input",
- CellChangeTimes->{{3.889806419442048*^9, 3.88980641944248*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"d43f26bf-df2a-4ec7-8018-6c0172e4f2ed"],
-
-Cell[BoxData[
- TemplateBox[{
-  "AnnotateSyntax", "shdw", 
-   "\"Symbol \\!\\(\\*RowBox[{\\\"\\\\\\\"AnnotateSyntax\\\\\\\"\\\"}]\\) \
-appears in multiple contexts \\!\\(\\*RowBox[{\\\"{\\\", \
-RowBox[{\\\"\\\\\\\"CellsToTeX`SyntaxAnnotations`\\\\\\\"\\\", \\\",\\\", \
-\\\"\\\\\\\"Global`SyntaxAnnotations`\\\\\\\"\\\"}], \\\"}\\\"}]\\); \
-definitions in context \
-\\!\\(\\*RowBox[{\\\"\\\\\\\"CellsToTeX`SyntaxAnnotations`\\\\\\\"\\\"}]\\) \
-may shadow or be shadowed by other definitions.\"", 2, 2, 1, 
-   18254704893651487495, "Local", 
-   "CellsToTeX`SyntaxAnnotations`AnnotateSyntax"},
-  "MessageTemplate2"]], "Message", "MSG",
- CellChangeTimes->{3.889806429289571*^9, 3.889806484233539*^9, 
-  3.8898065354023314`*^9},
- CellLabel->
-  "During evaluation of \
-In[1]:=",ExpressionUUID->"b54d98e7-1b5c-4ff1-ade3-d3ee176909fe"],
-
-Cell[BoxData[
- TemplateBox[{
-  "GatherBy", "list", 
-   "\"List expected at position \\!\\(\\*RowBox[{\\\"1\\\"}]\\) in \
-\\!\\(\\*RowBox[{\\\"GatherBy\\\", \\\"[\\\", \
-RowBox[{\\\"System`ConvertersDump`$extensionMappings\\\", \\\",\\\", \\\"Last\
-\\\"}], \\\"]\\\"}]\\).\"", 2, 2, 2, 18254704893651487495, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- CellChangeTimes->{3.889806429289571*^9, 3.889806484233539*^9, 
-  3.8898065361252832`*^9},
- CellLabel->
-  "During evaluation of \
-In[1]:=",ExpressionUUID->"947442b8-ee96-4cda-a636-a347db4a8a7c"],
-
-Cell[BoxData[
- TemplateBox[{
-  "Part", "partd", 
-   "\"Part specification \\!\\(\\*RowBox[{RowBox[{\\\"GatherBy\\\", \
-\\\"[\\\", RowBox[{\\\"System`ConvertersDump`$extensionMappings\\\", \
-\\\",\\\", \\\"Last\\\"}], \\\"]\\\"}], \\\"\[LeftDoubleBracket]\\\", \
-RowBox[{\\\"All\\\", \\\",\\\", \\\"1\\\"}], \
-\\\"\[RightDoubleBracket]\\\"}]\\) is longer than depth of object.\"", 2, 2, 
-   3, 18254704893651487495, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- CellChangeTimes->{3.889806429289571*^9, 3.889806484233539*^9, 
-  3.889806536169898*^9},
- CellLabel->
-  "During evaluation of \
-In[1]:=",ExpressionUUID->"42fac1b8-2346-4ba3-a6eb-8b3ff8a716a0"],
-
-Cell[BoxData[
- TemplateBox[{
-  "StringDrop", "strse", 
-   "\"String or list of strings expected at position \\!\\(\\*RowBox[{\\\"1\\\
-\"}]\\) in \\!\\(\\*RowBox[{\\\"StringDrop\\\", \\\"[\\\", \
-RowBox[{\\\"System`ConvertersDump`$extensionMappings\\\", \\\",\\\", \
-\\\"1\\\"}], \\\"]\\\"}]\\).\"", 2, 2, 4, 18254704893651487495, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- CellChangeTimes->{3.889806429289571*^9, 3.889806484233539*^9, 
-  3.8898065362201233`*^9},
- CellLabel->
-  "During evaluation of \
-In[1]:=",ExpressionUUID->"669c40d8-8004-4968-b454-a56b47e9ef27"],
-
-Cell[BoxData[
- TemplateBox[{
-  "First", "normal", 
-   "\"Nonatomic expression expected at position \
-\\!\\(\\*RowBox[{\\\"1\\\"}]\\) in \\!\\(\\*RowBox[{\\\"First\\\", \\\"[\\\", \
-\\\"All\\\", \\\"]\\\"}]\\).\"", 2, 2, 5, 18254704893651487495, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- CellChangeTimes->{3.889806429289571*^9, 3.889806484233539*^9, 
-  3.8898065362634*^9},
- CellLabel->
-  "During evaluation of \
-In[1]:=",ExpressionUUID->"be403b5f-bd4f-4690-9bc3-5add626047bd"],
-
-Cell[BoxData[
- TemplateBox[{
-  "StringDrop", "strse", 
-   "\"String or list of strings expected at position \\!\\(\\*RowBox[{\\\"1\\\
-\"}]\\) in \\!\\(\\*RowBox[{\\\"StringDrop\\\", \\\"[\\\", RowBox[{RowBox[{\\\
-\"First\\\", \\\"[\\\", \\\"All\\\", \\\"]\\\"}], \\\",\\\", \\\"1\\\"}], \
-\\\"]\\\"}]\\).\"", 2, 2, 6, 18254704893651487495, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- CellChangeTimes->{3.889806429289571*^9, 3.889806484233539*^9, 
-  3.88980653626936*^9},
- CellLabel->
-  "During evaluation of \
-In[1]:=",ExpressionUUID->"da647f1f-d06b-40ca-bf66-9822e2b3fa15"],
-
-Cell[BoxData[
- TemplateBox[{
-  "Last", "normal", 
-   "\"Nonatomic expression expected at position \
-\\!\\(\\*RowBox[{\\\"1\\\"}]\\) in \\!\\(\\*RowBox[{\\\"Last\\\", \\\"[\\\", \
-\\\"All\\\", \\\"]\\\"}]\\).\"", 2, 2, 7, 18254704893651487495, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- CellChangeTimes->{3.889806429289571*^9, 3.889806484233539*^9, 
-  3.889806536310655*^9},
- CellLabel->
-  "During evaluation of \
-In[1]:=",ExpressionUUID->"ce6b3071-45da-4f67-a538-10cc014093d7"],
-
-Cell[BoxData[
- TemplateBox[{
-  "First", "normal", 
-   "\"Nonatomic expression expected at position \
-\\!\\(\\*RowBox[{\\\"1\\\"}]\\) in \\!\\(\\*RowBox[{\\\"First\\\", \\\"[\\\", \
-\\\"1\\\", \\\"]\\\"}]\\).\"", 2, 2, 8, 18254704893651487495, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- CellChangeTimes->{3.889806429289571*^9, 3.889806484233539*^9, 
-  3.88980653631631*^9},
- CellLabel->
-  "During evaluation of \
-In[1]:=",ExpressionUUID->"8d842b0e-d4b4-4031-9b0b-2cbf9dd847d7"],
-
-Cell[BoxData[
- TemplateBox[{
-  "StringDrop", "strse", 
-   "\"String or list of strings expected at position \\!\\(\\*RowBox[{\\\"1\\\
-\"}]\\) in \\!\\(\\*RowBox[{\\\"StringDrop\\\", \\\"[\\\", RowBox[{RowBox[{\\\
-\"First\\\", \\\"[\\\", \\\"1\\\", \\\"]\\\"}], \\\",\\\", \\\"1\\\"}], \\\"]\
-\\\"}]\\).\"", 2, 2, 9, 18254704893651487495, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- CellChangeTimes->{3.889806429289571*^9, 3.889806484233539*^9, 
-  3.889806536321437*^9},
- CellLabel->
-  "During evaluation of \
-In[1]:=",ExpressionUUID->"dab4ed2d-0d01-439a-96f1-108c979526de"],
-
-Cell[BoxData[
- TemplateBox[{
-  "General", "stop", 
-   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"StringDrop\\\", \
-\\\"::\\\", \\\"strse\\\"}], \\\"MessageName\\\"]\\) will be suppressed \
-during this calculation.\"", 2, 2, 10, 18254704893651487495, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- CellChangeTimes->{3.889806429289571*^9, 3.889806484233539*^9, 
-  3.889806536350233*^9},
- CellLabel->
-  "During evaluation of \
-In[1]:=",ExpressionUUID->"07f64a98-2be5-4b98-9703-478ee8f9f8f5"],
-
-Cell[BoxData[
- TemplateBox[{
-  "Last", "normal", 
-   "\"Nonatomic expression expected at position \
-\\!\\(\\*RowBox[{\\\"1\\\"}]\\) in \\!\\(\\*RowBox[{\\\"Last\\\", \\\"[\\\", \
-\\\"1\\\", \\\"]\\\"}]\\).\"", 2, 2, 11, 18254704893651487495, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- CellChangeTimes->{3.889806429289571*^9, 3.889806484233539*^9, 
-  3.889806536369934*^9},
- CellLabel->
-  "During evaluation of \
-In[1]:=",ExpressionUUID->"de507de9-fb17-4e27-a875-24d9ce15f688"]
-}, Closed]],
-
 Cell[BoxData[
  RowBox[{
   RowBox[{"$Assumptions", "=", 
@@ -386,1318 +214,6 @@ Cell[BoxData["0"], "Output",
 Cell[BoxData["0"], "Output",
  CellChangeTimes->{3.889534761140353*^9, 3.889806539526307*^9},
  CellLabel->"Out[13]=",ExpressionUUID->"512eaa19-d627-4392-b810-bb5126cb66e8"]
-}, Open  ]],
-
-Cell["This didn\[CloseCurlyQuote]t quite work to get the exact solution", \
-"Text",
- CellChangeTimes->{{3.889984980372509*^9, 
-  3.889984988739643*^9}},ExpressionUUID->"969743d1-3451-4c38-bf5d-\
-3b9e7f5856ff"],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"DEigensystem", "[", 
-  RowBox[{
-   RowBox[{"{", 
-    RowBox[{
-     RowBox[{
-      RowBox[{"-", 
-       RowBox[{"Laplacian", "[", 
-        RowBox[{
-         RowBox[{"u", "[", "x", "]"}], ",", 
-         RowBox[{"{", "x", "}"}]}], "]"}]}], "-", " ", 
-      RowBox[{"x", " ", 
-       RowBox[{"u", "[", "x", "]"}]}]}], ",", 
-     RowBox[{"DirichletCondition", "[", 
-      RowBox[{
-       RowBox[{
-        RowBox[{"u", "[", "x", "]"}], "==", "0"}], ",", "True"}], "]"}]}], 
-    "}"}], ",", 
-   RowBox[{"u", "[", "x", "]"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"x", ",", "0", ",", "1"}], "}"}], ",", "5"}], "]"}]], "Input",
- CellChangeTimes->{{3.8898133988422823`*^9, 3.8898133998634*^9}, {
-  3.889813439429699*^9, 3.889813439821154*^9}, {3.889813475061854*^9, 
-  3.889813602415902*^9}, {3.889813745888706*^9, 3.88981374770227*^9}},
- CellLabel->"In[33]:=",ExpressionUUID->"b0bde462-2c73-4b1e-b40f-60fdd8ec43c7"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   RowBox[{"{", 
-    RowBox[{
-     InterpretationBox[
-      TemplateBox[{"Root", 
-        InterpretationBox[
-         StyleBox[
-          TemplateBox[{"\"9.37\"", 
-            DynamicBox[
-             FEPrivate`FrontEndResource[
-             "FEExpressions", "NumericalApproximationElider"]]}, 
-           "RowDefault"], ShowStringCharacters -> False], 
-         9.3685071618363373602278443286195397377`15.954589770191003, Editable -> 
-         False], 
-        TagBox[
-         RowBox[{"Root", "[", 
-           RowBox[{"{", 
-             RowBox[{
-               RowBox[{
-                 RowBox[{
-                   RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                   RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-               "9.3685071564535445804`7.5"}], "}"}], "]"}], Short[#, 7]& ], 
-        9.368507161836337},
-       "NumericalApproximation"],
-      Root[{
-       AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-        9.3685071564535445804`7.5}]], ",", 
-     InterpretationBox[
-      TemplateBox[{"Root", 
-        InterpretationBox[
-         StyleBox[
-          TemplateBox[{"\"39.0\"", 
-            DynamicBox[
-             FEPrivate`FrontEndResource[
-             "FEExpressions", "NumericalApproximationElider"]]}, 
-           "RowDefault"], ShowStringCharacters -> False], 
-         38.97874478988335766871387022547423839569`15.954589770191003, 
-         Editable -> False], 
-        TagBox[
-         RowBox[{"Root", "[", 
-           RowBox[{"{", 
-             RowBox[{
-               RowBox[{
-                 RowBox[{
-                   RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                   RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-               "38.97874478987193935449473759890046685797`12."}], "}"}], 
-           "]"}], Short[#, 7]& ], 38.97874478988336},
-       "NumericalApproximation"],
-      Root[{
-       AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-        38.97874478987193935449473759890046685797`12.}]], ",", 
-     InterpretationBox[
-      TemplateBox[{"Root", 
-        InterpretationBox[
-         StyleBox[
-          TemplateBox[{"\"88.3\"", 
-            DynamicBox[
-             FEPrivate`FrontEndResource[
-             "FEExpressions", "NumericalApproximationElider"]]}, 
-           "RowDefault"], ShowStringCharacters -> False], 
-         88.32663454247874312841304345056414604187`15.954589770191003, 
-         Editable -> False], 
-        TagBox[
-         RowBox[{"Root", "[", 
-           RowBox[{"{", 
-             RowBox[{
-               RowBox[{
-                 RowBox[{
-                   RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                   RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-               "88.3266345424482905878`10.5"}], "}"}], "]"}], Short[#, 7]& ], 
-        88.32663454247874},
-       "NumericalApproximation"],
-      Root[{
-       AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-        88.3266345424482905878`10.5}]], ",", 
-     InterpretationBox[
-      TemplateBox[{"Root", 
-        InterpretationBox[
-         StyleBox[
-          TemplateBox[{"\"157.\"", 
-            DynamicBox[
-             FEPrivate`FrontEndResource[
-             "FEExpressions", "NumericalApproximationElider"]]}, 
-           "RowDefault"], ShowStringCharacters -> False], 
-         157.41378981431003580837568733841180801392`15.954589770191003, 
-         Editable -> False], 
-        TagBox[
-         RowBox[{"Root", "[", 
-           RowBox[{"{", 
-             RowBox[{
-               RowBox[{
-                 RowBox[{
-                   RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                   RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-               "157.4137898143099151281`11.5"}], "}"}], "]"}], Short[#, 7]& ],
-         157.41378981431004`},
-       "NumericalApproximation"],
-      Root[{
-       AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-        157.4137898143099151281`11.5}]], ",", 
-     InterpretationBox[
-      TemplateBox[{"Root", 
-        InterpretationBox[
-         StyleBox[
-          TemplateBox[{"\"246.\"", 
-            DynamicBox[
-             FEPrivate`FrontEndResource[
-             "FEExpressions", "NumericalApproximationElider"]]}, 
-           "RowDefault"], ShowStringCharacters -> False], 
-         246.24018932856779429130256175994873046875`15.954589770191003, 
-         Editable -> False], 
-        TagBox[
-         RowBox[{"Root", "[", 
-           RowBox[{"{", 
-             RowBox[{
-               RowBox[{
-                 RowBox[{
-                   RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                   RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-               "246.24018932856772064826822195363159414367`13.5"}], "}"}], 
-           "]"}], Short[#, 7]& ], 246.2401893285678},
-       "NumericalApproximation"],
-      Root[{
-       AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-        246.24018932856772064826822195363159414367`13.5}]]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     RowBox[{
-      RowBox[{"AiryBi", "[", 
-       RowBox[{
-        RowBox[{"-", 
-         SuperscriptBox[
-          RowBox[{"(", 
-           RowBox[{"-", "1"}], ")"}], 
-          RowBox[{"1", "/", "3"}]]}], " ", 
-        RowBox[{"(", 
-         RowBox[{
-          RowBox[{"-", "x"}], "-", 
-          InterpretationBox[
-           TemplateBox[{"Root", 
-             InterpretationBox[
-              StyleBox[
-               TemplateBox[{"\"9.37\"", 
-                 DynamicBox[
-                  FEPrivate`FrontEndResource[
-                  "FEExpressions", "NumericalApproximationElider"]]}, 
-                "RowDefault"], ShowStringCharacters -> False], 
-              9.3685071618363373602278443286195397377`15.954589770191003, 
-              Editable -> False], 
-             TagBox[
-              RowBox[{"Root", "[", 
-                RowBox[{"{", 
-                  RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-                    "9.3685071564535445804`7.5"}], "}"}], "]"}], 
-              Short[#, 7]& ], 9.368507161836337},
-            "NumericalApproximation"],
-           
-           Root[{AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-             9.3685071564535445804`7.5}]]}], ")"}]}], "]"}], "-", 
-      FractionBox[
-       RowBox[{
-        RowBox[{"AiryAi", "[", 
-         RowBox[{
-          RowBox[{"-", 
-           SuperscriptBox[
-            RowBox[{"(", 
-             RowBox[{"-", "1"}], ")"}], 
-            RowBox[{"1", "/", "3"}]]}], " ", 
-          RowBox[{"(", 
-           RowBox[{
-            RowBox[{"-", "x"}], "-", 
-            InterpretationBox[
-             TemplateBox[{"Root", 
-               InterpretationBox[
-                StyleBox[
-                 TemplateBox[{"\"9.37\"", 
-                   DynamicBox[
-                    FEPrivate`FrontEndResource[
-                    "FEExpressions", "NumericalApproximationElider"]]}, 
-                  "RowDefault"], ShowStringCharacters -> False], 
-                9.3685071618363373602278443286195397377`15.954589770191003, 
-                Editable -> False], 
-               TagBox[
-                RowBox[{"Root", "[", 
-                  RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-                    "9.3685071564535445804`7.5"}], "}"}], "]"}], 
-                Short[#, 7]& ], 9.368507161836337},
-              "NumericalApproximation"],
-             
-             Root[{AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-               9.3685071564535445804`7.5}]]}], ")"}]}], "]"}], " ", 
-        RowBox[{"AiryBi", "[", 
-         RowBox[{
-          SuperscriptBox[
-           RowBox[{"(", 
-            RowBox[{"-", "1"}], ")"}], 
-           RowBox[{"1", "/", "3"}]], " ", 
-          InterpretationBox[
-           TemplateBox[{"Root", 
-             InterpretationBox[
-              StyleBox[
-               TemplateBox[{"\"9.37\"", 
-                 DynamicBox[
-                  FEPrivate`FrontEndResource[
-                  "FEExpressions", "NumericalApproximationElider"]]}, 
-                "RowDefault"], ShowStringCharacters -> False], 
-              9.3685071618363373602278443286195397377`15.954589770191003, 
-              Editable -> False], 
-             TagBox[
-              RowBox[{"Root", "[", 
-                RowBox[{"{", 
-                  RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-                    "9.3685071564535445804`7.5"}], "}"}], "]"}], 
-              Short[#, 7]& ], 9.368507161836337},
-            "NumericalApproximation"],
-           
-           Root[{AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-             9.3685071564535445804`7.5}]]}], "]"}]}], 
-       RowBox[{"AiryAi", "[", 
-        RowBox[{
-         SuperscriptBox[
-          RowBox[{"(", 
-           RowBox[{"-", "1"}], ")"}], 
-          RowBox[{"1", "/", "3"}]], " ", 
-         InterpretationBox[
-          TemplateBox[{"Root", 
-            InterpretationBox[
-             StyleBox[
-              TemplateBox[{"\"9.37\"", 
-                DynamicBox[
-                 FEPrivate`FrontEndResource[
-                 "FEExpressions", "NumericalApproximationElider"]]}, 
-               "RowDefault"], ShowStringCharacters -> False], 
-             9.3685071618363373602278443286195397377`15.954589770191003, 
-             Editable -> False], 
-            TagBox[
-             RowBox[{"Root", "[", 
-               RowBox[{"{", 
-                 RowBox[{
-                   RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-                   "9.3685071564535445804`7.5"}], "}"}], "]"}], 
-             Short[#, 7]& ], 9.368507161836337},
-           "NumericalApproximation"],
-          
-          Root[{AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-            9.3685071564535445804`7.5}]]}], "]"}]]}], ",", 
-     RowBox[{
-      RowBox[{"AiryBi", "[", 
-       RowBox[{
-        RowBox[{"-", 
-         SuperscriptBox[
-          RowBox[{"(", 
-           RowBox[{"-", "1"}], ")"}], 
-          RowBox[{"1", "/", "3"}]]}], " ", 
-        RowBox[{"(", 
-         RowBox[{
-          RowBox[{"-", "x"}], "-", 
-          InterpretationBox[
-           TemplateBox[{"Root", 
-             InterpretationBox[
-              StyleBox[
-               TemplateBox[{"\"39.0\"", 
-                 DynamicBox[
-                  FEPrivate`FrontEndResource[
-                  "FEExpressions", "NumericalApproximationElider"]]}, 
-                "RowDefault"], ShowStringCharacters -> False], 
-              38.97874478988335766871387022547423839569`15.954589770191003, 
-              Editable -> False], 
-             TagBox[
-              RowBox[{"Root", "[", 
-                RowBox[{"{", 
-                  RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-                    "38.97874478987193935449473759890046685797`12."}], "}"}], 
-                "]"}], Short[#, 7]& ], 38.97874478988336},
-            "NumericalApproximation"],
-           
-           Root[{AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-             38.97874478987193935449473759890046685797`12.}]]}], ")"}]}], 
-       "]"}], "-", 
-      FractionBox[
-       RowBox[{
-        RowBox[{"AiryAi", "[", 
-         RowBox[{
-          RowBox[{"-", 
-           SuperscriptBox[
-            RowBox[{"(", 
-             RowBox[{"-", "1"}], ")"}], 
-            RowBox[{"1", "/", "3"}]]}], " ", 
-          RowBox[{"(", 
-           RowBox[{
-            RowBox[{"-", "x"}], "-", 
-            InterpretationBox[
-             TemplateBox[{"Root", 
-               InterpretationBox[
-                StyleBox[
-                 TemplateBox[{"\"39.0\"", 
-                   DynamicBox[
-                    FEPrivate`FrontEndResource[
-                    "FEExpressions", "NumericalApproximationElider"]]}, 
-                  "RowDefault"], ShowStringCharacters -> False], 
-                38.97874478988335766871387022547423839569`15.954589770191003, 
-                Editable -> False], 
-               TagBox[
-                RowBox[{"Root", "[", 
-                  RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-                    "38.97874478987193935449473759890046685797`12."}], "}"}], 
-                  "]"}], Short[#, 7]& ], 38.97874478988336},
-              "NumericalApproximation"],
-             
-             Root[{AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-               38.97874478987193935449473759890046685797`12.}]]}], ")"}]}], 
-         "]"}], " ", 
-        RowBox[{"AiryBi", "[", 
-         RowBox[{
-          SuperscriptBox[
-           RowBox[{"(", 
-            RowBox[{"-", "1"}], ")"}], 
-           RowBox[{"1", "/", "3"}]], " ", 
-          InterpretationBox[
-           TemplateBox[{"Root", 
-             InterpretationBox[
-              StyleBox[
-               TemplateBox[{"\"39.0\"", 
-                 DynamicBox[
-                  FEPrivate`FrontEndResource[
-                  "FEExpressions", "NumericalApproximationElider"]]}, 
-                "RowDefault"], ShowStringCharacters -> False], 
-              38.97874478988335766871387022547423839569`15.954589770191003, 
-              Editable -> False], 
-             TagBox[
-              RowBox[{"Root", "[", 
-                RowBox[{"{", 
-                  RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-                    "38.97874478987193935449473759890046685797`12."}], "}"}], 
-                "]"}], Short[#, 7]& ], 38.97874478988336},
-            "NumericalApproximation"],
-           
-           Root[{AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-             38.97874478987193935449473759890046685797`12.}]]}], "]"}]}], 
-       RowBox[{"AiryAi", "[", 
-        RowBox[{
-         SuperscriptBox[
-          RowBox[{"(", 
-           RowBox[{"-", "1"}], ")"}], 
-          RowBox[{"1", "/", "3"}]], " ", 
-         InterpretationBox[
-          TemplateBox[{"Root", 
-            InterpretationBox[
-             StyleBox[
-              TemplateBox[{"\"39.0\"", 
-                DynamicBox[
-                 FEPrivate`FrontEndResource[
-                 "FEExpressions", "NumericalApproximationElider"]]}, 
-               "RowDefault"], ShowStringCharacters -> False], 
-             38.97874478988335766871387022547423839569`15.954589770191003, 
-             Editable -> False], 
-            TagBox[
-             RowBox[{"Root", "[", 
-               RowBox[{"{", 
-                 RowBox[{
-                   RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-                   "38.97874478987193935449473759890046685797`12."}], "}"}], 
-               "]"}], Short[#, 7]& ], 38.97874478988336},
-           "NumericalApproximation"],
-          
-          Root[{AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-            38.97874478987193935449473759890046685797`12.}]]}], "]"}]]}], ",", 
-     RowBox[{
-      RowBox[{"AiryBi", "[", 
-       RowBox[{
-        RowBox[{"-", 
-         SuperscriptBox[
-          RowBox[{"(", 
-           RowBox[{"-", "1"}], ")"}], 
-          RowBox[{"1", "/", "3"}]]}], " ", 
-        RowBox[{"(", 
-         RowBox[{
-          RowBox[{"-", "x"}], "-", 
-          InterpretationBox[
-           TemplateBox[{"Root", 
-             InterpretationBox[
-              StyleBox[
-               TemplateBox[{"\"88.3\"", 
-                 DynamicBox[
-                  FEPrivate`FrontEndResource[
-                  "FEExpressions", "NumericalApproximationElider"]]}, 
-                "RowDefault"], ShowStringCharacters -> False], 
-              88.32663454247874312841304345056414604187`15.954589770191003, 
-              Editable -> False], 
-             TagBox[
-              RowBox[{"Root", "[", 
-                RowBox[{"{", 
-                  RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-                    "88.3266345424482905878`10.5"}], "}"}], "]"}], 
-              Short[#, 7]& ], 88.32663454247874},
-            "NumericalApproximation"],
-           
-           Root[{AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-             88.3266345424482905878`10.5}]]}], ")"}]}], "]"}], "-", 
-      FractionBox[
-       RowBox[{
-        RowBox[{"AiryAi", "[", 
-         RowBox[{
-          RowBox[{"-", 
-           SuperscriptBox[
-            RowBox[{"(", 
-             RowBox[{"-", "1"}], ")"}], 
-            RowBox[{"1", "/", "3"}]]}], " ", 
-          RowBox[{"(", 
-           RowBox[{
-            RowBox[{"-", "x"}], "-", 
-            InterpretationBox[
-             TemplateBox[{"Root", 
-               InterpretationBox[
-                StyleBox[
-                 TemplateBox[{"\"88.3\"", 
-                   DynamicBox[
-                    FEPrivate`FrontEndResource[
-                    "FEExpressions", "NumericalApproximationElider"]]}, 
-                  "RowDefault"], ShowStringCharacters -> False], 
-                88.32663454247874312841304345056414604187`15.954589770191003, 
-                Editable -> False], 
-               TagBox[
-                RowBox[{"Root", "[", 
-                  RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-                    "88.3266345424482905878`10.5"}], "}"}], "]"}], 
-                Short[#, 7]& ], 88.32663454247874},
-              "NumericalApproximation"],
-             
-             Root[{AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-               88.3266345424482905878`10.5}]]}], ")"}]}], "]"}], " ", 
-        RowBox[{"AiryBi", "[", 
-         RowBox[{
-          SuperscriptBox[
-           RowBox[{"(", 
-            RowBox[{"-", "1"}], ")"}], 
-           RowBox[{"1", "/", "3"}]], " ", 
-          InterpretationBox[
-           TemplateBox[{"Root", 
-             InterpretationBox[
-              StyleBox[
-               TemplateBox[{"\"88.3\"", 
-                 DynamicBox[
-                  FEPrivate`FrontEndResource[
-                  "FEExpressions", "NumericalApproximationElider"]]}, 
-                "RowDefault"], ShowStringCharacters -> False], 
-              88.32663454247874312841304345056414604187`15.954589770191003, 
-              Editable -> False], 
-             TagBox[
-              RowBox[{"Root", "[", 
-                RowBox[{"{", 
-                  RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-                    "88.3266345424482905878`10.5"}], "}"}], "]"}], 
-              Short[#, 7]& ], 88.32663454247874},
-            "NumericalApproximation"],
-           
-           Root[{AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-             88.3266345424482905878`10.5}]]}], "]"}]}], 
-       RowBox[{"AiryAi", "[", 
-        RowBox[{
-         SuperscriptBox[
-          RowBox[{"(", 
-           RowBox[{"-", "1"}], ")"}], 
-          RowBox[{"1", "/", "3"}]], " ", 
-         InterpretationBox[
-          TemplateBox[{"Root", 
-            InterpretationBox[
-             StyleBox[
-              TemplateBox[{"\"88.3\"", 
-                DynamicBox[
-                 FEPrivate`FrontEndResource[
-                 "FEExpressions", "NumericalApproximationElider"]]}, 
-               "RowDefault"], ShowStringCharacters -> False], 
-             88.32663454247874312841304345056414604187`15.954589770191003, 
-             Editable -> False], 
-            TagBox[
-             RowBox[{"Root", "[", 
-               RowBox[{"{", 
-                 RowBox[{
-                   RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-                   "88.3266345424482905878`10.5"}], "}"}], "]"}], 
-             Short[#, 7]& ], 88.32663454247874},
-           "NumericalApproximation"],
-          
-          Root[{AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-            88.3266345424482905878`10.5}]]}], "]"}]]}], ",", 
-     RowBox[{
-      RowBox[{"AiryBi", "[", 
-       RowBox[{
-        RowBox[{"-", 
-         SuperscriptBox[
-          RowBox[{"(", 
-           RowBox[{"-", "1"}], ")"}], 
-          RowBox[{"1", "/", "3"}]]}], " ", 
-        RowBox[{"(", 
-         RowBox[{
-          RowBox[{"-", "x"}], "-", 
-          InterpretationBox[
-           TemplateBox[{"Root", 
-             InterpretationBox[
-              StyleBox[
-               TemplateBox[{"\"157.\"", 
-                 DynamicBox[
-                  FEPrivate`FrontEndResource[
-                  "FEExpressions", "NumericalApproximationElider"]]}, 
-                "RowDefault"], ShowStringCharacters -> False], 
-              157.41378981431003580837568733841180801392`15.954589770191003, 
-              Editable -> False], 
-             TagBox[
-              RowBox[{"Root", "[", 
-                RowBox[{"{", 
-                  RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-                    "157.4137898143099151281`11.5"}], "}"}], "]"}], 
-              Short[#, 7]& ], 157.41378981431004`},
-            "NumericalApproximation"],
-           
-           Root[{AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-             157.4137898143099151281`11.5}]]}], ")"}]}], "]"}], "-", 
-      FractionBox[
-       RowBox[{
-        RowBox[{"AiryAi", "[", 
-         RowBox[{
-          RowBox[{"-", 
-           SuperscriptBox[
-            RowBox[{"(", 
-             RowBox[{"-", "1"}], ")"}], 
-            RowBox[{"1", "/", "3"}]]}], " ", 
-          RowBox[{"(", 
-           RowBox[{
-            RowBox[{"-", "x"}], "-", 
-            InterpretationBox[
-             TemplateBox[{"Root", 
-               InterpretationBox[
-                StyleBox[
-                 TemplateBox[{"\"157.\"", 
-                   DynamicBox[
-                    FEPrivate`FrontEndResource[
-                    "FEExpressions", "NumericalApproximationElider"]]}, 
-                  "RowDefault"], ShowStringCharacters -> False], 
-                157.41378981431003580837568733841180801392`15.954589770191003,
-                 Editable -> False], 
-               TagBox[
-                RowBox[{"Root", "[", 
-                  RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-                    "157.4137898143099151281`11.5"}], "}"}], "]"}], 
-                Short[#, 7]& ], 157.41378981431004`},
-              "NumericalApproximation"],
-             
-             Root[{AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-               157.4137898143099151281`11.5}]]}], ")"}]}], "]"}], " ", 
-        RowBox[{"AiryBi", "[", 
-         RowBox[{
-          SuperscriptBox[
-           RowBox[{"(", 
-            RowBox[{"-", "1"}], ")"}], 
-           RowBox[{"1", "/", "3"}]], " ", 
-          InterpretationBox[
-           TemplateBox[{"Root", 
-             InterpretationBox[
-              StyleBox[
-               TemplateBox[{"\"157.\"", 
-                 DynamicBox[
-                  FEPrivate`FrontEndResource[
-                  "FEExpressions", "NumericalApproximationElider"]]}, 
-                "RowDefault"], ShowStringCharacters -> False], 
-              157.41378981431003580837568733841180801392`15.954589770191003, 
-              Editable -> False], 
-             TagBox[
-              RowBox[{"Root", "[", 
-                RowBox[{"{", 
-                  RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-                    "157.4137898143099151281`11.5"}], "}"}], "]"}], 
-              Short[#, 7]& ], 157.41378981431004`},
-            "NumericalApproximation"],
-           
-           Root[{AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-             157.4137898143099151281`11.5}]]}], "]"}]}], 
-       RowBox[{"AiryAi", "[", 
-        RowBox[{
-         SuperscriptBox[
-          RowBox[{"(", 
-           RowBox[{"-", "1"}], ")"}], 
-          RowBox[{"1", "/", "3"}]], " ", 
-         InterpretationBox[
-          TemplateBox[{"Root", 
-            InterpretationBox[
-             StyleBox[
-              TemplateBox[{"\"157.\"", 
-                DynamicBox[
-                 FEPrivate`FrontEndResource[
-                 "FEExpressions", "NumericalApproximationElider"]]}, 
-               "RowDefault"], ShowStringCharacters -> False], 
-             157.41378981431003580837568733841180801392`15.954589770191003, 
-             Editable -> False], 
-            TagBox[
-             RowBox[{"Root", "[", 
-               RowBox[{"{", 
-                 RowBox[{
-                   RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-                   "157.4137898143099151281`11.5"}], "}"}], "]"}], 
-             Short[#, 7]& ], 157.41378981431004`},
-           "NumericalApproximation"],
-          
-          Root[{AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-            157.4137898143099151281`11.5}]]}], "]"}]]}], ",", 
-     RowBox[{
-      RowBox[{"AiryBi", "[", 
-       RowBox[{
-        RowBox[{"-", 
-         SuperscriptBox[
-          RowBox[{"(", 
-           RowBox[{"-", "1"}], ")"}], 
-          RowBox[{"1", "/", "3"}]]}], " ", 
-        RowBox[{"(", 
-         RowBox[{
-          RowBox[{"-", "x"}], "-", 
-          InterpretationBox[
-           TemplateBox[{"Root", 
-             InterpretationBox[
-              StyleBox[
-               TemplateBox[{"\"246.\"", 
-                 DynamicBox[
-                  FEPrivate`FrontEndResource[
-                  "FEExpressions", "NumericalApproximationElider"]]}, 
-                "RowDefault"], ShowStringCharacters -> False], 
-              246.24018932856779429130256175994873046875`15.954589770191003, 
-              Editable -> False], 
-             TagBox[
-              RowBox[{"Root", "[", 
-                RowBox[{"{", 
-                  RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-                    "246.24018932856772064826822195363159414367`13.5"}], 
-                  "}"}], "]"}], Short[#, 7]& ], 246.2401893285678},
-            "NumericalApproximation"],
-           
-           Root[{AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-             246.24018932856772064826822195363159414367`13.5}]]}], ")"}]}], 
-       "]"}], "-", 
-      FractionBox[
-       RowBox[{
-        RowBox[{"AiryAi", "[", 
-         RowBox[{
-          RowBox[{"-", 
-           SuperscriptBox[
-            RowBox[{"(", 
-             RowBox[{"-", "1"}], ")"}], 
-            RowBox[{"1", "/", "3"}]]}], " ", 
-          RowBox[{"(", 
-           RowBox[{
-            RowBox[{"-", "x"}], "-", 
-            InterpretationBox[
-             TemplateBox[{"Root", 
-               InterpretationBox[
-                StyleBox[
-                 TemplateBox[{"\"246.\"", 
-                   DynamicBox[
-                    FEPrivate`FrontEndResource[
-                    "FEExpressions", "NumericalApproximationElider"]]}, 
-                  "RowDefault"], ShowStringCharacters -> False], 
-                246.24018932856779429130256175994873046875`15.954589770191003,
-                 Editable -> False], 
-               TagBox[
-                RowBox[{"Root", "[", 
-                  RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-                    "246.24018932856772064826822195363159414367`13.5"}], 
-                    "}"}], "]"}], Short[#, 7]& ], 246.2401893285678},
-              "NumericalApproximation"],
-             
-             Root[{AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-               246.24018932856772064826822195363159414367`13.5}]]}], ")"}]}], 
-         "]"}], " ", 
-        RowBox[{"AiryBi", "[", 
-         RowBox[{
-          SuperscriptBox[
-           RowBox[{"(", 
-            RowBox[{"-", "1"}], ")"}], 
-           RowBox[{"1", "/", "3"}]], " ", 
-          InterpretationBox[
-           TemplateBox[{"Root", 
-             InterpretationBox[
-              StyleBox[
-               TemplateBox[{"\"246.\"", 
-                 DynamicBox[
-                  FEPrivate`FrontEndResource[
-                  "FEExpressions", "NumericalApproximationElider"]]}, 
-                "RowDefault"], ShowStringCharacters -> False], 
-              246.24018932856779429130256175994873046875`15.954589770191003, 
-              Editable -> False], 
-             TagBox[
-              RowBox[{"Root", "[", 
-                RowBox[{"{", 
-                  RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-                    "246.24018932856772064826822195363159414367`13.5"}], 
-                  "}"}], "]"}], Short[#, 7]& ], 246.2401893285678},
-            "NumericalApproximation"],
-           
-           Root[{AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-             246.24018932856772064826822195363159414367`13.5}]]}], "]"}]}], 
-       RowBox[{"AiryAi", "[", 
-        RowBox[{
-         SuperscriptBox[
-          RowBox[{"(", 
-           RowBox[{"-", "1"}], ")"}], 
-          RowBox[{"1", "/", "3"}]], " ", 
-         InterpretationBox[
-          TemplateBox[{"Root", 
-            InterpretationBox[
-             StyleBox[
-              TemplateBox[{"\"246.\"", 
-                DynamicBox[
-                 FEPrivate`FrontEndResource[
-                 "FEExpressions", "NumericalApproximationElider"]]}, 
-               "RowDefault"], ShowStringCharacters -> False], 
-             246.24018932856779429130256175994873046875`15.954589770191003, 
-             Editable -> False], 
-            TagBox[
-             RowBox[{"Root", "[", 
-               RowBox[{"{", 
-                 RowBox[{
-                   RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{"-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}]}], "-", 
-                    RowBox[{
-                    RowBox[{"AiryAi", "[", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "-", "#1"}], "]"}], " ", 
-                    RowBox[{"AiryBi", "[", 
-                    RowBox[{"-", "#1"}], "]"}]}]}], "&"}], ",", 
-                   "246.24018932856772064826822195363159414367`13.5"}], "}"}],
-                "]"}], Short[#, 7]& ], 246.2401893285678},
-           "NumericalApproximation"],
-          
-          Root[{AiryAi[-#] AiryBi[-1 - #] - AiryAi[-1 - #] AiryBi[-#]& , 
-            246.24018932856772064826822195363159414367`13.5}]]}], "]"}]]}]}], 
-    "}"}]}], "}"}]], "Output",
- CellChangeTimes->{{3.889813586947584*^9, 3.8898136089032288`*^9}, 
-   3.889813775872377*^9},
- CellLabel->"Out[33]=",ExpressionUUID->"486f2683-0a60-407a-a772-5956093ca58e"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{"\[ScriptCapitalL]", "=", 
-   RowBox[{
-    RowBox[{"-", 
-     RowBox[{"Laplacian", "[", 
-      RowBox[{
-       RowBox[{"u", "[", "x", "]"}], ",", 
-       RowBox[{"{", "x", "}"}]}], "]"}]}], "+", 
-    RowBox[{"x", " ", 
-     RowBox[{"u", "[", "x", "]"}]}]}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"\[ScriptCapitalB]", "=", 
-   RowBox[{"DirichletCondition", "[", 
-    RowBox[{
-     RowBox[{
-      RowBox[{"u", "[", "x", "]"}], "\[Equal]", "0"}], ",", "True"}], "]"}]}],
-   ";"}], "\[IndentingNewLine]", 
- RowBox[{"DEigensystem", "[", 
-  RowBox[{
-   RowBox[{"{", 
-    RowBox[{"\[ScriptCapitalL]", ",", "\[ScriptCapitalB]"}], "}"}], ",", 
-   RowBox[{"u", "[", "x", "]"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"x", ",", "0", ",", "\[Infinity]"}], "}"}], ",", "5"}], 
-  "]"}]}], "Input",
- CellChangeTimes->{{3.889813697607995*^9, 3.889813719278113*^9}, {
-  3.8898138629209967`*^9, 3.889813879194998*^9}},
- CellLabel->"In[39]:=",ExpressionUUID->"37537a91-0246-4eae-90c2-ad31671e1739"],
-
-Cell[BoxData[
- RowBox[{"DEigensystem", "[", 
-  RowBox[{
-   RowBox[{"{", 
-    RowBox[{
-     RowBox[{
-      RowBox[{"x", " ", 
-       RowBox[{"u", "[", "x", "]"}]}], "-", 
-      RowBox[{
-       SuperscriptBox["u", "\[Prime]\[Prime]",
-        MultilineFunction->None], "[", "x", "]"}]}], ",", 
-     RowBox[{"DirichletCondition", "[", 
-      RowBox[{
-       RowBox[{
-        RowBox[{"u", "[", "x", "]"}], "\[Equal]", "0"}], ",", "True"}], 
-      "]"}]}], "}"}], ",", 
-   RowBox[{"u", "[", "x", "]"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"x", ",", "0", ",", "\[Infinity]"}], "}"}], ",", "5"}], 
-  "]"}]], "Output",
- CellChangeTimes->{
-  3.8898137197942657`*^9, {3.8898138653782682`*^9, 3.889813879984676*^9}},
- CellLabel->"Out[41]=",ExpressionUUID->"fedc8a03-7144-49dd-8da5-4a820121c0d6"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Plot", "[", 
-  RowBox[{
-   RowBox[{"Evaluate", "[", 
-    RowBox[{"funs", "[", 
-     RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}]], "Input",
- CellChangeTimes->{{3.889813833241592*^9, 3.889813851186541*^9}},
- CellLabel->"In[35]:=",ExpressionUUID->"bab1a94a-0d85-4a4f-9deb-cf948cc06448"],
-
-Cell[BoxData[
- GraphicsBox[{{{}, {}, 
-    TagBox[
-     {RGBColor[0.368417, 0.506779, 0.709798], AbsoluteThickness[1.6], Opacity[
-      1.], LineBox[CompressedData["
-1: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
-
-       "]]},
-     Annotation[#, "Charting`Private`Tag$51402#1"]& ]}, {}},
-  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
-  Axes->{True, True},
-  AxesLabel->{None, None},
-  AxesOrigin->{0, 0},
-  DisplayFunction->Identity,
-  Frame->{{False, False}, {False, False}},
-  FrameLabel->{{None, None}, {None, None}},
-  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
-  GridLines->{None, None},
-  GridLinesStyle->Directive[
-    GrayLevel[0.5, 0.4]],
-  ImagePadding->All,
-  Method->{
-   "DefaultBoundaryStyle" -> Automatic, 
-    "DefaultGraphicsInteraction" -> {
-     "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
-      "Effects" -> {
-       "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, 
-        "Droplines" -> {
-         "freeformCursorMode" -> True, 
-          "placement" -> {"x" -> "All", "y" -> "None"}}}}, "DefaultMeshStyle" -> 
-    AbsolutePointSize[6], "ScalingFunctions" -> None, 
-    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
-        (Identity[#]& )[
-         Part[#, 1]], 
-        (Identity[#]& )[
-         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
-        (Identity[#]& )[
-         Part[#, 1]], 
-        (Identity[#]& )[
-         Part[#, 2]]}& )}},
-  PlotRange->{{0, 1}, {0., 0.3671096228532465}},
-  PlotRangeClipping->True,
-  PlotRangePadding->{{
-     Scaled[0.02], 
-     Scaled[0.02]}, {
-     Scaled[0.05], 
-     Scaled[0.05]}},
-  Ticks->{Automatic, Automatic}]], "Output",
- CellChangeTimes->{3.889813851719804*^9},
- CellLabel->"Out[35]=",ExpressionUUID->"bcab9a3b-7619-4e3a-a197-d170b4781eab"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3025,13 +1541,48 @@ Cell[BoxData[
   "Out[152]=",ExpressionUUID->"bc464276-188e-4c20-b202-3ab0a0e492fb"]
 }, Open  ]],
 
-Cell[BoxData["Expand"], "Input",
- CellChangeTimes->{{3.889984916459037*^9, 
-  3.889984918360812*^9}},ExpressionUUID->"3ebab3d8-8545-445d-9c4f-\
-cd34ed1689a2"]
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"A", "=", 
+   RowBox[{"2", "A0", " ", "\[Epsilon]", " ", 
+    RowBox[{"Cos", "[", 
+     RowBox[{
+      RowBox[{
+       FractionBox["w", "c"], "k", " ", "x"}], "-", 
+      RowBox[{"\[Omega]", " ", "t"}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  FractionBox[
+   RowBox[{"-", "1"}], "c"], 
+  RowBox[{"D", "[", 
+   RowBox[{"A", ",", "t"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.889984916459037*^9, 3.889984918360812*^9}, {
+  3.8901553300824327`*^9, 3.890155334712167*^9}, {3.8901556374821453`*^9, 
+  3.890155671315027*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"3ebab3d8-8545-445d-9c4f-cd34ed1689a2"],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{"2", " ", "A0", " ", "\[Epsilon]", " ", "\[Omega]", " ", 
+    RowBox[{"Sin", "[", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"k", " ", "w", " ", "x"}], "c"], "-", 
+      RowBox[{"t", " ", "\[Omega]"}]}], "]"}]}], "c"]}]], "Output",
+ CellChangeTimes->{{3.890155665056655*^9, 3.890155672916559*^9}},
+ CellLabel->"Out[4]=",ExpressionUUID->"69e0c5ef-543a-4b61-98aa-8d2fbc278d6b"]
+}, Open  ]]
 },
-WindowSize->{702.75, 772.5},
+WindowSize->{1419., 772.5},
 WindowMargins->{{10.5, Automatic}, {10.5, Automatic}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+PrintingOptions->{"PaperOrientation"->"Portrait",
+"PaperSize"->{Automatic, Automatic},
+"PostScriptOutputFile"->""},
 FrontEndVersion->"13.1 for Linux x86 (64-bit) (June 16, 2022)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"ee232c8b-3209-4505-bc74-e3ded101350c"
@@ -3047,156 +1598,132 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
+Cell[558, 20, 296, 7, 29, "Input",ExpressionUUID->"e6151569-fbb8-4509-8e64-7d2aa326b004"],
+Cell[857, 29, 911, 26, 51, "Input",ExpressionUUID->"cf7cc176-aaf7-4d14-88ab-739b164f12ed"],
+Cell[1771, 57, 875, 21, 76, "Input",ExpressionUUID->"23612683-4413-4962-b4a4-511d3495c585"],
 Cell[CellGroupData[{
-Cell[580, 22, 509, 11, 154, "Input",ExpressionUUID->"d43f26bf-df2a-4ec7-8018-6c0172e4f2ed"],
-Cell[1092, 35, 827, 17, 28, "Message",ExpressionUUID->"b54d98e7-1b5c-4ff1-ade3-d3ee176909fe"],
-Cell[1922, 54, 552, 12, 28, "Message",ExpressionUUID->"947442b8-ee96-4cda-a636-a347db4a8a7c"],
-Cell[2477, 68, 658, 14, 28, "Message",ExpressionUUID->"42fac1b8-2346-4ba3-a6eb-8b3ff8a716a0"],
-Cell[3138, 84, 575, 12, 28, "Message",ExpressionUUID->"669c40d8-8004-4968-b454-a56b47e9ef27"],
-Cell[3716, 98, 486, 11, 28, "Message",ExpressionUUID->"be403b5f-bd4f-4690-9bc3-5add626047bd"],
-Cell[4205, 111, 582, 12, 28, "Message",ExpressionUUID->"da647f1f-d06b-40ca-bf66-9822e2b3fa15"],
-Cell[4790, 125, 486, 11, 28, "Message",ExpressionUUID->"ce6b3071-45da-4f67-a538-10cc014093d7"],
-Cell[5279, 138, 485, 11, 28, "Message",ExpressionUUID->"8d842b0e-d4b4-4031-9b0b-2cbf9dd847d7"],
-Cell[5767, 151, 581, 12, 28, "Message",ExpressionUUID->"dab4ed2d-0d01-439a-96f1-108c979526de"],
-Cell[6351, 165, 501, 11, 28, "Message",ExpressionUUID->"07f64a98-2be5-4b98-9703-478ee8f9f8f5"],
-Cell[6855, 178, 485, 11, 28, "Message",ExpressionUUID->"de507de9-fb17-4e27-a875-24d9ce15f688"]
-}, Closed]],
-Cell[7355, 192, 296, 7, 25, "Input",ExpressionUUID->"e6151569-fbb8-4509-8e64-7d2aa326b004"],
-Cell[7654, 201, 911, 26, 51, "Input",ExpressionUUID->"cf7cc176-aaf7-4d14-88ab-739b164f12ed"],
-Cell[8568, 229, 875, 21, 76, "Input",ExpressionUUID->"23612683-4413-4962-b4a4-511d3495c585"],
-Cell[CellGroupData[{
-Cell[9468, 254, 566, 13, 32, "Input",ExpressionUUID->"f050eb71-b254-4510-a2dc-3716cb708da1"],
-Cell[10037, 269, 717, 20, 62, "Output",ExpressionUUID->"9ae6e91d-7ad9-4197-964d-9776c2bfcb26"]
+Cell[2671, 82, 566, 13, 32, "Input",ExpressionUUID->"f050eb71-b254-4510-a2dc-3716cb708da1"],
+Cell[3240, 97, 717, 20, 62, "Output",ExpressionUUID->"9ae6e91d-7ad9-4197-964d-9776c2bfcb26"]
 }, Open  ]],
-Cell[10769, 292, 818, 20, 76, "Input",ExpressionUUID->"dc48f396-4a5f-459b-aeda-65ebd569ee87"],
+Cell[3972, 120, 818, 20, 76, "Input",ExpressionUUID->"dc48f396-4a5f-459b-aeda-65ebd569ee87"],
 Cell[CellGroupData[{
-Cell[11612, 316, 325, 7, 33, "Input",ExpressionUUID->"2cf95dfd-339b-43e6-a354-2578573c5b7e"],
-Cell[11940, 325, 317, 7, 53, "Output",ExpressionUUID->"d058d055-383e-4d1b-93d0-e24748bcabd6"]
+Cell[4815, 144, 325, 7, 33, "Input",ExpressionUUID->"2cf95dfd-339b-43e6-a354-2578573c5b7e"],
+Cell[5143, 153, 317, 7, 53, "Output",ExpressionUUID->"d058d055-383e-4d1b-93d0-e24748bcabd6"]
 }, Open  ]],
-Cell[12272, 335, 962, 28, 51, "Input",ExpressionUUID->"c4e2196d-8d14-415d-a18c-9b6c174ac191"],
+Cell[5475, 163, 962, 28, 51, "Input",ExpressionUUID->"c4e2196d-8d14-415d-a18c-9b6c174ac191"],
 Cell[CellGroupData[{
-Cell[13259, 367, 512, 12, 56, "Input",ExpressionUUID->"bb5febf5-848b-4c4f-9dfc-400300c14fc0"],
-Cell[13774, 381, 171, 2, 33, "Output",ExpressionUUID->"1595c9fa-6906-42a4-95bb-7e87faf4460d"],
-Cell[13948, 385, 171, 2, 33, "Output",ExpressionUUID->"512eaa19-d627-4392-b810-bb5126cb66e8"]
-}, Open  ]],
-Cell[14134, 390, 209, 4, 35, "Text",ExpressionUUID->"969743d1-3451-4c38-bf5d-3b9e7f5856ff"],
-Cell[CellGroupData[{
-Cell[14368, 398, 927, 24, 55, "Input",ExpressionUUID->"b0bde462-2c73-4b1e-b40f-60fdd8ec43c7"],
-Cell[15298, 424, 42778, 1064, 591, "Output",ExpressionUUID->"486f2683-0a60-407a-a772-5956093ca58e"]
+Cell[6462, 195, 512, 12, 56, "Input",ExpressionUUID->"bb5febf5-848b-4c4f-9dfc-400300c14fc0"],
+Cell[6977, 209, 171, 2, 33, "Output",ExpressionUUID->"1595c9fa-6906-42a4-95bb-7e87faf4460d"],
+Cell[7151, 213, 171, 2, 33, "Output",ExpressionUUID->"512eaa19-d627-4392-b810-bb5126cb66e8"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[58113, 1493, 1025, 28, 73, "Input",ExpressionUUID->"37537a91-0246-4eae-90c2-ad31671e1739"],
-Cell[59141, 1523, 782, 22, 58, "Output",ExpressionUUID->"fedc8a03-7144-49dd-8da5-4a820121c0d6"]
+Cell[7359, 220, 1203, 29, 33, "Input",ExpressionUUID->"1fd1ee1d-55bc-4988-be4a-0b869e1b080a"],
+Cell[8565, 251, 1330, 39, 59, "Output",ExpressionUUID->"fa9d3c3c-5a29-4b19-bc57-51902a8e635b"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[59960, 1550, 379, 9, 29, "Input",ExpressionUUID->"bab1a94a-0d85-4a4f-9deb-cf948cc06448"],
-Cell[60342, 1561, 7231, 138, 237, "Output",ExpressionUUID->"bcab9a3b-7619-4e3a-a197-d170b4781eab"]
+Cell[9932, 295, 292, 6, 29, "Input",ExpressionUUID->"12223e03-6a34-4727-b1f9-c79d69fb4615"],
+Cell[10227, 303, 208, 3, 33, "Output",ExpressionUUID->"6c939a30-a927-487d-ab0c-e1ccc1f601ea"]
+}, Open  ]],
+Cell[10450, 309, 561, 15, 33, "Input",ExpressionUUID->"b35927d4-99a0-4876-bd88-2f8637b28097"],
+Cell[CellGroupData[{
+Cell[11036, 328, 932, 28, 53, "Input",ExpressionUUID->"71ebd99b-0c47-4715-932c-aba29052112b"],
+Cell[11971, 358, 464, 13, 58, "Output",ExpressionUUID->"e0e0a117-c3b2-4370-8c8e-6d6402fa95ea"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[67610, 1704, 1203, 29, 55, "Input",ExpressionUUID->"1fd1ee1d-55bc-4988-be4a-0b869e1b080a"],
-Cell[68816, 1735, 1330, 39, 59, "Output",ExpressionUUID->"fa9d3c3c-5a29-4b19-bc57-51902a8e635b"]
+Cell[12472, 376, 771, 19, 47, "Input",ExpressionUUID->"4c2146d7-d0b4-4504-aee0-e2051b88fced"],
+Cell[13246, 397, 526, 13, 37, "Output",ExpressionUUID->"9279e6ad-ed48-4fa1-abfd-a95786d07924"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[70183, 1779, 292, 6, 29, "Input",ExpressionUUID->"12223e03-6a34-4727-b1f9-c79d69fb4615"],
-Cell[70478, 1787, 208, 3, 33, "Output",ExpressionUUID->"6c939a30-a927-487d-ab0c-e1ccc1f601ea"]
-}, Open  ]],
-Cell[70701, 1793, 561, 15, 33, "Input",ExpressionUUID->"b35927d4-99a0-4876-bd88-2f8637b28097"],
-Cell[CellGroupData[{
-Cell[71287, 1812, 932, 28, 82, "Input",ExpressionUUID->"71ebd99b-0c47-4715-932c-aba29052112b"],
-Cell[72222, 1842, 464, 13, 58, "Output",ExpressionUUID->"e0e0a117-c3b2-4370-8c8e-6d6402fa95ea"]
+Cell[13809, 415, 285, 6, 29, "Input",ExpressionUUID->"5a022751-2851-43b9-bbfb-f6a437dc7ad9"],
+Cell[14097, 423, 381, 9, 37, "Output",ExpressionUUID->"dbfcdb4b-0d04-4597-983c-17669547ecaf"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[72723, 1860, 771, 19, 47, "Input",ExpressionUUID->"4c2146d7-d0b4-4504-aee0-e2051b88fced"],
-Cell[73497, 1881, 526, 13, 37, "Output",ExpressionUUID->"9279e6ad-ed48-4fa1-abfd-a95786d07924"]
+Cell[14515, 437, 210, 3, 29, "Input",ExpressionUUID->"f0dd026e-1307-4235-a87e-4d0ec560ed74"],
+Cell[14728, 442, 185, 3, 33, "Output",ExpressionUUID->"7b78193c-a4cb-4824-83d7-0d1f9b761826"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[74060, 1899, 285, 6, 29, "Input",ExpressionUUID->"5a022751-2851-43b9-bbfb-f6a437dc7ad9"],
-Cell[74348, 1907, 381, 9, 37, "Output",ExpressionUUID->"dbfcdb4b-0d04-4597-983c-17669547ecaf"]
+Cell[14950, 450, 191, 4, 29, "Input",ExpressionUUID->"cd316a11-9755-41be-90fd-b8fd85915bba"],
+Cell[15144, 456, 185, 3, 33, "Output",ExpressionUUID->"afdf0052-c550-45b7-a4cb-03770b9b35fa"]
+}, Open  ]],
+Cell[15344, 462, 694, 20, 67, "Input",ExpressionUUID->"4970d531-ac72-48ab-8cec-55bbc34e138b"],
+Cell[CellGroupData[{
+Cell[16063, 486, 612, 17, 61, "Input",ExpressionUUID->"e86a748e-0d16-4f02-b839-6e770f32fb1c"],
+Cell[16678, 505, 567, 16, 63, "Output",ExpressionUUID->"c38b269b-bed3-4db2-bc38-3611cd2df9e0"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[74766, 1921, 210, 3, 29, "Input",ExpressionUUID->"f0dd026e-1307-4235-a87e-4d0ec560ed74"],
-Cell[74979, 1926, 185, 3, 33, "Output",ExpressionUUID->"7b78193c-a4cb-4824-83d7-0d1f9b761826"]
+Cell[17282, 526, 523, 15, 56, "Input",ExpressionUUID->"75f700f7-d04a-42d6-8ec9-9793bb720f00"],
+Cell[17808, 543, 453, 14, 70, "Output",ExpressionUUID->"c422ce43-6eb5-4157-ac7d-186c99c1f9f5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[75201, 1934, 191, 4, 29, "Input",ExpressionUUID->"cd316a11-9755-41be-90fd-b8fd85915bba"],
-Cell[75395, 1940, 185, 3, 33, "Output",ExpressionUUID->"afdf0052-c550-45b7-a4cb-03770b9b35fa"]
-}, Open  ]],
-Cell[75595, 1946, 694, 20, 67, "Input",ExpressionUUID->"4970d531-ac72-48ab-8cec-55bbc34e138b"],
-Cell[CellGroupData[{
-Cell[76314, 1970, 612, 17, 61, InheritFromParent,ExpressionUUID->"e86a748e-0d16-4f02-b839-6e770f32fb1c"],
-Cell[76929, 1989, 567, 16, 63, "Output",ExpressionUUID->"c38b269b-bed3-4db2-bc38-3611cd2df9e0"]
+Cell[18298, 562, 277, 6, 33, "Input",ExpressionUUID->"ca186e88-3469-4fe4-a3c6-d230b4cbddea"],
+Cell[18578, 570, 663, 16, 37, "Output",ExpressionUUID->"e88388d6-ea97-43c0-93ca-ee7be497db5d"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[77533, 2010, 523, 15, 56, "Input",ExpressionUUID->"75f700f7-d04a-42d6-8ec9-9793bb720f00"],
-Cell[78059, 2027, 453, 14, 70, "Output",ExpressionUUID->"c422ce43-6eb5-4157-ac7d-186c99c1f9f5"]
+Cell[19278, 591, 231, 4, 29, "Input",ExpressionUUID->"bde94f7d-c692-4795-95fe-79e83fa184ac"],
+Cell[19512, 597, 185, 3, 33, "Output",ExpressionUUID->"cf65a8c2-f1d2-4695-b654-e9a846062527"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[78549, 2046, 277, 6, 33, "Input",ExpressionUUID->"ca186e88-3469-4fe4-a3c6-d230b4cbddea"],
-Cell[78829, 2054, 663, 16, 37, "Output",ExpressionUUID->"e88388d6-ea97-43c0-93ca-ee7be497db5d"]
+Cell[19734, 605, 365, 10, 29, "Input",ExpressionUUID->"e02f4720-ccd4-402a-af01-72eeaea54d31"],
+Cell[20102, 617, 27098, 463, 239, "Output",ExpressionUUID->"bd913199-014b-425c-b79e-13784f1bd863"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[79529, 2075, 231, 4, 29, "Input",ExpressionUUID->"bde94f7d-c692-4795-95fe-79e83fa184ac"],
-Cell[79763, 2081, 185, 3, 33, "Output",ExpressionUUID->"cf65a8c2-f1d2-4695-b654-e9a846062527"]
+Cell[47237, 1085, 246, 7, 32, "Input",ExpressionUUID->"a2fcfc61-eea0-4b37-bade-bdf7ab9d6351"],
+Cell[47486, 1094, 262, 4, 36, "Output",ExpressionUUID->"e2ad6ec8-1506-4185-875a-76a296ef03ee"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[79985, 2089, 365, 10, 29, "Input",ExpressionUUID->"e02f4720-ccd4-402a-af01-72eeaea54d31"],
-Cell[80353, 2101, 27098, 463, 253, "Output",ExpressionUUID->"bd913199-014b-425c-b79e-13784f1bd863"]
+Cell[47785, 1103, 531, 15, 55, "Input",ExpressionUUID->"4821f5d9-5c77-4ec9-897e-ca3289d23567"],
+Cell[48319, 1120, 397, 11, 67, "Output",ExpressionUUID->"81518d6e-4a8a-4507-8edc-6b2295ebed7b"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[107488, 2569, 246, 7, 32, "Input",ExpressionUUID->"a2fcfc61-eea0-4b37-bade-bdf7ab9d6351"],
-Cell[107737, 2578, 262, 4, 36, "Output",ExpressionUUID->"e2ad6ec8-1506-4185-875a-76a296ef03ee"]
+Cell[48753, 1136, 501, 14, 33, "Input",ExpressionUUID->"a849e695-49ce-4abb-b264-7a0a8f94c2be"],
+Cell[49257, 1152, 619, 16, 37, "Output",ExpressionUUID->"56f1b1b9-d076-4e50-bc0d-833e7553574b"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[108036, 2587, 531, 15, 55, "Input",ExpressionUUID->"4821f5d9-5c77-4ec9-897e-ca3289d23567"],
-Cell[108570, 2604, 397, 11, 81, "Output",ExpressionUUID->"81518d6e-4a8a-4507-8edc-6b2295ebed7b"]
+Cell[49913, 1173, 1363, 43, 104, "Input",ExpressionUUID->"26597b7e-98bf-42a9-9e61-4a09cbd192c2"],
+Cell[51279, 1218, 458, 13, 60, "Output",ExpressionUUID->"4b1f6afa-49ee-4573-9755-28daac53d83c"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[109004, 2620, 501, 14, 33, "Input",ExpressionUUID->"a849e695-49ce-4abb-b264-7a0a8f94c2be"],
-Cell[109508, 2636, 619, 16, 52, "Output",ExpressionUUID->"56f1b1b9-d076-4e50-bc0d-833e7553574b"]
+Cell[51774, 1236, 167, 4, 29, "Input",ExpressionUUID->"e8a93e2b-2ee5-4a66-a2f0-c5ee6b6a4f6f"],
+Cell[51944, 1242, 386, 12, 60, "Output",ExpressionUUID->"c8e33ff4-93e9-41cf-bcb7-5641209e0c52"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[110164, 2657, 1363, 43, 104, "Input",ExpressionUUID->"26597b7e-98bf-42a9-9e61-4a09cbd192c2"],
-Cell[111530, 2702, 458, 13, 74, "Output",ExpressionUUID->"4b1f6afa-49ee-4573-9755-28daac53d83c"]
+Cell[52367, 1259, 490, 14, 56, "Input",ExpressionUUID->"374ef542-440d-495b-8c84-6338cef37cd1"],
+Cell[52860, 1275, 526, 16, 69, "Output",ExpressionUUID->"915d3854-3b61-4bb4-90f7-ee1ca9694e8b"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[112025, 2720, 167, 4, 29, "Input",ExpressionUUID->"e8a93e2b-2ee5-4a66-a2f0-c5ee6b6a4f6f"],
-Cell[112195, 2726, 386, 12, 74, "Output",ExpressionUUID->"c8e33ff4-93e9-41cf-bcb7-5641209e0c52"]
+Cell[53423, 1296, 300, 8, 47, "Input",ExpressionUUID->"f4439209-7fbf-40ef-9df9-17aaee116613"],
+Cell[53726, 1306, 279, 8, 49, "Output",ExpressionUUID->"520b2927-2fb1-4152-a2d2-573f475e9b92"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[112618, 2743, 490, 14, 56, "Input",ExpressionUUID->"374ef542-440d-495b-8c84-6338cef37cd1"],
-Cell[113111, 2759, 526, 16, 84, "Output",ExpressionUUID->"915d3854-3b61-4bb4-90f7-ee1ca9694e8b"]
+Cell[54042, 1319, 289, 9, 47, "Input",ExpressionUUID->"cb838f58-f8a2-43c9-8602-16757cd1a824"],
+Cell[54334, 1330, 173, 3, 33, "Output",ExpressionUUID->"05483e5e-8abe-4b2b-a779-824bf3e759e4"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[113674, 2780, 300, 8, 47, "Input",ExpressionUUID->"f4439209-7fbf-40ef-9df9-17aaee116613"],
-Cell[113977, 2790, 279, 8, 64, "Output",ExpressionUUID->"520b2927-2fb1-4152-a2d2-573f475e9b92"]
+Cell[54544, 1338, 294, 8, 45, "Input",ExpressionUUID->"e8471341-ee84-491b-b807-1d23a4a35857"],
+Cell[54841, 1348, 195, 3, 33, "Output",ExpressionUUID->"d2f73e4f-f119-4e37-9c78-056ca370fa7e"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[114293, 2803, 289, 9, 47, "Input",ExpressionUUID->"cb838f58-f8a2-43c9-8602-16757cd1a824"],
-Cell[114585, 2814, 173, 3, 48, "Output",ExpressionUUID->"05483e5e-8abe-4b2b-a779-824bf3e759e4"]
+Cell[55073, 1356, 666, 19, 55, "Input",ExpressionUUID->"2ea98dd7-7ede-4738-a223-980b7ab472b2"],
+Cell[55742, 1377, 344, 10, 60, "Output",ExpressionUUID->"dab02780-445c-48ee-adea-c16eac2d07da"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[114795, 2822, 294, 8, 45, "Input",ExpressionUUID->"e8471341-ee84-491b-b807-1d23a4a35857"],
-Cell[115092, 2832, 195, 3, 48, "Output",ExpressionUUID->"d2f73e4f-f119-4e37-9c78-056ca370fa7e"]
+Cell[56123, 1392, 1401, 42, 129, "Input",ExpressionUUID->"e693039c-c1c2-4f5b-ab25-de00e881bd15"],
+Cell[57527, 1436, 369, 10, 60, "Output",ExpressionUUID->"10c4dc11-2819-4072-b470-981df603b807"],
+Cell[57899, 1448, 301, 8, 60, "Output",ExpressionUUID->"7f07c2a0-9b87-4eaa-942d-dcf8bd622554"],
+Cell[58203, 1458, 426, 13, 60, "Output",ExpressionUUID->"0b73c609-8cb8-43bf-80e3-cc00c42fa88d"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[115324, 2840, 666, 19, 55, "Input",ExpressionUUID->"2ea98dd7-7ede-4738-a223-980b7ab472b2"],
-Cell[115993, 2861, 344, 10, 74, "Output",ExpressionUUID->"dab02780-445c-48ee-adea-c16eac2d07da"]
+Cell[58666, 1476, 235, 5, 29, "Input",ExpressionUUID->"eb072f6d-7d9f-4123-a872-a7585b2f89d7"],
+Cell[58904, 1483, 424, 14, 60, "Output",ExpressionUUID->"991c0860-b5fd-4830-842e-c391a3df209d"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[116374, 2876, 1401, 42, 129, "Input",ExpressionUUID->"e693039c-c1c2-4f5b-ab25-de00e881bd15"],
-Cell[117778, 2920, 369, 10, 74, "Output",ExpressionUUID->"10c4dc11-2819-4072-b470-981df603b807"],
-Cell[118150, 2932, 301, 8, 74, "Output",ExpressionUUID->"7f07c2a0-9b87-4eaa-942d-dcf8bd622554"],
-Cell[118454, 2942, 426, 13, 74, "Output",ExpressionUUID->"0b73c609-8cb8-43bf-80e3-cc00c42fa88d"]
+Cell[59365, 1502, 847, 24, 56, "Input",ExpressionUUID->"9b1514a0-005c-4d4a-9de1-57181d70760e"],
+Cell[60215, 1528, 416, 12, 69, "Output",ExpressionUUID->"bc464276-188e-4c20-b202-3ab0a0e492fb"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[118917, 2960, 235, 5, 29, "Input",ExpressionUUID->"eb072f6d-7d9f-4123-a872-a7585b2f89d7"],
-Cell[119155, 2967, 424, 14, 74, "Output",ExpressionUUID->"991c0860-b5fd-4830-842e-c391a3df209d"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[119616, 2986, 847, 24, 56, "Input",ExpressionUUID->"9b1514a0-005c-4d4a-9de1-57181d70760e"],
-Cell[120466, 3012, 416, 12, 84, "Output",ExpressionUUID->"bc464276-188e-4c20-b202-3ab0a0e492fb"]
-}, Open  ]],
-Cell[120897, 3027, 158, 3, 29, "Input",ExpressionUUID->"3ebab3d8-8545-445d-9c4f-cd34ed1689a2"]
+Cell[60668, 1545, 654, 18, 81, "Input",ExpressionUUID->"3ebab3d8-8545-445d-9c4f-cd34ed1689a2"],
+Cell[61325, 1565, 436, 10, 60, "Output",ExpressionUUID->"69e0c5ef-543a-4b61-98aa-8d2fbc278d6b"]
+}, Open  ]]
 }
 ]
 *)
