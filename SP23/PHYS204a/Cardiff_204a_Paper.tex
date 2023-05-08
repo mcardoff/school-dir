@@ -1,0 +1,195 @@
+\documentclass[12pt]{article}
+
+\input{../template.tex}
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks,
+  citecolor=red,
+  linkcolor=red,
+  urlcolor=blue}
+
+\def\bphi{\bm{\phi}}
+\def\bpsi{\bm{\psi}}
+\def\bzeta{\bm{\zeta}}
+
+\title{\vspace{-3em}The Martin-Siggia-Rose Formalism}
+\date{\today}
+
+% setups
+\graphicspath{ {./figs/} }
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+The article discussed here is a quite a long paper titled ``Path integral methods for the dynamics of stochastic and disordered systems''~\cite{Hertz_2016}. This article includes a short introduction to the formalism introduced by the original paper~\cite{MSR_1973} by Martin Siggia and Rose, as well as a deep dive into its use in the study of Stochastic Dynamics. The paper forcuses on studying evolution guided by the Langevin equation, which we briefly discussed on our own study of quantum thermalization. The authors mainly aim to create a pedagogical introduction to the MSR formalism while highlighting the key results. The paper studies both linear and nonlinear Langevin equations which appear in a multitude of subjects across various fields.
+
+\section{The Linear Case}
+The linear Langevin equation is given as:
+\begin{equation}
+  \label{eq:langevin}
+  \dot{\phi}(t)=-\mu\phi(t)+h(t)+\zeta(t)
+\end{equation}
+Where $\zeta$ is thermal noise with zero mean and correlation function $\ev{\zeta(t)\zeta(t')}=2T\delta(t-t')$. I was personally a bit confused as to why the $h(t)$ term was included, the paper mentions that it is to ``probe linear response''~\cite{Hertz_2016}, so it is analogous to a source term in field theory, some experimentally modifiable variable that when used theoretically, can give us critical information when using the path integral methods. The use of this variable gives rise to the later ``response'' function.
+
+The critical results in this section arise from directly integrating~\eqref{eq:langevin} and taking averages of $\phi$ over the noise. The correlation and response functions are given explicitly as:
+\begin{align*}
+  C(t,t')&=\ev{\phi(t)\phi(t')}=\frac{T}{\mu}e^{-\mu\abs{t-t'}}
+  +\qty(\ev{\phi^2(0)}-\frac{T}{\mu})e^{-\mu(t+t')}\\
+  R(t,t')&=\fdv{\phi(t)}{h(t')}=\Theta(t-t')e^{-\mu(t+t')}
+\end{align*}
+I had not heard of a response function before, but it is simply how the function will respond when perturbed at some time.
+
+However the use of the $h(t)$ is not necessary, the authors say an alternative is to take the derivative with respect to the noise and average over the noise, like is done with the correlation function. This is to directly combat the discontinuity of the step function in the above response function, and instead the following can be defined:
+\begin{align*}
+  R(t,t')=\ev{\fdv{\phi(t)}{\zeta(t')}}=\frac1{2T}\ev{\phi(t)\zeta(t')}
+\end{align*}
+So instead of being forced to use a discontinuous response, we can instead simply define the equal time response via $\ev{\phi(t)\zeta(t)}$.
+
+The authors then discuss the various conventions for choosing this value. In the end it turns out these conventions both give the same response function at equal times, being $0$, so it is non-important.
+
+After the brief discussion on convention, the authors discuss the framework in which the path integral is developed, via discretizing the differential equation. I found this interesting when viewed in the context of our class. When studying operator growth, we had gone in the opposite direction, taking the continuum limit of a discrete equation, where we found a Langevin equation. This made a lot of sense to me, as we are not necessarily studying a quantum system here, so going ``backwards'' into a a discretization is more of an intermediate step to eventually reach a continuous result, usable in classical stochastic mechanics.
+
+Much like we had done in class, the time is divided into chunks of size $\Delta$, with $t=n\Delta$, such that $\phi_n=\phi(n\Delta)$. The noise is also suitably discretized, with $\zeta_n$. The specifics of the discretization are followed upon in the next section, with a more general nonlinear Langevin equation.
+
+\section{Nonlinear Langevin Equation}
+The nonlinear equivalent of~\eqref{eq:langevin} is:
+\begin{equation}
+  \label{eq:nlangevin}
+  \dot{\phi}=f(\phi)+h+\zeta
+\end{equation}
+When discretized we find that:
+\begin{align*}
+  \phi_{n+1}-\phi_n=\Delta\qty[(1-\lambda)(f_n+h_n)+\lambda(f_{n+1}+h_{n+1})]
+  +\zeta_n
+\end{align*}
+The authors then introduce the generating function for a history of discretized $\phi_n$, here called $\bm{\phi}$. Much like in field theory, conjugate variables $\bm{\psi}=(\psi_1,\ldots,\psi_M)$ are introduced as a tool for finding averages of the form $\ev{\phi_{n_1}\cdots\phi_{n_N}}$ by differentiating and subsequently setting to $0$. The generating function is simply given as:
+\begin{align*}
+  Z[\bm{\psi}]=\int\dd{\bm{\phi}}P[\bm{\phi}]\exp(i\sum_{n=1}^M\psi_n\phi_n)
+\end{align*}
+I was initially unsure of why the $\bm{\psi}$ are here along with the function $h$ in the Langevin equation, since both seem to have similar functions. The distinction comes later in finding the correlation function and response function. Determining $\ev{\phi_n\phi_m}$ is done by differentiating with respect to components of $\bpsi$, whereas finding response functions is done by differentiating with respect to $h_m$.
+
+The important step from here is to find the distribution $P[\bphi]$, this can be done quite simply as we know the distribution of the $\zeta_n$, and we can rewrite the discretization~\eqref{eq:nlangevin} to find some sort of transformation between $\bzeta$ and $\bphi$:
+\begin{equation}
+  \label{eq:transformation}
+  \zeta_n=\phi_{n+1}-\phi_{n}
+  -\Delta\qty[(1-\lambda)(f_n+h_n)+\lambda(f_{n+1}+h_{n+1})]
+\end{equation}
+And defining the Jacobian $J(\bphi)$, we can immediately write the distribution:
+\begin{align*}
+  P[\bphi]=P[\bzeta]J(\bphi)=(4\pi T\Delta)^{-M/2}
+  \exp[-\frac1{4T\Delta}\sum_{n=0}^{M-1}\zeta_n^2]J(\bphi)
+\end{align*}
+An interesting method the authors introduce is changing the sum over $\zeta_n^2$ into:
+\begin{align*}
+  \exp[-\frac1{4T\Delta}\sum_{n=0}^{M-1}\zeta_n^2]\to
+  (4\pi T\Delta)^{M/2}\int\frac{\dd{\hat{\bphi}}}{(2\pi)^M}\exp[\sum_{n=0}^{M-1}
+  \qty(-T\Delta\hat{\phi}^2_n+i\hat{\phi}_n\zeta_n)]
+\end{align*}
+Doing this transformation absorbs the leading factor, hence the generating function is:
+\begin{align*}
+  Z[\bpsi]=\int\frac{\dd{\bphi}\dd{\hat{\bphi}}}{(2\pi)^M}J(\bphi)
+  \exp[i\bpsi\vdot\bphi+\sum_{n=0}^{M-1}\qty(-T\Delta\hat{\phi}_n
+  +i\hat{\phi}_n\zeta_n)]
+\end{align*}
+Where it is understood that $\zeta_n$ stands for the the right hand side of~\eqref{eq:transformation}. This is one of the times where the convention is relevant. The choice of Ito or Stratonovich convention is a choice for $\lambda$, here the Ito convention of $\lambda=0$, this manifests in the Jacobian being $1$. However, without taking the convention, the authors find the Jacobian to be an exponential of a sum of $-\Delta\lambda f'_n$ over $n$. This immediately leads to a nice view of the generating function as an expectation value over some action $S$, specifically we define
+\begin{equation}
+  \label{eq:pathint}
+  \ev{\mathcal{O}}_S=\int\frac{\dd{\bphi}\dd{\hat{\bphi}}}{(2\pi)^M}
+  \mathcal{O} e^{-S[\bphi,\hat{\bphi}]}
+\end{equation}
+With the action as:
+\begin{equation}
+  \label{eq:pathaction}
+  S=\sum_{n=0}^{M-1}\qty(T\Delta\hat{\phi}_n^2+i\hat{\phi}_n
+  \qty[-\phi_{n+1}+\phi_n+\Delta[(1-\lambda)f_n]+\lambda f_{n+1}])
+  +\Delta\lambda\sum_{n=1}^M f'_n
+\end{equation}
+This then can compactify the notation of the generating function as an expectation value of the exponential of some ``Hamiltonian'' as if this was statistical mechanics:
+\begin{align*}
+  Z[\bpsi]=\ev{\exp(i\sum_{n=1}^M\psi_n\phi_n
+    i\sum_{n=0}^{M-1}\hat{\phi}_n\Delta[(1-\lambda)h_n+\lambda h_{n+1}])}_S
+\end{align*}
+The discrete versions of the correlation and response functions are then found by differentiating $Z$:
+\begin{align*}
+  C_{nm}&=\ev{\phi_n\phi_m}=\pdv{(i\psi_n)}\pdv{(i\psi_m)}Z=
+  \ev{\phi_n\phi_m}_S\\
+  R_{mn}&=\pdv{\ev{\phi_n}}{(\Delta h_m)}
+  \pdv{(\Delta h_m)}\pdv{(i\psi_n)}Z
+  =\ev{\phi_n i\qty((1-\lambda)\hat{\phi}_m+\lambda\hat{\phi}_{m-1})}
+\end{align*}
+An interesting result is that that the expectation of any number of $\hat{\phi}_n$ should be $0$. Mainly this is because we introduced them as an intermittent integration variable, so it \emph{couldn't} have any physical meaning. Even if we chose some odd linear response probe at a high/low energy, it would be impossible to see the effect of what would be another field in an equivalent quantum field theory. This is especially interesting when the response function explicitly depends on mixed products of $\phi_n$ with $\hat{\phi}_m$
+
+This, while an interesting theory, is very clunky, with 3 total auxiliary fields. The authors continue by turning these into a single object which can probe reponse and correlation. It is found by taking the values in the expectations above and setting them equal to a single vector, which is called $\eta$, the authors define the two types of components of $\eta$ as:
+\begin{align*}
+  \eta_{1n}&=\phi_n\\
+  \eta_{2n}&=i\qty((1-\lambda)\hat{\phi}_n+\lambda\hat{\phi}_{n-1})
+\end{align*}
+Then by taking an outer product of these vectors combined into a single vector $\bm{\eta}$, we find a single quantity that can describe both correlation and response functions.
+\begin{align*}
+  \bm{\eta\eta}^T=\pmqty{\bm{\eta}_1\\\bm{\eta}_2}
+  \pmqty{\bm{\eta}_1&\bm{\eta}_2}=
+  \pmqty{\bm{\eta}_1\vdot\bm{\eta}_1&\bm{\eta}_1\vdot\bm{\eta}_2\\
+  \bm{\eta}_2\vdot\bm{\eta}_1&\bm{\eta}_2\vdot\bm{\eta}_2}
+\end{align*}
+By averaging over noise, we realize the $11$ element is a correlation function, the off diagonal elements are the response function and its transpose, and the $22$ element is $0$ since it only includes averages over auxiliary variables. The authors call this object the propagator.
+\begin{align*}
+  G=\ev{\bm{\eta\eta}^T}_S=\pmqty{C&R\\R^T&0}
+\end{align*}
+The introduction of the $\bm{\eta}$ vector allows both of the auxiliary variables to be eliminated from the generating function and can explicitly be set to $0$, leaving for a very nice framework for field theoretic perturbation theory to be applied.
+
+\section{Perturbation Theory}
+The simple example the authors begin with is a cubic perturbation to the linear Langevin equation, which would be:
+\begin{align*}
+  f(\phi)=-\mu\phi-\frac{g}{3!}\phi^3
+\end{align*}
+If $g=0$ we have the exactly solvable Langevin equation~\ref{eq:langevin}, but for nonzero $g$, the action~\ref{eq:pathaction} can be written as a sum $S=S_0+S_{int}$, where $S_{int}$ is given as:
+\begin{align*}
+  S_{int}=i\frac{g}6\Delta\sum_{n=0}^{M-1}\hat{\phi}_n
+  \qty[(1-\lambda)\phi_n^3+\lambda\phi_{n+1}^3]
+  -\frac{g}2\Delta\lambda\sum_{n=1}^M\phi_n^2
+\end{align*}
+However, rewritting this action in terms of $\bm{\eta}$:
+\begin{align*}
+  S_{int}=\frac{g}6\Delta\sum_{n=0}^{M-1}\eta_{2n}\eta_{1n}^3
+  -\frac{g}2\Delta\lambda\sum_{n=1}^M\eta^2_{1n}
+\end{align*}
+The authors then make a distinction between averages over $g=0$ terms and $g\neq0$ terms. The well defined average for the $g=0$ case is denoted $\ev{\cdots}_0$, where the desired averages are still $\ev{\cdots}_S$. Notably they are related by:
+\begin{align*}
+  \ev{\mathcal{O}}_S=\ev{\mathcal{O}\exp(-S_{int})}_0
+\end{align*}
+Since $S_{int}\propto g$ and we wish to do perturbation theory, we can say $g$ is small, and expand in powers of $S$:
+\begin{align*}
+  \ev{\mathcal{O}}_S=\sum_{k=0}^\infty\frac1{k!}\ev{\mathcal{O}(-S_{int})^k}_0
+\end{align*}
+From here we can employ Wick's theorem, however I find it very interesting that this is merely just the statistical employment of Wick's theorem, about $n$ point correlations of a multivariate gaussian distribution, the connection to statistical distributions is much clearer here.
+
+This is also where the qualms about equal time response and correlation functions comes into play, as averaging over the identity (to ensure normalization at all times) to first order will give:
+\begin{align*}
+  \ev{1}_S=\ev{1}_0-\ev{S_{int}}_0=
+  1-g\Delta\sum_n\ev{\frac16\eta_{2n}\eta^3_{1n}-\frac\lambda2\eta_{1n}^2}
+\end{align*}
+Using Wick's theorem, the fourth order average is simply going to be 3 times the other average:
+\begin{align*}
+  \ev{\eta_{2n}\eta_{1n}^3}=\ev{\eta_{2n}\eta_{1n}}_0\ev{\eta_{1n}^2}_0
+\end{align*}
+The first term gives an equal time response function, and the second is the correlation at equal times. Only the equal time response needs to be defined to be $\lambda$ in order to give proper normalization at all times:
+\begin{align*}
+  \ev{\eta_{2n}\eta_{1n}^3}&=3R_{nn}^0C_{nn}^0\\
+  \ev{\eta_{1n}^2}&=C_{nn}^0
+\end{align*}
+So to first order in $G$ we have normalization preserved:
+\begin{align*}
+  \ev{1}&=1-g\Delta\sum_n\ev{\frac36\lambda C_{nn}^0-\frac12\lambda C_{nn}^0}\\
+  &=1+\order{g^2}
+\end{align*}
+
+\section{Beyond This Writeup}
+While this was an interesting look into the development of the Martin-Siggia-Rose formalism, the paper goes far beyond what was covered here. As mentioned in my presentation as well as a bit here, due to the use of a path integral, all of the methods from quantum field theory can be used here. The authors go on to explicitly work out the diagramatic formalism. The flow of the discussion is nearly identical to those of field theory, with a discussion of vacuum diagrams and their interpretation as well as corrections to the propagator. The authors also discuss a Dyson series like we had briefly discussed with the SYK model in class.
+
+Overall this paper felt like an echo of many different concepts which we touched upon in class, however form a completely classical point of view, which was completely insane to me. Thank you for a wonderful semester. 
+
+\bibliographystyle{plain}
+\bibliography{sources}
+\end{document}

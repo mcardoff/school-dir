@@ -1,0 +1,209 @@
+\documentclass{beamer}
+
+\title{The Martin-Siggia-Rose Formalism}
+\author{Michael Cardiff}
+\subtitle{PHYS 204a}
+
+\usepackage[italicdiff]{physics}
+\usepackage{hyperref}
+\usepackage{url}
+
+\def\D{\partial}
+
+% Changes style of actual slides
+\usetheme{Dresden}
+% Changes color of slides
+\usecolortheme{dolphin}
+% removes controls at bottom right side
+\usenavigationsymbolstemplate{}
+\setbeamertemplate{footline}[frame number]
+
+% for figures
+\graphicspath{ {./figs/} }
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Problem Overview}
+\begin{frame}{A Problem}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item Many non-equilibrium processes involve random variables.
+      \item Examples include Brownian Motion, Turbulent flow, and even Financial Markets. 
+      \item These all lead to stochastic differential equations (SDEs)
+      \item Surprise surprise, SDEs are hard to solve.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{brownian}
+        \includegraphics[width=0.75\textwidth]{stock}
+        \caption{Brownian Motion and the Stock Market}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{How to Tackle This?}
+  \begin{itemize}
+  \item There are many forms of SDE, but can be boiled down to the form:
+    \begin{align*}
+      \D_t x(t)=F(x(t))+g(x(t))\xi(t)
+    \end{align*}
+  \item Where $F$ governs the deterministic time evolution, $g$ the coupling to noise, and $\xi$ is (usually) Gaussian noise.
+  \item From this SDE, we can write an equivalent Fokker-Planck Equation
+  \item The FP equation gives a probability distribution $p(x,t)$ for the random variable $x(t)$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Is there another way?}
+  \begin{itemize}
+  \item While the Fokker-Planck equation is fun, it cannot be applied to every situation.
+  \item One option is to move to a path integral formalism, which is essentially an equivalent problem, but is computationally different.
+  \item Martin, Siggia, and Rose (MSR) did this, and found that observables $\mathcal{O}$ averaged over solutions of any SDE of the form:
+    \begin{align*}
+      \D_t x(t)=F(x(t),t)+\xi(x(t),t)
+    \end{align*}
+  \item Can be written as a path integral with some action $S[x,\tilde{x}]$:
+    \begin{align*}
+      \ev{\mathcal{O}[x(t)]}=\int\mathcal{D}[x,\tilde{x}]\mathcal{O}[x(t)]
+      e^{-S[x,\tilde{x}]}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\section{The Framework}
+\begin{frame}{``Deriving'' The Path Integral}
+  \begin{itemize}
+  \item The Path integral from before can be ``derived'' by simply enforcing that all paths must obey the SDE
+  \item With no constraints of an SDE, the average of an observable is simply:
+    \begin{align*}
+      \ev{\mathcal{O}[x(t)]}=\ev{\int\mathcal{D}[x]\mathcal{O}[x(t)]}
+    \end{align*}
+  \item However, we must enforce our SDE at all points in space, so we use a $\delta$ functional:
+    \begin{align*}
+      \ev{\mathcal{O}[x(t)]}=\ev{\int\mathcal{D}[x]\mathcal{O}[x(t)]
+        \delta[\text{SDE}]}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Continued}
+  \begin{itemize}
+  \item The next step is introducing a form of the $\delta$ functional.
+  \item The $\delta$ functional is just a product of $\delta$ functions, use the integral definition of $\delta(x)$:
+    \begin{align*}
+      \delta(x)\propto\int\dd{k}e^{ikx}
+    \end{align*}
+  \item The functional version is then found by turning $k$ into another field, usually called $\tilde{x}$, and it is simply integrated out:
+    \begin{align*}
+      \ev{\mathcal{O}[x(t)]}&=\ev{\int\mathcal{D}[x,\tilde{x}]\mathcal{O}[x(t)]
+        \exp{-\int\dd{t}i\tilde{x}(t)\qty[\text{SDE}]}}\\
+      [\text{SDE}]&=\D_t x(t)-F(x(t),t)-\xi(x(t),t)
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{The MSR Action}
+  \begin{itemize}
+  \item From here, properties of the distribution $\xi$ can be invoked, to arrive at the MSR action for this general equation:
+    \begin{align*}
+      S[x,\tilde{x}]=&\int\dd{t}i\tilde{x}(t)\qty[\D_t x(t)-F(x(t),t)]\\
+      &+\frac12\int\dd{t}\dd{t'}\tilde{x}(t)\ev{\xi(x,t)\xi(x',t')}x(t)
+    \end{align*}
+  \item Finding this action and the corresponding Path Integral allows for Field Theory methods to be employed.
+  \item This form of the action can be solved exactly in many cases
+  \end{itemize}
+\end{frame}
+
+\section{Examples}
+\begin{frame}{Multiplicative Noise}
+  \begin{itemize}
+  \item We encountered this when discussing the Langevin Equation, we had noise of the form:
+    \begin{align*}
+      \xi(x(t),t)=H(x(t))\xi(t)
+    \end{align*}
+  \item This is a common form, covering:
+    \begin{itemize}
+    \item Chemical Reactions
+    \item The Stock Market
+    \item Turbulence
+    \item Neuron Dynamics
+    \end{itemize}
+  \item We even had an example of this in class
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Continued}
+  \begin{itemize}
+  \item Where we had that $\xi(t)$ is zero mean and $\ev{\xi(t)\xi(t')}=(2\sigma)\delta(t-t')$. 
+  \item This reduces the action to a path integral which is local in time:
+    \begin{align*}
+      S[x,\tilde{x}]=\int\dd{t}i\tilde{x}(t)\qty[\D_t x(t)-F(x(t))+\frac\sigma2H(x(t))^2\tilde{x}]
+    \end{align*}
+  \item We can then introduce a form for $H(x(t))$ to analyze some properties.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Ornstein–Uhlenbeck Processes}
+  \begin{itemize}
+  \item These processes have $H(x)=1$, and a fixed form of $F$:
+    \begin{align*}
+      \D_t x(t)=-\alpha x(t)+\xi(t)
+    \end{align*}
+  \item Applications
+    \begin{itemize}
+    \item Brownian Motion Subject to Friction
+    \item Interest Models in finance.
+    \item Exchange Rates
+    \item Evolutionary Biology
+    \end{itemize}
+  \item This form of $H(x)$ can be analytically solved
+  \end{itemize}
+\end{frame}
+\begin{frame}{Solved Path Integral}
+  \begin{itemize}
+  \item The generating functional can be found for noise with mean $0$ and variance $\sigma$:
+    \begin{align*}
+      \ev{e^{\int\dd{t}\lambda(t)x(t)}}=
+      \exp[\frac\sigma{2\alpha}\int\dd{s_1}\dd{s_2}e^{-\alpha\abs{s_1-s_2}}
+      \lambda(s_1)\lambda(s_2)]
+    \end{align*}
+  \item Where $\lambda(t)$ is acting like a ``source'' as in Field Theory
+  \item Just like in Field Theory, derivatives can be taken to find moments or cumulants
+  \item Specifically, if we find the connected Correlator by taking:
+    \begin{align*}
+      \ev{x(t)x(t')}_c=
+      \eval{\frac{\delta^2}{\delta\lambda(t)\delta\lambda(t')}
+      \log\ev{e^{\int\dd{t}\lambda(t)x(t)}}}_{\lambda=0}
+    \end{align*}
+  \item Evaluated, we immediately find the result from operator dynamics:
+    \begin{align*}
+      \ev{x(t)x(t')}_c=\frac{\sigma}{2\alpha}e^{-\alpha\abs{s_1-s_2}}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\section{Conclusions}
+\begin{frame}{Concluding Remarks}
+  \begin{itemize}
+  \item The MSR Formalism is a powerful tool in studying stochastic dynamics
+  \item Despite working with these stochastic variables, we can find exact expressions for moments and cumulants
+  \item MSR is applicable to a wide variety of systems, relevant to Physics, Economics, and Biology
+  \item Despite this, it is a bit complex to compute the path integral in general
+  \item However, if you can compute it, the wide world of QFT methods can be applied
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    \Huge{Thank You!}
+  \end{center}
+\end{frame}
+
+\end{document}

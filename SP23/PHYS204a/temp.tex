@@ -1,0 +1,40 @@
+\documentclass[12pt]{article}
+
+\input{../template.tex}
+
+\title{\vspace{-3em}}
+\date{\today}
+
+% setups
+\graphicspath{ {./figs/} }
+
+\begin{document}
+\maketitle
+Sure, here are the MSR equations in \LaTeX:
+
+The starting point is the path integral representation of the time evolution operator:
+
+\begin{equation}
+    \mathcal{U}(t,t_0) = \int \mathcal{D}[\phi] \exp \left\{ -S[\phi] + \int_{t_0}^t dt' \, j(t') \cdot \phi(t') \right\},
+\end{equation}
+
+where $\phi(t)$ represents the dynamical variables of the system, $j(t)$ is an external force or fluctuation, and $S[\phi]$ is the action functional.
+
+The MSR formalism introduces a set of auxiliary fields $h(t)$ that are coupled to the original dynamical variables via a set of linear equations:
+
+\begin{equation}
+    \frac{\delta S}{\delta \phi(t)} h(t) = j(t) - \int_{t_0}^t dt' \, M(t-t') \cdot h(t'),
+\end{equation}
+
+where $M(t)$ is a memory kernel that describes the influence of the past values of the auxiliary field on its current value.
+
+Integrating out the auxiliary fields, one obtains a set of nonlinear partial differential equations for the probability distribution $P[\phi]$ of the dynamical variables:
+
+\begin{equation}
+    \frac{\partial P[\phi,t]}{\partial t} = -\int_{t_0}^t dt' \int \mathcal{D}[\xi] \, \frac{\delta}{\delta \phi(t')} \cdot \left[ \frac{\delta S}{\delta \phi(t)} \cdot \frac{\delta S}{\delta \phi(t')} \right]^{-1} \cdot \frac{\delta^2 S}{\delta \phi(t') \delta \phi(t)} \cdot P[\phi,t'] \cdot P[\xi,t'] \cdot e^{\xi(t') \cdot h(t')},
+\end{equation}
+
+where $\xi(t)$ is a set of Gaussian random variables that represents the fluctuations of the auxiliary fields.
+
+These equations provide a powerful tool for studying the time evolution and statistical properties of nonequilibrium systems. However, they can be difficult to solve exactly, and various approximation schemes and numerical methods have been developed to tackle specific problems.
+\end{document}
