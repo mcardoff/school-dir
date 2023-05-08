@@ -186,4 +186,78 @@ We then solve the diagonalization problem:
   W\ket{\ell}=\Delta_\ell^{(1)}\ket{\ell}
 \end{align*}
 Where $\ket{\ell}$ is a linear combination of the various $\ket{\ell^{(0)}}$
+
+\section{Time Dependent Perturbation Theory}
+So far we only have talked about Hamiltonians that are not dependent on time, however in general, we want to consider time-dependent perturbation to a time-independent Hamiltonian which we know the stationary solutions to:
+\begin{align*}
+  H=H_0+V(t)
+\end{align*}
+The stationary solutions of $H_0$ are given as:
+\begin{align*}
+  H_0\ket{n}=E_n\ket{n}
+\end{align*}
+We are usually interested in how a specific state evolves in time, given in terms of the stationary states, we have:
+\begin{align*}
+  \ket{\alpha}=\sum_n c_n(0)\ket{n}
+\end{align*}
+The idea is to find a form of $c_n(t)$:
+\begin{align*}
+  \ket{\alpha,t_0=0;t}=
+  \sum_n c_n(t)e^{-iE_n t/\hbar}\ket{n}
+\end{align*}
+The state on the left hand is the Schrodinger picture evolution of the state $\ket{\alpha}$.
+\subsection{The Interaction Picture}
+We use the state $\ket{\alpha}$ as an initial condition at some time $t_0$. We them define the interaction picture state:
+\begin{align*}
+  \ket{\alpha,t_0;t}_I=e^{-H_0 t/\hbar}\ket{\alpha,t_0;t}
+\end{align*}
+At $t=t_0$, these states are the same. Operators in the interaction picture are:
+\begin{align*}
+  A_I\equiv e^{iH_0 t/\hbar}A_S e^{-iH_0 t/\hbar}
+\end{align*}
+More importantly, we note that $V(t)$ from before is in the Schrodinger picture, so:
+\begin{align*}
+  V_I= e^{iH_0 t/\hbar}V e^{-iH_0 t/\hbar}
+\end{align*}
+Note that this is distinct from the Heisenberg picture as we have explicitly only included $H_0$.
+
+The fundamental differential equation that characterizes the time evolution of a state in the interaction picture:
+\begin{align*}
+  i\hbar\pdv{t}\ket{\alpha,t_0;t}_I&=
+  -H_0e^{iH_0 t/\hbar}\ket{\alpha,t_0;t}_S
+  +e^{iH_0 t/\hbar}(H_0+V)\ket{\alpha,t_0;t}_S\\
+  &=e^{iH_0 t/\hbar}Ve^{-iH_0 t/\hbar}\ket{\alpha,t_0;t}_S
+\end{align*}
+It can then be identified that:
+\begin{align*}
+  i\hbar\pdv{t}\ket{\alpha,t_0;t}_I=V_I\ket{\alpha,t_0;t}_I
+\end{align*}
+Which is like a Schrodinger equation with just the interaction picture potential. You can also show that operators evolve like the Heisenberg picture:
+\begin{align*}
+  i\hbar\dv{A_I}{t}=\comm{A_I}{H_0}
+\end{align*}
+As a summary:
+\begin{itemize}
+\item Schrodinger Picture
+  \begin{itemize}
+  \item States evolve according to $H$
+  \item Operators are time independent
+  \end{itemize}
+\item Heisenberg Picture
+  \begin{itemize}
+  \item States do not evolve in time
+  \item Operators evolve according to $H$
+  \end{itemize}
+\item Interaction Picutre
+  \begin{itemize}
+  \item States evolve according to $V_I$
+  \item Operators evolve according to $H_0$
+  \end{itemize}
+\end{itemize}
+We can write an equation for $c_n(t)$:
+\begin{align*}
+  i\hbar\dv{t}c_n(t)&=\sum_m V_{nm}e^{i\omega_{mn}t}c_m(t)\\
+  \omega_{nm}=\frac{E_n-E_m}{\hbar}
+\end{align*}
+
 \end{document}
