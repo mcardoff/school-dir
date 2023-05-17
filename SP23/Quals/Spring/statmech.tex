@@ -1,2 +1,231 @@
 % -*- TeX-master: "master.tex" -*-
 \section{Statistical Mechanics}
+\begin{problem}
+  The $q$-state Potts model generalizes the Ising model. There is a variable $\sigma_i\in\{1,2,\ldots,q\}$ at each lattice site. The Hamiltonian is given by a sum over nearest neighbors:
+  \begin{align*}
+    H_{\text{Potts}}=-\frac{3J}{2}\sum_{\ev{i,j}}\delta_{\sigma_i,\sigma_j}
+  \end{align*}
+  There are $N$ lattice sites. Assume $J>0$. For parts (a) and (b), $q\geq2$ is arbitrary, and for (c) and (d), we assume $q=3$.
+  \begin{enumerate}[label=(\alph*)]
+  \item What is the Entropy of the system at $T=0$?
+  \item For this part only, suppose the $N$ sites are arranged on a line with open boundary conditions. Write down the (exact) free energy.
+  \item For the $q = 3$ case, show that the model is equivalent to
+    \begin{align*}
+      H=-J\sum_{\ev{i,j}}\vb{s}_i\vdot\vb{s}_j
+    \end{align*}
+    with each $\vb{s}_i$ restricted to take values in the set:
+    \begin{align*}
+      \vb{s}_i\in\qty{
+        \pmqty{1\\0},
+        \pmqty{-1/2\\\sqrt{3}/2},
+        \pmqty{-1/2\\-\sqrt{3}/2}}
+    \end{align*}
+  \item Let $\vb{m}$ denote the mean-field magnetization $\sum_i\vb{s}_i/N$. Suppose that each site in the lattice interacts with $z$ other sites. Use a mean-field approximation to derive an expression for the free energy. (Your answer should be left in terms of a solution to a transcendental equation.) In other words, replace the true nearest-neighbor interactions with an approximation in which every site interacts with every other site with an interaction strength rescaled appropriately. Is there a first-order (i.e.\ discontinuous in m) phase transition?
+
+    [Hint: it may be helpful to consider $\vb{m}$ of the form $(m, 0)$.]
+  \end{enumerate}
+\end{problem}
+\subsection{Entropy at Zero Temperature}
+At $T=0$, there is no free energy for the sites to couple to, so they are stuck in the ground state, so it is completely determined by the number of ground states the system has.
+
+A ground state of this system would have all of the sites in the same position, due to the negative sign in $H_{\text{Potts}}$, so there are $q$ different ground states, and the entropy is hence:
+\begin{align}
+  \boxed{S(T=0)=k_B\log(q)}
+\end{align}
+
+\subsection{Free Energy}
+The free energy $F$ is determined by:
+\begin{align*}
+  F=-k_BT\log Z
+\end{align*}
+Where $Z$ is the partition function:
+\begin{align*}
+  Z&=\sum_{\{\sigma_i\}}\exp{-\beta H(\{\sigma_i)\}}
+  =\sum_{\{\sigma_i\}}\exp{\beta\frac{3J}2\delta_{\sigma_1\sigma_2}}
+  \exp{\beta\frac{3J}2\delta_{\sigma_1\sigma_2}}\cdots\\
+  &=\sum_{\{\sigma_i\}}\prod_{\ev{i,j}}
+  \exp{\beta\frac{3J}2\delta_{\sigma_i\sigma_j}}
+  \equiv\sum_{\{\sigma_i\}}\prod_{\ev{i,j}}C(\sigma_i,\sigma_j)
+\end{align*}
+Where $C(\sigma_i,\sigma_j)$ is a symbol with values:
+\begin{align*}
+  C(x,y)=
+  \begin{cases}
+    e^{3J\beta/2} & x=y\\
+    1 & \text{Otherwise}
+  \end{cases}
+\end{align*}
+Define the matrix $C$ with $C_{ij}=C(\sigma_i,\sigma_j)$, such that the partition function is now given by:
+\begin{align*}
+  Z=\sum_{i,j}(C^N)_{ij}
+\end{align*}
+Note that $C$ has $1$s in all off diagonal elements, and the exponential value on the diagonal elements. Denote the matrix of all ones as $\bm{1}$, and $I$ as the identity matrix, we can then write $C$ as:
+\begin{align*}
+  C=\bm{1}+\qty(e^{\beta3J/2}-1)I
+\end{align*}
+Since $I$ is an identity, it commutes with $\bm{1}$ and we can use the binomial formula to calculate $C^N$:
+\begin{align*}
+  C^N=\qty(\bm{1}+\qty(e^{\beta3J/2}-1)I)^N
+  =\sum_{k=0}^N\pmqty{N\\k}\qty(e^{\beta3J/2}-1)^{N-k}I^{N-k}\bm{1}^{k}
+\end{align*}
+The identity matrix is the same under matrix multiplication, no matter what $k$ is, and the matrix of all $1$s raised to some power will be the rank of the matrix ($q$) to one minus the power it is raised to, times the matrix of all $1$s, Except in the $k=0$ case, when it is the identity, so we need to take out the $k=0$ term:
+\begin{align*}
+  C^N&=\bm{1}\sum_{k=1}^N\pmqty{N\\k}\qty(e^{\beta3J/2}-1)^{N-k}q^{k-1}+
+  \pmqty{N\\0}(e^{\beta3J/2}-1)^NI\\
+  &=q^{-1}\bm{1}\sum_{k=1}^N\pmqty{N\\k}\qty(e^{\beta3J/2}-1)^{N-k}q^{k}+
+  (e^{\beta3J/2}-1)^NI
+\end{align*}
+We then have a non-matrix form of the binomial formula, we only need to add and subsequently subtract the $k=0$ term:
+\begin{align*}
+  C^N&=q^{-1}\bm{1}\qty[\sum_{k=1}^N\pmqty{N\\k}\qty(e^{\beta3J/2}-1)^{N-k}q^{k}
+  +(e^{\beta3J/2}-1)^N-(e^{\beta3J/2}-1)^N]+(e^{\beta3J/2}-1)^NI\\
+  &=q^{-1}\bm{1}\qty[\sum_{k=0}^N\pmqty{N\\k}\qty(e^{\beta3J/2}-1)^{N-k}q^{k}
+  -(e^{\beta3J/2}-1)^N]+(e^{\beta3J/2}-1)^NI\\
+  &=q^{-1}\bm{1}\qty[\qty(e^{\beta3J/2}+q-1)^N-(e^{\beta3J/2}-1)^N]
+  +(e^{\beta3J/2}-1)^NI\\
+  &=\qty(e^{\beta3J/2}+q-1)^N\qty(q^{-1}\bm{1})
+  +(e^{\beta3J/2}-1)^N(I-q^{-1}\bm{1})
+\end{align*}
+The partition function can then be found by doing some combinatorics, there are $q^2$ elements of just 1 from $\bm{1}$, and $q$ elements from the identity, hence we get:
+\begin{align*}
+  Z=\sum_{i,j}(C^N)_{ij}&=
+  \frac{q^2}{q}\qty[(e^{\beta3J/2}+q-1)^N-(e^{\beta3J/2}-1)^N]
+  +q(e^{\beta3J/2}-1)^N\\
+  &=q(e^{\beta3J/2}+q-1)^N
+  -\cancel{q(e^{\beta3J/2}-1)^N}+\cancel{q(e^{\beta3J/2}-1)^N}\\
+  &=q(e^{\beta3J/2}+q-1)^N
+\end{align*}
+And so the exact free energy is given by:
+\begin{align}
+  \boxed{F=-k_BT \log Z=-k_BT\qty(\log q+N\log(e^{3J\beta/2}+q-1))}
+\end{align}
+Which includes the answer from (a) at $0$ temperature 
+
+\subsection{Equivalence to Spin-Spin Coupling}
+Call the vectors which which $\vb{s}_i$ can be $\vb{a},\vb{b}$ and $\vb{c}$ respectively
+\begin{gather*}
+  \vb{a\vdot a}=\vb{b\vdot b}=\vb{c\vdot c}=1\\
+  \vb{a\vdot b}=\vb{a\vdot c}=\vb{b\vdot c}=-\frac12
+\end{gather*}
+So we can write the Hamiltonian in terms of a symbol $\alpha_{ij}$:
+\begin{align*}
+  H=-J\sum_{\ev{i,j}}\alpha_{\vb{s}_i\vb{s}_j}
+\end{align*}
+Where $\alpha_{ij}$ has values:
+\begin{align*}
+  \alpha_{ij}=
+  \begin{cases}
+    1 & i=j \\
+    -\frac12 & i\neq j
+  \end{cases}
+  =\frac32\delta_{ij}-\frac12
+\end{align*}
+And so we can write the $q=3$ Hamiltonian as:
+\begin{align*}
+  H=-J\sum_{\ev{i,j}}\qty(\frac32\delta_{\vb{s}_i,\vb{s}_j}-\frac12)
+  =-\frac{3J}2\sum_{\ev{i,j}}\delta_{\vb{s}_i,\vb{s}_j}+\text{const.}
+\end{align*}
+The constant is dependent on the number of nearest neighbors, and is positive, so no microdynamics are changed, hence:
+\begin{equation}
+  \boxed{H=-J\sum_{\ev{i,j}}\vb{s}_i\vdot\vb{s}_j
+    = H_{\text{Potts}}+\text{const.}}
+\end{equation}
+
+\subsection{Mean Field Model}
+In order to use the mean field Magnetization $\vb{m}$, we need to replace the sum of pairs with a sum over all possible combinations, in a mean field approximation we would have the sum over pairs go to $z/N$ times the sum over all combinations:
+\begin{align*}
+  \sum_{\ev{i,j}}\to\frac{z}{N}\sum_{i,j}
+\end{align*}
+This way the Hamiltonian becomes:
+\begin{align*}
+  H=-\frac{Jz}{N}\sum_{i,j}\vb{s}_i\vdot\vb{s}_j=
+  -\frac{Jz}{N}(N\vb{m})\vdot(N\vb{m})=-JzN\abs{\vb{m}}^2
+\end{align*}
+Or, if $\vb{m}=(m,0)$, then:
+\begin{align*}
+  H=-JzNm^2
+\end{align*}
+We can then find the entropy using the Shannon definition of Entropy;
+\begin{align*}
+  S=-Nk_B\sum_{i=1}^3p_i\log(p_i)
+\end{align*}
+Where the probabilities are the fractions of the population of the total population $N$, where the population of 1 is $Np_1$ etc. Using the earlier form of $\vb{m}=(m,0)$ and the earlier notation for each of the $q=3$ states, we know that:
+\begin{align*}
+  \vb{m}= p_1\vb{a}+p_2\vb{b}+p_3\vb{c}
+\end{align*}
+Subbing in the form we have gives a system of equations:
+\begin{align*}
+  p_1-\frac12(p_2+p_3)&=m\\
+  p_2-p_3&=0
+\end{align*}
+We can get a third equation by requiring that the $p_i$s are normalized to 1:
+\begin{align*}
+  p_1-\frac12(p_2+p_3)&=m\\
+  p_2-p_3&=0\\
+  p_1+p_2+p_3&=0
+\end{align*}
+This system has the solution:
+\begin{align*}
+  p_1&=\frac{1+2m}{3}\\
+  p_2=p_3&=\frac{1-m}{3}
+\end{align*}
+The entropy is then:
+\begin{align*}
+  S=-\frac{Nk_B}{3}\qty((1+2m)\log\frac{2m+1}{3}+2(1-m)\log\frac{1-m}{3})
+\end{align*}
+And the free energy can be calculated using the thermodynamic property $F=E-TS$, where $E=H$ in this case:
+\begin{align*}
+  F&=-JzNm^2+
+  \frac{Nk_BT}{3}\qty((1+2m)\log\frac{2m+1}{3}+2(1-m)\log\frac{1-m}{3})\\
+\end{align*}
+So the mean field free energy is:
+\begin{equation}
+  \boxed{F=N\qty[-Jzm^2+\frac{k_BT}{3}
+    \qty(1+2m)\log\frac{2m+1}{3}+2(1-m)\log\frac{1-m}3]}
+\end{equation}
+We can find the equilibrium value of $m$ by minimizing the free energy with respect to it, and checking the second derivative is positive:
+\begin{align*}
+  \dv{F}{m}&=-2NJzm+\frac23Nk_BT\log\frac{2m+1}{1-m}=0\\
+  \dv[2]{F}{m}&=-2NJz+\frac{Nk_BT}{3}\qty(\frac2{1-m}+\frac4{2m+1})>0
+\end{align*}
+Solve for minima:
+\begin{align*}
+  \frac13k_BT\log\frac{2m+1}{1-m}=Jzm\implies
+  \log\frac{2m+1}{1-m}=3Jzm\beta\implies
+  \frac{2m+1}{1-m}=\exp{3Jzm\beta}
+\end{align*}
+There is a disordered solution with $m=0$, representing a mix of random choices of $\vb{a,b,c}$, however we can see additional solutions by inspecting the second derivative further:
+\begin{align*}
+  \frac{k_BT}{3}\qty(\frac2{1-m}+\frac4{2m+1})&>2Jz\implies
+  \frac1{1-m}+\frac2{2m+1}>3\beta Jz\\
+  \frac3{1+m-2m^2}&>3\beta Jz\implies
+  \qty(1-\frac{k_BT}{Jz})+m-2m^2<0
+\end{align*}
+Plugging in $m=0$:
+\begin{align*}
+  1<\frac{k_BT}{Jz}\implies Jz<k_BT
+\end{align*}
+This is not necessarily true at low enough temperatures, at which point there must be another minima, which gives spontaneous order, hence a phase transition.
+
+We can see whether or not it is first or second order numerically by viewing the free energy at low and high temperatures, choosing arbitrary units for $J,z,k_B$, we have:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=8.0cm]{FvmT5}
+  \includegraphics[width=8.0cm]{FvmT1}
+  \caption{High (left) and Low (right) Temperature $F$}
+\end{figure}
+I chose to then use numerical methods to find the $m$ which minimizes $F$ as a function of temperature, we find that:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=8.0cm]{mvt}
+  \caption{Value of $m$ which minimizes $F$ vs $T$}
+\end{figure}
+While it looks discontinuous, the free energy vs $m$ suggests that there could still be a smooth transition from having the root at $m=0$ vs at a critical value $m^*$. We can determine this by looking near the critical temperature, where the critical value and $m=0$ both achieve nearly the same value.
+
+If the minima we see is doubly degenerate near the critical temperature, then we will have a second order phase transition, if not, we will have $m(T)$ as manifestly discontinuous, and hence will be a first order phase transition.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=8.0cm]{FvmTsamemin}
+  \caption{$F$ near $T_c$}
+\end{figure}
+Clearly the minima are at distinct locations on the plot, and if we lower $T$, we will find the right-hand minimum will be lower, and raising $T$ will push the right-hand minimum higher, meaning that $m=0$ is now the value which minimizes $F$, giving a \emph{first order phase transition}

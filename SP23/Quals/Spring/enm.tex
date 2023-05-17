@@ -1,2 +1,165 @@
 % -*- TeX-master: "master.tex" -*-
+\def\bd{\bm{\delta}}
 \section{Electromagnetism}
+\begin{problem}
+  A plane electromagnetic wave of angular frequency $\omega$ propagates in a uniform plasma with electron density $N_e$. The plasma is locally neutral, $\rho=0$. The electromagnetic wave generates periodic currents within the plasma that, as the problem will show, modify the index of refraction of the medium compared to that of the vacuum.
+Assume the plasma has no resistivity and neglect radiation pressure effects as well as currents due to the ions.
+\begin{enumerate}[label=(\alph*)]
+\item Relate the current $\vb{J}(\vb{r}, t)$ in the plasma to the wave’s electric field $\vb{E}(\vb{r}, t)$ or derivatives thereof. Assume magnetic forces can be neglected.
+\item Write down the appropriate Maxwell equations and derive the wave equation. Find the dispersion relation $\omega(k)$ and the lowest frequency electromagnetic wave that can propagate the plasma.
+\item Find the phase and group velocity for electromagnetic waves in the plasma. Compare those velocities with $c$, the speed of light in vacuum.
+\item Find the index of refraction $n$ of the plasma as a function of frequency.
+\item If a plane electromagnetic wave is incident on a plane interface between a vacuum and the plasma, what is the critical angle for total reflection, measured from the normal to the interface?
+\end{enumerate}
+\end{problem}
+
+\subsection{Current Density}
+Note that the current density $\vb{J}$ is related to the velocity of small drifts of the electrons, call these small drifts $\bd(\vb{r},t)$. The wave causes periodic currents, so we know that these drifts look like:
+\begin{align*}
+  \ddot{\bd}=-\omega^2\bd
+\end{align*}
+However, this motion according to Newton's law for electric forces is given by:
+\begin{align*}
+  m\ddot{\bd}=-e\vb{E}
+\end{align*}
+Subbing in what we know for $\ddot{\bd}$:
+\begin{align*}
+  m\omega^2\bd=e\vb{E}
+\end{align*}
+The current density is a macroscopic property, opposite in direction to electron flow and proportional to the number charge density of electrons and their velocity, from this we can derive:
+\begin{align*}
+  \vb{J}=-eN_e\dot{\bd}
+\end{align*}
+Rearranging what we know for $\bd$ allows us to get a sense of the velocity in terms of $\vb{E}$:
+\begin{align*}
+  \bd=\frac{e}{m\omega^2}\vb{E}\implies
+  \dot{\bd}=\frac{e}{m\omega^2}\pdv{\vb{E}}{t}
+\end{align*}
+And we get the current density as:
+\begin{align}
+  \boxed{\vb{J}=-\frac{N_ee^2}{m\omega^2}\pdv{\vb{E}}{t}}
+\end{align}
+
+\subsection{Maxwell Equations}
+The full Maxwell equations in SI units are:
+\begin{align*}
+  \div{\vb{E}}=\frac{\rho}{\veps_0} \quad&\quad
+  \curl{\vb{E}}=-\pdv{\vb{B}}{t}\\
+  \div{\vb{B}}=0 \quad&\quad
+  \curl{\vb{B}}=\mu_0\vb{J}+\frac1{c^2}\pdv{\vb{E}}{t}
+\end{align*}
+Substituting properties of the plasma we have:
+
+\begin{align*}
+  \div{\vb{E}}=0 \quad&\quad
+  \curl{\vb{E}}=-\pdv{\vb{B}}{t}\\
+  \div{\vb{B}}=0 \quad&\quad
+  \curl{\vb{B}}=\qty(\frac1{c^2}-\frac{\mu_0N_ee^2}{m\omega^2})\pdv{\vb{E}}{t}
+\end{align*}
+Factoring out the $c^{-2}$ in the Ampere-Maxwell law gives:
+\begin{align*}
+  \curl{\vb{B}}&=\qty(1-\frac{N_ee^2}{m\veps_0\omega^2})
+  \frac1{c^2}\pdv{\vb{E}}{t}\\
+  &=\qty(1-\frac{\omega_p^2}{\omega^2})\frac1{c^2}\pdv{\vb{E}}{t}
+\end{align*}
+Where $\omega_p$ is the plasma frequency:
+\begin{align*}
+  \omega_p^2\equiv\frac{N_ee^2}{m\veps_0}
+\end{align*}
+Thus the Maxwell Equations are given by:
+\begin{equation}
+\boxed{\begin{aligned}
+    \div{\vb{E}}=0 \quad&\quad
+    \curl{\vb{E}}=-\pdv{\vb{B}}{t}\\
+    \div{\vb{B}}=0 \quad&\quad
+    \curl{\vb{B}}=\qty(1-\frac{\omega_p^2}{\omega^2})\frac1{c^2}\pdv{\vb{E}}{t}
+  \end{aligned}}
+\end{equation}
+The wave equation for $\vb{E}$ can be found by taking the curl of Faraday's law, and subbing in the Ampere-Maxwell law for the curl of $\vb{B}$ granted that mixed derivatives commute:
+\begin{align*}
+  \curl{\curl{\vb{E}}}=-\pdv{t}\curl{\vb{B}}
+\end{align*}
+The curl of the curl can be expanded:
+\begin{align*}
+  \curl{\curl{\vb{E}}}=\grad{(\div{\vb{E}})}-\laplacian{\vb{E}}
+  =-\laplacian{\vb{E}}
+\end{align*}
+So that the equation is now:
+\begin{align*}
+  \laplacian{\vb{E}}&=\pdv{t}\curl{\vb{B}}\\
+  &=\pdv{t}\qty[
+  \qty(1-\frac{\omega_p^2}{\omega^2})\frac1{c^2}\pdv{\vb{E}}{t}]\\
+  &=\qty(1-\frac{\omega_p^2}{\omega^2})\frac1{c^2}\pdv[2]{\vb{E}}{t}
+\end{align*}
+So we have a modified wave equation:
+\begin{equation}
+  \boxed{\laplacian{\vb{E}}=
+  \qty(1-\frac{\omega_p^2}{\omega^2})\frac1{c^2}\pdv[2]{\vb{E}}{t}}
+\end{equation}
+These waves will have a similarly modified dispersion relation:
+\begin{align*}
+  k^2=\frac{\omega^2}{c^2}\qty(1-\frac{\omega_p^2}{\omega^2})
+  =\frac{1}{c^2}\qty(\omega^2-\omega_p^2)
+\end{align*}
+Note we can still use $\omega$ as the frequency parameter here as the frequencies/wavenumbers at which the plasma will oscillate are determined by the input wave frequency. In terms of $k$, we can solve for $\omega$:
+\begin{align*}
+  \omega^2=c^2k^2+\omega_p^2
+\end{align*}
+
+\subsection{Phase and Group Velocities}
+The phase velocity is the movement of high frequency oscillations within the ``envelope'' of a wave, so is given by:
+\begin{align*}
+  v_p=\frac{\omega}{k}
+\end{align*}
+This can be identified by the $v$ in the general wave equation:
+\begin{align*}
+  \laplacian{f}=\frac1{v^2_p}\pdv[2]{f}{t}
+\end{align*}
+Hence we can identify:
+\begin{align*}
+  v_p=c\qty(1-\frac{\omega_p^2}{\omega^2})^{-1/2}
+\end{align*}
+Note that the wavenumber $k$ is imaginary if $\omega<\omega_p$, so the parenthetical quantity is less than one, and so the inverse of its square root is greater than one, so the \underline{\emph{phase velocity is greater than $c$}}. This sounds problematic, however
+
+The group velocity on the other hand is characterized by the movement of the envelope itself, characterized by:
+\begin{align*}
+  v_g=\dv{\omega}{k}
+\end{align*}
+Using the dispersion relation, we get that:
+\begin{align*}
+  2\omega\dv{\omega}{k}&=2c^2k\\
+  \dv{\omega}{k}&=c^2\frac{k}{\omega}=\frac{c^2}{v_p}=
+  c\sqrt{1-\frac{\omega_p^2}{\omega^2}}
+\end{align*}
+The quantity under the square root is once again less than one, hence the \underline{\emph{group velocity is less than $c$}}, and we can summarize our results:
+\begin{equation}
+  \boxed{\begin{aligned}
+      v_p&=c\qty(1-\frac{\omega_p^2}{\omega^2})^{-1/2}>c\\
+      v_g&=c\qty(1-\frac{\omega_p^2}{\omega^2})^{+1/2}<c
+  \end{aligned}}
+\end{equation}
+The difference between this is seen by the following plot:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10.0cm]{phasegroup}
+  \caption{Phase vs Group Velocity}
+\end{figure}
+The velocity of the ``Envelope'' is the group velocity, where information is transmitted, and the phase velocity is the velocity of the high frequency modulation
+
+\subsection{Index of Refraction}
+The index of refraction is defined as the ratio of the speed of light and the phase velocity $v_p$:
+\begin{align}
+  \boxed{n(\omega)=\sqrt{1-\frac{\omega_p^2}{\omega^2}}}
+\end{align}
+Note that since $v_p>c$, the \underline{\emph{index of refraction is less than 1}}.
+
+\subsection{Critical Angle}
+We can use Snell's law to determine a refraction angle from some incident angle:
+\begin{align*}
+  n_{\text{in}}\sin\theta_{\text{in}}=n_{\text{refr}}\sin\theta_{\text{refr}}
+\end{align*}
+The wave is incident on the vacuum with $n=1$, and since $n_{\text{refr}}=n_{\text{plasma}}<1$, the refracted angle will be $\ang{90}$ before the incident angle does, hence for total internal reflection, we require that the incident angle be greater than $\theta_c$, where:
+\begin{align}
+  \boxed{\sin\theta_c=n_{\text{plasma}}=\sqrt{1-\frac{\omega_p^2}{\omega^2}}}
+\end{align}
+

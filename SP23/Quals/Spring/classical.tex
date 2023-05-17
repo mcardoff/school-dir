@@ -1,2 +1,216 @@
 % -*- TeX-master: "master.tex" -*-
 \section{Classical Mechanics}
+\begin{problem}
+  A small iron ball of mass m is attached to two identical springs along the $x$-axis. The spring constants are $k$ and the relaxed lengths are $L_0$. When aligned along the $x$-axis the springs are compressed, the distance between their respective points of attachment is $2L<2L_0$. Initially the ball is constrained to move along the $y$-axis (see Figure).
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=6.0cm]{springs}
+    \caption{Setup for this Problem}
+  \end{figure}
+  \begin{enumerate}[label=(\alph*)]
+  \item Find the potential energy of the ball as a function of displacement $y$ for small amplitude oscillations. Expand it in a power series through terms of order $y^4$. This power expansion of the potential energy function will suffice for answering parts (b) --- (d) of this problem.
+  \end{enumerate}
+  A high frequency external force $\vb{F}(t)=-(my_0\omega^2)\cos(\omega t)\vu{y}$ is applied to the iron ball along the $y$-axis (e.g.\ by using an electromagnet). The frequency $\omega$ of the external force is much larger than the free oscillation frequency of the ball.
+  \begin{enumerate}[label=(\alph*)]
+    \setcounter{enumi}{1}
+  \item Write equations of motion for the ball. Separate equations of motion into high and low frequency by appropriate substitution of variables.
+  \item Find the effective potential $U_{\text{eff}}$ for the low frequency motion of the ball as a function of given parameters.
+  \item Find the equilibrium points and the frequency of small amplitude free (low frequency) oscillations of the ball in the potential $U_{\text{eff}}$ as a function of $T=y_0^2$.
+  \item Now assume that the ball is constrained to move along the $x$-axis and that the external force is also acting along the $x$-axis, $\vb{F}(t)=-(mx_0\omega^2)\cos(\omega t)\vu{x}$. Find the equilibrium points and the frequency of small amplitude free oscillations in this case.
+  \end{enumerate}
+\end{problem}
+
+\subsection{Potential Energy}
+The potential energy for a spring in general is:
+\begin{align*}
+  U_{\text{spring}}(x)=\frac12k(x-L_0)^2
+\end{align*}
+Where the compression direction is $x$, and the relaxed length is $L_0$. If we stretch in the $y$ direction by some distance $y$, we have a total spring length of:
+\begin{align*}
+  \ell(y)=\sqrt{y^2+L^2}
+\end{align*}
+Where $L$ is the length when the ball is at the origin. This means for each spring we have:
+\begin{align*}
+  U_1(y)=\frac12k(\ell-L_0)^2
+\end{align*}
+So the total potential is:
+\begin{align}
+  \boxed{U(y)=k(\sqrt{y^2+L^2}-L_0)^2}
+\end{align}
+Expanding this so we isolate the square root term we have:
+\begin{align*}
+  U(y)=k\qty(y^2+L^2+L_0^2-2L_0\sqrt{y^2+L^2})
+\end{align*}
+We can then perform a quartic expansion on the square root term:
+\begin{align*}
+  \sqrt{y^2+L^2}=L\sqrt{1+\frac{y^2}{L^2}}
+  &\approx L\qty(1+\frac12\frac{y^2}{L^2}-\frac18\frac{y^4}{L^4})\\
+  &=L+\frac{y^2}{2L}-\frac{y^4}{8L^3}
+\end{align*}
+So that we can write the potential energy as:
+\begin{align}
+  \boxed{U(y)=k(L-L_0)^2+k\qty(1-\frac{L_0}{L})y^2+k\frac{L_0}{4L^3}y^4}
+\end{align}
+
+\subsection{Equations of Motion}
+We can use Newton's Second Law to find the equations of motion since we are given a force. However we do not need to use the vector form since motion is constrained in the $y$ direction, so we can simply write:
+\begin{align*}
+  m\ddot{y}&=-\dv{U(y)}{y}+F(t)\\
+  &=-\dv{U(y)}{y}-my_0\omega^2\cos\omega t
+\end{align*}
+However, we can also define an auxiliary variable $\alpha=y-y_0\cos\omega t$, which is defined such that:
+\begin{align*}
+  \ddot{\alpha}&=\ddot{y}+y_0\omega^2\cos\omega t\\
+  &=\ddot{y}-\frac{F(t)}{m}\\
+  \implies m\ddot{\alpha}&=m\ddot{y}-F(t)
+\end{align*}
+So that we can write the equation of motion of $\alpha$ instead as:
+\begin{align*}
+  m\ddot{\alpha}=-\dv{U(y)}{y}
+\end{align*}
+And then noting that $\dv{y}=\dv{\alpha}$ and $y=\alpha+y_0\cos\omega t$, we can write it completely in terms of $\alpha$:
+\begin{align}
+  \boxed{
+    \begin{aligned}
+      m\ddot{\alpha}&=-\dv{U}{\alpha}\qty(\alpha+y_0\cos\omega t)\\
+      m\ddot{y}&=-\dv{U}{y}(y)+F(t)
+    \end{aligned}
+  }
+\end{align}
+The dynamics of $\alpha$ correspond to only the motion of the low frequency oscillations, with the high frequency driving force subtracted out, and the dynamics of $y$ itself represent the total high frequency motion.
+
+\subsection{Effective Potential}
+If the free motion of the ball has frequency $\gamma$, then $U(\alpha)$ will oscillate many times in the time it takes for one free oscillation. We can then approximate $U$ as an effective potential by averaging over many periods of the forced oscillations. We can do this by taking $\ev{U}$:
+\begin{align*}
+  \ev{U}\equiv\frac1\tau\int_0^\tau U(\alpha+y_0\cos\omega t)\dd{t}
+\end{align*}
+Where $\tau$ is some large number of periods of $\omega$. This consists of averaging the following:
+\begin{align*}
+  \ev{(\alpha+\cos(\omega t))^n}
+\end{align*}
+The constant terms will still be constant even averaged since they are not time dependent, the second order term gives:
+\begin{align*}
+  \ev{(\alpha+y_0\cos(\omega t))^2}=
+  \ev{\alpha^2+2y_0\alpha\cos(\omega t)+y_0^2\cos^2(\omega t)}
+  =\alpha^2+\frac{y_0^2}{2}
+\end{align*}
+Since:
+\begin{align*}
+  \ev{\cos(\omega t)}=0\quad\text{and}\quad\ev{\cos^2(\omega t)}=\frac12
+\end{align*}
+And the fourth order term:
+\begin{align*}
+  \ev{(\alpha+y_0\cos(\omega t))^4}&=
+  \ev{\alpha^4+4y_0\alpha^3\cos(\omega t)+6\alpha^2y_0^2\cos^2(\omega t)
+    +4y_0^3\alpha\cos^3(\omega t)+y_0^4\cos^4(\omega t)}\\
+  &=\alpha^4+3\alpha^2y_0^2+\frac{3y_0^4}{8}
+\end{align*}
+Using the above as well as:
+\begin{align*}
+  \ev{\cos(\omega t)^3}=0\quad\text{and}\quad\ev{\cos^4(\omega t)}=\frac38
+\end{align*}
+So the effective potential is given by:
+\begin{align*}
+  U_{\text{eff}}(\alpha)&=k(L-L_0)^2
+  +k\qty(1-\frac{L_0}{L})\qty(\alpha^2+\frac{y_0^2}{2})
+  +\frac{kL_0}{4L^3}\qty(\alpha^4+3\alpha^2y_0^2+\frac{3y_0^4}{8})\\
+  &=A+B\alpha^2+C\alpha^4
+\end{align*}
+With the constants given as:
+\begin{equation}
+  \boxed{\begin{aligned}
+    U_{\text{eff}}(\alpha)&=A+B\alpha^2+C\alpha^4\\
+    A&=k(L-L_0)^2+\frac{ky_0^2}2\qty(1-\frac{L_0}L)+\frac{3kL_0y_0^4}{32L^3}\\
+    B&=k\qty(1-\frac{L_0}L)+\frac{3kL_0y_0^2}{4L^3}\\
+    C&=\frac{kL_0}{4L^3}
+  \end{aligned}}
+\end{equation}
+\subsection{Equilibrium Points}
+Equilibrium points occur at minima of the effective potential:
+\begin{align*}
+  \dv{U_{\text{eff}}}{\alpha}=0\implies B\alpha+2C\alpha^3=0
+\end{align*}
+We have 3 solutions, $\alpha_0,\alpha_\pm$:
+\begin{align*}
+  \alpha_0&=0\\
+  \alpha_\pm&=\pm\sqrt{-\frac{B}{2C}}=
+  \pm\sqrt{2L^2-2\frac{L^3}{L_0}-\frac32y_0^2}
+\end{align*}
+Writing $y_0^2=T$, the effective potential reads:
+\begin{align*}
+  U_{\text{eff}}(\alpha)&=A+B\alpha^2+C\alpha^4\\
+  A&=k(L-L_0)^2+\frac{kT}2\qty(1-\frac{L_0}L)+\frac{3kL_0T^2}{32L^3}\\
+  B&=k\qty(1-\frac{L_0}L)+\frac{3kL_0T}{4L^3}\\
+  C&=\frac{kL_0}{4L^3}
+\end{align*}
+We can identify the small amplitude oscillations by recognizing that the power series of a general potential expanded about a minimum $x_0$ will be given as:
+\begin{align*}
+  U(x)&\approx U(x_0)+U'(x_0)(x-x_0)+\frac12U''(x_0)(x-x_0)^2+\cdots\\
+  &=U(x_0)+\frac12U''(x_0)(x-x_0)^2
+\end{align*}
+The higher order terms will be suppressed highly, so we only need these second order terms. We therefore have an effective spring constant $k_{\text{eff}}$ which is given by $U''_{\text{eff}}(x_0)$, and the frequency is $\tilde{\omega}_0=\sqrt{k_{\text{eff}}/m}$
+\begin{align*}
+  k_{\text{eff}}=U''(\alpha_0)=2B
+\end{align*}
+And the oscillation frequency will be given by:
+\begin{align}
+  \boxed{\tilde{\omega}_0=\sqrt{\frac{2B}{m}}}
+\end{align}
+For the other equilibrium point $\alpha_\pm$, we get:
+\begin{align*}
+  k_{\text{eff}}=U''(\alpha_\pm)=-4B
+\end{align*}
+Giving an oscillation frequency of:
+\begin{align*}
+  \boxed{\tilde{\omega}_\pm=2\sqrt{\frac{-B}{m}}}
+\end{align*}
+The difference between these two cases can be seen in the following graphs:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=8.0cm]{s0}
+  \includegraphics[width=8.0cm]{spm}
+  \caption{Multiple vs Single Equilibrium}
+\end{figure}
+The left figure has $y_0=1\approx L$ and the right has $y_0=0.1<L$
+\subsection{$x$-Axis Driving}
+The potential is different as the system is no longer symmetric about this axis, we then have:
+\begin{align*}
+  U(x)&=\frac12k(x-(L-L_0))^2+\frac12k(x+(L-L_0))^2\\
+  &=\boxed{kx^2+k(L-L_0)^2}
+\end{align*}
+The naive equation of motion as before, we have:
+\begin{align*}
+  m\ddot{x}&=-\dv{U}{x}\qty(x)+F(t)\\
+  &=-\dv{U}{x}(x)-mx_0\omega^2\cos(\omega t)
+\end{align*}
+Defining an auxiliary variable $\beta=x-x_0\cos\omega t$ this time, such that:
+\begin{align*}
+  \ddot{\beta}&=\ddot{x}+x_0\omega^2\cos\omega t\\
+  &=\ddot{x}-\frac{F(t)}{m}\\
+  \implies m\ddot{x}&=m\ddot{\beta}+F(t)
+\end{align*}
+The equations of motion again read:
+\begin{align}
+  \boxed{\begin{aligned}
+      m\ddot{\beta}&=-\dv{U}{\beta}\qty(\beta+x_0\cos\omega t)\\
+      m\ddot{x}&=-\dv{U}{x}\qty(x)+F(t)
+    \end{aligned}}
+\end{align}
+The effective potential is then only found by averaging over a large number of periods of $\omega$:
+\begin{align*}
+  \ev{U(\beta+x_0\cos\omega t)}=k\ev{\qty(\beta+x_0\cos\omega t)^2}
+  +k(L-L_0)^2
+\end{align*}
+From before we already know:
+\begin{align*}
+  \ev{\qty(\beta+x_0\cos\omega t)^2}=\beta^2+\frac{x_0^2}{2}
+\end{align*}
+So the effective potential is:
+\begin{align*}
+  U_{\text{eff}}(\beta)=k\beta^2+k\qty(\frac{x_0^2}2+(L-L_0)^2)
+\end{align*}
+Which means the small oscillations are only affected by the force by a constant, so the mass will oscillate about $x=0$ with frequency:
+\begin{align}
+  \boxed{\tilde{\omega}=\sqrt{\frac{2k}{m}}}
+\end{align}
+We only have $1$ equilibrium point since the effective potential is not only quadratic rather than quartic

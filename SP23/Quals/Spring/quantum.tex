@@ -1,2 +1,154 @@
 % -*- TeX-master: "master.tex" -*-
 \section{Quantum Mechanics}
+\begin{problem}
+  The gyromagnetic factor of the electron g determines the relationship between the electron magnetic moment $\bm{\mu}$ and the electron spin $\vb{S}$,
+  \begin{align*}
+    \bm{\mu}=g\frac{e}{2m}\vb{S}
+  \end{align*}
+  where e is the electron charge and m is the electron mass. Famously, the Dirac equation predicts $g = 2$, but in quantum electrodynamics, the electron picks up an anomalous magnetic moment $g = 2(1 + a)$, where the current experimental value is $a = 0.00115965218076(27)$.
+
+  One way to experimentally measure $a$ is to allow a beam of electrons to interact with a constant magnetic field $B = B\vu{z}$ via the Hamiltonian
+  \begin{align*}
+    H=\frac1{2m}\qty(\vb{p}-e\vb{A})^2-\bm{\mu}\vdot\vb{B}
+  \end{align*}
+  where $\vb{A}$ is the vector potential. The electrons are confined to the $x–y$ plane, and you can ignore any electron–electron interactions. The electrons will exhibit cyclotron motion with frequency $\omega = eB/m$, but they will also exhibit spin precession with a slightly different frequency. In this problem, you will show how to use this phenomenon to extract $a$.
+  \begin{enumerate}[label=(\alph*)]
+  \item Verify the commutation relations
+    \begin{align*}
+      \comm{v_x}{H}=i\hbar\omega v_y,\qquad
+      \comm{v_y}{H}=-i\hbar\omega v_x
+    \end{align*}
+    Where $\vb{v}=(\vb{p}-e\vb{A})/m$ is the gauge-invariant velocity operator.\@[\emph{Hint}: Because $\vb{v}$ is gauge invariant, you are free to chose any gauge for $\vb{A}$ you wish.]
+  \item Consider the two expectation values
+    \begin{align*}
+      C_1(t) = \ev{S_xv_x+S_yv_y}, \qquad
+      C_2(t) = \ev{S_xv_y-S_yv_x} .
+    \end{align*}
+    Derive a set of coupled differential equations that describe the time evolution of $C_1(t)$ and $C_2(t)$. In the special case that $a = 0$ (i.e. $g = 2$), verify that $C_1(t)$ and $C_2(t)$ do not change with time.
+  \item A beam of electrons of velocity $\vb{v}$ is prepared at time $t = 0$ in a spin state with known values of $C_1(0)$ and $C_2(0)$. The beam interacts with a magnetic field $\vb{B} = B\vu{z}$ between $t = 0$ and $t = T$. The expectation value $C_1(T)$ is experimentally measured to be periodic with period $2\pi/\Omega$ (i.e. $C_1(T)$ = $C_1(T+2π\pi/\Omega))$. Use this information to determine the value of $a$ in terms of $\Omega$ and other physical parameters.
+  \end{enumerate}
+\end{problem}
+\subsection{Commutation Relations}
+We can write the Hamiltonian as:
+\begin{align*}
+  H=\frac1{2m}\sum_i\qty[(p_i-eA_i)^2-geS_iB_i]
+\end{align*}
+It is best to chose a gauge with only one component of the magnetic field, since we know in the experiment we will have $\vb{B}=B\vu{x}$. One example of such a gauge has:
+\begin{align*}
+  \vb{A}=Bx\vu{y}
+\end{align*}
+The curl of which is:
+\begin{align*}
+  \curl{\vb{A}}=\curl{(Bx\vu{y})}=B\vu{z}
+\end{align*}
+So this makes sense for our physical situation.
+
+The components of the gauge invariant velocity are then given by:
+\begin{align*}
+  v_x=\frac{p_x}{m}\quad v_y=\frac1m(p_y-eBx)\quad v_z=0
+\end{align*}
+$v_z$ is 0 since the electrons are confined to the $x-y$ plane.
+
+In order to compute the commutators we should find the Hamiltonian in terms of the gauge invariant velocities:
+\begin{align*}
+  H&=\frac12m\vb{v\vdot v}-\frac{ge}{2m}\vb{S}\vdot(B\vu{z})\\
+  &=\frac12m\qty(v_x^2+v_y^2)-\frac{ge}{2m}BS_z
+\end{align*}
+Since the spin operator acts on a different Hilbert space than the velocity operator does, then clearly:
+\begin{align*}
+  \comm{v_i}{S_j}=0
+\end{align*}
+Then we only need to calculate:
+\begin{align*}
+  \comm{v_x}{H}&=\frac{m}2\comm{v_x}{v_x^2+v_y^2}\\
+  \comm{v_y}{H}&=\frac{m}2\comm{v_y}{v_x^2+v_y^2}
+\end{align*}
+For each of these, we can use the identity:
+\begin{align*}
+  \comm{A}{BC}&=B\comm{A}{C}+\comm{A}{B}C\\
+  \implies\comm{A}{B^2}&=B\comm{A}{B}+\comm{A}{B}B
+\end{align*}
+And find the simpler commutators:
+\begin{gather*}
+  \comm{v_x}{v_y}=\frac1{m^2}\comm{p_x}{p_y-eBx}=-\frac{eB}{m^2}\comm{p_x}{x}
+  =\frac{i\hbar\omega}{m}\\
+  \comm{v_x}{v_x}=\comm{v_y}{v_y}=0
+\end{gather*}
+Then we have:
+\begin{align*}
+  \comm{v_x}{H}&=\frac{m}2\comm{v_x}{v_y^2}
+  =\frac{m}2\qty(v_y\comm{v_x}{v_y}+\comm{v_x}{v_y}v_y)\\
+  &=\frac12\qty(v_y i\hbar\omega+i\hbar\omega v_y)=i\hbar\omega v_y
+\end{align*}
+And:
+\begin{align*}
+  \comm{v_y}{H}&=\frac{m}2\comm{v_y}{v_x^2}
+  =\frac{m}2\qty(v_x\comm{v_y}{v_x}+\comm{v_y}{v_x}v_x)\\
+  &=-\frac12\qty(v_x i\hbar\omega+i\hbar\omega v_x)=-i\hbar\omega v_x
+\end{align*}
+Hence we have found:
+\begin{equation}
+  \boxed{\begin{aligned}
+      \comm{v_x}{H}&=i\hbar\omega v_y\\
+      \comm{v_y}{H}&=-i\hbar\omega v_x
+  \end{aligned}}
+\end{equation}
+
+\subsection{Spin-Velocity Expectation Values}
+Since the operators $C_1$ and $C_2$ are Schrodinger picture (not time-dependent), we can find the evolution of their expectation value using the following form of Ehrenfest's theorem:
+\begin{align*}
+  i\hbar\dv{\ev{\mathcal{O}}}{t}=\ev{\comm{\mathcal{O}}{H}}
+\end{align*}
+Where we wish to find:
+\begin{align*}
+  i\hbar\dv{C_1}{t}&=\ev{\comm{S_xv_x+S_yv_y}{H}}\\
+  i\hbar\dv{C_2}{t}&=\ev{\comm{S_xv_y-S_yv_x}{H}}
+\end{align*}
+This requires finding the commutator of $S_x,S_y$ with $H$:
+\begin{align*}
+  \comm{S_x}{H}&=-\frac{g\omega}2\comm{S_x}{S_z}=i\hbar\omega\frac{g}{2}S_y\\
+  \comm{S_y}{H}&=-\frac{g\omega}2\comm{S_y}{S_z}=-i\hbar\omega\frac{g}{2}S_x
+\end{align*}
+We then need to find 4 total commutators:
+\begin{align*}
+  \comm{S_xv_x}{H}&=S_x\comm{v_x}{H}+\comm{S_x}{H}v_x
+  =i\hbar\omega\qty(S_xv_y+(1+a)S_yv_x)\\
+  \comm{S_xv_y}{H}&=S_x\comm{v_y}{H}+\comm{S_x}{H}v_y
+  =-i\hbar\omega\qty(S_xv_x-(1+a)S_yv_y)\\
+  \comm{S_yv_x}{H}&=S_y\comm{v_x}{H}+\comm{S_y}{H}v_x
+  =i\hbar\omega\qty(S_yv_y-(1+a)S_xv_x)\\
+  \comm{S_yv_y}{H}&=S_y\comm{v_y}{H}+\comm{S_y}{H}v_y
+  =-i\hbar\omega\qty(S_yv_x+(1+a)S_xv_y)
+\end{align*}
+Where we have used $g=2(1+a)$, we can then write the desired commutators:
+\begin{align*}
+  \comm{S_xv_x+S_yv_y}{H}&=
+  i\hbar\omega\qty(S_xv_y+S_yv_x+aS_yv_x-S_yv_x-S_xv_y-aS_xv_y)
+  =-i\hbar\omega a\qty(S_xv_y-S_yv_x)\\
+  \comm{S_xv_y-S_yv_x}{H}&=
+  i\hbar\omega\qty(-S_xv_x+aS_yv_y-S_yv_y+S_yv_y+aS_xv_x+S_xv_x)
+  =i\hbar\omega a\qty(S_xv_x+S_yv_y)
+\end{align*}
+Hence we have two coupled differential equations for $C_1$ and $C_2$ using Ehrenfest's Theorem:
+\begin{equation}
+  \label{eq:system}
+  \boxed{\begin{aligned}
+    \dv{C_1}{t}&=-a\omega C_2(t)\\
+    \dv{C_2}{t}&=+a\omega C_1(t)
+  \end{aligned}}
+\end{equation}
+Note that these are both proportional to $a$, so there will be no change in time for either equation if $a=2$, which means $g=2(1+a)=2$.
+
+\subsection{Experimental Value of $a$}
+The experimental value of $C_1$ is periodic in terms of $\Omega$, while the equations~\eqref{eq:system} above are not immediately recognizable as periodic, we can see it by taking another time derivative of the $C_1$ equation:
+\begin{align*}
+  \dv[2]{C_1}{t}=-a\omega\dv{C_2}{t}
+\end{align*}
+We can then use the equation for the time derivative of $C_2$ to find:
+\begin{align*}
+  \dv[2]{C_1}{t}=-(a\omega)^2C_1
+\end{align*}
+Which is periodic in terms of $a\omega$, we can then equate $\Omega$ and $a\omega$ to find $a$:
+\begin{align*}
+  \boxed{a=\frac\Omega\omega}
+\end{align*}
