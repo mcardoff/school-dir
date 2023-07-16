@@ -75,5 +75,232 @@ This then gives the sense that $(\Delta s)^2=0$ forms a surface in 4-space, we c
 The gray shaded area is the accessible region of spacetime by light, the lightcone.
 
 \subsection{Time Dilation}
+Consider an object in frame $S$ moving with velocity $\vb{v}$, $\vb{s}\vdot\dd{\vb{x}}=\vb{v}\dd{t}$. Choose frame $S'$ to be ``co-moving'' with the object, so that the object is always at rest at the origin.
+
+A small movement from event one to event two is:
+\begin{align*}
+  (\Delta s)^2&=(c\Delta t')^2\quad \text{in $S'$}\\
+  &=(c\Delta t)^2-(\Delta x^2+\Delta y^2+\Delta z^2)\quad \text{in $S$}\\
+\end{align*}
+As an infinitesimal:
+\begin{align*}
+  (c\dd{t}')^2&=(c\dd{t})^2-(\dd{x}^2+\dd{y}^2+\dd{z}^2)\\
+  &=\qty(c^2-v^2)\dd{t}^2
+\end{align*}
+So we define $t'$ in the $S'$ frame the proper time $\tau$, such that:
+\begin{align*}
+  \dd{t}'&\equiv\dd{\tau}=\sqrt{1-\frac{v^2}{c^2}}\equiv\sqrt{1-\beta^2}\\
+  \beta&\equiv\frac{v}{c}
+\end{align*}
+Note that $\dd{\tau}\leq\dd{t}$, so \emph{moving clocks appear to run slow}
+\begin{note}
+  This is not an idle Observation. A large fraction of cosmic radiation at sea level comes from muons produced in pion decays in the upper atmosphere. THe muon lifetime of $\SI{2.2}{\micro\s}$ would imply that muons travelling at $c$ would only get $\sim\SI{600}{\m}$ if Galilean transformations are correct. Yet $~\frac12$ the muons produced at $\SI{2}{\km}$ make it to sea level (including losses from scattering). This means the muons were travelling at least at $\beta>0.976$ in our frame.
+\end{note}
+
+\subsection{Four-Vectors and Minkowski Space}
+Express the coordinates for an event $(t,x,y,z)$ as a 4-dimensional vector:
+\begin{align*}
+  \vb{x}=\bmqty{ct\\x\\y\\z}=\bmqty{ct\\\vb{r}}
+\end{align*}
+In ordinary space (Euclidean): $\abs{\vb{x}}^2=c^2t^2+x^2+y^2+z^2$ (not what we want).
+
+Define length in Minkowski space:
+\begin{align*}
+  \abs{\vb{x}}^2=\vb{x}\vdot\vb{x}=
+  \vb{x}^T
+  \underbrace{\bmqty{\dmat{1,-1,-1,-1}}}_{\text{``metric tensor'' }g}\vb{x}
+  =c^2t^2-(x^2+y^2+z^2)
+\end{align*}
+
+The 4-dim space with metrix $g$ as above is called ``Minkowski space'',
+``Euclidean space'' (flat space) has the identity $\id_{4\times4}$ as a metric. Special relativity says the length of a 4-vector in Minkowski space is the same in all inertial frame, i.e.\ invariant.
+
+We began with the Galilean relationship between frames $S$ and $S'$. The real question is: What is the general form of the transformation between $S$ and $S'$ that conserves length in Minkowski space? \emph{Answer}: Homogeneous \emph{Lorentz Transformation}
+
+Physics does not depend on (our definition of) absolute position or time. (This is a fundamental assumption of relativity).
+
+Shifting the origin of $S$ must simply shift the origin of $S'$: $x\to x+a\implies x'\to x'+a$, so a transformation $L(x+a)=L(x)+a'$. Try $x=0$, $L(a)=L(0)+a'$, so $L(x+a)=L(x)+L(a)-L(0)$, define $L'(x)=L(x)-L(0)$ so that $L'(x+a)=L'(x)+L'(a)$, so $L(x)$ is a linear function of  $x$ plus a fixed offset.
+
+Any linear transformation can be written sa a Poincare transformation $x'=Lx+a$; $L$ is a $4\times4$ matrix, $a$ translates the origin. Since physics is independent of where we place the origin, we only care about ``homogeneous Lorentz transformations'' (HLT) where we drop $a$.
+
+\subsection{What do we know about $L$?}
+We know $L$ must conserve 4-vector length\footnote{Note 4-vectors will be non-bolded from here on}:
+\begin{align*}
+  \abs{x}^2=x^T g x\iff \abs{x'}^2=(x')^T gx'=x^TL^TgLx
+\end{align*}
+So we need $\boxed{L^T gL=g}$.
+
+If we consider components, $L_{ki}g_{kl}L_{lj}=g_{ij}$ forms 16 real equations, $g$ is symmetric, so there are $10$ constraints $\implies$ $\boxed{L\text{ has 6 d.o.f}}$ What are they?
+
+Recall rotation matrices $A$ were defined by requiring conservation of length of the 3-vector in cartesian space:
+\begin{align*}
+  \abs{x}^2=\underbrace{c^2t^2}_{\text{untouched}}
+  -\underbrace{\qty(x^2+y^2+z^2)}_{\text{conserved by }A}
+  =\text{const.}
+\end{align*}
+So, rotations are a 3-D subset (subgroup) of an HLT.\@ $\therefore$ Euler angles are 3 of the d.o.f., what are the others?
+
+Consider our frames $S$ and $S'$, were the origin of $S'$ is moving at constant velocity with respect to $S$: $x=v_xt,y=v_yt,z=v_zt$. We can always rotate $S$ and $S'$ so that the $x,x'$ are parallel to $\vb{v}$ (After all we just said rotations were a subset of HLT). Hence we can write the transformation as:
+\begin{align*}
+  \bmqty{ct'\\x'\\y'\\z'}=\bmqty{L_{00}&L_{01}\\L_{10}&L_{11}\\ &&1\\&&&1}
+  \bmqty{ct\\x\\y\\z}
+\end{align*}
+Since $L$ satisfies $L^TgL=g$:
+\begin{align*}
+  L_{00}^2-L_{10}^2&=1\\
+  L_{01}^2-L_{11}^2&=1\\
+  L_{00}L_{01}-L_{10}L_{11}&=0
+\end{align*}
+The origin of $S'$ is $x'=0$, this means $0=L_{10}ct+L_{11}x$, which must satisfy $x=vt$, so $\beta\equiv\frac{v}{c}=-\frac{L_{10}}{L_{11}}$. Working out other combinations means:
+\begin{align*}
+  \bmqty{L_{00}&L_{01}\\L_{10}&L_{11}}=
+  \bmqty{(\pm)\gamma&(\mp)\gamma\beta\\(\mp)\gamma\beta&(\pm)\gamma}
+\end{align*}
+Where the signs are arbitrary, and the lorentz factor $\gamma$ is:
+\begin{align*}
+  \gamma\equiv\frac1{\sqrt{1-\beta^2}}
+\end{align*}
+At low velocity ($\beta\to0$), we must recover the identity $L\to\smqty[\pm1\\&\pm1]$, so we choose the plus branch, hence we have:
+\begin{align*}
+  \boxed{L=\bmqty{\gamma&-\gamma\beta\\-\gamma\beta&\gamma\\&&1\\&&&1}}
+\end{align*}
+This is called a \emph{Lorentz boost along $x$}.
+
+\begin{remark}
+  Other solutions with different choices of $+$ and $-$ signs, such as:
+  \begin{align*}
+    L_{1}=\bmqty{\gamma&-\gamma\beta\\\gamma\beta&-\gamma}
+    \quad\text{or}\quad
+    L_{2}=\bmqty{-\gamma&\gamma\beta\\-\gamma\beta&\gamma}
+  \end{align*}
+  Represent reflections of the axes, $L_1$ represents a flip along the $x$ axis, or space inversion, and $L_2$ represents a flip along the $t$ axis, time reversal.
+
+  These possibilities are not a part of \underline{continuous} Lorentz transformations, but could be interesting operators for other purposes.
+\end{remark}
+
+\subsection{General Boosts}
+When the velocity between $S,S'$ is not along 1 axis, we can generalize with $\vb{r}_\|$ and $\vb{r}_\perp$, the parallel and perpendicular positions relative to the frame velocity $\vb{v}$, they are given by:
+\begin{align*}
+  \vb{r}_\|=\frac{(\vb{r}\vdot\bm{\beta})}{\beta^2}\bm{\beta}
+  \qquad
+  \vb{r}_\perp=\vb{r}-\vb{r}_\|
+\end{align*}
+So we have the following relationship between primed and unprimed variables:
+\begin{align*}
+  ct'&=\gamma ct-\gamma\beta\abs{\vb{r}_\|}=
+  \gamma ct-\gamma(\vb{\bm{\beta}\vdot\vb{r}})\\
+  \vb{r}'&=-\gamma\bm{\beta}ct+\gamma\vb{r}_\|+\bm{r}_\perp
+  =-\gamma\bm{\beta}ct+\vb{r}+
+  \frac{\gamma-1}{\beta^2}(\vb{r}\vdot\bm{\beta})\bm{\beta}  
+\end{align*}
+For a general $\beta$ we have:
+\begin{align*}
+  L_B=\bmqty{\gamma&-\gamma\bm{\beta}^T\\-\gamma\bm{\beta}
+    &\id+(\gamma-1)\bm{\beta\beta}^T/\beta^2}
+\end{align*}
+In block matrix notation. Note that since $\beta$ has 3 components, these are our misisng 3 degrees of freedom.
+
+A homogeneous Lorentz transform is a Boost and a rotation: $L_B L_A\equiv L$. A Poincare transform: $\vb{x}'\to L_BL_A\vb{x}+\vb{a}$, where $\vb{a}$ shifts origin.
+\begin{note}
+  We have the following properties of $L_B$ for boosts:
+  \begin{enumerate}
+  \item When $\beta\to0$, $L\to\id$
+  \item $L_B^{-1}$ is formed by taking $\bm{\beta}\to-\bm{\beta}$
+  \item $L_B$ is symmetric; $L_A=\smqty[\dmat{1,A}]$, $A$ antisymmetric; $L=L_BL_A$ is mixed.
+  \end{enumerate}
+\end{note}
+\subsubsection{Addition of Velocities}
+If $\bm{\beta}\|\bm{\beta}'$, define motion to be $x$-direction, we have:
+\begin{align*}
+  L'_BL_B=\bmqty{\gamma'&-\gamma'\beta'\\-\gamma'\beta'&\gamma'}
+  \bmqty{\gamma&-\gamma\beta\\-\gamma\beta&\gamma}=
+  \bmqty{\gamma'\gamma(1+\beta'\beta)&-\gamma'\gamma(\beta+\beta')\\
+    -\gamma'\gamma(\beta+\beta')&\gamma'\gamma(1+\beta'\beta)}
+\end{align*}
+This is equivalent to \underline{one} transform $L_B''$ with:
+\begin{align*}
+  \beta''=\frac{\beta+\beta'}{1+\beta'\beta}
+\end{align*}
+With $\beta''<1$ still.
+
+\textbf{Warning}: In general $L'_BL_B\neq L_BL'_B$, matrix is \underline{not} symmetric, so two proper Lorentz transforms (PLT) do \underline{not} add up to a PLT. \underline{But} two HLT \underline{do} add ip to a HLT (Call them $\Lambda$), in particulat, $L'_BL_B=L_B''L_A$, two PLTS add to a single PLT and a rotation.
+
+\subsubsection{Lorentz Group}
+The Lorentz group, $SO(3,1)$ HLT are orthogonal $4\times4$ matrices $O(4)$ with determinant $\det\Lambda=+1$, which means they are special $SO(4)$, and with the metric $\mathrm{diag}(1,-1,-1,-1)$, this is called $SO(3,1)$
+\begin{note}[Group Structure of HLT]
+  \begin{enumerate}
+  \item Identity exists, $I=\id$
+  \item Inverse exists, since $\Lambda^T\Lambda=\id$, $\Lambda^{-1}=\Lambda^T$
+  \item Associative:
+    \begin{align*}
+      \Lambda_i(\Lambda_j\Lambda_k)=(\Lambda_i\Lambda_j)\Lambda_k
+    \end{align*}
+    This is always true for matrices.
+  \item Closure: $\Lambda_1\Lambda_2=\Lambda_3$, subproof:
+    \begin{align*}
+      (\Lambda_1\Lambda_2)^T(\Lambda_1\Lambda_2)=
+      \Lambda_2^T\Lambda_1^T\Lambda_1\Lambda_2=\id
+    \end{align*}
+    Hence $\Lambda_3$ is also HLT.
+  \end{enumerate}
+\end{note}
+\begin{TODO}
+  Demonstration that two PLTs do not give a PLT
+\end{TODO}
+\subsection{Notation}
+We note a 4-vector with greek indices, such as $x^\mu$, with $\mu=0,1,2,3$, the upper index means it is a contravariant vector, with indices:
+\begin{align*}
+  x^\mu=(ct,x^i)
+\end{align*}
+Where a roman index, such as $i$ denotes a 3-vector, with $i=1,2,3$
+
+Under a Lorentz transform: $x^{\prime\mu}=\Lambda^\mu_\nu x^\nu$. We sum matched upper/lower greek indices (Einstein convention). The elements of $x^{\prime\mu}$ are:
+\begin{align*}
+  x^{\prime\mu}=(\gamma(x^0-\beta x^1),\gamma(x^1-\beta x^0),x^2,x^3)
+\end{align*}
+With the transform as before. Where did the lower index come from? The 1-Form (meaning 1 index) $x_\mu$ (lower Greek index) comes from $x^Tg$ ``covariant'' such that:
+\begin{align*}
+  x_\mu=(ct,-x^i)\equiv (ct,x_i)
+\end{align*}
+We ``lowered'' the index on $x$ by multiplying with the metric. What is the metric?
+\begin{align*}
+  g_{\mu\nu}=\vu{e}_\mu\vdot\vu{e}_\nu
+\end{align*}
+Given some basis, the vectors: $u$ and $v$, the product $u\vdot v=u^\mu\vu{e}_\mu\vdot v^\nu\vu{e}_\nu$
+
+\begin{definition}[The Metric]
+  The metric is a \emph{tensor} of rank 2 that contains the lengths and angles between basis vectors.
+  \begin{itemize}
+  \item In \emph{Minkowski} space, $g_{\mu\nu}$ is diagonal, but it is not a requirement.
+
+    There is a corresponding tensor that ``raises'' indices, called the inverse metric $g^{\mu\nu}$
+  \item In \emph{Minkowski} space, $g^{\mu\nu}$ has the same matrix form as $g_{\mu\nu}$, generally, $g^{\alpha\beta}g_{\beta\gamma}=\delta^{\alpha}_\gamma$
+  \item The trace $g^{\alpha\alpha}=\delta^\gamma_\alpha\delta^\alpha_\gamma=4$ in 4 dimensions
+  \end{itemize}
+\end{definition}
+We can formally move between upper and lower indices:
+\begin{align*}
+  x^\mu=g^{\mu\nu}x_\nu\qquad x_\mu=g_{\mu\nu}x^\nu
+\end{align*}
+\begin{note}
+  Tensor notation, thensors are defined as having at least two indices, and are combinations of vectors via a tensor product:
+  \begin{gather*}
+    T^{\alpha\beta}=u^\alpha v^\beta\iff \bm{T}=u\otimes v\\
+    T^{\alpha\beta\gamma}=u^\alpha v^\beta w^\gamma\iff \bm{T}=u\otimes v\otimes w
+  \end{gather*}
+  Where $\bm{T}$ is the tensor object
+\end{note}
+Tensors transform differently under Lorentz transforms:
+\begin{gather*}
+  x'_\mu=\Lambda_\mu^\nu x_\nu\implies
+  g_{\mu\alpha}x^{\prime\alpha}=g_{\mu\alpha}\Lambda^\alpha_\beta x^\beta
+  =g_{\mu\alpha}\Lambda^\alpha_\beta g^{\beta\nu}x_\nu\\
+  T^{\prime\beta}_\alpha=\Lambda_\alpha^\gamma\Lambda_\delta^\beta T_\gamma^\delta
+\end{gather*}
+
+\subsection{Conventions and ``Gotchas''}
+
+\subsection{Relativistic Kinematics}
+
 
 

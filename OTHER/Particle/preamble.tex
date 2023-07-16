@@ -20,6 +20,7 @@
 \renewcommand{\L}{\mathcal{L}}
 \renewcommand{\H}{\mathcal{H}}
 \renewcommand{\l}{\ell}
+\newcommand{\id}{\bm{1}}
 \newcommand{\mcV}{\mathcal{V}}
 \newcommand{\D}{\partial}
 \newcommand{\veps}{\varepsilon}
@@ -37,6 +38,14 @@
   innertopmargin=\topskip
 }
 
+\mdfdefinestyle{todostyle}{%
+  linewidth=0pt,
+  frametitlerule=false,
+  frametitlebackgroundcolor=red!40,
+  backgroundcolor=red!20,
+  innertopmargin=\topskip
+}
+
 \mdtheorem[style=defstyle]{definition}{Definition}
 \mdtheorem[style=defstyle]{theorem}{Theorem}
 \mdtheorem[style=defstyle]{problem}{Problem}
@@ -46,3 +55,9 @@
 
 \newenvironment{remark}
 {\begin{mdframed}[style=defstyle,frametitle={Remark}]}{\end{mdframed}}
+
+\newenvironment{TODO}
+{\begin{mdframed}[style=todostyle,frametitle={TO DO}]}{\end{mdframed}}
+
+\theoremstyle{plain}
+\newtheorem*{note}{Note}
