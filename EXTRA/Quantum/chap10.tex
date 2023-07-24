@@ -1,0 +1,146 @@
+% -*- TeX-master: "master.tex" -*-
+\section{Scattering}
+Important formulas for Scattering:
+\subsection{Classical Scattering}
+Definition of $\dd{\sigma}$ and $\sigma$
+\begin{align*}
+  \dd{\sigma}&=D(\theta)\dd{\Omega}\\
+  \sigma&\equiv\int D(\theta)\dd{\Omega}
+\end{align*}
+\subsection{Quantum Scattering}
+We imagine an incoming plane wave, and an outgoing spherical wave, with other stuff happening in the between areas, this wavefunction, for large $r$ looks like:
+\begin{align*}
+  \psi(r,\theta)\approx A\qty[\exp{ikz}+f(\theta)\frac{\exp{ikr}}{r}]
+\end{align*}
+Where $k$ has the usual definition:
+\begin{align*}
+  k\equiv\frac{2mE}{\hbar}
+\end{align*}
+The differential cross section is related to the $f(\theta)$, called the scattering amplitude:
+\begin{align*}
+  D(\theta)=\abs{f(\theta)}^2
+\end{align*}
+So that the differential scattering cross section is:
+\begin{align*}
+  \sigma=\int\abs{f(\theta)}^2\dd{\Omega}
+\end{align*}
+\subsection{Partial Waves}
+You can solve the Schrodinger equaion to exactly get the form of the wavefunction, in a region where $V(r)=0$:
+\begin{align*}
+  \psi(r,\theta,\phi)=A\qty[\exp{ikz}+\sum_{\ell,m}C_{\ell,m}h_{\ell}^{(1)}(kr)
+    Y_\ell^m(\theta,\phi)]
+\end{align*}
+Where the only new concept are the spherical hankel functions of the first and second kind $h_\ell^{(1)}$, which are defined as:
+\begin{align*}
+  h_\ell^{(1)}(x)\equiv j_{\ell}(x)+i n_{\ell}(x)\qquad
+  h_\ell^{(2)}(x)\equiv j_{\ell}(x)-i n_{\ell}(x)
+\end{align*}
+If we take a limit as $r\to\infty$, the hankel function looks like a spherical wave, and we can write the scattering amplitude as:
+\begin{align*}
+  f(\theta)=\sum_{\ell=0}^\infty\sum_{\ell=0}^{\infty}(2\ell+1)a_\ell P_\ell(\cos\theta)
+\end{align*}
+Where $a_\ell$ are so called the partial wave amplitudes. The differential and total cross section is given by:
+\begin{align*}
+  D(\theta)&=\sum_{\ell,\ell'}(2\ell+1)(2\ell'+1)
+  a^*_{\ell}a_{\ell'}P_\ell\cos\theta P_{\ell'}\cos\theta\\
+  \sigma&=4\pi\sum_{\ell}(2\ell+1)\abs{a_\ell}^2
+\end{align*}
+\subsection{Phase Shifts}
+When we had line scattering we would have a incident and reflected wave, but this phase difference can be generalized:
+\begin{align*}
+  \psi(x)&=A\qty(\exp{ikx}-\exp{-ikx})\\
+  \psi(x)&=A\qty(\exp{ikx}-\exp{i(2\delta-kx)})
+\end{align*}
+The generic form of these phase shifts can be expressed as:
+\begin{align*}
+  a_\ell=\frac{1}{k}\exp{i\delta_\ell}\sin\delta_\ell
+\end{align*}
+So that the scattering amplitude is:
+\begin{align*}
+  f(\theta)=\frac{1}{k}\sum_{\ell}(2\ell+1)\exp{i\delta_\ell}\sin\delta_\ell P_\ell\cos\theta
+\end{align*}
+And $\sigma$ is:
+\begin{align*}
+  \sigma=\frac{4\pi}{k^2}\sum_\ell(2\ell+1)\sin^2\delta_\ell
+\end{align*}
+\subsection{The Born Approximation}
+We can write the Schrodinger equation as an integral using Green's functions:
+\begin{align*}
+  \qty(\laplacian+k^2)\psi=Q
+\end{align*}
+Where the quantities are:
+\begin{align*}
+  k\equiv\frac{\sqrt{2mE}}{\hbar}\qquad Q\equiv\frac{2mV}{\hbar^2}\psi
+\end{align*}
+The Green's function comes in when we solve for a delta function source:
+\begin{align*}
+  \qty(\laplacian+k^2)G(\vb{r})=\delta^3(\vb{r})
+\end{align*}
+Then the wavefunction is expressed as:
+\begin{align*}
+  \psi(\vb{r})=\int G(\vb{r}-\vb{r}_0Q(\vb{r}_0\dd[3]{\vb{r}_0}
+\end{align*}
+After some trickery with complex analysis and fourier transforms, we end up with:
+\begin{align*}
+  \psi(\vb{r})=\psi_0(\vb{r})-\frac{m}{2\pi\hbar^2}
+  \int\frac{\exp{ik\abs{\vb{r}-\vb{r}_0}}}{\abs{\vb{r}-\vb{r}_0}}
+  V(\vb{r}_0)\psi(\vb{r}_0)\dd[3]{\vb{r}_0}  
+\end{align*}
+The quantity $\psi_0$ must obey the free particle Schrodinger equation:
+\begin{align*}
+  \qty(\laplacian+k^2)\psi_0=0
+\end{align*}
+\subsubsection{First Born Approximation}
+We can rewrite the absolute value quantity in fairly simple terms:
+\begin{align*}
+  \abs{\vb{r-r}_0^2}^2=r^2-r_0^2-2\vb{r\vdot r}_0\approx
+  r^2\qty(1-2\frac{\vb{r\vdot r}_0}{r^2})
+\end{align*}
+Which can be approximated to:
+\begin{align*}
+  \abs{\vb{r-r}_0^2}\approx r-\vu{r}\vdot\vb{r}_0
+\end{align*}
+If we define a $k$ vector to be in the $\vu{r}$ direction, we get:
+\begin{align*}
+  \frac{\exp{ik\abs{\vb{r}-\vb{r}_0}}}{\abs{\vb{r}-\vb{r}_0}}\approx\frac{\exp{ikr}}{r}
+  \exp{-i\vb{k}\vdot\vb{r}_0}
+\end{align*}
+We know for scattering we want $\psi_0$ to be a plane wave, then the wavefunction becomes:
+\begin{align*}
+  \psi(\vb{r})=A\exp{ikz}-\frac{m}{2\pi\hbar^2}\frac{\exp{ikr}}{r}
+  \int\exp{-i\vb{k}\vdot\vb{r}_0}V(\vb{r}_0)\psi(\vb{r}_0)\dd[3]{\vb{r}_0}
+\end{align*}
+Now we invoke the Born Approximation, where we approximate the $\psi_0$ to:
+\begin{align*}
+  \psi(\vb{r_0})\approx\psi_0(\vb{r}_0)=A\exp{i\vb{k}'\vdot\vb{r}_0}
+\end{align*}
+Hence the Born Approximation simplifies our wavefunction to:
+\begin{align*}
+  f(\theta,\phi)\approx-\frac{m}{2\pi\hbar^2}
+  \int\exp{i(\vb{k}'-\vb{k})\vdot\vb{r}_0}V(\vb{r}_0)\dd[3]{\vb{r}_0}
+\end{align*}
+If we have a low energy system:
+\begin{align*}
+  f(\theta,\phi)\approx-\frac{m}{2\pi\hbar^2}\int V(\vb{r})\dd[3]{\vb{r}}
+\end{align*}
+For spherical symmetry:
+\begin{align*}
+  f(\theta)\approx\frac{-2m}{\hbar^2\kappa}\int_0^\infty rV(r)\sin(\kappa r)\dd{r}
+\end{align*}
+Where $\kappa$ is different from the usual:
+\begin{align*}
+  \kappa=\vb{k}'-\vb{k}
+\end{align*}
+The dependence on $\theta$ is carried by $\kappa$:
+\begin{align*}
+  \kappa=2k\sin\theta/2
+\end{align*}
+The born Series is:
+\begin{align*}
+  \psi=\psi_0+\int gV\psi_0+\iint gVgV\psi_0+\iiint gVgVgV\psi_0+\cdots
+\end{align*}
+\subsection{misc}
+Not sure where else to put this but the Rayleigh formula is:
+\begin{align*}
+  \exp{ikz}=\sum_\ell i^\ell(2\ell+1)j_\ell(kr)P_\ell\cos\theta
+\end{align*}

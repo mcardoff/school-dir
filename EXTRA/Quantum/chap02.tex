@@ -1,0 +1,758 @@
+% -*- TeX-master: "master.tex" -*-
+\section{Quantum mechanics in 1-D}
+\subsection{Time Independent Schrodinger Equation}
+To understand the time dependence of the Schrodinger Wave Equation, we use an ansatz where the wavefunction is separated into a piece that just a function of time and a piece that is just a spatial function \footnote{This approach is called 'separation of variables', it is useful to remember this as it, as this approach is going to be the most used technique to solve differential equations in this course.}:
+\begin{equation*}
+  \Psi(x,t)=\psi(x)\phi(t)
+\end{equation*}
+This means that the derivatives in the Schrodinger equation become:
+\begin{align*}
+  \pdv{\Psi}{t}&=\psi\pdv{\phi}{t} \\
+  \pdv[2]{\Psi}{x}&=\phi\pdv[2]{\psi}{x}
+\end{align*}
+We can then rewrite the Schrodinger equation in terms of these new functions \footnote{It is to be noted that using this separation of variables approach relies on the form of the potential. This solution presented here works only if the potential is time independent.}:
+\begin{align*}
+  i\hbar\psi\pdv{\phi}{t}=-\dfrac{\hbar^2}{2m}\phi\dv[2]{\psi}{x}+V\psi\phi
+\end{align*}
+We want to divide through by $\psi\phi$:
+\begin{align*}
+  \dfrac{i\hbar}{\phi}\dv{\phi}{t}=-\dfrac{\hbar^2}{2m\psi}\dv[2]{\psi}{x}+V
+\end{align*}
+Note that the term on the left is just a function of time and the term on the right is just a function of spatial coordinates. This equality is possible only when they both equate to some coordinate independent constant. Let us call the constant $E$:
+\begin{align*}
+  i\hbar\dfrac{1}{\phi}&=E \\
+  -\dfrac{\hbar^2}{2m}\dfrac{1}{\psi}\dv[2]{\psi}{x}&=E
+\end{align*}
+Some rearranging yields a more desirable result:
+\begin{align*}
+  \dv{\phi}{t}&=-\dfrac{iE}{\hbar}\psi \\
+  -\dfrac{\hbar^2}{2m}+V\psi&=E\psi
+\end{align*}
+The second equation is the time independent Schrodinger equation, and will depend on the potential. The first equation is exactly solvable, and has the following solution:
+\begin{equation*}
+  \phi(t)=\exp{-Et/\hbar}
+\end{equation*}
+The general solution to the Schrodinger equation is then:
+\begin{equation*}
+  \Psi(x,t)=\psi(x)\exp{-iEt/\hbar}
+\end{equation*}
+Because this is a complex exponential, the probability density will just be:
+\begin{equation*}
+  \norm{\Psi}^2=\psi(x)^*\exp{iEt/\hbar}\psi(x)\exp{-iEt/\hbar}=\norm{\psi}^2
+\end{equation*}
+Another interesting property is that this is still a statement of the total energy, also known as the Hamiltonian of the wavefunction:
+\begin{equation*}
+  H(x,p)=\dfrac{p^2}{2m}+V(x)
+\end{equation*}
+Replacing this with the operator we derived for momentum:
+\begin{equation*}
+  \hat{H}=-\dfrac{\hbar^2}{2m}\pdv[2]{x}+V(x)
+\end{equation*}
+With this, the time independent Schrodinger equation has the following form:
+\begin{equation*}
+  \hat{H}\psi=E\psi
+\end{equation*}
+Now, we go over the solutions to some standard potentials.
+
+\subsection{Infinite Square Well}
+The infinite square well potential goes as following:
+\begin{equation*}
+  V(x)=\left\{\mqty{
+    0 & 0 \leq x \leq a \\
+    \infty & \text{otherwise}
+  }\right.
+\end{equation*}
+An infinite potential means that the wavefunction disappears. So we need to use the boundary conditions that the wavefunction is $0$ at the edges of the "square". The Schrodinger equation in the region of $0$ potential has the following form:
+\begin{equation*}
+  -\dfrac{\hbar^2}{2m}\dv[2]{\psi}{x}=E\psi
+\end{equation*}
+Rearranging this:
+\begin{equation*}
+  \dv[2]{\psi}{x}=-\dfrac{2mE}{\hbar^2}\psi
+\end{equation*}
+Making a substitution $k^2$:
+\begin{equation*}
+  \dv[2]{\psi}{x}=-k^2\psi
+\end{equation*}
+The solution to this equation is in terms of sines and cosines:
+\begin{equation*}
+  \psi=A\sin(kx)+B\cos(kx)
+\end{equation*}
+Applying our first boundary condition, that $\psi(0)=0$:
+\begin{equation*}
+  \psi(0)=A\sin(0)+B\cos(0)=0 \implies B=0
+\end{equation*}
+So we will only have sine terms. The next boundary condition is that $\psi(a)=0$, we get that:
+\begin{equation*}
+  \psi(a)=A\sin(ka)=0
+\end{equation*}
+Sine is equal to $0$ at integer values of $\pi$, hence we have:
+\begin{equation*}
+  ka=n\pi
+\end{equation*}
+So we have various $k$ values in terms of an integer index $n$:
+\begin{equation*}
+  k=\dfrac{n\pi}{a}
+\end{equation*}
+So the general $n^{th}$ solution is:
+\begin{equation*}
+  \psi_n=A\sin(\dfrac{n\pi}{a}x)
+\end{equation*}
+These solutions have energy in terms of $k$:
+\begin{equation*}
+  k_n^2=\dfrac{2mE}{\hbar^2} \quad\implies\quad E_n=\dfrac{n^2\pi^2\hbar^2}{2ma^2}
+\end{equation*}
+All that remains is to find the normalization constant $A$. To do this we need to integrate over all space, but since our wavefunction disappears before $0$ and after $a$, we need only integrate over the interval from $0$ to $a$:
+\begin{equation*}
+  1=\int_0^a\norm{\psi}^2\dd{x}=\int_0^1\abs{A}^2\sin[2](\dfrac{n\pi}{a}x)\dd{x}
+\end{equation*}
+This can be evaluated using Mathematica or whatever you want, but you will get:
+\begin{equation*}
+  A=\sqrt{\dfrac{2}{a}}
+\end{equation*}
+Hence the general solution to the infinite square well potential is:
+\begin{equation*}
+  \psi_n(x)=\sqrt{\dfrac{2}{a}}\sin(\dfrac{n\pi}{a}x)
+\end{equation*}
+With energies:
+\begin{equation*}
+  E_n=\dfrac{n^2\pi^2\hbar^2}{2ma^2}
+\end{equation*}
+These functions are complete, so they are orthogonal on $[0,a]$:
+\begin{equation*}
+  \int_0^a\psi_m^*(x)\psi_n(x)\dd{x}=\delta_{mn}
+\end{equation*}
+Where $\delta$ is the Kronecker delta. Completeness means that any function on this interval can be written as a sum of terms in constants:
+\begin{equation*}
+  f(x)=\sum_{n=0}^{\infty}c_n\psi_n=
+  \sqrt{\dfrac{2}{a}}\sum_{n=0}^{\infty}c_n\sin(\dfrac{n\pi}{a}x)
+\end{equation*}
+With the constants $c_n$ being determined by Fourier's trick:
+\begin{equation*}
+  c_n=\int\psi_n(x)f(x)\dd{x}
+\end{equation*}
+Now we move on to the next potential, the harmonic oscillator.
+\subsection{Harmonic Oscillator}
+The harmonic oscillator is defined using Hooke's law for a spring. The potential energy can be obtained using the frequency $\omega$:
+\begin{equation*}
+  V(x)=\dfrac{1}{2}m\omega^2x^2
+\end{equation*}
+This gives the following form of the Schrodinger equation:
+\begin{equation*}
+  -\dfrac{\hbar^2}{2m}\dv[2]{\psi}{x}+\dfrac{1}{2}m\omega^2x^2\psi=E\psi
+\end{equation*}
+\subsubsection{Algebraic Method}
+We will start by going through the algebraic method because it is more fun. I will not be going over the analytic method to solve this because it is stupid\footnote{But not stupid enough to warrant not covering, see the next section}. We start by rewriting the Schrodinger equation:
+\begin{equation*}
+  \dfrac{1}{2m}\qty(\hat{p}^2+(m\omega x)^2)\psi=E\psi
+\end{equation*}
+If we were just dealing with numbers instead of operators, then we could easily factor this, but operators in general (I'm looking at you differential operator) do not commute. In order to actually factor the Hamiltonian, we will want to introduce the following operators:
+\begin{equation*}
+  \hat{a}_{\pm}=\dfrac{1}{\sqrt{2\hbar m\omega}}\qty(\mp i\hat{p}+m\omega x)
+\end{equation*}
+We want to find the product $a_-a_+$:
+\begin{align*}
+  a_-a_+&=\dfrac{1}{2\hbar m\omega}\qty(i\hat{p}+m\omega x)(-i\hat{p}+m\omega x) \\
+  &=\dfrac{1}{2\hbar m\omega}
+  \qty(\hat{p}^2+(m\omega x)^2+im\omega \hat{p}x-im\omega x\hat{p}) \\
+  &=\dfrac{1}{2\hbar m\omega}
+  \qty(\hat{p}^2+(m\omega x)^2+im\omega(\hat{p}x-x\hat{p})) 
+\end{align*}
+The quantity in parenthesis would normally disappear if we were using numbers, but if we actually apply it to a function, we see otherwise, this quantity is called the commutator:
+\begin{equation*}
+  [\hat{p},x]\phi=\hat{p}x\phi-x\hat{p}\phi
+\end{equation*}
+Replacing these with the proper operations:
+\begin{align*}
+  \hat{p}x\phi-x\hat{p}\phi&=-i\hbar\dv{x}\qty(x\phi)+i\hbar x\dv{\phi}{x} \\
+  &=-i\hbar x\dv{\phi}{x}-i\hbar\phi =-i\hbar\phi
+\end{align*}
+Removing the test function yields:
+\begin{equation*}
+  [\hat{p},x]=-i\hbar\quad\implies\quad[x,\hat{p}]=i\hbar
+\end{equation*}
+Hence our term becomes:
+\begin{equation*}
+  a_-a_+=\dfrac{1}{2\hbar m\omega}\qty(\hat{p}^2+(m\omega x)^2)+\dfrac{1}{2}
+\end{equation*}
+We can rewrite this in terms of the Hamiltonian:
+\begin{equation*}
+  a_-a_+=\dfrac{1}{\hbar\omega}\hat{H}+\dfrac{1}{2}
+\end{equation*}
+The Hamiltonian then becomes:
+\begin{equation*}
+  \hat{H}=\hbar\omega\qty(a_-a_+-\dfrac{1}{2})
+\end{equation*}
+A similar process can be done for the reverse product, but you will find that:
+\begin{equation*}
+  a_+a_-=\dfrac{1}{\hbar\omega}\hat{H}-\dfrac{1}{2}
+\end{equation*}
+This means that the commutator of these operators is $1$. The Hamiltonian can also be written as:
+\begin{equation*}
+  \hat{H}=\hbar\omega\qty(a_+a_-+\dfrac{1}{2})
+\end{equation*}
+So the Schrodinger equation may be written in the following way:
+\begin{equation*}
+  \hbar\omega\qty(a_{\pm}a_{\mp}\pm\dfrac{1}{2})\psi=E\psi
+\end{equation*}
+You can prove that if some $\psi$ solves the Schrodinger equation with energy $E$, so will $a_+\psi$, but with energy $E+\hbar\omega$. We know that for this system there must be a ground state, $\psi_0$ such that if you apply the lowering operator, then you get nothing:
+\begin{equation*}
+  a_-\psi_0=0
+\end{equation*}
+Subbing in the equation for the lowering operator:
+\begin{align*}
+  0&=\dfrac{1}{\sqrt{2\hbar m\omega}}\qty(\hbar\dv{x}+m\omega x)\psi_0 \\
+  \dv{\psi_0}&=-\dfrac{m\omega}{\hbar}x\psi_0
+\end{align*}
+This can be solved using separation of variables to get:
+\begin{align*}
+  \psi_0(x)=A\exp{-\dfrac{m\omega}{2\hbar}x^2}
+\end{align*}
+Normalizing finds that the constatn $A$ is:
+\begin{align*}
+  A=\qty(\dfrac{m\omega}{\pi\hbar})^{1/4}
+\end{align*}
+This state has the following energy:
+\begin{align*}
+  E_0=\dfrac{1}{2}\hbar\omega
+\end{align*}
+This means that in general, the solution for the Harmonic Oscillator is:
+\begin{align*}
+  \psi_n(x)=A_n\qty(a_+)^n\psi_0(x) \qquad E_n=\qty(n+\dfrac{1}{2})\hbar\omega
+\end{align*}
+So we now know that applying the raising and lowering operators to $\psi_n$ gives you something proportional to the next stationary state up or down respectively:
+\begin{align*}
+  a_+\psi_n=c_n\psi_{n+1} \qquad a_-\psi_n=d_n\psi_{n-1}
+\end{align*}
+For any operator in terms of momentum and position, we can write the following:
+\begin{align*}
+  \int f^*(a_\pm g)\dd{x}=\int(a_\mp f)^*g\dd{x}
+\end{align*}
+If we take our functions to be stationary states of the harmonic oscillator:
+\begin{align*}
+  \int(a_\pm\psi_n)^*(a_\pm\psi_n)\dd{x}=\int(a_\mp a_\pm\psi_n)^*\psi_n\dd{x}
+\end{align*}
+If we use the Schrodinger equation along with the energies of the harmonic oscillator that we derived, we can find that:
+\begin{align*}
+  a_+a_-\psi_n=n\psi_n \qquad a_-a_+\psi_n=(n+1)\psi_n
+\end{align*}
+Hence we have:
+\begin{align*}
+  \int(a_+\psi_n)^*(a_+\psi_n)\dd{x}&=\abs{c_n}^2\int\norm{\psi_{n+1}}\dd{x}
+  =(n+1)\int\abs{\psi_n}^2\dd{x} \\
+  \int(a_-\psi_n)^*(a_-\psi_n)\dd{x}&=\abs{d_n}^2\int\norm{\psi_{n-1}}\dd{x}
+  =n\int\abs{\psi_n}^2\dd{x}
+\end{align*}
+Since all of these functions are normalized, we can see that $\abs{c_n}^2=n+1$ and $\abs{d_n}^2=n$, hence:
+\begin{align*}
+  a_+\psi_n=\sqrt{n+1}\psi_{n+1} \qquad a_-\psi_n=\sqrt{n}\psi_{n-1}
+\end{align*}
+This makes the $n^{th}$ solution to be:
+\begin{align*}
+  \psi_n=\dfrac{1}{\sqrt{n!}}(a_+)^n\psi_0
+\end{align*}
+If you work through the analytic method, you will find that the full form of the solution is:
+\begin{align*}
+  \psi_n(x)=
+  \qty(\dfrac{m\omega}{\pi\hbar})^{1/4}\dfrac{1}{\sqrt{2^nn!}}H_n(\xi)\exp{-\xi^2/2}
+\end{align*}
+Where $\xi$ is given by the following substitution:
+\begin{align*}
+  \xi^2=\dfrac{m\omega}{\hbar}x^2
+\end{align*}
+And $H_n$ are the physicist's Hermite polynomials, whose coefficients are given by the following relation:
+\begin{align*}
+  a_{j+2}=\dfrac{-2(n-j)}{(j+1)(j+2)}a_j
+\end{align*}
+And the polynomial itself is given by:
+\begin{align*}
+  H_n(\xi)=\sum_{j=0}^na_j\xi^j
+\end{align*}
+It is convention that the highest order term be a power of 2.
+\subsubsection{Analytic Method}
+Brief side note - this is one of the very few systems in QM that we can actually solve and it is honestly quite rich in the physics that it has to offer. This is generalized to Quantum Field Theory, where the fields when quantized behave like small harmonic oscillator. Taking a look at how to solve it analytically is a pain, but it will be good practice for when you have to do the same for radial part of the wavefunction for Hydrogen. The procedure to solving this problem is as follows:
+\begin{itemize}
+\item Start by writing down the full wave equation
+\item Redefine quantities to make the equation dimensionless
+\item Analyze the equation at its asymptotes
+\item Substitute back the asymptotic solution and simplify
+\item Find a power series solution
+\item Sanity checks
+\end{itemize}
+\paragraph{Full Wave Equation}\,\\
+If you write out the full form of the Schrodinger equation (with the full form of the operators and all), you will get:
+\begin{equation*}
+  -\frac{\hbar^{2}}{2m}\dv[2]{\psi}{x}+\frac{1}{2}m\omega^{2}x^{2}\psi=E\psi
+\end{equation*}
+\paragraph{Dimensionless Form}\,\\
+Multiply the equation by $2/\hbar\omega$ -
+\begin{equation*}
+  -\frac{\hbar}{m\omega}\dv[2]{\psi}{x}+\frac{m\omega}{\hbar}x^2\psi
+  =\frac{2E}{\hbar\omega}\psi
+\end{equation*}
+This motivates us to make the following re-definitions -
+\begin{equation*}
+  \xi=\sqrt{\frac{m\omega}{\hbar}}x
+  \quad\text{and}\quad
+  K=\frac{2E}{\hbar\omega}
+\end{equation*}
+However, since we are redefining $x$ in terms of $\xi$, we need to take that into account when defining the second derivative of the wavefunction.
+\begin{equation*}
+  \dd{\xi}\equiv\sqrt{\frac{m\omega}{\hbar}}\dd{x} \quad \textrm{which leads to} \quad 
+  \dv{\xi}\equiv\sqrt{\frac{\hbar}{m\omega}}\dv{x}
+\end{equation*}
+Squaring the above expression leads to the redefined second derivative in terms of $\xi$. This leads us to an equation in a much simpler dimensionless form -
+\begin{equation*}
+  \frac{d^{2}\psi}{d\xi^{2}} = (\xi^{2}-K)\psi
+\end{equation*}
+Squaring the above expression leads to the redefined second derivative in terms of $\xi$. This leads us to an equation in a much simpler dimensionless form -
+\begin{equation*}
+  \dv[2]{\psi}{x}=(\xi^2-K)\psi
+\end{equation*}
+\paragraph{Asymptotic Analysis}\,\\
+We have a second order differential equation, so we will get two solutions. It is a possibility that asymptotically, one of the solutions will blow up and the other one will not, and in order to account for this, we take a look at the asymptotes. Let's take a look at what the equation looks like in the limit of large $\xi$.
+\begin{equation*}
+  \dv[2]{\psi}{\xi}\approx\xi^2\psi
+\end{equation*}
+In this limit, the solutions look like -
+\begin{equation*}
+  \psi(\xi)\approx A\exp{-\xi^2/2}+B\exp{\xi^2/2}
+\end{equation*}
+Clearly, the second solution blows up as we go to large $\xi$, so it corresponds to a non-physical solution. We only care about the solutions which lead to the exponentials of the first kind.
+\paragraph{Substituting the Solution}
+In order to reflect the asymptotic behavior of the wavefunction, we claim that the solution looks like -
+\begin{equation*}
+  \psi(\xi)=h(\xi)\exp{-\xi^2/2}
+\end{equation*}
+We have absorbed the normalizing coefficient into the definition of $h(\xi)$. The idea behind this is that we have to normalize the wavefunction anyway, so might as well do it in the last step so as to avoid having to carry around cumbersome coefficients. This leads us to a sanity check that we can implement later to see if we have worked things out correctly - $h(\xi)$ must be such that it grows slowly compared to $\exp(-\xi^{2}/2)$, and only the exponential dominated for large $\xi$. Now, we substitute this into the wave equation. In order to so that, we need only to compute the second derivative to $\psi(\xi)$ -
+\begin{equation*}
+  \dv{\psi}{\xi}=\qty(\dv{h}{\xi}-\xi h)\exp{-\xi^2/2}
+\end{equation*}
+Now, the second derivative -
+\begin{equation*}
+  \dv[2]{\psi}{\xi}=\qty(\dv[2]{h}{\xi}-2\xi\dv{h}{\xi}+\qty(\xi^2-1)h)\exp{-\xi^2/2}
+\end{equation*}
+We just need to substitute this back into the wave equation and we have another differential equation that we need to solve.
+\begin{equation*}
+  (\xi^2-K)h\exp{-\xi^2/2}=\qty(\dv[2]{h}{\xi}-2\xi\dv{h}{\xi}+(\xi^2-1)h)\exp{-\xi^2/2}
+\end{equation*}
+Take everything to one side and simplify. Doing this, we get -
+\begin{equation*}
+  \dv[2]{h}{\xi}-2\xi\dv{h}{\xi}+(K-1)h=0
+\end{equation*}
+\paragraph{Power Series Solution}\,\\
+All this seems to be some fruitless labour that we have done just to get to a more complicated differential equation, but you often only get the reward after some suffering. And nothing encapsulates this sentiment better than this quote from a textbook - "However, the reader who has painstakingly followed the derivation and thereby acquired virtue through suffering, may derive some comfort from the knowledge that it is relatively smooth sailing from here on." It will be relatively smooth for the last bit.
+
+Given the differential equation for $h(\xi)$, we will attempt to solve it by guessing a power series to it -
+\begin{equation*}
+  h(\xi)=x_0+x_1\xi+a_2\xi^2+\dots=\sum_{j=0}^{\infty}a_j\xi^j
+\end{equation*}
+For which, the required derivatives are -
+\begin{equation*}
+  \dv{h}{\xi}=\sum_{j=1}^{\infty}ja_j\xi^{j-1}\quad\text{and}\quad
+  \dv[2]{h}{\xi}=\sum_{j=2}^{\infty}j(j-1)a_j\xi^{j-2}
+\end{equation*}
+Let us plug this back into the differential equation -
+\begin{equation*}
+  \sum_{k=2}^{\infty}j(j-1)a_j\xi^{j-2}-
+  2\xi\sum_{j=1}^{\infty}ja_j\xi^{j-1}+
+  (K-1)\sum_{j=0}^{\infty}a_j\xi^j=0
+\end{equation*}
+
+One more thing needs to be done before we can see our final solution. Notice that for the second term, we have a $\xi$ multiplying the power series. So, we can just pull that $\xi$ into the series and relabel the sum from $0$ to $\infty$. For the first term, we have to take some more care. We need to start from $0$. So, what we do for that is that we move all the values up by 2 so that we can sum it from $0$ to $\infty$. So, the $j$ becomes $j + 2$, the $j - 1$ becomes $j + 1$, and the $j + 2$ is just $j$. Putting these changes back into the above expression, we get - 
+\begin{equation*}
+  \sum_{j=0}^{\infty}\qty((j+1)(j+2)a_{j+2}2ja_j+(K-1)a_j)\xi^j=0
+\end{equation*}
+For this polynomial to disappear everywhere, it's coefficients must all be $0$. So, we are therefore left with
+\begin{equation*}
+  (j+1)(j+2)a_{j+2}-2ja_j+(K-1)a_j=0
+\end{equation*}
+Take all the $a_{j}$ terms to one side. The, we have the following expression -
+\begin{equation}
+  \label{eqn:fraction}
+  a_{j+2}=\dfrac{(2j+K-1)}{(j+1)(j+2)}a_j
+\end{equation}
+This is a recursion relation. Note that we need two parameters to specify all the coefficients, as the recursion relation relates every second coefficient, which are the two free parameters we expected, as this is a second order differential equation. This leads to an interesting fact that we can split the solutions into odd and even polynomials. If set $c_{1} = 0$, then only the coefficients of the even powers is non-zero, and we get an even polynomial, and if we set $c_{0} = 0$, then we get an odd polynomial.
+\paragraph{Sanity Checks}
+It's finally time for the sanity checks that I had mentioned in the previous subsection about the asymptotic analysis. Let's look at the behaviour of $h(\xi)$ again for large $\xi$. We have that -
+\begin{equation*}
+  a_{j+2}\approx\dfrac{2}{j}a_j
+\end{equation*}
+And this leads to an approximate solution
+\begin{equation*}
+  a_j\approx\dfrac{C}{(j/2)!}
+\end{equation*}
+But this leads to -
+\begin{equation*}
+  h(\xi)\approx C\sum_j\dfrac{1}{(j/2)!}\xi^j
+  \approx C\sum_j\dfrac{1}{j!}\xi^{2j}
+  \approx C\exp{\xi^2}
+\end{equation*}
+Now there is good news and bad news. The good news is that our math is correct. We needed two solutions. Asymptotic analysis told us the they must resemble growing and decaying exponentials for large $\xi$. We have recovered something that asymptotically resembles the growing exponential. However, this is also the bad news. as this is the precisely the behaviour that we were trying so hard to avoid. Clearly, it is non-normalizeable.
+
+However, there is a clever trick that saves us here. We do not need every power of the polynomial. If we impose the condition that the polynomial terminated after some power, then we are saved, because $\exp(-\xi^{2})$ will die off much faster that any polynomial of finite degree can blow up by. Fortunately, because the coefficients are defined recursively, we require that after some number of iterations, the coefficient that we get is $0$, and we are done. To satisfy this condition, we need the numerator of (1) to be $0$, which gives us -
+\begin{equation*}
+    K=2j+1
+\end{equation*}
+If you recall the definition of $K$, we have the condition for the energy -
+\begin{equation*}
+    E_j=\qty(j+\dfrac{1}{2})\hbar\omega
+\end{equation*}
+Which is the quantization condition that we had found! the $h$ polynomials are then indexed by their highest degree $j$, called $H_{j}$ and these polynomials are called the $j$-th Hermite polynomial. Normalizing the wavefunction is tricky, it required some tools from analysis about orthogonal polynomials, but we are presenting the normalized one here -
+\begin{equation*}
+  \psi_n=\qty(\dfrac{m\omega}{\pi\hbar})^{1/4}\dfrac{1}{\sqrt{2^nn!}}H_n(\xi)\exp{-\xi^2/2}
+\end{equation*}
+Now we will move onto the free particle potential.
+\subsection{The Free Particle}
+The free particle potential is not really a potential, we just have a particle existing in space, so we get the Schrodinger equation is:
+\begin{align*}
+  -\dfrac{\hbar^2}{2m}\dv[2]{\psi}{x}=E\psi
+\end{align*}
+This is a lot like the infinite square well in the actual well, but over all of space, so we can rewrite this as:
+\begin{align*}
+  \dv[2]{\psi}{x}=-k^2\psi
+\end{align*}
+This has a solution that looks like a complex exponential (we use this instead of sine and cosine for reasons that will become apparent):
+\begin{align*}
+  \psi(x)=A\exp{ikx}+B\exp{-ikx}
+\end{align*}
+We can rewrite the energy in terms of the wavenumber $k$:
+\begin{align*}
+  k^2=\dfrac{2mE}{\hbar^2}\implies E=\dfrac{\hbar^2k^2}{2m}
+\end{align*}
+Adding in the time dependence:
+\begin{align*}
+  \Psi(x,t)=A\exp{ik\qty(x-\frac{\hbar k}{2m}t)}+B\exp{-ik\qty(x+\frac{\hbar k}{2m}t)}
+\end{align*}
+Since these terms only differ in a sign of $k$, we may as well let it run negative to get a wavefunction parameterized by $k$:
+\begin{align*}
+  \Psi_k(x,t)=A\exp{i\qty(kx-\frac{\hbar k^2}{2m}t)}
+\end{align*}
+Hold up, but these are waves traveling depending on $k$, their wavelength determined by the wavenumber $k$, and they hold momentum $\hbar k$. Their speed, which is the coefficient of $x$ over the coefficient of $t$ is:
+\begin{align*}
+  v_q=\dfrac{\hbar\abs{k}}{2m}=\sqrt{\dfrac{E}{2m}}
+\end{align*}
+However, the classical speed which we expect it to agree with is:
+\begin{align*}
+  v_c=\sqrt{\dfrac{2E}{2m}}=2v_q
+\end{align*}
+This will be tackled later, we need to solve a more serious problem. We can't normalize this function. Since the time and space dependence are complex exponentials, their norm disappears. This leaves just the normalization constant, and an infinite integral. We instead decide to write the wavefunction as some sort of Fourier transform over a sum of momenta:
+\begin{align*}
+  \Psi(x,t)=\dfrac{1}{\sqrt{2\pi}}
+  \int_{-\infty}^{\infty}\phi(k)\exp{i\qty(kx-\frac{\hbar k^2}{2m}t)}\dd{k}
+\end{align*}
+This is similar to both of the previous sections as we are saying that the total wavefunction is a sum (integral) over an index n (k) of wavefunctions we know. The difference is that our index is continuous instead of discrete. In a usual problem, we are given the initial wavefunction, and want to find the general. In order to do this, we need to find $\phi(k)$:
+\begin{align*}
+  \phi(k)=\dfrac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\Psi(x,0)\exp{-ikx}\dd{x}
+\end{align*}
+And then reversing this Fourier transform we can get:
+\begin{align*}
+  \Psi(x,t)=\dfrac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\phi(k)\exp{ikx}\dd{k}
+\end{align*}
+The velocity problem is now about finding the group velocity, that is the velocity of the envelope $\phi(k)$ that has the following form:
+\begin{align*}
+  \Psi(x,t)=\dfrac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\phi(k)\exp{i(kx-\omega t)}\dd{k}
+\end{align*}
+We can transform this into one wave times another by Taylor expanding the angular frequency in terms of $k$ about some $k_0$:
+\begin{align*}
+  \Psi(x,t)\approx\dfrac{1}{\sqrt{2\pi}}\exp{i(k_0x-w_0t)}
+  \int_{-\infty}^{\infty}\phi(k_0+s)\exp{is(x-\omega'_0 t)}\dd{s}
+\end{align*}
+We get that the phase and group velocities are:
+\begin{align*}
+  v_{phase}&=\dfrac{\omega}{k} \\
+  v_{group}&=\dv{\omega}{k}
+\end{align*}
+If we just divide them, we end up with the quantum velocity, but the differentiation yields the missing two:
+\begin{align*}
+  v_c=2v_{group}=2v_{phase}
+\end{align*}
+\subsection{Delta Function Well}
+There are generally two types of states when dealing with potentials. When You have an energy that is bigger than the potential at $\pm\infty$, then the particle is free to roam about, it will scatter, when you have a particle that has less energy than this, it will be bound. Hence we have:
+\begin{align*}
+  \left\{\mqty{
+    E < 0 & \implies & \text{Bound state} \\
+    E > 0 & \implies & \text{Scattering state} 
+  } \right.
+\end{align*}
+Now we can move onto the actual delta function well. The dirac delta function has the following definition:
+\begin{align*}
+  \delta(x)\equiv\left\{\mqty{
+    0, & x \neq 0 \\
+    \infty & x = 0
+  }\right., \quad\text{and}\quad \int_{-\infty}^{\infty}\delta(x)\dd{x}=1
+\end{align*}
+For any position $a$, multiplying a function by $\delta(x-a)$ is the same as just multiplying by the function at that point:
+\begin{align*}
+  f(x)\delta(x-a)=f(a)\delta(x-a)
+\end{align*}
+This means that if we integrate this:
+\begin{align*}
+  \int_{-\infty}^\infty f(x)\delta(x-a)\dd{x}=f(a)
+\end{align*}
+We will now consider a potential of the form:
+\begin{align*}
+  V(x)=-\alpha\delta(x)
+\end{align*}
+With $\alpha$ being some positive constant. The Schrodinger equation becomes:
+\begin{align*}
+  -\dfrac{\hbar^2}{2m}\dv[2]{\psi}{x}-\alpha\delta(x)\psi=E\psi
+\end{align*}
+This yields bound and scattering states, we will first consider bound states:
+\subsubsection{Bound States}
+We will consider only energies that are less than $0$. In the region before the $\delta$, we get that:
+\begin{align*}
+  \dv[2]{\psi}{x}=-\dfrac{2mE}{\hbar^2}\psi=\kappa^2\psi
+\end{align*}
+Notice that the $\kappa$ is positive, because $E$ is defined to be negative. The solution to this is a real exponential:
+\begin{align*}
+  \psi(x)=A\exp{-\kappa x}+B\exp{\kappa x}
+\end{align*}
+The first term blows up as $x\to\infty$, so for this region, we get:
+\begin{align*}
+  \psi(x)=B\exp{\kappa x}
+\end{align*}
+The solution is similar for $x>0$:
+\begin{align*}
+  \psi(x)=F\exp{-\kappa x}+G\exp{\kappa x}
+\end{align*}
+But the second term blows up as $x\to\infty$, so we get $G=0$:
+\begin{align*}
+  \psi(x)=F\exp{-\kappa x}
+\end{align*}
+We have two conditions always:
+\begin{align*}
+  \left\{\mqty{
+    1. & \psi & \text{Always continuous} \\
+    2. & \dv{\psi}{x} & \text{Continuous except where $V=\infty$}
+  }\right.
+\end{align*}
+The first condition gives that:
+\begin{align*}
+  \psi(x)=
+  \begin{cases}
+    B\exp{\kappa x} & x \leq 0 \\
+    B\exp{-\kappa x} & x \geq 0
+  \end{cases}
+\end{align*}
+The delta function makes a discontinuity of the derivative at $x=0$. We want to integrate the Schrodinger equation about a small interval and find the discontinuity:
+\begin{align*}
+  -\dfrac{\hbar^2}{2m}\int_{-\epsilon}^\epsilon\dv[2]{\psi}{x}\dd{x}
+  +\int_{-\epsilon}^{\epsilon}V(x)\psi(x)\dd{x}=E\int_{-\epsilon}^{\epsilon}\psi(x)\dd{x}
+\end{align*}
+The first integral is just the difference in the derivative across the discontinuity. The last integral should be $0$ as $\epsilon\to 0$, so we have the following:
+\begin{align*}
+  \Delta\qty(\dv{\psi}{x})=\dfrac{2m}{\hbar^2}
+  \lim_{\epsilon\to 0}\int_{-\epsilon}^{\epsilon}V(x)\psi(x)\dd{x}
+\end{align*}
+Where the difference is going to be:
+\begin{align*}
+  \Delta\qty(\dv{\psi}{x})=
+  \lim_{\epsilon\to 0}\qty(\eval{\dv{\psi}{x}}_+-\eval{\dv{\psi}{x}}_-)
+\end{align*}
+Using the property of $\delta(x)$:
+\begin{align*}
+  \Delta\qty(\dv{\psi}{x})=-\dfrac{2m\alpha}{\hbar^2}\psi(0)
+\end{align*}
+If we use our definition of the wavefunction, we get the derivative is:
+\begin{align*}
+  \dv{\psi}{x}=
+  \begin{cases}
+    -B\kappa\exp{-\kappa x} & x > 0 \\
+    B\kappa\exp{\kappa x} & x < 0 
+  \end{cases}
+\end{align*}
+This means that the derivatives evaluates at $\pm$ will be:
+\begin{align*}
+  \eval{\dv{\psi}{x}}_+&=-B\kappa \\
+  \eval{\dv{\psi}{x}}_-&=B\kappa
+\end{align*}
+So the difference across the discontinuity is going to be $-2B\kappa$, and $\psi(0)=B$. Simplifying our equation gets:
+\begin{align*}
+  \kappa =\dfrac{m\alpha}{\hbar^2}
+\end{align*}
+Hence the allowed energies are:
+\begin{align*}
+  E=-\dfrac{\hbar^2\kappa^2}{2m}=-\dfrac{m\alpha^2}{2\hbar^2}
+\end{align*}
+If we normalize $\psi$ we will get:
+\begin{align*}
+  1=\int\norm{\psi}^2\dd{x}=2\abs{B}^2\int_0^{\infty}\exp{-2\kappa x}\dd{x}=
+  \dfrac{\abs{B}^2}{\kappa}
+\end{align*}
+Solving for $B$:
+\begin{align*}
+  B=\sqrt{\kappa}=\dfrac{\sqrt{m\alpha}}{\hbar}
+\end{align*}
+Now we can move onto scattering states:
+\subsubsection{Scattering States}
+The Schrodinger equation now reads:
+\begin{align*}
+  \dv[2]{\psi}{x}=-\dfrac{2mE}{\hbar^2}=-k^2\psi
+\end{align*}
+We maintain the negative sign, since $E>0$, the solution on both sides will be:
+\begin{align*}
+  \psi(x)_{x<0}&=A\exp{ikx}+B\exp{-ikx} \\
+  \psi(x)_{x<0}&=F\exp{ikx}+G\exp{-ikx}
+\end{align*}
+Continuity at $x=0$ gives:
+\begin{align*}
+  F+G=A+B
+\end{align*}
+Using the same difference across the discontinuity:
+\begin{align*}
+  \dv{\psi}{x}_{x>0}&=ik\qty(F\exp{ikx}-G\exp{-ikx}) \\
+  \dv{\psi}{x}_{+}&=ik\qty(F-G) \\
+  \dv{\psi}{x}_{x<0}&=ik\qty(A\exp{ikx}-B\exp{-ikx}) \\
+  \dv{\psi}{x}_{-}&=ik\qty(A-B) 
+\end{align*}
+The difference is:
+\begin{align*}
+  \Delta\qty(\dv{\psi}{x})=ik(F-G-A+B)
+\end{align*}
+Now doing the other side: $\psi(0)=A+B$, and adding the correctional terms:
+\begin{align*}
+  ik(F-G-A+B)=-\dfrac{2m\alpha}{\hbar^2}(A+B)
+\end{align*}
+If we define a parameter $\beta$, this becomes:
+\begin{align*}
+  F-G=A(1+2i\beta)-B(1-2i\beta)
+\end{align*}
+The constant becomes:
+\begin{align*}
+  \beta\equiv\dfrac{m\alpha}{\hbar^2k}
+\end{align*}
+Since we are considering scattering from the left, we must set $G=0$ to get a normalizable state:
+\begin{align*}
+  F=A(1+2i\beta)-B(1-2i\beta)
+\end{align*}
+We can then use the other boundary condition to solve for $B$ and $F$ in terms of $A$:
+\begin{align*}
+  B&=\dfrac{i\beta}{1-i\beta}A \\
+  F&=\dfrac{1}{1-i\beta}A
+\end{align*}
+Here, $F$ represents the amplitude of a scattered (transmitted) wave, and $B$ is a reflected wave. Hence we can find the probability of transmission and reflection by making these real:
+\begin{align*}
+  R&=\dfrac{\abs{B}^2}{\abs{A}^2}=\dfrac{\beta^2}{1+\beta^2} \\
+  T&=\dfrac{\abs{F}^2}{\abs{A}^2}=\dfrac{1}{1+\beta^2}
+\end{align*}
+We notice that:
+\begin{align*}
+  R+T=1
+\end{align*}
+Subbing in for the values of $\beta$:
+\begin{align*}
+  R&=\dfrac{1}{1+(2\hbar^2E/m\alpha^2)} \\
+  T&=\dfrac{1}{1+(m\alpha^2/2\hbar^2E)}
+\end{align*}
+\subsection{Finite Square Well}
+Now we will study the following potential:
+\begin{align*}
+  V(x)=
+  \begin{cases}
+    -V_0 & -a \leq x \leq a \\
+    0 & \abs{x} > a
+  \end{cases}
+\end{align*}
+This potential has three regions, in the first, the Schrodinger equation is a free particle:
+\begin{align*}
+  \dv[2]{\psi}{x}=-\dfrac{2mE}{\hbar^2}\psi
+\end{align*}
+I will wait to rewrite these when we get to bound vs scattering. The next region has $V=-V_0$:
+\begin{align*}
+  \dv[2]{\psi}{x}=-\dfrac{2m(E+V_0)}{\hbar^2}\psi
+\end{align*}
+The next is the same free particle:
+\begin{align*}
+  \dv[2]{\psi}{x}=-\dfrac{2mE}{\hbar^2}\psi
+\end{align*}
+Now we can go no further without specifying $E$:
+\subsubsection{Bound States}
+Here $E<0$, so we have $\kappa$ instead of $k$ for the region $x<-a$:
+\begin{align*}
+  \dv[2]{\psi}{x}=\kappa^2\psi
+\end{align*}
+And the solution is:
+\begin{align*}
+  \psi(x)=A\exp{-\kappa x}+B\exp{\kappa x}=B\exp{\kappa x}
+\end{align*}
+Where boundary conditions from the delta well have been applied. In the region where $x > a$, we have the same equation, but this time with a minus exponential:
+\begin{align*}
+  \psi(x)=F\exp{-\kappa x}
+\end{align*}
+In the middle region, we have the following:
+\begin{align*}
+  \dv[2]{\psi}{x}=-\dfrac{2m(E+V_0)}{\hbar^2}\psi=-l^2\psi
+\end{align*}
+The reason we have kept the negative sign here is because $E>-V_0$, since in order for there to be any motion. The solution is written with sines and cosines:
+\begin{align*}
+  \psi(x)=C\sin lx + D\cos lx
+\end{align*}
+Now we simply need to apply boundary conditions so that $\psi$ and its derivative are continuous everywhere. With no loss of generality, we can consider the even and odd solutions to this equation, so consider:
+\begin{align*}
+  \psi(x)=
+  \begin{cases}
+    F\exp{-\kappa x} & x > a \\
+    D\cos lx & 0 < x < a \\
+    \psi(-x) & x < 0
+  \end{cases}
+\end{align*}
+Continuity at $a$ requires:
+\begin{align*}
+  F\exp{-\kappa a}=D\cos la
+\end{align*}
+Continuity of the derivative requires:
+\begin{align*}
+  -\kappa F\exp{-\kappa a}=-lD\sin la
+\end{align*}
+Dividing these equations we get:
+\begin{align*}
+  \kappa =l\tan la
+\end{align*}
+This is a formula for the allowed energies, making substitutions:
+\begin{align*}
+  z&\equiv la \\
+  z_0&\equiv\dfrac{a}{\hbar}\sqrt{2mV_0}
+\end{align*}
+This means we can rewrite the energy equation as:
+\begin{align*}
+  \tan z=\sqrt{(z_0/z)^2-1}
+\end{align*}
+Which is a transcendental equation which must be solved numerically to truly find the number of bound states. Of interest is the case where $z_0$ is large, we then get energies for an infinite square well of width $2a$. For a very narrow well, there is only one bound state. 
+\subsubsection{Scattering States}
+Now we consider $E>0$, The solution in the region where $x<-a$:
+\begin{align*}
+  \psi(x)=A\exp{ikx}+B\exp{-ikx}
+\end{align*}
+We assume that there is no outgoing wave in the region beyond $x=a$, so we have:
+\begin{align*}
+  \psi(x)=F\exp{ikx}
+\end{align*}
+As for inside the well, we will have the same solution, where:
+\begin{align*}
+  \psi(x)=C\sin lx+D\cos lx
+\end{align*}
+We can now apply many many boundary conditions. Starting at continuity of $\psi$ and its derivative at $x=-a$:
+\begin{align*}
+  A\exp{-ika}+B\exp{ika}&=-C\sin la + D\cos la \\
+  ik\qty(A\exp{-ika}-B\exp{ika})&=l\qty(C\cos la+D\sin la)
+\end{align*}
+Continuity at $x=a$ yields:
+\begin{align*}
+  C\sin la+ D\cos la&=F\exp{ika} \\
+  l\qty(C\cos la-D\sin ls)&=ikF\exp{ika}
+\end{align*}
+You can use two of these to eliminate $C$ and $D$, and end up getting $B$ and $F$ in terms of $A$:
+\begin{align*}
+  B&=i\dfrac{\sin(2la)}{2kl}\qty(l^2-k^2)F \\
+  F&=\dfrac{\exp{-2ika}A}{c\cos(2la)-i\frac{k^2+l^2}{2kl}\sin(2la)}
+\end{align*}
+The transmission coefficient is hence:
+\begin{align*}
+  T^{-1}=1+\dfrac{V_0^2}{4E(E+V_0)}\sin[2](\dfrac{2a}{\hbar}\sqrt{2m(E+V_0)})
+\end{align*}
+The transmission probability becomes $1$ whenever the sine is $0$, so the energies of perfect transmission become:
+\begin{align*}
+  E_n+V_0=\dfrac{n^2\pi^2\hbar^2}{2m(2a)^2}
+\end{align*}
+Which is again an infinite square well of width $2a$

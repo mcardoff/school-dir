@@ -1,0 +1,131 @@
+% -*- TeX-master: "master.tex" -*-
+\section{Time Independent Perturbation Theory}
+The fundamental idea behind the time independent perturbation is that we are trying to solve the Schrodinger equation for a potential that is equivalent to a potential we know how to solve plus a little dip, called a perturbation. This can be expressed as:
+\begin{align*}
+H=H^0+H'
+\end{align*}
+Where $H^0$ represents the solvable Hamiltonian, and $H'$ is the perturbation. We know for sure that the unperturbed Hamiltonian ($H'=0$) can be solved with the following eigenfunctions:
+\begin{align*}
+  H^0\psi_n^0=E_n^0\psi_n^0
+\end{align*}
+These eigenfunctions are orthogonal and normalized:
+\begin{align*}
+  \ip{\psi_n^0}{\psi_m^0}=\delta_{m,n}
+\end{align*}
+\subsection{Non-Degenerate Perturbation Theory}
+Our overall goal is to solve the Schrodinger equation:
+\begin{align*}
+  H\psi_n=E_n\psi_n
+\end{align*}
+For perturbed energies and eigenfunctions. We can estimate the full Hamiltonian with a parameter $\lambda$:
+\begin{align*}
+  H=H^0+\lambda H'
+\end{align*}
+Then we expand each of the eigenvalues and eigenfunctions in powers of lambda, where the superscript will denote the order of correction:
+\begin{align*}
+  \psi_n&=\psi_n^0+\lambda\psi_n^1+\lambda^2\psi_n^2+\cdots\\
+  E_n&=E_n^0+\lambda E_n^1+\lambda^2E_n^2+\cdots
+\end{align*}
+Replacing the Hamiltonian and the eigenfunctions with these expansions:
+\begin{align*}
+  \qty(H^0+\lambda H')\qty[\psi_n^0+\lambda\psi_n^1+\lambda^2\psi_n^2]=
+  \qty(E_n^0+\lambda E_n^1+\lambda^2E_n^2)\qty[\lambda\psi_n^1+\lambda^2\psi_n^2]
+\end{align*}
+Lets collect like powers of $\lambda$:
+\begin{align*}
+  &H^0\psi_n^0+\lambda\qty(H^0\psi_n^1+H'\psi_n^0)+\lambda^2\qty(H^0\psi_n^2+H'\psi_n^1)\\
+  &=E_n^0\psi_n^0+\lambda\qty(E_n^0\psi_n^1+E_n^1\psi_n^0)+
+  \lambda^2\qty(E_n^0\psi_n^2+E_n^1\psi_n^1+E_n^2\psi_n^0)
+\end{align*}
+From the definition of the 0th order terms, the constant terms are ignored, since its the unperturbed eigenvalue problem, so they can be subtracted. This is a polynomial, so in order to achieve equality we need to match like powers of $\lambda$:
+\begin{align*}
+  \lambda&:\quad H^0\psi_n^1+H'\psi_n^0=E_n^0\psi_n^1+E_n^1\psi_n^0\\
+  \lambda^2&:\quad H^0\psi_n^2+H'\psi_n^1=E_n^0\psi_n^2+E_n^1\psi_n^1+E_n^2\psi_n^0
+\end{align*}
+\subsubsection{First Order Corrections}
+We start by completing the first order term with an inner product with $\psi_n^0$:
+\begin{align*}
+  \ip{\psi_n^0}{H^0\psi_n^1}+\ip{\psi_n^0}{H'\psi_n^0}=
+  E_n^0\ip{\psi_n^0}{\psi_n^1}+E_n^1\ip{\psi_n^0}{\psi_n^0}
+\end{align*}
+However, since $H^0$ (not necessarily $H'$) is Hermitian, we can move it into the bra so that it acts on an eigenfunction, so we end up with:
+\begin{align*}
+  \ip{\psi_n^0}{H^0\psi_n^1}=\ip{H^0\psi_n^0}{\psi_n^1}=\ip{E_n^0\psi_n^0}{\psi_n^1}=
+  E_n^0\ip{\psi_n^0}{\psi_n^1}
+\end{align*}
+The term with the two non-corrected eigenfunctions just goes away since we have normalized eigenfunctions. All of this combined will give us:
+\begin{align*}
+  E_n^0\ip{\psi_n^0}{\psi_n^1}+\ip{\psi_n^0}{H'\psi_n^0}&=
+  E_n^0\ip{\psi_n^0}{\psi_n^1}+E_n^1\\
+  \ip{\psi_n^0}{H'\psi_n^0}&=E_n^1
+\end{align*}
+Hence the first order correction term for the energy is:
+\begin{align*}
+  \boxed{E_n^1=\mel{\psi_n^0}{H'}{\psi_n^0}}
+\end{align*}
+If we take the first order $\lambda$ terms again, we get:
+\begin{align*}
+  \qty(H^0-E_n^0)\psi_n^1=-\qty(H'-E_n^1)\psi_n^0
+\end{align*}
+The first order correction to the wavefunction must be a well-behaved function, and since the solutions to the unperturbed Hamiltonian form a complete set, we can write the first order correction in terms of them:
+\begin{align*}
+  \psi_n^1=\sum_{m\neq n}c_m^{(n)}\psi_m^0
+\end{align*}
+We don't include the $n^{th}$ term since it is included above. Using the relation above, we get:
+\begin{align*}
+  \sum_{m\neq n}\qty(E_m^0-E_n^0)c_m^{(n)}\psi_m^0=-\qty(H'-E_n^1)\psi_n^0
+\end{align*}
+Take an inner product with $\psi_l^0$:
+\begin{align*}
+  \sum_{m\neq n}\qty(E_m^0-E_n^0)c_m^{(n)}\ip{\psi_l^0}{\psi_m^0}=
+  -\qty(H'-E_n^1)\ip{\psi_l^0}{\psi_n^0}
+\end{align*}
+Hence the constant is given by:
+\begin{align*}
+  c_m^{(n)}=\frac{\mel{\psi_m^0}{H'}{\psi_n^0}}{E_n^0-E_m^0}
+\end{align*}
+Hence the first order correction to the wavefunction:
+\begin{align*}
+  \psi_n^1=\sum_{m\neq n}\frac{\mel{\psi_m^0}{H'}{\psi_n^0}}{E_n^0-E_m^0}\psi_m^0
+\end{align*}
+You will notice that the denominator is $0$ if the energies are equal, hence if there are degenerate energies. For this we need degenerate perturbation theory.
+\subsubsection{Second Order Correction}
+Taking an inner product as we did before with the second order lambda term this time, we get:
+\begin{align*}
+  \ip{\psi_n^0}{H^0\psi_n^2}+\ip{\psi_n^0}{H'\psi_n^1}=
+  E_n^0\ip{\psi_n^0}{\psi_n^2}+E_n^2\ip{\psi_n^0}{\psi_n^0}
+\end{align*}
+After applying the same tricks, we end up with:
+\begin{align*}
+  E_n^2=\mel{\psi_n^0}{H'}{\psi_n^1}-E_n^1\ip{\psi_n^0}{\psi_n^1}
+\end{align*}
+But the second term is 0, hence we can simplify this to:
+\begin{align*}
+  E_n^2=\sum_{m\neq n}\frac{\abs{\mel{\psi_m^0}{H'}{\psi_n^0}}^2}{E_n^0-E_n^0}
+\end{align*}
+\subsection{Degenerate Perturbation Theory}
+States are degenerate if their wavefunctions are different, but their energies are the same. Lets go through an example of two-fold degeneracy.
+\subsubsection{Two-Fold}
+This example of degeneracy has two states which are orthogonal, $\psi_a,\psi_b$, but both with the same energy:
+\begin{align*}
+  H^0\psi_a^0=E^0\psi_a^0\quad H^0\psi_b^0=E^0\psi_b^0\quad\ip{\psi_a}{\psi_b}=0
+\end{align*}
+Any linear combination of the states are also an eigenstate of the unperturbed Hamiltonian with the same energy.
+
+To find the coefficients, we need to diagonalize the $W$ matrix, whose elements are given by:
+\begin{align*}
+  W_{ij}=\mel{\psi_i^0}{H'}{\psi_j^0}
+\end{align*}
+So the total eigenvalue problem would be:
+\begin{align*}
+  \pmqty{W_{aa}&W_{ab}\\W_{ba}&W_{bb}}\pmqty{\alpha\\\beta}=E^1\pmqty{\alpha\\\beta}
+\end{align*}
+We also have a theorem:
+
+Let $A$ be a hermitian operator that commutes with $H^0$ and $H'$. If $\psi_a^0$ and $\psi_b^0$ are also eigenfunctions of A, with distinct eigenvalues:
+\begin{align*}
+  A\psi_a^0=\mu\psi_a^0\quad A\psi_b^0=\nu\psi_b^0
+\end{align*}
+Such that $\mu\neq\nu$. Then, $\psi_a^0$ and $\psi_b^0$ are the good states to use in perturbation theory. We can prove this but I do not want to.
+\subsubsection{Higher Order}
+To conquer higher order degeneracies, you simply need to grow your $W$ matrix

@@ -1,0 +1,117 @@
+% -*- TeX-master: "master.tex" -*-
+\section{The WKB Approximation}
+The essential idea of the WKB method is to find energies in regions of constant potential. For a particle with energy greater than the potential, we know that the wavefunction will look like:
+\begin{align*}
+  \psi(x)=A\exp{\pm ikx}\quad k=\sqrt{2m(E-V)}/\hbar
+\end{align*}
+Where, just like in the initial scattering section, $\pm$ corresponds to a particle travelling to the right or left respectively. If $E<V$ we have $\kappa$ instead:
+\begin{align*}
+  \psi(x)=A\exp{\pm \kappa x}\quad \kappa=\sqrt{2m(V-E)}/\hbar
+\end{align*}
+If $V(x)$ is not constant, but rather varies slowly with respect to some parameter, we know that the solutions will be practically exponential/sinusoidal. 
+
+The one region where these dont work are when $E\approx V$ where $\kappa$ or $k$ go to $0$. These regions are called classical turning points. We should ignore these first.
+\subsection{The "Classical" Region}
+The classical region is where a particle would be confined to in classical mechanics, where $E\geq V(x)$.
+
+We can rewrite the (time dependent) Schrodinger equation in terms of the classical momentum $p$:
+\begin{align*}
+  \dv[2]{\psi}{x}=-\frac{p^2}{\hbar^2}\psi
+\end{align*}
+With the classical momentum now written as:
+\begin{align*}
+  p(x)\equiv\sqrt{2m(E-V(x))}
+\end{align*}
+Now, instead of writing the solution with constant amplitude and phase, we rewrite them as functions of position since they wont be constant, but rather slowly varying:
+\begin{align*}
+  \psi(x)=A(x)\exp{i\phi(x)}
+\end{align*}
+We can plug this into the Schrodinger equation again to find equations for $A$ and $\phi$ in terms of $V$:
+\begin{align*}
+  A''&=A\qty[(\phi')^2-\frac{p^2}{\hbar^2}]\\
+  \qty(A^2\phi')'&=0
+\end{align*}
+The second equation can immediately be solved:
+\begin{align*}
+  A=\frac{C}{\sqrt{\abs{\phi'}}}
+\end{align*}
+Plugging this into the other one gives us an immediate solution of:
+\begin{align*}
+  \phi(x)=\pm\frac{1}{\hbar}\int p(x)\dd{x}
+\end{align*}
+Hence the wavefunction can be written as:
+\begin{align*}
+  \psi(x)=\frac{C}{\sqrt{p(x)}}\exp{\pm\frac{i}{\hbar}\int p(x)\dd{x}}
+\end{align*}
+For a potential well with two vertial walls, we end up with the following that leads to the energies:
+\begin{align*}
+  \int_0^ap(x)\dd{x}=n\pi\hbar
+\end{align*}
+This is for potentials of the form:
+\begin{align*}
+  V(x)=
+  \begin{cases}
+    \text{some function} & 0<x<a\\
+    \inf & \text{otherwise}
+  \end{cases}
+\end{align*}
+Or something similar
+\subsection{Tunneling}
+In non-classical regions, the classical momentum can be imaginary, so if we have a tunneling problem where $E<V$, we have:
+\begin{align*}
+  \psi(x)\approx\frac{C}{\sqrt{\abs{p(x)}}}\exp{\pm\frac{1}{\hbar}\int\abs{p(x)}\dd{x}}
+\end{align*}
+In the case of a rectangular barrier with a curvy top, we end up with the following transmission coefficient:
+\begin{align*}
+  T&=\exp{-2\gamma}\\
+  \gamma&\equiv\frac{1}{\hbar}\int_0^a\abs{p(x)}\dd{x}
+\end{align*}
+\subsection{Connection Formulas}
+We are dealing with turning points now, such that $E=V$. For simplicity lets move the axes such that the turning point occurs at $x=0$:
+\begin{align*}
+  \psi(x)\approx
+  \begin{cases}
+    \qty[B\exp{i\int_x^0p(x')\dd{x'}/\hbar}+C\exp{-i\int_x^0p(x')\dd{x'}/\hbar}]/
+    \sqrt{p(x)}
+    & x < 0 \\
+    D\exp{-\int_0^x\abs{p(x')}\dd{x'}/\hbar}/\sqrt{\abs{p(x)}}
+    & x > 0
+  \end{cases}
+\end{align*}
+The problem is that the momentum goes to $0$ at the turning points, so $\psi\to\infty$. The solution is to use a patching function that covers the turning point and a patching region. We do this by linearizing the potential in this neighborhood:
+\begin{align*}
+  V(x)\approx E+V'(0)x
+\end{align*}
+And then solve the Schrodinger equation for the linearized potential:
+\begin{align*}
+  -\frac{\hbar^2}{2m}\dv[2]{\psi_p}{x}+(E+V'(0)x)\psi_p=E\psi_p
+\end{align*}
+We end up with the Airy's differential equation:
+\begin{align*}
+  \dv[2]{\psi_p}{z}=z\psi_p
+\end{align*}
+This leads to the following equation for $\psi(x)$, with one normalization constant and shifting the turning point:
+\begin{align*}
+  \psi(x)=
+  \begin{cases}
+    2D/\sqrt{p(x)}\sin\int_x^{x_2}p(x')\dd{x'}/\hbar & x < x_2 \\
+    D/\sqrt{\abs{p(x)}}\exp{-\int_x^{x_2}\abs{p(x')}\dd{x'}/\hbar} & x > x_2
+  \end{cases}
+\end{align*}
+If we have a downward sloping turning point, we get:
+\begin{align*}
+  \psi(x)=
+  \begin{cases}
+    D'/\sqrt{\abs{p(x)}}\exp{-\int_x^{x_1}\abs{p(x')}\dd{x'}/\hbar} & x < x_1\\
+    2D'/\sqrt{p(x)}\sin\int_x^{x_2}p(x')\dd{x'}/\hbar & x > x_1
+  \end{cases}
+\end{align*}
+If a potential well has one vertical wall and one sloping wall (turning point), we can find the energies by integrating the momentum:
+\begin{align*}
+  \int_0^{x_2}p(x)\dd{x}=\qty(n-\frac{1}{4})\pi\hbar
+\end{align*}
+To find the energies of a potential with no vertical walls, we use the following:
+\begin{align*}
+  \int_{x_1}^{x_2}p(x)\dd{x}=\qty(n-\frac{1}{2})\pi\hbar
+\end{align*}
+In all of these cases, $n$ runs from $1$ on to infinity, not $0$.

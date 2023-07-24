@@ -1,0 +1,32 @@
+% -*- TeX-master: "master.tex" -*-
+\section{Introduction to Quantum Computing}
+\subsection{Standard Bases}
+Normally, we define the basis ${\ket{0},\ket{1}}$, but there is also the Hadamard basis:
+\begin{align*}
+  \ket{\pm}=\frac{1}{\sqrt{2}}\qty(\ket{0}\pm\ket{1})
+\end{align*}
+Or the $\pm{i}$ basis:
+\begin{align*}
+  \ket{\pm i}=\frac{1}{\sqrt{2}}\qty(\ket{0}\pm i\ket{1})
+\end{align*}
+\subsection{Multiple Qubits}
+We define qubits as single kets which can be enumerated:
+\begin{align*}
+  \ket{00\cdots0},\ket{00\cdots1},\cdots,\ket{11\cdots1}
+\end{align*}
+For 2 states, a useful basis is the Bell states, which are maximally entangled:
+\begin{align*}
+  \ket{\Phi^\pm}&=\frac{1}{\sqrt{2}}\qty(\ket{00}\pm\ket{11})\\
+  \ket{\Psi^\pm}&=\frac{1}{\sqrt{2}}\qty(\ket{01}\pm\ket{10})\\
+\end{align*}
+\subsection{Projection Operator Formalism}
+Since qubits have finite states, we can explcitly define outer products:
+\begin{align*}
+  \dyad{0}=\pmqty{1&0\\0&0}
+\end{align*}
+And for more than 1 qubit, use the following column vector for the ket:
+\begin{align*}
+  a\ket{00}+b\ket{01}+c\ket{10}+d\ket{11}&=\pmqty{a\\b\\c\\d}\\
+  a\ket{0}+b\ket{1}+c\ket{2}+d\ket{3}&=
+\end{align*}
+There is a lot more but this is all I think was relevant from HW 11

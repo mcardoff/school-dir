@@ -1,0 +1,29 @@
+% -*- TeX-master: "master.tex" -*-
+\section{The Variational Principle}
+The variational principle states that:
+\begin{align*}
+  E_{gs}\leq\ev{H}=\mel{\psi}{H}{\psi}
+\end{align*}
+Where $\psi$ is any normalized function.
+The process for the variational method is very simple, and follows these steps:
+\begin{enumerate}
+\item Find a wavefunction that matches the potential with a parameter that can be varied. For example it could be the Gaussian:
+  \begin{align*}
+    \psi = A\exp{-bx^2}
+  \end{align*}
+Which matches very well with potentials that do not have barriers. 
+\item Normalize the function, it will usually be in terms of the parameter that you built in.
+\item Find the expectation value of the Hamiltonian, which can be written in terms of the kinetic and potential energy:
+  \begin{align*}
+    \ev{H}&=\ev{T}+\ev{V}\\
+    \ev{T}&=\ev{-\frac{\hbar^2}{2m}\laplacian}\\
+    \ev{V}&=\ev{V}
+  \end{align*}
+  Where $V$ is the potential for the specific problem.
+\item Minimize the Hamiltonian with respect to the parameter:
+  \begin{align*}
+    \ev{H}_{min}=E_{gs}\implies \pdv{\ev{H}}{b}=0
+  \end{align*}
+  If you have multiple parameters you can minimize with respect to all of them
+\item The previous result should give a value for the parameter, plug that into the Hamiltonian, and you should get a result without any of the parameters. This results in the estimation for the ground state. 
+\end{enumerate}

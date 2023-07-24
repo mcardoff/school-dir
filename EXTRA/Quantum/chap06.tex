@@ -1,0 +1,236 @@
+% -*- TeX-master: "master.tex" -*-
+\section{Symmetries \& Conservation Laws}
+\subsection{The Translation Operator}
+We define the action of the translation operator by its action on a wavefunction:
+\begin{align*}
+  \hat{T}(a)\psi(x)=\psi(x-a)
+\end{align*}
+We can replace $\psi(x-a)$ with its Taylor series:
+\begin{align*}
+  \psi(x-a)=\sum_n\dfrac{(-a)^n}{n!}\dv[n]{x}\psi(x)
+\end{align*}
+The argument acting on the wavefunction acts like the momentum operator:
+\begin{align*}
+  \hat{T}(a)\psi(x)=\sum_n\dfrac{1}{n!}\qty(\dfrac{-ia}{\hbar}\hat{p})^n\psi(x)
+\end{align*}
+This is the exponential of an operator:
+\begin{align*}
+  \hat{T}(a)=\mathrm{exp}\qty[-\dfrac{ia}{\hbar}\hat{p}]
+\end{align*}
+This means that momentum is the generator for translations. The translation operator is a unitary operator:
+\begin{align*}
+  \hat{T}(a)^{-1}=\hat{T}(-a)=\hat{T}(a)^\dag
+\end{align*}
+\subsubsection{Transforming Operators}
+Translating an operator $\hat{Q}$ to an operator $\hat{Q}'$ gives:
+\begin{align*}
+  \hat{Q}'=\hat{T}^\dag\hat{Q}\hat{T}
+\end{align*}
+\subsubsection{Translational Symmetry}
+A system is translationally invariant if the Hamiltonian is unchanged by translation, that is:
+\begin{align*}
+  \hat{H}'=\hat{T}^\dag\hat{H}\hat{T}=\hat{H}
+\end{align*}
+However, because $\hat{T}$ is unitary, we can say:
+\begin{align*}
+  \hat{H}\hat{T}=\hat{T}\hat{H}
+\end{align*}
+Which means that the commutator is $0$:
+\begin{align*}
+  \comm{\hat{H}}{\hat{T}}=0
+\end{align*}
+The one dimensional Hamiltonian for a particle of mass $m$:
+\begin{align*}
+  \hat{H}=\dfrac{\hat{p}^2}{2m}+V(x)
+\end{align*}
+The translated operator is:
+\begin{align*}
+  \hat{H}'=\dfrac{\hat{p}^2}{2m}+V(x+a)
+\end{align*}
+Translational symmetry must imply that:
+\begin{align*}
+  V(x+a)=V(x)
+\end{align*}
+This is like the Dirac comb! For continuous translational symmetries, we consider infinitesimal translations $\delta$:
+\begin{align*}
+  \hat{T}(\delta)=\exp{-i\delta\hat{p}/\hbar}\approx 1-i\dfrac{\delta}{\hbar}\hat{p}
+\end{align*}
+The commutator with the Hamiltonian is:
+\begin{align*}
+  \comm{\hat{H}}{\hat{T}(\delta)}=\comm{\hat{H}}{1-i\dfrac{\delta}{\hbar}\hat{p}}=0
+  \implies\comm{\hat{H}}{\hat{p}}=0
+\end{align*}
+From this, the generalized Ehrenfest theorem will tell us that:
+\begin{align*}
+  \dv{t}\ev{p}=0
+\end{align*}
+So momentum conservation comes from continuous translational symmetries. This is an instance of Noether's theorem. 
+\subsection{Conservation Laws}
+We want to talk about what it means for a quantity to be conserved. It includes the following two concepts:
+\begin{enumerate}
+\item The expectation value is independent of time.
+\item The probability of getting any particular value is independent of time. 
+\end{enumerate}
+The first condition means that the operator must commute with the Hamiltonian. The same criterion guarantees conservation by the second definition as well. 
+\subsection{Parity}
+\subsubsection{Parity in One Dimension}
+We define the parity operator in one dimension as:
+\begin{align*}
+  \hat{\Pi}\psi(x)=\psi'(x)=\psi(-x)
+\end{align*}
+The parity operator is its own inverse and it is self adjoint. Altogether, the operator is unitary:
+\begin{align*}
+  \hat{\Pi}^{-1}=\hat{\Pi}=\hat{\Pi}^\dag
+\end{align*}
+Transforming an operator becomes:
+\begin{align*}
+  \hat{Q}'=\hat{\Pi}^\dag\hat{Q}\hat{\Pi}
+\end{align*}
+Position and momentum are odd under parity:
+\begin{align*}
+  \hat{x}'=\hat{\Pi}^\dag\hat{x}\hat{\Pi}=-\hat{x}
+  \hat{p}'=\hat{\Pi}^\dag\hat{p}\hat{\Pi}=-\hat{p}
+\end{align*}
+Transforming a general operator:
+\begin{align*}
+  \hat{Q}'(\hat{x},\hat{p})=\hat{Q}(-\hat{x},-\hat{p})
+\end{align*}
+A system with inversion symmetry has the Hamiltonian commuting with the parity operator:
+\begin{align*}
+  \comm{\hat{H}}{\hat{\Pi}}=0
+\end{align*}
+The potential must be an even function of position:
+\begin{align*}
+  V(x)=V(-x)
+\end{align*}
+This means that parity is conserved with time, so if a wavefunction at one point of time is even, it will stay even. In the same vein, if it is odd it will stay odd. An example is the harmonic oscillator potential. 
+\subsubsection{Parity in Three Dimensions}
+In $3-D$ the parity operator is given by:
+\begin{align*}
+  \hat{\Pi}\psi(\vb{r})=\psi'(\vb{r})=\psi(-\vb{r})
+\end{align*}
+The $3-D$ momentum and position operators transform the same. Again the potential must be even:
+\begin{align*}
+  V(\vb{r})=V(-\vb{r})
+\end{align*}
+The eigenstates of a particle in a central potential are also eigenstates of parity:
+\begin{align*}
+  \hat{\Pi}\psi_{n\ell m}=(-1)^\ell\psi_{n\ell m}
+\end{align*}
+\subsection{Rotational Symmetry}
+\subsubsection{Rotations About the z Axis}
+The operator that rotates a function about the $z$ axis by an angle $\phi$ is $\hat{R}_z$:
+\begin{align*}
+  \hat{R}_z(\varphi)\psi(r,\theta,\phi)=\psi'(r,\theta,\phi)=\psi(r,\theta,\phi+\varphi)
+\end{align*}
+It turns out that angular momentum is the generator of rotations:
+\begin{align*}
+  \hat{R}_z(\varphi)=\mathrm{exp}\qty[-\dfrac{i\varphi}{\hbar}\hat{L}_z]
+\end{align*}
+For an infinitesimal angle $\delta$:
+\begin{align*}
+  \hat{R}_z(\delta)\approx -\dfrac{i\delta}{\hbar}\hat{L}_z
+\end{align*}
+Finding the transformed operators allows us to find the matrix form:
+\begin{align*}
+  \pmqty{\hat{x}'\\\hat{y}'\\\hat{z}'}=
+  \pmqty{1&-\delta&0\\\delta&1&0\\0&0&1}\pmqty{\hat{x}\\\hat{y}\\\hat{z}}
+\end{align*}
+This is a truncated Taylor series of a normal rotation matrix.
+\subsubsection{Rotations in Three Dimensions}
+Rotation about an arbitrary unit vector $\vb{n}$:
+\begin{align*}
+  \hat{R}_{\vb{n}}=\mathrm{exp}\qty[-\dfrac{i\varphi}{\hbar}\vb{n}\vdot\hat{\vb{L}}]
+\end{align*}
+Any vector quantity has the following commutator rule:
+\begin{align*}
+  \comm{\hat{L}_i}{\hat{V}_j}=i\hbar\epsilon_{ijk}\hat{V}_k
+\end{align*}
+An example of this is $\hat{\vb{r}}$, $ \hat{\vb{p}}$ and $\hat{\vb{L}}$. A scalar operator is invariant under rotation:
+\begin{align*}
+  \comm{\hat{L}_i}{\hat{f}}=0
+\end{align*}
+We have the following table for various quantities:
+\begin{table}[H]
+\centering
+\begin{tabular}{ccc}
+\hline
+ & Parity & Rotations \\ \hline
+True Vector $\hat{\vb{V}}$ & $\acomm{\hat{\Pi}}{\hat{V}_i}=0$ & $\comm{\hat{\L}_i}{\hat{V}_j}=i\hbar\epsilon_{ijk}\hat{V}_k$ \\
+Pseudovector $\hat{\vb{V}}$ & $\comm{\hat{\Pi}}{\hat{V}_i}=0$ & $\comm{\hat{\L}_i}{\hat{V}_j}=i\hbar\epsilon_{ijk}\hat{V}_k$ \\
+True Scalar $\hat{f}$ & $\comm{\hat{\Pi}}{\hat{f}}=0$ & $\comm{\hat{\L}_i}{\hat{f}}=0$ \\
+Pseudoscalar $\hat{f}$ & $\acomm{\hat{\Pi}}{\hat{f}}=0$ & $\comm{\hat{\L}_i}{\hat{f}}=0$ \\ \hline
+\end{tabular}
+\end{table}
+For infinitesimal rotations we get:
+\begin{align*}
+  \hat{R}_{\vb{n}}(\delta)\approx 1-\dfrac{i\delta}{\hbar}\vb{n}\vdot\hat{\vb{L}}
+\end{align*}
+Hence the Hamiltonian commutes with the three components of angular momentum. Which leads to angular momentum conservation. 
+\subsection{Degeneracy}
+We know that the existence of a symmetry means there is an operator $\hat{Q}$ that commutes with the Hamiltonian:
+\begin{align*}
+  \comm{\hat{H}}{\hat{Q}}=0
+\end{align*}
+The basic idea of it is that given a stationary state $\ket{\psi_n}$, then $\hat{Q}\ket{\psi_n}$ is a stationary state with the same energy. The proof goes like:
+\begin{align*}
+  \hat{H}\ket{\psi_n'}=\hat{H}\qty(\hat{Q}\ket{\psi_n})=
+  \hat{Q}\hat{H}\ket{\psi_n}=\hat{Q}E_n\ket{\psi_n}=E_n\qty(\hat{Q}\psi{n})=
+  E_n\ket{\psi_n'}
+\end{align*}
+However, this is not always true, since the state and transformed state might be the same. 
+\subsection{Rotational Selection Rules}
+\subsubsection{Scalar Quantities}
+The selection rules for rotation with a scalar operator can be written as:
+\begin{align*}
+  \mel{n'\ell'm'}{\hat{f}}{n\ell m}=
+  \delta_{\ell\ell'}\delta_{mm'}\mel{n'\ell|}{\hat{f}}{|n\ell}
+\end{align*}
+\subsubsection{Vector Quantities}
+We can define a general raising and lowering operator as:
+\begin{align*}
+  \hat{V}_\pm\equiv\hat{V}_x\pm i\hat{V}_y
+\end{align*}
+The selection rules of $m$ are:
+\begin{align*}
+  \mel{n'\ell'm'}{\hat{V}_+}{n\ell m}=0\quad&\quad\text{unless $m'=m+1$}\\
+  \mel{n'\ell'm'}{\hat{V}_z}{n\ell m}=0\quad&\quad\text{unless $m'=m$}\\
+  \mel{n'\ell'm'}{\hat{V}_-}{n\ell m}=0\quad&\quad\text{unless $m'=m-1$}
+\end{align*}
+Turning this into the $x$ and $y$ components can be gotten from:
+\begin{align*}
+  \mel{n'\ell'm'}{\hat{V}_x}{n\ell m}&=\dfrac{1}{2}
+  \qty[\mel{n'\ell'm'}{\hat{V}_-}{n\ell m}+\mel{n'\ell'm'}{\hat{V}_+}{n\ell m}]\\
+  \mel{n'\ell'm'}{\hat{V}_y}{n\ell m}&=\dfrac{i}{2}
+  \qty[\mel{n'\ell'm'}{\hat{V}_-}{n\ell m}-\mel{n'\ell'm'}{\hat{V}_+}{n\ell m}]
+\end{align*}
+The selection rules for $\ell$ can be summarized by:
+\begin{align*}
+  \mel{n'\ell'm'}{\hat{V}_+}{n\ell m}&=
+  -\sqrt{2}C_{m1m'}^{\ell1\ell'}\mel{n\ell'|}{V}{|n\ell}\\
+  \mel{n'\ell'm'}{\hat{V}_-}{n\ell m}&=
+  \sqrt{2}C_{m-1m'}^{\ell1\ell'}\mel{n\ell'|}{V}{|n\ell}\\
+  \mel{n'\ell'm'}{\hat{V}_z}{n\ell m}&=C_{m0m'}^{\ell1\ell'}\mel{n\ell'|}{V}{|n\ell}
+\end{align*}
+These all require the $m$ and $\ell$ values satisfy the following:
+\begin{align*}
+  \ell-\ell'=\pm1\quad\text{and}\quad m-m'=\pm1
+\end{align*}
+\subsection{Translations in Time}
+We define the time translation operator as:
+\begin{align*}
+  \hat{U}\Psi(x,0)=\Psi(x,t)
+\end{align*}
+Doing the same procedure as before, we can find that:
+\begin{align*}
+  \hat{U}(t)=\mathrm{exp}\qty[-\dfrac{it}{\hbar}\hat{H}]
+\end{align*}
+We define the Heisenberg equivalent of a Schrodinger picture operator as:
+\begin{align*}
+  \hat{Q}_H(t)=\hat{U}^\dag(t)\hat{Q}\hat{U}(t)
+\end{align*}
+Where the Hermitian conjugate of $\hat{U}$ is given by:
+\begin{align*}
+  \hat{U}^\dag(t)=\mathrm{exp}\qty[\dfrac{it}{\hbar}\hat{H}]
+\end{align*}
+It turns out that time translation invariance leads to energy conservation.

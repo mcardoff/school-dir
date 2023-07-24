@@ -1,0 +1,270 @@
+% -*- TeX-master: "master.tex" -*-
+\section{Quantum Dynamics}
+This is when we talk about time dependent Hamiltonians
+
+We begin with systems that have two eigenstates of an unperturbed Hamiltonian. They obey the time independent Schrodinger equation:
+\begin{align*}
+  H^0\psi_a=E_a\psi_a\qquad H^0\psi_b=E_b\psi_b
+\end{align*}
+They are orthonormal:
+\begin{align*}
+  \ip{\psi_i}{\psi_j}=\delta_{ij}
+\end{align*}
+The initial state can be written:
+\begin{align*}
+  \Psi(0)=c_a\psi_a+c_b\psi_b
+\end{align*}
+In the absence of perturbation, the full time dependent solution is:
+\begin{align*}
+  \Psi(t)=c_a\psi_a\exp{-iE_at/\hbar}+c_b\psi_b\exp{-iE_bt/\hbar}
+\end{align*}
+Normalization requires that:
+\begin{align*}
+  \abs{c_a}^2+\abs{c_b}^2=1
+\end{align*}
+Now if we add a time dependent perturbation $H'(t)$, we can still write the solution in terms of the eigenstates since they form a complete set, but the constants need to be functions of time.
+\begin{align*}
+  \Psi(t)=c_a(t)\psi_a\exp{-iE_at/\hbar}+c_b(t)\psi_b\exp{-iE_bt/\hbar}
+\end{align*}
+We can solve for the coefficients by plugging this solution into the time dependent Schrodinger equation. We get a system of first order ODEs:
+\begin{align*}
+  \dot{c}_a&=-\frac{i}{\hbar}\qty[c_aH'_{aa}+c_bH'_{ab}\exp{-i(E_b-E_a)t/\hbar}]\\
+  \dot{c}_b&=-\frac{i}{\hbar}\qty[c_bH'_{bb}+c_aH'_{ba}\exp{-i(E_a-E_b)t/\hbar}]\\
+\end{align*}
+It is fair to say that the $H'$ diagonal matrix elements will be $0$, so the equations will simplify to:
+\begin{align*}
+  \dot{c}_a=-\frac{i}{\hbar}H'_{ab}\exp{-i\omega_0t}c_b\qquad
+  \dot{c}_b=-\frac{i}{\hbar}H'_{ba}\exp{i\omega_0t}c_a
+\end{align*}
+Where the characteristic frequency $\omega_0$ is given by:
+\begin{align*}
+  \omega_0=\frac{E_b-E_a}{\hbar}
+\end{align*}
+\subsection{Time-Dependent Perturbation Theory}
+Consider a two level system which starts in the lower state (here we make it $a$):
+\begin{align*}
+  c_a(0)=1\qquad c_b(0)=0
+\end{align*}
+To zeroth order, (where there is no perturbation) these solutions do not change at all hence we end up with:
+\begin{align*}
+  c_a^{(0)}(t)=1\qquad c_b^{(0)}(t)=0
+\end{align*}
+To get the first order approximation, we sub the 0 order values on the right side of the equations:
+\begin{align*}
+  \dot{c}_a^{(1)}=0&\implies c_a^{(1)}(t)=1\\
+  \dot{c}_b^{(1)}=-\frac{i}{\hbar}H'_{ba}\exp{-\omega_0t}&\implies
+  c_b^{(1)}(t)=-\frac{i}{\hbar}\int_0^tH'_{ba}(t')\exp{i\omega_0t'}\dd{t'}
+\end{align*}
+Inserting these into the systems again gives the second order term:
+\begin{align*}
+  c_a^{(2)}(t)&=1-\frac{1}{\hbar^2}\int_0^tH'_{ab}(t')\exp{-i\omega_0t'}
+  \qty[\int_0^{t'}H'_{ba}(t'')\exp{i\omega_0t''}\dd{t''}]\dd{t'}\\
+  c_b^{(2)}(t)=c_b^{(1)}(t)
+\end{align*}
+This continues forever. The first order term is ovbiously not properly normalized.
+\subsection{Sinusoidal Perturbations}
+Consider perturbations of the following form
+\begin{align*}
+  H'(\vb{r},t)=V\vb{r}\cos\omega t
+\end{align*}
+The matrix elements are:
+\begin{align*}
+  H'_{ab}=V_{ab}\cos\omega t
+\end{align*}
+Assuming that the diagonal elements vanish, we get:
+\begin{align*}
+  c_b(t)\approx-\frac{V_{ba}}{2\hbar}\qty
+  [\frac{\exp{i(\omega_0+\omega)t}-1}{\omega_0+\omega}+
+    \frac{\exp{i(\omega_0-\omega)t}}{\omega_0-\omega}]
+\end{align*}
+Now we want to assume that:
+\begin{align*}
+  \omega_0+\omega>>\abs{\omega_0-\omega}
+\end{align*}
+Such that we get:
+\begin{align*}
+  c_b(t)\approx-i\frac{V_{ba}}{\hbar}\frac{\sin(\omega_0-\omega)t/2}{\omega_0-\omega}
+  \exp{i(\omega_0-\omega)t/2}
+\end{align*}
+The probability of a transistion is the amplitude of this coefficient:
+\begin{align*}
+  P_{a\to b}(t)\approx\frac{\abs{V}_{ab}^2}{\hbar^2}\frac{\sin^2(\omega_0-\omega)t/2}
+  {(\omega_0-\omega)^2}
+\end{align*}
+So the probability flops around
+\subsection{Emission and Absorption}
+Consider a particle exposed to a sinuisoidally varying electric field $\vb{E}$:
+\begin{align*}
+  \vb{E}=E_0\cos\omega t\vu{z}
+\end{align*}
+The corresponding perturbation is:
+\begin{align*}
+  H'=-qE_0z\cos\omega t
+\end{align*}
+The matrix element is:
+\begin{align*}
+  H'_{ba}&=-\mathcal{P}E_0\cos\omega t\\
+  \mathcal{P}&=q\mel{\psi_b}{z}{\psi_a}
+\end{align*}
+Matching this with sinuisoidal perturbation from last section:
+\begin{align*}
+  V_{ba}=-\mathcal{P}E_0
+\end{align*}
+The transistion probability is:
+\begin{align*}
+  P_{a\to b}(t)=\qty(\frac{\abs{\mathcal{P}}E_0}{\hbar})^2
+  \frac{\sin^2(\omega_0-\omega)t/2}{(\omega_0-\omega)^2}
+\end{align*}
+The probability of a transition down, called stimulated emission is:
+\begin{align*}
+  P_{b\to a}(t)=\qty(\frac{\abs{\mathcal{P}}E_0}{\hbar})^2
+  \frac{\sin^2(\omega_0-\omega)t/2}{(\omega_0-\omega)^2}
+\end{align*}
+\subsection{Incoherent Perturbations}
+The energy density in an electromagnetic wave is:
+\begin{align*}
+  u=\frac{veps_0}{2}E_0^2
+\end{align*}
+We can rewrite the stimulated emission probability in terms of this as:
+\begin{align*}
+  P_{b\to a}(t)=\frac{2u}{\veps_0\hbar^2}\abs{\mathcal{P}}^2
+  \frac{\sin^2(\omega_0-\omega)t/2}{(\omega_0-\omega)^2}
+\end{align*}
+For a wave with a range of frequencies we use a density:
+\begin{align*}
+  P_{b\to a}(t)=\frac{2}{\veps_0\hbar^2}\abs{\mathcal{P}}^2\int_0^\infty\rho(\omega)
+  \qty[\frac{\sin^2(\omega_0-\omega)t/2}{(\omega_0-\omega)^2}]\dd{\omega}
+\end{align*}
+Most of the time the density is peaked around $\omega_0$, hence we can write it as:
+\begin{align*}
+  P_{b\to a}(t)\approx\frac{2}{\veps_0\hbar^2}\abs{\mathcal{P}}^2\rho(\omega_0)\int_0^\infty
+  \frac{\sin^2(\omega_0-\omega)t/2}{(\omega_0-\omega)^2}\dd{\omega}
+\end{align*}
+The integral is fairly simple to evaluate:
+\begin{align*}
+  P_{b\to a}(t)\approx\frac{\pi}{\veps_0\hbar^2}\abs{\mathcal{P}}^2\rho(\omega_0)t
+\end{align*}
+The tranisition rate, which is the time derivative of the probability, is:
+\begin{align*}
+  R_{b\to a}(t)\approx\frac{\pi}{\veps_0\hbar^2}\abs{\mathcal{P}}^2\rho(\omega_0)
+\end{align*}
+If we have a generalized polarization we just replace the square by one third of the average:
+\begin{align*}
+  R_{b\to a}(t)\approx\frac{\pi}{3\veps_0\hbar^2}\abs{\vb{\mathcal{P}}}^2\rho(\omega_0)
+\end{align*}
+The vector polarization is:
+\begin{align*}
+  \vb{\mathcal{P}}=q\mel{\psi_b}{\vb{r}}{\psi_a}
+\end{align*}
+\subsection{Einstein's A and B Coefficients}
+Imagine a system which houses $N$ particles, $N_a$ of them in the lower state $\psi_a$, and $N_b$ of them in the higher $\psi_b$ state. Let $A$ be the spontaneous emission rate, then the number of particles leaving the upper state per unit time is $N_bA$. The transition rate is proportional to the energy density of the electromagnetic field some constant $B_{ba}\rho(\omega_0)$, we can presume that the absorption rate is similarly proportional to the energy density. The total rate is:
+\begin{align*}
+  \dv{N_b}{t}=-N_bA-N_bB_{ba}\rho(\omega_0)+N_aB_{ab}\rho(\omega_0)
+\end{align*}
+If the system is in thermal equilibrium, then the energy density is given by:
+\begin{align*}
+  \rho(\omega_0)=\frac{A}{(N_a/N_b)B_{ab}-B_{ba}}
+\end{align*}
+From statistical mechanics, the factors of $N$ are proportional to the boltzmann factor:
+\begin{align*}
+  \rho(\omega_0)=\frac{A}{\exp{\hbar\omega_0/k_BT}B_{ab}-B_{ba}}
+\end{align*}
+Comparing to Planck's blackbody formula:
+\begin{align*}
+  \rho(\omega)=\frac{\hbar}{\pi^2c^3}\frac{\omega^3}{\exp{\hbar\omega/k_BT}-1}
+\end{align*}
+We get the following conditions for the coefficients:
+\begin{align*}
+  B_{ab}&=B_{ba}\\
+  A&=\frac{\omega_0^3\hbar}{\pi^2c^3}B_{ba}
+\end{align*}
+Subbing in what we know about $B_{ba}$:
+\begin{align*}
+  B_{ba}+\frac{\pi}{3\veps_0\hbar^2}\abs{\vb{\mathcal{P}}}^2
+\end{align*}
+Giving $A$ as:
+\begin{align*}
+  A=\frac{\omega_0^3\abs{\vb{\mathcal{P}}}^2}{3\pi\veps_0\hbar c^3}
+\end{align*}
+\subsection{Lifetime of an Excited State}
+If we have a large amount of particles in the excited state, we have the following relation:
+\begin{align*}
+  \dd{N_b}=-AN_b\dd{t}
+\end{align*}
+Which has solution:
+\begin{align*}
+  N_b(t)+N_b(0)\exp{-At}
+\end{align*}
+The time constant of this is:
+\begin{align*}
+  \tau=\frac{1}{A}
+\end{align*}
+Since it is decaying exponentially.
+\subsection{Selection Rules}
+When we calculate the spontaneous emission rates, we need to find the following matrix elements:
+\begin{align*}
+  \mel{\psi_a}{\vb{r}}{\psi_a}
+\end{align*}
+Consider a hydrogen-like system, with quantum numbers $n,\ell,m$, the matrix elements to be computed would be:
+\begin{align*}
+  \mel{n'\,\ell'\,m'}{\vb{r}}{n\,\ell\,m}
+\end{align*}
+From chapter 6, we obtained the following selection rules:
+\begin{align*}
+  \Delta{\ell}\equiv\ell'-\ell=\pm1\qquad
+  \Delta{m}\equiv m'-m=0,\pm1
+\end{align*}
+We can make the following simplifications as well:
+\begin{align*}
+  \mqty{
+    m'=m & \implies &
+    \mel{n'\,\ell'\,m'}{x}{n\,\ell\,m}=\mel{n'\,\ell'\,m'}{0}{n\,\ell\,m}=0\\
+    m'=m\pm1 & \implies &
+    \mel{n'\,\ell'\,m'}{x}{n\,\ell\,m}=\pm i\mel{n'\,\ell'\,m'}{0}{n\,\ell\,m}\\
+    & \implies &
+    \mel{n'\,\ell'\,m'}{z}{n\,\ell\,m}=0
+  }
+\end{align*}
+\subsection{Fermi's Golden Rule}
+We are going to consider transitions to a continuum of states, such as in the photoelectric effect now. Transition to a precise state is undefined, so we instead integrate over a range of energies:
+\begin{align*}
+  P=\int_{E_f-\Delta{E}/2}^{E_f+\Delta{E}/2}\frac{\abs{V_{in}}^2}{\hbar^2}
+  \qty(\frac{\sin^2(\omega_0-\omega)t/2}{(\omega_0-\omega)^2})\rho(E_n)\dd{E_n}
+\end{align*}
+For large $t$, it can be approximated as:
+\begin{align*}
+  P=\frac{\abs{V_{if}}^2}{\hbar^2}\rho(E_f)
+  \int_{-\infty}^\infty\frac{\sin^2(\omega_0-\omega)t/2}{(\omega_0-\omega)^2}\dd{E_n}
+\end{align*}
+This intergal was evaluated already:
+\begin{align*}
+  P=\frac{2\pi}{\hbar}\abs{\frac{V_{if}}{2}}^2\rho(E_f)t
+  R=\frac{2\pi}{\hbar}\abs{\frac{V_{if}}{2}}^2\rho(E_f)
+\end{align*}
+\subsection{Adiabatic Approximation}
+The adiabatic theorem states that if a particle was initially in the $n^{th}$ eigenstate of the initial perturbed Hamiltonian, it will be carried into the $n^{th}$ eigenstate of the Hamiltonian at some time $T$. This leads to the introduction of a dynamic phase factor $\theta_n(t)$:
+\begin{align*}
+  \exp{-iE_nt/\hbar}\to\exp{i\theta_n(t)}\qquad\theta_n(t)\equiv-\frac{1}{\hbar}
+  \int_0^tE_n(t')\dd{t'}
+\end{align*}
+There may be an additional phase factor $\gamma_n$, so that the wavefunction is:
+\begin{align*}
+  \Psi_n(t)=\exp{i\theta_n(t)}\exp{i\gamma_n(t)}\psi_n
+\end{align*}
+If you want to calculate the geometric phase $\gamma$, it is given by:
+\begin{align*}
+  \gamma_n(t)\equiv i\int_0^t\ip{\psi_n(t')}{\pdv{\psi_m(t')}{t'}}\dd{t'}
+\end{align*}
+We know that the stationary eigenstaets depend on $t$ only because of some parameter(s) $R$, so the partial can be expanded:
+\begin{align*}
+  \pdv{\psi_n}{t}=\pdv{\psi_n}{R}\dv{R}{t}
+\end{align*}
+If there are some number $N$ of these, we can represent this as a gradient of some vector of parameters $\vb{R}$ such that the geometric phase is given as:
+\begin{align*}
+  \gamma_n(t)=i\int_{\vb{R}_i}^{\vb{R}_i}\ip{\psi_n}{\grad_R\psi_n}\vdot\dd{\vb{R}}
+\end{align*}
+For Berry's phase, this is a closed loop integral:
+\begin{align*}
+  \gamma_n(T)=i\oint\ip{\psi_n}{\grad_R\psi_n}\vdot\dd{\vb{R}}
+\end{align*}
+This means that the geometric phase depends only on the path taken (a fitting name) and is called Berry's phase.

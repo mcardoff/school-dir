@@ -1,0 +1,84 @@
+% -*- TeX-master: "master.tex" -*-
+\section{Formalism}
+\subsection{Dirac Notation}
+A ket is a generalized vector, it is represented by:
+\begin{equation*}
+  \ket{\alpha}
+\end{equation*}
+In normal vector spaces, this is just a list of components. A bra, is the Hermitian conjugate (conjugate transpose) of a ket:
+\begin{equation*}
+  \bra{\beta}=\ket{\beta}^\dag
+\end{equation*}
+When we combine a ket and a bra, we get an inner product:
+\begin{equation*}
+  \braket{\beta}{\alpha}
+\end{equation*}
+Wavefunctions live in Hilbert space, where the inner product of two functions $f$ and $g$ is denoted by:
+\begin{equation*}
+  \braket{f}{g}=\int_{-\infty}^{\infty}f^*g\dd{x}
+\end{equation*}
+One property of the inner product of Hilbert space is that:
+\begin{equation*}
+  \braket{f}{g}=\braket{g}{f}^*
+\end{equation*}
+For wavefunctions we have the norm as:
+\begin{equation*}
+  \braket{\Psi}{\Psi}=\int\abs{\Psi}^2\dd{x}=1
+\end{equation*}
+We already know about complete sets and that any set of complete functions can describe any function that lives in Hilbert space. We now move onto observables:
+\subsection{Observables}
+Operators represent observable quantities. So the expectation value of an operator can be written in Dirac notation:
+\begin{equation*}
+  \ev{Q}=\int\Psi^*\hat{Q}\Psi\dd{x}=\braket*{\Psi}{\hat{Q}\Psi}
+\end{equation*}
+We know that the outcome of a measurement is real, so when we average many measurements we must find that:
+\begin{equation*}
+  \ev{Q}=\ev{Q}^*
+\end{equation*}
+The inner product form is:
+\begin{equation*}
+  \ev{Q}=\braket*{\Psi}{\hat{Q}\Psi}=\ev{Q}^*=\braket*{\hat{Q}\Psi}{\Psi}
+\end{equation*}
+These operators are called Hermitian. The momentum operator and position operators can be shown to be Hermitian. We define the adjoint of an operator as:
+\begin{equation*}
+  \braket*{f}{\hat{Q}g}=\braket{\hat{Q}^\dag f}{g}
+\end{equation*}
+This means Hermitian operators are self-adjoint.
+\subsection{The Eigenvalue Problem}
+The eigenvalue problem is to find eigenfunctions $\Psi$ of an operator $\hat{Q}$. The result is multiplication of the same eigenfunction by the eigenvalue $q$ which corresponds to the state:
+\begin{equation*}
+  \hat{Q}\Psi=q\Psi
+\end{equation*}
+These represent determinate states of the operator $\hat{Q}$, for example the determinate states of total energy are the eigenfunctions of the Hamiltonian, the eigenvalues of which are the Energies. The eigenvalues of a Hermitian operator are real, and the various eigenfunctions of an operator are orthogonal to one another, should they be normalized they are orthonormal. Now we can move onto the generalized statistical interpretation of Quantum Mechanics:
+\subsection{The Momentum Basis}
+The momentum wavefunction can be given in terms of the space wavefunction:
+\begin{align*}
+  \Phi(p,t)&=\dfrac{1}{\sqrt{2\pi\hbar}}\int_{-\infty}^\infty\exp{-ipx/\hbar}\Psi(x,t)\dd{x}
+  \\
+  \Psi(x,t)&=\dfrac{1}{\sqrt{2\pi\hbar}}\int_{-\infty}^{\infty}\exp{ipx/\hbar}\Phi(p,t)\dd{p}
+\end{align*}
+\subsection{The Generalized Uncertainty Principle}
+The generalized uncertainty principle is derived using the explicit formula for the variance, but the end result is simply a commutator:
+\begin{equation*}
+  \sigma^2_A\sigma^2_B\geq\qty(\dfrac{1}{2i}\ev{\comm{\hat{A}}{\hat{B}}})^2
+\end{equation*}
+A close relative of this is the time derivative of the expected value of an operator:
+\begin{equation*}
+  \dv{t}\ev{Q}=\dfrac{i}{\hbar}\ev{\comm{\hat{H}}{\hat{Q}}}+\ev{\pdv{\hat{Q}}{t}}
+\end{equation*}
+\subsection{Changing Basis In Dirac Notation}
+In order to change bases in Dirac notation we require the use of outer products:
+\begin{align*}
+  1&=\int\dd{x}\dyad{x}{x}\\
+  1&=\int\dd{p}\dyad{p}{p}\\
+  1&=\sum_{n}\dyad{n}{n}
+\end{align*}
+The general state vector $\mathcal{S}(t)$ can be written as:
+\begin{align*}
+  &\ket{\mathcal{S}(t)}=\int\dd{x}\ket{x}\braket{x}{\mathcal{S}(t)}=
+  \int\Psi(x,t)\ket{x}\dd{x}\\
+  &\ket{\mathcal{S}(t)}=\int\dd{p}\ket{p}\braket{p}{\mathcal{S}(t)}=
+  \int\Phi(x,t)\ket{p}\dd{p}\\
+  &\ket{\mathcal{S}(t)}=\sum_{n}\ket{n}\braket{n}{\mathcal{S}(t)}=
+  \sum c_n(t)\ket{n}
+\end{align*}

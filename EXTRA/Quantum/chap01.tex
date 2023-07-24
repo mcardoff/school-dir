@@ -1,0 +1,111 @@
+% -*- TeX-master: "master.tex" -*-
+\section{The Wave Function}
+\subsection{Schrodinger Wave Equation, Probabilities and Expectation Values}
+We start with the Schrodinger equation, which is given as:
+\begin{equation*}
+ \boxed{ i\hbar\pdv{\Psi}{t}=-\dfrac{\hbar^2}{2m}\pdv[2]{\Psi}{x}+V\Psi}
+\end{equation*}
+Which, as it turns out, is just a statement of the total energy of the system. The term on the left is the energy operator, the first term on the right if the kinetic energy operator and last term on the right is the potential operator. This equation is the statement that $E = T + V$. The operators all act on $\Psi$, the wavefunction. $\Psi$ is the solution to the differential equation above, and it is used to construct the probability density of the particle. It is a complex quantity, so the probability is:
+\begin{equation*}
+  \rho=\norm{\Psi}^2=\Psi^*\Psi
+\end{equation*}
+By construction, this quantity is guaranteed to be positive. The probability of finding the particle in a region of space from $a$ to $b$ is:
+\begin{equation*}
+  \boxed{P_{ab}(t)=\int_a^b\rho\dd{x}=\int_a^b\Psi^*\Psi\dd{x}}
+\end{equation*}
+Which, depending on the form of the wavefunction, could be time-dependent. Measured quantities in QM system are calculated are averaged weighted by the quantity that we are trying to measure, This measured value is also called the 'Expectation Value.' It is computes as follows:
+\begin{equation*}
+  \ev{x}=\int_{-\infty}^{\infty}\Psi^*x\Psi\dd{x}
+\end{equation*}
+In general, for any function:
+\begin{equation*}
+ \boxed{ \ev{f(x)}=\int_{-\infty}^{\infty}\Psi^*f(x)\Psi\dd{x}}
+\end{equation*}
+We can define the standard deviation to be:
+\begin{equation*}
+  \sigma_x=\sqrt{\ev{\Delta{x}^2}}=\sqrt{\ev{(x-\ev{x})^2}}
+\end{equation*}
+This turns into the following difference:
+\begin{equation*}
+  \sigma_x=\sqrt{\ev{x^2}-\ev{x}^2}
+\end{equation*}
+In general for any function or quantity:
+\begin{equation*}
+ \boxed{ \sigma_{f(x)}=\sqrt{\ev{f(x)^2}-\ev{f(x)}^2}}
+\end{equation*}
+
+\subsection{Normalization}
+The total probability must give 1. This imposes constraints on the wavefunction (this always manifests itself itself in the form of a numerical coefficient), and is the following statement:
+\begin{equation*}
+  \boxed{\int_{-\infty}^{\infty}\Psi^*\Psi\dd{x}=1}
+\end{equation*}
+There are two interesting consequence of this. The first, is this imposes that the analytic form of the wavefunction must be well-behaved as we go off to infinity and must die off sufficiently fast. The same applies also to the derivative of the wavefunction. The other interesting consequence of this is that if a function is normalized at time $t_{0}$, then it will always be normalized. If something is a constant in a variable, its derivative in the variable is vanishing. We utilize this fact to prove this statement. We want to prove that the time-derivative of the normalization condition is vanishing:
+\begin{equation*}
+  \dv{t}\int_{-\infty}^{\infty}\Psi^*\Psi\dd{x} = 0
+\end{equation*}
+First, we pull the derivative into the integral, and this switched it to a partial derivative, and then we use the product rule.
+\begin{equation*}
+  \dv{t}\int_{-\infty}^{\infty}\Psi^*\Psi\dd{x} = \int_{-\infty}^{\infty}\pdv{t}(\Psi^*\Psi)\dd{x} = \int_{-\infty}^{\infty}\bigg[\left(\pdv{\Psi^*}{t}\right)\Psi + \Psi^*\left(\pdv{\Psi}{t}\right) \bigg]\dd{x}
+\end{equation*}
+Now, multiply and divide the last equation with $i\hbar$.
+\begin{equation*}
+   \frac{1}{i\hbar} \int_{-\infty}^{\infty}\bigg[-\left(-i\hbar\pdv{\Psi^*}{t}\right)\Psi + \Psi^*\left(i\hbar\pdv{\Psi}{t}\right) \bigg]\dd{x}
+\end{equation*}
+The negative sign comes in because we are using the complex conjugate. Note that we have the left hand side of the Wave equation! So we plug in the following substitutions:
+\begin{align*}
+    -i\hbar\pdv{\Psi^*}{t} & = -\dfrac{\hbar^2}{2m}\pdv[2]{\Psi^*}{x}+V\Psi^* \\
+    i\hbar\pdv{\Psi}{t} & = -\dfrac{\hbar^2}{2m}\pdv[2]{\Psi}{x}+V\Psi
+\end{align*}
+Plugging this back into the integral gives:
+\begin{align*}
+    &
+   \frac{1}{i\hbar} \int_{-\infty}^{\infty}\bigg[-\left(-i\hbar\pdv{\Psi^*}{t}\right)\Psi + \Psi^*\left(i\hbar\pdv{\Psi}{t}\right) \bigg]\dd{x} \\
+   = & \frac{1}{i\hbar} \int_{-\infty}^{\infty}\bigg[-\left(-\dfrac{\hbar^2}{2m}\pdv[2]{\Psi^*}{x}+V\Psi^*\right)\Psi + \Psi^*\left(-\dfrac{\hbar^2}{2m}\pdv[2]{\Psi}{x}+V\Psi\right) \bigg]\dd{x} \\
+   = & \frac{i\hbar}{2m} \int_{-\infty}^{\infty}\bigg[-\left(\pdv[2]{\Psi^*}{x}\right)\Psi + \Psi^*\left(\pdv[2]{\Psi}{x}\right) \bigg]\dd{x}
+\end{align*}
+Next, we want to use integration by parts to simplify the integrand. Note the following:
+\begin{align*}
+    \pdv{x}\bigg( \pdv{\psi^*}{x}\psi \bigg) & = \bigg(\pdv[2]{\psi^*}{x}\bigg)\psi + \pdv{\psi^*}{x} \pdv{\psi}{x} \implies \bigg(\pdv[2]{\psi^*}{x}\bigg)\psi = \pdv{\psi^*}{x} \pdv{\psi}{x} - \pdv{x}\bigg( \pdv{\psi^*}{x}\psi \bigg) \\
+    \pdv{x}\bigg( \pdv{\psi}{x}\psi^* \bigg) & = \bigg(\pdv[2]{\psi}{x}\bigg)\psi^* + \pdv{\psi^*}{x} \pdv{\psi}{x} \implies \bigg(\pdv[2]{\psi}{x}\bigg)\psi^* = \pdv{\psi^*}{x} \pdv{\psi}{x} -  \pdv{x}\bigg( \pdv{\psi}{x}\psi^* \bigg)\\
+\end{align*}
+Plugging this back into the integrand gives us the following:
+\begin{align*}
+    & \frac{i\hbar}{2m} \int_{-\infty}^{\infty}\bigg[-\left(\pdv[2]{\Psi^*}{x}\right)\Psi + \Psi^*\left(\pdv[2]{\Psi}{x}\right) \bigg]\dd{x} \\
+    = & \frac{i\hbar}{2m} \int_{-\infty}^{\infty}\bigg[ - \pdv{\psi^*}{x} \pdv{\psi}{x} + \pdv{x}\bigg( \pdv{\psi^*}{x}\psi \bigg) + \pdv{\psi^*}{x} \pdv{\psi}{x} -  \pdv{x}\bigg( \pdv{\psi}{x}\psi^*\bigg) \bigg]\dd{x} \\
+    = & \frac{i\hbar}{2m} \int_{-\infty}^{\infty}\bigg[ \pdv{x}\bigg( \pdv{\psi^*}{x}\psi - \pdv{\psi}{x}\psi^*\bigg) \bigg]\dd{x} \\
+    = & \bigg( \pdv{\psi^*}{x}\psi - \pdv{\psi}{x}\psi^*\bigg)\bigg|_{-\infty}^{\infty} = 0
+\end{align*}
+Where in the last step we have used that the wavefunction must be well-behaved at the boundaries and die off. Therefore, we have that:
+\begin{equation*}
+    \boxed{\dv{t}\int_{-\infty}^{\infty}\Psi^*\Psi\dd{x} = 0}
+\end{equation*}
+Hence we have that if a wavefunction is normalized at $t = t_{0}$, then it will always be normalized\footnote{This hinges on the the fact that the boundary condition are suitable and impose that the wavefunction and its derivative vanish. For all the systems that you will study in this class, this is true. However, there can be cases when boundary conditions are important, and there you have to be a little more careful. However, normalization does not really affect the underlying physics as it is just a number.Therefore we pretty much don't care about it in those situations.}. 
+
+\subsection{Integrals and Operators}
+We have talked about only position, lets consider momentum (or velocity). We can start with the expectation value of the position differentiated with respect to time:
+\begin{equation*}
+  \dv{t}\ev{x}=\dv{t}\int\Psi^*x\Psi\dd{x}
+\end{equation*}
+Using the Leibniz rule of integration, we can move the derivative inside the integral to make it a partial:
+\begin{equation*}
+  \dv{\ev{x}}{t}=\int\pdv{t}\qty(\Psi^*x\Psi)\dd{x}
+\end{equation*}
+Using the product rule, we can get that this is simply:
+\begin{equation*}
+  \int x\pdv{t}\qty(\Psi^*\Psi)\dd{x}
+  =-\dfrac{i\hbar}{2m}\int\qty(\Psi^*\pdv{\Psi}{x}-\pdv{\Psi^*}{x}\Psi)\dd{x}
+\end{equation*}
+Where we have used a result taken from integration by parts. If another integration by parts is performed on the second term, we get (this is exactly what we just did for the proof above):
+\begin{equation*}
+  -\dfrac{i\hbar}{2m}\int\qty(\Psi^*\pdv{\Psi}{x}-\pdv{\Psi^*}{x}\Psi)\dd{x}=
+  -\dfrac{i\hbar}{m}\int\Psi^*\pdv{\Psi}{x}\dd{x}
+\end{equation*}
+This would be the expectation value of velocity, we can write the momentum of this as being multiplied by mass:
+\begin{equation*}
+  \ev{p}=-i\hbar\int\Psi^*\pdv{\Psi}{x}\dd{x}
+\end{equation*}
+We write the momentum operator as:
+\begin{equation*}
+  \hat{p}=-i\hbar\pdv{x}
+\end{equation*}
+Almost any operator with physical meaning can be written in terms of these two operators. 

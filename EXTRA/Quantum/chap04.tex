@@ -1,0 +1,129 @@
+% -*- TeX-master: "master.tex" -*-
+\section{Quantum Mechanics in 3-D}
+\subsection{The 3-D Schrodinger Equation}
+The three dimensional equivalent of the Schrodinger equation simply has a Laplacian operator in place of the second derivative with respect to position:
+\begin{align*}
+  i\hbar\pdv{\Psi}{t}=\hat{H}\Psi=-\dfrac{\hbar^2}{2m}\laplacian{\Psi}+V\Psi
+\end{align*}
+This means the three dimensional Hamiltonian is:
+\begin{align*}
+  \hat{H}=-\dfrac{\hbar^2}{2m}\laplacian{}+V
+\end{align*}
+And the momentum operator is given by:
+\begin{align*}
+  \vb{p}=-i\hbar\grad
+\end{align*}
+Normalization now is a triple integral:
+\begin{align*}
+  \int\abs{\Psi}^2\dd[3]{\vb{r}}=1
+\end{align*}
+We can separate the equation in space and time by introducing the same substitution, we will get the same result as before, except in three dimensions:
+\begin{align*}
+  -\dfrac{\hbar^2}{2m}\laplacian{\psi}+V\psi=E\psi
+\end{align*}
+\subsubsection{Spherical Coordinates Separation}
+We can separate variables for spherical coordinates by saying that the full wavefunction is:
+\begin{align*}
+  \psi=R(r)Y(\theta,\phi)
+\end{align*}
+The Schrodinger equation now reads:
+\begin{align*}
+  -\dfrac{\hbar^2}{2m}\qty[\dfrac{Y}{r^2}\dv{r}\qty(r^2\dv{R}{r})
+    +\dfrac{R}{r^2\sin\theta}\pdv{\theta}\qty(\sin\theta\pdv{Y}{\theta})
+    +\dfrac{R}{r^2\sin^2\theta}\pdv[2]{Y}{\phi}
+  ]+VRY=ERY
+\end{align*}
+Separating the variables:
+\begin{align*}
+  \dv{r}\qty(r^2\dv{R}{r})-\dfrac{2mr^2}{\hbar^2}\qty[V(r)-E]R&=\ell(\ell+1)R\\
+  \sin\theta\pdv{\theta}\qty(\sin\theta\pdv{Y}{\theta})+\pdv[2]{Y}{\phi}&=
+  -\ell(\ell+1)\sin^2\theta Y
+\end{align*}
+We can separate the angular equation again to get:
+\begin{gather*}
+  \dv[2]{\Phi}{\phi}=-m^2\Phi\\
+  \sin\theta\dv{\theta}\qty(\sin\theta\dv{\Theta}{\theta})+
+  \qty[\ell(\ell+1)\sin^2\theta-m^2]\Theta=0
+\end{gather*}
+The solutions are:
+\begin{align*}
+  \Theta(\theta)&=P_\ell^m(\cos\theta)\\
+  \Phi(\phi)&=\exp{im\phi}
+\end{align*}
+The associated Legendre functions are given by:
+\begin{align*}
+  P_\ell^m(x)&\equiv(-1)^m(1-x^2)^{m/2}\qty(\dv{x})^mP_\ell(x)\\
+  P_\ell(x)&\equiv\dfrac{1}{2^\ell\ell!}\qty(\dv{x})^\ell\qty(x^2-1)^\ell
+\end{align*}
+An important relation here is that the associated Legendre functions have limits on $m$, as if $m>\ell$, then we will get $0$. In order to normalize we need the volume element $\dd[3]{\vb{r}}$:
+\begin{align*}
+  \dd[3]{\vb{r}}=r^2\sin\theta\dd{r}\dd{\theta}\dd{\phi}
+\end{align*}
+Overall, the spherical harmonic functions $Y$ are given as:
+\begin{align*}
+  Y_\ell^m(\theta,\phi)=\sqrt{\dfrac{(2\ell+1)}{4\pi}\dfrac{(\ell-m)!}{(\ell+m)!}}
+  \exp{im\phi}P_\ell^m(\cos\theta)
+\end{align*}
+They are in fact orthonormal.
+\subsection{The Hydrogen Atom Potential}
+This potential is given by:
+\begin{align*}
+  V(r)=-\dfrac{e^2}{4\pi\veps_0}\dfrac{1}{r}
+\end{align*}
+The radial equation can be modified with the substitution $u=rR$ to get:
+\begin{align*}
+  -\dfrac{\hbar^2}{2m}\dv[2]{u}{r}+\qty[V+\dfrac{\hbar^2}{2m}\dfrac{\ell(\ell+1)}{r^2}]u
+  =Eu
+\end{align*}
+With The hydrogen atom potential we have:
+\begin{align*}
+  -\dfrac{\hbar^2}{2m_e}\dv[2]{u}{r}+
+  \qty[-\dfrac{e^2}{4\pi\veps_0}\dfrac{1}{r}
+    +\dfrac{\hbar^2}{2m_e}\dfrac{\ell(\ell+1)}{r^2}]u=Eu
+\end{align*}
+We can rewrite this in terms of a constant $\kappa$ (Bound states):
+\begin{align*}
+  \kappa^2\equiv-\dfrac{2m_eE}{\hbar^2}\\
+  \dfrac{1}{\kappa^2}\dv[2]{u}{r}=
+  \qty[1-\dfrac{m_ee^2}{2\pi\veps_0\hbar^2\kappa}
+    \dfrac{1}{\kappa}+\dfrac{\ell(\ell+1)}{(\kappa r)^2}]u
+\end{align*}
+We can solve this asymptotically like the analytic solution to the harmonic oscillator, but we will overall get the radial functions:
+\begin{align*}
+  R_{n\ell}&=\dfrac{\rho^{\ell+1}}{r}\exp{-\rho}v(\rho)\\
+  v(\rho)&=L^{2\ell+1}_{n-\ell-1}(2\rho)\\
+  \rho&=\dfrac{r}{an}\\
+  a&=\dfrac{4\pi\veps_0\hbar^2}{m_ee^2}
+\end{align*}
+
+\subsection{Angular Momentum}
+Classically, angular momentum is the cross product of position and momentum, in Quantum Mechanics, we can rewrite this component wise to get:
+\begin{align*}
+  L_x=yp_z-zp_y\qquad L_y=zp_x-zp_z\qquad L_z=xp_y-yp_x
+\end{align*}
+The commutation relations are closely related to each other, and you will only have the non-common terms left, this will give something proportional to the other one, you can find the full commutation relations in the important equations section. We can also introduce the square of the total angular momentum:
+\begin{align*}
+  L^2=L_x^2+L_y^2+L_z^2
+\end{align*}
+Because of this, the total angular momentum operator commutes with all of its components. This means that they have simultaneous eigenfunctions, such that:
+\begin{align*}
+  L^2f=\lambda f\qquad L_zf=\mu f
+\end{align*}
+We introduce a ladder operator, which should increase both the total angular momentum and its z components:
+\begin{align*}
+  L_\pm\equiv L_x\pm iL_y
+\end{align*}
+Since it is constructed with a linear combination of components of angular momentum, it commutes with $L^2$, however it is different with $L_z$:
+\begin{align*}
+  \comm{L_z}{L_\pm}=\comm{L_z}{L_x}\pm i\comm{L_z}{L_y}=i\hbar L_y\pm i(-i\hbar L_x)=
+  \pm\hbar(L_x\pm iL_y)=\pm\hbar L_\pm
+\end{align*}
+Transforming the eigenvalue equations:
+\begin{align*}
+  L^2(L_\pm f)=L_\pm(L^2f)=L_\pm(\lambda f)=\lambda(L_\pm f)
+\end{align*}
+For $L_z$ we have:
+\begin{align*}
+  L_z(L_\pm f)=\pm\hbar L_\pm f+L_\pm(\mu f)=(\mu\pm\hbar)(L_\pm f)
+\end{align*}
+So we get a new eigenfunction with a new eigenvalue that is raised by $\hbar$. There is a top rung where $L_+f_t=0$
