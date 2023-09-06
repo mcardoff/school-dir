@@ -283,24 +283,254 @@ We can formally move between upper and lower indices:
   x^\mu=g^{\mu\nu}x_\nu\qquad x_\mu=g_{\mu\nu}x^\nu
 \end{align*}
 \begin{note}
-  Tensor notation, thensors are defined as having at least two indices, and are combinations of vectors via a tensor product:
+  Tensor notation, tensors are defined as having at least two indices, and are combinations of vectors via a tensor product:
   \begin{gather*}
     T^{\alpha\beta}=u^\alpha v^\beta\iff \bm{T}=u\otimes v\\
     T^{\alpha\beta\gamma}=u^\alpha v^\beta w^\gamma\iff \bm{T}=u\otimes v\otimes w
   \end{gather*}
-  Where $\bm{T}$ is the tensor object
+  Where $\bm{T}$ is the tensor object.
+
+  You can still freely move between upper and lower indices
+  \begin{gather*}
+    T_{\alpha\beta}=g_{\mu\alpha}g_{\nu\beta}T^{\mu\nu}\\
+    T_\alpha^\beta=g_{\alpha\mu}T^{\mu\beta}
+  \end{gather*}
+  You just need a metric for each index you want to raise/lower
 \end{note}
-Tensors transform differently under Lorentz transforms:
-\begin{gather*}
-  x'_\mu=\Lambda_\mu^\nu x_\nu\implies
-  g_{\mu\alpha}x^{\prime\alpha}=g_{\mu\alpha}\Lambda^\alpha_\beta x^\beta
-  =g_{\mu\alpha}\Lambda^\alpha_\beta g^{\beta\nu}x_\nu\\
-  T^{\prime\beta}_\alpha=\Lambda_\alpha^\gamma\Lambda_\delta^\beta T_\gamma^\delta
-\end{gather*}
+We can then see how each of the various objects transform under Lorentz transformations
+
+\begin{itemize}
+\item 1-form (vector) $x'_\mu=\Lambda^\mu_\nu x^\nu$
+\item Tensor $T^{\prime\beta}_\alpha = \Lambda_\alpha^\gamma \Lambda_\delta^\beta T_\gamma^\delta$
+\item Scalar $a'\vdot b'=\Lambda^\mu_\nu a^\nu\Lambda_\nu^\sigma b_\sigma=a^\nu b_\nu=a\vdot b$ which is invariant
+  \begin{note}[Dot Product]
+    Due to the metric of Minkowski space, the 4 vector dot product is:
+    \begin{align*}
+      a\vdot b\equiv a_\mu b^\mu=a^\mu b_\mu=a^0b^0-\vb{a\vdot b}
+    \end{align*}
+  \end{note}
+\end{itemize}
+We should now move onto a few physical quantities.
+
+Imagine following the trajectory of a particle through 4-space. The trajectory will be $x^\mu(\lambda)$, where $\lambda$ is a parameter that monotonically varies along the curve. At any point $\lambda_0$ we may define a tangent 4-vector:
+\begin{align*}
+  \eta^\mu=\eval{\dv{x^\mu}{\lambda}}_{\lambda_0}
+\end{align*}
+For time-like particles, it is convenient to choose $\lambda=\tau$, the proper time:
+
+\textbf{Proper Velocity}: $\bm{\eta}=\pdv{\vb{x}}{\tau}$ and thus the 4-velocity is: $\eta^\mu=\dv{x^\mu}{\tau}$.
+
+If $S'$ is at rest with respect to a particle and moves with velocity $\vb{v}$ with respect to $S$, we have:
+\begin{align*}
+  x^\mu &= (ct,x^i) = (\gamma c\tau, \gamma v^i\tau)\\
+  \eta^\mu &= (\gamma c, \gamma v^i)
+\end{align*}
+Notice that $\eta^2=\eta\vdot\eta=\gamma^2(c^2-v^2)=c^2$
+
+Much more useful is the 4-momentum:
+\begin{align*}
+  p^\mu&=m\eta^\mu=(\gamma mc, \gamma mv^i)
+\end{align*}
+\begin{note}
+  The components of the 4-momentum are useful to note, as the 3-vector components are just a boosted 3-momentum:
+  \begin{align*}
+    \vb{p}=m\gamma \vb{v}
+  \end{align*}
+  And the time component is related to the energy:
+  \begin{align*}
+    p^0=\frac{E}{c}=\gamma m c
+  \end{align*}
+\end{note}
+The square of the 4-momentum is also useful:
+\begin{align*}
+  p^2=m^2c^2 = \qty(E/c)^2-(\vb{p\vdot p})
+\end{align*}
 
 \subsection{Conventions and ``Gotchas''}
+\begin{enumerate}
+\item In particle physics it is traditional to work in ``units of c''. The consstant speed of light is dimensionful and sets the natural scale of calculations. This means it is appropriate to define $\boxed{c=1}$. When units are required, we go back and put in however many $c$'s are required. Thus we have:
+
+  $x^\mu\to(\tau,x^i)$ with $\tau$ in meters
+
+  $p^\mu\to(E,\vb{p})$ with $E,m,\abs{\vb{p}}$ all in units of energy (eV)
+\item \textbf{Metrics}: We have chosen $g_{\mu\nu}=\mathrm{diag}(1,-1,-1,-1)$, this is sensible as $p^2=E^2-\abs{\vb{p}}^2=m^2>0$
+  \begin{enumerate}[label=\alph*)]
+  \item Another choice often used in astrophysics is $g_{\mu\nu}=\mathrm{diag}(-1,1,1,1)$, then at $t=0$, $x^2=\abs{\vb{x}}^2$ However $p^2=-m^2<0$ which is technically valid but can be confusing.
+  \item Also, sometimes (particularly in classical field theory), you need to stick with a Euclidean metric $\eta_{\mu\nu}=\mathrm{diag}(1,1,1,1)$, then some coordinates become \underline{complex}: $x^I=(ict,x^i)$
+  \end{enumerate}
+\item \textbf{Indices}: Some computer programs (you likely use) unfortunately chose to write 4-vectors as $x^{\tilde{\mu}}=(\vb{x},ct)$, with $\tilde{\mu}=1...4$. This was never necessary, and has led to many errors over the years.
+\end{enumerate}
+You have been warned.
 
 \subsection{Relativistic Kinematics}
+When we examine kinematics in the Newtonian ``classical'' limit, we invoke conservation laws. Consider a collision $A+B\to C+D$:
+\begin{enumerate}
+\item \underline{Mass} is conserved: $m_A+m_B=m_C+m_D$
+\item \underline{Momentum} is conserved: $\vb{p}_A+\vb{p}_B=\vb{p}_C+\vb{p}_D$
+\item \underline{Kinetic Energy}
+  \begin{enumerate}[label=\alpha*)]
+  \item decreases if collision is sticky $T_A+T_B>T_C+T_D$
+  \item increases if collision is explosive $T_A+T_B<T_C+T_D$
+  \item conserved if elastic $T_A+T_B=T_C+T_D$
+  \end{enumerate}
+\end{enumerate}
 
+In relativistic kinematics, we assume all interactions are \emph{local}. (We will see why later -- it is in fact a very strong statement about the nature of the Universe, but it is also necessary for consistency.)
 
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    TODO
+  \end{tikzpicture}
+  \caption{Collision Picture}
+\end{figure}
 
+Our picture of collisions is 2 particles under free motion enter a ``black box'' in which they exchange a force, and then they travel off freely again.
+
+\begin{enumerate}
+\item \underline{Total Energy} is conserved
+\item \underline{Momentum} is conserved
+  \begin{enumerate}
+  \item These are combined to give conservation of 4-momentum:
+    \begin{align*}
+      p^\mu_A+p^\mu_B=p^\mu_C+p^\mu_D
+      \begin{cases}
+        E_A+E_B=E_C+E_D\\
+        \vb{p}_A+\vb{p}_B=\vb{p}_C+\vb{p}_D
+      \end{cases}
+    \end{align*}
+  \end{enumerate}
+\item \underline{Kinetic Energy}
+    \begin{enumerate}[label=\alph*)]
+  \item decreases if collision is sticky, \underline{mass} increases (particle creation)
+  \item increases if collision is explosive, \underline{mass} decreases (particle decay, eg)
+  \item conserved if elastic, so is mass
+  \end{enumerate}
+\end{enumerate}
+We have given up conservation of mass, for conservation of energy
+
+\begin{example}
+  Two lumps of clay, each with mass $m$, collide head-on with speeds $\frac35c$. What is the final mass $M$ of the lump?
+  \begin{align*}
+    E_1+E_2&=E_M\\
+    \vb{p}_1+\vb{p}_2&=\vb{p}_m=0
+  \end{align*}
+  Note we make a good choice of reference frame such that we end up in the rest frame of the final mass $M$, and the two lumps collide head on. Since $c=1$, we simply have $M=2E_m$, with $E_m$ given by:
+  \begin{align*}
+    E_m=\gamma m=\frac{m}{\sqrt{1-(3/5)^2}}=\frac54m
+  \end{align*}
+  Hence:
+  \begin{align*}
+    \boxed{M=\frac52m}
+  \end{align*}
+\end{example}
+\begin{example}
+  A particle of mass $M$ at rest decays into two particles of mass $m$. What is the \emph{speed} of each piece as it flies away?
+
+  Speed is not a natural quantity (like $E$ or $p$), so we should find one of those and use:
+  \begin{align*}
+    \beta=\frac{\abs{\vb{p}}}{E}
+  \end{align*}
+  To derive the speed.
+
+  So far we only have:
+  \begin{align*}
+    p^\mu&=p_1^\mu+p_2^\mu\\
+    p^2&=M^2\\
+    p_1^2=p_2^2=m^2
+  \end{align*}
+  To go further we should use \emph{invariants}
+  \begin{enumerate}[label=\alph*)]
+  \item Use $p^2=(p_1+p_2)^2$ and a convenient choice of reference frame such that:
+    \begin{align*}
+      p&=(M,0,0,0)\\
+      p_{1/2}&=(E,0,0,\pm p_z)
+    \end{align*}
+    We can then expand the square of the sum:
+    \begin{align*}
+      p^2&=M^2\\
+      (p_1+p_2)^2=m^2+m^2+2p_1\vdot p_2
+    \end{align*}
+    From our choice of frame, we can say:
+    \begin{align*}
+      p_1\vdot p_2&=E^2+\abs{\vb{p}}^2=2E^2-m^2\\
+      \implies M^2&=2m^2+4E^2-2m^2=4E^2
+    \end{align*}
+    Thus we get:
+    \begin{align*}
+      E=\frac12M
+    \end{align*}
+    And for $\abs{\vb{p}}$:
+    \begin{align*}
+      \abs{\vb{p}}^2=E^2-m^2=\frac14M^2-m^2
+    \end{align*}
+    So the speed is:
+    \begin{align*}
+      \boxed{\beta=\sqrt{1-\frac{4m^2}{M^2}}}
+    \end{align*}
+  \end{enumerate}
+\end{example}
+
+\begin{example}
+  A pion (135 MeV) decays to two photons. what are $E,\abs{\vb{p}},\beta$ of the photons?
+
+  Using example 2.2:
+  \begin{align*}
+    E_\gamma&=\frac12M_\pi=67.5\text{MeV}\\
+    \abs{\vb{p}_\gamma}^2&=E^2-\cancel{m^2}^0\\
+    \implies\beta&=\frac{\vb{p}}{E}=\frac{E_\gamma}{E_\gamma}=1
+  \end{align*}
+  Good! It should travel at the speed of light
+
+  So a \underline{massless} particle (like a photon), has a 4-momentum:
+  \begin{align*}
+    p^\mu=E(1,\vu{p})
+  \end{align*}
+
+  A \underline{massive} particle can also its 4-momentum written as:
+  \begin{align*}
+    p^\mu=E(1,\bm{\beta})
+  \end{align*}
+\end{example}
+
+\begin{example}
+  The Bevatron created antiprotons by hitting a fixed target (protons) with a beam of protons. The reaction is $p+p\to p+p+p+\bar{p}$. What was the threshold energy ($E_p^{\text{LAB}}$)
+
+  The lab frame consists of a proton of energy $E$ hitting a stationary proton, and everything in the final state moves.
+
+It is generally easier to work in the \underline{center of momentum} frame (where $\sum p^i=0$ or $\sum\vb{p}=0$), do not be sloppy in nomenclature, this is not center of mass.
+
+In this frame, two particles collide head on and the 4 products are left at rest (at threshold). Using invariants:
+\begin{align*}
+  \underbrace{(p_1+p_2)^2}_{\text{frame inv.}}
+  =(p_3+p_4+p_5+p_6)^2=16m^2
+\end{align*}
+The quantity above is frame invariant, so it is the same as in the lab frame:
+\begin{align*}
+  (p_1+p_2)^2_{\text{LAB}}=2m^2+2Em
+\end{align*}
+So equating these we have:
+\begin{align*}
+  16m^2=2m^2+2Em\implies E=7m
+\end{align*}
+This is the power of invariants!
+\end{example}
+\subsubsection{General Strategy}
+\begin{enumerate}
+\item Unless the solution is trivial, rewrite in terms of Lorentz scalars (invariants). Try to choose easy ones to evaluate.
+\item Evaluate the scalars in \emph{any} frame --- the more straight forward the better.
+\item If you need a particular quantity, e.g. $\beta$ of a certain particle, consider regrouping momenta before squaring
+\end{enumerate}
+
+\subsection{Mandelstam Invariants}
+For the general process $A+B\to C+D$, the following quantities are named:
+\begin{align*}
+  s\equiv(p_A+p_B)^2&=(p_C+p_D)^2\\
+  t\equiv(p_A-p_C)^2&=(p_D-p_B)^2\\
+  u\equiv(p_A-p_D)^2&=(p_C-p_B)^2
+\end{align*}
+If we sum them we get a fairly useful quantity:
+\begin{align*}
+  s+t+u=m_A^2+m_B^2+m_C^2+m_D^2
+\end{align*}
+Returning to $pp\to ppp\bar{p}$, we used the invariant $s$ to calculate everything

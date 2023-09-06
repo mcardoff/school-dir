@@ -1,2 +1,109 @@
 % -*- TeX-master: "master.tex" -*-
 \section{Symmetry}
+The study of symmetry has been a central theme in the study of physics. In 1917 Emmy Noether proved that (for a specific type of field-complex, 4-dimensional) a symmetry of the Hamiltonian implied the existence of a conserved quantity
+
+You have studied the correspondence of symmetries and conserved quantities in classical and quantum mechanics:
+\begin{itemize}
+\item Time translation invariance $\iff$ Energy conservation
+\item Space translation invariance $\iff$ Momentum conservation
+\item Rotational invariance $\iff$ Angular momentum conservation
+\end{itemize}
+
+The construction of the Standard Model (and much of theoretical thought) has been largely the identification of the symmetries associated with observed conserved quantities.
+
+\begin{aside}
+  Not all conserved quantities must come from symmetries, e.g. solitons and other topological properties etc.
+\end{aside}
+
+A conserved quantity is one that is unchanged by a transformation, e.g. a Lorentz scalar under a Lorentz transformation.
+
+The set of possible transformations of a given type have the properties of a \underline{group}. Hence, we study groups and algebras
+
+\subsection{Group Theory}
+Reminder of group definitions
+\begin{enumerate}
+\item Clousure: if $A\in G$, $B\in G$, then $AB\in G$
+\item $\exists$ an identity: $I\in G$
+\item Every element has an inverse: $A\in G$, $AA^{-1}=A^{-1}A=I$ with $A^{-1}\in G$
+\item Associativity: $(AB)C=A(BC)$
+\end{enumerate}
+
+\subsubsection{Rotation Group}
+Consider rotation by angle $\theta$ about the $z$-axis:
+\begin{align*}
+  \pmqty{x'\\y'\\z'}=
+  \underbrace{\pmqty{\cos\theta & \sin\theta&\\
+      -\sin\theta&\cos\theta&\\&&1}}_{R_z(\theta)}
+  \pmqty{x\\y\\z}
+\end{align*}
+Similarly:
+\begin{align*}
+  R_x(\theta)=
+  \pmqty{1\\&\cos\theta&\sin\theta\\&-\sin\theta&\cos\theta}
+  \qquad
+  R_y(\theta)=
+  \pmqty{\cos\theta&&\sin\theta\\&1&\\-\sin\theta&&\cos\theta}
+\end{align*}
+Two successive rotations is also a rotation (closure). Can you quickly show the other group requirements?
+
+Rotations leave the length of a vector invariant:
+\begin{TODO}
+  Show above
+\end{TODO}
+
+So rotations form a three-dimensional orthogonal group. In addition:
+\begin{align*}
+  \det{R}=\cos^2\theta+\sin^2\theta=1
+\end{align*}
+So the rotation group is $SO(3)$, S for special, O for orthogonal.
+
+Recal the Lorentz group is $SO(3,1)$. Rotations are a \underline{subgroup} of the Lorentz Group:
+\begin{align*}
+  \Lambda^\mu_\nu=\pmqty{\text{Boosts}&\\&3\times3\text{ Rotations}}
+\end{align*}
+So the Lorentz group $=$ Boosts + Rotations
+
+\subsubsection{Spin}
+Consider a particle of mass $m$ at rest. Its four-momentum is:
+\begin{align*}
+  p^\mu=\pmqty{m\\0\\0\\0}
+\end{align*}
+Certainly the particle's four-momentum is invariant under rotations. The spin of the particle tells you how the wavefunction of the particle transforms  under the rotation group:
+\begin{itemize}
+\item Spin 0: $R=\bm{1}$ Trivial
+\item Spin $\frac12$: $R_i=\exp{i\frac12\theta_i\sigma_i}$ where $\sigma_i$ are the Pauli matrices $(2\times2)$
+\item Spin 1: $R=3\times3$ Rotation matrices (see above)
+\item Spin $\frac32$: $R=4\times4$ matrices
+\item Spin $j$: $R=(2j+1)\times(2j+1)$ matrices
+\end{itemize}
+So the spin of a particle is related to its \underline{representation} of the rotation group
+
+Formally, a representation is a homomorphic mapping of a group onto the matrices $(GL_n)$ of rank $n$.
+
+The symmetry associated with rotations is continuous. Hence, rather than work directly with the rotation matrices, we may work with the significantly simpler infinitesimal roations:
+
+Let $R(\theta)=\exp{i\theta_iT_i}\equiv e^{i\theta_iT_i}$, where $T_i$ are matrices, $i=x,y,z$, and $\exp$ of a matrix is just the shorthand for:
+\begin{align*}
+  \exp{M}=e^M\equiv\sum_{i=0}^\infty\frac{M^n}{n!}
+\end{align*}
+We know that $R^TR\equiv\bm{1}$, so that $\exp{i\theta_iT_i}^T\exp{i\theta_iT_i}=\bm{1}$. Consider $\theta_i$ to be infinitesimal and expand:
+\begin{align*}
+  (\bm{1}+i\theta_iT_i^T+\cdots)
+  (\bm{1}+i\theta_iT_i^T+\cdots)&=\bm{1}\\
+  \implies \theta_i\qty[T_i^T+T_i]&=0
+\end{align*}
+Thus we arrive at $T_i^T=-T_i$, that is, $T_i$ are \underline{antisymmetric matrices}.
+
+Consider: $R_x(\theta)$ with $\theta\ll 1$:
+\begin{align*}
+  R_x(\theta\ll1)&=\pmqty{1\\&1&-\theta\\&\theta&1}\\
+  &=\bm{1}+\theta\pmqty{0&0&0\\0&0&-1\\0&1&0}
+\end{align*}
+From above, we can then identify $iT_x$ as this second matrix. Repeating the above process for $R_y,R_z$, we obtain a full set of generators of $SO(3)$:
+\begin{align*}
+  iT_x=\pmqty{0&0&0\\0&0&-1\\0&1&0}\quad
+  iT_y=\pmqty{0&0&-1\\0&0&0\\1&0&0}\quad
+  iT_z=\pmqty{0&-1&0\\1&0&0\\0&0&0}
+\end{align*}
+
+
