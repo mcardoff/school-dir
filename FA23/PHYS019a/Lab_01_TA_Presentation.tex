@@ -1,0 +1,168 @@
+\documentclass{beamer}
+
+\title{PHYS 19a Lab 1}
+\author{Michael Cardiff}
+\subtitle{How a measurement works}
+
+\usepackage[italicdiff]{physics}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{url}
+
+% Changes style of actual slides
+\usetheme{Dresden}
+% Changes color of slides
+\usecolortheme{beaver}
+% removes controls at bottom right side
+\usenavigationsymbolstemplate{}
+
+% for figures
+\graphicspath{ {./figs/} }
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Introduction}
+\begin{frame}{Basic Idea}
+  \begin{itemize}
+  \item A crater of diameter $d$ was created by a ``meteor'' with kinetic energy $E$, according to the following equation:
+    \begin{align*}
+      d=CE^{1/4}
+    \end{align*}
+  \item Replace meteor with steel ball bearings and a planet with a bowl of sand 
+  \item Turn gravitational potential energy ($V=mgy$) into kinetic energy, impacting the ``planet''
+  \end{itemize}
+\end{frame}
+
+\section{Procedure}
+\begin{frame}{One Height}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item Many things we \emph{can} change, but we will focus on changing height
+      \item Each height will have $n$ trials
+      \item Average will be central value of measurement
+      \item Error on average calculated from $\sigma$ (manually calc'd)
+      \item Use students as our guinea pigs for test right size of ball
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=5.0cm]{measurement}
+        \caption{One measurement from many trials}
+        \label{fig:1}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{One Trial}
+  \begin{itemize}
+  \item One trial is done by
+    \begin{enumerate}
+    \item Ensuring the ``planet'' is sufficiently flat using rake and shaking the bowl
+    \item Attaching the bearing to the solenoid
+    \item (Optional) Place the shield on the bowl to prevent a splash of sand
+    \item Turn off the solenoid and watch the ball drop
+    \item Using the calipers, measure the diameter of the crater, lip to lip
+    \item Go back to step 1
+    \item Repeat $n$ times
+    \end{enumerate}
+  \item Once a trial is done, change the height, repeat above
+  \item Maximize number of heights, suggestion: 6 heights, $n=8$
+  \end{itemize}
+\end{frame}
+
+\section{Data Analysis}
+\begin{frame}{Caveats}
+  \begin{itemize}
+  \item There are many innacuracies with the height (see the giant blob about it in the manual)
+  \item Try to recognize them
+  \item A few noticed in my run:
+    \begin{itemize}
+    \item Sand is not level with $0$ on measuring tape
+    \item Bar holding solenoid droops
+    \item Solenoid is not level with bar
+    \item Ball is not a point, take diameter into account
+    \end{itemize}
+  \item All of these are mm or cm level, but significantly contribute to final result
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Data Analysis}
+  \begin{itemize}
+  \item On one trial analysis, need to find average and error on average
+  \item From height $\to$ potential energy
+  \item Potential energy $\to$ $\ln(\text{potential energy})$
+  \item Diameter $\to$ $\ln(\text{diameter})$
+  \item Scatter plot with $\ln(E)$ on $x$ axis, $\ln(d)$ on $y$ axis
+  \item Add Linear trendline, slope should be \underline{\qquad} based on initial law (tell me?)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{What YOU Need to know}
+  \begin{itemize}
+  \item Helpful to have excel sheet open with data collection
+  \item Include offsets, errors, etc. in sheet
+  \item Actual data later in sheet
+  \item Trendline does not include error on fit parameters, use function \texttt{LINEST}, I have a presentation on this because its a bit clunky to use
+  \item Do not use a million decimal places, limit to $2-3$ significant digits
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Basics of \texttt{LINEST}}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item \texttt{LINEST} is a matrix function, so it will give data in multiple cells if you provide them
+      \item Technically can be used for a general degree polynomial (Trendline option supports this as well)
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=5.0cm]{linest}
+        \caption{Example output of \texttt{LINEST}}
+        \label{fig:3}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+\begin{frame}{Basics of \texttt{LINEST} Cont.}
+  \begin{itemize}
+  \item Actual function call: \texttt{LINEST(y\textunderscore data,x\textunderscore data,intercept?,extra?)}
+  \item First two arguments are hopefully trivial
+  \item Third argument: if FALSE, set constant term to $0$:
+    \begin{align*}
+      \text{FALSE: }y&=mx\\
+      \text{TRUE: }y&=mx+b
+    \end{align*}
+  \item Fourth arguemnt should always be TRUE, as it determines whether or not you get your extra data, i.e. the errors
+  \item Only care about first two rows of output, the first row being the parameter value, and the second its associated error in decreasing degree
+  \end{itemize}
+\end{frame}
+
+\section{Results}
+\begin{frame}{Proof it Works!}
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm]{chart}
+    \caption{Example of log-log Plot}
+    \label{fig:2}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Overarching Goals}
+  \begin{itemize}
+  \item Establish expectations for the course
+  \item Familiarize students with what a measurement is
+  \item Show students their data analysis tool for the semester (Excel)
+  \item Introduce students to error propagation
+  \item Let the students know who you are as a teacher
+  \end{itemize}
+\end{frame}
+\end{document}

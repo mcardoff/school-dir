@@ -1,0 +1,208 @@
+\documentclass[aspectratio=169]{beamer}
+
+\title{PHYS 19a Lab 1}
+\author{Michael Cardiff}
+\subtitle{What is a Measurement?}
+
+\usepackage[italicdiff]{physics}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{siunitx}
+\usepackage{url}
+
+% Changes style of actual slides
+\usetheme{Dresden}
+% Changes color of slides
+\usecolortheme{spruce}
+% removes controls at bottom right side
+\usenavigationsymbolstemplate{}
+
+% for figures
+\graphicspath{ {./figs/} }
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Intro}
+\begin{frame}{What is a Measurement}
+  \begin{itemize}
+  \item All measurements have a {\color{red}\textbf{central value}} and an {\color{blue}\textbf{error}}
+    \begin{align*}
+      m={\color{red}v}\pm{\color{blue}\sigma_v}
+    \end{align*}
+  \item Every time you measure something in this lab, the value you find on your measuring device acts as the central value, ${\color{red}v}$.
+  \item The error on your measurement, usually called ${\color{blue}\sigma_v}$, is determined by how good your measurement device is.
+    \begin{itemize}
+    \item The error on all measurement devices should be the smallest unit the device can measure
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Example: Meterstick}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item A meterstick usually gives a central value in cm, with one decimal point of accuracy.
+      \item This means the error on a measurement with that meterstick will be $0.1$ cm, or 1 mm
+      \item Or, we could say $\sigma_{\text{meterstick}}=1$mm
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=5.0cm]{meterstick}
+        \caption{A meterstick with 1mm resolution}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Speaking of Units...}
+  \begin{itemize}
+  \item There are a lot of different units you will be using, so it is best to keep it to a single system you can make sense of all your numbers
+  \item Ensure you are using SI units for \emph{everything}, this means:
+    \begin{table}[H]
+      \centering
+      \begin{tabular}{c|c}
+        Measurement & SI Unit \\\hline
+        Length      & Meter (m) \\
+        Mass        & Kilogram (kg)
+      \end{tabular}
+      \caption{Guide for units}
+    \end{table}
+  \item So it will be necessary to convert your raw measurements to SI units before doing your analysis
+  \end{itemize}
+\end{frame}
+
+\section{Procedure}
+\begin{frame}
+  \frametitle{The Lab!}
+  \begin{itemize}
+  \item This lab is meant to hone your measurement skills, so the rest of the semester can go smoothly, specifically:
+    \begin{itemize}
+    \item Getting a central value and error
+    \item Propagating error
+    \item Finding averages \& standard deviations
+    \item Finding error on averages
+    \end{itemize}
+  \item This will all be done via testing a supposed relationship between the kinetic energy $(E)$ of a meteor to the diameter ($d$) of the crater it creates:
+    \begin{align*}
+      d=CE^{1/4}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The Idea}
+  \begin{itemize}
+  \item Our method of ``generating'' kinetic energy is through the height of the drop $h$, given by:
+    \begin{align*}
+      E=mgh
+    \end{align*}
+    Where $m$ is the mass of the ball and $g=9.80\pm0.01\unit{ms^{-2}}$
+  \item So we need a number of \textbf{diameters} and \textbf{heights} to test this relationship
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{One Diameter Measurement}
+  \begin{itemize}
+  \item Setting the height, you will take between 8-10 measurements of the diameter
+  \item The actual data point you will be using will be the {\color{red}average} of those values, and its error will be the {\color{blue}error on the average}
+    \begin{gather*}
+      {\color{red}\bar{d}=\frac1N\sum_{i=1}^Nd_i}\qquad
+      {\color{blue}\sigma_{\bar{d}}=\frac{\sigma}{\sqrt{N}}}
+    \end{gather*}
+    Note $N$ is the number of measurements, $d_i$ are the diameter for each trial, and $\sigma$ is the standard deviation.
+  \item Repeat the measurement for at least 6 different heights
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Efficient Data Taking}
+  \begin{itemize}
+  \item You should be in groups of 2, one should be dropping the ball and recording data, while the other
+  \item Take time to set up your excel spreadsheet before starting to take data, it can significantly speed up your data taking
+  \item Please note however, you should NOT use the built in functions for the average and standard deviation from excel, as they are formulae you should know by hand\footnote{You can however still use functions like \texttt{COUNT} or \texttt{SUM}, if unsure, ask}
+  \end{itemize}
+\end{frame}
+
+\section{Analysis}
+\begin{frame}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \frametitle{Data Analysis}
+      \begin{itemize}
+      \item Once you finish collecting data, you will need to create a ``log-log'' plot, with $\ln(E)$ on the $x$ axis, and $\ln(d)$ on the $y$ axis
+      \item They should form a relatively straight line, so create a trendline
+      \item \textbf{Question}: What should the slope be? How could you find this?
+      \end{itemize}
+    \end{column}
+    \pause
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=7.0cm]{chart}
+        \caption{Example Log-Log Plot}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Error on the Fit Parameter(s)}
+  \begin{columns}
+    \begin{column}{0.6\textwidth}
+      \begin{itemize}
+      \item The trendline will show you only the central value of the fit parameters, we use the excel function \texttt{LINEST} to get the error
+      \item In a cell, type \texttt{=LINEST(y\_data,x\_data,TRUE,TRUE)}
+      \item Upon pressing enter, you will see the something like in the figure
+      \item Top row is values of fit parameters
+      \item Second row is the error associated with the parameter above it
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=5.0cm]{linest}
+        \caption{Example \texttt{LINEST}}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Error Propagation}
+  \begin{itemize}
+  \item You will be asked to propagate one error in this lab to get used to it
+  \item This will be the energy, $E=mgh$
+    \begin{align*}
+      \sigma_E^2=\qty(\pdv{E}{m})^2\sigma_m^2+
+      \qty(\pdv{E}{g})^2\sigma_g^2+
+      \qty(\pdv{E}{h})^2\sigma_h^2
+    \end{align*}
+  \item Error on $m$ and $g$ is trivial, the complicated part is the height
+  \item There are a number of offsets you will need to find (lab manual)
+  \item Each offset as well as the raw height measurement has an error, but the errors will add together quite simply
+  \end{itemize}
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}
+  \frametitle{Bookkeeping}
+  \begin{itemize}
+  \item I have office hours, Tuesday 1:00-3:00pm in the Resource Room
+  \item Other TAs have office hours, see LATTE page for details
+  \item I will give you a short, graded attendance quiz in every lab
+  \item Do not be afraid to ask for help
+  \item Questions?
+  \end{itemize}
+\end{frame}
+
+\end{document}
