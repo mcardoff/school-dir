@@ -1,0 +1,201 @@
+\documentclass[aspectratio=169]{beamer}
+
+\title{PHYS 19a Lab 2}
+\author{Michael Cardiff}
+\subtitle{Measuring $g$}
+
+\usepackage[italicdiff]{physics}
+\usepackage{hyperref}
+\usepackage{url}
+
+% Changes style of actual slides
+\usetheme{Dresden}
+% Changes color of slides
+\usecolortheme{spruce}
+% removes controls at bottom right side
+\usenavigationsymbolstemplate{}
+
+% for figures
+\graphicspath{ {./figs/} }
+
+\def\n{5 }
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Theory}
+\begin{frame}
+  \frametitle{Describing a falling object}
+  \begin{itemize}
+  \item An object in free fall will only accelerate from gravity
+  \item Newton then tells us:
+    \begin{align*}
+      ma=F_{\text{net}}=-mg
+    \end{align*}
+  \item The equation of motion is:
+    \begin{equation}
+      \label{eq:1}
+      \boxed{y(t)=y_0+v_0t-\frac12gt^2}
+    \end{equation}
+    Where $y_0$ is the initial position, and $v_0$ is the initial velocity
+  \item This is what we will be testing in this lab
+  \end{itemize}
+\end{frame}
+
+\section{Collecting Data}
+\begin{frame}
+  \frametitle{One Trial}
+  \begin{itemize}
+  \item This lab will consist of you taking \n videos of a falling ball
+  \item You will record the video using VirtualDub, read the lab manual for the specific setup instructions
+  \item I recommend having 1 person in control of the computer, and another dropping the ball and setting it back up.
+  \item Once you have all \n videos, you can analyze them
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Analysis in Tracker}
+  \begin{itemize}
+  \item The Tracker software is on all of the lab computers, you may have to search for it in the search bar. 
+  \item Once you open your video in Tracker, you need to set up your \textbf{axes} and your \textbf{calibration stick}
+    \begin{itemize}
+    \item The axes give you a reference frame to analyze where the ball is coming from
+    \item The calibration stick will turn pixels into meters.
+    \end{itemize}
+  \item The ball will not be very well defined the faster it falls, so try to track the top of the ball as it falls
+  \item Once you have tracked the ball as much as you could, copy the data to Excel, this will be your first trial, repeat the analysis for each video
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Make Sure}
+  \begin{itemize}
+  \item The camera sees the entire meterstick
+  \item The camera's FPS is set to 30
+  \item The camera is at a right angle to the setup (visible on video preview)
+  \item Track the ball only when it is moving
+  \end{itemize}
+\end{frame}
+
+\section{How to use your data}
+\begin{frame}
+  \frametitle{Parabolic Fit}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item This lab will have you taking position data from a video of a falling ball.
+      \item Plotting position vs. time ($y$ vs $t$) should give you a parabola, where the coefficient of $t^2$ is $g/2$, from eq \eqref{eq:1}
+      \item To do this in excel, change the fit type (right hand side) from \texttt{Linear} to \texttt{Polynomial}, and choose Order 2
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=2.2cm]{quadfit}
+        \caption{Example of a parabolic fit in Excel}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Linear Fit}
+  \begin{itemize}
+  \item Taking a derivative of \eqref{eq:1} with respect to time gives a velocity vs time equation of:
+    \begin{equation}
+      \label{eq:2}
+      \dv{y(t)}{t}=v(t)=v_0-gt
+    \end{equation}
+  \item Hence, if we find a way to take the derivative of our position data to get velocity data, and plot that against time, we should have a straight line with slope $-g$
+  \item This may change to $v=v_0+gt$ if your axes definition changes, eqs \eqref{eq:1} and \eqref{eq:2} depend on the object decreasing its position from $0$, this may change in practice as you do the lab
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{One More Derivative}
+  \begin{itemize}
+  \item Taking another derivative of eq \eqref{eq:2} will give an equation for the acceleration:
+    \begin{equation}
+      \label{eq:4}
+      \dv[2]{y(t)}{t}=a(t)=-g
+    \end{equation}
+  \item So if we do this to our velocity data, we should have a lot of independent measurements of $g$.
+  \item A best estimate would be taking the average of these values.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{End Result: What did you find for $g$?}
+  \begin{itemize}
+  \item In the end, you should have 3 estimates of $g$ with varying accuracy:
+    \begin{enumerate}
+    \item From fitting a parabola to your $y$ data.
+    \item From differentiating your $y$ data and fitting a line to that $v$ data.
+    \item From differentiating your $y$ data twice, and taking the average of those values.
+    \end{enumerate}
+  \item To get the errors on 1 and 2, use \texttt{LINEST}, and the error for the last one would be the error on the mean. 
+  \end{itemize}
+\end{frame}
+
+\section{Analysis Techniques}
+\begin{frame}
+  \frametitle{How to take a derivative}
+  \begin{itemize}
+  \item The problem now is that we cannot take a proper derivative of discrete data. 
+  \item The solution: discretize the derivative:
+    \begin{equation}
+      \label{eq:3}
+      f'(t)=\lim_{\Delta t\to0}\frac{f(t+\Delta t)-f(t)}{\Delta t}
+      \approx \frac{f(t+\Delta t)-f(t-\Delta t)}{2\Delta t}
+    \end{equation}
+  \item More details in the lab manual
+  \item Doing this in excel, notice how for the endpoints of your data will not have a next ($y(t+\Delta t)$) or previous ($y(t+\Delta t)$) datapoint, keep this in mind when doing your analysis
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Derivative Example in Excel}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item To properly implment the right hand side of eq \eqref{eq:3}, be mindful of which points you can actually take the derivative of
+      \item Notably the end points, if you are trying to take a derivative at $t=0$, there is no $t=-\Delta t$ in your dataset, so you will get junk out
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=6.0cm]{derivex}
+        \caption{Example of a derivative in excel}
+        \label{fig:2}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Error on Quadratic Fit Parameters}
+  \begin{itemize}
+  \item To get the error on fit parameters, you need to change a few things about your call to \texttt{LINEST}:
+    \begin{center}
+      Before: \texttt{LINEST(y\_data,x\_data,TRUE,TRUE)}
+      \footnote{Still use this one for the $v$ vs $t$ fit}\\
+      Now: \texttt{LINEST(y\_data,{\color{red} x\_data\^{}\{1,2\}},TRUE,TRUE)}
+    \end{center}
+  \item Note because now we have 3 fit parameters ($ax^2+bx+c$) as opposed to 2 ($ax+b$), you will need to select a $3\times2$ area of cells as opposed to a $2\times2$
+  \end{itemize}
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}
+  \frametitle{Bookkeeping}
+  \begin{itemize}
+  \item This lab is due Next Friday, September 29
+  \item Labs 1 will be returned before then so you can use the feedback
+  \end{itemize}
+\end{frame}
+
+\end{document}
