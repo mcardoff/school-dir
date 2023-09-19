@@ -17,6 +17,8 @@
 \usecolortheme{spruce}
 % removes controls at bottom right side
 \usenavigationsymbolstemplate{}
+% add frame number at the bottom
+\setbeamertemplate{footline}[frame number]
 
 % for figures
 \graphicspath{ {./figs/} }
@@ -30,9 +32,9 @@
 \section{Intro}
 \begin{frame}{What is a Measurement}
   \begin{itemize}
-  \item All measurements have a {\color{red}\textbf{central value}} and an {\color{blue}\textbf{error}}
+  \item All measurements have a {\color{red}\textbf{central value}}, an {\color{blue}\textbf{error}}, as well as a \textbf{unit}
     \begin{align*}
-      m={\color{red}v}\pm{\color{blue}\sigma_v}
+      m={\color{red}v}\pm{\color{blue}\sigma_v}\,\mathbf{u}
     \end{align*}
   \item Every time you measure something in this lab, the value you find on your measuring device acts as the central value, ${\color{red}v}$.
   \item The error on your measurement, usually called ${\color{blue}\sigma_v}$, is determined by how good your measurement device is.
@@ -72,7 +74,8 @@
       \begin{tabular}{c|c}
         Measurement & SI Unit \\\hline
         Length      & Meter (m) \\
-        Mass        & Kilogram (kg)
+        Mass        & Kilogram (kg) \\
+        Time        & Seconds (s)
       \end{tabular}
       \caption{Guide for units}
     \end{table}
@@ -121,9 +124,11 @@
     \end{gather*}
     Note $N$ is the number of measurements, $d_i$ are the diameter for each trial, and $\sigma$ is the standard deviation.
   \item Repeat the measurement for at least 6 different heights
+  \item In your final plot, these measurements will lead to a single point on your plot.
   \end{itemize}
 \end{frame}
 
+\section{Excel Tips}
 \begin{frame}
   \frametitle{Efficient Data Taking}
   \begin{itemize}
@@ -133,13 +138,30 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Helpful Aspects of Excel}
+  \begin{itemize}
+  \item The dollar sign \texttt{\$} is your friend, especially when you have calculations with things that do NOT change (mass,$g$, etc.)
+  \item Why? You can copy/paste the formula around, and references to cells without \texttt{\$} will change, but ones with \texttt{\$} will not
+  \item If you do not know how to do something, it is very well documented, a simple Google search can help you 9/10 times
+  \item The rest of the time, ask me!
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Quick Spreadsheet Demo}
+  
+\end{frame}
+
 \section{Analysis}
 \begin{frame}
+  \frametitle{Data Analysis}
   \begin{columns}
     \begin{column}{0.5\textwidth}
-      \frametitle{Data Analysis}
       \begin{itemize}
-      \item Once you finish collecting data, you will need to create a ``log-log'' plot, with $\ln(E)$ on the $x$ axis, and $\ln(d)$ on the $y$ axis
+      \item Once you finish collecting data, you will need to create a ``log-log'' plot, with $\ln(E)$ on the $x$ axis, and $\ln(\bar{d})$ on the $y$ axis
+      \item Calculate $E$ from the height (with offsets included)
+      \item The values $\bar{d}$ are the average diameters from all your trials at a single height
       \item They should form a relatively straight line, so create a trendline
       \item \textbf{Question}: What should the slope be? How could you find this?
       \end{itemize}
@@ -178,6 +200,20 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Does your Answer Agree with Theory?}
+  \begin{itemize}
+  \item Technically, we know what the answer should be (in the manual)
+  \item We can quantify the agreement between theory and experiment by calculating how far away they are in units of the error.
+  \item Say your final value for the slope is ${\color{red}a}\pm{\color{blue}\sigma_a}$, and the theoretical value is $b$
+  \item We can calculate $n_\sigma$ using the following formula:
+    \begin{align*}
+      n_\sigma=\frac{\abs{{\color{red}a}-b}}{\color{blue}\sigma_a}
+    \end{align*}
+  \item For this, the lower the better, if $n_\sigma$ is any bigger than 2, your analysis is either wrong, or you found new physics, and should possibly get a Nobel prize
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
   \frametitle{Error Propagation}
   \begin{itemize}
   \item You will be asked to propagate one error in this lab to get used to it
@@ -197,9 +233,10 @@
 \begin{frame}
   \frametitle{Bookkeeping}
   \begin{itemize}
-  \item I have office hours, Tuesday 1:00-3:00pm in the Resource Room
+  \item I have office hours, Tuesday 12:00-2:00pm in the Resource Room
   \item Other TAs have office hours, see LATTE page for details
   \item I will give you a short, graded attendance quiz in every lab
+  \item Lab will be due Next Thursday, September 21
   \item Do not be afraid to ask for help
   \item Questions?
   \end{itemize}
