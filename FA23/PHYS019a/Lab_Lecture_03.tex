@@ -1,0 +1,180 @@
+\documentclass[aspectratio=169]{beamer}
+
+\title{PHYS 19a Lab 3}
+\author{Michael Cardiff}
+\subtitle{Air Resistance}
+
+\usepackage[italicdiff]{physics}
+\usepackage{hyperref}
+\usepackage{url}
+
+% Changes style of actual slides
+\usetheme{Dresden}
+% Changes color of slides
+\usecolortheme{spruce}
+% removes controls at bottom right side
+\usenavigationsymbolstemplate{}
+
+% for figures
+\graphicspath{ {./figs/} }
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Theory}
+\begin{frame}
+  \frametitle{Now vs. Lab 2}
+  \begin{itemize}
+  \item Last time we also described an object falling in a gravitational field:
+    \begin{align*}
+      ma=-mg=F_g
+    \end{align*}
+  \item Before, we were only considering a small, heavy ball, where air resistance can be ignored.
+  \item Now we are dropping coffee filters, which are more susceptible to air resistance of the form:
+    \begin{align*}
+      F_{air}=c v^n
+    \end{align*}
+    The constant $c$ changes depending on the value of $n$, but we only are interesting in finding what $n$ is.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Finding $n$}
+  \begin{itemize}
+  \item We can investigate what $n$ is by investigating the \underline{terminal velocity} of the filters
+  \item The terminal velocity is the constant speed that the filter travels at when the gravitational force and air resitance balance out, giving the following formula:
+    \begin{align*}
+      mg=cv_t^n
+    \end{align*}
+  \item Manipulating this using $\log$s, we find the equation we will be plotting is:
+    \begin{align*}
+      \log(m)=\log(c/g)+n\log(v_t)
+    \end{align*}
+  \item So in lab, we will be measuring $\mathbf{v_t}$ at different values of $\mathbf{m}$
+  \end{itemize}
+\end{frame}
+
+\section{Procedure}
+\begin{frame}
+  \frametitle{Tracking the Coffee Filters}
+  \begin{itemize}
+  \item Just like last time, you will be using \textbf{VirtualDub} and \textbf{Tracker} to track the coffee filter as it falls
+  \item From one trial to the next you will add a single filter, up to a total of 8, these are your various mass values
+  \item That is the only new thing for the procedure
+  \end{itemize}
+\end{frame}
+\begin{frame}
+  \frametitle{Make Sure}
+  \begin{itemize}
+  \item You measure the mass of the coffee filters (measure all 8 at once and divide the value you get by 8 to get the mass of a single filter)
+  \item Drop the coffee filters so it falls against the black backdrop
+  \item The camera FPS is set to 30!
+  \end{itemize}
+\end{frame}
+
+\section{Analysis}
+\begin{frame}
+  \frametitle{Extracting $v_t$}
+  \begin{itemize}
+  \item After the coffee filter reaches its terminal velocity, it will travel only at that velocity, leading to an equation of motion that looks like:
+    \begin{align*}
+      x(t)=x_0+v_tt
+    \end{align*}
+  \item So we can fit a line to our $x$ vs $t$ data, and the slope of that line will be the terminal velocity
+  \item However this comes with an immediate issue: How do we know when it reaches terminal velocity?
+  \item We can solve this by doing a $\chi^2$ analysis
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The $\chi^2$ Analysis}
+  \begin{itemize}
+  \item Since we do not necessarily know \textbf{when} the coffee filter reaches terminal velocity, we should do an analysis to find out when your data is best fit to a line!
+  \item This is done by calculating the value of $\chi^2$ for the fit:
+    \begin{align*}
+      \chi^2/ndof=\frac1{ndof}\sum_{i=1}^N\frac{(y_i-f(t_i))^2}{\sigma_i^2}
+    \end{align*}
+  \item For the \textbf{first trial}, you will calculate this a number of times, following the following formula:
+    \begin{enumerate}
+    \item Remove the first point from the previous calculation
+    \item Re-calculate the line of best fit to give you $f(t_i)$
+    \item Re-calculate $\chi^2/ndof$
+    \item Repeat
+    \end{enumerate}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{$\chi^2$ Continued}
+  \begin{itemize}
+  \item You will of course also need to calculate the error, and the steps above are a bit oversimplified, make sure you use your time to the fullest here.
+  \item The final output should look like this:
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=9.0cm]{chisqanalysis}
+      \caption{$\chi^2$ Final Data}
+    \end{figure}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{$\chi^2$ Result}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item The Result of this analysis should be a plot of the values of $\chi^2$ vs the number of points in the corresponding fit $N$:
+      \item Notice as you remove more points (Going from right to left), the $\chi^2$ value decreases until it reaches a minimum
+      \item This minimum should be the value that you actually use for $v_t$
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=6.0cm]{chisqplot}
+        \caption{$\chi^2$ vs $N$}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{After That...}
+  \begin{itemize}
+  \item Once you finish the $\chi^2$ for the first trial, follow the following recipe for trials $2\ldots8$:
+    \begin{table}[H]
+      \centering
+      \begin{tabular}{|c|c|}
+        \hline
+        Number of Filters & What to do \\ \hline
+        1 & $\chi^2$ analysis \\
+        2-4 & Drop first 4 points \\
+        5-8 & Keep the last 7 points \\ \hline
+      \end{tabular}
+      \caption{Recipe for Keeping/Removing Points for Trial 2 and beyond}
+      \label{tab:table1}
+    \end{table}
+  \item So the analysis after the first trial is quite simple.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Final Result}
+  \begin{itemize}
+  \item The final result of your analysis is a number of masses $m$ and terminal velocities $v_t$
+  \item Plotting $\log(m)$ on the $y$ axis and $\log(v_t)$ on $x$, we should get a straight line, with slope $n$
+  \item The value of $n$ should lie between 1 and 2
+  \end{itemize}
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}
+  \frametitle{Bookkeeping}
+  \begin{itemize}
+  \item Lab is due Next Friday, October 13.
+  \item Lab 2 feedback given soon if you do not have it already.
+  \end{itemize}
+\end{frame}
+
+\end{document}
