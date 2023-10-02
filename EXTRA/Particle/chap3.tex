@@ -1,4 +1,6 @@
 % -*- TeX-master: "master.tex" -*-
+\newcommand{\up}{\uparrow}
+\newcommand{\dn}{\downarrow}
 \section{Symmetry}
 The study of symmetry has been a central theme in the study of physics. In 1917 Emmy Noether proved that (for a specific type of field-complex, 4-dimensional) a symmetry of the Hamiltonian implied the existence of a conserved quantity
 
@@ -106,4 +108,446 @@ From above, we can then identify $iT_x$ as this second matrix. Repeating the abo
   iT_z=\pmqty{0&-1&0\\1&0&0\\0&0&0}
 \end{align*}
 
+Consider two successive rotations:
+\begin{gather*}
+  R(\theta)R(\theta')=R(\theta'')\\
+  R(\theta)=\bm{1}+i\theta\vdot T
+\end{gather*}
+Since they form a group, the right hand side should also be a rotation, and we have our definition of the generator below, with $\theta\vdot T=\theta_iT_i$. Plugging this form into the above:
+\begin{align*}
+  (\bm{1}+i\theta\vdot T+\frac12(i\theta\vdot T)^2+\cdots)
+  (\bm{1}+i\theta'\vdot T+\frac12(i\theta'\vdot T)^2+\cdots)=
+  (\bm{1}+i\theta''\vdot T+\frac12(i\theta''\vdot T)^2+\cdots)
+\end{align*}
+This gives you that $\theta+\theta'=\theta''$ to first order, $\order{\theta}$. If we go to second order, we would find that $\theta+\theta'=\theta''+\alpha$ where $\alpha\sim\order{\theta^2}$. Here we find that:
+\begin{align*}
+  -\frac12\qty[(\theta\vdot T)^2+(\theta'\vdot T)^2+2(\theta\vdot T)(\theta'\vdot T)]=-\frac12\qty[(\theta''\vdot T)^2-2i\alpha\vdot T]
+\end{align*}
+Now the second order term will tell us:
+\begin{align*}
+  (\theta''\vdot T)^2=\qty[\theta\vdot T+\theta'\vdot T-\alpha\vdot T]^2
+\end{align*}
+However we can essentially ignore the $\alpha\vdot T$ cross terms since all the other terms are at least order $\theta$, and the resulting multiplied term would be $\order{\theta^3}$ or greater, which we do not need to consider. Hence we find:
+\begin{align*}
+  (\theta''\vdot T)^2=(\theta\vdot T)^2+(\theta'\vdot T)^2+(\theta'\vdot T)(\theta\vdot T)+(\theta\vdot T)(\theta'\vdot T)
+\end{align*}
+This gives a relation between $\alpha$ and the other second order terms:
+\begin{align*}
+  -2i\alpha\vdot T=
+  (\theta\vdot T)(\theta'\vdot T)-(\theta'\vdot T)(\theta\vdot T)
+\end{align*}
+Since $\alpha\sim\order{\theta^2}$, and for the above equation to hold it must be proportional to $\theta\theta'$. Let $\alpha_i\equiv-\frac12f_{jki}\theta_jtheta'_k$. We then find:
+\begin{align*}
+  if_{jki}\theta_j\theta'_kT_i&=\theta_j\theta'_k\qty[T_jT_k-T_kT_j]\\
+  \implies if_{jki}T_i=T_jT_k-T_kT_j
+\end{align*}
+Define the commutator: $\comm{A}{B}\equiv AB-BA$, so that we can relabel:
+\begin{align*}
+  \boxed{\comm{T_i}{T_j}=if_{ijk}T_k}
+\end{align*}
+From this we find $f_{ijk}=-f_{jik}$. These are called structure constants, and are real valued.
 
+This commutator above tells us that $SO(3)$ is a \underline{Lie Group}, i.e. a continuous group (on a differentiable manifold).
+
+The generators $T_i$ of $SO(3)$ form a \underline{graded Lie algebra} with structure constants $f_{ijk}$
+
+The structure constants for $SO(3)$ are $f_{ijk}=\veps_{ijk}$, with $\veps_{123}=+1$, the totally antisymmetric tensor. In other words the commutators are given as:
+\begin{align*}
+  \comm{T_x}{T_y}&=iT_z\\
+  \comm{T_y}{T_z}&=iT_x\\
+  \comm{T_z}{T_x}&=iT_y
+\end{align*}
+
+A \underline{representation} of the $SO(3)$ Lie algebra is any set of matrices which satisfy
+\begin{align*}
+  \comm{T_i}{T_j}=i\veps_{ijk}T_k
+\end{align*}
+The $3\times 3$ matrices we have written are called the \underline{fundamental representation} (also known as the \underline{defining representation}).
+
+Recal this was associated with spin-1 particles.
+
+\subsection{Spin $\frac12$ Representation}
+The generators associated with spin-$\frac12$ are:
+\begin{align*}
+  T_x=\frac12\pmqty{&1\\1&}\quad
+  T_y=\frac12\pmqty{&i\\-i&}\quad
+  T_z=\frac12\pmqty{1& \\ &-1}
+\end{align*}
+Which are related to the Pauli Matrices, i.e. $T_i=\frac12\sigma_i$.
+
+One can show that these $2\times 2$ matrices $T_i$ satisfy $\comm{T_i}{T_j}=i\veps_{ijk}T_k$, so they do form a representation of $SO(3)$.
+
+The $T_i$ for this representation are \underline{not} antisymmetric, but they are Hermitian:
+\begin{align*}
+  T_i^\dag=T_i
+\end{align*}
+The rotation matrices $R=\exp{iT}$ are therefore \underline{unitary}:
+\begin{align*}
+  R^\dag R=(e^{iT})^\dag e^{iT}=e^{-iT^\dag}e^{iT}=e^{-iT}e^{iT}=\bm{1}
+\end{align*}
+To emphasize this, let's call these $2\times2$ matrices $U$ instead of $R$, so:
+\begin{align*}
+  U^\dag U=\bm{1}
+\end{align*}
+
+These $2\times2$ complex, unitary rotation matrices represent the group $SO(3)$, \underline{but} they also represent the group $SU(2)$, where $SU(2)$ means \textbf{s}pecial (determinant 1) \textbf{u}nitary $\mathbf{2\times2}$ matrices.
+
+\begin{TODO}
+  prove det $U$ is 1 in an aside
+\end{TODO}
+
+So we have proven the groups $SU(2)$ and $SO(3)$ have the \underline{same} Lie algebra. Thus the groups are identical as far as ``small'' rotations are concerned:
+\begin{align*}
+  SU(2)\underbrace{\approxeq}_{\text{Isomorphic}} SO(3)
+\end{align*}
+
+While the $3\times3$ $SO(3)$ matrices act on ordinary space $(x,y,z)$, the $2\times2$ complex $SU(2)$ matrices act on a complex, 2-dimensional ``spin'' space. We call this the \underline{fundamental} representation of $SU(2)$, but the \underline{spinor} representation of $SO(3)$.
+\begin{remark}
+  The so-called \underline{Classical Lie Groups} are $SO(n+1)$, $SU(n)$, and $SP(n+1)$, with the $p$ for symplectic. Some exceptions to these are $G_2, F_4, E_6, E_7, E_8$.
+
+  It is also important to note that $SO(2)\approxeq U(1)$, so 2D rotations are equivalent to unitary numbers $e^{i\theta}$
+\end{remark}
+
+\subsection{Isospin}
+Isospin (or Isotropic spin) is the symmetry of the strong interaction (QCD):
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[scale=2.0]
+    \begin{feynhand}
+      % vertices
+      \vertex (p11) at (1.5,0.5) {$u$};
+      \vertex (p12) at (1.5,-0.5) {$\bar{u}$};
+      \vertex (a1) at (0,0) {$g$};
+      \vertex (b1) at (1,0);
+      % propagators
+      \propag [gluon] (a1) to (b1);
+      \propag (b1) to (p11);
+      \propag (b1) to (p12);
+      \vertex (eq) at (1.75,0) {=};
+      % vertices
+      \vertex (p21) at (3.5,0.5) {$d$};
+      \vertex (p22) at (3.5,-0.5) {$\bar{d}$};
+      \vertex (a2) at (2,0) {$g$};
+      \vertex (b2) at (3,0);
+      % propagators
+      \propag [gluon] (a2) to (b2);
+      \propag (b2) to (p21);
+      \propag (b2) to (p22);
+    \end{feynhand}
+  \end{tikzpicture}
+  \caption{Isospin Conservation in QCD}
+  \label{fig:isospin}
+\end{figure}
+So in QCD, $u$ and $d$ are interchangeable. This is the reason for isospin.
+
+But, recall that $m_u\neq m_d$, how is it possible that we can interchange $u$ and $d$.
+\begin{TODO}
+  Add proton fig again
+\end{TODO}
+Recall the structure of the proton, and that $m_p\gg m_u,m_d$, this is because the proton mass is ``dynamical'' and is not due to the quark masses. So isospin is a good symmetry due to this difference in proton and up/down masses.
+
+In group theory terms, we say that $\pmqty{u\\d}$ transform as a doublet under $SU(2)$ isospin
+
+\begin{remark}
+  \underline{\textbf{WARNING}}: $SU(2)$ ``isospin'' has nothing to do with $SU(2)$ spin! The mathematics is the same, but the physics is entirely different!
+\end{remark}
+One consequence of isospin is that $m_p=m_n$, this means that $\pmqty{p\\n}$ transform as an isospin doublet. Historically, this was the motivation for Heisenberg to suggest isospin differentiated ``nucleons,'' like $s_z=\pm\frac12$ differentiates the degeneracy in spin $\frac12$ systems.
+\begin{note}
+  The nuclear physicists use the much better term ``isobaric'' spin.
+
+  E.g., Mirror nuclei, like $^7_3$Li/$^7_4$Be and $^{11}_5$B/$^{11}_6$C have nearly identical binding energies (after correcting for coulomb interaction)
+\end{note}
+
+\begin{definition}[Antiquarks]
+  The so called antiquarks $\bar{u}$ and $\bar{d}$ are simply defined to be the complex conjugate of $u,d$.
+
+  In group theory, this corresponds to $T_i$ representating the same algebra as $-T_i^*$:
+  \begin{align*}
+    \comm{T_i}{T_j}&=if_{ijk}T_k\\
+    \comm{T_i^*}{T_j^*}&=-if_{ijk}T_k^*\\
+    \implies\comm{(-T_i^*)}{(-T_j^*)}&=if_{ijk}(-T_k^*)
+  \end{align*}
+\end{definition}
+
+For $SU(2)$, the complex conjugate representation is unitarily equivalent to the original representation:
+\begin{align*}
+  \underbrace{\pmqty{&-1\\1}}_{U}\qty(-T_i^*)
+  \underbrace{\pmqty{&1\\-1}}_{U^\dag}=T_i
+\end{align*}
+For $T_i$ in the spin $\frac12$ representation, the representation is \underline{pseudoreal}.
+
+Antiquarks transform as the c.c. rep., called the $\bar{2}$ representation:
+\begin{align*}
+  -T_i^*\pmqty{\bar{u}\\\bar{d}}&=\pmqty{\bar{u}'\\\bar{d}'}\\
+  T_i\pmqty{-\bar{d}\\\bar{u}}&=\pmqty{-\bar{d}\\\bar{u}}
+\end{align*}
+Therefore, we can say that instead of using complex conjugate versions of the same algebra, we can use the usual spin-$\frac12$, instead on $\pmqty{-\bar{d}\\\bar{u}}$
+\begin{definition}[Pions]
+  Pions (or more generally mesons) are pairs of $q\bar{q}$, quarks and antiquarks.
+\end{definition}
+The strong interaction (QCD) not only binds quarks into $p,n$, it also binds quarks with antiquarks into \underline{pions}.
+
+\begin{figure}[H]
+  \centering
+  \begin{TODO}
+    Pion figure
+  \end{TODO}
+  \caption{Pion definition}
+  \label{fig:pion}
+\end{figure}
+The charge of the pion is given by the sum of the charges of the $u$ and $\bar{d}$ quarks, that is $+\frac23+\frac13=1$.
+
+In particular, pions are formed from the product of $\pmqty{u\\d}$ and $\pmqty{-\bar{d}\\u}$ isospin doublets. These are combined in the same way that we add spins:
+\begin{example}[Adding Spins]
+  Adding 2 spin-$\frac12$ particles, we have the following:
+  \begin{align*}
+    &\ket{J,J_z}\\
+    &\ket{1, 1}=\ket{\up\up}\\
+    &\ket{1, 0}
+    =\frac1{\sqrt{2}}\qty(\ket{\up\dn}+\ket{\dn\up})\\
+    &\ket{1,-1}=\ket{\dn\dn}\\
+    &\ket{0,0}
+    =\frac1{\sqrt{2}}\qty(\ket{\up\dn}-\ket{\dn\up})
+  \end{align*}
+  The first 3 are the spin 1 triplet, and the last 1 is the spin 0 singlet
+\end{example}
+\begin{example}[Adding IsoSpins]
+  The math is exactly the same, except instead of $\up/\dn$ we will have $u,\bar{u},d,-\bar{d}$
+  \begin{align*}
+    &\ket{I,I_3}\\
+    &\ket{1, 1}=\ket{u(-\bar{d})}\equiv\pi^+\\
+    &\ket{1, 0}=\frac1{\sqrt{2}}\qty(\ket{u\bar{u}+d(-\bar{d})})\equiv\pi^0\\
+    &\ket{1,-1}=\ket{d\bar{u}}\equiv\pi^-\\
+    &\ket{0,0}=\frac1{\sqrt{2}}\qty(\ket{u\bar{u}-d(-\bar{d})})\equiv???
+  \end{align*}
+  The first 3 are the isospin 1 triplet, the pions, and the last is different, we will come back to it
+\end{example}
+So, we have isospin doublets of $\pmqty{p\\n}$ and $\pmqty{-n\\p}$, and the isospin triplet of $\pmqty{\pi^+\\\pi^0\\\pi^-}$. The pion masses are:
+\begin{align*}
+  m_{\pi^\pm}&=\SI{139.56}{\mega\eV}\\
+  m_{\pi^0}&=\SI{134.97}{\mega\eV}
+\end{align*}
+\begin{note}
+  Isospin is \underline{not} a symmetry of the electromagnetic interaction, that is:
+  \begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[scale=2.0]
+    \begin{feynhand}
+      % vertices
+      \vertex (p11) at (1.5,0.5) {$u$};
+      \vertex (p12) at (1.5,-0.5) {$\bar{u}$};
+      \vertex (a1) at (0,0) {$\gamma$};
+      \vertex (b1) at (1,0);
+      % propagators
+      \propag [gluon] (a1) to (b1);
+      \propag (b1) to (p11);
+      \propag (b1) to (p12);
+      \vertex (eq) at (1.75,0) {$\neq$};
+      % vertices
+      \vertex (p21) at (3.5,0.5) {$d$};
+      \vertex (p22) at (3.5,-0.5) {$\bar{d}$};
+      \vertex (a2) at (2,0) {$\gamma$};
+      \vertex (b2) at (3,0);
+      % propagators
+      \propag [gluon] (a2) to (b2);
+      \propag (b2) to (p21);
+      \propag (b2) to (p22);
+    \end{feynhand}
+  \end{tikzpicture}
+  \caption{QED does \underline{not} care about isospin}
+  \label{fig:isospin}
+\end{figure}
+This is because the electromagnetic charge of $u$ and $d$ are not equal, $Q_u=+\frac23$ and $Q_d=-\frac13$
+\end{note}
+Isospin has \underline{dynamical} implications. Consider $\pi N$ ($N=n,p$), that is $\pi N\to\pi'N'$. Since $\pi$ has $I=1$ and $N$ has $I=\frac12$, the state $(\pi N)$ can have $I=\frac12,\frac32$. Since $I$ is conserved, all $\pi N$ scattering processes can be reduced to just $2$ amplitudes.
+
+\begin{example}[$\pi^+p\to\pi^+p$]
+  Isospin: $\ket{\frac32,\frac32}\to\ket{\frac32,\frac32}$.
+
+  The reaction is pure in isospin, so $A(\pi^+p\to\pi^+p)\equiv A_{3/2}$
+\end{example}
+Next consider a mixed process:
+\begin{example}[$\pi^-p\to\pi^-p$]
+  Isospin: We are adding $\ket{1,-1}$ to $\ket{\frac12,\frac12}$:
+  \begin{align*}
+    \ket{1,-1}\oplus\ket{\frac12,\frac12}
+    =\frac1{\sqrt{3}}\ket{\frac32,-\frac12}
+    -\sqrt{\frac23}\ket{\frac12,-\frac12}
+  \end{align*}
+  The reaction is no longer pure in isospin, but the amplitude would be the square of the coefficients: so $A(\pi^-p\to\pi^-p)= \frac13A_{3/2}+\frac23A_{1/2}$
+\end{example}
+The takeaway from this is that all ten $\pi N$ scattering amplitudes can be expressed in terms of $A_{3/2}$ and $A_{1/2}$.
+
+Isospin conservation also imposes important constraints on string interaction processes.
+
+\begin{example}[$d+d\to \,^4\text{He}+\pi^0$]
+  Since the deuteron $d$ is a combination of $p\oplus n$, $I=0$, a similar argument shows $I=0$ for $^4\text{He}$, but $\pi^0$ has $I=1$. Hence this process would violate isospin conservation, and can only occur electromagnetically. It was only in the mid-2000's that experimenters at Indiana University claimed a detection of this rare process.
+\end{example}
+
+\begin{example}
+  The branching fraction (\% of decays that occur in a given channel) for $\psi'\to J/\psi+\pi^0+\pi^0$ is $\sim20\%$, while $\psi'\to J/\psi+\pi^0$ is only $\sim0.1\%$. The $\psi'$ and $J/\psi$ are $c\bar{c}$ bound states ($I=0$), and again, the decay to one pion is inhibited, while the decay to two pions is not.
+\end{example}
+
+\begin{definition}{$\rho$ meson}
+  The pions have spin $0$, the quark and antiquark have opposite spin:
+  \begin{align*}
+    \ket{\pi^+}=\ket{u(-\bar{d})}\otimes\underbrace{\frac1{\sqrt{2}}
+      \qty(\ket{\up\dn-\dn\up})}
+    _{\ket{0,0}\text{ state}}
+  \end{align*}
+  There is also a state with aligned spins:
+  \begin{align*}
+    \ket{\rho^+}=\ket{u(-\bar{d})}\otimes
+    \begin{cases}
+      \ket{\up\up} & =\ket{1,1} \\
+      \frac1{\sqrt{2}}\ket{\up\dn+\dn\up}
+      & =\ket{1,0} \\
+      \ket{\dn\dn} & =\ket{1,-1}
+    \end{cases}
+  \end{align*}
+\end{definition}
+The $\rho$ (``rho'') is a spin-1 particle and an isospin triplet (like the pion):
+\begin{align*}
+  \pmqty{\rho^+\\\rho^0\\\rho^-}\text{ Isospin triplet}\quad
+  m_{\rho^\pm}\approx m_{\rho^0}\equiv m_{\rho}\approx\SI{770}{\MeV}
+\end{align*}
+
+\begin{definition}{$\omega$ meson}
+  This is the $I=0$ version of the $\rho$:
+  \begin{align*}
+    \ket{\omega}=\frac1{\sqrt{2}}\qty(\ket{u\bar{u}}+\ket{d(-\bar{d})})
+    \otimes
+    \begin{cases}
+      \ket{\up\up} & =\ket{1,1} \\
+      \frac1{\sqrt{2}}\ket{\up\dn+\dn\up}
+      & =\ket{1,0} \\
+      \ket{\dn\dn} & =\ket{1,-1}
+    \end{cases}
+  \end{align*}
+\end{definition}
+The $\omega$ is a singlet and has mass $m_\omega=\SI{783}{\MeV}\approx m_\rho$, this is NOT a consequence of isospin.
+
+We will return to $I=0$ version of the pion later.
+
+\subsection{Nomenclature}
+\begin{definition}[Hadron]
+  A hadron is a particle composed of quarks and/or antiquarks:
+  \begin{enumerate}[label=(\alph*)]
+  \item \underline{Mesons}: $q\bar{q}$ pairs like $\pi,\rho,\omega$
+  \item \underline{Baryons}: $qqq$ states like $p,n$,
+
+    Antibaryons are $\bar{q}\bar{q}\bar{q}$ states
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[$\Delta$ baryon]
+  This is the $I=\frac32$, $J=\frac32$ version of the proton:
+  \begin{align*}
+    \Delta^{++}&=``uuu''\\
+    \Delta^{+ }&=``uud''\\
+    \Delta^{0 }&=``udd''\\
+    \Delta^{- }&=``ddd''
+  \end{align*}
+  With mass $m_\Delta=\SI{1232}{\MeV}$, we will write these more carefully in a moment.
+\end{definition}
+Consider the $\Delta^{++}$ with $J_z=+\frac32$, this is the state $\ket{\Delta^{++},J_z=+\frac32}=\ket{uuu}\otimes\ket{\up\up\up}$
+This state is totally symmetric under the interchange of any pair of quarks. But the Pauli statistics that govern fermions insist this must be antisymmetric!
+
+The solution? Color. We now write the state as $\ket{\Delta^{++},J_z=+\frac32}=\frac1{\sqrt{6}}\veps_{ijk}\ket{uuu}\otimes\ket{\up\up\up}$, where $i=1,2,3$ are the 3 ``colors'' red, green, blue. Thus we have totally symmetric \underline{quark} and \underline{spin} states, but an antiymmetric \underline{color} state, with a general state of
+\begin{align*}
+  \psi=\psi(\text{space})\otimes
+  \psi(\text{flavor})\otimes
+  \psi(\text{spin})\otimes
+  \psi(\text{color})
+\end{align*}
+So the $\Delta$ states have ``flavor'' structure of:
+\begin{align*}
+  \Delta^{++}&=\ket{uuu}\\
+  \Delta^{+ }&=\frac1{\sqrt{3}}\ket{uud+udu+duu}\\
+  \Delta^{0 }&=\frac1{\sqrt{3}}\ket{udd+dud+ddu}\\
+  \Delta^{- }&=\ket{ddd}
+\end{align*}
+With the color indices and spin states suppressed.
+
+\textbf{Question}: The proton has $J=\frac12$. Is there are $\ket{uuu}$ state with $J=\frac12$? No, only $J=\frac32$ has a completely symmetric spin of three spin-$\frac12$ quarks
+
+\subsection{Proton and Neutron}
+$p,n,$ and $\Delta$ are all constructed from three $I=\frac12$ doublets:
+\begin{align*}
+  \pmqty{u\\d}\otimes\pmqty{u\\d}=
+  \begin{cases}
+    uu \\ \frac1{\sqrt{2}}(ud+du) \\ dd \\
+    \frac1{\sqrt{2}}(ud-du)
+  \end{cases}
+\end{align*}
+With the first 3 being isospin 1 and the last isospin 0.
+
+In the language of group theory, this is:
+\begin{align*}
+  \underbrace{2}_{\text{doublet}}\otimes 2 = \underbrace{3}_{\text{triplet}}
+  \oplus \underbrace{1}_{\text{singlet}}
+\end{align*}
+Let's add the third quark:
+\begin{align*}
+  \pmqty{u\\d}\otimes
+  \pmqty{uu\\\frac1{\sqrt{2}}(ud+du)\\dd}
+  =\pmqty{uuu\\\frac1{\sqrt{3}}duu+\sqrt{\frac23}u\frac1{\sqrt{2}}(ud+du)\\
+    \frac1{\sqrt{3}}udd+\sqrt{\frac23}d\frac1{\sqrt{2}}(ud+du)\\ ddd}
+  \oplus \pmqty{\sqrt{\frac23}duu-\frac1{\sqrt{6}}u(ud+du)\\
+  \frac1{\sqrt{6}}d(ud+du)-\sqrt{\frac23}udd}
+\end{align*}
+Or $2\otimes3=4\oplus2$, The 4 is clearly the $\Delta$, but the doublet is NOT the $p,n$ doublet, since it is not symmetric in exchange of the first 2 quarks.
+
+Of course there is also the state from $2\otimes 1$:
+\begin{align*}
+  \pmqty{u\\d}\otimes\frac1{\sqrt{2}}\qty(ud-du)=
+  \begin{cases}
+    \frac{1}{\sqrt{2}}u(ud-du)\\
+    \frac{1}{\sqrt{2}}d(ud-du)
+  \end{cases}
+\end{align*}
+Which is antisymmetric in the last two quarks.
+
+Group theory: $2\otimes2\otimes2=2\otimes(3\oplus1)=4\oplus2_S\oplus2_A$, where $S,A$ mean symmetric/antisymmetric in the last 2 quarks.
+
+To build $p,n$, we need to combine isospin with spin to make a totally symmetric state. Color will then make it antisymmetric as before.
+
+We've shown spin and isospin share the same mathematics. Let's use that property. For spin, we also get $2\otimes2\otimes2=4\oplus2_S\oplus2_A$. So $\Delta=(4,4)$, where the first is isospin and the second is spin. This means that $p,n=(2_S,2_S)\oplus(2_A,2_A)$.
+
+So to construct $p$ with $J_z=+\frac12$:
+\begin{align*}
+  \qty[\sqrt{\frac23}duu-\frac1{\sqrt{6}}u(ud+du)]\otimes
+  \qty[\sqrt{\frac23}\dn\up\up-\frac1{\sqrt{6}}\up(\up\dn+\dn\up)]\oplus
+  \qty[\frac1{\sqrt{2}}u(ud-du)]\otimes
+  \qty[\frac1{\sqrt{2}}\up(\up\dn-\dn\up)]\\
+  \equiv duu\qty[\frac23\dn\up\up-\frac13\up\up\dn-\frac13\up\dn\up]
+  uud\qty[-\frac13\dn\up\up+\frac23\up\up\dn-\frac13\up\dn\up]
+  udu\qty[-\frac13\dn\up\up-\frac13\up\up\dn+\frac23\up\dn\up]
+\end{align*}
+There is also an overall normalization of $\frac1{\sqrt{2}}$
+
+State is symmetric under all interchanges.
+
+Summary of hadrons composed of $u,d$ quarks:
+
+\paragraph{Mesons}
+\begin{align*}
+  &J=0,I=1&\qquad & \pi^-,\pi^0,\pi^+   \qquad &m_\pi\approx\SI{140}{\MeV}\\
+  &J=1,I=1&\qquad & \rho^-,\rho^0,\rho^+\qquad &m_\rho\approx\SI{776}{\MeV}\\
+  &I=0    &\qquad & \omega              \qquad &m_\omega\approx\SI{783}{\MeV}
+\end{align*}
+
+\paragraph{Baryons}
+\begin{align*}
+  &J=\frac12,I=\frac12 &\qquad
+  & n,p \qquad
+  &m_{p/n}\approx\SI{939.565}{\MeV}\\
+  &J=\frac32,I=\frac32 &\qquad
+  & \Delta^-,\Delta^0,\Delta^+,\Delta^{++}\qquad
+  &m_\rho\approx\SI{1232}{\MeV}
+\end{align*}
+
+\subsection{Broken Symmetry}
+We have $p=uud$ and $n=udd$, with $m_N\sim\SI{938}{\MeV}$, which means the constituent quark masses should be $m_u,m_d\sim\SI{300}{\MeV}$, this is consistent across the $\rho,\omega$, not so much the $\Delta$, but approximately.
+
+However, the $\pi$ is not consistent with this, in fact $m_\pi\approx\SI{140}{\MeV}\ll\rho(775)$
