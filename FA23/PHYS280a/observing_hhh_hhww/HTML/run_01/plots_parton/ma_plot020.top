@@ -1,0 +1,55 @@
+SET DEVICE POSTSCRIPT ORIENT=3
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " pt(mu-1)           "
+  TITLE BOTTOM "pt                  "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000  500.00000
+  SET ORDER X Y 
+      15.0000       0.0000E+00
+      25.0000       0.4110E-04
+      35.0000       0.4110E-04
+      45.0000       0.4110E-04
+      55.0000       0.1370E-04
+      65.0000       0.2740E-04
+      75.0000       0.2740E-04
+      85.0000       0.2740E-04
+      95.0000       0.1370E-04
+     105.0000       0.0000E+00
+     115.0000       0.1370E-04
+     125.0000       0.0000E+00
+     135.0000       0.2740E-04
+     145.0000       0.2740E-04
+     155.0000       0.1370E-04
+     165.0000       0.0000E+00
+     175.0000       0.2740E-04
+     185.0000       0.1370E-04
+     195.0000       0.0000E+00
+     225.0000       0.0000E+00
+     235.0000       0.1370E-04
+     245.0000       0.0000E+00
+     255.0000       0.1370E-04
+     265.0000       0.0000E+00
+     355.0000       0.0000E+00
+     365.0000       0.1370E-04
+     375.0000       0.0000E+00
+     395.0000       0.0000E+00
+     405.0000       0.1370E-04
+     415.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 2.247E-03(pb)   AVG = 1.180E+02   RMS = 9.466E+01"
+  TITLE 3.8 1.1 "Tot # Evts =     164  Entries =      30  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2

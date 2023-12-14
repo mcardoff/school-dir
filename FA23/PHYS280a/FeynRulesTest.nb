@@ -1,0 +1,86 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2456,         76]
+NotebookOptionsPosition[      1790,         57]
+NotebookOutlinePosition[      2191,         73]
+CellTagsIndexPosition[      2148,         70]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<FeynRules`\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.906037407044566*^9, 3.906037410167266*^9}, {
+  3.906037568893196*^9, 3.906037577215667*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"8a4c8015-18ff-4a07-b014-2fc48dc3f814"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Get", "noopen", 
+   "\"Cannot open \
+\\!\\(\\*RowBox[{\\\"\\\\\\\"FeynRules`\\\\\\\"\\\"}]\\).\"", 2, 1, 1, 
+   18361074659845457025, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.906037578143682*^9},
+ CellLabel->
+  "During evaluation of \
+In[1]:=",ExpressionUUID->"01795d56-4ef7-4376-9ba2-0be0cdce20b7"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Needs", "nocont", 
+   "\"Context \\!\\(\\*RowBox[{\\\"\\\\\\\"FeynRules`\\\\\\\"\\\"}]\\) was \
+not created when Needs was evaluated.\"", 2, 1, 2, 18361074659845457025, 
+   "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.906037578229081*^9},
+ CellLabel->
+  "During evaluation of \
+In[1]:=",ExpressionUUID->"914917e8-adf1-412b-8da5-aa18beee84e8"],
+
+Cell[BoxData["$Failed"], "Output",
+ CellChangeTimes->{3.906037578252118*^9},
+ CellLabel->"Out[1]=",ExpressionUUID->"99d99ad8-9f2e-47ee-b8e1-8bb55e99f3b3"]
+}, Open  ]]
+},
+WindowSize->{1419., 772.5},
+WindowMargins->{{Automatic, -1429.5}, {10.5, Automatic}},
+FrontEndVersion->"13.1 for Linux x86 (64-bit) (June 16, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"9ca474d0-e155-4817-b036-777e9b845b54"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 268, 4, 29, "Input",ExpressionUUID->"8a4c8015-18ff-4a07-b014-2fc48dc3f814"],
+Cell[851, 28, 362, 10, 28, "Message",ExpressionUUID->"01795d56-4ef7-4376-9ba2-0be0cdce20b7"],
+Cell[1216, 40, 401, 10, 28, "Message",ExpressionUUID->"914917e8-adf1-412b-8da5-aa18beee84e8"],
+Cell[1620, 52, 154, 2, 56, "Output",ExpressionUUID->"99d99ad8-9f2e-47ee-b8e1-8bb55e99f3b3"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

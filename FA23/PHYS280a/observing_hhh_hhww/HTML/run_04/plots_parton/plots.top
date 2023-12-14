@@ -1,0 +1,5553 @@
+ SET DEVICE POSTSCRIPT ORIENT=3
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " Weights            "
+  TITLE BOTTOM "wgt                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    2.00000
+  SET ORDER X Y 
+       0.9900       0.0000E+00
+       1.0100       0.8579E-02
+       1.0300       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 1.010E+00   RMS = 0.000E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     681  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " # jet              "
+  TITLE BOTTOM "# particles         "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X   -0.50000   10.50000
+  SET ORDER X Y 
+       1.0000       0.0000E+00
+       2.0000       0.8579E-02
+       3.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.000E+00   RMS = 0.000E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     681  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " # b                "
+  TITLE BOTTOM "# particles         "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X   -0.50000   10.50000
+  SET ORDER X Y 
+       1.0000       0.0000E+00
+       2.0000       0.8579E-02
+       3.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.000E+00   RMS = 0.000E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     681  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " # e+               "
+  TITLE BOTTOM "# particles         "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X   -0.50000   10.50000
+  SET ORDER X Y 
+       0.0000       0.3112E-02
+       1.0000       0.3590E-02
+       2.0000       0.1877E-02
+       3.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 8.561E-01   RMS = 7.489E-01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     681  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " # mu+              "
+  TITLE BOTTOM "# particles         "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X   -0.50000   10.50000
+  SET ORDER X Y 
+       0.0000       0.3515E-02
+       1.0000       0.3590E-02
+       2.0000       0.1474E-02
+       3.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 7.621E-01   RMS = 7.245E-01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     681  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " # e-               "
+  TITLE BOTTOM "# particles         "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X   -0.50000   10.50000
+  SET ORDER X Y 
+       0.0000       0.7395E-02
+       1.0000       0.8692E-03
+       2.0000       0.3149E-03
+       3.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 1.747E-01   RMS = 4.665E-01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     681  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " # mu-              "
+  TITLE BOTTOM "# particles         "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X   -0.50000   10.50000
+  SET ORDER X Y 
+       0.0000       0.7256E-02
+       1.0000       0.8692E-03
+       2.0000       0.4535E-03
+       3.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.070E-01   RMS = 5.195E-01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     681  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " Ecm                "
+  TITLE BOTTOM "Ecm                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1000.00000
+  SET ORDER X Y 
+     610.0000       0.0000E+00
+     630.0000       0.1260E-04
+     650.0000       0.0000E+00
+     690.0000       0.0000E+00
+     710.0000       0.2520E-04
+     730.0000       0.1260E-04
+     750.0000       0.0000E+00
+     770.0000       0.0000E+00
+     790.0000       0.3779E-04
+     810.0000       0.0000E+00
+     830.0000       0.2520E-04
+     850.0000       0.1260E-04
+     870.0000       0.1260E-04
+     890.0000       0.2520E-04
+     910.0000       0.1260E-04
+     930.0000       0.0000E+00
+     950.0000       0.1260E-04
+     970.0000       0.2520E-04
+     990.0000       0.5039E-04
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 8.605E+02   RMS = 1.059E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =      21  Undersc =     0  Oversc =   660"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " Ht                 "
+  TITLE BOTTOM "HT                  "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+     230.0000       0.0000E+00
+     250.0000       0.1260E-04
+     270.0000       0.1260E-04
+     290.0000       0.2520E-04
+     310.0000       0.7559E-04
+     330.0000       0.1134E-03
+     350.0000       0.1134E-03
+     370.0000       0.2520E-03
+     390.0000       0.1386E-03
+     410.0000       0.3653E-03
+     430.0000       0.2268E-03
+     450.0000       0.3527E-03
+     470.0000       0.2394E-03
+     490.0000       0.4157E-03
+     510.0000       0.3779E-03
+     530.0000       0.2268E-03
+     550.0000       0.3149E-03
+     570.0000       0.2520E-03
+     590.0000       0.3653E-03
+     610.0000       0.2897E-03
+     630.0000       0.2645E-03
+     650.0000       0.2142E-03
+     670.0000       0.1890E-03
+     690.0000       0.2268E-03
+     710.0000       0.2268E-03
+     730.0000       0.2268E-03
+     750.0000       0.1890E-03
+     770.0000       0.2016E-03
+     790.0000       0.1512E-03
+     810.0000       0.1512E-03
+     830.0000       0.7559E-04
+     850.0000       0.1260E-03
+     870.0000       0.1512E-03
+     890.0000       0.1512E-03
+     910.0000       0.8818E-04
+     930.0000       0.1134E-03
+     950.0000       0.8818E-04
+     970.0000       0.1386E-03
+     990.0000       0.6299E-04
+    1010.0000       0.6299E-04
+    1030.0000       0.7559E-04
+    1050.0000       0.8818E-04
+    1070.0000       0.7559E-04
+    1090.0000       0.5039E-04
+    1110.0000       0.7559E-04
+    1130.0000       0.2520E-04
+    1150.0000       0.6299E-04
+    1170.0000       0.2520E-04
+    1190.0000       0.1260E-04
+    1210.0000       0.3779E-04
+    1230.0000       0.2520E-04
+    1250.0000       0.5039E-04
+    1270.0000       0.2520E-04
+    1290.0000       0.1260E-04
+    1310.0000       0.3779E-04
+    1330.0000       0.2520E-04
+    1350.0000       0.6299E-04
+    1370.0000       0.5039E-04
+    1390.0000       0.3779E-04
+    1410.0000       0.1260E-04
+    1430.0000       0.2520E-04
+    1450.0000       0.3779E-04
+    1470.0000       0.0000E+00
+    1490.0000       0.1260E-04
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 6.777E+02   RMS = 2.572E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     652  Undersc =     0  Oversc =    29"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " Missing ET         "
+  TITLE BOTTOM "ET                  "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000  500.00000
+  SET ORDER X Y 
+       5.0000       0.1512E-03
+      15.0000       0.3023E-03
+      25.0000       0.4031E-03
+      35.0000       0.5291E-03
+      45.0000       0.5795E-03
+      55.0000       0.8944E-03
+      65.0000       0.7811E-03
+      75.0000       0.4913E-03
+      85.0000       0.5795E-03
+      95.0000       0.4031E-03
+     105.0000       0.3401E-03
+     115.0000       0.3779E-03
+     125.0000       0.3779E-03
+     135.0000       0.2771E-03
+     145.0000       0.2142E-03
+     155.0000       0.1638E-03
+     165.0000       0.2394E-03
+     175.0000       0.1764E-03
+     185.0000       0.2394E-03
+     195.0000       0.8818E-04
+     205.0000       0.1512E-03
+     215.0000       0.5039E-04
+     225.0000       0.7559E-04
+     235.0000       0.6299E-04
+     245.0000       0.6299E-04
+     255.0000       0.5039E-04
+     265.0000       0.5039E-04
+     275.0000       0.3779E-04
+     285.0000       0.3779E-04
+     295.0000       0.2520E-04
+     305.0000       0.1260E-04
+     315.0000       0.1260E-04
+     325.0000       0.2520E-04
+     335.0000       0.3779E-04
+     345.0000       0.0000E+00
+     355.0000       0.3779E-04
+     365.0000       0.0000E+00
+     375.0000       0.1260E-04
+     385.0000       0.1260E-04
+     395.0000       0.1260E-04
+     405.0000       0.0000E+00
+     415.0000       0.1260E-04
+     425.0000       0.0000E+00
+     435.0000       0.2520E-04
+     445.0000       0.1260E-04
+     455.0000       0.1260E-04
+     465.0000       0.3779E-04
+     475.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 1.040E+02   RMS = 7.921E+01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     673  Undersc =     0  Oversc =     8"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " pt(jet1)           "
+  TITLE BOTTOM "pt                  "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000  500.00000
+  SET ORDER X Y 
+      15.0000       0.0000E+00
+      25.0000       0.3779E-04
+      35.0000       0.1890E-03
+      45.0000       0.3401E-03
+      55.0000       0.3023E-03
+      65.0000       0.5669E-03
+      75.0000       0.3779E-03
+      85.0000       0.5669E-03
+      95.0000       0.5921E-03
+     105.0000       0.5795E-03
+     115.0000       0.3779E-03
+     125.0000       0.4787E-03
+     135.0000       0.3527E-03
+     145.0000       0.3401E-03
+     155.0000       0.3779E-03
+     165.0000       0.2645E-03
+     175.0000       0.2142E-03
+     185.0000       0.2897E-03
+     195.0000       0.2897E-03
+     205.0000       0.1890E-03
+     215.0000       0.1512E-03
+     225.0000       0.1638E-03
+     235.0000       0.8818E-04
+     245.0000       0.1008E-03
+     255.0000       0.1134E-03
+     265.0000       0.1386E-03
+     275.0000       0.1134E-03
+     285.0000       0.1008E-03
+     295.0000       0.1008E-03
+     305.0000       0.7559E-04
+     315.0000       0.6299E-04
+     325.0000       0.1260E-04
+     335.0000       0.8818E-04
+     345.0000       0.2520E-04
+     355.0000       0.3779E-04
+     365.0000       0.1260E-04
+     375.0000       0.7559E-04
+     385.0000       0.3779E-04
+     395.0000       0.6299E-04
+     405.0000       0.5039E-04
+     415.0000       0.2520E-04
+     425.0000       0.3779E-04
+     435.0000       0.1260E-04
+     445.0000       0.0000E+00
+     455.0000       0.0000E+00
+     465.0000       0.1260E-04
+     475.0000       0.0000E+00
+     485.0000       0.1260E-04
+     495.0000       0.1260E-04
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 1.503E+02   RMS = 9.001E+01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     671  Undersc =     0  Oversc =    10"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " pt(jet2)           "
+  TITLE BOTTOM "pt                  "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000  500.00000
+  SET ORDER X Y 
+      15.0000       0.0000E+00
+      25.0000       0.1587E-02
+      35.0000       0.1449E-02
+      45.0000       0.1008E-02
+      55.0000       0.9574E-03
+      65.0000       0.8818E-03
+      75.0000       0.5921E-03
+      85.0000       0.5417E-03
+      95.0000       0.3905E-03
+     105.0000       0.2394E-03
+     115.0000       0.1512E-03
+     125.0000       0.7559E-04
+     135.0000       0.1638E-03
+     145.0000       0.1260E-03
+     155.0000       0.6299E-04
+     165.0000       0.5039E-04
+     175.0000       0.7559E-04
+     185.0000       0.5039E-04
+     195.0000       0.2520E-04
+     205.0000       0.3779E-04
+     215.0000       0.0000E+00
+     225.0000       0.2520E-04
+     235.0000       0.0000E+00
+     245.0000       0.2520E-04
+     255.0000       0.0000E+00
+     265.0000       0.0000E+00
+     275.0000       0.1260E-04
+     285.0000       0.2520E-04
+     295.0000       0.0000E+00
+     315.0000       0.0000E+00
+     325.0000       0.1260E-04
+     335.0000       0.0000E+00
+     365.0000       0.0000E+00
+     375.0000       0.1260E-04
+     385.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 6.413E+01   RMS = 4.415E+01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     681  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " pt(b1)             "
+  TITLE BOTTOM "pt                  "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000  500.00000
+  SET ORDER X Y 
+      15.0000       0.0000E+00
+      25.0000       0.1260E-04
+      35.0000       0.1008E-03
+      45.0000       0.1134E-03
+      55.0000       0.2394E-03
+      65.0000       0.4283E-03
+      75.0000       0.4283E-03
+      85.0000       0.6173E-03
+      95.0000       0.6047E-03
+     105.0000       0.4787E-03
+     115.0000       0.6047E-03
+     125.0000       0.5795E-03
+     135.0000       0.3527E-03
+     145.0000       0.3023E-03
+     155.0000       0.2142E-03
+     165.0000       0.3149E-03
+     175.0000       0.3401E-03
+     185.0000       0.2142E-03
+     195.0000       0.2645E-03
+     205.0000       0.2016E-03
+     215.0000       0.2897E-03
+     225.0000       0.2520E-03
+     235.0000       0.1512E-03
+     245.0000       0.1260E-03
+     255.0000       0.2142E-03
+     265.0000       0.1008E-03
+     275.0000       0.7559E-04
+     285.0000       0.7559E-04
+     295.0000       0.2520E-04
+     305.0000       0.6299E-04
+     315.0000       0.6299E-04
+     325.0000       0.3779E-04
+     335.0000       0.3779E-04
+     345.0000       0.6299E-04
+     355.0000       0.6299E-04
+     365.0000       0.1260E-04
+     375.0000       0.3779E-04
+     385.0000       0.2520E-04
+     395.0000       0.2520E-04
+     405.0000       0.1260E-04
+     415.0000       0.2520E-04
+     425.0000       0.3779E-04
+     435.0000       0.3779E-04
+     445.0000       0.2520E-04
+     455.0000       0.3779E-04
+     465.0000       0.3779E-04
+     475.0000       0.2520E-04
+     485.0000       0.2520E-04
+     495.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 1.585E+02   RMS = 9.079E+01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     668  Undersc =     0  Oversc =    13"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " pt(b2)             "
+  TITLE BOTTOM "pt                  "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000  500.00000
+  SET ORDER X Y 
+       5.0000       0.3401E-03
+      15.0000       0.6803E-03
+      25.0000       0.1071E-02
+      35.0000       0.1083E-02
+      45.0000       0.1298E-02
+      55.0000       0.9448E-03
+      65.0000       0.8188E-03
+      75.0000       0.5417E-03
+      85.0000       0.3653E-03
+      95.0000       0.3401E-03
+     105.0000       0.1008E-03
+     115.0000       0.2142E-03
+     125.0000       0.2142E-03
+     135.0000       0.8818E-04
+     145.0000       0.7559E-04
+     155.0000       0.8818E-04
+     165.0000       0.6299E-04
+     175.0000       0.6299E-04
+     185.0000       0.1260E-04
+     195.0000       0.2520E-04
+     205.0000       0.1260E-04
+     215.0000       0.0000E+00
+     225.0000       0.1260E-04
+     235.0000       0.0000E+00
+     245.0000       0.3779E-04
+     255.0000       0.1260E-04
+     265.0000       0.1260E-04
+     275.0000       0.0000E+00
+     285.0000       0.3779E-04
+     295.0000       0.0000E+00
+     355.0000       0.0000E+00
+     365.0000       0.1260E-04
+     375.0000       0.0000E+00
+     465.0000       0.0000E+00
+     475.0000       0.1260E-04
+     485.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 5.990E+01   RMS = 4.760E+01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     681  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " pt(e+1)            "
+  TITLE BOTTOM "pt                  "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000  500.00000
+  SET ORDER X Y 
+       5.0000       0.1386E-03
+      15.0000       0.3401E-03
+      25.0000       0.4787E-03
+      35.0000       0.5165E-03
+      45.0000       0.5795E-03
+      55.0000       0.4661E-03
+      65.0000       0.3653E-03
+      75.0000       0.4661E-03
+      85.0000       0.3653E-03
+      95.0000       0.2520E-03
+     105.0000       0.1764E-03
+     115.0000       0.6299E-04
+     125.0000       0.1008E-03
+     135.0000       0.1260E-03
+     145.0000       0.1386E-03
+     155.0000       0.1260E-04
+     165.0000       0.1134E-03
+     175.0000       0.2520E-04
+     185.0000       0.3779E-04
+     195.0000       0.6299E-04
+     205.0000       0.3779E-04
+     215.0000       0.1260E-04
+     225.0000       0.1260E-04
+     235.0000       0.0000E+00
+     245.0000       0.3779E-04
+     255.0000       0.2520E-04
+     265.0000       0.3779E-04
+     275.0000       0.6299E-04
+     285.0000       0.1260E-04
+     295.0000       0.0000E+00
+     305.0000       0.1260E-04
+     315.0000       0.0000E+00
+     325.0000       0.0000E+00
+     335.0000       0.2520E-04
+     345.0000       0.2520E-04
+     355.0000       0.2520E-04
+     365.0000       0.2520E-04
+     375.0000       0.2520E-04
+     385.0000       0.1260E-04
+     395.0000       0.1260E-04
+     405.0000       0.0000E+00
+     415.0000       0.0000E+00
+     425.0000       0.1260E-04
+     435.0000       0.0000E+00
+     445.0000       0.1260E-04
+     455.0000       0.1260E-04
+     465.0000       0.0000E+00
+     475.0000       0.0000E+00
+     485.0000       0.1260E-04
+     495.0000       0.1260E-04
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 8.852E+01   RMS = 8.487E+01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     420  Undersc =     0  Oversc =    14"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " pt(e+2)            "
+  TITLE BOTTOM "pt                  "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000  500.00000
+  SET ORDER X Y 
+       5.0000       0.1638E-03
+      15.0000       0.3149E-03
+      25.0000       0.3779E-03
+      35.0000       0.2645E-03
+      45.0000       0.1638E-03
+      55.0000       0.1890E-03
+      65.0000       0.6299E-04
+      75.0000       0.8818E-04
+      85.0000       0.0000E+00
+      95.0000       0.1260E-04
+     105.0000       0.3779E-04
+     115.0000       0.5039E-04
+     125.0000       0.0000E+00
+     135.0000       0.0000E+00
+     145.0000       0.1260E-04
+     155.0000       0.1260E-04
+     165.0000       0.1260E-04
+     175.0000       0.2520E-04
+     185.0000       0.0000E+00
+     205.0000       0.0000E+00
+     215.0000       0.1260E-04
+     225.0000       0.1260E-04
+     235.0000       0.1260E-04
+     245.0000       0.0000E+00
+     255.0000       0.1260E-04
+     265.0000       0.0000E+00
+     275.0000       0.0000E+00
+     285.0000       0.1260E-04
+     295.0000       0.0000E+00
+     315.0000       0.0000E+00
+     325.0000       0.1260E-04
+     335.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 5.007E+01   RMS = 5.478E+01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     148  Undersc =     0  Oversc =     1"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " pt(mu+1)           "
+  TITLE BOTTOM "pt                  "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000  500.00000
+  SET ORDER X Y 
+       5.0000       0.1638E-03
+      15.0000       0.4409E-03
+      25.0000       0.4913E-03
+      35.0000       0.6299E-03
+      45.0000       0.5039E-03
+      55.0000       0.3401E-03
+      65.0000       0.3905E-03
+      75.0000       0.2520E-03
+      85.0000       0.3023E-03
+      95.0000       0.1008E-03
+     105.0000       0.1764E-03
+     115.0000       0.1386E-03
+     125.0000       0.1134E-03
+     135.0000       0.8818E-04
+     145.0000       0.8818E-04
+     155.0000       0.5039E-04
+     165.0000       0.5039E-04
+     175.0000       0.6299E-04
+     185.0000       0.3779E-04
+     195.0000       0.6299E-04
+     205.0000       0.1260E-04
+     215.0000       0.3779E-04
+     225.0000       0.6299E-04
+     235.0000       0.2520E-04
+     245.0000       0.5039E-04
+     255.0000       0.1260E-04
+     265.0000       0.1260E-04
+     275.0000       0.3779E-04
+     285.0000       0.3779E-04
+     295.0000       0.5039E-04
+     305.0000       0.0000E+00
+     315.0000       0.2520E-04
+     325.0000       0.2520E-04
+     335.0000       0.1260E-04
+     345.0000       0.1260E-04
+     355.0000       0.1260E-04
+     365.0000       0.0000E+00
+     395.0000       0.0000E+00
+     405.0000       0.2520E-04
+     415.0000       0.0000E+00
+     425.0000       0.1260E-04
+     435.0000       0.1260E-04
+     445.0000       0.1260E-04
+     455.0000       0.1260E-04
+     465.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 8.614E+01   RMS = 8.381E+01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     396  Undersc =     0  Oversc =     6"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " pt(mu+2)           "
+  TITLE BOTTOM "pt                  "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000  500.00000
+  SET ORDER X Y 
+       5.0000       0.1260E-03
+      15.0000       0.2771E-03
+      25.0000       0.2645E-03
+      35.0000       0.2520E-03
+      45.0000       0.2016E-03
+      55.0000       0.6299E-04
+      65.0000       0.7559E-04
+      75.0000       0.1260E-04
+      85.0000       0.3779E-04
+      95.0000       0.2520E-04
+     105.0000       0.0000E+00
+     115.0000       0.0000E+00
+     125.0000       0.2520E-04
+     135.0000       0.1260E-04
+     145.0000       0.0000E+00
+     155.0000       0.0000E+00
+     165.0000       0.1260E-04
+     175.0000       0.0000E+00
+     185.0000       0.2520E-04
+     195.0000       0.1260E-04
+     205.0000       0.1260E-04
+     215.0000       0.0000E+00
+     225.0000       0.1260E-04
+     235.0000       0.0000E+00
+     275.0000       0.0000E+00
+     285.0000       0.1260E-04
+     295.0000       0.0000E+00
+     385.0000       0.0000E+00
+     395.0000       0.1260E-04
+     405.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 4.902E+01   RMS = 5.796E+01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     117  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " pt(e-1)            "
+  TITLE BOTTOM "pt                  "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000  500.00000
+  SET ORDER X Y 
+       5.0000       0.1260E-04
+      15.0000       0.6299E-04
+      25.0000       0.6299E-04
+      35.0000       0.1638E-03
+      45.0000       0.1386E-03
+      55.0000       0.1134E-03
+      65.0000       0.5039E-04
+      75.0000       0.7559E-04
+      85.0000       0.5039E-04
+      95.0000       0.6299E-04
+     105.0000       0.8818E-04
+     115.0000       0.3779E-04
+     125.0000       0.3779E-04
+     135.0000       0.2520E-04
+     145.0000       0.0000E+00
+     155.0000       0.1260E-04
+     165.0000       0.2520E-04
+     175.0000       0.1260E-04
+     185.0000       0.1260E-04
+     195.0000       0.1260E-04
+     205.0000       0.0000E+00
+     215.0000       0.0000E+00
+     225.0000       0.1260E-04
+     235.0000       0.1260E-04
+     245.0000       0.2520E-04
+     255.0000       0.1260E-04
+     265.0000       0.5039E-04
+     275.0000       0.0000E+00
+     285.0000       0.1260E-04
+     295.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 9.032E+01   RMS = 7.012E+01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =      94  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " pt(e-2)            "
+  TITLE BOTTOM "pt                  "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000  500.00000
+  SET ORDER X Y 
+       5.0000       0.0000E+00
+      15.0000       0.2520E-04
+      25.0000       0.8818E-04
+      35.0000       0.7559E-04
+      45.0000       0.2520E-04
+      55.0000       0.2520E-04
+      65.0000       0.2520E-04
+      75.0000       0.5039E-04
+      85.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 4.180E+01   RMS = 1.954E+01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =      25  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " pt(mu-1)           "
+  TITLE BOTTOM "pt                  "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000  500.00000
+  SET ORDER X Y 
+       5.0000       0.0000E+00
+      15.0000       0.7559E-04
+      25.0000       0.1134E-03
+      35.0000       0.1386E-03
+      45.0000       0.1638E-03
+      55.0000       0.1386E-03
+      65.0000       0.1512E-03
+      75.0000       0.1008E-03
+      85.0000       0.1008E-03
+      95.0000       0.5039E-04
+     105.0000       0.2520E-04
+     115.0000       0.3779E-04
+     125.0000       0.1260E-04
+     135.0000       0.2520E-04
+     145.0000       0.3779E-04
+     155.0000       0.2520E-04
+     165.0000       0.1260E-04
+     175.0000       0.1260E-04
+     185.0000       0.2520E-04
+     195.0000       0.0000E+00
+     205.0000       0.1260E-04
+     215.0000       0.0000E+00
+     225.0000       0.2520E-04
+     235.0000       0.0000E+00
+     285.0000       0.0000E+00
+     295.0000       0.1260E-04
+     305.0000       0.0000E+00
+     345.0000       0.0000E+00
+     355.0000       0.1260E-04
+     365.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 7.731E+01   RMS = 5.848E+01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     104  Undersc =     0  Oversc =     1"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " pt(mu-2)           "
+  TITLE BOTTOM "pt                  "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000  500.00000
+  SET ORDER X Y 
+       5.0000       0.1260E-04
+      15.0000       0.8818E-04
+      25.0000       0.1386E-03
+      35.0000       0.6299E-04
+      45.0000       0.2520E-04
+      55.0000       0.3779E-04
+      65.0000       0.2520E-04
+      75.0000       0.3779E-04
+      85.0000       0.0000E+00
+     115.0000       0.0000E+00
+     125.0000       0.1260E-04
+     135.0000       0.0000E+00
+     375.0000       0.0000E+00
+     385.0000       0.1260E-04
+     395.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 4.667E+01   RMS = 6.203E+01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =      36  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " y(jet1)            "
+  TITLE BOTTOM "y                   "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y lin
+  (SET TICKS TOP OFF)   
+  SET LIMITS X   -5.00000    5.00000
+  SET ORDER X Y 
+      -4.7000       0.0000E+00
+      -4.5000       0.3779E-04
+      -4.3000       0.8818E-04
+      -4.1000       0.1260E-03
+      -3.9000       0.1638E-03
+      -3.7000       0.1008E-03
+      -3.5000       0.2268E-03
+      -3.3000       0.1638E-03
+      -3.1000       0.3149E-03
+      -2.9000       0.1890E-03
+      -2.7000       0.3653E-03
+      -2.5000       0.3905E-03
+      -2.3000       0.2897E-03
+      -2.1000       0.4409E-03
+      -1.9000       0.3023E-03
+      -1.7000       0.1386E-03
+      -1.5000       0.2394E-03
+      -1.3000       0.1764E-03
+      -1.1000       0.1512E-03
+      -0.9000       0.7559E-04
+      -0.7000       0.6299E-04
+      -0.5000       0.1008E-03
+      -0.3000       0.1008E-03
+      -0.1000       0.3779E-04
+       0.1000       0.7559E-04
+       0.3000       0.6299E-04
+       0.5000       0.1134E-03
+       0.7000       0.5039E-04
+       0.9000       0.1134E-03
+       1.1000       0.8818E-04
+       1.3000       0.1890E-03
+       1.5000       0.2645E-03
+       1.7000       0.2142E-03
+       1.9000       0.1260E-03
+       2.1000       0.3527E-03
+       2.3000       0.4157E-03
+       2.5000       0.4157E-03
+       2.7000       0.4031E-03
+       2.9000       0.2771E-03
+       3.1000       0.2771E-03
+       3.3000       0.2268E-03
+       3.5000       0.2394E-03
+       3.7000       0.1134E-03
+       3.9000       0.1134E-03
+       4.1000       0.1008E-03
+       4.3000       0.1260E-04
+       4.5000       0.2520E-04
+       4.7000       0.0000E+00
+       4.9000       0.2520E-04
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG =-5.727E-03   RMS = 2.578E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     681  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " y(jet2)            "
+  TITLE BOTTOM "y                   "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y lin
+  (SET TICKS TOP OFF)   
+  SET LIMITS X   -5.00000    5.00000
+  SET ORDER X Y 
+      -4.9000       0.1260E-03
+      -4.7000       0.1008E-03
+      -4.5000       0.3023E-03
+      -4.3000       0.2016E-03
+      -4.1000       0.3023E-03
+      -3.9000       0.3275E-03
+      -3.7000       0.4031E-03
+      -3.5000       0.2016E-03
+      -3.3000       0.3527E-03
+      -3.1000       0.2645E-03
+      -2.9000       0.3023E-03
+      -2.7000       0.2394E-03
+      -2.5000       0.1890E-03
+      -2.3000       0.1386E-03
+      -2.1000       0.2142E-03
+      -1.9000       0.1008E-03
+      -1.7000       0.7559E-04
+      -1.5000       0.7559E-04
+      -1.3000       0.3779E-04
+      -1.1000       0.5039E-04
+      -0.9000       0.3779E-04
+      -0.7000       0.5039E-04
+      -0.5000       0.3779E-04
+      -0.3000       0.5039E-04
+      -0.1000       0.6299E-04
+       0.1000       0.2520E-04
+       0.3000       0.5039E-04
+       0.5000       0.5039E-04
+       0.7000       0.1260E-04
+       0.9000       0.3779E-04
+       1.1000       0.7559E-04
+       1.3000       0.8818E-04
+       1.5000       0.1260E-03
+       1.7000       0.1134E-03
+       1.9000       0.2016E-03
+       2.1000       0.1386E-03
+       2.3000       0.1260E-03
+       2.5000       0.2645E-03
+       2.7000       0.2520E-03
+       2.9000       0.2394E-03
+       3.1000       0.3149E-03
+       3.3000       0.2645E-03
+       3.5000       0.2645E-03
+       3.7000       0.3527E-03
+       3.9000       0.3905E-03
+       4.1000       0.2520E-03
+       4.3000       0.2016E-03
+       4.5000       0.2645E-03
+       4.7000       0.1134E-03
+       4.9000       0.1134E-03
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.203E-03   RMS = 3.319E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     681  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " y(b1)              "
+  TITLE BOTTOM "y                   "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y lin
+  (SET TICKS TOP OFF)   
+  SET LIMITS X   -5.00000    5.00000
+  SET ORDER X Y 
+      -4.5000       0.0000E+00
+      -4.3000       0.1260E-04
+      -4.1000       0.1260E-04
+      -3.9000       0.0000E+00
+      -3.7000       0.0000E+00
+      -3.5000       0.1260E-04
+      -3.3000       0.2520E-04
+      -3.1000       0.2520E-04
+      -2.9000       0.6299E-04
+      -2.7000       0.1134E-03
+      -2.5000       0.1386E-03
+      -2.3000       0.1134E-03
+      -2.1000       0.1764E-03
+      -1.9000       0.2394E-03
+      -1.7000       0.1890E-03
+      -1.5000       0.2268E-03
+      -1.3000       0.2520E-03
+      -1.1000       0.3401E-03
+      -0.9000       0.4535E-03
+      -0.7000       0.5039E-03
+      -0.5000       0.4283E-03
+      -0.3000       0.3149E-03
+      -0.1000       0.4031E-03
+       0.1000       0.5417E-03
+       0.3000       0.4787E-03
+       0.5000       0.4031E-03
+       0.7000       0.5165E-03
+       0.9000       0.4157E-03
+       1.1000       0.3905E-03
+       1.3000       0.2771E-03
+       1.5000       0.4157E-03
+       1.7000       0.2268E-03
+       1.9000       0.2268E-03
+       2.1000       0.2268E-03
+       2.3000       0.1260E-03
+       2.5000       0.6299E-04
+       2.7000       0.7559E-04
+       2.9000       0.8818E-04
+       3.1000       0.2520E-04
+       3.3000       0.1260E-04
+       3.5000       0.1260E-04
+       3.7000       0.1260E-04
+       3.9000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.952E-02   RMS = 1.381E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     681  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " y(b2)              "
+  TITLE BOTTOM "y                   "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y lin
+  (SET TICKS TOP OFF)   
+  SET LIMITS X   -5.00000    5.00000
+  SET ORDER X Y 
+      -4.9000       0.2520E-04
+      -4.7000       0.2520E-04
+      -4.5000       0.0000E+00
+      -4.3000       0.1260E-04
+      -4.1000       0.2520E-04
+      -3.9000       0.0000E+00
+      -3.7000       0.0000E+00
+      -3.5000       0.1260E-04
+      -3.3000       0.8818E-04
+      -3.1000       0.6299E-04
+      -2.9000       0.1008E-03
+      -2.7000       0.1134E-03
+      -2.5000       0.1008E-03
+      -2.3000       0.2394E-03
+      -2.1000       0.1008E-03
+      -1.9000       0.2771E-03
+      -1.7000       0.2268E-03
+      -1.5000       0.3275E-03
+      -1.3000       0.2645E-03
+      -1.1000       0.3401E-03
+      -0.9000       0.3275E-03
+      -0.7000       0.3779E-03
+      -0.5000       0.4031E-03
+      -0.3000       0.4031E-03
+      -0.1000       0.5039E-03
+       0.1000       0.4661E-03
+       0.3000       0.5039E-03
+       0.5000       0.4409E-03
+       0.7000       0.2268E-03
+       0.9000       0.2897E-03
+       1.1000       0.2897E-03
+       1.3000       0.3653E-03
+       1.5000       0.3527E-03
+       1.7000       0.2520E-03
+       1.9000       0.1764E-03
+       2.1000       0.1512E-03
+       2.3000       0.1512E-03
+       2.5000       0.1638E-03
+       2.7000       0.7559E-04
+       2.9000       0.7559E-04
+       3.1000       0.7559E-04
+       3.3000       0.1260E-04
+       3.5000       0.1260E-04
+       3.7000       0.6299E-04
+       3.9000       0.0000E+00
+       4.1000       0.2520E-04
+       4.3000       0.2520E-04
+       4.5000       0.1260E-04
+       4.7000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG =-4.118E-02   RMS = 1.592E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     680  Undersc =     1  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " y(e+1)             "
+  TITLE BOTTOM "y                   "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y lin
+  (SET TICKS TOP OFF)   
+  SET LIMITS X   -5.00000    5.00000
+  SET ORDER X Y 
+      -4.3000       0.0000E+00
+      -4.1000       0.2520E-04
+      -3.9000       0.2520E-04
+      -3.7000       0.0000E+00
+      -3.5000       0.3779E-04
+      -3.3000       0.3779E-04
+      -3.1000       0.7559E-04
+      -2.9000       0.6299E-04
+      -2.7000       0.8818E-04
+      -2.5000       0.3779E-04
+      -2.3000       0.7559E-04
+      -2.1000       0.1386E-03
+      -1.9000       0.1764E-03
+      -1.7000       0.1134E-03
+      -1.5000       0.2016E-03
+      -1.3000       0.2520E-03
+      -1.1000       0.2142E-03
+      -0.9000       0.2394E-03
+      -0.7000       0.3779E-03
+      -0.5000       0.2771E-03
+      -0.3000       0.3023E-03
+      -0.1000       0.3023E-03
+       0.1000       0.1512E-03
+       0.3000       0.1890E-03
+       0.5000       0.1512E-03
+       0.7000       0.2645E-03
+       0.9000       0.2645E-03
+       1.1000       0.2645E-03
+       1.3000       0.1890E-03
+       1.5000       0.1638E-03
+       1.7000       0.1512E-03
+       1.9000       0.1260E-03
+       2.1000       0.1386E-03
+       2.3000       0.6299E-04
+       2.5000       0.7559E-04
+       2.7000       0.5039E-04
+       2.9000       0.5039E-04
+       3.1000       0.1260E-04
+       3.3000       0.1260E-04
+       3.5000       0.3779E-04
+       3.7000       0.1260E-04
+       3.9000       0.1260E-04
+       4.1000       0.1260E-04
+       4.3000       0.1260E-04
+       4.5000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG =-1.161E-01   RMS = 1.564E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     434  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " y(e+2)             "
+  TITLE BOTTOM "y                   "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y lin
+  (SET TICKS TOP OFF)   
+  SET LIMITS X   -5.00000    5.00000
+  SET ORDER X Y 
+      -4.3000       0.0000E+00
+      -4.1000       0.1260E-04
+      -3.9000       0.1260E-04
+      -3.7000       0.2520E-04
+      -3.5000       0.1260E-04
+      -3.3000       0.3779E-04
+      -3.1000       0.3779E-04
+      -2.9000       0.0000E+00
+      -2.7000       0.3779E-04
+      -2.5000       0.1260E-04
+      -2.3000       0.1260E-04
+      -2.1000       0.6299E-04
+      -1.9000       0.1260E-04
+      -1.7000       0.3779E-04
+      -1.5000       0.2520E-04
+      -1.3000       0.6299E-04
+      -1.1000       0.5039E-04
+      -0.9000       0.6299E-04
+      -0.7000       0.8818E-04
+      -0.5000       0.1008E-03
+      -0.3000       0.8818E-04
+      -0.1000       0.8818E-04
+       0.1000       0.2520E-04
+       0.3000       0.8818E-04
+       0.5000       0.1008E-03
+       0.7000       0.1260E-03
+       0.9000       0.8818E-04
+       1.1000       0.7559E-04
+       1.3000       0.1008E-03
+       1.5000       0.8818E-04
+       1.7000       0.3779E-04
+       1.9000       0.5039E-04
+       2.1000       0.1260E-04
+       2.3000       0.2520E-04
+       2.5000       0.3779E-04
+       2.7000       0.1260E-04
+       2.9000       0.2520E-04
+       3.1000       0.1260E-04
+       3.3000       0.3779E-04
+       3.5000       0.0000E+00
+       3.7000       0.1260E-04
+       3.9000       0.0000E+00
+       4.1000       0.1260E-04
+       4.3000       0.0000E+00
+       4.5000       0.1260E-04
+       4.7000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 6.216E-02   RMS = 1.748E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     148  Undersc =     1  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " y(mu+1)            "
+  TITLE BOTTOM "y                   "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y lin
+  (SET TICKS TOP OFF)   
+  SET LIMITS X   -5.00000    5.00000
+  SET ORDER X Y 
+      -3.7000       0.0000E+00
+      -3.5000       0.6299E-04
+      -3.3000       0.1260E-04
+      -3.1000       0.1260E-04
+      -2.9000       0.6299E-04
+      -2.7000       0.8818E-04
+      -2.5000       0.6299E-04
+      -2.3000       0.1134E-03
+      -2.1000       0.8818E-04
+      -1.9000       0.1008E-03
+      -1.7000       0.2016E-03
+      -1.5000       0.1008E-03
+      -1.3000       0.1386E-03
+      -1.1000       0.1512E-03
+      -0.9000       0.2394E-03
+      -0.7000       0.2394E-03
+      -0.5000       0.2016E-03
+      -0.3000       0.2394E-03
+      -0.1000       0.3401E-03
+       0.1000       0.1890E-03
+       0.3000       0.2394E-03
+       0.5000       0.2645E-03
+       0.7000       0.3401E-03
+       0.9000       0.2268E-03
+       1.1000       0.1890E-03
+       1.3000       0.2394E-03
+       1.5000       0.2268E-03
+       1.7000       0.6299E-04
+       1.9000       0.6299E-04
+       2.1000       0.7559E-04
+       2.3000       0.1260E-03
+       2.5000       0.1638E-03
+       2.7000       0.3779E-04
+       2.9000       0.6299E-04
+       3.1000       0.3779E-04
+       3.3000       0.1260E-04
+       3.5000       0.1260E-04
+       3.7000       0.1260E-04
+       3.9000       0.0000E+00
+       4.1000       0.1260E-04
+       4.3000       0.0000E+00
+       4.5000       0.0000E+00
+       4.7000       0.1260E-04
+       4.9000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 6.070E-02   RMS = 1.519E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     402  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " y(mu+2)            "
+  TITLE BOTTOM "y                   "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y lin
+  (SET TICKS TOP OFF)   
+  SET LIMITS X   -5.00000    5.00000
+  SET ORDER X Y 
+      -4.1000       0.0000E+00
+      -3.9000       0.1260E-04
+      -3.7000       0.0000E+00
+      -3.5000       0.1260E-04
+      -3.3000       0.0000E+00
+      -3.1000       0.1260E-04
+      -2.9000       0.1260E-04
+      -2.7000       0.3779E-04
+      -2.5000       0.0000E+00
+      -2.3000       0.2520E-04
+      -2.1000       0.2520E-04
+      -1.9000       0.6299E-04
+      -1.7000       0.6299E-04
+      -1.5000       0.1260E-04
+      -1.3000       0.1008E-03
+      -1.1000       0.5039E-04
+      -0.9000       0.6299E-04
+      -0.7000       0.1008E-03
+      -0.5000       0.5039E-04
+      -0.3000       0.7559E-04
+      -0.1000       0.8818E-04
+       0.1000       0.2520E-04
+       0.3000       0.5039E-04
+       0.5000       0.6299E-04
+       0.7000       0.5039E-04
+       0.9000       0.7559E-04
+       1.1000       0.6299E-04
+       1.3000       0.5039E-04
+       1.5000       0.1008E-03
+       1.7000       0.3779E-04
+       1.9000       0.3779E-04
+       2.1000       0.2520E-04
+       2.3000       0.0000E+00
+       2.5000       0.1260E-04
+       2.7000       0.1260E-04
+       2.9000       0.0000E+00
+       3.1000       0.2520E-04
+       3.3000       0.0000E+00
+       3.5000       0.1260E-04
+       3.7000       0.0000E+00
+       3.9000       0.0000E+00
+       4.1000       0.1260E-04
+       4.3000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG =-8.966E-02   RMS = 1.548E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     116  Undersc =     0  Oversc =     1"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " y(e-1)             "
+  TITLE BOTTOM "y                   "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y lin
+  (SET TICKS TOP OFF)   
+  SET LIMITS X   -5.00000    5.00000
+  SET ORDER X Y 
+      -3.1000       0.0000E+00
+      -2.9000       0.1260E-04
+      -2.7000       0.1260E-04
+      -2.5000       0.0000E+00
+      -2.3000       0.2520E-04
+      -2.1000       0.3779E-04
+      -1.9000       0.2520E-04
+      -1.7000       0.5039E-04
+      -1.5000       0.6299E-04
+      -1.3000       0.5039E-04
+      -1.1000       0.3779E-04
+      -0.9000       0.2520E-04
+      -0.7000       0.7559E-04
+      -0.5000       0.1008E-03
+      -0.3000       0.5039E-04
+      -0.1000       0.2520E-04
+       0.1000       0.3779E-04
+       0.3000       0.5039E-04
+       0.5000       0.8818E-04
+       0.7000       0.3779E-04
+       0.9000       0.2520E-04
+       1.1000       0.3779E-04
+       1.3000       0.7559E-04
+       1.5000       0.6299E-04
+       1.7000       0.5039E-04
+       1.9000       0.3779E-04
+       2.1000       0.2520E-04
+       2.3000       0.1260E-04
+       2.5000       0.1260E-04
+       2.7000       0.1260E-04
+       2.9000       0.0000E+00
+       3.3000       0.0000E+00
+       3.5000       0.2520E-04
+       3.7000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 4.468E-02   RMS = 1.427E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =      94  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " y(e-2)             "
+  TITLE BOTTOM "y                   "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y lin
+  (SET TICKS TOP OFF)   
+  SET LIMITS X   -5.00000    5.00000
+  SET ORDER X Y 
+      -2.9000       0.0000E+00
+      -2.7000       0.2520E-04
+      -2.5000       0.1260E-04
+      -2.3000       0.0000E+00
+      -2.1000       0.2520E-04
+      -1.9000       0.1260E-04
+      -1.7000       0.1260E-04
+      -1.5000       0.0000E+00
+      -1.3000       0.3779E-04
+      -1.1000       0.1260E-04
+      -0.9000       0.0000E+00
+      -0.7000       0.0000E+00
+      -0.5000       0.3779E-04
+      -0.3000       0.0000E+00
+      -0.1000       0.2520E-04
+       0.1000       0.1260E-04
+       0.3000       0.2520E-04
+       0.5000       0.1260E-04
+       0.7000       0.0000E+00
+       0.9000       0.1260E-04
+       1.1000       0.2520E-04
+       1.3000       0.1260E-04
+       1.5000       0.0000E+00
+       1.7000       0.1260E-04
+       1.9000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG =-6.040E-01   RMS = 1.301E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =      25  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " y(mu-1)            "
+  TITLE BOTTOM "y                   "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y lin
+  (SET TICKS TOP OFF)   
+  SET LIMITS X   -5.00000    5.00000
+  SET ORDER X Y 
+      -4.9000       0.0000E+00
+      -4.7000       0.1260E-04
+      -4.5000       0.0000E+00
+      -3.3000       0.0000E+00
+      -3.1000       0.1260E-04
+      -2.9000       0.1260E-04
+      -2.7000       0.3779E-04
+      -2.5000       0.2520E-04
+      -2.3000       0.1260E-04
+      -2.1000       0.3779E-04
+      -1.9000       0.2520E-04
+      -1.7000       0.3779E-04
+      -1.5000       0.3779E-04
+      -1.3000       0.5039E-04
+      -1.1000       0.3779E-04
+      -0.9000       0.5039E-04
+      -0.7000       0.1008E-03
+      -0.5000       0.3779E-04
+      -0.3000       0.6299E-04
+      -0.1000       0.5039E-04
+       0.1000       0.5039E-04
+       0.3000       0.2520E-04
+       0.5000       0.1134E-03
+       0.7000       0.2520E-04
+       0.9000       0.2520E-04
+       1.1000       0.8818E-04
+       1.3000       0.1260E-04
+       1.5000       0.5039E-04
+       1.7000       0.3779E-04
+       1.9000       0.7559E-04
+       2.1000       0.2520E-04
+       2.3000       0.2520E-04
+       2.5000       0.3779E-04
+       2.7000       0.5039E-04
+       2.9000       0.0000E+00
+       3.1000       0.0000E+00
+       3.3000       0.1260E-04
+       3.5000       0.2520E-04
+       3.7000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 1.019E-01   RMS = 1.664E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     105  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " y(mu-2)            "
+  TITLE BOTTOM "y                   "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y lin
+  (SET TICKS TOP OFF)   
+  SET LIMITS X   -5.00000    5.00000
+  SET ORDER X Y 
+      -3.7000       0.0000E+00
+      -3.5000       0.1260E-04
+      -3.3000       0.0000E+00
+      -2.7000       0.0000E+00
+      -2.5000       0.1260E-04
+      -2.3000       0.1260E-04
+      -2.1000       0.2520E-04
+      -1.9000       0.1260E-04
+      -1.7000       0.1260E-04
+      -1.5000       0.2520E-04
+      -1.3000       0.5039E-04
+      -1.1000       0.1260E-04
+      -0.9000       0.1260E-04
+      -0.7000       0.3779E-04
+      -0.5000       0.0000E+00
+      -0.3000       0.0000E+00
+      -0.1000       0.7559E-04
+       0.1000       0.0000E+00
+       0.3000       0.2520E-04
+       0.5000       0.5039E-04
+       0.7000       0.0000E+00
+       0.9000       0.1260E-04
+       1.1000       0.2520E-04
+       1.3000       0.0000E+00
+       1.7000       0.0000E+00
+       1.9000       0.1260E-04
+       2.1000       0.0000E+00
+       2.5000       0.0000E+00
+       2.7000       0.2520E-04
+       2.9000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG =-4.444E-01   RMS = 1.389E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =      36  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(jet1,jet2)       "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       1.3500       0.0000E+00
+       1.4500       0.1260E-04
+       1.5500       0.0000E+00
+       1.7500       0.0000E+00
+       1.8500       0.1260E-04
+       1.9500       0.1260E-04
+       2.0500       0.2520E-04
+       2.1500       0.0000E+00
+       2.2500       0.2520E-04
+       2.3500       0.3779E-04
+       2.4500       0.5039E-04
+       2.5500       0.0000E+00
+       2.6500       0.0000E+00
+       2.7500       0.1260E-04
+       2.8500       0.1260E-04
+       2.9500       0.5039E-04
+       3.0500       0.7559E-04
+       3.1500       0.6299E-04
+       3.2500       0.1260E-04
+       3.3500       0.5039E-04
+       3.4500       0.1008E-03
+       3.5500       0.5039E-04
+       3.6500       0.8818E-04
+       3.7500       0.6299E-04
+       3.8500       0.6299E-04
+       3.9500       0.8818E-04
+       4.0500       0.3779E-04
+       4.1500       0.1134E-03
+       4.2500       0.1512E-03
+       4.3500       0.1386E-03
+       4.4500       0.1512E-03
+       4.5500       0.1890E-03
+       4.6500       0.1386E-03
+       4.7500       0.2016E-03
+       4.8500       0.2645E-03
+       4.9500       0.1638E-03
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 4.078E+00   RMS = 7.798E-01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     195  Undersc =     0  Oversc =   486"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(jet1,b1)         "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.2500       0.0000E+00
+       0.3500       0.1260E-04
+       0.4500       0.0000E+00
+       0.5500       0.1260E-04
+       0.6500       0.0000E+00
+       0.7500       0.1260E-04
+       0.8500       0.1260E-04
+       0.9500       0.0000E+00
+       1.0500       0.1260E-04
+       1.1500       0.2520E-04
+       1.2500       0.3779E-04
+       1.3500       0.1260E-04
+       1.4500       0.2520E-04
+       1.5500       0.3779E-04
+       1.6500       0.3779E-04
+       1.7500       0.5039E-04
+       1.8500       0.7559E-04
+       1.9500       0.8818E-04
+       2.0500       0.1134E-03
+       2.1500       0.8818E-04
+       2.2500       0.7559E-04
+       2.3500       0.1260E-03
+       2.4500       0.1764E-03
+       2.5500       0.1260E-03
+       2.6500       0.1890E-03
+       2.7500       0.2016E-03
+       2.8500       0.1890E-03
+       2.9500       0.2268E-03
+       3.0500       0.2897E-03
+       3.1500       0.3653E-03
+       3.2500       0.2394E-03
+       3.3500       0.2771E-03
+       3.4500       0.4031E-03
+       3.5500       0.2897E-03
+       3.6500       0.2520E-03
+       3.7500       0.4283E-03
+       3.8500       0.3149E-03
+       3.9500       0.3023E-03
+       4.0500       0.3653E-03
+       4.1500       0.2016E-03
+       4.2500       0.1890E-03
+       4.3500       0.2268E-03
+       4.4500       0.2394E-03
+       4.5500       0.1890E-03
+       4.6500       0.2897E-03
+       4.7500       0.1260E-03
+       4.8500       0.1008E-03
+       4.9500       0.2142E-03
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 3.469E+00   RMS = 8.761E-01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     577  Undersc =     0  Oversc =   104"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(jet1,b2)         "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.1500       0.0000E+00
+       0.2500       0.1260E-04
+       0.3500       0.1260E-04
+       0.4500       0.1260E-04
+       0.5500       0.1260E-04
+       0.6500       0.0000E+00
+       0.7500       0.1260E-04
+       0.8500       0.2520E-04
+       0.9500       0.2520E-04
+       1.0500       0.7559E-04
+       1.1500       0.6299E-04
+       1.2500       0.1008E-03
+       1.3500       0.2520E-04
+       1.4500       0.7559E-04
+       1.5500       0.1134E-03
+       1.6500       0.8818E-04
+       1.7500       0.1638E-03
+       1.8500       0.6299E-04
+       1.9500       0.1134E-03
+       2.0500       0.1512E-03
+       2.1500       0.1260E-03
+       2.2500       0.1638E-03
+       2.3500       0.1764E-03
+       2.4500       0.1134E-03
+       2.5500       0.2016E-03
+       2.6500       0.1512E-03
+       2.7500       0.2394E-03
+       2.8500       0.2016E-03
+       2.9500       0.2268E-03
+       3.0500       0.3023E-03
+       3.1500       0.2645E-03
+       3.2500       0.3905E-03
+       3.3500       0.2520E-03
+       3.4500       0.3401E-03
+       3.5500       0.2520E-03
+       3.6500       0.2016E-03
+       3.7500       0.2394E-03
+       3.8500       0.3149E-03
+       3.9500       0.2394E-03
+       4.0500       0.1638E-03
+       4.1500       0.2016E-03
+       4.2500       0.1890E-03
+       4.3500       0.1638E-03
+       4.4500       0.2142E-03
+       4.5500       0.1890E-03
+       4.6500       0.1764E-03
+       4.7500       0.1386E-03
+       4.8500       0.1638E-03
+       4.9500       0.2142E-03
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 3.233E+00   RMS = 1.027E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     584  Undersc =     0  Oversc =    97"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(jet2,b1)         "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.2500       0.0000E+00
+       0.3500       0.2520E-04
+       0.4500       0.0000E+00
+       0.5500       0.2520E-04
+       0.6500       0.3779E-04
+       0.7500       0.3779E-04
+       0.8500       0.6299E-04
+       0.9500       0.3779E-04
+       1.0500       0.1260E-04
+       1.1500       0.5039E-04
+       1.2500       0.5039E-04
+       1.3500       0.3779E-04
+       1.4500       0.1386E-03
+       1.5500       0.1008E-03
+       1.6500       0.7559E-04
+       1.7500       0.8818E-04
+       1.8500       0.8818E-04
+       1.9500       0.1764E-03
+       2.0500       0.1008E-03
+       2.1500       0.1512E-03
+       2.2500       0.1260E-03
+       2.3500       0.1764E-03
+       2.4500       0.2142E-03
+       2.5500       0.3023E-03
+       2.6500       0.2268E-03
+       2.7500       0.1764E-03
+       2.8500       0.2268E-03
+       2.9500       0.3149E-03
+       3.0500       0.3149E-03
+       3.1500       0.3401E-03
+       3.2500       0.3401E-03
+       3.3500       0.3779E-03
+       3.4500       0.3779E-03
+       3.5500       0.2142E-03
+       3.6500       0.2771E-03
+       3.7500       0.2771E-03
+       3.8500       0.2394E-03
+       3.9500       0.2268E-03
+       4.0500       0.3149E-03
+       4.1500       0.2016E-03
+       4.2500       0.2142E-03
+       4.3500       0.2016E-03
+       4.4500       0.1890E-03
+       4.5500       0.1260E-03
+       4.6500       0.2016E-03
+       4.7500       0.7559E-04
+       4.8500       0.1260E-03
+       4.9500       0.1260E-03
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 3.178E+00   RMS = 9.876E-01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     621  Undersc =     0  Oversc =    60"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(jet2,b2)         "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.1500       0.0000E+00
+       0.2500       0.1260E-04
+       0.3500       0.1260E-04
+       0.4500       0.0000E+00
+       0.6500       0.0000E+00
+       0.7500       0.2520E-04
+       0.8500       0.6299E-04
+       0.9500       0.5039E-04
+       1.0500       0.7559E-04
+       1.1500       0.7559E-04
+       1.2500       0.7559E-04
+       1.3500       0.1134E-03
+       1.4500       0.6299E-04
+       1.5500       0.6299E-04
+       1.6500       0.1260E-03
+       1.7500       0.7559E-04
+       1.8500       0.1260E-03
+       1.9500       0.1638E-03
+       2.0500       0.1890E-03
+       2.1500       0.2268E-03
+       2.2500       0.1764E-03
+       2.3500       0.1764E-03
+       2.4500       0.2394E-03
+       2.5500       0.1890E-03
+       2.6500       0.2268E-03
+       2.7500       0.2520E-03
+       2.8500       0.1890E-03
+       2.9500       0.3275E-03
+       3.0500       0.2897E-03
+       3.1500       0.3905E-03
+       3.2500       0.2771E-03
+       3.3500       0.2268E-03
+       3.4500       0.2394E-03
+       3.5500       0.1638E-03
+       3.6500       0.1638E-03
+       3.7500       0.2268E-03
+       3.8500       0.2268E-03
+       3.9500       0.2520E-03
+       4.0500       0.2142E-03
+       4.1500       0.1638E-03
+       4.2500       0.2268E-03
+       4.3500       0.1764E-03
+       4.4500       0.1890E-03
+       4.5500       0.2016E-03
+       4.6500       0.1764E-03
+       4.7500       0.1512E-03
+       4.8500       0.1890E-03
+       4.9500       0.1638E-03
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 3.146E+00   RMS = 1.047E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     605  Undersc =     0  Oversc =    76"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(jet1,e+1)        "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.0500       0.0000E+00
+       0.1500       0.3779E-04
+       0.2500       0.2520E-04
+       0.3500       0.2520E-04
+       0.4500       0.3779E-04
+       0.5500       0.2520E-04
+       0.6500       0.6299E-04
+       0.7500       0.5039E-04
+       0.8500       0.5039E-04
+       0.9500       0.3779E-04
+       1.0500       0.2520E-04
+       1.1500       0.5039E-04
+       1.2500       0.7559E-04
+       1.3500       0.5039E-04
+       1.4500       0.7559E-04
+       1.5500       0.6299E-04
+       1.6500       0.6299E-04
+       1.7500       0.6299E-04
+       1.8500       0.8818E-04
+       1.9500       0.1008E-03
+       2.0500       0.1134E-03
+       2.1500       0.1260E-03
+       2.2500       0.1764E-03
+       2.3500       0.1638E-03
+       2.4500       0.1764E-03
+       2.5500       0.1764E-03
+       2.6500       0.2016E-03
+       2.7500       0.1890E-03
+       2.8500       0.1386E-03
+       2.9500       0.2142E-03
+       3.0500       0.1260E-03
+       3.1500       0.2645E-03
+       3.2500       0.8818E-04
+       3.3500       0.2268E-03
+       3.4500       0.1386E-03
+       3.5500       0.1512E-03
+       3.6500       0.1134E-03
+       3.7500       0.1008E-03
+       3.8500       0.1008E-03
+       3.9500       0.1386E-03
+       4.0500       0.1638E-03
+       4.1500       0.7559E-04
+       4.2500       0.8818E-04
+       4.3500       0.1260E-03
+       4.4500       0.1134E-03
+       4.5500       0.5039E-04
+       4.6500       0.5039E-04
+       4.7500       0.6299E-04
+       4.8500       0.1260E-04
+       4.9500       0.5039E-04
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.836E+00   RMS = 1.086E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     391  Undersc =     0  Oversc =    43"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(jet2,e+1)        "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.0500       0.0000E+00
+       0.1500       0.1260E-04
+       0.2500       0.0000E+00
+       0.4500       0.0000E+00
+       0.5500       0.1260E-04
+       0.6500       0.2520E-04
+       0.7500       0.0000E+00
+       0.8500       0.2520E-04
+       0.9500       0.2520E-04
+       1.0500       0.3779E-04
+       1.1500       0.2520E-04
+       1.2500       0.0000E+00
+       1.3500       0.2520E-04
+       1.4500       0.2520E-04
+       1.5500       0.6299E-04
+       1.6500       0.5039E-04
+       1.7500       0.2520E-04
+       1.8500       0.6299E-04
+       1.9500       0.2520E-04
+       2.0500       0.8818E-04
+       2.1500       0.3779E-04
+       2.2500       0.3779E-04
+       2.3500       0.7559E-04
+       2.4500       0.1008E-03
+       2.5500       0.1638E-03
+       2.6500       0.1386E-03
+       2.7500       0.1386E-03
+       2.8500       0.8818E-04
+       2.9500       0.1512E-03
+       3.0500       0.1386E-03
+       3.1500       0.8818E-04
+       3.2500       0.8818E-04
+       3.3500       0.1638E-03
+       3.4500       0.7559E-04
+       3.5500       0.1638E-03
+       3.6500       0.2394E-03
+       3.7500       0.1512E-03
+       3.8500       0.6299E-04
+       3.9500       0.8818E-04
+       4.0500       0.1386E-03
+       4.1500       0.1260E-03
+       4.2500       0.1764E-03
+       4.3500       0.1008E-03
+       4.4500       0.1008E-03
+       4.5500       0.1890E-03
+       4.6500       0.1386E-03
+       4.7500       0.7559E-04
+       4.8500       0.1386E-03
+       4.9500       0.1386E-03
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 3.360E+00   RMS = 1.050E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     321  Undersc =     0  Oversc =   113"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(jet1,mu+1)       "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.0500       0.1260E-04
+       0.1500       0.1260E-04
+       0.2500       0.0000E+00
+       0.3500       0.3779E-04
+       0.4500       0.1260E-04
+       0.5500       0.1260E-04
+       0.6500       0.2520E-04
+       0.7500       0.2520E-04
+       0.8500       0.2520E-04
+       0.9500       0.2520E-04
+       1.0500       0.3779E-04
+       1.1500       0.6299E-04
+       1.2500       0.3779E-04
+       1.3500       0.2520E-04
+       1.4500       0.1134E-03
+       1.5500       0.5039E-04
+       1.6500       0.5039E-04
+       1.7500       0.1260E-03
+       1.8500       0.5039E-04
+       1.9500       0.1890E-03
+       2.0500       0.5039E-04
+       2.1500       0.6299E-04
+       2.2500       0.1134E-03
+       2.3500       0.1134E-03
+       2.4500       0.8818E-04
+       2.5500       0.1638E-03
+       2.6500       0.1890E-03
+       2.7500       0.2268E-03
+       2.8500       0.2520E-03
+       2.9500       0.2142E-03
+       3.0500       0.1638E-03
+       3.1500       0.1764E-03
+       3.2500       0.1134E-03
+       3.3500       0.8818E-04
+       3.4500       0.1386E-03
+       3.5500       0.7559E-04
+       3.6500       0.1764E-03
+       3.7500       0.1386E-03
+       3.8500       0.1638E-03
+       3.9500       0.7559E-04
+       4.0500       0.6299E-04
+       4.1500       0.1512E-03
+       4.2500       0.1260E-03
+       4.3500       0.6299E-04
+       4.4500       0.1260E-03
+       4.5500       0.6299E-04
+       4.6500       0.2520E-04
+       4.7500       0.5039E-04
+       4.8500       0.1134E-03
+       4.9500       0.1260E-04
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.937E+00   RMS = 1.049E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     358  Undersc =     0  Oversc =    44"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(jet2,mu+1)       "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.2500       0.0000E+00
+       0.3500       0.1260E-04
+       0.4500       0.2520E-04
+       0.5500       0.2520E-04
+       0.6500       0.0000E+00
+       0.7500       0.2520E-04
+       0.8500       0.2520E-04
+       0.9500       0.2520E-04
+       1.0500       0.3779E-04
+       1.1500       0.3779E-04
+       1.2500       0.1260E-04
+       1.3500       0.8818E-04
+       1.4500       0.1260E-04
+       1.5500       0.7559E-04
+       1.6500       0.8818E-04
+       1.7500       0.7559E-04
+       1.8500       0.5039E-04
+       1.9500       0.6299E-04
+       2.0500       0.6299E-04
+       2.1500       0.8818E-04
+       2.2500       0.8818E-04
+       2.3500       0.1008E-03
+       2.4500       0.6299E-04
+       2.5500       0.1386E-03
+       2.6500       0.8818E-04
+       2.7500       0.1386E-03
+       2.8500       0.1134E-03
+       2.9500       0.6299E-04
+       3.0500       0.1134E-03
+       3.1500       0.1008E-03
+       3.2500       0.1134E-03
+       3.3500       0.1134E-03
+       3.4500       0.8818E-04
+       3.5500       0.1386E-03
+       3.6500       0.1638E-03
+       3.7500       0.1134E-03
+       3.8500       0.1260E-03
+       3.9500       0.3779E-04
+       4.0500       0.1134E-03
+       4.1500       0.5039E-04
+       4.2500       0.1764E-03
+       4.3500       0.6299E-04
+       4.4500       0.1260E-03
+       4.5500       0.8818E-04
+       4.6500       0.1260E-03
+       4.7500       0.1134E-03
+       4.8500       0.8818E-04
+       4.9500       0.1008E-03
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 3.148E+00   RMS = 1.137E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     300  Undersc =     0  Oversc =   102"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(jet1,e-1)        "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.3500       0.0000E+00
+       0.4500       0.1260E-04
+       0.5500       0.0000E+00
+       0.6500       0.1260E-04
+       0.7500       0.1260E-04
+       0.8500       0.0000E+00
+       0.9500       0.0000E+00
+       1.0500       0.1260E-04
+       1.1500       0.3779E-04
+       1.2500       0.1260E-04
+       1.3500       0.1260E-04
+       1.4500       0.0000E+00
+       1.5500       0.6299E-04
+       1.6500       0.3779E-04
+       1.7500       0.2520E-04
+       1.8500       0.1260E-04
+       1.9500       0.1260E-04
+       2.0500       0.3779E-04
+       2.1500       0.3779E-04
+       2.2500       0.3779E-04
+       2.3500       0.2520E-04
+       2.4500       0.2520E-04
+       2.5500       0.3779E-04
+       2.6500       0.2520E-04
+       2.7500       0.2520E-04
+       2.8500       0.1134E-03
+       2.9500       0.5039E-04
+       3.0500       0.5039E-04
+       3.1500       0.7559E-04
+       3.2500       0.5039E-04
+       3.3500       0.0000E+00
+       3.4500       0.3779E-04
+       3.5500       0.3779E-04
+       3.6500       0.2520E-04
+       3.7500       0.0000E+00
+       3.8500       0.2520E-04
+       3.9500       0.1260E-04
+       4.0500       0.0000E+00
+       4.1500       0.1260E-04
+       4.2500       0.2520E-04
+       4.3500       0.0000E+00
+       4.4500       0.0000E+00
+       4.5500       0.3779E-04
+       4.6500       0.0000E+00
+       4.7500       0.1260E-04
+       4.8500       0.1260E-04
+       4.9500       0.1260E-04
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.712E+00   RMS = 9.968E-01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =      88  Undersc =     0  Oversc =     6"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(jet2,e-1)        "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.0500       0.0000E+00
+       0.1500       0.1260E-04
+       0.2500       0.0000E+00
+       0.4500       0.0000E+00
+       0.5500       0.1260E-04
+       0.6500       0.0000E+00
+       0.7500       0.0000E+00
+       0.8500       0.2520E-04
+       0.9500       0.0000E+00
+       1.0500       0.1260E-04
+       1.1500       0.1260E-04
+       1.2500       0.1260E-04
+       1.3500       0.2520E-04
+       1.4500       0.1260E-04
+       1.5500       0.1260E-04
+       1.6500       0.1260E-04
+       1.7500       0.2520E-04
+       1.8500       0.1260E-04
+       1.9500       0.1260E-04
+       2.0500       0.0000E+00
+       2.1500       0.1260E-04
+       2.2500       0.0000E+00
+       2.3500       0.3779E-04
+       2.4500       0.2520E-04
+       2.5500       0.1260E-04
+       2.6500       0.2520E-04
+       2.7500       0.1260E-04
+       2.8500       0.5039E-04
+       2.9500       0.5039E-04
+       3.0500       0.1260E-04
+       3.1500       0.1260E-04
+       3.2500       0.2520E-04
+       3.3500       0.3779E-04
+       3.4500       0.2520E-04
+       3.5500       0.2520E-04
+       3.6500       0.2520E-04
+       3.7500       0.1260E-04
+       3.8500       0.3779E-04
+       3.9500       0.1260E-04
+       4.0500       0.2520E-04
+       4.1500       0.1260E-04
+       4.2500       0.2520E-04
+       4.3500       0.3779E-04
+       4.4500       0.3779E-04
+       4.5500       0.1260E-04
+       4.6500       0.5039E-04
+       4.7500       0.1260E-04
+       4.8500       0.3779E-04
+       4.9500       0.2520E-04
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 3.124E+00   RMS = 1.229E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =      74  Undersc =     0  Oversc =    20"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(jet1,mu-1)       "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.1500       0.0000E+00
+       0.2500       0.1260E-04
+       0.3500       0.0000E+00
+       0.4500       0.1260E-04
+       0.5500       0.1260E-04
+       0.6500       0.0000E+00
+       0.7500       0.1260E-04
+       0.8500       0.1260E-04
+       0.9500       0.2520E-04
+       1.0500       0.2520E-04
+       1.1500       0.1260E-04
+       1.2500       0.0000E+00
+       1.3500       0.1260E-04
+       1.4500       0.1260E-04
+       1.5500       0.5039E-04
+       1.6500       0.1260E-04
+       1.7500       0.2520E-04
+       1.8500       0.3779E-04
+       1.9500       0.1260E-04
+       2.0500       0.2520E-04
+       2.1500       0.2520E-04
+       2.2500       0.3779E-04
+       2.3500       0.3779E-04
+       2.4500       0.3779E-04
+       2.5500       0.3779E-04
+       2.6500       0.6299E-04
+       2.7500       0.3779E-04
+       2.8500       0.3779E-04
+       2.9500       0.2520E-04
+       3.0500       0.2520E-04
+       3.1500       0.2520E-04
+       3.2500       0.5039E-04
+       3.3500       0.2520E-04
+       3.4500       0.2520E-04
+       3.5500       0.3779E-04
+       3.6500       0.2520E-04
+       3.7500       0.2520E-04
+       3.8500       0.3779E-04
+       3.9500       0.5039E-04
+       4.0500       0.2520E-04
+       4.1500       0.2520E-04
+       4.2500       0.0000E+00
+       4.3500       0.2520E-04
+       4.4500       0.1260E-04
+       4.5500       0.3779E-04
+       4.6500       0.3779E-04
+       4.7500       0.1260E-04
+       4.8500       0.6299E-04
+       4.9500       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.894E+00   RMS = 1.184E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =      97  Undersc =     0  Oversc =     8"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(jet2,mu-1)       "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.3500       0.0000E+00
+       0.4500       0.1260E-04
+       0.5500       0.1260E-04
+       0.6500       0.0000E+00
+       0.7500       0.2520E-04
+       0.8500       0.0000E+00
+       0.9500       0.2520E-04
+       1.0500       0.0000E+00
+       1.1500       0.0000E+00
+       1.2500       0.1260E-04
+       1.3500       0.2520E-04
+       1.4500       0.0000E+00
+       1.5500       0.3779E-04
+       1.6500       0.1260E-04
+       1.7500       0.1260E-04
+       1.8500       0.1260E-04
+       1.9500       0.2520E-04
+       2.0500       0.2520E-04
+       2.1500       0.3779E-04
+       2.2500       0.3779E-04
+       2.3500       0.1260E-04
+       2.4500       0.3779E-04
+       2.5500       0.5039E-04
+       2.6500       0.2520E-04
+       2.7500       0.1260E-04
+       2.8500       0.5039E-04
+       2.9500       0.3779E-04
+       3.0500       0.2520E-04
+       3.1500       0.3779E-04
+       3.2500       0.3779E-04
+       3.3500       0.1260E-04
+       3.4500       0.5039E-04
+       3.5500       0.3779E-04
+       3.6500       0.2520E-04
+       3.7500       0.0000E+00
+       3.8500       0.6299E-04
+       3.9500       0.5039E-04
+       4.0500       0.2520E-04
+       4.1500       0.0000E+00
+       4.2500       0.0000E+00
+       4.3500       0.3779E-04
+       4.4500       0.1260E-04
+       4.5500       0.0000E+00
+       4.6500       0.2520E-04
+       4.7500       0.2520E-04
+       4.8500       0.2520E-04
+       4.9500       0.2520E-04
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.942E+00   RMS = 1.127E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =      84  Undersc =     0  Oversc =    21"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(b1,b2)           "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.1500       0.0000E+00
+       0.2500       0.3779E-04
+       0.3500       0.3779E-04
+       0.4500       0.1134E-03
+       0.5500       0.1638E-03
+       0.6500       0.2520E-03
+       0.7500       0.2897E-03
+       0.8500       0.3023E-03
+       0.9500       0.3401E-03
+       1.0500       0.3653E-03
+       1.1500       0.3149E-03
+       1.2500       0.4157E-03
+       1.3500       0.3779E-03
+       1.4500       0.4283E-03
+       1.5500       0.4283E-03
+       1.6500       0.4283E-03
+       1.7500       0.3653E-03
+       1.8500       0.2645E-03
+       1.9500       0.3149E-03
+       2.0500       0.1764E-03
+       2.1500       0.2897E-03
+       2.2500       0.2520E-03
+       2.3500       0.2897E-03
+       2.4500       0.1890E-03
+       2.5500       0.2771E-03
+       2.6500       0.2897E-03
+       2.7500       0.1764E-03
+       2.8500       0.2520E-03
+       2.9500       0.1764E-03
+       3.0500       0.2016E-03
+       3.1500       0.1890E-03
+       3.2500       0.1260E-03
+       3.3500       0.7559E-04
+       3.4500       0.1260E-03
+       3.5500       0.6299E-04
+       3.6500       0.5039E-04
+       3.7500       0.5039E-04
+       3.8500       0.3779E-04
+       3.9500       0.1260E-04
+       4.0500       0.1260E-04
+       4.1500       0.1260E-04
+       4.2500       0.0000E+00
+       4.3500       0.1260E-04
+       4.4500       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 1.840E+00   RMS = 8.479E-01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     681  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(b1,e+1)          "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.1500       0.0000E+00
+       0.2500       0.1260E-04
+       0.3500       0.0000E+00
+       0.4500       0.1260E-04
+       0.5500       0.5039E-04
+       0.6500       0.6299E-04
+       0.7500       0.3779E-04
+       0.8500       0.8818E-04
+       0.9500       0.6299E-04
+       1.0500       0.8818E-04
+       1.1500       0.8818E-04
+       1.2500       0.1512E-03
+       1.3500       0.7559E-04
+       1.4500       0.6299E-04
+       1.5500       0.7559E-04
+       1.6500       0.1890E-03
+       1.7500       0.1134E-03
+       1.8500       0.8818E-04
+       1.9500       0.1386E-03
+       2.0500       0.2520E-03
+       2.1500       0.1512E-03
+       2.2500       0.1512E-03
+       2.3500       0.2142E-03
+       2.4500       0.1512E-03
+       2.5500       0.8818E-04
+       2.6500       0.2897E-03
+       2.7500       0.1638E-03
+       2.8500       0.2268E-03
+       2.9500       0.1890E-03
+       3.0500       0.2645E-03
+       3.1500       0.1764E-03
+       3.2500       0.2142E-03
+       3.3500       0.1764E-03
+       3.4500       0.1260E-03
+       3.5500       0.1134E-03
+       3.6500       0.7559E-04
+       3.7500       0.1134E-03
+       3.8500       0.1260E-03
+       3.9500       0.1008E-03
+       4.0500       0.6299E-04
+       4.1500       0.1134E-03
+       4.2500       0.1008E-03
+       4.3500       0.7559E-04
+       4.4500       0.2520E-04
+       4.5500       0.6299E-04
+       4.6500       0.5039E-04
+       4.7500       0.0000E+00
+       4.8500       0.3779E-04
+       4.9500       0.1260E-04
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.642E+00   RMS = 1.014E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     421  Undersc =     0  Oversc =    13"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(b2,e+1)          "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.0500       0.0000E+00
+       0.1500       0.2520E-04
+       0.2500       0.1260E-04
+       0.3500       0.2520E-04
+       0.4500       0.2520E-04
+       0.5500       0.6299E-04
+       0.6500       0.1260E-04
+       0.7500       0.6299E-04
+       0.8500       0.6299E-04
+       0.9500       0.3779E-04
+       1.0500       0.1134E-03
+       1.1500       0.1638E-03
+       1.2500       0.1638E-03
+       1.3500       0.8818E-04
+       1.4500       0.6299E-04
+       1.5500       0.7559E-04
+       1.6500       0.7559E-04
+       1.7500       0.1260E-03
+       1.8500       0.1134E-03
+       1.9500       0.1512E-03
+       2.0500       0.1512E-03
+       2.1500       0.2142E-03
+       2.2500       0.1512E-03
+       2.3500       0.1386E-03
+       2.4500       0.1764E-03
+       2.5500       0.2645E-03
+       2.6500       0.2520E-03
+       2.7500       0.1512E-03
+       2.8500       0.1764E-03
+       2.9500       0.3527E-03
+       3.0500       0.2016E-03
+       3.1500       0.2771E-03
+       3.2500       0.1008E-03
+       3.3500       0.1134E-03
+       3.4500       0.1890E-03
+       3.5500       0.7559E-04
+       3.6500       0.8818E-04
+       3.7500       0.7559E-04
+       3.8500       0.7559E-04
+       3.9500       0.1008E-03
+       4.0500       0.5039E-04
+       4.1500       0.6299E-04
+       4.2500       0.3779E-04
+       4.3500       0.2520E-04
+       4.4500       0.7559E-04
+       4.5500       0.3779E-04
+       4.6500       0.5039E-04
+       4.7500       0.2520E-04
+       4.8500       0.2520E-04
+       4.9500       0.1260E-04
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.554E+00   RMS = 1.007E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     412  Undersc =     0  Oversc =    22"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(b1,mu+1)         "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.0500       0.1260E-04
+       0.1500       0.1260E-04
+       0.2500       0.2520E-04
+       0.3500       0.3779E-04
+       0.4500       0.5039E-04
+       0.5500       0.6299E-04
+       0.6500       0.6299E-04
+       0.7500       0.2520E-04
+       0.8500       0.6299E-04
+       0.9500       0.6299E-04
+       1.0500       0.8818E-04
+       1.1500       0.1008E-03
+       1.2500       0.1008E-03
+       1.3500       0.1890E-03
+       1.4500       0.6299E-04
+       1.5500       0.7559E-04
+       1.6500       0.1512E-03
+       1.7500       0.6299E-04
+       1.8500       0.5039E-04
+       1.9500       0.1512E-03
+       2.0500       0.1512E-03
+       2.1500       0.1260E-03
+       2.2500       0.1890E-03
+       2.3500       0.1638E-03
+       2.4500       0.1512E-03
+       2.5500       0.2016E-03
+       2.6500       0.2394E-03
+       2.7500       0.2394E-03
+       2.8500       0.2268E-03
+       2.9500       0.1890E-03
+       3.0500       0.2394E-03
+       3.1500       0.1764E-03
+       3.2500       0.1512E-03
+       3.3500       0.5039E-04
+       3.4500       0.1386E-03
+       3.5500       0.1386E-03
+       3.6500       0.7559E-04
+       3.7500       0.1008E-03
+       3.8500       0.1134E-03
+       3.9500       0.6299E-04
+       4.0500       0.2520E-04
+       4.1500       0.7559E-04
+       4.2500       0.5039E-04
+       4.3500       0.5039E-04
+       4.4500       0.6299E-04
+       4.5500       0.1260E-04
+       4.6500       0.3779E-04
+       4.7500       0.5039E-04
+       4.8500       0.2520E-04
+       4.9500       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.528E+00   RMS = 1.041E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     394  Undersc =     0  Oversc =     8"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(b2,mu+1)         "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.0500       0.1260E-04
+       0.1500       0.0000E+00
+       0.2500       0.2520E-04
+       0.3500       0.6299E-04
+       0.4500       0.0000E+00
+       0.5500       0.3779E-04
+       0.6500       0.1008E-03
+       0.7500       0.5039E-04
+       0.8500       0.1008E-03
+       0.9500       0.8818E-04
+       1.0500       0.1008E-03
+       1.1500       0.1008E-03
+       1.2500       0.1260E-03
+       1.3500       0.1260E-03
+       1.4500       0.7559E-04
+       1.5500       0.5039E-04
+       1.6500       0.7559E-04
+       1.7500       0.1386E-03
+       1.8500       0.1134E-03
+       1.9500       0.8818E-04
+       2.0500       0.1512E-03
+       2.1500       0.1386E-03
+       2.2500       0.1260E-03
+       2.3500       0.1764E-03
+       2.4500       0.1764E-03
+       2.5500       0.1890E-03
+       2.6500       0.2520E-03
+       2.7500       0.7559E-04
+       2.8500       0.1890E-03
+       2.9500       0.1134E-03
+       3.0500       0.2268E-03
+       3.1500       0.1638E-03
+       3.2500       0.7559E-04
+       3.3500       0.2268E-03
+       3.4500       0.1638E-03
+       3.5500       0.1134E-03
+       3.6500       0.1260E-03
+       3.7500       0.7559E-04
+       3.8500       0.5039E-04
+       3.9500       0.7559E-04
+       4.0500       0.7559E-04
+       4.1500       0.7559E-04
+       4.2500       0.3779E-04
+       4.3500       0.6299E-04
+       4.4500       0.3779E-04
+       4.5500       0.5039E-04
+       4.6500       0.3779E-04
+       4.7500       0.2520E-04
+       4.8500       0.5039E-04
+       4.9500       0.3779E-04
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.551E+00   RMS = 1.099E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     385  Undersc =     0  Oversc =    17"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(b1,e-1)          "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.3500       0.0000E+00
+       0.4500       0.1260E-04
+       0.5500       0.0000E+00
+       0.6500       0.1260E-04
+       0.7500       0.2520E-04
+       0.8500       0.0000E+00
+       0.9500       0.0000E+00
+       1.0500       0.5039E-04
+       1.1500       0.0000E+00
+       1.2500       0.0000E+00
+       1.3500       0.5039E-04
+       1.4500       0.1260E-04
+       1.5500       0.1260E-04
+       1.6500       0.1260E-04
+       1.7500       0.3779E-04
+       1.8500       0.2520E-04
+       1.9500       0.2520E-04
+       2.0500       0.6299E-04
+       2.1500       0.0000E+00
+       2.2500       0.5039E-04
+       2.3500       0.5039E-04
+       2.4500       0.5039E-04
+       2.5500       0.5039E-04
+       2.6500       0.2520E-04
+       2.7500       0.7559E-04
+       2.8500       0.6299E-04
+       2.9500       0.3779E-04
+       3.0500       0.1008E-03
+       3.1500       0.1260E-04
+       3.2500       0.6299E-04
+       3.3500       0.3779E-04
+       3.4500       0.1260E-04
+       3.5500       0.0000E+00
+       3.6500       0.2520E-04
+       3.7500       0.1260E-04
+       3.8500       0.2520E-04
+       3.9500       0.1260E-04
+       4.0500       0.0000E+00
+       4.1500       0.1260E-04
+       4.2500       0.0000E+00
+       4.3500       0.0000E+00
+       4.4500       0.2520E-04
+       4.5500       0.2520E-04
+       4.6500       0.0000E+00
+       4.7500       0.2520E-04
+       4.8500       0.1260E-04
+       4.9500       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.635E+00   RMS = 9.819E-01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =      91  Undersc =     0  Oversc =     3"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(b2,e-1)          "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.1500       0.0000E+00
+       0.2500       0.2520E-04
+       0.3500       0.0000E+00
+       0.5500       0.0000E+00
+       0.6500       0.1260E-04
+       0.7500       0.1260E-04
+       0.8500       0.0000E+00
+       0.9500       0.3779E-04
+       1.0500       0.2520E-04
+       1.1500       0.3779E-04
+       1.2500       0.6299E-04
+       1.3500       0.3779E-04
+       1.4500       0.1260E-04
+       1.5500       0.1260E-04
+       1.6500       0.3779E-04
+       1.7500       0.3779E-04
+       1.8500       0.2520E-04
+       1.9500       0.0000E+00
+       2.0500       0.6299E-04
+       2.1500       0.6299E-04
+       2.2500       0.6299E-04
+       2.3500       0.3779E-04
+       2.4500       0.3779E-04
+       2.5500       0.2520E-04
+       2.6500       0.5039E-04
+       2.7500       0.1260E-04
+       2.8500       0.1260E-04
+       2.9500       0.2520E-04
+       3.0500       0.2520E-04
+       3.1500       0.3779E-04
+       3.2500       0.5039E-04
+       3.3500       0.2520E-04
+       3.4500       0.2520E-04
+       3.5500       0.2520E-04
+       3.6500       0.1260E-04
+       3.7500       0.1260E-04
+       3.8500       0.1260E-04
+       3.9500       0.1260E-04
+       4.0500       0.2520E-04
+       4.1500       0.2520E-04
+       4.2500       0.1260E-04
+       4.3500       0.1260E-04
+       4.4500       0.1260E-04
+       4.5500       0.1260E-04
+       4.6500       0.1260E-04
+       4.7500       0.1260E-04
+       4.8500       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.436E+00   RMS = 1.081E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =      90  Undersc =     0  Oversc =     4"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(b1,mu-1)         "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.2500       0.0000E+00
+       0.3500       0.3779E-04
+       0.4500       0.2520E-04
+       0.5500       0.0000E+00
+       0.6500       0.0000E+00
+       0.7500       0.3779E-04
+       0.8500       0.2520E-04
+       0.9500       0.2520E-04
+       1.0500       0.0000E+00
+       1.1500       0.2520E-04
+       1.2500       0.1260E-04
+       1.3500       0.5039E-04
+       1.4500       0.0000E+00
+       1.5500       0.1260E-04
+       1.6500       0.2520E-04
+       1.7500       0.3779E-04
+       1.8500       0.3779E-04
+       1.9500       0.1260E-04
+       2.0500       0.5039E-04
+       2.1500       0.2520E-04
+       2.2500       0.7559E-04
+       2.3500       0.2520E-04
+       2.4500       0.2520E-04
+       2.5500       0.6299E-04
+       2.6500       0.7559E-04
+       2.7500       0.3779E-04
+       2.8500       0.2520E-04
+       2.9500       0.0000E+00
+       3.0500       0.6299E-04
+       3.1500       0.3779E-04
+       3.2500       0.5039E-04
+       3.3500       0.5039E-04
+       3.4500       0.3779E-04
+       3.5500       0.5039E-04
+       3.6500       0.1260E-04
+       3.7500       0.5039E-04
+       3.8500       0.1260E-04
+       3.9500       0.2520E-04
+       4.0500       0.1260E-04
+       4.1500       0.2520E-04
+       4.2500       0.2520E-04
+       4.3500       0.0000E+00
+       4.4500       0.0000E+00
+       4.5500       0.1260E-04
+       4.6500       0.1260E-04
+       4.7500       0.1260E-04
+       4.8500       0.1260E-04
+       4.9500       0.1260E-04
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.580E+00   RMS = 1.117E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     102  Undersc =     0  Oversc =     3"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(b2,mu-1)         "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.0500       0.0000E+00
+       0.1500       0.1260E-04
+       0.2500       0.1260E-04
+       0.3500       0.1260E-04
+       0.4500       0.2520E-04
+       0.5500       0.2520E-04
+       0.6500       0.0000E+00
+       0.7500       0.0000E+00
+       0.8500       0.2520E-04
+       0.9500       0.1260E-04
+       1.0500       0.0000E+00
+       1.1500       0.1260E-04
+       1.2500       0.0000E+00
+       1.3500       0.2520E-04
+       1.4500       0.2520E-04
+       1.5500       0.5039E-04
+       1.6500       0.2520E-04
+       1.7500       0.0000E+00
+       1.8500       0.2520E-04
+       1.9500       0.3779E-04
+       2.0500       0.2520E-04
+       2.1500       0.2520E-04
+       2.2500       0.2520E-04
+       2.3500       0.1008E-03
+       2.4500       0.3779E-04
+       2.5500       0.5039E-04
+       2.6500       0.5039E-04
+       2.7500       0.0000E+00
+       2.8500       0.6299E-04
+       2.9500       0.3779E-04
+       3.0500       0.5039E-04
+       3.1500       0.2520E-04
+       3.2500       0.5039E-04
+       3.3500       0.6299E-04
+       3.4500       0.2520E-04
+       3.5500       0.3779E-04
+       3.6500       0.5039E-04
+       3.7500       0.1260E-04
+       3.8500       0.2520E-04
+       3.9500       0.3779E-04
+       4.0500       0.1260E-04
+       4.1500       0.3779E-04
+       4.2500       0.2520E-04
+       4.3500       0.1260E-04
+       4.4500       0.0000E+00
+       4.5500       0.1260E-04
+       4.6500       0.3779E-04
+       4.7500       0.0000E+00
+       4.8500       0.1260E-04
+       4.9500       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.679E+00   RMS = 1.113E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     101  Undersc =     0  Oversc =     4"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(e+1,mu+1)        "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.0500       0.0000E+00
+       0.1500       0.2520E-04
+       0.2500       0.0000E+00
+       0.3500       0.2520E-04
+       0.4500       0.1260E-04
+       0.5500       0.2520E-04
+       0.6500       0.2520E-04
+       0.7500       0.5039E-04
+       0.8500       0.7559E-04
+       0.9500       0.7559E-04
+       1.0500       0.6299E-04
+       1.1500       0.6299E-04
+       1.2500       0.3779E-04
+       1.3500       0.5039E-04
+       1.4500       0.8818E-04
+       1.5500       0.3779E-04
+       1.6500       0.7559E-04
+       1.7500       0.6299E-04
+       1.8500       0.7559E-04
+       1.9500       0.8818E-04
+       2.0500       0.1260E-03
+       2.1500       0.5039E-04
+       2.2500       0.1260E-03
+       2.3500       0.1764E-03
+       2.4500       0.1134E-03
+       2.5500       0.1890E-03
+       2.6500       0.1512E-03
+       2.7500       0.1638E-03
+       2.8500       0.1512E-03
+       2.9500       0.1890E-03
+       3.0500       0.1134E-03
+       3.1500       0.2016E-03
+       3.2500       0.1260E-03
+       3.3500       0.6299E-04
+       3.4500       0.3779E-04
+       3.5500       0.7559E-04
+       3.6500       0.1008E-03
+       3.7500       0.6299E-04
+       3.8500       0.6299E-04
+       3.9500       0.2520E-04
+       4.0500       0.2520E-04
+       4.1500       0.2520E-04
+       4.2500       0.1260E-04
+       4.3500       0.5039E-04
+       4.4500       0.3779E-04
+       4.5500       0.1260E-04
+       4.6500       0.1260E-04
+       4.7500       0.2520E-04
+       4.8500       0.3779E-04
+       4.9500       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.537E+00   RMS = 9.967E-01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     278  Undersc =     0  Oversc =     7"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " R(e-1,mu-1)        "
+  TITLE BOTTOM "DeltaR              "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000    5.00000
+  SET ORDER X Y 
+       0.2500       0.0000E+00
+       0.3500       0.2520E-04
+       0.4500       0.0000E+00
+       0.5500       0.0000E+00
+       0.6500       0.1260E-04
+       0.7500       0.0000E+00
+       0.8500       0.1260E-04
+       0.9500       0.0000E+00
+       1.0500       0.3779E-04
+       1.1500       0.0000E+00
+       1.2500       0.3779E-04
+       1.3500       0.1260E-04
+       1.4500       0.2520E-04
+       1.5500       0.1260E-04
+       1.6500       0.1260E-04
+       1.7500       0.2520E-04
+       1.8500       0.1260E-04
+       1.9500       0.1260E-04
+       2.0500       0.2520E-04
+       2.1500       0.3779E-04
+       2.2500       0.2520E-04
+       2.3500       0.2520E-04
+       2.4500       0.1134E-03
+       2.5500       0.3779E-04
+       2.6500       0.0000E+00
+       2.7500       0.3779E-04
+       2.8500       0.6299E-04
+       2.9500       0.2520E-04
+       3.0500       0.5039E-04
+       3.1500       0.2520E-04
+       3.2500       0.0000E+00
+       3.3500       0.1260E-04
+       3.4500       0.0000E+00
+       3.5500       0.1260E-04
+       3.6500       0.0000E+00
+       3.7500       0.2520E-04
+       3.8500       0.1260E-04
+       3.9500       0.2520E-04
+       4.0500       0.0000E+00
+       4.6500       0.0000E+00
+       4.7500       0.2520E-04
+       4.8500       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.398E+00   RMS = 9.450E-01"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =      65  Undersc =     0  Oversc =     4"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(jet1,jet2)       "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      90.0000       0.0000E+00
+     110.0000       0.1260E-04
+     130.0000       0.1260E-04
+     150.0000       0.0000E+00
+     170.0000       0.0000E+00
+     190.0000       0.3779E-04
+     210.0000       0.2520E-04
+     230.0000       0.6299E-04
+     250.0000       0.5039E-04
+     270.0000       0.2520E-04
+     290.0000       0.0000E+00
+     310.0000       0.7559E-04
+     330.0000       0.5039E-04
+     350.0000       0.2520E-04
+     370.0000       0.5039E-04
+     390.0000       0.7559E-04
+     410.0000       0.5039E-04
+     430.0000       0.2520E-04
+     450.0000       0.3779E-04
+     470.0000       0.8818E-04
+     490.0000       0.1134E-03
+     510.0000       0.1008E-03
+     530.0000       0.6299E-04
+     550.0000       0.2520E-04
+     570.0000       0.1386E-03
+     590.0000       0.6299E-04
+     610.0000       0.6299E-04
+     630.0000       0.6299E-04
+     650.0000       0.5039E-04
+     670.0000       0.7559E-04
+     690.0000       0.6299E-04
+     710.0000       0.1008E-03
+     730.0000       0.7559E-04
+     750.0000       0.7559E-04
+     770.0000       0.2520E-04
+     790.0000       0.1008E-03
+     810.0000       0.3779E-04
+     830.0000       0.1008E-03
+     850.0000       0.6299E-04
+     870.0000       0.6299E-04
+     890.0000       0.2520E-04
+     910.0000       0.6299E-04
+     930.0000       0.1008E-03
+     950.0000       0.1134E-03
+     970.0000       0.8818E-04
+     990.0000       0.1134E-03
+    1010.0000       0.5039E-04
+    1030.0000       0.1008E-03
+    1050.0000       0.7559E-04
+    1070.0000       0.1890E-03
+    1090.0000       0.1134E-03
+    1110.0000       0.8818E-04
+    1130.0000       0.7559E-04
+    1150.0000       0.5039E-04
+    1170.0000       0.5039E-04
+    1190.0000       0.6299E-04
+    1210.0000       0.7559E-04
+    1230.0000       0.7559E-04
+    1250.0000       0.1008E-03
+    1270.0000       0.5039E-04
+    1290.0000       0.1260E-03
+    1310.0000       0.8818E-04
+    1330.0000       0.5039E-04
+    1350.0000       0.1134E-03
+    1370.0000       0.1008E-03
+    1390.0000       0.6299E-04
+    1410.0000       0.6299E-04
+    1430.0000       0.3779E-04
+    1450.0000       0.7559E-04
+    1470.0000       0.3779E-04
+    1490.0000       0.8818E-04
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 8.918E+02   RMS = 3.568E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     371  Undersc =     0  Oversc =   310"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(jet1,b1)         "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.0000E+00
+      30.0000       0.1260E-04
+      50.0000       0.1260E-04
+      70.0000       0.1260E-04
+      90.0000       0.5039E-04
+     110.0000       0.3779E-04
+     130.0000       0.7559E-04
+     150.0000       0.5039E-04
+     170.0000       0.6299E-04
+     190.0000       0.2897E-03
+     210.0000       0.1764E-03
+     230.0000       0.1764E-03
+     250.0000       0.1260E-03
+     270.0000       0.1890E-03
+     290.0000       0.2645E-03
+     310.0000       0.2142E-03
+     330.0000       0.1260E-03
+     350.0000       0.1512E-03
+     370.0000       0.2016E-03
+     390.0000       0.2520E-03
+     410.0000       0.1764E-03
+     430.0000       0.1890E-03
+     450.0000       0.1764E-03
+     470.0000       0.1386E-03
+     490.0000       0.6299E-04
+     510.0000       0.1260E-03
+     530.0000       0.1260E-03
+     550.0000       0.1764E-03
+     570.0000       0.1512E-03
+     590.0000       0.2394E-03
+     610.0000       0.1890E-03
+     630.0000       0.1386E-03
+     650.0000       0.1134E-03
+     670.0000       0.1512E-03
+     690.0000       0.1386E-03
+     710.0000       0.1512E-03
+     730.0000       0.1134E-03
+     750.0000       0.7559E-04
+     770.0000       0.7559E-04
+     790.0000       0.7559E-04
+     810.0000       0.8818E-04
+     830.0000       0.1260E-03
+     850.0000       0.1386E-03
+     870.0000       0.1386E-03
+     890.0000       0.1134E-03
+     910.0000       0.1260E-03
+     930.0000       0.5039E-04
+     950.0000       0.1260E-03
+     970.0000       0.5039E-04
+     990.0000       0.1512E-03
+    1010.0000       0.8818E-04
+    1030.0000       0.1260E-03
+    1050.0000       0.1008E-03
+    1070.0000       0.3779E-04
+    1090.0000       0.5039E-04
+    1110.0000       0.6299E-04
+    1130.0000       0.5039E-04
+    1150.0000       0.3779E-04
+    1170.0000       0.3779E-04
+    1190.0000       0.7559E-04
+    1210.0000       0.6299E-04
+    1230.0000       0.1008E-03
+    1250.0000       0.5039E-04
+    1270.0000       0.5039E-04
+    1290.0000       0.3779E-04
+    1310.0000       0.2520E-04
+    1330.0000       0.3779E-04
+    1350.0000       0.1260E-04
+    1370.0000       0.2520E-04
+    1390.0000       0.5039E-04
+    1410.0000       0.3779E-04
+    1430.0000       0.2520E-04
+    1450.0000       0.0000E+00
+    1470.0000       0.3779E-04
+    1490.0000       0.6299E-04
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 6.300E+02   RMS = 3.451E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     608  Undersc =     0  Oversc =    73"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(jet1,b2)         "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.1260E-04
+      30.0000       0.1008E-03
+      50.0000       0.8818E-04
+      70.0000       0.3275E-03
+      90.0000       0.2771E-03
+     110.0000       0.2268E-03
+     130.0000       0.2394E-03
+     150.0000       0.4031E-03
+     170.0000       0.3023E-03
+     190.0000       0.2645E-03
+     210.0000       0.2394E-03
+     230.0000       0.3401E-03
+     250.0000       0.3023E-03
+     270.0000       0.3275E-03
+     290.0000       0.3275E-03
+     310.0000       0.1764E-03
+     330.0000       0.2771E-03
+     350.0000       0.1764E-03
+     370.0000       0.1260E-03
+     390.0000       0.1512E-03
+     410.0000       0.1890E-03
+     430.0000       0.1764E-03
+     450.0000       0.2016E-03
+     470.0000       0.1512E-03
+     490.0000       0.1134E-03
+     510.0000       0.8818E-04
+     530.0000       0.1260E-03
+     550.0000       0.1890E-03
+     570.0000       0.2520E-03
+     590.0000       0.1008E-03
+     610.0000       0.1008E-03
+     630.0000       0.1260E-03
+     650.0000       0.7559E-04
+     670.0000       0.1386E-03
+     690.0000       0.1260E-03
+     710.0000       0.1638E-03
+     730.0000       0.5039E-04
+     750.0000       0.7559E-04
+     770.0000       0.6299E-04
+     790.0000       0.8818E-04
+     810.0000       0.1134E-03
+     830.0000       0.3779E-04
+     850.0000       0.1260E-04
+     870.0000       0.2520E-04
+     890.0000       0.5039E-04
+     910.0000       0.7559E-04
+     930.0000       0.6299E-04
+     950.0000       0.8818E-04
+     970.0000       0.7559E-04
+     990.0000       0.3779E-04
+    1010.0000       0.3779E-04
+    1030.0000       0.2520E-04
+    1050.0000       0.2520E-04
+    1070.0000       0.1260E-04
+    1090.0000       0.2520E-04
+    1110.0000       0.2520E-04
+    1130.0000       0.3779E-04
+    1150.0000       0.1260E-04
+    1170.0000       0.3779E-04
+    1190.0000       0.2520E-04
+    1210.0000       0.0000E+00
+    1230.0000       0.5039E-04
+    1250.0000       0.5039E-04
+    1270.0000       0.0000E+00
+    1310.0000       0.0000E+00
+    1330.0000       0.1260E-04
+    1350.0000       0.0000E+00
+    1370.0000       0.1260E-04
+    1390.0000       0.1260E-04
+    1410.0000       0.1260E-04
+    1430.0000       0.2520E-04
+    1450.0000       0.1260E-04
+    1470.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 4.238E+02   RMS = 3.022E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     660  Undersc =     0  Oversc =    21"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(jet2,b1)         "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.0000E+00
+      30.0000       0.6299E-04
+      50.0000       0.1260E-03
+      70.0000       0.1134E-03
+      90.0000       0.2016E-03
+     110.0000       0.2771E-03
+     130.0000       0.2771E-03
+     150.0000       0.3653E-03
+     170.0000       0.3149E-03
+     190.0000       0.3275E-03
+     210.0000       0.3023E-03
+     230.0000       0.3401E-03
+     250.0000       0.3527E-03
+     270.0000       0.2645E-03
+     290.0000       0.2897E-03
+     310.0000       0.2520E-03
+     330.0000       0.3275E-03
+     350.0000       0.3527E-03
+     370.0000       0.1638E-03
+     390.0000       0.2771E-03
+     410.0000       0.2142E-03
+     430.0000       0.1512E-03
+     450.0000       0.1512E-03
+     470.0000       0.1890E-03
+     490.0000       0.1890E-03
+     510.0000       0.1764E-03
+     530.0000       0.1386E-03
+     550.0000       0.3779E-04
+     570.0000       0.8818E-04
+     590.0000       0.1008E-03
+     610.0000       0.1134E-03
+     630.0000       0.1512E-03
+     650.0000       0.8818E-04
+     670.0000       0.1008E-03
+     690.0000       0.1008E-03
+     710.0000       0.8818E-04
+     730.0000       0.8818E-04
+     750.0000       0.5039E-04
+     770.0000       0.1134E-03
+     790.0000       0.5039E-04
+     810.0000       0.6299E-04
+     830.0000       0.6299E-04
+     850.0000       0.6299E-04
+     870.0000       0.7559E-04
+     890.0000       0.5039E-04
+     910.0000       0.2520E-04
+     930.0000       0.5039E-04
+     950.0000       0.6299E-04
+     970.0000       0.5039E-04
+     990.0000       0.5039E-04
+    1010.0000       0.1260E-04
+    1030.0000       0.2520E-04
+    1050.0000       0.3779E-04
+    1070.0000       0.3779E-04
+    1090.0000       0.6299E-04
+    1110.0000       0.1260E-04
+    1130.0000       0.5039E-04
+    1150.0000       0.1260E-04
+    1170.0000       0.0000E+00
+    1190.0000       0.2520E-04
+    1210.0000       0.2520E-04
+    1230.0000       0.0000E+00
+    1250.0000       0.2520E-04
+    1270.0000       0.1260E-04
+    1290.0000       0.3779E-04
+    1310.0000       0.2520E-04
+    1330.0000       0.1260E-04
+    1350.0000       0.3779E-04
+    1370.0000       0.0000E+00
+    1390.0000       0.1260E-04
+    1410.0000       0.1260E-04
+    1430.0000       0.0000E+00
+    1450.0000       0.1260E-04
+    1470.0000       0.0000E+00
+    1490.0000       0.1260E-04
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 4.248E+02   RMS = 2.985E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     669  Undersc =     0  Oversc =    12"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(jet2,b2)         "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.3779E-04
+      30.0000       0.1764E-03
+      50.0000       0.3653E-03
+      70.0000       0.5039E-03
+      90.0000       0.5921E-03
+     110.0000       0.5921E-03
+     130.0000       0.4283E-03
+     150.0000       0.4535E-03
+     170.0000       0.4409E-03
+     190.0000       0.4661E-03
+     210.0000       0.4031E-03
+     230.0000       0.3905E-03
+     250.0000       0.3149E-03
+     270.0000       0.2897E-03
+     290.0000       0.2394E-03
+     310.0000       0.2520E-03
+     330.0000       0.2142E-03
+     350.0000       0.1638E-03
+     370.0000       0.1764E-03
+     390.0000       0.1764E-03
+     410.0000       0.1260E-03
+     430.0000       0.1386E-03
+     450.0000       0.1386E-03
+     470.0000       0.3779E-04
+     490.0000       0.1260E-03
+     510.0000       0.8818E-04
+     530.0000       0.1386E-03
+     550.0000       0.5039E-04
+     570.0000       0.3779E-04
+     590.0000       0.1260E-03
+     610.0000       0.8818E-04
+     630.0000       0.7559E-04
+     650.0000       0.1260E-04
+     670.0000       0.5039E-04
+     690.0000       0.6299E-04
+     710.0000       0.5039E-04
+     730.0000       0.6299E-04
+     750.0000       0.2520E-04
+     770.0000       0.1260E-04
+     790.0000       0.3779E-04
+     810.0000       0.5039E-04
+     830.0000       0.5039E-04
+     850.0000       0.6299E-04
+     870.0000       0.1260E-04
+     890.0000       0.0000E+00
+     910.0000       0.3779E-04
+     930.0000       0.0000E+00
+     950.0000       0.1260E-04
+     970.0000       0.2520E-04
+     990.0000       0.1260E-04
+    1010.0000       0.0000E+00
+    1050.0000       0.0000E+00
+    1070.0000       0.2520E-04
+    1090.0000       0.0000E+00
+    1110.0000       0.2520E-04
+    1130.0000       0.1260E-04
+    1150.0000       0.1260E-04
+    1170.0000       0.0000E+00
+    1190.0000       0.0000E+00
+    1210.0000       0.1260E-04
+    1230.0000       0.0000E+00
+    1390.0000       0.0000E+00
+    1410.0000       0.1260E-04
+    1430.0000       0.0000E+00
+    1450.0000       0.1260E-04
+    1470.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.802E+02   RMS = 2.284E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     678  Undersc =     0  Oversc =     3"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(jet1,e+1)        "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.5039E-04
+      30.0000       0.8818E-04
+      50.0000       0.1386E-03
+      70.0000       0.1512E-03
+      90.0000       0.2016E-03
+     110.0000       0.1638E-03
+     130.0000       0.2645E-03
+     150.0000       0.2520E-03
+     170.0000       0.2142E-03
+     190.0000       0.2520E-03
+     210.0000       0.1764E-03
+     230.0000       0.1890E-03
+     250.0000       0.1890E-03
+     270.0000       0.2268E-03
+     290.0000       0.1638E-03
+     310.0000       0.1764E-03
+     330.0000       0.1386E-03
+     350.0000       0.8818E-04
+     370.0000       0.6299E-04
+     390.0000       0.1512E-03
+     410.0000       0.7559E-04
+     430.0000       0.6299E-04
+     450.0000       0.1260E-03
+     470.0000       0.7559E-04
+     490.0000       0.1260E-03
+     510.0000       0.8818E-04
+     530.0000       0.8818E-04
+     550.0000       0.6299E-04
+     570.0000       0.6299E-04
+     590.0000       0.6299E-04
+     610.0000       0.8818E-04
+     630.0000       0.1260E-04
+     650.0000       0.6299E-04
+     670.0000       0.7559E-04
+     690.0000       0.3779E-04
+     710.0000       0.3779E-04
+     730.0000       0.5039E-04
+     750.0000       0.6299E-04
+     770.0000       0.5039E-04
+     790.0000       0.3779E-04
+     810.0000       0.3779E-04
+     830.0000       0.2520E-04
+     850.0000       0.2520E-04
+     870.0000       0.3779E-04
+     890.0000       0.0000E+00
+     910.0000       0.3779E-04
+     930.0000       0.2520E-04
+     950.0000       0.5039E-04
+     970.0000       0.0000E+00
+     990.0000       0.1260E-04
+    1010.0000       0.0000E+00
+    1030.0000       0.0000E+00
+    1050.0000       0.1260E-04
+    1070.0000       0.1260E-04
+    1090.0000       0.1260E-04
+    1110.0000       0.2520E-04
+    1130.0000       0.2520E-04
+    1150.0000       0.0000E+00
+    1190.0000       0.0000E+00
+    1210.0000       0.1260E-04
+    1230.0000       0.0000E+00
+    1250.0000       0.2520E-04
+    1270.0000       0.3779E-04
+    1290.0000       0.0000E+00
+    1310.0000       0.3779E-04
+    1330.0000       0.2520E-04
+    1350.0000       0.0000E+00
+    1370.0000       0.1260E-04
+    1390.0000       0.3779E-04
+    1410.0000       0.1260E-04
+    1430.0000       0.0000E+00
+    1470.0000       0.0000E+00
+    1490.0000       0.1260E-04
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 3.890E+02   RMS = 3.128E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     416  Undersc =     0  Oversc =    18"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(jet2,e+1)        "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.1260E-04
+      30.0000       0.5039E-04
+      50.0000       0.1638E-03
+      70.0000       0.8818E-04
+      90.0000       0.2771E-03
+     110.0000       0.2016E-03
+     130.0000       0.1512E-03
+     150.0000       0.2520E-03
+     170.0000       0.1512E-03
+     190.0000       0.1638E-03
+     210.0000       0.1386E-03
+     230.0000       0.2142E-03
+     250.0000       0.1512E-03
+     270.0000       0.1008E-03
+     290.0000       0.8818E-04
+     310.0000       0.1638E-03
+     330.0000       0.1008E-03
+     350.0000       0.2142E-03
+     370.0000       0.8818E-04
+     390.0000       0.1008E-03
+     410.0000       0.1386E-03
+     430.0000       0.6299E-04
+     450.0000       0.7559E-04
+     470.0000       0.1386E-03
+     490.0000       0.1764E-03
+     510.0000       0.5039E-04
+     530.0000       0.1260E-03
+     550.0000       0.5039E-04
+     570.0000       0.7559E-04
+     590.0000       0.1134E-03
+     610.0000       0.5039E-04
+     630.0000       0.5039E-04
+     650.0000       0.5039E-04
+     670.0000       0.7559E-04
+     690.0000       0.5039E-04
+     710.0000       0.5039E-04
+     730.0000       0.6299E-04
+     750.0000       0.2520E-04
+     770.0000       0.2520E-04
+     790.0000       0.5039E-04
+     810.0000       0.1260E-04
+     830.0000       0.3779E-04
+     850.0000       0.2520E-04
+     870.0000       0.7559E-04
+     890.0000       0.2520E-04
+     910.0000       0.1260E-04
+     930.0000       0.5039E-04
+     950.0000       0.6299E-04
+     970.0000       0.6299E-04
+     990.0000       0.3779E-04
+    1010.0000       0.1260E-04
+    1030.0000       0.3779E-04
+    1050.0000       0.1260E-04
+    1070.0000       0.1260E-04
+    1090.0000       0.6299E-04
+    1110.0000       0.1260E-04
+    1130.0000       0.2520E-04
+    1150.0000       0.2520E-04
+    1170.0000       0.0000E+00
+    1190.0000       0.1260E-04
+    1210.0000       0.2520E-04
+    1230.0000       0.1260E-04
+    1250.0000       0.3779E-04
+    1270.0000       0.0000E+00
+    1330.0000       0.0000E+00
+    1350.0000       0.1260E-04
+    1370.0000       0.3779E-04
+    1390.0000       0.0000E+00
+    1410.0000       0.2520E-04
+    1430.0000       0.2520E-04
+    1450.0000       0.2520E-04
+    1470.0000       0.1260E-04
+    1490.0000       0.1260E-04
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 4.460E+02   RMS = 3.413E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     414  Undersc =     0  Oversc =    20"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(jet1,mu+1)       "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.2520E-04
+      30.0000       0.7559E-04
+      50.0000       0.8818E-04
+      70.0000       0.1008E-03
+      90.0000       0.1386E-03
+     110.0000       0.2016E-03
+     130.0000       0.2645E-03
+     150.0000       0.1764E-03
+     170.0000       0.2771E-03
+     190.0000       0.2142E-03
+     210.0000       0.2268E-03
+     230.0000       0.1386E-03
+     250.0000       0.1260E-03
+     270.0000       0.1890E-03
+     290.0000       0.1890E-03
+     310.0000       0.1638E-03
+     330.0000       0.1512E-03
+     350.0000       0.1134E-03
+     370.0000       0.1512E-03
+     390.0000       0.1008E-03
+     410.0000       0.1134E-03
+     430.0000       0.1134E-03
+     450.0000       0.5039E-04
+     470.0000       0.1008E-03
+     490.0000       0.7559E-04
+     510.0000       0.3779E-04
+     530.0000       0.5039E-04
+     550.0000       0.8818E-04
+     570.0000       0.5039E-04
+     590.0000       0.6299E-04
+     610.0000       0.2520E-04
+     630.0000       0.6299E-04
+     650.0000       0.6299E-04
+     670.0000       0.2520E-04
+     690.0000       0.1260E-04
+     710.0000       0.1260E-04
+     730.0000       0.5039E-04
+     750.0000       0.3779E-04
+     770.0000       0.7559E-04
+     790.0000       0.2520E-04
+     810.0000       0.3779E-04
+     830.0000       0.7559E-04
+     850.0000       0.2520E-04
+     870.0000       0.2520E-04
+     890.0000       0.1260E-04
+     910.0000       0.2520E-04
+     930.0000       0.0000E+00
+     950.0000       0.2520E-04
+     970.0000       0.2520E-04
+     990.0000       0.5039E-04
+    1010.0000       0.3779E-04
+    1030.0000       0.0000E+00
+    1050.0000       0.1260E-04
+    1070.0000       0.1260E-04
+    1090.0000       0.0000E+00
+    1110.0000       0.1260E-04
+    1130.0000       0.0000E+00
+    1150.0000       0.2520E-04
+    1170.0000       0.1260E-04
+    1190.0000       0.1260E-04
+    1210.0000       0.2520E-04
+    1230.0000       0.0000E+00
+    1250.0000       0.1260E-04
+    1270.0000       0.1260E-04
+    1290.0000       0.1260E-04
+    1310.0000       0.1260E-04
+    1330.0000       0.1260E-04
+    1350.0000       0.1260E-04
+    1370.0000       0.0000E+00
+    1390.0000       0.0000E+00
+    1410.0000       0.2520E-04
+    1430.0000       0.1260E-04
+    1450.0000       0.1260E-04
+    1470.0000       0.0000E+00
+    1490.0000       0.1260E-04
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 3.953E+02   RMS = 3.115E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     384  Undersc =     0  Oversc =    18"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(jet2,mu+1)       "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.3779E-04
+      30.0000       0.8818E-04
+      50.0000       0.1134E-03
+      70.0000       0.2897E-03
+      90.0000       0.2645E-03
+     110.0000       0.2142E-03
+     130.0000       0.1638E-03
+     150.0000       0.2268E-03
+     170.0000       0.2268E-03
+     190.0000       0.1134E-03
+     210.0000       0.1764E-03
+     230.0000       0.1134E-03
+     250.0000       0.6299E-04
+     270.0000       0.1008E-03
+     290.0000       0.1764E-03
+     310.0000       0.1008E-03
+     330.0000       0.1764E-03
+     350.0000       0.1134E-03
+     370.0000       0.7559E-04
+     390.0000       0.1386E-03
+     410.0000       0.5039E-04
+     430.0000       0.1134E-03
+     450.0000       0.8818E-04
+     470.0000       0.7559E-04
+     490.0000       0.7559E-04
+     510.0000       0.8818E-04
+     530.0000       0.8818E-04
+     550.0000       0.6299E-04
+     570.0000       0.1260E-03
+     590.0000       0.8818E-04
+     610.0000       0.3779E-04
+     630.0000       0.5039E-04
+     650.0000       0.5039E-04
+     670.0000       0.6299E-04
+     690.0000       0.5039E-04
+     710.0000       0.6299E-04
+     730.0000       0.5039E-04
+     750.0000       0.3779E-04
+     770.0000       0.3779E-04
+     790.0000       0.2520E-04
+     810.0000       0.2520E-04
+     830.0000       0.3779E-04
+     850.0000       0.2520E-04
+     870.0000       0.5039E-04
+     890.0000       0.2520E-04
+     910.0000       0.2520E-04
+     930.0000       0.7559E-04
+     950.0000       0.2520E-04
+     970.0000       0.2520E-04
+     990.0000       0.0000E+00
+    1010.0000       0.1260E-04
+    1030.0000       0.2520E-04
+    1050.0000       0.1260E-04
+    1070.0000       0.1260E-04
+    1090.0000       0.6299E-04
+    1110.0000       0.0000E+00
+    1130.0000       0.1260E-04
+    1150.0000       0.1260E-04
+    1170.0000       0.2520E-04
+    1190.0000       0.1260E-04
+    1210.0000       0.2520E-04
+    1230.0000       0.1260E-04
+    1250.0000       0.1260E-04
+    1270.0000       0.1260E-04
+    1290.0000       0.0000E+00
+    1330.0000       0.0000E+00
+    1350.0000       0.1260E-04
+    1370.0000       0.0000E+00
+    1390.0000       0.0000E+00
+    1410.0000       0.1260E-04
+    1430.0000       0.1260E-04
+    1450.0000       0.2520E-04
+    1470.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 4.001E+02   RMS = 3.183E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     391  Undersc =     0  Oversc =    11"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(jet1,e-1)        "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.0000E+00
+      30.0000       0.1260E-04
+      50.0000       0.2520E-04
+      70.0000       0.7559E-04
+      90.0000       0.6299E-04
+     110.0000       0.3779E-04
+     130.0000       0.3779E-04
+     150.0000       0.7559E-04
+     170.0000       0.5039E-04
+     190.0000       0.6299E-04
+     210.0000       0.3779E-04
+     230.0000       0.7559E-04
+     250.0000       0.5039E-04
+     270.0000       0.1260E-04
+     290.0000       0.5039E-04
+     310.0000       0.1260E-04
+     330.0000       0.2520E-04
+     350.0000       0.5039E-04
+     370.0000       0.1260E-04
+     390.0000       0.7559E-04
+     410.0000       0.1260E-04
+     430.0000       0.2520E-04
+     450.0000       0.0000E+00
+     470.0000       0.0000E+00
+     490.0000       0.5039E-04
+     510.0000       0.0000E+00
+     530.0000       0.0000E+00
+     550.0000       0.1260E-04
+     570.0000       0.2520E-04
+     590.0000       0.2520E-04
+     610.0000       0.2520E-04
+     630.0000       0.0000E+00
+     650.0000       0.5039E-04
+     670.0000       0.3779E-04
+     690.0000       0.0000E+00
+     710.0000       0.1260E-04
+     730.0000       0.0000E+00
+     890.0000       0.0000E+00
+     910.0000       0.1260E-04
+     930.0000       0.1260E-04
+     950.0000       0.0000E+00
+    1010.0000       0.0000E+00
+    1030.0000       0.1260E-04
+    1050.0000       0.0000E+00
+    1270.0000       0.0000E+00
+    1290.0000       0.1260E-04
+    1310.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 3.287E+02   RMS = 2.400E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =      93  Undersc =     0  Oversc =     1"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(jet2,e-1)        "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.1260E-04
+      30.0000       0.3779E-04
+      50.0000       0.5039E-04
+      70.0000       0.3779E-04
+      90.0000       0.3779E-04
+     110.0000       0.3779E-04
+     130.0000       0.2520E-04
+     150.0000       0.5039E-04
+     170.0000       0.7559E-04
+     190.0000       0.0000E+00
+     210.0000       0.3779E-04
+     230.0000       0.3779E-04
+     250.0000       0.8818E-04
+     270.0000       0.6299E-04
+     290.0000       0.5039E-04
+     310.0000       0.1260E-04
+     330.0000       0.2520E-04
+     350.0000       0.3779E-04
+     370.0000       0.1260E-04
+     390.0000       0.3779E-04
+     410.0000       0.2520E-04
+     430.0000       0.1260E-04
+     450.0000       0.0000E+00
+     470.0000       0.1260E-04
+     490.0000       0.1260E-04
+     510.0000       0.3779E-04
+     530.0000       0.1260E-04
+     550.0000       0.2520E-04
+     570.0000       0.1260E-04
+     590.0000       0.0000E+00
+     610.0000       0.2520E-04
+     630.0000       0.2520E-04
+     650.0000       0.0000E+00
+     670.0000       0.1260E-04
+     690.0000       0.0000E+00
+     710.0000       0.0000E+00
+     730.0000       0.1260E-04
+     750.0000       0.0000E+00
+     770.0000       0.1260E-04
+     790.0000       0.1260E-04
+     810.0000       0.0000E+00
+     830.0000       0.0000E+00
+     850.0000       0.1260E-04
+     870.0000       0.0000E+00
+     890.0000       0.1260E-04
+     910.0000       0.1260E-04
+     930.0000       0.0000E+00
+     990.0000       0.0000E+00
+    1010.0000       0.2520E-04
+    1030.0000       0.2520E-04
+    1050.0000       0.0000E+00
+    1130.0000       0.0000E+00
+    1150.0000       0.1260E-04
+    1170.0000       0.0000E+00
+    1330.0000       0.0000E+00
+    1350.0000       0.1260E-04
+    1370.0000       0.0000E+00
+    1410.0000       0.0000E+00
+    1430.0000       0.1260E-04
+    1450.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 3.755E+02   RMS = 3.085E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =      91  Undersc =     0  Oversc =     3"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(jet1,mu-1)       "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.1260E-04
+      30.0000       0.0000E+00
+      50.0000       0.5039E-04
+      70.0000       0.5039E-04
+      90.0000       0.5039E-04
+     110.0000       0.5039E-04
+     130.0000       0.8818E-04
+     150.0000       0.7559E-04
+     170.0000       0.3779E-04
+     190.0000       0.3779E-04
+     210.0000       0.7559E-04
+     230.0000       0.3779E-04
+     250.0000       0.3779E-04
+     270.0000       0.0000E+00
+     290.0000       0.7559E-04
+     310.0000       0.3779E-04
+     330.0000       0.1260E-04
+     350.0000       0.1260E-04
+     370.0000       0.2520E-04
+     390.0000       0.2520E-04
+     410.0000       0.3779E-04
+     430.0000       0.6299E-04
+     450.0000       0.1260E-04
+     470.0000       0.2520E-04
+     490.0000       0.2520E-04
+     510.0000       0.5039E-04
+     530.0000       0.1260E-04
+     550.0000       0.1260E-04
+     570.0000       0.0000E+00
+     590.0000       0.1260E-04
+     610.0000       0.1260E-04
+     630.0000       0.0000E+00
+     670.0000       0.0000E+00
+     690.0000       0.1260E-04
+     710.0000       0.2520E-04
+     730.0000       0.0000E+00
+     750.0000       0.5039E-04
+     770.0000       0.1260E-04
+     790.0000       0.2520E-04
+     810.0000       0.0000E+00
+     830.0000       0.0000E+00
+     850.0000       0.1260E-04
+     870.0000       0.0000E+00
+     890.0000       0.0000E+00
+     910.0000       0.1260E-04
+     930.0000       0.0000E+00
+     950.0000       0.0000E+00
+     970.0000       0.3779E-04
+     990.0000       0.0000E+00
+    1070.0000       0.0000E+00
+    1090.0000       0.1260E-04
+    1110.0000       0.0000E+00
+    1230.0000       0.0000E+00
+    1250.0000       0.1260E-04
+    1270.0000       0.0000E+00
+    1390.0000       0.0000E+00
+    1410.0000       0.1260E-04
+    1430.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 3.696E+02   RMS = 2.874E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     102  Undersc =     0  Oversc =     3"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(jet2,mu-1)       "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.0000E+00
+      30.0000       0.5039E-04
+      50.0000       0.5039E-04
+      70.0000       0.7559E-04
+      90.0000       0.6299E-04
+     110.0000       0.7559E-04
+     130.0000       0.3779E-04
+     150.0000       0.7559E-04
+     170.0000       0.5039E-04
+     190.0000       0.3779E-04
+     210.0000       0.1008E-03
+     230.0000       0.0000E+00
+     250.0000       0.7559E-04
+     270.0000       0.1260E-04
+     290.0000       0.5039E-04
+     310.0000       0.5039E-04
+     330.0000       0.3779E-04
+     350.0000       0.3779E-04
+     370.0000       0.0000E+00
+     390.0000       0.0000E+00
+     410.0000       0.2520E-04
+     430.0000       0.3779E-04
+     450.0000       0.1260E-04
+     470.0000       0.2520E-04
+     490.0000       0.5039E-04
+     510.0000       0.1260E-04
+     530.0000       0.1260E-04
+     550.0000       0.3779E-04
+     570.0000       0.0000E+00
+     590.0000       0.0000E+00
+     610.0000       0.1260E-04
+     630.0000       0.1260E-04
+     650.0000       0.0000E+00
+     670.0000       0.1260E-04
+     690.0000       0.0000E+00
+     710.0000       0.1260E-04
+     730.0000       0.1260E-04
+     750.0000       0.0000E+00
+     770.0000       0.1260E-04
+     790.0000       0.2520E-04
+     810.0000       0.0000E+00
+     830.0000       0.0000E+00
+     850.0000       0.5039E-04
+     870.0000       0.0000E+00
+     890.0000       0.0000E+00
+     910.0000       0.1260E-04
+     930.0000       0.1260E-04
+     950.0000       0.1260E-04
+     970.0000       0.1260E-04
+     990.0000       0.0000E+00
+    1010.0000       0.1260E-04
+    1030.0000       0.1260E-04
+    1050.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 3.365E+02   RMS = 2.662E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     105  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(b1,b2)           "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+     110.0000       0.0000E+00
+     130.0000       0.8579E-02
+     150.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 1.300E+02   RMS = 0.000E+00"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     681  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(b1,e+1)          "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.0000E+00
+      30.0000       0.6299E-04
+      50.0000       0.1512E-03
+      70.0000       0.2268E-03
+      90.0000       0.3401E-03
+     110.0000       0.2142E-03
+     130.0000       0.2645E-03
+     150.0000       0.1638E-03
+     170.0000       0.3527E-03
+     190.0000       0.3527E-03
+     210.0000       0.2394E-03
+     230.0000       0.2897E-03
+     250.0000       0.2897E-03
+     270.0000       0.1764E-03
+     290.0000       0.2268E-03
+     310.0000       0.1260E-03
+     330.0000       0.1638E-03
+     350.0000       0.1134E-03
+     370.0000       0.7559E-04
+     390.0000       0.8818E-04
+     410.0000       0.2520E-04
+     430.0000       0.6299E-04
+     450.0000       0.1512E-03
+     470.0000       0.5039E-04
+     490.0000       0.8818E-04
+     510.0000       0.7559E-04
+     530.0000       0.6299E-04
+     550.0000       0.8818E-04
+     570.0000       0.6299E-04
+     590.0000       0.2520E-04
+     610.0000       0.5039E-04
+     630.0000       0.6299E-04
+     650.0000       0.7559E-04
+     670.0000       0.2520E-04
+     690.0000       0.6299E-04
+     710.0000       0.5039E-04
+     730.0000       0.7559E-04
+     750.0000       0.2520E-04
+     770.0000       0.3779E-04
+     790.0000       0.3779E-04
+     810.0000       0.1260E-04
+     830.0000       0.5039E-04
+     850.0000       0.2520E-04
+     870.0000       0.2520E-04
+     890.0000       0.0000E+00
+     930.0000       0.0000E+00
+     950.0000       0.1260E-04
+     970.0000       0.1260E-04
+     990.0000       0.2520E-04
+    1010.0000       0.1260E-04
+    1030.0000       0.1260E-04
+    1050.0000       0.0000E+00
+    1070.0000       0.1260E-04
+    1090.0000       0.1260E-04
+    1110.0000       0.1260E-04
+    1130.0000       0.0000E+00
+    1170.0000       0.0000E+00
+    1190.0000       0.2520E-04
+    1210.0000       0.1260E-04
+    1230.0000       0.0000E+00
+    1250.0000       0.1260E-04
+    1270.0000       0.0000E+00
+    1290.0000       0.0000E+00
+    1310.0000       0.1260E-04
+    1330.0000       0.1260E-04
+    1350.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 3.251E+02   RMS = 2.508E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     430  Undersc =     0  Oversc =     4"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(b2,e+1)          "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.1134E-03
+      30.0000       0.1638E-03
+      50.0000       0.4787E-03
+      70.0000       0.5795E-03
+      90.0000       0.5543E-03
+     110.0000       0.4031E-03
+     130.0000       0.3527E-03
+     150.0000       0.3401E-03
+     170.0000       0.2771E-03
+     190.0000       0.2897E-03
+     210.0000       0.1638E-03
+     230.0000       0.1512E-03
+     250.0000       0.1638E-03
+     270.0000       0.1260E-03
+     290.0000       0.1260E-03
+     310.0000       0.1134E-03
+     330.0000       0.1134E-03
+     350.0000       0.8818E-04
+     370.0000       0.7559E-04
+     390.0000       0.3779E-04
+     410.0000       0.1260E-04
+     430.0000       0.0000E+00
+     450.0000       0.6299E-04
+     470.0000       0.1008E-03
+     490.0000       0.5039E-04
+     510.0000       0.7559E-04
+     530.0000       0.3779E-04
+     550.0000       0.3779E-04
+     570.0000       0.2520E-04
+     590.0000       0.3779E-04
+     610.0000       0.2520E-04
+     630.0000       0.1260E-04
+     650.0000       0.0000E+00
+     670.0000       0.1260E-04
+     690.0000       0.2520E-04
+     710.0000       0.6299E-04
+     730.0000       0.5039E-04
+     750.0000       0.1260E-04
+     770.0000       0.1260E-04
+     790.0000       0.2520E-04
+     810.0000       0.0000E+00
+     830.0000       0.1260E-04
+     850.0000       0.0000E+00
+     890.0000       0.0000E+00
+     910.0000       0.1260E-04
+     930.0000       0.0000E+00
+     970.0000       0.0000E+00
+     990.0000       0.1260E-04
+    1010.0000       0.0000E+00
+    1050.0000       0.0000E+00
+    1070.0000       0.1260E-04
+    1090.0000       0.0000E+00
+    1110.0000       0.0000E+00
+    1130.0000       0.1260E-04
+    1150.0000       0.0000E+00
+    1170.0000       0.0000E+00
+    1190.0000       0.1260E-04
+    1210.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.120E+02   RMS = 1.952E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     434  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(b1,mu+1)         "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.5039E-04
+      30.0000       0.1008E-03
+      50.0000       0.2268E-03
+      70.0000       0.2645E-03
+      90.0000       0.2771E-03
+     110.0000       0.2645E-03
+     130.0000       0.3401E-03
+     150.0000       0.2520E-03
+     170.0000       0.2268E-03
+     190.0000       0.1890E-03
+     210.0000       0.2142E-03
+     230.0000       0.1638E-03
+     250.0000       0.1890E-03
+     270.0000       0.1512E-03
+     290.0000       0.2016E-03
+     310.0000       0.1134E-03
+     330.0000       0.1512E-03
+     350.0000       0.8818E-04
+     370.0000       0.8818E-04
+     390.0000       0.1260E-03
+     410.0000       0.1764E-03
+     430.0000       0.1134E-03
+     450.0000       0.7559E-04
+     470.0000       0.7559E-04
+     490.0000       0.3779E-04
+     510.0000       0.6299E-04
+     530.0000       0.2520E-04
+     550.0000       0.1260E-03
+     570.0000       0.3779E-04
+     590.0000       0.7559E-04
+     610.0000       0.3779E-04
+     630.0000       0.2520E-04
+     650.0000       0.6299E-04
+     670.0000       0.5039E-04
+     690.0000       0.6299E-04
+     710.0000       0.1260E-04
+     730.0000       0.2520E-04
+     750.0000       0.1260E-04
+     770.0000       0.2520E-04
+     790.0000       0.3779E-04
+     810.0000       0.0000E+00
+     830.0000       0.1260E-04
+     850.0000       0.0000E+00
+     870.0000       0.2520E-04
+     890.0000       0.1260E-04
+     910.0000       0.1260E-04
+     930.0000       0.2520E-04
+     950.0000       0.2520E-04
+     970.0000       0.1260E-04
+     990.0000       0.0000E+00
+    1030.0000       0.0000E+00
+    1050.0000       0.1260E-04
+    1070.0000       0.0000E+00
+    1090.0000       0.1260E-04
+    1110.0000       0.0000E+00
+    1130.0000       0.1260E-04
+    1150.0000       0.0000E+00
+    1170.0000       0.1260E-04
+    1190.0000       0.0000E+00
+    1210.0000       0.1260E-04
+    1230.0000       0.0000E+00
+    1270.0000       0.0000E+00
+    1290.0000       0.1260E-04
+    1310.0000       0.0000E+00
+    1450.0000       0.0000E+00
+    1470.0000       0.1260E-04
+    1490.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 3.018E+02   RMS = 2.410E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     401  Undersc =     0  Oversc =     1"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(b2,mu+1)         "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.7559E-04
+      30.0000       0.3149E-03
+      50.0000       0.4535E-03
+      70.0000       0.4031E-03
+      90.0000       0.5291E-03
+     110.0000       0.4157E-03
+     130.0000       0.3275E-03
+     150.0000       0.4157E-03
+     170.0000       0.2771E-03
+     190.0000       0.1638E-03
+     210.0000       0.2016E-03
+     230.0000       0.1890E-03
+     250.0000       0.1386E-03
+     270.0000       0.1512E-03
+     290.0000       0.7559E-04
+     310.0000       0.1386E-03
+     330.0000       0.5039E-04
+     350.0000       0.1512E-03
+     370.0000       0.6299E-04
+     390.0000       0.6299E-04
+     410.0000       0.2520E-04
+     430.0000       0.3779E-04
+     450.0000       0.5039E-04
+     470.0000       0.5039E-04
+     490.0000       0.5039E-04
+     510.0000       0.0000E+00
+     530.0000       0.0000E+00
+     550.0000       0.3779E-04
+     570.0000       0.0000E+00
+     590.0000       0.1260E-04
+     610.0000       0.1260E-04
+     630.0000       0.0000E+00
+     650.0000       0.2520E-04
+     670.0000       0.0000E+00
+     710.0000       0.0000E+00
+     730.0000       0.1260E-04
+     750.0000       0.2520E-04
+     770.0000       0.0000E+00
+     790.0000       0.2520E-04
+     810.0000       0.1260E-04
+     830.0000       0.0000E+00
+     850.0000       0.0000E+00
+     870.0000       0.1260E-04
+     890.0000       0.0000E+00
+     910.0000       0.0000E+00
+     930.0000       0.1260E-04
+     950.0000       0.1260E-04
+     970.0000       0.0000E+00
+     990.0000       0.0000E+00
+    1010.0000       0.1260E-04
+    1030.0000       0.0000E+00
+    1210.0000       0.0000E+00
+    1230.0000       0.1260E-04
+    1250.0000       0.1260E-04
+    1270.0000       0.0000E+00
+    1290.0000       0.1260E-04
+    1310.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 1.943E+02   RMS = 1.863E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     402  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(b1,e-1)          "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.0000E+00
+      30.0000       0.1260E-04
+      50.0000       0.2520E-04
+      70.0000       0.2520E-04
+      90.0000       0.3779E-04
+     110.0000       0.1260E-03
+     130.0000       0.7559E-04
+     150.0000       0.7559E-04
+     170.0000       0.1134E-03
+     190.0000       0.7559E-04
+     210.0000       0.5039E-04
+     230.0000       0.2520E-04
+     250.0000       0.2520E-04
+     270.0000       0.6299E-04
+     290.0000       0.1260E-04
+     310.0000       0.3779E-04
+     330.0000       0.3779E-04
+     350.0000       0.5039E-04
+     370.0000       0.3779E-04
+     390.0000       0.3779E-04
+     410.0000       0.5039E-04
+     430.0000       0.2520E-04
+     450.0000       0.1260E-04
+     470.0000       0.0000E+00
+     490.0000       0.1260E-04
+     510.0000       0.0000E+00
+     530.0000       0.1260E-04
+     550.0000       0.0000E+00
+     710.0000       0.0000E+00
+     730.0000       0.3779E-04
+     750.0000       0.1260E-04
+     770.0000       0.0000E+00
+     790.0000       0.1260E-04
+     810.0000       0.0000E+00
+     890.0000       0.0000E+00
+     910.0000       0.1260E-04
+     930.0000       0.0000E+00
+     950.0000       0.0000E+00
+     970.0000       0.1260E-04
+     990.0000       0.0000E+00
+    1010.0000       0.1260E-04
+    1030.0000       0.0000E+00
+    1050.0000       0.0000E+00
+    1070.0000       0.1260E-04
+    1090.0000       0.0000E+00
+    1330.0000       0.0000E+00
+    1350.0000       0.1260E-04
+    1370.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.983E+02   RMS = 2.451E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =      94  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(b2,e-1)          "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.2520E-04
+      30.0000       0.5039E-04
+      50.0000       0.1386E-03
+      70.0000       0.1008E-03
+      90.0000       0.1512E-03
+     110.0000       0.1008E-03
+     130.0000       0.1008E-03
+     150.0000       0.6299E-04
+     170.0000       0.5039E-04
+     190.0000       0.8818E-04
+     210.0000       0.7559E-04
+     230.0000       0.2520E-04
+     250.0000       0.2520E-04
+     270.0000       0.5039E-04
+     290.0000       0.1260E-04
+     310.0000       0.0000E+00
+     330.0000       0.2520E-04
+     350.0000       0.2520E-04
+     370.0000       0.1260E-04
+     390.0000       0.1260E-04
+     410.0000       0.0000E+00
+     490.0000       0.0000E+00
+     510.0000       0.1260E-04
+     530.0000       0.0000E+00
+     610.0000       0.0000E+00
+     630.0000       0.1260E-04
+     650.0000       0.0000E+00
+     770.0000       0.0000E+00
+     790.0000       0.1260E-04
+     810.0000       0.0000E+00
+     830.0000       0.1260E-04
+     850.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 1.647E+02   RMS = 1.431E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =      94  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(b1,mu-1)         "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.1260E-04
+      30.0000       0.6299E-04
+      50.0000       0.5039E-04
+      70.0000       0.5039E-04
+      90.0000       0.5039E-04
+     110.0000       0.3779E-04
+     130.0000       0.6299E-04
+     150.0000       0.7559E-04
+     170.0000       0.7559E-04
+     190.0000       0.1008E-03
+     210.0000       0.6299E-04
+     230.0000       0.8818E-04
+     250.0000       0.5039E-04
+     270.0000       0.3779E-04
+     290.0000       0.5039E-04
+     310.0000       0.2520E-04
+     330.0000       0.6299E-04
+     350.0000       0.6299E-04
+     370.0000       0.2520E-04
+     390.0000       0.3779E-04
+     410.0000       0.1260E-04
+     430.0000       0.1260E-04
+     450.0000       0.0000E+00
+     490.0000       0.0000E+00
+     510.0000       0.5039E-04
+     530.0000       0.1260E-04
+     550.0000       0.5039E-04
+     570.0000       0.1260E-04
+     590.0000       0.2520E-04
+     610.0000       0.0000E+00
+     630.0000       0.1260E-04
+     650.0000       0.0000E+00
+     910.0000       0.0000E+00
+     930.0000       0.1260E-04
+     950.0000       0.0000E+00
+     970.0000       0.1260E-04
+     990.0000       0.0000E+00
+    1050.0000       0.0000E+00
+    1070.0000       0.1260E-04
+    1090.0000       0.0000E+00
+    1190.0000       0.0000E+00
+    1210.0000       0.1260E-04
+    1230.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.776E+02   RMS = 2.157E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     105  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(b2,mu-1)         "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.7559E-04
+      30.0000       0.5039E-04
+      50.0000       0.8818E-04
+      70.0000       0.6299E-04
+      90.0000       0.1386E-03
+     110.0000       0.2142E-03
+     130.0000       0.6299E-04
+     150.0000       0.2520E-04
+     170.0000       0.1260E-03
+     190.0000       0.7559E-04
+     210.0000       0.3779E-04
+     230.0000       0.5039E-04
+     250.0000       0.5039E-04
+     270.0000       0.3779E-04
+     290.0000       0.5039E-04
+     310.0000       0.2520E-04
+     330.0000       0.2520E-04
+     350.0000       0.1260E-04
+     370.0000       0.1260E-04
+     390.0000       0.1260E-04
+     410.0000       0.0000E+00
+     430.0000       0.2520E-04
+     450.0000       0.1260E-04
+     470.0000       0.0000E+00
+     490.0000       0.0000E+00
+     510.0000       0.1260E-04
+     530.0000       0.0000E+00
+     570.0000       0.0000E+00
+     590.0000       0.1260E-04
+     610.0000       0.0000E+00
+     710.0000       0.0000E+00
+     730.0000       0.1260E-04
+     750.0000       0.0000E+00
+    1070.0000       0.0000E+00
+    1090.0000       0.1260E-04
+    1110.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 1.778E+02   RMS = 1.552E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     105  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(e+1,mu+1)        "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.7559E-04
+      30.0000       0.3275E-03
+      50.0000       0.3905E-03
+      70.0000       0.3905E-03
+      90.0000       0.2771E-03
+     110.0000       0.2771E-03
+     130.0000       0.2520E-03
+     150.0000       0.1134E-03
+     170.0000       0.2142E-03
+     190.0000       0.1638E-03
+     210.0000       0.8818E-04
+     230.0000       0.8818E-04
+     250.0000       0.6299E-04
+     270.0000       0.3779E-04
+     290.0000       0.5039E-04
+     310.0000       0.1008E-03
+     330.0000       0.7559E-04
+     350.0000       0.2520E-04
+     370.0000       0.5039E-04
+     390.0000       0.7559E-04
+     410.0000       0.3779E-04
+     430.0000       0.3779E-04
+     450.0000       0.2520E-04
+     470.0000       0.3779E-04
+     490.0000       0.3779E-04
+     510.0000       0.1260E-04
+     530.0000       0.0000E+00
+     550.0000       0.1260E-04
+     570.0000       0.0000E+00
+     590.0000       0.1260E-04
+     610.0000       0.1260E-04
+     630.0000       0.0000E+00
+     650.0000       0.3779E-04
+     670.0000       0.1260E-04
+     690.0000       0.2520E-04
+     710.0000       0.1260E-04
+     730.0000       0.0000E+00
+     750.0000       0.1260E-04
+     770.0000       0.1260E-04
+     790.0000       0.0000E+00
+     850.0000       0.0000E+00
+     870.0000       0.2520E-04
+     890.0000       0.0000E+00
+     930.0000       0.0000E+00
+     950.0000       0.1260E-04
+     970.0000       0.0000E+00
+    1070.0000       0.0000E+00
+    1090.0000       0.1260E-04
+    1110.0000       0.0000E+00
+    1130.0000       0.0000E+00
+    1150.0000       0.1260E-04
+    1170.0000       0.1260E-04
+    1190.0000       0.0000E+00
+    1230.0000       0.0000E+00
+    1250.0000       0.1260E-04
+    1270.0000       0.0000E+00
+    1290.0000       0.1260E-04
+    1310.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 2.006E+02   RMS = 2.174E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =     284  Undersc =     0  Oversc =     1"
+  SET TITLE SIZE -2
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(e-1,mu-1)        "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+      10.0000       0.1260E-04
+      30.0000       0.6299E-04
+      50.0000       0.5039E-04
+      70.0000       0.8818E-04
+      90.0000       0.7559E-04
+     110.0000       0.1008E-03
+     130.0000       0.3779E-04
+     150.0000       0.6299E-04
+     170.0000       0.6299E-04
+     190.0000       0.2520E-04
+     210.0000       0.3779E-04
+     230.0000       0.1260E-04
+     250.0000       0.3779E-04
+     270.0000       0.1260E-04
+     290.0000       0.0000E+00
+     310.0000       0.1260E-04
+     330.0000       0.2520E-04
+     350.0000       0.1260E-04
+     370.0000       0.0000E+00
+     390.0000       0.1260E-04
+     410.0000       0.0000E+00
+     430.0000       0.1260E-04
+     450.0000       0.1260E-04
+     470.0000       0.0000E+00
+     490.0000       0.2520E-04
+     510.0000       0.1260E-04
+     530.0000       0.1260E-04
+     550.0000       0.0000E+00
+     570.0000       0.1260E-04
+     590.0000       0.0000E+00
+     610.0000       0.0000E+00
+     630.0000       0.1260E-04
+     650.0000       0.0000E+00
+     670.0000       0.1260E-04
+     690.0000       0.1260E-04
+     710.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 1.984E+02   RMS = 1.680E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =      69  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2
+   NEW PLOT

@@ -1,0 +1,28 @@
+SET DEVICE POSTSCRIPT ORIENT=3
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " m(b1,b2)           "
+  TITLE BOTTOM "mij                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1500.00000
+  SET ORDER X Y 
+     110.0000       0.0000E+00
+     130.0000       0.6614E-01
+     150.0000       0.0000E+00
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 6.614E-02(pb)   AVG = 1.300E+02   RMS = 0.000E+00"
+  TITLE 3.8 1.1 "Tot # Evts =    5209  Entries =    5209  Undersc =     0  Oversc =     0"
+  SET TITLE SIZE -2

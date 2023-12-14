@@ -1,0 +1,28 @@
+1       u u > e+ ve e+ ve b b~ d d,c c > e+ ve e+ ve b b~ s s,u u > mu+ vm mu+ vm b b~ d d,c c > mu+ vm mu+ vm b b~ s s
+mirror  none
+2       u u > e+ ve mu+ vm b b~ d d,c c > e+ ve mu+ vm b b~ s s
+mirror  none
+3       u c > e+ ve e+ ve b b~ d s,u c > mu+ vm mu+ vm b b~ d s
+mirror  c u > e+ ve e+ ve b b~ d s,c u > mu+ vm mu+ vm b b~ d s
+4       u c > e+ ve mu+ vm b b~ d s
+mirror  c u > e+ ve mu+ vm b b~ d s
+5       u d~ > e+ ve e+ ve b b~ d u~,c s~ > e+ ve e+ ve b b~ s c~,u d~ > mu+ vm mu+ vm b b~ d u~,c s~ > mu+ vm mu+ vm b b~ s c~
+mirror  d~ u > e+ ve e+ ve b b~ d u~,s~ c > e+ ve e+ ve b b~ s c~,d~ u > mu+ vm mu+ vm b b~ d u~,s~ c > mu+ vm mu+ vm b b~ s c~
+6       u d~ > e+ ve mu+ vm b b~ d u~,c s~ > e+ ve mu+ vm b b~ s c~
+mirror  d~ u > e+ ve mu+ vm b b~ d u~,s~ c > e+ ve mu+ vm b b~ s c~
+7       u d~ > e+ ve e+ ve b b~ s c~,c s~ > e+ ve e+ ve b b~ d u~,u d~ > mu+ vm mu+ vm b b~ s c~,c s~ > mu+ vm mu+ vm b b~ d u~
+mirror  d~ u > e+ ve e+ ve b b~ s c~,s~ c > e+ ve e+ ve b b~ d u~,d~ u > mu+ vm mu+ vm b b~ s c~,s~ c > mu+ vm mu+ vm b b~ d u~
+8       u d~ > e+ ve mu+ vm b b~ s c~,c s~ > e+ ve mu+ vm b b~ d u~
+mirror  d~ u > e+ ve mu+ vm b b~ s c~,s~ c > e+ ve mu+ vm b b~ d u~
+9       u s~ > e+ ve e+ ve b b~ d c~,c d~ > e+ ve e+ ve b b~ s u~,u s~ > mu+ vm mu+ vm b b~ d c~,c d~ > mu+ vm mu+ vm b b~ s u~
+mirror  s~ u > e+ ve e+ ve b b~ d c~,d~ c > e+ ve e+ ve b b~ s u~,s~ u > mu+ vm mu+ vm b b~ d c~,d~ c > mu+ vm mu+ vm b b~ s u~
+10      u s~ > e+ ve mu+ vm b b~ d c~,c d~ > e+ ve mu+ vm b b~ s u~
+mirror  s~ u > e+ ve mu+ vm b b~ d c~,d~ c > e+ ve mu+ vm b b~ s u~
+11      d~ d~ > e+ ve e+ ve b b~ u~ u~,s~ s~ > e+ ve e+ ve b b~ c~ c~,d~ d~ > mu+ vm mu+ vm b b~ u~ u~,s~ s~ > mu+ vm mu+ vm b b~ c~ c~
+mirror  none
+12      d~ d~ > e+ ve mu+ vm b b~ u~ u~,s~ s~ > e+ ve mu+ vm b b~ c~ c~
+mirror  none
+13      d~ s~ > e+ ve e+ ve b b~ u~ c~,d~ s~ > mu+ vm mu+ vm b b~ u~ c~
+mirror  s~ d~ > e+ ve e+ ve b b~ u~ c~,s~ d~ > mu+ vm mu+ vm b b~ u~ c~
+14      d~ s~ > e+ ve mu+ vm b b~ u~ c~
+mirror  s~ d~ > e+ ve mu+ vm b b~ u~ c~

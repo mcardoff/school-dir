@@ -1,0 +1,28 @@
+1       d d > e- ve~ e- ve~ b b~ u u,s s > e- ve~ e- ve~ b b~ c c,d d > mu- vm~ mu- vm~ b b~ u u,s s > mu- vm~ mu- vm~ b b~ c c
+mirror  none
+2       d d > e- ve~ mu- vm~ b b~ u u,s s > e- ve~ mu- vm~ b b~ c c
+mirror  none
+3       d s > e- ve~ e- ve~ b b~ u c,d s > mu- vm~ mu- vm~ b b~ u c
+mirror  s d > e- ve~ e- ve~ b b~ u c,s d > mu- vm~ mu- vm~ b b~ u c
+4       d s > e- ve~ mu- vm~ b b~ u c
+mirror  s d > e- ve~ mu- vm~ b b~ u c
+5       d u~ > e- ve~ e- ve~ b b~ u d~,s c~ > e- ve~ e- ve~ b b~ c s~,d u~ > mu- vm~ mu- vm~ b b~ u d~,s c~ > mu- vm~ mu- vm~ b b~ c s~
+mirror  u~ d > e- ve~ e- ve~ b b~ u d~,c~ s > e- ve~ e- ve~ b b~ c s~,u~ d > mu- vm~ mu- vm~ b b~ u d~,c~ s > mu- vm~ mu- vm~ b b~ c s~
+6       d u~ > e- ve~ mu- vm~ b b~ u d~,s c~ > e- ve~ mu- vm~ b b~ c s~
+mirror  u~ d > e- ve~ mu- vm~ b b~ u d~,c~ s > e- ve~ mu- vm~ b b~ c s~
+7       d u~ > e- ve~ e- ve~ b b~ c s~,s c~ > e- ve~ e- ve~ b b~ u d~,d u~ > mu- vm~ mu- vm~ b b~ c s~,s c~ > mu- vm~ mu- vm~ b b~ u d~
+mirror  u~ d > e- ve~ e- ve~ b b~ c s~,c~ s > e- ve~ e- ve~ b b~ u d~,u~ d > mu- vm~ mu- vm~ b b~ c s~,c~ s > mu- vm~ mu- vm~ b b~ u d~
+8       d u~ > e- ve~ mu- vm~ b b~ c s~,s c~ > e- ve~ mu- vm~ b b~ u d~
+mirror  u~ d > e- ve~ mu- vm~ b b~ c s~,c~ s > e- ve~ mu- vm~ b b~ u d~
+9       d c~ > e- ve~ e- ve~ b b~ u s~,s u~ > e- ve~ e- ve~ b b~ c d~,d c~ > mu- vm~ mu- vm~ b b~ u s~,s u~ > mu- vm~ mu- vm~ b b~ c d~
+mirror  c~ d > e- ve~ e- ve~ b b~ u s~,u~ s > e- ve~ e- ve~ b b~ c d~,c~ d > mu- vm~ mu- vm~ b b~ u s~,u~ s > mu- vm~ mu- vm~ b b~ c d~
+10      d c~ > e- ve~ mu- vm~ b b~ u s~,s u~ > e- ve~ mu- vm~ b b~ c d~
+mirror  c~ d > e- ve~ mu- vm~ b b~ u s~,u~ s > e- ve~ mu- vm~ b b~ c d~
+11      u~ u~ > e- ve~ e- ve~ b b~ d~ d~,c~ c~ > e- ve~ e- ve~ b b~ s~ s~,u~ u~ > mu- vm~ mu- vm~ b b~ d~ d~,c~ c~ > mu- vm~ mu- vm~ b b~ s~ s~
+mirror  none
+12      u~ u~ > e- ve~ mu- vm~ b b~ d~ d~,c~ c~ > e- ve~ mu- vm~ b b~ s~ s~
+mirror  none
+13      u~ c~ > e- ve~ e- ve~ b b~ d~ s~,u~ c~ > mu- vm~ mu- vm~ b b~ d~ s~
+mirror  c~ u~ > e- ve~ e- ve~ b b~ d~ s~,c~ u~ > mu- vm~ mu- vm~ b b~ d~ s~
+14      u~ c~ > e- ve~ mu- vm~ b b~ d~ s~
+mirror  c~ u~ > e- ve~ mu- vm~ b b~ d~ s~

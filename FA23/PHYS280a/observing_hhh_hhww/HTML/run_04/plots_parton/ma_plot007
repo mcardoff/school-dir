@@ -1,0 +1,43 @@
+   NEW PLOT
+
+  SET INTENSITY 4
+  SET WINDOW Y 2.5 TO 9.
+  SET WINDOW X 2.5 TO 12.
+  SET FONT DUPLEX 
+  SET SYMBOL 5O SIZE 1.8
+  TITLE TOP " Ecm                "
+  TITLE BOTTOM "Ecm                 "
+  TITLE LEFT "sigma (pb/bin)      "
+  SET SCALE Y LOG
+  (SET TICKS TOP OFF)   
+  SET LIMITS X    0.00000 1000.00000
+  SET ORDER X Y 
+     610.0000       0.0000E+00
+     630.0000       0.1260E-04
+     650.0000       0.0000E+00
+     690.0000       0.0000E+00
+     710.0000       0.2520E-04
+     730.0000       0.1260E-04
+     750.0000       0.0000E+00
+     770.0000       0.0000E+00
+     790.0000       0.3779E-04
+     810.0000       0.0000E+00
+     830.0000       0.2520E-04
+     850.0000       0.1260E-04
+     870.0000       0.1260E-04
+     890.0000       0.2520E-04
+     910.0000       0.1260E-04
+     930.0000       0.0000E+00
+     950.0000       0.1260E-04
+     970.0000       0.2520E-04
+     990.0000       0.5039E-04
+   HISTO
+
+  (INFO-BOX
+  BOX 7.3 1.3 SIZE 9.5 0.7
+  SET WINDOW Y 0. TO 2.
+  SET TITLE SIZE -1.5
+  SET FONT DUPLEX 
+  TITLE 3.8 1.4 "X-sect = 8.579E-03(pb)   AVG = 8.605E+02   RMS = 1.059E+02"
+  TITLE 3.8 1.1 "Tot # Evts =     681  Entries =      21  Undersc =     0  Oversc =   660"
+  SET TITLE SIZE -2
