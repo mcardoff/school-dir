@@ -1,2 +1,174 @@
 % -*- TeX-master: "master.tex" -*-
 \section{Quantum Electrodynamics}
+In deriving the Dirac equation, we formed Lorentz invariants out of Dirac spinors such as $\bar{\psi}\psi$.
+
+Under the Lorentz group, $\bar{\psi}\psi$ is a scalar, $\bar{\psi}\gamma^\mu\psi$ is a 4-vector, so $\bar{\psi}\sla{\D}\psi$ is also a scalar.
+
+We want a Lagrangian $\L$ invariant under the Lorentz group:
+\begin{align*}
+  \L=i\bar{\psi}\sla{\D}\psi-m\bar{\psi}\psi
+\end{align*}
+Equation of motion comes from the Principle of Least Action:
+\begin{align*}
+  \fdv{\L}{\bar{\psi}}=0\implies i\sla{D}\psi-m\psi=0
+\end{align*}
+Recall that the other term from the Euler-Lagrange is just $0$ since theres no derivatives of $\bar{\psi}$.
+
+In addition to the Lorentz group, $\L$ is also invariant under the following symmetry:
+\begin{align*}
+  \psi&\to e^{iQ\theta}\psi\\
+  \bar{\psi}&\to \bar{\psi}e^{-iQ\theta}
+\end{align*}
+Where $Q\in\mathbb{R}$, a $U(1)$ symmetry.
+
+This is a \underline{global} symmetry, $\theta$ is the same over all spacetime. The symmetry group is $U(1)$. QED is introduced by demanding the $U(1)$ symmetry be \underline{local}, where $\theta=\theta(x)$ can change smoothly.
+
+Clearly $m\bar{\psi}\psi$ is invariant:
+\begin{align*}
+  m\bar{\psi}\psi\to m\bar{\psi}e^{-iQ\theta(x)}e^{iQ\theta(x)}\psi
+  =m\bar{\psi}\psi
+\end{align*}
+The other term:
+\begin{align*}
+  i\bar{\psi}\sla{\D}\psi\to
+  \bar{\psi}e^{-iQ\theta(x)}\sla{\D}(e^{iQ\theta(x)}\psi)
+  &=\bar{\psi}e^{-iQ\theta(x)}e^{iQ\theta(x)}\sla{\D}\psi
+  +iQ\bar{\psi}\gamma^\mu\psi(\D_\mu\theta)\\
+  &=i\bar{\psi}\sla{\D}\psi+i\bar{\psi}(iQ\sla{\D}\theta)\psi
+\end{align*}
+Is not invariant.
+
+This is remedied by introducing a new field $A^\mu$, into the Lagrangian, and demanding $A^\mu$ transform in just the right way to cancel the offending term. Try the following:
+\begin{align*}
+  \L=i\bar{\psi}(+ieQ\sla{A})\psi
+\end{align*}
+Where $\sla{A}=A_\mu\gamma^\mu$, the photon field
+
+The second term in the transformation of $i\bar{\psi}\sla{\D}\psi$ is cancelled if:
+\begin{align*}
+  A^\mu\to A^\mu-\frac1e\D^\mu\theta(x)
+\end{align*}
+This local transformation is called a \underline{gauge} transformation, and we say $\L$ is gauge invariant.
+
+The field $A^\mu$ corresponds to the vector potential of the electromagnetic field, and $eQ$ is the electric charge of the fermion.
+\begin{itemize}
+\item $e$ is called the coupling constant $\alpha=e^2/4\pi\approx 1/137$ is the fine structure constant
+\item $Q$ is the charge of particle in units of $e$, $Q=-1$ for electrons, and $Q=+\frac23$ for up quark, etc.
+\end{itemize}
+The quantum of the EM field is the photon. A mass term in $\L$ would be:
+\begin{align*}
+  -\frac12M^2A^\mu A_\mu
+\end{align*}
+But this is \underline{not} gauge invariant. We regard the masslessness of the photon as being a consequence of gauge invariance (although the inverse transformation is also reasonable).
+
+The photon is a massless spin-1 particle and transforms as the $(1,0)\oplus(0,1)$ representation of the Lorentz group. It therefore as helicity $h=\pm1$.
+
+Due to gauge invariance, $A_\mu\to A_\mu-\frac1e\D_\mu\theta$, we can always find a gauge (some $\theta(x)$) where:
+\begin{align*}
+  \D_\mu A^\mu=0
+\end{align*}
+This is called the Lorentz gauge, so called because of its manifest Lorentz invariance.
+
+The photon field is:
+\begin{align*}
+  A^\mu(x)=\int\frac{\dd[3]{p}}{2E}\qty[
+  e^{-ip\vdot x}a_\lambda\veps^\mu_\lambda(p)+
+  e^{+ip\vdot x}a^\dag_\lambda\veps^{\mu*}_\lambda(p)
+  ]
+\end{align*}
+Where $a,a^\dag$ are the destruction and creation operators for the photon, and $\veps^\mu_\lambda(p)$ is a four-vector which transforms as either the $(1,0)$ rep ($\lambda=+1$), or the $(0,1)$ rep ($\lambda=-1$) of the Lorentz group.
+
+Recall $\psi(x)$:
+\begin{align*}
+  \psi(x)=\int\frac{\dd[3]{p}}{2E}\qty[
+  e^{-ip\vdot x}a_\lambda u_\lambda(p)+
+  e^{+ip\vdot x}b^\dag_\lambda v_\lambda(p)
+  ]
+\end{align*}
+The Lorentz gauge condition implies:
+\begin{align*}
+  p_\mu\veps^\mu_\lambda(p)=0
+\end{align*}
+This means $\veps^\mu_\lambda$ is the Fourier transform of the photon field, and implies the photon is its own antiparticle.
+
+The ``polarization vectors'' $\veps^\mu_\lambda$ for a photon with momentum $p^\mu=(E,0,0,E)$ are:
+\begin{align*}
+  \veps^\mu_+&=\frac1{\sqrt{2}}(0,1,i,0)\\
+  \veps^\mu_-&=\frac1{\sqrt{2}}(0,1,-i,0)
+\end{align*}
+
+\begin{aside}
+  Lorentz group (photon not massless) $\lambda=0,\pm1$, for a real photon we would have to remove $\lambda=0$. The radiation gauge, $A^0=0, \grad_i\vdot A^i$, $\lambda=\pm1$ manifestly.
+\end{aside}
+
+\subsection{Perturbation Theory}
+QED is a weakly-coupled theory -- photons and electrons (or quarks) do not interact very strongly. To zeroth order they do not interact at all. Hence, one can regard interactions as perturbations of this simple picture. The outcome of treating QED perturbatively can be represented pictorially via Feynman diagrams. These ``Feynman rules'' are derived from quantum field theory. In practice, all one needs for simple calculations are the Feynman rules.
+
+Lets draw the Feynman diagram for $e^+e^-\to\mu^+\mu^-$ then work out the details:
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{feynhand}
+      \vertex (a) at (0,0);
+      \vertex (e1) at (-1, 1) {$e^-$};
+      \vertex (e2) at (-1,-1) {$e^+$};
+      \vertex (m1) at (2.5, 1) {$\mu^-$};
+      \vertex (m2) at (2.5,-1) {$\mu^+$};
+      \vertex (b) at (1.5,0);
+      \propag[mom=\(p_1\)] (e1) to (a);
+      \propag[mom'=\(p_2\)] (e2) to (a);
+      \propag[mom=\(p_3\)] (b) to (m1);
+      \propag[mom'=\(p_4\)] (b) to (m2);
+      \propag[bos, mom=\(q\)] (a) to (b);
+    \end{feynhand}
+    \draw[->] (3.0, 0.0) -- (4.0, 0.0);
+    \node at (3.45, 0.2) {Time};
+  \end{tikzpicture}
+  \caption{Feynman Diagram for $e^+e^-\to\mu^+\mu^-$}
+\end{figure}
+
+\begin{aside}
+  Many older books draw time going up. More modern notation has time flowing to the right. 
+\end{aside}
+
+The interaction ``vertex'' (seen below) comes from the Lagrangian:
+\begin{align*}
+  \L=i\bar{\psi}(\sla{\D}+ieQ\sla{A})\psi-m\bar{\psi}\psi
+\end{align*}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{feynhand}
+      \vertex (a) at (0,0);
+      \vertex (e1) at (-1, 1) {$e^-$};
+      \vertex (e2) at (-1,-1) {$e^+$};
+      \vertex (b) at (1.5,0) {$\gamma$}; 
+      \propag (e1) to (a);
+      \propag (e2) to (a);
+      \propag[bos] (a) to (b);
+    \end{feynhand}
+  \end{tikzpicture}
+  \caption{The interaction vertex}
+\end{figure}
+What does this mean?
+\begin{itemize}
+\item $\psi$ Destorys an $e^-$
+\item $\bar{\psi}$ Destorys an $e^+$
+\item $A^\mu$ creates a photon ($\gamma$)
+\end{itemize}
+
+We can ``read-off'' the Feynman rule for the interaction vertex: (Note that overall sign is convention, not all vertices are simple):
+\begin{align*}
+  \begin{tikzpicture}[baseline=-0.15cm]
+    \begin{feynhand}
+      \vertex (a) at (0,0);
+      \vertex (e1) at (-1, 1) {$e^-$};
+      \vertex (e2) at (-1,-1) {$e^+$};
+      \vertex (b) at (1.5,0) {$\gamma$}; 
+      \propag (e1) to (a);
+      \propag (e2) to (a);
+      \propag[bos] (a) to (b);
+    \end{feynhand}
+  \end{tikzpicture}
+  =-ieQ\gamma^\mu
+\end{align*}
