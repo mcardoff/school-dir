@@ -1,0 +1,168 @@
+%------------------------
+% Resume Template
+% Author : Anubhav Singh
+% Github : https://github.com/xprilion
+% License : MIT
+%------------------------
+
+\documentclass[a4paper,20pt]{article}
+
+\usepackage{latexsym}
+\usepackage[margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[pdftex]{hyperref}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.530in}
+\addtolength{\evensidemargin}{-0.375in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.45in}
+\addtolength{\textheight}{1in}
+
+\urlstyle{rm}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-10pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-6pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeItemWithoutTitle}[1]{
+  \item\small{
+    {\vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{#3} & \textit{#4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-3pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-----------------------------
+%%%%%%  CV STARTS HERE  %%%%%%
+
+\begin{document}
+
+%----------HEADING-----------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{{\LARGE Michael Cardiff}} & Email: \href{mailto:}{mcardiff@brandeis.edu}\\
+  \href{https://github.com/xprilion}{Github: ~~github.com/mcardoff} \\
+\end{tabular*}
+
+%-----------EDUCATION-----------------
+\section{~~Education}
+\resumeSubHeadingListStart
+\resumeSubheading
+{Brandeis University}{Chicago, Illinois}
+{PhD - Physics;  GPA: 4.00}{August 2022 - 2027 (expected) }
+{\scriptsize \textit{ \footnotesize{\newline{}\textbf{Courses:} Quantum Field Theory, Quantum Thermalization, Particle Physics}}}
+\resumeSubheading
+{Illinois Institute of Technology}{Chicago, Illinois}
+{Bachelor of Science - Physics;  GPA: 3.97}{August 2018 - May 2022}
+{\scriptsize \textit{ \footnotesize{\newline{}\textbf{Courses:} Particle Physics I,II, Graduate Math Methods II, Quantum Field Theory, General Relativity}}}
+\resumeSubHeadingListEnd	    
+\vspace{-5pt}
+\section{Coding Skills Summary}
+\resumeSubHeadingListStart
+\resumeSubItem{Languages}{~~~~~~Python, C++, JAVA, Bash, Haskell}
+\resumeSubItem{Tools}{~~~~~~~~~~~~~~Emacs, Git, Linux, Windows}
+\resumeSubItem{Soft Skills}{~~~~~~~Leadership, Writing, Time Management}
+\resumeSubHeadingListEnd
+\vspace{-5pt}
+\section{Research Experience}
+\resumeSubHeadingListStart
+\resumeSubheading{ATLAS Collaboration}{}
+{Qualifying Project}{December 2022 - December 2023}
+\resumeItemListStart
+\resumeItem{Goals}{Evaluate performance of track selection criteria for ITk}
+\resumeItem{Consistency}{Kept consistent communication with advisors in multiple time zones}
+\resumeItem{Results}{Pending Qualification status near the end of this project}
+\resumeItemListEnd
+\vspace{-5pt}
+\resumeSubheading{Dr John Zasadzinski}{}
+{Research Assistant}{May 2020 - June 2022}
+\resumeItemListStart
+\resumeItem{Adaptation}{Worked with code written by a team, re-purposing previously written Python code to fit new needs}
+\resumeItem{Consistency}{Meeting weekly with a team of five people over the internet and in person to present on progress}
+\resumeItem{Communication}{In addition to weekly meetings, maintained a constant stream of communication with advisors to ensure work was getting one}
+\resumeItem{Results}{Development of a paper currently in process of being published to The Springer Plasmonics Journal}
+\resumeItemListEnd
+\vspace{-5pt}
+\resumeSubheading{Dr Zack Sullivan}{}
+{Research Assistant}{August 2021 -  May 2022}
+\resumeItemListStart
+\resumeItem{Efficiency}{Worked to use modern GPU programming on a standard program used for numerous calculations in High Energy Physics}
+\resumeItem{Consistency}{Meet up to twice per week with advisor to present current progress and set specific goals for the week}
+\resumeItem{Sustainability}{Provide a sustainable long term project by focusing on creating a framework for porting these programs to GPU codes }
+\resumeItemListEnd
+\resumeSubHeadingListEnd
+
+%-----------Relevant Courses-----------------
+\vspace{-5pt}
+\section{Relevant Courses}
+\resumeSubHeadingListStart
+\resumeSubItem{PHYS 545/546 (IIT)}{Particle Physics, focusing on a phenomenological understanding of QED, QCD, and electroweak physics. Topics include: QED: Spin-dependent cross sections, crossing symmetries, C/P/CP; QCD: Gluons, parton model, jets; Electroweak interactions: W, Z, and Higgs. Weak decays and production of weak bosons; Loop calculations: Running couplings, renormalization}
+\vspace{2pt}
+\resumeSubItem{PHYS 553 (IIT)}{Quantum Field Theory, Follow Fradkin's Quantum Field Theory: An Integrated Approach. Topics include: canonical quantization of fields; path integral quantizations of scalar, Dirac, and gauge theories; symmetries and conservation laws; perturbation theory and generating functionals; renormalization}
+\vspace{2pt}
+\resumeSubItem{PHYS 502 (IIT)}{Methods of Theoretical Physics II. Topics include Group theory, Discrete groups, elementary examples and properties. Lie groups, Lie algebras, generators. Their fundamental properties. Group representations. O(3), SU(2), SU(3). Complex variables: Cauchy-Riemann conditions, Complex variables integrals: Cauchy theorem, Cauchy formula.}
+\vspace{2pt}
+\resumeSubItem{PHYS 202a (Brandeis)}{Quantum Field Theory, through the lens of Donoghue \& Sorbo's A Prelude to Quantum Field Theory, topics include development of field theory, interactions, feynman rules, decay rates and cross sections, renormalization, path integrals, loop diagrams}
+\vspace{2pt}
+\resumeSubItem{PHYS 162b (Brandeis)}{Quantum Mechanics II, Includes a more advanced look into the various approximation methods used in QM, focusing on a more modern look into physics. Topics include Symmetries and conservation laws, time independent as well as dependent perturbation theory, variational methods, scattering theory, as well as relativistic quantum mechanics}
+\vspace{2pt}
+\resumeSubItem{PHYS 163a (Brandeis)}{Statistical Physics and Thermodyamics, The thermal properties of matter. Derivation of thermodyamics from statistical physics, Statistical theory of fluctuations, Phases and phase transitions.}
+\resumeSubHeadingListEnd
+\vspace{-5pt}
+%-----------PROJECTS-----------------
+\vspace{-5pt}
+\section{Publications}
+\resumeSubHeadingListStart
+\resumeSubItem{Paper}{In Preprint: Superconducting Photocathode Quantum Efficiency enhancement with UV Plasmonics, publishing to the Springer Plas- monics Journal}
+\resumeSubHeadingListEnd
+\vspace{-5pt}
+%-----------Awards-----------------
+\section{Honors and Awards}
+\begin{description}[font=$\bullet$]
+\item {Honorable mention for a poster created for the Lewis College Virtual Undergraduate Research Day in 2021, created from work done with Dr. John Zasadzinski}
+\vspace{-5pt}
+\item {Dean's List for Fall 2018-2021, as well as Spring 2019-2022}
+\vspace{-5pt}
+\item {International Baccalaureate Diploma Holder}
+\end{description}
+\end{document}
