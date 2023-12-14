@@ -1,0 +1,240 @@
+\documentclass[aspectratio=169]{beamer}
+
+\title{PHYS 19a Lab 4}
+\author{Michael Cardiff}
+\subtitle{The Incline Plane}
+
+\usepackage[italicdiff]{physics}
+\usepackage{hyperref}
+\usepackage{url}
+
+% Changes style of actual slides
+\usetheme{Dresden}
+% Changes color of slides
+\usecolortheme{spruce}
+% removes controls at bottom right side
+\usenavigationsymbolstemplate{}
+
+% for figures
+\graphicspath{ {./figs/} }
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Theory}
+\begin{frame}
+  \frametitle{The Physics}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item On an inclined plane, it is best to use a reference frame where the axes are aligned with the angle of the plane
+      \item Result, $(x,y)$ are now $(\parallel,\perp)$, but we can still call them $(x,y)$
+      \item This allows us to resolve only 1 force into these different components (gravity) rather than the other two that are present in these problems (normal force and friction)
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=7.0cm]{plane}
+        \caption{Inclined Plane Axes}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Friction}
+  \begin{itemize}
+  \item The friction force depends on ``how much'' an object presses down on the surface
+    \begin{align*}
+      \vb{F}_{fric}=\mu\vb{N}
+    \end{align*}
+  \item We characterize this by the normal force $\vb{N}$ (Newton 3), and the friction force is proportional to it by the coefficient of (kinetic or static) friction.
+  \item This lab focuses on kinetic friction, but both are given by:
+    \begin{align*}
+      \vb{F}_{kinetic}=\mu_k\vb{N}\qquad \vb{F}_{static}\leq\mu_s\vb{N}
+    \end{align*}
+  \item The friction force's direction is always in opposition to the motion
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Up the Ramp}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item Going up the ramp, the friction force goes \emph{down} the ramp
+      \item Procedure: resolve $\vb{F}_g$ into parallel and perpendicular axes, solve for $\vb{F}_{N}$ and $\vb{F}_{fric}$
+      \item Use Newton 2 to solve for $\vb{a}$
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=7.0cm]{upramp}
+        \caption{FBD for up the ramp}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solving Up the Ramp}
+  \begin{itemize}
+  \item Gravity resolves into 2 components:
+    \begin{align*}
+      F_{y}&=-mg\cos\theta\\
+      F_{x}&= mg\sin\theta
+    \end{align*}
+  \item No acceleration in $y$ direction (it doesn't float off the ramp), so we have:
+    \begin{align*}
+      \sum F_y=0\implies F_N-mg\cos\theta=0\implies F_N=mg\cos\theta
+    \end{align*}
+  \item Acceleration in $x$ gives $a_{up}$:
+    \begin{align*}
+      ma_{up}&=\mu mg\cos\theta+mg\sin\theta\\
+      \implies a_{up}&=\mu g\cos\theta+g\sin\theta
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Down the Ramp}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item Going up the ramp, the friction force goes \emph{up} the ramp
+      \item Same procedure as before
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=7.0cm]{downramp}
+        \caption{FBD for down the ramp}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solving Down the Ramp}
+  \begin{itemize}
+  \item Gravity resolves into 2 components:
+    \begin{align*}
+      F_{y}&=-mg\cos\theta\\
+      F_{x}&= mg\sin\theta
+    \end{align*}
+  \item No acceleration in $y$ direction (it doesn't float off the ramp), so we have:
+    \begin{align*}
+      \sum F_y=0\implies F_N-mg\cos\theta=0\implies F_N=mg\cos\theta
+    \end{align*}
+  \item Acceleration in $x$ gives $a_{up}$:
+    \begin{align*}
+      ma_{down}&=-\mu mg\cos\theta+mg\sin\theta\\
+      \implies a_{down}&=-\mu g\cos\theta+g\sin\theta
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Summary}
+  \begin{itemize}
+  \item Two different accelerations, due to the different directions of the friction force:
+    \begin{equation*}
+      \boxed{\begin{aligned}
+        a_{down}&=g\sin\theta-\mu g\cos\theta\\
+        a_{up}&=g\sin\theta+\mu g\cos\theta
+      \end{aligned}}
+    \end{equation*}
+  \item Goal of this lab, by measuring the accelerations, extract $\mu$ and $\theta$ through algebra. 
+  \item Test $\theta$ value by measuring with an electronic level, since both methods will have uncertainty, so acceptance measurement is different:
+    \begin{align*}
+      \boxed{n_{\sigma}=\frac{\theta_{level}-\theta_{data}}
+      {\sqrt{\sigma_{level}^2+\sigma_{data}^2}}}
+    \end{align*}
+  \item Only need to do error propagation for $\theta$
+  \end{itemize}
+\end{frame}
+
+\section{Procedure}
+\begin{frame}
+  \frametitle{Data taking}
+  \begin{itemize}
+  \item Using a ramp with air being pumped through it.
+  \item This reduces the friction but does not completely eliminate it (hence why we have $\mu$)
+  \item The ramp is slightly tilted, so releasing it from the top will make it fall, video from here will give data for $a_{down}$
+  \item At the bottom it will bounce back up the ramp, video from here will give the data for $a_{up}$
+  \item Only one video is necessary, but 2 different runs in tracker
+    \begin{itemize}
+    \item One will be down the ramp
+    \item The other will be up the ramp
+    \end{itemize}
+  \item Use tape to mark out a distance of 50cm on the ramp's meterstick, ensure it does not interfere with the glider
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Important Notes}
+  \begin{itemize}
+  \item Align your axes in Tracker with the ramp
+  \item DO NOT FORGET TO MEASURE THE ANGLE OF THE RAMP WHEN YOU ARE DONE TAKING DATA
+  \end{itemize}
+\end{frame}
+
+\section{Analysis}
+\begin{frame}
+  \frametitle{Analysis}
+  \begin{itemize}
+  \item Solving for $\sin\theta$:
+    \pause
+    \begin{align*}
+      a_d+a_u=2g\sin\theta\implies
+      \boxed{\sin\theta=\frac{a_d+a_u}{2g}}
+    \end{align*}
+  \item Use $\arcsin$ (in excel) to go from $\sin\theta$ to $\theta$, and $g=9.8$
+    \pause
+  \item Solving for $\mu$
+    \pause
+    \begin{align*}
+      a_d-a_u=-2\mu g\cos\theta\implies
+      \boxed{\mu=\frac{a_u-a_d}{2g\cos\theta}}
+    \end{align*}
+  \item Only other thing you need to calculate is $\sigma_\theta$ (in radians)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Analysis Notes}
+  \begin{itemize}
+  \item You will find $a_u/a_d$ using same 3 methods from lab 2
+    \begin{itemize}
+    \item Num. Diff. on $x$ vs $t$ $\to$ $v$ vs $t$ Num. Diff. on $v$ vs $t$ $\to$ $a$ vs $t$
+    \item Final value: mean of all $a$ values $\pm$ error on mean
+    \item Num. Diff. on $x$ vs $t$ $\to$ $v$ vs $t$, Fit a line to $v$ vs. $t$
+    \item Final value: slope of best fit line $\pm$ error from linest
+    \item Fit a quadratic/second order polynomial on $x$ vs $t$
+    \item Final value: 2*(coeff of $t^2$) $\pm$ 2*(error from linest)
+    \end{itemize}
+  \item For your final calculation of $\theta$, use the most \textbf{precise} \pause (=lowest error) \pause
+  \item Excel's $\arcsin$ will give you a value in radians, while the level gives a value in degrees, I recommend converting the level's value to radians:
+    \begin{align*}
+      x^{\circ}=x^\circ*\frac{\pi\,\mathrm{rad}}{180^\circ}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\section{Bookkeeping}
+\begin{frame}
+  \frametitle{Bookkeeping}
+  \begin{itemize}
+  \item Lab is due next Friday @ 9:00 am
+  \item Labs 3 on their way (if you dont have it already)
+  \item Exam questions?
+  \end{itemize}
+\end{frame}
+
+\end{document}

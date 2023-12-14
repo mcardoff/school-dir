@@ -1,0 +1,210 @@
+\documentclass[handout,aspectratio=169]{beamer}
+
+\title{Lab 5}
+\author{Michael Cardiff}
+\subtitle{Work and Position Dependent Forces}
+
+\usepackage[italicdiff]{physics}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{wasysym}
+
+% Changes style of actual slides
+\usetheme{Dresden}
+% Changes color of slides
+\usecolortheme{spruce}
+% removes controls at bottom right side
+\usenavigationsymbolstemplate{}
+
+% for figures
+\graphicspath{ {./figs/} }
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Theory}
+\begin{frame}
+  \frametitle{Springs}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item A simple spring system has a spring constant $k$ and a rest length $x_0$
+      \item The spring ``wants'' to be at its rest length, so the spring force should accelerate the spring to its rest length:
+        \begin{align*}
+          F_{spring}(x)=k(x-x_0)
+        \end{align*}
+      \item Sadly, we cannot assume this form for the force:
+        \begin{align*}
+          F_{spring}=\,???
+        \end{align*}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=3.5cm]{simplespring}
+        \includegraphics[width=5.0cm]{complexspring}
+        \caption{Simplified vs. Complex Spring}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Dynamic vs. Static Force}
+  \begin{itemize}
+  \item We will measure the force in 2 different ways:
+    \begin{enumerate}
+    \item With the glider static, balancing the spring force with another force (gravity), so the numerical value of the force is $F_s=mg$
+    \item With the glider moving (dynamic) measuring the acceleration, and the force would be $F_s=ma$
+    \end{enumerate}
+  \item Ideally, these would give the same acceleration, but this is not necessarily trivial
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The Work Energy Theorem}
+  \begin{itemize}
+  \item In a system with low dissipation (remember $\mu$ from last lab), mechanical energy is conserved:
+    \begin{align*}
+      E^{mech}_i=E^{mech}_f
+    \end{align*}
+  \item Mechanical energy here comes in the form of Work and Kinetic Energy, from work we get:
+    \begin{align*}
+      W=\int_i^fF\dd{x}=\int_i^fm\dv{v}{t}\dd{x}=\int_i^fmv\dv{v}{t}\dd{t}
+      =\frac12mv^2_f-\frac12mv^2_i=\Delta K
+    \end{align*}
+  \item So we have the Work-Energy Theorem:
+    \begin{align*}
+      W=\Delta K
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\section{Procedure}
+\begin{frame}
+  \frametitle{Static Force Measurement}
+  \begin{itemize}
+  \item First we will use a string and pulley system to put a force on the system, so the force from the spring will balance out the force from the pulley
+  \item We will measure the position of the back of the glider after it reaches equilibrium, this is what the manual calls $x_g$:
+    \begin{align*}
+      F_{spring}(\underbrace{x_0-x_g}_{x_m})=mg
+    \end{align*}
+  \item Where $x_0$ is the rest length the position of the back of the glider with no mass attached, do not to forget to measure it.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Dynamic Force Measurement}
+  \begin{itemize}
+  \item Now we will let the spring launch the glider, and measure the acceleration at $x_m$
+  \item To make this measurement accurately, we need to launch the glider a bit further back from the $x_m$ measured in the previous part, the lab manual suggests launching from $x_m-8cm$, so you will have several points before and after $x_m$
+  \item You should align the photogate so its beam will be broken as soon as the air is turned on and the spring begins to accelerate, be accurate with this.
+  \item Get 3 measurements of the acceleration for each mass.
+  \item There is no need for a measurement from $x_0$ as it should not get launched at all.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Measuring the Max Velocity}
+  \begin{itemize}
+  \item This time, place the photogate so that the glider breaks the beam as soon as it loses contact with the spring (should be a bit ahead of $x_0$)
+  \item Launch the glider from the $x_m$ for the 50g mass, do not move it back by 8cm
+  \item Notice the velocity should slowly decrease after this point (Why? Lab 4), so the ``max'' should be the first velocity value
+  \item Measure this value 3 times to get the mean $\pm$ error on the mean
+  \end{itemize}
+\end{frame}
+
+\section{Analysis}
+\begin{frame}
+  \frametitle{Checking Work Energy Theorem}
+  \begin{itemize}
+  \item Notice that work is an integral, we can't do that...
+  \item Instead do numerical \emph{integration}:
+    \begin{align*}
+      \int F\dd{x}\to\sum F\Delta{x}
+    \end{align*}
+  \item Our $F_n$: The average force over the interval $\Delta{x}$
+  \item We label the force for the 50g mass as $F_1$, and $x_1$ would be the corresponding spring stretch, $x_m$
+  \item This gives the following formula:
+    \begin{align*}
+      W=\frac12\sum_{n=1}^{n=10}(F_n+F_{n+1})(x_n-x_{n+1})
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Calculating $W$}
+  \begin{columns}
+    \begin{column}{0.6\textwidth}
+      {\footnotesize \begin{align*}
+        W=\frac12\sum_{n=1}^{n=10}(F_n+F_{n+1})(x_n-x_{n+1})
+      \end{align*}}
+      \begin{itemize}
+      \item This formula looks a bit complicated, but it really does down to calculating two things:
+        \begin{enumerate}
+        \item Average force in the interval
+        \item Distance traveled in that interval
+        \end{enumerate}
+      \item I recommend having every individual part of the sum calculated in the table 
+      \item Note that $F_{11}$ and $x_{11}$ should both be 0, here I just did not include them in the formula
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=5cm]{table}
+        \caption{My Table for Calculating $W$}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+\begin{frame}
+  \begin{table}[H]
+    \begin{tabular}{c|c|c|c|c|c|c}
+      $n$ & $m_n$ (g) & $F_n$ (N) & $x_n$ (m) & $F_n+F_{n+1}$ (N) & $x_n-x_{n+1}$ (m) & product (J) \\ \hline
+      10 & 5.4  & 0.029 & 0.019 & 0.029 & 0.019 & 0.0006 \\
+      9  & 10.6 & 0.027 & 0.040 & 0.056 & 0.021 & 0.0012 \\
+      8  & 15.6 & 0.080 & 0.049 & 0.107 & 0.009 & 0.0010 \\
+      7  & 20.5 & 0.121 & 0.073 & 0.201 & 0.024 & 0.0048 \\
+      6  & 25.5 & 0.162 & 0.092 & 0.283 & 0.019 & 0.0054 \\
+      5  & 30.5 & 0.182 & 0.107 & 0.344 & 0.015 & 0.0052 \\
+      4  & 35.7 & 0.224 & 0.118 & 0.405 & 0.011 & 0.0045 \\
+      3  & 40.9 & 0.242 & 0.130 & 0.466 & 0.012 & 0.0056 \\
+      2  & 46.1 & 0.282 & 0.139 & 0.524 & 0.009 & 0.0047 \\
+      1  & 51.2 & 0.299 & 0.149 & 0.581 & 0.010 & 0.0058
+    \end{tabular}
+    \caption{Bigger Version of My Table with Masses}
+  \end{table}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Error Analysis}
+  \begin{itemize}
+  \item[\Large\frownie] Error on $W$ is hard, you can calculate it if you want, but it is not necessary:
+    \begin{align*}
+      \sigma_W^2=\sum_{i=1}^{10}\sigma_{W_i}^2,\quad
+      \sigma_{W_i}^2=\sum_{j=1}^{10}\qty(\qty(\pdv{W_i}{F_j})^2\sigma_{F_j}^2
+      +\qty(\pdv{W_i}{x_j})^2\sigma_{x_j}^2)
+    \end{align*}
+  \item[\Large\smiley] The error on Kinetic energy is much simpler:
+    \begin{align*}
+      \sigma_K^2=\qty(\pdv{K}{m})^2\sigma^2_{m}+\qty(\pdv{K}{v})^2\sigma^2_{v}
+    \end{align*}
+  \item Only do the error on $K$, \pause trust me
+  \end{itemize}
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}
+  \frametitle{Bookkeeping}
+  \begin{itemize}
+  \item Lab 5 Due Next Friday, November 10th
+  \item Labs 4 on the way
+  \end{itemize}
+\end{frame}
+
+\end{document}

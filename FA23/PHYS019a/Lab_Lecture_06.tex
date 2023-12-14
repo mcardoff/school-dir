@@ -1,0 +1,251 @@
+\documentclass[aspectratio=169]{beamer}
+
+\title{PHYS 19a Lab 6}
+\author{Michael Cardiff}
+\subtitle{Angular Momentum \& Projectiles}
+
+\usepackage[italicdiff]{physics}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{wasysym}
+
+% Changes style of actual slides
+\usetheme{Dresden}
+% Changes color of slides
+\usecolortheme{spruce}
+% removes controls at bottom right side
+\usenavigationsymbolstemplate{}
+
+% for figures
+\graphicspath{ {./figs/} }
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Theory}
+\begin{frame}
+  \frametitle{Quick Note: Conservation of Momentum}
+  \begin{itemize}
+  \item In lab 5 we talked a bit about conservation of energy
+  \item Similarly, the total momentum in a system is conserved
+  \item This concept can also be applied to rotational systems, where it is instead called \emph{angular} momentum
+  \item This is only needed for part of the derivation for this lab, so don't worry too much about it.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Projectiles}
+  \begin{itemize}
+  \item A big part of this lab has to do with projectiles, so we have two components of movement: $x(t)$ and $y(t)$
+  \item We assume air resistance is negligible, so the only force here is gravity, which acts only in $y$
+  \item The most general equations of motion are given by:
+    \begin{align*}
+      x(t)=v_{0,x}t+x_0\qquad y(t)=-\frac12gt^2+v_{0,y}t+y_0
+    \end{align*}
+  \item We are using a launcher that (ideally) sends the projectile in the $x$ direction, so $v_{0,y}=0$ and we can also set $x_0=0$, signficantly reducing the complexity of our equations:
+    \begin{align*}
+      \boxed{x(t)=v_{0}t\qquad y(t)=-\frac12gt^2+y_0}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Maximum Range}
+  \begin{itemize}
+  \item The most useful result from these calculations is how far the projectile lands, we call this $X$
+  \item To solve for $X$, first get the (positive) time at which the projectile hits the ground (for us it is 0):
+    \begin{align*}
+      y(t_{ground})=0\implies y_0=\frac12gt_{ground}^2\implies
+      t_{ground}=\sqrt{\frac{2y_0}g}
+    \end{align*}
+  \item Plug this time into the equation for $x(t)$:
+    \begin{align*}
+      X=x(t_{ground})=v_0\sqrt{\frac{2y_0}{g}}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The Lab}
+  \begin{itemize}
+  \item The goal of this lab is to calculate $X$ and verify it
+    \begin{align*}
+      X={\color{red}v_0}\sqrt{\frac{2{\color{green}y_0}}{\color{blue}g}}
+    \end{align*}
+  \item So we need to get 3 total values:
+    \begin{itemize}
+    \item[\Large\smiley] $\color{blue}g$, we know this
+    \item[\Large\smiley] $\color{green}y_0$, we can measure this
+    \item[\Large\frownie] $\color{red}v_0$, this will take most of your time
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{How to find $v_0$}
+  \begin{itemize}
+  \item Finding $v_0$ can be done through conservation of Energy
+  \item This is similar to lab 5, but instead of using potential energy to generate kinetic energy, we will go in the opposite direction, using kinetic energy to generate potential energy
+  \item Our potential energy of choice is gravitational potential energy.
+  \item However, we need something to make the ball go 'up' (since this would increase GPE)
+  \item We use a pendulum! It can swing forward (up), increasing the gravitational potential energy
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Continued}
+  \begin{itemize}
+  \item The ball will be launched into the pendulum, and we consider the ball and the pendulum as a single system.
+  \item The kinetic energy of this combined pendulum is given by its moment of inertia (equivalent of mass for rotations) and its angular velocity:
+    \begin{align*}
+      K=\frac12I\omega^2
+    \end{align*}
+  \item The resulting gain in potential energy is with respect to the entire system, including the mass of the pendulum arm:
+    \begin{align*}
+      U=(m_b+M)g\Delta H
+    \end{align*}
+  \item $\Delta H$ can be determined using the maximum angle reached by the pendulum when the ball is launched into it.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Final equation for $v_0$}
+  \begin{itemize}
+  \item Once we measure $\Delta H$, the period $T$ and a few other trivial quantities, we can put them all together to create a measurement for the initial velocity:
+    \begin{align*}
+      v_0=\frac{(m_b+M)gT}{m_b\ell_b\pi}\sqrt{\frac{\ell_{cm}\Delta H}{2}}
+    \end{align*}
+  \item This is about it for the theory side, everything else is just a bit of algebra which is covered in the manual
+  \end{itemize}
+\end{frame}
+
+\section{Procedure}
+\begin{frame}
+  \frametitle{Trivial Quantities}
+  \begin{itemize}
+  \item These are some easy to measure quantities that do not require any use of software, just a plain meterstick/ruler or scale
+  \item The mass of the ball $m_b$
+  \item The mass of the pendulum arm $M$, given on the base of the canon (in grams)
+  \item The distance between the pivot and the center of mass of the ball, $\ell_b$
+  \item The distance between the pivot and the center of mass of the arm+ball system, $\ell_{cm}$, this is marked with a dot on the arm.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Period of the Pendulum}
+  \begin{itemize}
+  \item One essential quantity we need to measure for the pendulum is its period, $T$, this can be done in a few ways, we suggest using Logger Pro
+  \item Set Logger Pro to measure for 30s
+  \item With the ball in the arm, give the system a slight tap to induce small oscillations
+  \item The voltage that logger pro measures will oscillate up and down (you may need to auto adjust it to see).
+  \item Count how many oscillations occur, divide the total time (30s) by the number of oscillations, this is $T$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{$\Delta H$}
+  \begin{itemize}
+  \item Doing some algebra will tell you $\Delta H=\ell_{cm}(1-\cos\theta)$, where $\theta$ is the max angle that the pendulum reaches when the ball is launched in. 
+  \item Logger Pro only gives you a Voltage, we can convert a voltage to an angle (in degrees) using the following:
+    \begin{align*}
+      \theta=100(V_0-V_{min})
+    \end{align*}
+    Where $V_0$ is the voltage before launch, and $V_{min}$ is the minimum reached after launch.
+  \item These runs only need to be about 3 seconds this time.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Example}
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      \begin{itemize}
+      \item For example, this is what you will see on Logger Pro
+      \item Baseline {\color{red}$V_0$} is the average value in the {\color{red} red region}
+      \item Minimum {\color{green}$V_{min}$} is somewhere in the {\color{green} green region}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.6\textwidth}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=8.0cm]{lpoutput}
+        \caption{Example LoggerPro output}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Essentials}
+  \begin{itemize}
+  \item Make sure the pendulum arm is tightly screwed into the pivoting post at the top, it can come loose very easily
+  \item Before any launch, you should hold down the setup so it doesn't move, but do not get in the way of the swinging pendulum arm.
+  \item You should do 10 launches for determining $\theta$
+  \item I recommend getting a value for $X$ before coming up to do your launches.
+  \item Be consitent with how you press the trigger, as the launch can vary quite a bit if you press lightly vs hardly
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Direct Measurement of $X$}
+  \begin{itemize}
+  \item We now almost have everything we need to measure $X$, once you come up to do your test launches, make sure you measure the following:
+    \begin{enumerate}
+    \item The height from the table to the launch point of the canon
+    \item The distance from the launch point to the landing point.
+    \end{enumerate}
+  \item The second becomes a lot easier if you have calculated $X$ beforehand. 
+  \item You will do 10 total launches to get a good estimate for the measurement of $X$, each time marking where the ball landed.
+  \item Your measurements of $X$ can be done at your lab table if you know the distance from the launch point to the edge of the paper, then you can just measure from the edge to your landing spots
+  \end{itemize}
+\end{frame}
+
+\section{Analysis}
+\begin{frame}
+  \frametitle{Note on Errors}
+  \begin{itemize}
+  \item Error on $v_0$ is complicated if we include everything:
+    \begin{align*}
+      \sigma_{v_0}=\sqrt{\qty(\pdv{v_0}{m_b})^2\sigma_{m_b}^2
+        +\qty(\pdv{v_0}{\ell_b})^2\sigma_{\ell_b}^2
+        +\qty(\pdv{v_0}{\Delta H})^2\sigma_{\Delta H}^2
+        +\qty(\pdv{v_0}{\ell_{cm}})^2\sigma_{\ell_{cm}}^2
+        +\cdots}
+    \end{align*}
+  \item A lot of these contribute very little to the error, so we can justifiably ignore them, here is what you should use:
+    \begin{align*}
+      \boxed{\sigma_{v_0}=\sqrt{\qty(\pdv{v_0}{m_b})^2\sigma_{m_b}^2
+        +\qty(\pdv{v_0}{\ell_b})^2\sigma_{\ell_b}^2
+        +\qty(\pdv{v_0}{\Delta H})^2\sigma_{\Delta H}^2}}
+    \end{align*}
+  \item The next biggest contributor to the error is $T$, so you could include that if your values are not looking quite right
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Agreement}
+  \begin{itemize}
+  \item Just like labs 4 and 5, both your final measurements (direct and calculated value of $X$) will have errors, so you need to take them both into account when calculating if your results are in agreement or not:
+    \begin{align*}
+      \boxed{n_\sigma=\frac{X_{calc}-X_{meas}}
+      {\sqrt{\sigma^2_{X_{calc}}+\sigma^2_{X_{meas}}}}}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}
+  \frametitle{Bookkeeping}
+  \begin{itemize}
+  \item Labs 5 should be returned to you
+  \item This is your last lab {\Large\frownie} (or {\Large\smiley})
+  \item This lab is due Two Friday's for now
+  \end{itemize}
+\end{frame}
+
+\end{document}
