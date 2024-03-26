@@ -1,0 +1,111 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 167b Exam 1}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{cancel}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{slashed}
+
+%% general pretty stuff
+\usepackage{caption}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{tikz-feynhand}
+\usepackage[margin=1in]{geometry}
+
+% setup options
+\captionsetup{labelfont=bf}
+\graphicspath{ {./figs/} }
+
+% macros
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\H}{\mathcal{H}}
+\renewcommand{\l}{\ell}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\mcV}{\mathcal{V}}
+\newcommand{\D}{\partial}
+\newcommand{\veps}{\varepsilon}
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+
+% mdframed environments
+\usepackage[framemethod=TikZ]{mdframed}
+\mdfsetup{skipabove=\topskip,skipbelow=\topskip}
+\mdfdefinestyle{defstyle}{%
+  linewidth=1pt,
+  frametitlerule=true,
+  frametitlebackgroundcolor=gray!40,
+  backgroundcolor=gray!20,
+  innertopmargin=\topskip
+}
+
+\mdtheorem[style=defstyle]{definition}{Definition}
+\mdtheorem[style=defstyle]{theorem}{Theorem}
+\mdtheorem[style=defstyle]{problem}{Problem}
+
+\newenvironment{thebook}
+{\begin{mdframed}[style=defstyle,frametitle={From the Book}]}{\end{mdframed}}
+
+\usepackage{fancyhdr}
+\usepackage{siunitx}
+\pagestyle{fancy}
+\lhead{Michael Cardiff}
+\rhead{PHYS 167b Exam 1}
+
+\begin{document}
+\maketitle
+\section*{Task 1: Absorption Length and Cross Section}
+\begin{problem}
+  Consider a beam of intensity $I_0$ entering a long target. Let $z$ be the distance travelled by the beam in the target, measured from the entrance point. The interaction rate $R_i$is given by $R_i=\sigma nV\Phi$, where $\sigma$ is the cross section, $N=nV$ is the number of target particles encountered and $\Phi$ is the intensity per unit area.
+  \begin{enumerate}
+  \item What is the beam intensity $I(z)$ as a function of distance $z$?
+  \item The ``absorption length'' $L$ is defined as the distance at which the beam intensity reduces by the factor $1/e$. Find L.
+  \item The absorption length in lead is \SI{5}{cm}. Find the total neutron cross section of lead (Atomic mass number of about 200 and density of about \SI{10}{g.cm^{-3}}).
+  \end{enumerate}
+\end{problem}
+
+\newpage
+\section*{Task 2: Isospin}
+\begin{problem}
+  \begin{enumerate}
+  \item Compute the Clebsch-Gordan coefficients for the states with $\vb{J}=\vb{J}_1+\vb{J}_2$, $M=m_1+m_2$, where $J_1=1$, $J_2=1/2$, $J=3/2$ and $M=1/2$, for the various possible $m_1$ and $m_2$ values
+  \item Consider the following strong interaction reactions (1) $\pi^+p\to\pi^+p$, (2) $\pi^-p\to\pi^-p$, (3) $\pi^-p\to\pi^0n$. Using the Clebsch0Gordan tables, write the isospin wavefunction of each state in terms of total isospin $I$ and $I_z$ basis.
+  \item These isospin conserving reactions can occur in the isospin $I=3/2$ state ($\Delta$ resonance), or $I=1/2$ state ($N^*$ resonance). Using the result above calculate the ratio of these cross-sections ($\sigma_1:\sigma_2:\sigma_3$) for an exchange corresponding to a (1) $\Delta$ resonance, and toi (2) $N^*$ resonance. At a resonance energy you can neglect the effect due to the other isospin state. The cross sections are proportional to the isospin amplitudes and are independent of $I_z$
+  \end{enumerate}
+\end{problem}
+
+\newpage
+\section*{Task 3: Muon Decays}
+\begin{problem}
+  A pion at rest decays into a muon and a neutrino $(\pi^-\to\mu^-+\overline{\nu}_\mu)$
+  \begin{enumerate}
+  \item On the average, how far will the muon travel in vacuum before decaying? Give a numerical answer. 
+  \item How much energy would a muon need to circumnavigate the earth with a fair chance of completing the journey, assuming that the earth's magnetic field is strong enough to keep it in orbit? Is the earth's field actually strong enough?
+  \end{enumerate}
+\end{problem}
+
+\newpage
+\section*{Task 4: Spin-0 Photon}
+\begin{problem}
+  Let's imagine a parallel universe where the photon instead of being a massless vector (spin-1) particle, is a massive scalar (spin-0) particle. The QED vertex in the Feynman rules in this theory would be $-ig_e\bm{1}$, where $\bm{1}$ is the $4\times4$ unit matrix (to be compared to $-ig_e\gamma^\mu$ for the massless vector photon). There would also be no factors for the external photon lines as there is no photon polarization.
+  \begin{enumerate}
+  \item Assuming that this ``photon'' is heavy enough to decay, calculate the decay rate for $\gamma\to e^+e^-$ using the helicity spinors (in center of mass frame). Assume that the photon is heavy enough that the electron/positron mass can be neglected. 
+  \item Is helicity ``conserved'' in high-energy interactions in this theory? Explain how is this different from QED?
+  \item Carry out the calculation again including the electron/positron mass using the trace techniques
+  \item If $m_\gamma=\SI{3}{GeV}$, find the lifetime of this photon in seconds.
+  \end{enumerate}
+\end{problem}
+
+\end{document}

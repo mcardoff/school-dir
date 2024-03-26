@@ -1,0 +1,501 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 167b HW 5}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{cancel}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{slashed}
+
+%% general pretty stuff
+\usepackage{caption}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{tikz-feynhand}
+
+% setup options
+\captionsetup{labelfont=bf}
+\graphicspath{ {./figs/} }
+
+% macros
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\H}{\mathcal{H}}
+\renewcommand{\l}{\ell}
+\renewcommand{\bar}{\overline}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\mcV}{\mathcal{V}}
+\newcommand{\D}{\partial}
+\newcommand{\veps}{\varepsilon}
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+
+% mdframed environments
+\usepackage[framemethod=TikZ]{mdframed}
+\mdfsetup{skipabove=\topskip,skipbelow=\topskip}
+\mdfdefinestyle{defstyle}{%
+  linewidth=1pt,
+  frametitlerule=true,
+  frametitlebackgroundcolor=gray!40,
+  backgroundcolor=gray!20,
+  innertopmargin=\topskip
+}
+
+\mdtheorem[style=defstyle]{definition}{Definition}
+\mdtheorem[style=defstyle]{theorem}{Theorem}
+\mdtheorem[style=defstyle]{problem}{Problem}[section]
+
+\newenvironment{thebook}
+{\begin{mdframed}[style=defstyle,frametitle={From the Book}]}{\end{mdframed}}
+
+\begin{document}
+\maketitle
+\section{Thomson, Problem 7.1}
+\begin{problem}
+  The derivation of (7.8) used the algebraic relation:
+  \begin{align*}
+    (\gamma+1)^2(1-\kappa^2)^2=4
+  \end{align*}
+  Where
+  \begin{align*}
+    \kappa=\frac{\beta\gamma}{\gamma+1}\quad\text{and}\quad
+    (1-\beta^2)\gamma^2=1
+  \end{align*}
+  Show that this holds.
+\end{problem}
+Start from definition of $\kappa$, first expand $(1-\kappa^2)^2$:
+\begin{align*}
+  (1-\kappa^2)^2&=\qty(1-\frac{\beta^2\gamma^2}{(\gamma+1)^2})^2\\
+  &=\frac1{(\gamma+1)^4}\qty[
+  (\gamma+1)^4-2\beta^2\gamma^2(1+\gamma)^2+\beta^4\gamma^4
+  ]
+\end{align*}
+Expanding all of the terms gives:
+\begin{align*}
+  (1-\kappa^2)^2&=\frac1{(\gamma+1)^4}\qty[
+  1+2\gamma+(1-\beta^2)\gamma^2]^2\\
+  &=\frac1{(\gamma+1)^4}\qty[2+2\gamma]^2\\
+  &=\frac4{(1+\gamma)^2}
+\end{align*}
+Hence:
+\begin{equation}
+  \label{eq:p1}
+  \boxed{(\gamma+1)^2(1-\kappa^2)^2=4}
+\end{equation}
+\newpage
+\section{Thomson, Problem 7.3}
+\begin{problem}
+  In an $e^-p$ scattering  experiment, the incident electron has energy $E_1=\SI{529.5}{\MeV}$ and the scattered electrons are detected  at an angle of $\theta=\ang{75}$ relative to the incoming beam.
+  \begin{enumerate}[label = (\alph*)]
+  \item At this angle, almost all of the scattered electrons are measured to have an energy of $E_3\approx\SI{373}{\MeV}$. What can be concluded from this observation?
+  \item Find the corresponding value of $Q^2$.
+  \end{enumerate}
+\end{problem}
+First consider the relevant equations, if this is an elastic scattering event, we would have the relation that:
+\begin{align*}
+  E_3=\frac{E_1 m_p}{m_p+E_1(1-\cos\theta)}
+\end{align*}
+Using $m_p=\SI{1000}{\MeV}$ and the given values of $\theta,E_1$, we can determine:
+\begin{align*}
+  E_3=\frac{\SI{529.5}{MeV}\times\SI{1000}{MeV}}
+  {\SI{1000}{MeV}+\SI{529.5}{MeV}(1-\cos\ang{75})}
+  =\SI{380}{MeV}\approx\SI{373}{MeV}
+\end{align*}
+So we can reasonably conclude that the scattering is primarily elasitc.
+
+As for the value of $Q^2$, we can take advantage of the other formula:
+\begin{align*}
+  Q^2=\frac{2m_p E_1^2(1-\cos\theta)}{m_p+E_1(1-\cos\theta)}
+  =2E_1 E_3(1-\cos\theta)
+\end{align*}
+Plugging in values gives:
+\begin{equation}
+  \label{eq:p2}
+  \boxed{Q^2=\SI{298472}{MeV}\implies Q=\SI{546.3}{MeV}}
+\end{equation}
+\newpage
+\section{Thomson, Problem 7.8}
+\begin{problem}
+  The experimental data of Figure 7.8 can be described by the form factor
+  \begin{align*}
+    G(Q^2)=\frac{G(0)}{(1+Q^2/Q_0^2)^2}
+  \end{align*}
+  With $Q_0=\SI{0.71}{\GeV}$. Taking $Q^2\approx\vb{q}^2$, show that this implies that proton has an exponential charge distribution of the form:
+  \begin{align*}
+    \rho(\vb{r})=\rho_0e^{-r/a}
+  \end{align*}
+  and find the value of $a$.
+\end{problem}
+If this was an exponential charge distribution, we would have in the $Q^2\approx\vb{q}^2$ limit that:
+\begin{align*}
+  G(\vb{q}^2)=\int\rho_0e^{-r/a}e^{i\vb{q\vdot r}}\dd[3]{\vb{r}}
+\end{align*}
+This integral is easiest done in spherical coordinates, where the $\phi$ integral is trivial:
+\begin{align*}
+  G(\vb{q}^2)=2\pi\rho_0\int_0^\infty\int_0^\pi e^{-r/a}e^{iqr\cos\theta}
+  r^2\sin\theta\dd{\theta}\dd{r}
+\end{align*}
+Separate the $\theta$ integral:
+\begin{align*}
+  \int_0^\pi e^{iqr\cos\theta}\sin\theta\dd{\theta}
+  =\eval{-\frac{e^{iqr\cos\theta}}{iqr}}_0^\pi
+  =\frac1{iqr}\qty(e^{iqr}-e^{-iqr})
+\end{align*}
+We are left with the following:
+\begin{align*}
+  G(\vb{q}^2)&=\frac{2\pi\rho_0}{iq}
+  \int_0^\infty re^{-r/a}\qty(e^{iqr}-e^{-iqr})\dd{r}\\
+  &=\frac{2\pi\rho_0}{iq}
+  \int_0^\infty r\qty(e^{-r/a+iqr}-e^{-r/a-iqr})\dd{r}
+\end{align*}
+We should then evaluate the general integral, via integration by parts:
+\begin{align*}
+  \int_0^\infty re^{-\beta r}\dd{r}&=
+  \eval{-r\frac{e^{-\beta r}}{\beta}}_0^\infty
+  \frac1\beta\int_0^\infty e^{-\beta r}\dd{r}\\
+  &=\frac1\beta\eval{-\frac{e^{-\beta r}}\beta}_0^\infty=\frac1{\beta^2}
+\end{align*}
+Applying this to our integral, we have one case where $\beta=1/a-iq$ and one where $\beta=1/a+iq$, hence:
+\begin{align*}
+  G(\vb{q}^2)&=\frac{2\pi\rho_0}{iq}
+  \qty[\frac1{(\frac1a-iq)^2}-\frac1{(\frac1a+iq)^2}]
+\end{align*}
+We then can simplify using a difference of squares formula:
+\begin{align*}
+  G(\vb{q}^2)&=\frac{2\pi\rho_0}{iq}
+  \qty[\qty(\frac{a^{-1}+iq}{a^{-2}+q^2}+\frac{a^{-1}-iq}{a^{-2}+q^2})
+  \qty(\frac{a^{-1}+iq-a^{-1}+iq}{a^{-2}+q^2})]\\
+  &=\frac{2\pi\rho_0}{iq}\qty[\qty(\frac{\frac2a}{\frac1{a^2}+q^2})
+  \qty(\frac{2iq}{\frac1{a^2}+q^2})]=\frac{8\pi\rho_0}{(1+\frac{q^2}{a^2})^2}
+\end{align*}
+Hence we can identify the constants as:
+\begin{equation}
+  \label{eq:p3}
+  \boxed{
+    \begin{aligned}
+      G(0)&=8\pi\rho_0\\
+      Q_0&=a=\SI{0.71}{GeV}
+    \end{aligned}
+  }
+\end{equation}
+Hence, the proton should have some exponential charge distribution
+\newpage
+\section{Thomson, Problem 8.2}
+\begin{problem}
+  In fixed-target electron-proton \emph{elastic} scattering
+  \begin{align*}
+    Q^2=2m_p(E_1-E_3)=2m_p E_1 y\quad\text{and}
+    \quad Q^2=4E_1E_3\sin^2(\theta/2)
+  \end{align*}
+  \begin{enumerate}[label = (\alph*)]
+  \item Use these relations to show that
+    \begin{align*}
+      \sin^2\frac{\theta}{2}=\frac{E_1}{E_3}\frac{m_p^2}{Q^2}y^2
+      \quad\text{and hence}\quad
+      \frac{E_3}{E_1}\cos^2\frac{\theta}{2}=1-y-\frac{m_p^2y^2}{Q^2}
+    \end{align*}
+  \end{enumerate}
+\end{problem}
+From the equation which explicitly includes $\sin^2(\theta/2)$ we can conclude:
+\begin{align*}
+  \sin^2(\theta/2)=\frac{Q^2}{4E_1E_3}
+\end{align*}
+And from the other equation, we can see that:
+\begin{align*}
+  1=\frac{4m_p^2E_1^2y^2}{Q^4}
+\end{align*}
+Multiplying this by the previous equation gives:
+\begin{align*}
+  \sin^2(\theta/2)&=\frac{Q^2}{4E_1E_3}\times\frac{4m_p^2E_1^2y^2}{Q^4}
+  =\frac{E_1}{E_3}\frac{m_p^2y^2}{Q^2}
+\end{align*}
+We can then use the pythagorean identities for the cosine identity:
+\begin{align*}
+  \sin^2(\theta/2)&=1-\cos^2(\theta/2)=\frac{E_1}{E_3}\frac{m_p^2y^2}{Q^2}\\
+  \implies\cos^2(\theta/2)&=1-\frac{E_1}{E_3}\frac{m_p y^2}{Q^2}\\
+  \frac{E_3}{E_1}\cos^2(\theta/2)&=\frac{E_3}{E_1}-\frac{m_p y^2}{Q^2}
+\end{align*}
+Using the definition of $y$ is the final step:
+\begin{align*}
+  \frac{E_3}{E_1}\cos^2(\theta/2)&=1-y-\frac{m_p y^2}{Q^2}
+\end{align*}
+Hence
+\begin{equation}
+  \label{eq:p4a}
+  \boxed{
+    \begin{aligned}
+      \sin^2\frac{\theta}{2}&=\frac{E_1}{E_3}\frac{m_p^2}{Q^2}y^2\\
+      \frac{E_3}{E_1}\cos^2(\theta/2)&=1-y-\frac{m_p y^2}{Q^2}
+    \end{aligned}
+  }
+\end{equation}
+\begin{problem}
+  \begin{enumerate}[label = (\alph*)]
+    \setcounter{enumi}{1}
+  \item Assuming azimuthal symmetry and using Equations (7.31) and (7.32), show that:
+    \begin{align*}
+      \dv{\sigma}{Q^2}=\abs{\dv{\Omega}{Q^2}}\dv{\sigma}{\Omega}
+      =\frac{\pi}{E_3^2}\dv{\sigma}{\Omega}
+    \end{align*}
+  \end{enumerate}
+\end{problem}
+Recall this is elastic scattering, so that we have:
+\begin{align*}
+  Q^2=\frac{2m_p E_1^2(1-\cos\theta)}{m_p+E_1(1-\cos\theta)}
+\end{align*}
+Note that due to the azimuthal symmetry we have $\dd{\Omega}=2\pi\dd{(\cos\theta)}$, such that:
+\begin{align*}
+  \dv{\Omega}{Q^2}=2\pi\dv{(\cos\theta)}{Q^2}
+  =2\pi\qty[\dv{Q^2}{(\cos\theta)}]^{-1}
+\end{align*}
+So we only need to differentiate $Q^2$ w.r.t. $\cos\theta$:
+\begin{align*}
+  \dv{Q^2}{(\cos\theta)}=\frac{2E_1^2m_p^2}{(m_p+E_1(1-\cos\theta)^2)}=2E_3^2
+\end{align*}
+Bringing everthing together:
+\begin{align*}
+  \abs{\dv{\Omega}{Q^2}}=\abs{\frac{2\pi}{2E_3^2}}=\frac{\pi}{E_3^2}
+\end{align*}
+Hence:
+\begin{equation}
+  \label{eq:p4b}
+  \boxed{\dv{\sigma}{Q^2}=\frac{\pi}{E_3^2}\dv{\sigma}{\Omega}}
+\end{equation}
+\begin{problem}
+  \begin{enumerate}[label = (\alph*)]
+    \setcounter{enumi}{2}
+  \item Using the results of (a) and (b) show that the Rosenbluth equation,
+    \begin{align*}
+      \dv{\sigma}{\Omega}=\frac{\alpha^2}{4E_1^2\sin^2\theta/2}\frac{E_3}{E_1}
+      \qty[\frac{G_E^2+\tau G_M^2}{1+\tau}\cos^2\theta/2
+      +2\tau G_M^2\sin^2\theta/2]
+    \end{align*}
+    Can be written in the Lorentz-invariant form
+    \begin{align*}
+      \dv{\sigma}{\Omega}=\frac{4\pi\alpha^2}{Q^4}
+      \qty[\frac{G_E^2+\tau G_M^2}{1+\tau}\qty(1-y-\frac{m_p^2y^2}{Q^2})
+      +\frac12 y^2G_M^2]
+    \end{align*}
+  \end{enumerate}
+\end{problem}
+First note that we can place the factors of $E_3/E_1$ inside and use the following substitutions from part a:
+\begin{align*}
+  \frac{E_3}{E_1}\sin^2\frac{\theta}{2}&=\frac{m_p^2}{Q^2}y^2\\
+  \frac{E_3}{E_1}\cos^2(\theta/2)&=1-y-\frac{m_p y^2}{Q^2}
+\end{align*}
+Meaning we can get to a first halfway point with:
+\begin{align*}
+  \dv{\sigma}{\Omega}=\frac{\alpha^2}{4E_1^2\sin^2\theta/2}
+  \qty[\frac{G_E^2+\tau G_M^2}{1+\tau}\qty(1-y-\frac{m_p y^2}{Q^2})
+  +2\tau \frac{m_p^2y^2}{Q^2}G_M^2]
+\end{align*}
+We can then use the definition of $\tau$:
+\begin{align*}
+  \tau=\frac{Q^2}{4m_p^2}\implies2\tau\frac{m_p^2}{Q^2}=\frac12
+\end{align*}
+Leaving us with:
+\begin{align*}
+  \dv{\sigma}{\Omega}=\frac{\alpha^2}{4E_1^2\sin^2\theta/2}
+  \qty[\frac{G_E^2+\tau G_M^2}{1+\tau}\qty(1-y-\frac{m_p y^2}{Q^2})
+  +\frac12y^2G_M^2]
+\end{align*}
+Using the original thing we wrote for part (a) and squaring it, we find:
+\begin{align*}
+  \sin^4\theta/2=\frac{Q^4}{16E_1^2E_3^2}
+\end{align*}
+This reduces the cross section to:
+\begin{align*}
+  \dv{\sigma}{\Omega}=\frac{4E_3^2\alpha^2}{Q^4}
+  \qty[\frac{G_E^2+\tau G_M^2}{1+\tau}\qty(1-y-\frac{m_p y^2}{Q^2})
+  +\frac12y^2G_M^2]
+\end{align*}
+The final nail in the coffin is replacing the derivative with respect to $\Omega$ with one respect to $Q^2$, inserting the fudge factor from part (b):
+\begin{align*}
+  \dv{\sigma}{Q^2}=\frac{\pi}{E_3^2}\dv{\sigma}{\Omega
+  }=\frac{4\pi\alpha^2}{Q^4}
+  \qty[\frac{G_E^2+\tau G_M^2}{1+\tau}\qty(1-y-\frac{m_p y^2}{Q^2})
+  +\frac12y^2G_M^2]
+\end{align*}
+Hence we have arrived at the Lorentz-invariant form:
+\begin{equation}
+  \label{eq:p4c}
+  \boxed{\dv{\sigma}{Q^2}=\frac{4\pi\alpha^2}{Q^4}
+  \qty[\frac{G_E^2+\tau G_M^2}{1+\tau}\qty(1-y-\frac{m_p y^2}{Q^2})
+  +\frac12y^2G_M^2]}
+\end{equation}
+\newpage
+\section{Thomson, Problem 8.6}
+\begin{problem}
+  Figure 8.18 shows the raw measurements of the structure function $F_2(x)$ in low-energy electron-deuterium scattering. When combined with the measurements of Figure 8.11, it is found that:
+  \begin{align*}
+    \frac{\int_0^1F^{eD}_2(x)\dd{x}}{\int_0^1F^{ep}_2(x)\dd{x}}\approx0.84
+  \end{align*}
+  Write down the quark-parton model prediction for this ratio and determine the relative fraction of the momentum of proton carried by down-/anti-down-quarks compared to that carried by the up-/anti-up-quarks, $f_d/f_u$.
+\end{problem}
+Deuterium is a bound state containing both a proton and neutron, so the structure function should be the sum of the two, with a fixing factor to ensure normalization:
+\begin{align*}
+  F^{eD}_2(x)=\frac12(F_2^{ep}(x)+F_2^{en}(x))=\frac5{18}x\qty(u(x)+d(x)
+  +\bar{u}(x)+\bar{d}(x))
+\end{align*}
+The integral in the denominator was done in class, the numerator one is trivial given the above info:
+\begin{align*}
+  \int_0^1F_2^{ep}(x)\dd{x}=\frac49f_u+\frac19f_d\qquad
+  \int_0^1F_2^{eD}(x)\dd{x}=\frac5{18}(f_d+f_u)
+\end{align*}
+Hence the experimental ratio is given by:
+\begin{align*}
+  0.84\approx\frac52\frac{f_u+f_d}{4f_u+f_d}
+\end{align*}
+Algebra gives
+\begin{align*}
+  (4\times 0.336-1)f_u&\approx 1.336f_d\\
+\end{align*}
+Hence the ratio is:
+\begin{equation}
+  \label{eq:p5}
+  \boxed{\frac{f_d}{f_u}\approx0.52}
+\end{equation}
+Which is consistent with our assumptions
+\newpage
+\section{Thomson, Problem 8.8}
+\begin{problem}
+  At the HERA collider, electrons of energy $E_1=\SI{27.5}{\GeV}$ collided with protons of $E_2=\SI{820}{\GeV}$. In deep inelastic scattering events at HERA, show that the Bjorken $x$ is given by
+  \begin{align*}
+    x=\frac{E_3}{E_2}\qty[\frac{1-\cos\theta}{2-(E_3/E_1)(1+\cos\theta)}]
+  \end{align*}
+  where $\theta$ is the angle through which the electron has scattered and $E_3$ is the energy of the scattered electron. Estimate $x$ and $Q^2$ for the event shown in Figure 8.13 assuming that the energy of the scattered electron is $\SI{250}{\GeV}$
+\end{problem}
+We neglect the mass of protons and electrons for HERA, writing the usual four momenta:
+\begin{align*}
+  p_1&=(E_1,0,0,E_1)\\
+  p_2&=(E_2,0,0,E_2)\\
+  p_3&=(E_3,E_3\sin\theta,0,E_3\cos\theta)
+\end{align*}
+The Bjorken $x$ is defined as:
+\begin{align*}
+  x=\frac{-q^2}{2p_2\vdot q}
+\end{align*}
+Where $q$ is the momentum transfer $p_1-p_3$, we should first evaluate $q^2$:
+\begin{align*}
+  q^2=(p_1-p_3)^2
+  =p_1^2+p_3^2-2p_1\vdot p_3
+  =-2p_1\vdot p_3
+  =-2E_1E_3(1-\cos\theta)
+\end{align*}
+Then $p_2\vdot q$:
+\begin{align*}
+  p_2\vdot q=p_2\vdot(p_1-p_3)=2E_1E_2-E_2E_3(1+\cos\theta)
+\end{align*}
+Thus some factoring gives:
+\begin{align*}
+  x=\frac{-q^2}{2p_2\vdot q}
+  &=\frac{E_1E_3(1-\cos\theta)}{2E_1E_2-E_2E_3(1+\cos\theta)}\\
+  &=\frac{E_3}{E_2}\frac{E_1(1-\cos\theta)}{2E_1-E_3(1+\cos\theta)}
+\end{align*}
+Hence we have:
+\begin{equation}
+  \label{eq:p6a}
+  \boxed{x=
+    \frac{E_3}{E_2}\frac{1-\cos\theta}{2-(E_3/E_1)(1+\cos\theta)}}
+\end{equation}
+The given event was at $\theta\approx\ang{150}$, hence we can plug in values for $Q^2$:
+\begin{align*}
+  Q^2=2E_1E_3(1-\cos\theta)=2\times27.5\times250(1-\cos\ang{150})
+  =\SI{3e4}{GeV^2}
+\end{align*}
+And $x$ is given by:
+\begin{align*}
+  x=\frac{250}{820}\qty[\frac{1-\cos\ang{150}}{2-(250/27.5)(1+\cos\ang{150})}]
+  =0.7
+\end{align*}
+Hence:
+\begin{equation}
+  \label{eq:p6b}
+  \boxed{
+    \begin{aligned}
+      Q^2&\approx\SI{3e4}{GeV^2}\\
+      x&\approx0.7
+    \end{aligned}
+  }
+\end{equation}
+\newpage
+\section{Thomson, Problem 8.7}
+\begin{problem}
+  Including the contribution from strange quarks:
+  \begin{enumerate}[label = (\alph*)]
+  \item Show that $F_2^{ep}(x)$ can be written
+    \begin{align*}
+      F_2^{ep}(x)=
+      \frac49\qty[u(x)+\bar{u}(x)]+
+      \frac19\qty[d(x)+\bar{d}(x)+s(x)+\bar{s}(x)]
+    \end{align*}
+    Where $s(x)$ and $\bar{s}(x)$ are the strange quark-parton distribution functions of the proton.
+  \item Find the corresponding expression for $F_2^{en}(x)$ and show that
+    \begin{align*}
+      \int_0^1\frac{F_2^{ep}(x)-F_2^{en}(x)}{x}\dd{x}
+      \approx\frac13+\frac23\int_0^1[\bar{u}(x)-\bar{d}(x)]\dd{x}
+    \end{align*}
+    And interpret the measured value of $0.24\pm0.03$
+  \end{enumerate}
+\end{problem}
+Strange quarks are the second generation equivalent of the down quark, so the contribution of $s$ and $\bar{s}$ is grouped into that of the $d$ quarks, hence
+\begin{equation}
+  \label{eq:p7a}
+  \boxed{F^{ep}_2(x)=
+    \frac49x[u(x)+\bar{u}(x)]+
+    \frac19x[d(x)+\bar{d}(x)+s(x)+\bar{s}(x)]
+  }
+\end{equation}
+In terms of proton PDFs, the neutron structure function was:
+\begin{align*}
+  F^{en}_2(x)=
+  \frac49x[d(x)+\bar{d}(x)]+
+  \frac19x[u(x)+\bar{u}(x)]
+\end{align*}
+Since the distribution of $s$ quarks in both protons and neutrons should be the same, there are no valence $s$ quarks so contributions only come from gluon exchanges, hence:
+\begin{align*}
+  F^{en}_2(x)=
+  \frac49x[d(x)+\bar{d}(x)]+
+  \frac19x[u(x)+\bar{u}(x)+s(x)+\bar{s}(x)]
+\end{align*}
+Subtracting this from $F_2^{ep}(x)$ and dividing by $x$:
+\begin{align*}
+  \frac{F^{ep}_2(x)-F^{en}_2(x)}{x}=
+  \frac13\qty[u(x)-d(x)+\bar{u}(x)-\bar{d}(x)]
+\end{align*}
+Separate into valence and sea contributions:
+\begin{align*}
+  \frac{F^{ep}_2(x)-F^{en}_2(x)}{x}=
+  \frac13\qty[u_V(x)-d_V(x)+u_S(x)-d_S(x)+\bar{u}(x)-\bar{d}(x)]
+\end{align*}
+The sea quark/antiquark contributions should be the same:
+\begin{align*}
+  \frac{F^{ep}_2(x)-F^{en}_2(x)}{x}=
+  \frac13\qty[u_V(x)-d_V(x)+2(\bar{u}(x)-\bar{d}(x))]
+\end{align*}
+Integrating the first two terms over all $x$ gives the number of valence quarks (2$u$-1$d$), and what remains is:
+\begin{equation}
+  \label{eq:p7b}
+  \boxed{
+    \int_0^1\frac{F^{ep}_2(x)-F^{en}_2(x)}{x}\dd{x}=
+    \frac13+\frac23\int_0^1\qty[(\bar{u}(x)-\bar{d}(x))]\dd{x}
+  }
+\end{equation}
+The measured value tells that this integral is given by:
+\begin{equation}
+  \label{eq:p7c}
+  \boxed{\int_0^1\qty[(\bar{u}(x)-\bar{d}(x))]\dd{x}\approx
+    -0.14\pm0.05}
+\end{equation}
+Meaning there are slightly more $\bar{d}$ and $d$ sea quarks in the proton, which is very interesting.
+\end{document}

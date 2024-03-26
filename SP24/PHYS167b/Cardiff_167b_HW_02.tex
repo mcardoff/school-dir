@@ -1,0 +1,363 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 167b HW 2}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{cancel}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{slashed}
+
+%% general pretty stuff
+\usepackage{caption}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{tikz-feynhand}
+
+% setup options
+\captionsetup{labelfont=bf}
+\graphicspath{ {./figs/} }
+
+% macros
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\H}{\mathcal{H}}
+\renewcommand{\l}{\ell}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\mcV}{\mathcal{V}}
+\newcommand{\D}{\partial}
+\newcommand{\veps}{\varepsilon}
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+
+% mdframed environments
+\usepackage[framemethod=TikZ]{mdframed}
+\mdfsetup{skipabove=\topskip,skipbelow=\topskip}
+\mdfdefinestyle{defstyle}{%
+  linewidth=1pt,
+  frametitlerule=true,
+  frametitlebackgroundcolor=gray!40,
+  backgroundcolor=gray!20,
+  innertopmargin=\topskip
+}
+
+\mdtheorem[style=defstyle]{definition}{Definition}
+\mdtheorem[style=defstyle]{theorem}{Theorem}
+\mdtheorem[style=defstyle]{problem}{Problem}
+
+\newenvironment{thebook}
+{\begin{mdframed}[style=defstyle,frametitle={From the Book}]}{\end{mdframed}}
+
+\begin{document}
+\maketitle
+\section{Thomson, Problem 3.2}
+\begin{problem}
+  For the decay $a\to1+2$, show that the momenta of both daughter particles in the centre-of-mass frame $p^*$ are
+  \begin{equation*}
+    p^*=\frac1{2m_a}\sqrt{\qty[m_a^2-(m_1+m_2)^2]\qty[m_a^2-(m_1-m_2)^2]}
+  \end{equation*}
+\end{problem}
+By definition, the c.o.m. frame is the rest frame of $a$, so its 4-momentum has the form:
+\begin{align*}
+  p^\mu_a=(m_a,\vb{0})
+\end{align*}
+And the other two particles must have zero total momentum in this frame, hence we get:
+\begin{align*}
+  p_{1/2}^\mu=(E_{1/2},\pm\vb{p}^*)
+\end{align*}
+The first thing to notice is that by conservation of energy $(p^\mu_a=p_1^\mu+p_2^\mu)$ we get that:
+\begin{equation}
+  \label{eq:cons}
+  m_a=E_1+E_2
+\end{equation}
+We can then use Lorentz invariants to find $\abs{\vb{p}^*}=p^*$, first, we use the square of the two momenta:
+\begin{align*}
+  p_1^\mu p_{1\mu}&=E_1^2-(p^*)^2=m_1^2\implies E_1^2=m_1^2+(p^*)^2\\
+  p_2^\mu p_{2\mu}&=E_2^2-(p^*)^2=m_2^2\implies E_2^2=m_2^2+(p^*)^2
+\end{align*}
+Using eq. \eqref{eq:cons}, we can get an expression for one of $E_1^2$ or $E_2^2$:
+\begin{align*}
+  E_1^2=(m_a-E_2)^2
+\end{align*}
+Giving a system of equations in terms of $m_1,m_2,m_a,E_2$, and $p^*$, hence we can solve for $p^*$ in terms of the masses:
+\begin{align*}
+  m_a^2+E_2^2-2m_aE_2&=m_1^2+(p^*)^2\\
+  E_2^2&=m_2^2+(p^*)^2
+\end{align*}
+We can substitute the second equation into the first to eliminate $E_2$:
+\begin{align*}
+  m_a^2+m_2^2+(p^*)^2-2m_a\sqrt{m_2^2+(p^*)^2}=m_1^2+(p^*)^2
+\end{align*}
+The rest is just algebra:
+\begin{align*}
+  m_a^2+m_2^2+(p^*)^2-2m_a\sqrt{m_2^2+(p^*)^2}&=m_1^2+(p^*)^2\\
+  m_a^2+m_2^2-2m_a\sqrt{m_2^2+(p^*)^2}&=m_1^2\\
+  m_a^2+m_2^2-m_1^2&=2m_a\sqrt{m_2^2+(p^*)^2}\\
+  \qty(m_a^2+m_2^2-m_1^2)^2&=(2m_a)^2\qty(m_2^2+(p^*)^2)\\
+  \qty(m_a^2+m_2^2-m_1^2)^2-4m_a^2m_2^2&=(2m_ap^*)^2\\
+  (m_a^2+m_2^2-m_1^2+2m_am_2)(m_a^2+m_2^2-m_1^2-2m_am_2)&=(2m_ap^*)^2
+\end{align*}
+The terms on the left hand side can be factored as follows:
+\begin{gather*}
+  m_a^2+m_2^2-m_1^2+2m_am_2+m_am_1-m_am_1+m_1m_2-m_1m_2\\
+  =(m_a+m_2-m_1)(m_a+m_2+m_1)\\
+  =(m_a-(m_1-m_2))(m_a+(m_1+m_2))\\
+  m_a^2+m_2^2-m_1^2-2m_am_2+m_am_1-m_am_1+m_1m_2-m_1m_2\\
+  =(m_a-m_1-m_2)(m_a-m_2+m_1)\\
+  =(m_a-(m_1+m_2))(m_a+(m_1-m_2))
+\end{gather*}
+When multiplied, these terms then become:
+\begin{align*}
+  (m_a-(m_1-m_2))(m_a+(m_1+m_2))(m_a-(m_1+m_2))(m_a+(m_1-m_2))\\
+  =(m_a^2-(m_1+m_2)^2)(m_a^2-(m_1-m_2)^2)
+\end{align*}
+Hence we can finally solve for $p^*$:
+\begin{align*}
+  (2m_ap^*)^2&=(m_a^2-(m_1+m_2)^2)(m_a^2-(m_1-m_2)^2)\\
+  (p^*)^2&=\frac1{(2m_a)^2}(m_a^2-(m_1+m_2)^2)(m_a^2-(m_1-m_2)^2)
+\end{align*}
+Hence we find the expected answer:
+\begin{equation}
+  \label{eq:p1}
+  \boxed{p^*=\frac1{2m_a}\sqrt{(m_a^2-(m_1+m_2)^2)(m_a^2-(m_1-m_2)^2)}}
+\end{equation}
+
+\section{Thomson, Problem 3.4}
+\begin{problem}
+  At a future $e^+e^-$ collider operating as a Higgs factory at a centre-of-mass energy of $\sqrt{s}=\SI{250}{GeV}$, the cross section for the process $e^+e^-\to HZ$  is 250 fb. If the collider has an instantaneous luminosity of $\SI{2e34}{cm^{-2}.s^{-1}}$ and is operational for 50\% of the time, how many Higgs bosons will be produced in the five years of running?
+\end{problem}
+The book gives us the expected number of events in terms of the Luminosity $\L$, and the cross section $\sigma$ as:
+\begin{align*}
+  N=\sigma\int\L\dd{t}
+\end{align*}
+We are given the luminosity in terms of \unit{cm^{-2}.s^{-1}}, so we need to convert our cross section to those units as well:
+\begin{align*}
+  \sigma=250\text{ fb}
+  \times\frac{1\text{ b}}{10^{15}\text{ fb}}
+  \times\frac{10^{-24}\unit{cm^{2}}}{1\text{ b}}=\SI{250e-39}{cm^2}
+\end{align*}
+Since the luminosity is presumably constant here, we can pull it out of the integral and simply multiply by the time interval, so the next thing to find is the effective rate of events, in \unit{s^{-1}}:
+\begin{align*}
+  \mathrm{Rate}=\sigma\L=\SI{250e-39}{cm^2}\times\SI{2e34}{cm^{-2}.s^{-1}}
+  =\SI{0.005}{s^{-1}}
+\end{align*}
+The time interval is then $0.5\times5$ year:
+\begin{align*}
+  \mathrm{Time}=0.5\times5\text{ year}
+  \times\frac{365\text{ day}}{1\text{ year}}
+  \times\frac{24\text{ hour}}{1\text{ day}}
+  \times\frac{3600\unit{s}}{1\text{ hour}}
+  \approx\SI{7.884e7}{s}
+\end{align*}
+Multiplying this by the rate then gives the expected number of $HZ$ events:
+
+\begin{equation}
+  \label{eq:p2}
+  \boxed{N=\mathrm{Rate}\times\mathrm{Time}=394200\text{ events}}
+\end{equation}
+
+\section{Thomson, Problem 3.5}
+\begin{problem}
+  The total $e^+e^-\to\gamma\to\mu^+\mu^-$ annihilation cross section is $\sigma=4\pi\alpha^2/3s$, where $\alpha\approx1/137$. Calculate the cross section at $\sqrt{s}=\SI{50}{\GeV}$, expressing your answer in both natural units and in barns (1 barn=$10^{-28}$m$^{2}$). Compare this to the total $pp$ cross section at $\sqrt{s}=\SI{50}{\GeV}$, which is approximately 40mb and  comment on the result.
+\end{problem}
+First evaluating in natural units:
+\begin{equation}
+  \label{eq:p3a}
+  \boxed{\sigma^{NU}
+    =4\pi\frac{1/137^2}{3(\SI{50}{GeV})}\approx\SI{8.9}{GeV^{-2}}}
+\end{equation}
+To evaluate in barns, we need to use the fact that $1\text{ b}=100\text{ fm}^2$ and that $\hbar c\approx\SI{0.197}{GeV.fm}$. Hence:
+\begin{align*}
+  \sigma^{SI}=\sigma^{NU}\times(0.197)^2\times10^{-2}
+  \frac{\text{b}}{\text{fm}^2}
+\end{align*}
+Evaluating numerically:
+\begin{equation}
+  \label{eq:p3b}
+  \boxed{\sigma^{SI}\approx34\text{ pb}}
+\end{equation}
+In contrast to the total $pp$ cross section, this is about 9 orders of magnitude higher, which makes sense as it is mediated by the strong interaction, which has a much larger fine structure constant.
+\newpage
+\section{Thomson, Problem 3.8}
+\begin{problem}
+  The Lorentz-invariant flux term for the process $a+b\to1+2$ in the centre-of-mass frame was shown to be $F=4p_i^*\sqrt{s}$, where $p_i^*$ is the momentum of the initial-state particles. Show that the corresponding expression in the frame where $b$ is at rest is:
+  \begin{equation*}
+    F=4m_bp_a
+  \end{equation*}
+\end{problem}
+The frame-invariant version of the flux factor is given as:
+\begin{align*}
+  F=4\sqrt{(p_a^\mu p_{b\mu})^2-m_a^2m_b^2}
+\end{align*}
+In this frame, we have $p^\mu_a=(E_a,\vb{p}_a)$ and $p^\mu_b=(m_b,\vb{0})$, such that:
+\begin{align*}
+  p_a^\mu p_{b\mu}=E_am_b
+\end{align*}
+Since we want a factor in terms of the mass and momentum of particle $a$, $p_a$, we can rewrite this using:
+\begin{align*}
+  E_a^2=p_a^2+m_a^2
+\end{align*}
+The flux factor is then:
+\begin{align*}
+  F=4\sqrt{(p_a^2+m_a^2)m_b^2-m_a^2m_b^2}
+  =4\sqrt{p_a^2m_b^2}=4p_am_b
+\end{align*}
+Hence:
+\begin{equation}
+  \label{eq:p4}
+  \boxed{F^{lab}=4m_bp_a}
+\end{equation}
+\newpage
+\section{Thomson, Problem 3.9}
+\begin{problem}
+  Show that the momentum in the centre-of-mass frame of the initial-state particles in a two-body scattering process can be expressed as:
+  \begin{equation*}
+    (p_i^*)^2=\frac1{4s}\qty[s-(m_1+m_2)^2]\qty[s-(m_1-m_2)^2]
+  \end{equation*}
+\end{problem}
+This can be solved by expanding the relation that $\sqrt{s}=E_1+E_2$, first by rearranging and squaring:
+\begin{align*}
+  (\sqrt{s}-E_1)^2&=E_2^2\\
+  \implies s+E_1^2-2\sqrt{s}E_1=E_2^2
+\end{align*}
+The energies can be expanded using the dispersion relation:
+\begin{align*}
+  s+m_1^2+(p^*)^2-2\sqrt{s}E_1=m_2^2+(p^*)^2
+  \implies 2\sqrt{s}E_1=s+m_1^2-m_2^2
+\end{align*}
+However, since the momentum all disappeared, we should square one more time to get another use of the dispersion relation:
+\begin{align*}
+  4sE_1^2&=(s+m_1^2-m_2^2)^2\\
+  4s((p^*)^2+m_1^2)&=s^2+2s(m_1^2-m_2^2)+(m_1^2-m_2^2)^2\\
+  \implies 4s(p^*)^2&=s^2-4sm_1^2+2s(m_1^2-m_2^2)+(m_1^2-m_2^2)^2\\
+  \implies 4s(p^*)^2&=s^2-2s(m_1^2+m_2^2)+(m_1+m_2)^2(m_1-m_2)^2\\
+\end{align*}
+And once we note that:
+\begin{align*}
+  2(m_1^2+m_2^2)=(m_1+m_2)^2+(m_1-m_2)^2
+\end{align*}
+We can factor as seen in the problem statement:
+\begin{align*}
+  4s(p^*)^2&=(s-(m_1+m_2)^2)(s-(m_1-m_2)^2)
+\end{align*}
+Rearranging one more time gives the final form:
+\begin{equation}
+  \label{eq:p5}
+  \boxed{(p^*)^2=\frac1{4s}(s-(m_1+m_2)^2)(s-(m_1-m_2)^2)}
+\end{equation}
+\section{Thomson, Problem 3.10}
+\begin{problem}
+  Repeat the calculation of Section 3.5.2 for the process $e^-p\to e^-p$ where the mass of the electron is no longer neglected.
+  \begin{enumerate}[label=\alph*)]
+  \item First show that
+    \begin{equation*}
+      \dv{E_3}{(\cos\theta)}=\frac{p_1p_3^2}{p_3(E+1+m_P)-E_3p_1\cos\theta}
+    \end{equation*}
+  \item Then show that
+    \begin{equation*}
+      \dv{\sigma}{\Omega}=\frac1{64\pi^2}\frac{p_3^2}{p_1m_p}
+      \frac1{p_3(E_1+m_p)-E_3p_1\cos\theta}\abs{\M_{fi}}^2
+    \end{equation*}
+    Where $(E_1,\vb{p}_1)$ and $(E_3,\vb{p}_3)$ are the respective energies and momenta of the initial-state and scattered electrons as measured in the laboratory frame.
+  \end{enumerate}
+\end{problem}
+\begin{enumerate}[label=\alph*)]
+\item We now have a situation where the particles have the following 4-momenta, with $p_1/p_3$ the initial/final momentum of the electron, and $p_2/p_4$ the initial/final momentum of the proton (assuming z axis beam and scattering in $yz$ plane):
+  \begin{align*}
+    p_1&=(E_1,0,0,p_1)\\
+    p_2&=(m_p,0,0,0)\\
+    p_3&=(E_3,0,p_3\sin\theta,p_3\cos\theta)\\
+    p_4&=(E_4,\vb{p}_4)
+  \end{align*}
+  Differentiating the dispersion relation for the final-state electron with respect to $\cos\theta$:
+  \begin{equation}
+    \label{eq:diffpm}
+    E_3\dv{E_3}{(\cos\theta)}=p_3\dv{p_3}{(\cos\theta)}
+  \end{equation}
+  Expand out the expression for $t$, since it involves $p_1$ and $p_3$ or $p_2$ and $p_4$:
+  \begin{align*}
+    (p_1-p_3)^2&=(p_2-p_4)^2\\
+    p_1^2+p_3^2-2p_1^\mu p_{3\mu}&=p_2^2+p_4^2-2p_2^\mu p_{4\mu}\\
+    2m_e^2-2E_1E_3+2p_1p_3\cos\theta&=2m_p^2-2m_pE_4
+  \end{align*}
+  By energy conservation, we can eliminate $E_4$:
+  \begin{align*}
+    2m_e^2-2E_1E_3+2p_1p_3\cos\theta&=2m_p^2-2m_p(E_1+m_p-E_3)
+  \end{align*}
+  Note that $E_1,m_e,m_p$ and $p_1$ are fixed parameters, so we can differentiate the above with respect to $\cos\theta$, and then only $E_3,p_3$ will be functions of $\cos\theta$:
+  \begin{align*}
+    \dv{\cos\theta}\qty[2m_e^2-2E_1E_3+2p_1p_3\cos\theta]
+    &=\dv{\cos\theta}\qty[2m_p^2-2m_p(E_1+m_p-E_3)]\\
+    -2E_1\dv{E_3}{\cos\theta}+2p_1\qty(\dv{p_3}{\cos\theta}\cos\theta+p_3)
+    &=2m_p\dv{E_3}{\cos\theta}\\
+    p_1\cos\theta\dv{p_3}{\cos\theta}+p_1p_3&=(m_p+E_1)\dv{E_3}{\cos\theta}
+  \end{align*}
+  Then using eq \eqref{eq:diffpm}, we can replace the derivative of $p_3$ with one of $E_3$:
+  \begin{align*}
+    p_1\cos\theta\frac{E_3}{p_3}\dv{E_3}{\cos\theta}+p_1p_3
+    &=(m_p+E_1)\dv{E_3}{\cos\theta}\\
+    \implies \qty(m_p+E_1-\frac{p_1}{p_3}E_3\cos\theta)\dv{E_3}{\cos\theta}
+    &=p_1p_3\\
+    \implies\frac{p_1p_3}{m_p+E_1-p_1E_3\cos\theta/p_3}&=\dv{E_3}{\cos\theta}
+  \end{align*}
+  Multiplying the numerator and denominator of the left hand side gives the correct form:
+  \begin{equation}
+    \label{eq:p6a}
+    \boxed{\dv{E_3}{\cos\theta}=\frac{p_1p_3^2}{p_3(m_p+E_1)-p_1E_3\cos\theta}}
+  \end{equation}
+\item The book goes on to evaluate the differential cross section by first looking at the differential cross-section with respect to the Mandelstam variable $t$:
+  \begin{align*}
+    \dv{\sigma}{t}=\frac1{64\pi s(p_i^*)^2}\abs{\M_{fi}}^2
+  \end{align*}
+  This is related to the desired cross section via the chain rule:
+  \begin{align*}
+    \dv{\sigma}{\Omega}=\dv{\sigma}{t}\dv{t}{\Omega}
+  \end{align*}
+  We can ignore the differential azimuthal contribution to $\Omega$, replacing it with full $2\pi$ access, and this reduces to evaluating:
+  \begin{align*}
+    \dv{\sigma}{t}\dv{t}{\Omega}=\dv{\sigma}{t}\dv{t}{\cos\theta}\frac1{2\pi}
+  \end{align*}
+  But in a way we already evaluated this, since:
+  \begin{align*}
+    t=(p_2-p_4)^2=2m_p^2-2m_P(E_1+m_p-E_3)
+  \end{align*}
+  So we recover:
+  \begin{align*}
+    \dv{t}{\Omega}=\frac{2m_p}{2\pi}\dv{E_3}{\cos\theta}=
+    \frac{m_p}\pi\dv{E_3}{\cos\theta}
+  \end{align*}
+  We then arrive at an intermediate step of:
+  \begin{align*}
+    \dv{\sigma}{\Omega}=\frac{m_p}{64\pi^2s(p_i^*)^2}
+    \frac{p_1p_3^2}{p_3(m_p+E_1)-p_1E_3\cos\theta}\abs{\M_{fi}}^2
+  \end{align*}
+  In the lab frame, $s$ is evaluated as:
+  \begin{align*}
+    s=(p_1+p_2)^2=m_e^2+m_p^2+2E_1m_p
+  \end{align*}
+  And we can use eq \eqref{eq:p5} to find its product with $(p_i^*)^2$
+  \begin{align*}
+    s(p_i^*)^2&=\frac14(s-(m_e+m_p)^2)(s-(m_e-m_p)^2)\\
+    &=\frac14(m_e^2+m_p^2+2E_1m_p-(m_e+m_p)^2)(m_e^2+m_p^2+2E_1m_p-(m_e-m_p)^2)\\
+    &=\frac14(2E_1m_p-2m_em_p)(2E_1m_p+2m_em_p)\\
+    &=E_1^2m_p^2-m_e^2m_p^2\\
+    &=(p_1^2+m_e^2)m_p^2-m_e^2m_p^2=p_1^2m_p^2
+  \end{align*}
+  This then gives our final answer:
+  \begin{equation}
+    \label{eq:p6b}
+    \boxed{\dv{\sigma}{\Omega}=\frac{1}{64\pi^2}
+      \frac{p_3^2}{p_1m_p}
+      \frac{1}{p_3(m_p+E_1)-p_1E_3\cos\theta}\abs{\M_{fi}}^2}
+  \end{equation}
+\end{enumerate}
+\end{document}
