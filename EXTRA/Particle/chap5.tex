@@ -165,10 +165,209 @@ We can ``read-off'' the Feynman rule for the interaction vertex: (Note that over
       \vertex (e1) at (-1, 1) {$e^-$};
       \vertex (e2) at (-1,-1) {$e^+$};
       \vertex (b) at (1.5,0) {$\gamma$}; 
-      \propag (e1) to (a);
-      \propag (e2) to (a);
+      \propag[fer] (e1) to (a);
+      \propag[antfer] (e2) to (a);
       \propag[bos] (a) to (b);
     \end{feynhand}
   \end{tikzpicture}
   =-ieQ\gamma^\mu
 \end{align*}
+Where $Q=$ particle charge ($-1$ for $e^-$ and $e^+$).
+
+The second ingredient we need is the ``propagator'' of the photon which mediates the interaction. This is not a real photon. A real photon is not kinematically allowed.
+\begin{proof}
+  Let the electron and positron 4-momenta respectively be:
+  \begin{align*}
+    p_1=(E,0,0,p)\qquad p_2=(E,0,0,-p)
+  \end{align*}
+  And that they are colliding head-on (in c.o.m.\ frame) in an experiment (BEPC, Tristan, CESR, SLAC, LEP, etc.)
+  The photon momentum is the sum of these two:
+  \begin{align*}
+    q_{\gamma}&=p_1+p_2=(2E,0,0,0)\\
+    \implies q_{\gamma}^2=4E^2\neq 0
+  \end{align*}
+  A real photon would have $q^2=0$ always. 
+\end{proof}
+
+The interaction is mediated by a ``virtual'' photon (a particle \underline{not} ``on the mass shell'', i.e.\ $q^2\neq m^2$). These ``particles'' do not actually exist in the same sense that real photons (w/ $q^2=0$) do. Also $q^2$ is \underline{not} constrained to be greater than $0$ in general (though it is here).
+
+What is the time scale of this interaction? Dimensional analysis says:
+\begin{align*}
+  t\sim\frac1{\sqrt{q^2}}\sim\frac1{2E}
+\end{align*}
+The minimum (threshold) energy for this interaction is that $2E\sim\SI{200}{\MeV}$ Hence $t$ is about:
+\begin{align*}
+  t\sim\frac{\hbar c}{2Ec}\sim 10^{-23}\text{s}
+\end{align*}
+
+When a virtual particle appears in a Feynman diagram, this corresponds to a propagator:
+\begin{align*}
+  \text{spin 0}\quad
+  \begin{tikzpicture}[baseline=-0.10cm]
+    \begin{feynhand}
+      \vertex (a) at (0,0);
+      \vertex (b) at (1.5,0); 
+      \propag[sca, mom=\(p\)] (a) to (b);
+    \end{feynhand}
+  \end{tikzpicture}
+  &=\frac{i}{p^2-m^2}\\
+  \text{spin }\frac12\quad
+  \begin{tikzpicture}[baseline=-0.10cm]
+    \begin{feynhand}
+      \vertex (a) at (0,0);
+      \vertex (b) at (1.5,0); 
+      \propag[fer, mom=\(p\)] (a) to (b);
+    \end{feynhand}
+  \end{tikzpicture}
+  &=\frac{i}{\sla{p}-m}=\frac{i(\sla{p}+m)}{p^2-m^2}\\
+  \text{(massless) spin 1}\quad
+  \begin{tikzpicture}[baseline=-0.10cm]
+    \begin{feynhand}
+      \vertex (a) at (0,0);
+      \vertex (b) at (1.5,0); 
+      \propag[bos, mom=\(p\)] (a) to (b);
+    \end{feynhand}
+  \end{tikzpicture}
+  &=\frac{i(-g^{\mu\nu}+p^\mu p^\nu/p^2)}{p^2}
+\end{align*}
+\begin{remark}
+  The charge arrow on the fermion above is defined such that the direction of motion of the \emph{particle} is the direction of the charge arrow. \emph{Antiparticles} go backward in time.
+\end{remark}
+
+The numerators of the propagators come from summing over helicities:
+\begin{align*}
+  \sum_{\lambda=\pm}u_\lambda\bar{u}_\lambda&=\sla{p}+m\\
+  \sum_{\lambda=\pm,0}\veps^\mu_\lambda\bar{\veps}^\nu_\lambda&=
+  -g^{\mu\nu}+\frac{p^\mu p^\nu}{p^2}
+\end{align*}
+
+The photon propagator looks complicated, but we will see that the second term will not contribute in practice in either of QED or QCD.
+
+Lets now turn the pictogram into an actual calculation of the scattering amplitude:
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[scale=2.0]
+    \begin{feynhand}
+      % vertices
+    \vertex (p11) at (-1,1) {$e^-$};
+    \vertex (p12) at (-1,-1) {$e^+$};
+    \vertex (p21) at (3,1) {$\mu^-$};
+    \vertex (p22) at (3,-1) {$\mu^+$};
+    \vertex (a) at (0,0);
+    \vertex (b) at (2,0);
+    % particles
+    \propag [fer, mom=\(p_1\)] (p11) to (a);
+    \propag [antfer, mom'=\(p_2\)] (p12) to (a);
+    \propag [fer, mom=\(p_3\)] (b) to (p21);
+    \propag [antfer, mom'=\(p_4\)] (b) to (p22);
+    % propagator
+    \propag [bos, mom=\(q\)] (a) to [edge label'=\(\gamma\)] (b);
+    \end{feynhand}
+  \end{tikzpicture}
+  \caption{$e^+e^-\to\mu^+\mu^-$}
+  \label{fig:feynman}
+\end{figure}
+The arrows on the actual edges indicate charge or ``fermion'' flow, read the spinor chain opposite in the direction of these arrows, for example, the left chain would be read as:
+\begin{align*}
+  \bar{v}(p_2)(-ieQ_e\gamma^\mu)u(p_1)
+\end{align*}
+And the right chain would read as:
+\begin{align*}
+  \bar{u}(p_3)(-ieQ_\mu\gamma^\nu)v(p_4)
+\end{align*}
+The last thing to get is the propagator, then we can write out $\M$, the matrix element:
+\begin{align*}
+  i\M=&(-ieQ_e)\bar{v}(p_2)\gamma^\mu u(p_1)\\
+  \times&\frac{i}{q^2}\qty(-g_{\mu\nu}+\frac{q_\mu q_\nu}{q^2})\\
+  \times&(-ieQ_\mu)\bar{u}(p_3)\gamma^\nu v(p_4)
+\end{align*}
+$\M$ is the amplitude, we will square $\M$ to get the probability that feeds into the cross section or particle decay width.
+
+Lets first show that the second term in the photon propagator does not contribute:
+\begin{proof}
+  Consider what is actually being calculated:
+  \begin{align*}
+    \bar{v}(p_2)\gamma^\mu u(p_1)q_\mu=\bar{v}(p_2)\sla{q}u(p_1)
+  \end{align*}
+  By conservation of momentum, we know that $q=p_1+p_2$:
+  \begin{align*}
+    \bar{v}(p_2)\sla{q}u(p_1)=\bar{v}(p_2)(\sla{p}_1+\sla{p}_2)u(p_1)
+  \end{align*}
+  Note that on each side we can use the momentum-space Dirac equation, namely that:
+  \begin{align*}
+    \sla{p}_1u(p_1)&=m u(p_1)\\
+    \bar{v}(p_2)\sla{p}_2&=-m\bar{v}(p_2)
+  \end{align*}
+  This gives a factor of $m$ and $-m$ in the parentheses:
+  \begin{align*}
+    \bar{v}(p_2)(\sla{p}_1+\sla{p}_2)u(p_1)
+    =\bar{v}(p_2)(m-m)u(p_1)=0
+  \end{align*}
+  The factors $\bar{v}(p_2)\gamma^\mu u(p_1)$ and $\bar{u}(p_3)\gamma^\nu v(p_4)$ are called the fermion current, $j^\mu$, and the fact that $q_\mu j^\mu=0$ is called current conservation. This is directly from Maxwell's equations in covariant form.
+\end{proof}
+Thus our matrix element can be reduced drastically:
+\begin{align*}
+  i\M=&(-ieQ_e)\bar{v}(p_2)\gamma^\mu u(p_1)
+  \times-\frac{i}{q^2}g_{\mu\nu}
+  \times(-ieQ_\mu)\bar{u}(p_3)\gamma^\nu v(p_4)\\
+  =&i\frac{e^2Q_e Q_\mu}{q^2}\bar{v}(p_2)\gamma^\mu u(p_1)
+  g_{\mu\nu}\bar{u}(p_3)\gamma^\nu v(p_4)\\
+  =&i\frac{e^2Q_e Q_\mu}{q^2}\bar{v}(p_2)\gamma^\mu u(p_1)
+  \bar{u}(p_3)\gamma_\mu v(p_4)
+\end{align*}
+Now we can square the amplitude: $\abs{\M}^2=\M\M^*$:
+\begin{align*}
+  \abs{\M}^2=&e^4Q_e^2Q_\mu^2q^{-4}\bar{v}p_2\gamma^\mu u(p_1)
+  {(\bar{v}(p_2)\gamma^\nu u(p_1))}^*\\
+  \times&\bar{u}(p_3)\gamma_\mu v(p_4)
+  {(\bar{u}(p_3)\gamma_\nu v(p_4))}^*
+\end{align*}
+Notice that the factor of $\M^*$ has a different index on it. We can also trivially turn the complex conjugate into a conjugate transpose as we are dealing with scalars in Dirac-space:
+\begin{align*}
+  {(\bar{v}(p_2)\gamma^\nu u(p_1))}^*&={(\bar{v}(p_2)\gamma^\nu u(p_1))}^\dag\\
+  =u^\dag(p_1){(\gamma^\nu)}^\dag{(\gamma^0)}^\dag v(p_2)
+  &=u^\dag(p_1)\gamma^0\gamma^\nu\gamma^0\gamma^0 v(p_2)\\
+  &=\bar{u}(p_1)\gamma^\nu v(p_2)
+\end{align*}
+
+Often the colliding beams at these experiments are unpolarized, so it is useful to average over helicities:
+\begin{align*}
+  \frac12\frac12\sum_{\lambda=\pm}\sum_{\lambda'=\pm}
+  \bar{v}_{\lambda'}(p_2)\gamma^\mu u_\lambda(p_1)
+  \bar{u}_{\lambda}(p_1)\gamma^\nu v_{\lambda'}(p_2)
+\end{align*}
+We now need to make use of the matrix-nature of this expression. Since the expression is a complex number, we have:
+\begin{align*}
+  \sum_i M_{ii}=\Tr[M_{ij}]
+\end{align*}
+Because of this, we can move $\bar{v}_{\lambda'}$ to the end of the chain:
+\begin{align*}
+  \frac12\frac12\sum_{\lambda=\pm}\sum_{\lambda'=\pm}\Tr[
+  \gamma^\mu u_\lambda(p_1)\bar{u}_{\lambda}(p_1)
+  \gamma^\nu v_{\lambda'}(p_2)\bar{v}_{\lambda'}(p_2)]
+\end{align*}
+Now we can use:
+\begin{align*}
+  \sum_{\lambda=\pm}u_\lambda(p_1)\bar{u}_\lambda(p_1)&=\sla{p}_1+m\\
+  \sum_{\lambda'=\pm}v_\lambda(p_2)\bar{v}_\lambda(p_2)&=\sla{p}_2-m
+\end{align*}
+This is called ``Casimir's Trick'', and we can now use the trace ``theorems'':
+\begin{align*}
+  \acomm{\gamma^\mu}{\gamma^\nu}&=2g^{\mu\nu}\\
+  \Tr[\gamma^\mu]&=0\\
+  \Tr[\gamma^\mu\gamma^\nu]&=4g^{\mu\nu}\\
+  \Tr[\gamma^\mu\gamma^\nu\gamma^\sigma\gamma^\rho]&=
+  4[g^{\mu\nu}g^{\sigma\rho}+g^{\nu\sigma}g^{\mu\rho}-g^{\nu\rho}g^{\mu\sigma}]\\
+  \Tr[\text{odd \# of $\gamma$'s}]&=0
+\end{align*}
+So our trace is fairly easy:
+\begin{align*}
+  \frac14\Tr[\gamma^\mu(\sla{p}_1+m_e)\gamma^\nu(\sla{p}_2-m_e)]
+  &=\frac14\qty{\Tr[\gamma^\mu\sla{p}_1\gamma^\nu\sla{p_2}]
+    -m_e^2\Tr[\gamma^\mu\gamma^\nu]}\\
+  &=\frac144\qty{p_{1\rho}p_{2\sigma}
+    (g^{\mu\rho}g^{\nu\sigma}+g^{\nu\rho}g^{\mu\sigma}-g^{\mu\nu}g^{\rho\sigma})
+    -m_e^2g^{\mu\nu}}\\
+  &=p_1^\mu p_2^\nu+p_1^\nu p_2^\mu-p_1\vdot p_2g^{\mu\nu}-m_e^2g^{\mu\nu}
+\end{align*}
+Similarly, the helicities of the final-state fermions are often unobserved, so we can sum over all helicities. 
