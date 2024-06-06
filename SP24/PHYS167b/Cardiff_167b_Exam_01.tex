@@ -59,7 +59,9 @@
 {\begin{mdframed}[style=defstyle,frametitle={From the Book}]}{\end{mdframed}}
 
 \usepackage{fancyhdr}
+
 \usepackage{siunitx}
+\usepackage{textcomp}
 \pagestyle{fancy}
 \lhead{Michael Cardiff}
 \rhead{PHYS 167b Exam 1}
@@ -75,7 +77,53 @@
   \item The absorption length in lead is \SI{5}{cm}. Find the total neutron cross section of lead (Atomic mass number of about 200 and density of about \SI{10}{g.cm^{-3}}).
   \end{enumerate}
 \end{problem}
-
+Beam intensity is  related to the number of particles in the beam, so it will change based on number of interactions with the material $N$, so it is proportional to the interaction rate:
+\begin{align*}
+  \dd{I}=-\dd{R_i}
+\end{align*}
+We were given a form of $R_i$, so we can find this differential, assuming $\sigma$, $\phi$, and $n$ are constant:
+\begin{align*}
+  \dd{R_i}&=\dd{(\sigma N \phi)}=\sigma\phi\dd{N}\\
+  \dd{N}&=n\dd{V}=nA\dd{z}
+\end{align*}
+The units for $\phi$ are intensity over area, so it can assume it has the form:
+\begin{align*}
+  \phi=\frac{I(z)}{A}
+\end{align*}
+Where $I(0)=I_0$. We can then form a differential equation for $I(z)$:
+\begin{align*}
+  \dd{I}=-\sigma\frac{I(z)}{A}nA\dd{z}=-\sigma nI(z)\dd{z}
+\end{align*}
+Where the solution is:
+\begin{equation}
+  \label{eq:p1a}
+  \boxed{I(z)=I_0\exp{-n\sigma z}}
+\end{equation}
+We need to find $L$ such that $I(L)=I_0/e$:
+\begin{align*}
+  \frac{I_0}{e}=I_0e^{-n\sigma L}\implies e^{-1}=e^{-n\sigma L}
+\end{align*}
+Taking the log of both sides gives:
+\begin{equation}
+  \label{eq:p1b}
+  \boxed{L=\frac{1}{n\sigma}}
+\end{equation}
+The atomic mass \# is 200, and $Z$ for lead is 82, so \# of neutrons is $N=200-82=118$:
+\begin{align*}
+  n=\frac{\text{neutron}}{V}
+\end{align*}
+Performing the dimensional analysis:
+\begin{align*}
+  n=\frac{\SI{10}{g}}{\SI{1}{cm^3}}\cdot
+  \frac{\SI{1}{mol}}{\SI{207}{g}}\cdot
+  \frac{N_A\text{ Pb atom}}{\SI{1}{mol}}\cdot
+  \frac{118\text{ neutron}}{\text{Pb atom}}
+\end{align*}
+So the cross section is:
+\begin{equation}
+  \label{eq:p1c}
+  \boxed{\sigma=\frac1{nL}=\SI{5.8e-26}{cm^{-2}}\approx0.06\text{ barn}}
+\end{equation}
 \newpage
 \section*{Task 2: Isospin}
 \begin{problem}
@@ -85,7 +133,92 @@
   \item These isospin conserving reactions can occur in the isospin $I=3/2$ state ($\Delta$ resonance), or $I=1/2$ state ($N^*$ resonance). Using the result above calculate the ratio of these cross-sections ($\sigma_1:\sigma_2:\sigma_3$) for an exchange corresponding to a (1) $\Delta$ resonance, and toi (2) $N^*$ resonance. At a resonance energy you can neglect the effect due to the other isospin state. The cross sections are proportional to the isospin amplitudes and are independent of $I_z$
   \end{enumerate}
 \end{problem}
+Note the action of the ladder operators on a $\ket{j,m}$ state:
+\begin{align*}
+  J_+\ket{j,m}&=\sqrt{j(j+1)-m(m+1)}\ket{j,m+1}\\
+  J_-\ket{j,m}&=\sqrt{j(j+1)-m(m-1)}\ket{j,m-1}
+\end{align*}
+To get $J=\frac32$, $M=\frac12$, we need to apply $J_-$ to the $J=\frac32$, $M=\frac32$ state, whhich only has one possibility from $1\oplus\frac12$:
+\begin{align*}
+  \ket{\tfrac32,\tfrac32}=\ket{1,1,\tfrac12,\tfrac12}
+  \equiv\ket{1,1}\ket{\tfrac12,\tfrac12}
+\end{align*}
+Apply total $J_-$:
+\begin{align*}
+  J_-\ket{\tfrac32,\tfrac32}=\sqrt{\frac32\qty(\frac52)-\frac32\qty(\frac12)}
+  \ket{\tfrac32,\tfrac12}=\sqrt{3}\ket{\tfrac32,\tfrac12}
+\end{align*}
+Apply the fact that $J_-=J_{1-}+J_{2-}$:
+\begin{align*}
+  J_-\ket{\tfrac32,\tfrac32}&=
+  J_{1-}\ket{1,1,\tfrac12,\tfrac12}+J_{2-}\ket{1,1,\tfrac12,\tfrac12}\\
+  &=\sqrt{1(2)-1(0)}\ket{1,0,\tfrac12,\tfrac12}+
+  \sqrt{\tfrac12(\tfrac32)-\tfrac12(-\tfrac12)}\ket{1,1,\tfrac12,-\tfrac12}\\
+  &=\sqrt{2}\ket{1,0,\tfrac12,\tfrac12}+\ket{1,1,\tfrac12,-\tfrac12}
+\end{align*}
+We then have:
+\begin{align*}
+  \sqrt{3}\ket{\tfrac32,\tfrac12}
+  =\sqrt{2}\ket{1,0,\tfrac12,\tfrac12}+\ket{1,1,\tfrac12,-\tfrac12}
+\end{align*}
+Which gives our final answer, which matches the Clebsch-Gordan table:
+\begin{equation}
+  \label{eq:p2a}
+  \boxed{\ket{\tfrac32,\tfrac12}
+    =\sqrt{\frac23}\ket{1,0,\tfrac12,\tfrac12}
+    +\sqrt{\frac13}\ket{1,1,\tfrac12,-\tfrac12}}
+\end{equation}
+The isospin of $\pi=1$, and the $p,n$ doublet is $\tfrac12$, so the corresponding states are:
+\begin{gather*}
+  \pi^+=\ket{1,1}\quad\pi^0=\ket{1,0}\quad\pi^-=\ket{1,-1}\\
+  p=\ket{\tfrac12,\tfrac12}\quad n=\ket{\tfrac12,-\tfrac12}
+\end{gather*}
+So the states we see can be  found from the CG table as:
 
+\begin{equation}
+  \label{eq:p2b}
+  \begin{aligned}
+    \pi^+p&=\ket{1,1}\oplus\ket{\tfrac12,\tfrac12}
+    =\boxed{\ket{\tfrac32,\tfrac32}}\\
+    \pi^-p&=\ket{1,-1}\oplus\ket{\tfrac12,\tfrac12}
+    =\boxed{
+      \sqrt{\frac13}\ket{\tfrac32,-\tfrac12}-
+      \sqrt{\frac23}\ket{\tfrac12,-\tfrac12}
+    }\\
+    \pi^0n&=\ket{1,0}\oplus\ket{\tfrac12,-\tfrac12}
+    =\boxed{
+      \sqrt{\frac23}\ket{\tfrac32,-\tfrac12}-
+      \sqrt{\frac13}\ket{\tfrac12,-\tfrac12}
+      }
+  \end{aligned}
+\end{equation}
+Amplitudes will correspond to overlap of initial/final state:
+\begin{align*}
+  \pi^+p\to\pi^+p\equiv\ip{\pi^+p}&=1\ip{\tfrac32,\tfrac32}
+  \equiv \sqrt{A_{3/2}}\\
+  \pi^-p\to\pi^-p\equiv\ip{\pi^-p}&=
+  \frac13\sqrt{A_{3/2}}+\frac23\sqrt{A_{1/2}}\\
+  \pi^-p\to\pi^0n\equiv\ip{\pi^-p}{\pi^0n}&=
+  \frac{\sqrt{2}}3\sqrt{A_{3/2}}-\frac{\sqrt{2}}3\sqrt{A_{1/2}}
+\end{align*}
+At $\Delta$ resonance, only count $A_{3/2}$:
+\begin{align*}
+  \sigma_1\sim 1,\quad \sigma_2\sim \frac19,\quad \sigma_3\sim\frac29
+\end{align*}
+So the ratios are:
+\begin{equation}
+  \label{eq:p2c1}
+  \boxed{\sigma_1:\sigma_2:\sigma_3=9:1:2}
+\end{equation}
+And at $N^*$ resonance, only count $A_{1/2}$:
+\begin{align*}
+  \sigma_1\sim 0,\quad \sigma_2\sim \frac49,\quad \sigma_3\sim\frac29
+\end{align*}
+Giving the ratios:
+\begin{equation}
+  \label{eq:p2c2}
+  \boxed{\sigma_1:\sigma_2:\sigma_3=0:2:1}
+\end{equation}
 \newpage
 \section*{Task 3: Muon Decays}
 \begin{problem}
@@ -95,7 +228,18 @@
   \item How much energy would a muon need to circumnavigate the earth with a fair chance of completing the journey, assuming that the earth's magnetic field is strong enough to keep it in orbit? Is the earth's field actually strong enough?
   \end{enumerate}
 \end{problem}
-
+The muon proper lifetime is $\sim2.2$ \textmu{s}, we can take the masses to be:
+\begin{align*}
+  m_\nu\approx0\quad
+  m_\pi\approx\SI{135.0}{MeV}\quad
+  m_\mu\approx\SI{105.7}{MeV}
+\end{align*}
+Conservation of energy for the system gives:
+\begin{align*}
+  E_\pi&=E_\mu+E_\nu\\
+  m_\pi&=\sqrt{m_\mu^2+\abs{\vb{p}_\mu}^2}+\abs{\vb{p}_\nu}
+\end{align*}
+Where $E_\pi=m_\pi$ since we are in the $\pi$ rest frame, and since the neutrinos are kinematically massless its energy and momentum are the same. We
 \newpage
 \section*{Task 4: Spin-0 Photon}
 \begin{problem}

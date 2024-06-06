@@ -1,0 +1,300 @@
+\documentclass[12pt]{article}
+
+\title{\vspace{-3em}PHYS 167b HW 8}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{cancel}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{slashed}
+
+%% general pretty stuff
+\usepackage{caption}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{tikz}
+\usepackage{tikz-feynhand}
+
+% setup options
+\captionsetup{labelfont=bf}
+\graphicspath{ {./figs/} }
+
+% macros
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\H}{\mathcal{H}}
+\renewcommand{\l}{\ell}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\mcV}{\mathcal{V}}
+\newcommand{\D}{\partial}
+\newcommand{\veps}{\varepsilon}
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+
+% mdframed environments
+\usepackage[framemethod=TikZ]{mdframed}
+\mdfsetup{skipabove=\topskip,skipbelow=\topskip}
+\mdfdefinestyle{defstyle}{%
+  linewidth=1pt,
+  frametitlerule=true,
+  frametitlebackgroundcolor=gray!40,
+  backgroundcolor=gray!20,
+  innertopmargin=\topskip
+}
+
+\mdtheorem[style=defstyle]{definition}{Definition}
+\mdtheorem[style=defstyle]{theorem}{Theorem}
+\mdtheorem[style=defstyle]{problem}{Problem}
+
+\newenvironment{thebook}
+{\begin{mdframed}[style=defstyle,frametitle={From the Book}]}{\end{mdframed}}
+
+\begin{document}
+\maketitle
+
+\section{Thomson, Problem 17.4}
+\begin{problem}
+  The Lagrangian for the electromagnetic field in the presence of a current $j^\mu$ is
+  \begin{align*}
+    \L=-\frac14F^{\mu\nu}F_{\mu\nu}-j^\mu A_\mu
+  \end{align*}
+  By writing this as:
+  \begin{align*}
+    \L&=-\frac14
+    (\D^\mu A^\nu-\D^\nu A^\mu)(\D_\mu A_\nu-\D_\nu A_\mu)-j^\mu A_\mu\\
+    &=-\frac12(\D^\mu A^\nu)(\D_\mu A_\nu)
+    +\frac12(\D^\nu A^\mu)(\D_\mu A_\nu)-j^\mu A_\mu
+  \end{align*}
+  show that the Euler-Lagrange equation gives the covariant form of Maxwell's equations,
+  \begin{align*}
+    \D_\mu F^{\mu\nu}=j^\nu
+  \end{align*}
+\end{problem}
+The Euler-Lagrange Equations require us to compute two derivatives, the first of which is easy as it is with respect to the field and there is only one term with just the field $A_\mu$:
+\begin{align*}
+  \pdv{\L}{A_\gamma}=-j^\mu\pdv{A_\mu}{A_\gamma}
+  =-j^\mu\delta_{\mu\gamma}=-j^\gamma
+\end{align*}
+The other derivative can be decomposed into three terms:
+\begin{align*}
+  \pdv{\L}{(\D_\sigma A_\gamma)}&=\circled{1}+\circled{2}+\circled{3}\\
+  \circled{1}&=\pdv{(\D_\sigma A_\gamma)}
+  \qty(-\frac12\D^\mu A^\nu\D_\mu A_\nu)\\
+  \circled{2}&=\pdv{(\D_\sigma A_\gamma)}
+  \qty(-\frac12\D^\nu A^\mu\D_\mu A_\nu)\\
+  \circled{3}&=\pdv{(\D_\sigma A_\gamma)}\qty(j^\mu A_\mu)=0
+\end{align*}
+Start with the first term, expand using the product rule:
+\begin{align*}
+  \circled{1}&=-\frac12\qty[
+  \qty(\pdv{(\D_\sigma A_\gamma)}\D^\mu A^\nu)\D_\mu A_\nu+
+  \D^\mu A^\nu\qty(\pdv{(\D_\sigma A_\gamma)}\D_\mu A_\nu)
+  ]
+\end{align*}
+The derivatives will each give a delta for the derivative index and field index:
+\begin{align*}
+  \circled{1}&=-\frac12\qty[
+  (\delta^\mu_\sigma\delta^\nu_\gamma)\D_\mu A_\nu+
+  \D^\mu A^\nu(\delta_{\mu\sigma}\delta_{\nu\gamma})
+  ]\\
+  &=-\frac12\qty[\D^\sigma A^\gamma+\D^\sigma A^\gamma]=-\D^\sigma A^\gamma
+\end{align*}
+The next term is fairly similar:
+\begin{align*}
+  \circled{2}&=\frac12\qty[
+  \qty(\pdv{(\D_\sigma A_\gamma)}\D^\nu A^\mu)\D_\mu A_\nu+
+  \D^\nu A^\mu\qty(\pdv{(\D_\sigma A_\gamma)}\D_\mu A_\nu)]\\
+  &=\frac12\qty[
+  (\delta^{\nu}_\sigma\delta^\mu_\gamma)\D_\mu A_\nu+
+  \D^\nu A^\mu(\delta_{\sigma\mu}\delta_{\gamma\nu})]=\D^\gamma A^\sigma
+\end{align*}
+So the first term of the Euler-Lagrange Equations is:
+\begin{align*}
+  \D_\sigma\qty(\pdv{\L}{(\D_\sigma A_\gamma)})&=
+  \D_\sigma\qty(\D^\gamma A^\sigma-\D^\sigma A^\gamma)=\D_\sigma F^{\gamma\sigma}
+\end{align*}
+And the other term is:
+\begin{align*}
+  \pdv{\L}{A_\gamma}=-j^\gamma
+\end{align*}
+We can take the minus sign from here to switch the indices on the field strength tensor as it is antisymmetric, we arrive at the covariant form of Maxwell's equations:
+\begin{equation}
+  \label{eq:p1}
+  \boxed{\D_\sigma F^{\sigma\gamma}=j^\gamma}
+\end{equation}
+\newpage
+\section{Thomson, Problem 17.6}
+\begin{problem}
+  Verify that subsituting (17.30) into (17.29) leads to
+  \begin{align*}
+    \L=\frac12(\D^\mu\eta)(\D_\mu\eta)-\lambda v^2\eta^2
+    +\frac12(\D^\mu\xi)(\D_\mu\xi)-\frac14 F_{\mu\nu}F^{\mu\nu}
+    +\frac12g^2v^2B^\mu B_\mu-V_{int}+gv B_\mu(\D^\mu\xi)
+  \end{align*}
+\end{problem}
+Note tht we are not transforming the gauge field at all, so those terms will remain the same, the bare substitution gives:
+\begin{align*}
+  \L=&-\frac14 F^{\mu\nu}F_{\mu\nu}
+  +\frac12(\D_\mu\eta-i\D_\mu\xi)(\D_\mu\eta+i\D_\mu\xi)\\
+  &+\frac12\lambda v^2(v+\eta)^2+\frac12\lambda v^2\xi^2
+  -\frac14\lambda(v+\eta)^4-\frac12\lambda(v+\eta)^2\xi^2-\frac14\lambda\xi^4\\
+  &-i\frac12gB_\mu(v+\eta-i\xi)(\D^\mu\eta+i\D^\mu\xi)
+  +\frac{i}2g(\D_\mu\eta-i\D_\mu\xi)B^\mu(v+\eta+i\xi)\\
+  &+\frac12g^2B_\mu B^\mu(v+\eta)^2+\frac12g^2B_\mu B^\mu\xi^2
+\end{align*}
+We then expand all the parenthetical terms, and absorb the terms with 3 or more fields into a $V_{int}$, we find that:
+\begin{align*}
+  \L&=-\frac14F^{\mu\nu}F_{\mu\nu}+\frac12(\D_\mu\eta\D^\mu\eta)
+  +\frac12(\D_\mu\xi\D^\mu\xi)-\lambda v^2\eta^2
+  +gvB_\mu\D^\mu\xi+\frac12g^2v^2B_\mu B^\mu-V_{int}
+\end{align*}
+Organizing this into a more desirable form:
+\begin{equation}
+  \label{eq:p2}
+  \boxed{\L=\frac12(\D_\mu\eta)(\D^\mu\eta)-\lambda v^2\eta^2
+  +\frac12(\D_\mu\xi)(\D^\mu\xi)
+  -\frac14F^{\mu\nu}F_{\mu\nu}+\frac12g^2v^2B_\mu B^\mu-V_{int}
+  +gvB_\mu\D^\mu\xi}
+\end{equation}
+\newpage
+\section{Thomson, Problem 17.7}
+\begin{problem}
+  Show that the Lagrangian for a complex scalar field $\phi$:
+  \begin{align*}
+    \L=(D_\mu\phi)^*(D^\mu\phi)
+  \end{align*}
+  With the covariant derivative $D_\mu=\D_\mu+igB_\mu$ is invariant under local $U(1)$ gauge transformations,
+  \begin{align*}
+    \phi(x)\to\phi'(x)=e^{ig\chi(x)}\phi(x)
+  \end{align*}
+  provided the gauge field transforms as
+  \begin{align*}
+    B_\mu\to B_\mu'=B_\mu-\D_\mu\chi(x)
+  \end{align*}
+\end{problem}
+Since the Lagrangian only has terms of the form $D_\mu\phi$, so we should investigate how it tranforms under $U(1)$:
+\begin{align*}
+  D_\mu\phi&\to(\D_\mu+ig(B_\mu-\D_\mu\chi))e^{ig\chi}\phi\\
+  &=ig\D_\mu\chi e^{ig\chi}\phi+e^{ig\chi}\D_\mu\phi
+  +igB_\mu e^{ig\chi}\phi-ig\D_\mu\chi e^{ig\chi}\phi\\
+  &=e^{ig\chi}\D_\mu\phi+igB_\mu e^{ig\chi}\phi\\
+  &=e^{ig\chi}D_\mu\phi
+\end{align*}
+And the same applies for the complex conjugated one, instead giving:
+\begin{align*}
+  (D_\mu\phi)^*&\to (D_\mu\phi)^*e^{-ig\chi}
+\end{align*}
+Hence we can trivially see that:
+\begin{equation}
+  \label{eq:p3}
+  \boxed{\L\to(D_\mu\phi)^*e^{-ig\chi}e^{ig\chi}D_\mu\phi=\L}
+\end{equation}
+Thus, our complex scalar field is invariant under the local $U(1)$
+\newpage
+\section{Thomson, Problem 17.11}
+\begin{problem}
+  Assuming a total Higgs production cross section of 20 pb and an integrated luminosity of 10 fb$^{-1}$, how many $H\to\gamma\gamma$ and $H\to\mu^+\mu^-\mu^+\mu^-$ events are expected in each of the ATLAS and CMS experiments?
+\end{problem}
+The number of expected events of a certain type of cross section $\sigma$ is given by:
+\begin{align*}
+  N=\sigma\int\L\dd{t}
+\end{align*}
+We are given the integrated luminosity and the total higgs production cross section, so we can start by finding the total number of expected Higgs:
+\begin{align*}
+  N_H=L\sigma(pp\to H+??)\approx200000
+\end{align*}
+We could then use the branching ratios for the Higgs to the various channels to find the number of expected events. This is simple for the $\gamma\gamma$ since we know $BR(H\to\gamma\gamma)\sim0.002$:
+\begin{align*}
+  N(H\to\gamma\gamma)\approx400
+\end{align*}
+For the four muon channel, we need to multiply the branching ratio of the Higgs to $ZZ$ and then the branching ratio for each of those $Z$ to become a muon pair:
+\begin{align*}
+  N(H\to\mu^+\mu^-\mu^+\mu^-)=N_H\times BR(H\to ZZ)(BR(Z\to\mu^+\mu^-))^2
+  \approx7
+\end{align*}
+Hence our final answers are:
+\begin{equation}
+  \label{eq:p4}
+  \boxed{
+    \begin{aligned}
+      N(H\to\gamma\gamma)&\approx400\\
+      N(H\to\mu^+\mu^-\mu^+\mu^-)&\approx7
+    \end{aligned}
+  }
+\end{equation}
+\newpage
+\section{Thomson, Problem 17.8}
+\begin{problem}
+  From the mass matrix of (17.40) and its eigenvalues (17.41), show that the eigenstates in the diagonal basis are
+  \begin{align*}
+    A_\mu=\frac{g' W_\mu^{(3)}+gB_\mu}{\sqrt{g^2+(g')^2}}\quad\text{and}\quad
+    Z_\mu=\frac{g W_\mu^{(3)}-g'B_\mu}{\sqrt{g^2+(g')^2}}
+  \end{align*}
+  where $A_\mu$ and $Z_\mu$ correspond to the physical fields for the photon and $Z$. 
+\end{problem}
+The mass matrix, as given by (17.40) is:
+\begin{align*}
+  M=\pmqty{g_W^2&-g_W g'\\-g_W g'& g'^2}
+\end{align*}
+Computing the determinant of $M-\lambda I$:
+\begin{align*}
+  \vmqty{g_W^2-\lambda&-g_W g'\\-g_W g'& g'^2-\lambda}
+  =\lambda^2-g_W^2\lambda-(g')^2\lambda
+\end{align*}
+Giving two eigenvalues:
+\begin{align*}
+  \lambda_1=0\quad\lambda_2=g_W^2+(g')^2
+\end{align*}
+Now for the eigenvectors:
+\begin{align*}
+  \pmqty{g_W^2&-g_W g'\\-g_W g'& g'^2}\pmqty{a\\b}=0\pmqty{a\\b}
+\end{align*}
+Up to normalization this gives:
+\begin{align*}
+  b=\frac{g_W}{g'}a
+\end{align*}
+Which allows us to write the eigenvector as:
+\begin{align*}
+  \pmqty{a\\b}=\pmqty{g'\\g_W}
+\end{align*}
+Or, normalized to 1:
+\begin{align*}
+  \pmqty{a\\b}=\frac1{\sqrt{g_W^2+(g')^2}}\pmqty{g'\\g_W}
+\end{align*}
+The other eigenvector should satisfy:
+\begin{align*}
+  \pmqty{g_W^2&-g_W g'\\-g_W g'& g'^2}\pmqty{a'\\b'}
+  =\qty(g_W^2+(g')^2)\pmqty{a'\\b'}
+\end{align*}
+Where we get an eerily similar:
+\begin{align*}
+  b'=-\frac{g_W}{g'}a'
+\end{align*}
+Hence the normalized eigenvector should be:
+\begin{align*}
+  \pmqty{a'\\b'}=\frac1{\sqrt{g_W^2+(g')^2}}\pmqty{g_W\\-g'}
+\end{align*}
+So in the eigenbasis, the $W^{(3)},B$ doublet becomes:
+\begin{align*}
+  \pmqty{A\\Z}=\pmqty{g'&g_W\\g_W&-g'}\pmqty{W\\B}
+\end{align*}
+Hence we find the desired results:
+\begin{equation}
+  \label{eq:p5}
+  \boxed{
+    \begin{aligned}
+      A_\mu&=\frac{g' W_\mu^{(3)}+gB_\mu}{\sqrt{g^2+(g')^2}}\\
+      Z_\mu&=\frac{g W_\mu^{(3)}-g'B_\mu}{\sqrt{g^2+(g')^2}}
+    \end{aligned}
+  }
+\end{equation}
+\end{document}
