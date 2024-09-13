@@ -4,14 +4,14 @@
 \section{Dirac Equation}
 Historically, the relativistic Dirac Equation grew out of an attempt to fix the relativistic generalizations of the Schrodinger equation, known as the Klein-Gordon Equation, when applied to the electron (a fermion). A pedagogical derivation of the Dirac Equation typically starts with a massive electron, identifies its equations of motion as a subset of solutions to the Klein-Gordon equation, and then proceeds to modify the equations until they satisfy important properties, like positive-definiteness, and invariance under spatial rotation, etc. You are left with a Dirac Equation which is applied to new objects, called spinors, that can be seen to describe both particles and antiparticles at the same time. This semi-historical approach is taken by most texts (including Griffiths, Halzen\& Martin, etc.)
 
-Here we will take a more modern perspective. In the Standard Model (and beyond), the fields begin by describing \underline{massless} particles and antiparticles; where mass arises from the interactions with other particles. Hence, we will begin from the more general case of examining relativistic states -- representations of the Lorentz group -- and see how they combine to yield the Dirac Equation.
+Here we will take a more modern perspective. In the Standard Model (and beyond), the fields begin by describing \underline{massless} particles and antiparticles; where mass arises from the interactions with other particles. Hence, we will begin from the more general case of examining relativistic states --- representations of the Lorentz group --- and see how they combine to yield the Dirac Equation.
 
 \subsection{Lorentz Group}
 Recall the form of $\Lambda^\mu_\nu$:
 \begin{align*}
   \Lambda^\mu_\nu&=\pmqty{\gamma&&&\beta\gamma\\&1\\&&1\\\beta\gamma&&&\gamma}
   \underset{\beta\to\veps_z\ll 1}{\to}\bm{1}+\veps_z\pmqty{&&&1\\ \\ \\ 1}\\
-  &\equiv\exp{i\veps_zK_z}=\bm{1}+i\veps_zK_z\\
+  &\equiv\exp{i\veps_z K_z}=\bm{1}+i\veps_z K_z\\
   \implies iK_z&=\pmqty{&&&1\\ \\ \\1}
 \end{align*}
 So as we did before, we can construct generators of Lorentz boosts:
@@ -23,7 +23,7 @@ So as we did before, we can construct generators of Lorentz boosts:
 Note that $K^\dag_i=-K_i$, they are anti-Hermitian
 
 \begin{aside}
-  The Structure of the Lorentz Group is 3 Boosts and 3 Rotations, the group is $SO(3,1)$. Rotations are a $SO(3)$ subgroup of the Lorentz group, but boosts are NOT:
+  The Structure of the Lorentz Group is 3 Boosts and 3 Rotations, the group is $SO(3,1)$. Rotations are a $SO(3)$ subgroup of the Lorentz group, but boosts are NOT:\@
   \begin{align*}
     \Lambda^\mu_\nu=
     \begin{tabular}{c|ccccc}
@@ -67,7 +67,7 @@ It can then be shown the new Lie Algebra is:
 \end{proof}
 This means $A_i$ and $B_i$ each satisfy the Lie algebra of $SU(2)$ independently! This means:
 \begin{align*}
-  SO(3,1)\equiv SU(2)_A\otimes SU(2)_B
+  SO(3,1)\equiv SU{(2)}_A\otimes SU{(2)}_B
 \end{align*}
 
 \begin{remark}
@@ -109,7 +109,7 @@ It is tempting to then say $\psi=\pmqty{0\\1}$ is a particle with $h=-\frac12$, 
   \end{align*}
   To find the Helicty, we need to rotate $\vu{p}\to\vu{p}'$:
   \begin{align*}
-    (p')^\mu=\pmqty{
+    {(p')}^\mu=\pmqty{
       1&0&0&0\\
       0&1&0&0\\
       0&0&\cos\theta&\sin\theta\\
@@ -130,7 +130,7 @@ The helicity of a massless particle is also boost invariant. To see this let's r
   \Lambda^\mu_\nu&=\pmqty{\gamma&&&\beta\gamma\\&1\\&&1\\\beta\gamma&&&\gamma}
   =\pmqty{\cosh\eta&&&\sinh\eta\\&1\\&&1\\\sinh\eta&&&\cosh\eta}
 \end{align*}
-Where $\eta$ is the ``rapidity'' -- an analog of $\theta$ for rotations.
+Where $\eta$ is the ``rapidity'' --- an analog of $\theta$ for rotations.
 
 \begin{gather*}
   \beta=\tanh\eta=\frac{e^\eta-e^{-\eta}}{e^\eta+e^{-\eta}}\\
@@ -148,7 +148,7 @@ Use the fact that $\cosh$ and $\sinh$ are the even/odd decompositions of the exp
 \end{align*}
 The boosted momentum is:
 \begin{align*}
-  (p')^\mu=\pmqty{\cosh\eta&\sinh\eta\\\sinh\eta&\cosh\eta\\&&1\\&&&1}
+  {(p')}^\mu=\pmqty{\cosh\eta&\sinh\eta\\\sinh\eta&\cosh\eta\\&&1\\&&&1}
   \pmqty{E\\0\\0\\E}=\pmqty{E\cosh\eta\\E\sinh\eta\\0\\E}
 \end{align*}
 So $\vu{p}'=(\sinh\eta,0,1)/\sqrt{1+\sinh^2\eta}=(\tanh\eta,0,\sech\eta)$
@@ -197,7 +197,7 @@ The $(0,2)$ or $\qty(0,\frac12)$ representation corresponds to a massless \under
 \end{align*}
 Let $p^\mu=(E,0,0,E)$, $\psi=(0,1)$, we could then show that $h\psi=-\frac12\psi$, same as before.
 
-\subsubsection{(2,0)$\oplus$(0,2) Representation}
+\subsubsection{(2,0) $\oplus$ (0,2) Representation}
 The helicity of a massless particle is a Lorentz-invariant concept, as we've seen. Of course, this is not true of a massive particle. For example, consider a particle with $h=+\frac12$, this means its spin and momentum are in the same direction, lets say in $+z$. By boosting in the $-z$ direction, the momentum can be flipped, but the helicity will not be, resulting in a helicity of $-\frac12$. Contrast this with a massless particle, no such boost exists.
 
 To describe massive particles then, we will need both right and left handed spinors.
@@ -206,7 +206,7 @@ If we add the two massless four-vectors with equaal energy, but opposite momentu
 \begin{align*}
   p_1^\mu&=(E,0,0,E)\\
   p_2^\mu&=(E,0,0,2E)\\
-  (p_1+p_2)^\mu&=(2E,0,0,0)
+  {(p_1+p_2)}^\mu&=(2E,0,0,0)
 \end{align*}
 So the mass $m=2E$
 
@@ -220,7 +220,7 @@ Note the helicity of $\psi_L$ is $\frac12(\bm{\sigma}\vdot\vu{p})\psi_L=-\frac12
 \end{align*}
 This is a \underline{Dirac spinor}. It corresponds to a massive particle at \underline{rest} with $s_z=+\frac12$:
 \begin{align*}
-  s_zu_+=\frac12\pmqty{\sigma_z\\&\sigma_z}u_+=+\frac12 u_+
+  s_z u_+=\frac12\pmqty{\sigma_z\\&\sigma_z}u_+=+\frac12 u_+
 \end{align*}
 To obtain a right handed spinor of arbitrary momentum, boost along the $z$-axis, then rotate into the desired direction:
 \begin{align*}
@@ -238,29 +238,29 @@ First boost along $z$, with $\eta=(0,0,\eta)$:
 \end{align*}
 Recall:
 \begin{align*}
-  e^\eta&=\qty(\frac{1+\beta}{1-\beta})^{\frac12}\\
+  e^\eta&={\qty(\frac{1+\beta}{1-\beta})}^{\frac12}\\
   \beta&=\frac{p}{E}\\
-  e^\eta&=\qty(\frac{E+p}{E-p})^{\frac12}
+  e^\eta&={\qty(\frac{E+p}{E-p})}^{\frac12}
 \end{align*}
 So we get $u_+'$ as:
 \begin{align*}
-  u_+'=\pmqty{((E+p)/(E-p))^{1/4}\\0\\((E-p)/(E+p))^{1/4}\\0}
+  u_+'={\pmqty{((E+p)/(E-p))}^{1/4}\\0\\{((E-p)/(E+p))}^{1/4}\\0}
 \end{align*}
 It is conventional (and sensible) to normalize $u_\pm^\dag u_\pm=2E$:
 \begin{align*}
-  u_+'=\sqrt{m}\pmqty{((E+p)/(E-p))^{1/4}\\0\\((E-p)/(E+p))^{1/4}\\0}
-  =\pmqty{(E+p)^{1/2}\\0\\(E-p)^{1/2}\\0}
+  u_+'=\sqrt{m}\pmqty{{((E+p)/(E-p))}^{1/4}\\0\\{((E-p)/(E+p))}^{1/4}\\0}
+  =\pmqty{{(E+p)}^{1/2}\\0\\{(E-p)}^{1/2}\\0}
 \end{align*}
 Now rotate about the $y$-axis by angle $\theta$ using
 $e^{i/2\sigma_y\theta}=\bm{1}\cos(\theta/2)+i\sigma_y\sin(\theta/2)$:
 \begin{align*}
   u_{+}&=\pmqty{
-    (E+p)^{1/2}\pmqty{\cos\theta/2\\-\sin\theta/2}
-    (E-p)^{1/2}\pmqty{\cos\theta/2\\-\sin\theta/2}
+    {(E+p)}^{1/2}\pmqty{\cos\theta/2\\-\sin\theta/2}
+    {(E-p)}^{1/2}\pmqty{\cos\theta/2\\-\sin\theta/2}
   }\\
   u_{-}&=\pmqty{
-    (E-p)^{1/2}\pmqty{\sin\theta/2\\\cos\theta/2}
-    (E-p)^{1/2}\pmqty{\sin\theta/2\\\cos\theta/2}
+    {(E-p)}^{1/2}\pmqty{\sin\theta/2\\\cos\theta/2}
+    {(E-p)}^{1/2}\pmqty{\sin\theta/2\\\cos\theta/2}
   }
 \end{align*}
 Note you can find $u_-$ by starting from the $(0,1,0,1)$ state in the rest frame.
@@ -277,12 +277,14 @@ Which recovers our normalized massless representations. The massless spinors sat
 \end{align*}
 Now consider a massive spinor. Take $u_+$ with $p^\mu=(E,0,0,p)$:
 \begin{align*}
-  \qty(p^0\bm{1}-p\sigma_z)\psi_R=(E-p)\pmqty{(E+p)^{1/2}}=m\pmqty{(E-p)^{1/2}}
+  \qty(p^0\bm{1}-p\sigma_z)\psi_R=
+  (E-p)\pmqty{{(E+p)}^{1/2}}=m\pmqty{{(E-p)}^{1/2}}
   =m\psi_L
 \end{align*}
 Similarly:
 \begin{align*}
-  \qty(p^0\bm{1}-p\sigma_z)\psi_L=(E+p)\pmqty{(E-p)^{1/2}}=m\pmqty{(E+p)^{1/2}}
+  \qty(p^0\bm{1}-p\sigma_z)\psi_L
+  =(E+p)\pmqty{{(E-p)}^{1/2}}=m\pmqty{{(E+p)}^{1/2}}
   =m\psi_R
 \end{align*}
 Thus:
@@ -394,12 +396,12 @@ We can build $v$ from $(2,0)\otimes(0,2)$. In the rest frame, the unormalized re
 Boosting and rotating as before, we get:
 \begin{align*}
   v_{+}&=\pmqty{
-    (E+p)^{1/2}\pmqty{\cos\theta/2\\-\sin\theta/2}
-    (E-p)^{1/2}\pmqty{-\cos\theta/2\\\sin\theta/2}
+    {(E+p)}^{1/2}\pmqty{\cos\theta/2\\-\sin\theta/2}
+    {(E-p)}^{1/2}\pmqty{-\cos\theta/2\\\sin\theta/2}
   }\\
   v_{-}&=\pmqty{
-    (E-p)^{1/2}\pmqty{-\sin\theta/2\\-\cos\theta/2}
-    (E+p)^{1/2}\pmqty{\sin\theta/2\\\cos\theta/2}
+    {(E-p)}^{1/2}\pmqty{-\sin\theta/2\\-\cos\theta/2}
+    {(E+p)}^{1/2}\pmqty{\sin\theta/2\\\cos\theta/2}
   }
 \end{align*}
 Again $v^\dag v=2E=u^\dag u$.
@@ -462,7 +464,7 @@ Combine these terms:
 \begin{align*}
   u^\dag\qty[\pmqty{\dmat{\bm{1},\bm{1}}},\pmqty{\dmat{\sigma^i,-\sigma^i}}]u
 \end{align*}
-If we insert an identity in the form of $(\gamma^0)^2$ after $u^\dag$, we get:
+If we insert an identity in the form of ${(\gamma^0)}^2$ after $u^\dag$, we get:
 \begin{align*}
   \bar{u}\gamma^\mu u
 \end{align*}
@@ -470,7 +472,7 @@ Is a 4-vector, once again inserting $\gamma_5$ also gives a 4-vector:
 \begin{align*}
   \bar{u}\gamma^\mu\gamma_5u
 \end{align*}
-The only other unique product we can form is $\frac{i}2\bar{u}\comm{\gamma^\mu}{\gamma^\nu}u$ -- an antisymmetric tensor.
+The only other unique product we can form is $\frac{i}2\bar{u}\comm{\gamma^\mu}{\gamma^\nu}u$ --- an antisymmetric tensor.
 \begin{table}[H]
   \centering
   \begin{tabular}{ccc}
@@ -481,8 +483,7 @@ The only other unique product we can form is $\frac{i}2\bar{u}\comm{\gamma^\mu}{
     $\gamma^\mu\gamma_5$ & vector & 4 \\
     $\frac{i}2\comm{\gamma^\mu}{\gamma^\nu}$ & antisymmetric tensor & 6
   \end{tabular}
-  \caption{Summary of objects of the form $\bar{u}\Gamma u$}
-  \label{tab:bilinears}
+  \caption{Summary of objects of the form $\bar{u}\Gamma u$}\label{tab:bilinears}
 \end{table}
 Combining two dirac spinors we get:
 \begin{align*}
@@ -490,7 +491,7 @@ Combining two dirac spinors we get:
 \end{align*}
 
 \subsubsection{Parity}
-The symmetries of space-time are given by the matrix $\Lambda$, where $\Lambda^Tg\Lambda=g$. There is a discrete symmetry given by:
+The symmetries of space-time are given by the matrix $\Lambda$, where $\Lambda^T g\Lambda=g$. There is a discrete symmetry given by:
 \begin{align*}
   \Lambda=\pmqty{\dmat{1,-1,-1,-1}}
 \end{align*}
@@ -510,17 +511,17 @@ A scalar is even under parity:
 \end{align*}
 A pseudoscalar is odd under parity:
 \begin{align*}
-  P[\vb{q}\vdot(\vb{r\times p})]=(-1)^3\vb{q}\vdot\vb{r\times p}
+  P[\vb{q}\vdot(\vb{r\times p})]={(-1)}^3\vb{q}\vdot\vb{r\times p}
 \end{align*}
 Spin (angular momentum) does not flip under parity (it is an axial vector), but $\vb{p}$ does, so helicity flips under parity.
 
 So, under parity, $\psi_R$ swaps with $\psi_L$, along with the momentum flipping. So this means $u$ is even under Parity:
 \begin{align*}
-  u_+=\pmqty{(E+p)^{1/2}\\0\\(E-p)^{1/2}\\0}
-  \overset{P}{\rightarrow}\pmqty{(E+p)^{1/2}\\0\\(E-p)^{1/2}\\0}
+  u_+=\pmqty{{(E+p)}^{1/2}\\0\\{(E-p)}^{1/2}\\0}
+  \overset{P}{\rightarrow}\pmqty{{(E+p)}^{1/2}\\0\\{(E-p)}^{1/2}\\0}
 \end{align*}
 While $v$ is odd:
 \begin{align*}
-  v_+=\pmqty{(E+p)^{1/2}\\0\\-(E-p)^{1/2}\\0}
-  \overset{P}{\rightarrow}\pmqty{-(E+p)^{1/2}\\0\\(E-p)^{1/2}\\0}=-v_+
+  v_+=\pmqty{{(E+p)}^{1/2}\\0\\-{(E-p)}^{1/2}\\0}
+  \overset{P}{\rightarrow}\pmqty{-{(E+p)}^{1/2}\\0\\{(E-p)}^{1/2}\\0}=-v_+
 \end{align*}

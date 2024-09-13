@@ -36,8 +36,8 @@
 \newcommand{\mcV}{\mathcal{V}}
 \newcommand{\D}{\partial}
 \newcommand{\veps}{\varepsilon}
-\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
-    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+\newcommand{\circled}[1]{\tikz[baseline = (char.base)]{
+    \node[shape=circle,draw,inner sep=2pt] (char){#1};}}
 
 % mdframed environments
 \usepackage[framemethod=TikZ]{mdframed}
@@ -47,8 +47,7 @@
   frametitlerule=true,
   frametitlebackgroundcolor=gray!40,
   backgroundcolor=gray!20,
-  innertopmargin=\topskip
-}
+  innertopmargin=\topskip}
 
 \mdtheorem[style=defstyle]{definition}{Definition}
 \mdtheorem[style=defstyle]{theorem}{Theorem}
@@ -69,11 +68,11 @@
 \end{problem}
 We can write out these operators as:
 \begin{align*}
-  \vu{p}^2&=p_xp_x+p_yp_y+p_zp_z\\
-  (\vu{r}\times\vu{p})_k&=\veps_{ijk}r_ir_j\\
-  (\vu{r}\times\vu{p})_1&=yp_z-zp_y\\
-  (\vu{r}\times\vu{p})_2&=zp_x-xp_z\\
-  (\vu{r}\times\vu{p})_3&=xp_y-yp_x
+  \vu{p}^2&=p_x p_x+p_y p_y+p_z p_z\\
+  {(\vu{r}\times\vu{p})}_k&=\veps_{ijk}r_i r_j\\
+  {(\vu{r}\times\vu{p})}_1&=yp_z-zp_y\\
+  {(\vu{r}\times\vu{p})}_2&=zp_x-xp_z\\
+  {(\vu{r}\times\vu{p})}_3&=xp_y-yp_x
 \end{align*}
 We also need to use the cannonical commutation relation:
 \begin{align*}
@@ -90,29 +89,29 @@ Which when we set $A=r_j$ and $B=C=p_k$:
 \end{align*}
 This then makes the commutator easy to evaluate by components of $\vu{r}\times\vu{p}$:
 \begin{align*}
-  \comm{\vu{p}^2}{(\vu{r}\times\vu{p})_1}=
+  \comm{\vu{p}^2}{{(\vu{r}\times\vu{p})}_1}=
   \comm{p_x^2}{yp_z-zp_y}+\comm{p_y^2}{yp_z-zp_y}+\comm{p_z^2}{yp_z-zp_y}
 \end{align*}
 The $p_x^2$ trivially commutes, the others can be written:
 \begin{align*}
-  \comm{\vu{p}^2}{(\vu{r}\times\vu{p})_1}&=
+  \comm{\vu{p}^2}{{(\vu{r}\times\vu{p})}_1}&=
   \comm{p_y^2}{y}p_z-z\comm{p_y^2}{p_y}
   +y\comm{p_z^2}{p_z}-\comm{p_z^2}{z}p_y\\
-  &=2ip_yp_z-2ip_zp_y=0
+  &=2ip_y p_z-2ip_z p_y=0
 \end{align*}
 The cancellation comes from the fact that components of the angular momentum operators commute.
 
 Similarly for 2, we get the $y$ term from $\vu{p}^2$ trivially commuting:
 \begin{align*}
-  \comm{\vu{p}^2}{(\vu{r}\times\vu{p})_2}&=
+  \comm{\vu{p}^2}{{(\vu{r}\times\vu{p})}_2}&=
   \comm{p_x^2}{zp_x-xp_z}+\comm{p_z^2}{zp_x-xp_z}\\
   &=\comm{p_z^2}{z}p_x-\comm{p_x^2}{x}p_z\\
-  &=2ip_zp_x-2ip_xp_z=0
+  &=2ip_z p_x-2ip_x p_z=0
 \end{align*}
 And for 3, the same applies, where instead we get:
 \begin{align*}
-  \comm{\vu{p}^2}{(\vu{r}\times\vu{p})_2}&=
-  2ip_xp_y-2ip_yp_x=0
+  \comm{\vu{p}^2}{{(\vu{r}\times\vu{p})}_2}&=
+  2ip_x p_y-2ip_y p_x=0
 \end{align*}
 Hence:
 \begin{equation}
@@ -242,30 +241,30 @@ Therefore, we recover the Dirac equation:
 \begin{problem}
   Demonstrate that the two relations of Equation (4.45) are consistent by showing that:
   \begin{align*}
-    (\bm{\sigma}\vdot\vb{p})^2=\vb{p}^2
+    {(\bm{\sigma}\vdot\vb{p})}^2=\vb{p}^2
   \end{align*}
 \end{problem}
 We can begin by expanding the term on the left hand side:
 \begin{align*}
-  (\bm{\sigma}\vdot\vb{p})^2&=
-  (\sigma_xp_x+\sigma_yp_y+\sigma_zp_z)^2\\
+  {(\bm{\sigma}\vdot\vb{p})}^2&=
+  {(\sigma_x p_x+\sigma_y p_y+\sigma_z p_z)}^2\\
   &=\sigma_x^2p_x^2+\sigma_y^2p_y^2+\sigma_z^2p_z^2\\
-  &+\sigma_xp_x\sigma_yp_y+\sigma_xp_x\sigma_zp_z\\
-  &+\sigma_yp_y\sigma_xp_x+\sigma_yp_y\sigma_zp_z\\
-  &+\sigma_zp_z\sigma_xp_x+\sigma_zp_z\sigma_yp_y
+  &+\sigma_x p_x\sigma_y p_y+\sigma_x p_x\sigma_z p_z\\
+  &+\sigma_y p_y\sigma_x p_x+\sigma_y p_y\sigma_z p_z\\
+  &+\sigma_z p_z\sigma_x p_x+\sigma_z p_z\sigma_y p_y
 \end{align*}
 Notice that since the $p_i$ are all numbers, we can write the cross terms as anticommutators of Pauli matrices, which are all zero here, so we have:
 \begin{align*}
-  (\bm{\sigma}\vdot\vb{p})^2&=\sigma_x^2p_x^2+\sigma_y^2p_y^2+\sigma_z^2p_z^2
+  {(\bm{\sigma}\vdot\vb{p})}^2&=\sigma_x^2p_x^2+\sigma_y^2p_y^2+\sigma_z^2p_z^2
 \end{align*}
 Since the Pauli matrices all square to the identity, we are left with:
 \begin{align*}
-  (\bm{\sigma}\vdot\vb{p})^2&=p_x^2+p_y^2+p_z^2=\vb{p}^2
+  {(\bm{\sigma}\vdot\vb{p})}^2&=p_x^2+p_y^2+p_z^2=\vb{p}^2
 \end{align*}
 Hence we have recovered:
 \begin{equation}
   \label{eq:p4}
-  \boxed{(\bm{\sigma}\vdot\vb{p})^2=\vb{p}^2}
+  \boxed{{(\bm{\sigma}\vdot\vb{p})}^2=\vb{p}^2}
 \end{equation}
 \newpage
 \section{Thomson, Problem 4.12}
@@ -296,13 +295,13 @@ The first product is given by:
 \begin{align*}
   \pmqty{\bm{\sigma}\vdot\vu{p}&0\\0&\bm{\sigma}\vdot\vu{p}}
   \pmqty{0&\bm{\sigma}\vdot\vu{p}\\\bm{\sigma}\vdot\vu{p}&0}
-  =\pmqty{0&(\bm{\sigma}\vdot\vu{p})^2\\(\bm{\sigma}\vdot\vu{p})^2&0}
+  =\pmqty{0&{(\bm{\sigma}\vdot\vu{p})}^2\\{(\bm{\sigma}\vdot\vu{p})}^2&0}
 \end{align*}
 And the other:
 \begin{align*}
   \pmqty{0&\bm{\sigma}\vdot\vu{p}\\\bm{\sigma}\vdot\vu{p}&0}
   \pmqty{\bm{\sigma}\vdot\vu{p}&0\\0&\bm{\sigma}\vdot\vu{p}}
-  =\pmqty{0&(\bm{\sigma}\vdot\vu{p})^2\\(\bm{\sigma}\vdot\vu{p})^2&0}
+  =\pmqty{0&{(\bm{\sigma}\vdot\vu{p})}^2\\{(\bm{\sigma}\vdot\vu{p})}^2&0}
 \end{align*}
 Hence they cancel out, and we find:
 \begin{equation}
@@ -423,8 +422,7 @@ The lowest-order diagrams here are simple tree-level diagrams, given in figure \
       \propag [fer] (a) to [edge label=\(e^-\)] (b);
     \end{feynhand}
   \end{tikzpicture}
-  \caption{Lowest order (Left) $t$-channel and (Right) $u$-channel Diagrams}
-  \label{fig:diagrams}
+  \caption{Lowest order (Left) $t$-channel and (Right) $u$-channel Diagrams}\label{fig:diagrams}
 \end{figure}
 Let the electron momentum in both cases be $p_1$, and the positron momentum  be $p_2$, and the ``top'' $\gamma$ have momentum $p_4$ and the ``bottom'' one have $p_3$, this means that for the $t$-channel diagram, the momentum transfer $q$ is given by $q=p_1-p_3$, and for the $u$-channel diagram $q=p_1-p_4$, corresponding to the appropriate Mandelstam invariants.
 
@@ -440,7 +438,7 @@ This can be simplified by recalling that $Q_e$ is just a number, more importantl
   \boxed{
     \begin{aligned}
       i\M^{(t)}&=-ie^2\qty[\veps^*_\mu(p_3)\gamma^\mu u(p_1)]
-      \qty[\frac{(\gamma^\delta(p_1-p_3)_\delta+m_e)}{(p_1-p_3)^2-m_e}]
+      \qty[\frac{(\gamma^\delta{(p_1-p_3)}_\delta+m_e)}{{(p_1-p_3)}^2-m_e}]
       \qty[\bar{v}(p_2)\gamma^\nu \veps^*_\nu(p_4)]
     \end{aligned}
   }
@@ -457,7 +455,7 @@ Hence, we can similarly simplify it:
   \boxed{
     \begin{aligned}
       i\M^{(u)}&=-ie^2\qty[\veps^*_\mu(p_4)\gamma^\mu u(p_1)]
-      \qty[\frac{(\gamma^\delta(p_1-p_4)_\delta+m_e)}{(p_1-p_4)^2-m_e}]
+      \qty[\frac{(\gamma^\delta{(p_1-p_4)}_\delta+m_e)}{{(p_1-p_4)}^2-m_e}]
       \qty[\bar{v}(p_2)\gamma^\nu \veps^*_\nu(p_3)]
     \end{aligned}
   }
@@ -488,11 +486,11 @@ In momentum space, the Dirac equation is given by:
 \end{align*}
 We can take the Hermitian conjugate of both sides, noting that $m$ and $p_\mu$ are both just numbers:
 \begin{align*}
-  u^\dag((\gamma^\mu)^\dag p_\mu-m)=0
+  u^\dag({(\gamma^\mu)}^\dag p_\mu-m)=0
 \end{align*}
 We can use the property of the gamma matrices that:
 \begin{align*}
-  (\gamma^\mu)^\dag=\gamma^0\gamma^\mu\gamma^0
+  {(\gamma^\mu)}^\dag=\gamma^0\gamma^\mu\gamma^0
 \end{align*}
 In order to get rid of the Hermitian conjugate:
 \begin{align*}
@@ -554,9 +552,9 @@ Where the index can be relabled from $\nu\to\mu$ without loss of generality.
   \begin{align*}
     S=aI-b\gamma^0\gamma^3\quad\text{with}\quad a=\sqrt{\frac12\qty(\gamma+1)}\quad\text{and}\quad b=\sqrt{\frac12\qty(\gamma-1)}
   \end{align*}
-  satisfies the equations of (B.11)-(B.14)
+  satisfies the equations of (B.11) --- (B.14)
 \end{problem}
-The equations (B.11)-(B.14) are given by:
+The equations (B.11) --- (B.14) are given by:
 \begin{align*}
   S\gamma^0&=\gamma\gamma^0 S+\beta\gamma\gamma^3S\\
   S\gamma^1&=\gamma^1 S\\
@@ -583,10 +581,10 @@ Now for the $\gamma^0$ equation, it is important to write out the specific forms
   &=a\gamma^0+b\gamma^0\gamma^0\gamma^3\\
   &=a\gamma^0+b\gamma^3\\
   \gamma\gamma^0 S+\beta\gamma\gamma^3S&=
-  \gamma\qty[a\gamma^0-b(\gamma^0)^2\gamma^3
+  \gamma\qty[a\gamma^0-b{(\gamma^0)}^2\gamma^3
   +a\beta\gamma^3-b\beta\gamma^3\gamma^0\gamma^3]\\
   &=\gamma\qty[a\gamma^0-b\gamma^3
-  +a\beta\gamma^3+b\beta(\gamma^3)^2\gamma^0]\\
+  +a\beta\gamma^3+b\beta{(\gamma^3)}^2\gamma^0]\\
   &=\gamma\qty[(a-b\beta)\gamma^0+(a\beta-b)\gamma^3]
 \end{align*}
 In order for these two be equal, the coefficients of $\gamma^0$ and $\gamma^3$ must match, resulting in a set of equations which $a,b$ must satisfy:
@@ -606,7 +604,7 @@ Resulting in one equation for $b/a$ and another for $a/b$:
 \end{align*}
 It is not trivial that these two equations mean the same thing, so we should start with the upper and show that taking the reciprocal results in the second equation:
 \begin{align*}
-  \frac{b}{a}&=\qty(\frac{\beta\gamma}{\gamma-1})^{-1}
+  \frac{b}{a}&={\qty(\frac{\beta\gamma}{\gamma-1})}^{-1}
   =\frac{\gamma-1}{\beta\gamma}=\frac{1-\sqrt{1-\beta^2}}{\beta}\\
   &=\frac{1-(1-\beta^2)}{\beta(1+\sqrt{1-\beta^2})}=
   \frac{\beta^2}{\beta(1+\gamma^{-1})}\\
@@ -640,5 +638,5 @@ Which are the same equations as before, allowing us to simultaneously give:
     \end{aligned}
   }
 \end{equation}
-Hence giving all 4 of (B.11)-(B.14)!
+Hence giving all 4 of (B.11) --- (B.14)!
 \end{document}

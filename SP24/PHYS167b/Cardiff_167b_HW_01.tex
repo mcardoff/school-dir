@@ -32,8 +32,8 @@
 \newcommand{\mcV}{\mathcal{V}}
 \newcommand{\D}{\partial}
 \newcommand{\veps}{\varepsilon}
-\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
-    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+\newcommand{\circled}[1]{\tikz[baseline = (char.base)]{
+    \node[shape=circle,draw,inner sep=2pt] (char){#1};}}
 
 % mdframed environments
 \usepackage[framemethod=TikZ]{mdframed}
@@ -43,8 +43,7 @@
   frametitlerule=true,
   frametitlebackgroundcolor=gray!40,
   backgroundcolor=gray!20,
-  innertopmargin=\topskip
-}
+  innertopmargin=\topskip}
 
 \mdtheorem[style=defstyle]{definition}{Definition}
 \mdtheorem[style=defstyle]{theorem}{Theorem}
@@ -63,7 +62,7 @@
 \section{Natural Units}
 \begin{problem}
   The following equations are in natural units. Convert them to SI units.
-  \begin{enumerate}[label=\alph*)]
+  \begin{enumerate}[label = (\alph*)]
   \item $E=\sqrt{p^2+m^2}$
   \item $x^2-t^2=0$
   \item $\pdv{\sigma}{\Omega}=\frac{\alpha^2}{4E^2}(1+\cos^2\theta)$
@@ -71,18 +70,18 @@
   \item The cross section for $e^+e^-\to\mu^+\mu^-$ is $\sigma=\frac{4\pi\alpha^2}{3E_{\text{CM}}^2}$, where $E_{\text{CM}}$ is the center of mass energy. Evaluate the cross section in nanobarns for $E_{\text{CM}}=\SI{10}{\GeV}$. Be careful about the units as the cross section formula is in Natural units
   \end{enumerate}
 \end{problem}
-\begin{enumerate}[label=\alph*)]
+\begin{enumerate}[label = (\alph*)]
 \item I am choosing to keep the energy as an energy here, and adding the required constants to $p$ and $c$ to ``promote'' them to energies, for a $p$ this would be changing it to $pc$ and for a $m$, it would be changing it to $mc^2$, so we end up with:
   \begin{equation}
     \label{eq:p1a}
-    \boxed{E=\sqrt{(pc)^2+(mc^2)^2}}
+    \boxed{E=\sqrt{{(pc)}^2+{(mc^2)}^2}}
   \end{equation}
 \item Here a number of things can be done, but we know in SR, times can be converted to distances via multiplying by $c$, so the replacement $t\to ct$ suffices here:
   \begin{equation}
     \label{eq:p1c}
     \boxed{x^2-c^2t^2=0}
   \end{equation}
-\item Here, the quantity on the left is a differential cross section, whose dimensions are $[L^2]$, or an area, the natural units on the left say that it has units of $\unit{GeV^{-2}}$ (since $\alpha$ and things like $\cos\theta$ are dimensionless). In the $[\hbar,c,\unit{\GeV}]$ system, an area is $(\hbar c)^2\unit{\GeV^{-2}}$, so we simply need to multiply by $(\hbar c)^2$ to get the units correct, in order words:
+\item Here, the quantity on the left is a differential cross section, whose dimensions are $[L^2]$, or an area, the natural units on the left say that it has units of $\unit{GeV^{-2}}$ (since $\alpha$ and things like $\cos\theta$ are dimensionless). In the $[\hbar,c,\unit{\GeV}]$ system, an area is ${(\hbar c)}^2\unit{\GeV^{-2}}$, so we simply need to multiply by ${(\hbar c)}^2$ to get the units correct, in order words:
   \begin{equation}
     \label{eq:p2c}
     \boxed{\dv{\sigma}{\Omega}=\frac{\hbar^2c^2\alpha^2}{4E^2}(1+\cos^2\theta)}
@@ -96,14 +95,14 @@
 \item It is worth noting that the conversion for a cross section will be the same as the differential cross section from c, so the overall chain of events will be:
   \begin{align*}
     \sigma^{\text{SI}}=\sigma^{\text{natural}}[\unit{GeV^{-2}}]
-    \times(\hbar c)^2[\unit{GeV^2.fm^2}]
+    \times{(\hbar c)}^2[\unit{GeV^2.fm^2}]
     \times\frac{\text{b}}{\SI{100}{fm^2}}
     \times\frac{10^9\text{nb}}{\text{b}}
   \end{align*}
   The cross section in natural units is:
   \begin{align*}
     \sigma^{\text{natual}}=\frac{4\pi\alpha^2}{3E_{\text{CM}}^2}
-    =\frac{4\pi\qty(\frac1{137})^2}{3(\SI{10}{GeV})^2}
+    =\frac{4\pi{\qty(\frac1{137})}^2}{3{(\SI{10}{GeV})}^2}
     \approx\SI{2.2e-6}{GeV^{-2}}
   \end{align*}
   Finally, converting to SI and nb:
@@ -118,7 +117,7 @@
 \section{Thomson, Problem 1.5}
 \begin{problem}
   Treating the $\pi^0$ as a $u\bar{u}$ bound state, draw the Feynman diagrams for:
-  \begin{enumerate}[label=\alph*)]
+  \begin{enumerate}[label = (\alph*)]
   \item $\pi^0\to\gamma\gamma$
   \item $\pi^0\to\gamma e^+e^-$
   \item $\pi^0\to e^+e^-e^+e^-$
@@ -126,7 +125,7 @@
   \end{enumerate}
   By considering the number of QED vertices present in each decay, \emph{estimate} the relative decay rates taking $\alpha=1/137$
 \end{problem}
-\begin{enumerate}[label=\alph*)]
+\begin{enumerate}[label = (\alph*)]
 \item The diagram for this process would just be:
   \begin{figure}[H]
     \centering
@@ -147,8 +146,7 @@
         \propag [fer] (b) to [edge label=$u$] (a);
       \end{feynhand}
     \end{tikzpicture}
-    \caption{Diagram for problem 2a}
-    \label{fig:p2a}
+    \caption{Diagram for problem 2a}\label{fig:p2a}
   \end{figure}
   Which has 2 QED vertices, so $\mathcal{M}\propto e^2$ hence $\abs{\mathcal{M}}^2\propto\alpha^2$ and so the decay rate would be proportional to $\alpha^2\approx 1/137^2$.
 \item This decay just involves one of the photons decaying into a pair of $e^+e^-$
@@ -176,8 +174,7 @@
         \propag [antfer] (p21) to (d2);
       \end{feynhand}
     \end{tikzpicture}
-    \caption{Diagram for problem 2b}
-    \label{fig:p2b}
+    \caption{Diagram for problem 2b}\label{fig:p2b}
   \end{figure}
   This process has $3$ QED vertices, so $\M\propto e^3$, $\abs{\M}^2\propto\alpha^3$, so the decay rate is also $\propto\alpha^3$
 \item Now both photons decay into pairs!
@@ -209,8 +206,7 @@
         \propag [antfer] (p11) to (d4);
       \end{feynhand}
     \end{tikzpicture}
-    \caption{Diagram for problem 2c}
-    \label{fig:p2c}
+    \caption{Diagram for problem 2c}\label{fig:p2c}
   \end{figure}
   This diagram has 4 QED vertices, $\M\propto e^4$, $\abs{\M}^2\propto\alpha^4$ and the decay rate is proportional to $\alpha^4$
 \item This one has a bit of a different structure, requiring the two quarks annihilate each other:
@@ -234,12 +230,11 @@
         \propag [bos] (a) to [edge label=$\gamma$] (b);
       \end{feynhand}
     \end{tikzpicture}
-    \caption{Diagram for problem 2d}
-    \label{fig:p2d}
+    \caption{Diagram for problem 2d}\label{fig:p2d}
   \end{figure}
   This diagram also has 2 QED verticies, so its $\M$, $\abs{M}^2$ and decay rate should have the same proportionalities as part a.
 \end{enumerate}
-Seeing as the dominant decay modes are proportional to $\alpha^2$, we should see that decay mode b) should occur about $1/137\approx0.01$ times less than the dominant mode. Decay mode c) then should occur $1/137^2\approx \num{e-4}$ times less than the dominant mode.
+Seeing as the dominant decay modes are proportional to $\alpha^2$, we should see that decay mode (b) should occur about $1/137\approx0.01$ times less than the dominant mode. Decay mode (c) then should occur $1/137^2\approx \num{e-4}$ times less than the dominant mode.
 
 \section{Thomson, Problem 1.7}
 \begin{problem}
@@ -247,13 +242,13 @@ Seeing as the dominant decay modes are proportional to $\alpha^2$, we should see
   \begin{align*}
     -\frac1\rho\dv{E}{x}\approx a+bE
   \end{align*}
-  Where $a$ is due to ionisation energy loss and $b$ is due to the bremsstrahlung and $e^+e^-$ pair-production processes. For standard rock, taken to have $A=22, Z=11,$ and $\rho=\SI{2.65}{g.cm^{-3}}$, the parameters $a$ and $b$ depend only weakly on the muon energy and have values $a\approx\SI{2.5}{MeV.g^{-1}.cm^{2}}$ and $b\approx{3.5e-6}{g^{-1}.cm^{2}}$
-  \begin{enumerate}[label=\alph*)]
+  Where $a$ is due to ionisation energy loss and $b$ is due to the bremsstrahlung and $e^+e^-$ pair-production processes. For standard rock, taken to have $A=22, Z=11$, and $\rho=\SI{2.65}{g.cm^{-3}}$, the parameters $a$ and $b$ depend only weakly on the muon energy and have values $a\approx\SI{2.5}{MeV.g^{-1}.cm^{2}}$ and $b\approx{3.5e-6}{g^{-1}.cm^{2}}$
+  \begin{enumerate}[label = (\alph*)]
   \item At what muon energy are the ionisation and bremsstrahlung/pair production processes equally important?
   \item Approximately how far does a $\SI{100}{GeV}$ cosmic-ray muon propagate in rock?
   \end{enumerate}
 \end{problem}
-\begin{enumerate}[label=\alph*)]
+\begin{enumerate}[label = (\alph*)]
 \item The two phenomena should be equally important when $a=bE$, this would give a muon energy of:
   \begin{align*}
     E=\frac{a}{b}
@@ -279,7 +274,7 @@ Seeing as the dominant decay modes are proportional to $\alpha^2$, we should see
   \begin{align*}
     L=\frac1{\rho b}\log(1+\frac{b}{a}E_0)
   \end{align*}
-  Plugging in $a,b,E_0,$ and $\rho$ gives:
+  Plugging in $a,b,E_0$, and $\rho$ gives:
   \begin{equation}
     \label{eq:p3b}
     \boxed{L\approx\SI{141}{m}}
@@ -288,20 +283,20 @@ Seeing as the dominant decay modes are proportional to $\alpha^2$, we should see
 
 \section{Thomson, Problem 1.8}
 \begin{problem}
-  Tungsten has a radiation length of $X_0=\SI{0.35}{cm}$ and a critical energy $E_c=\SI{7.97}{MeV}$ . Roughly what thickness of tungsten is required to fully contain a $\SI{500}{GeV}$ electromagnetic shower from an electron?
+  Tungsten has a radiation length of $X_0=\SI{0.35}{cm}$ and a critical energy $E_c=\SI{7.97}{MeV}$. Roughly what thickness of tungsten is required to fully contain a $\SI{500}{GeV}$ electromagnetic shower from an electron?
 \end{problem}
-Using the equation for $x_{max}$ in the book, we can determine the max number of radiation lengths of tungsten the shower can withstand:
+Using the equation for $x_{\text{max}}$ in the book, we can determine the max number of radiation lengths of tungsten the shower can withstand:
 \begin{align*}
-  x_{max}=\frac{\log(E/E_c)}{\log(2)}
+  x_{\text{max}}=\frac{\log(E/E_c)}{\log(2)}
 \end{align*}
 Plugging in $E_c=\SI{7.97}{MeV}$ and $E=\SI{500e3}{MeV}$, we get:
 \begin{align*}
-  x_{max}\approx15.93
+  x_{\text{max}}\approx15.93
 \end{align*}
 So $\sim15.93$ radiation lengths, multiplying by the rad length given for tungsten:
 \begin{equation}
   \label{eq:p4}
-  \boxed{x_{max}X_0\approx\SI{5.58}{cm}}
+  \boxed{x_{\text{max}}X_0\approx\SI{5.58}{cm}}
 \end{equation}
 
 \section{Thomson, Problem 2.3}
@@ -343,12 +338,13 @@ The extrema of this are $\cos\theta'=-1$ as the minimum, and $\cos\theta'=2\beta
 we get the maximum opening angle as:
 \begin{equation}
   \label{eq:p6}
-  \boxed{\cos(\theta_{min}')=0.973\implies\theta_{min}'=\SI{0.027}{rad}=\ang{1.5}}
+  \boxed{\cos(\theta_{\text{min}}')=
+    0.973\implies\theta_{\text{min}}'=\SI{0.027}{rad}=\ang{1.5}}
 \end{equation}
 \newpage
 \section{Thomson, Problem 2.12}
 \begin{problem}
-  For the process $1+2\to3+4$, the Mandelstam varuables, $s,t,$ and $u$ are defined as $s=(p_1+p_2)^2$, $t=(p_1-p_3)^2$, and $u=(p_1-p_4)^2$. Show that
+  For the process $1+2\to3+4$, the Mandelstam varuables, $s,t$, and $u$ are defined as $s={(p_1+p_2)}^2$, $t={(p_1-p_3)}^2$, and $u={(p_1-p_4)}^2$. Show that
   \begin{align*}
     s+u+t=m_1^2+m_2^2+m_3^2+m_4^2
   \end{align*}
@@ -359,13 +355,13 @@ Recalling the fact that for 4-momenta:
 \end{align*}
 And for any 2 four-vectors:
 \begin{align*}
-  (a+b)^2=a^2+b^2+2a\vdot b
+  {(a+b)}^2=a^2+b^2+2a\vdot b
 \end{align*}
 It is first useful to expand $s,t,u$ on their own:
 \begin{align*}
-  s &= (p_1+p_2)^2= p_1^2+p_2^2+2p_1\vdot p_2\\
-  t &= (p_1-p_3)^2= p_1^2+p_3^2-2p_1\vdot p_3\\
-  u &= (p_1-p_4)^2= p_1^2+p_4^2-2p_1\vdot p_4
+  s &= {(p_1+p_2)}^2= p_1^2+p_2^2+2p_1\vdot p_2\\
+  t &= {(p_1-p_3)}^2= p_1^2+p_3^2-2p_1\vdot p_3\\
+  u &= {(p_1-p_4)}^2= p_1^2+p_4^2-2p_1\vdot p_4
 \end{align*}
 Notice that $s$ and $t$ are both completely written in terms of $p_1,p_2,p_3$, and since 4-momentum is converved, we can rewrite $u$, more importantly $p_4$ as a sum or difference of the other momenta:
 \begin{align*}
@@ -373,7 +369,7 @@ Notice that $s$ and $t$ are both completely written in terms of $p_1,p_2,p_3$, a
 \end{align*}
 Hence $u$ can be written as:
 \begin{align*}
-  u &= (p_1-p_4)^2= p_1^2+p_4-2p_1\vdot(p_1+p_2-p_3)
+  u &= {(p_1-p_4)}^2= p_1^2+p_4-2p_1\vdot(p_1+p_2-p_3)
 \end{align*}
 Adding the three variables together:
 \begin{align*}
@@ -400,7 +396,7 @@ Note that this the minimum momentum, as the pitch angle would mean dividing by a
 
 We can only get a Cherenkov signal if the speed of the particle $\beta$ was more than $n^{-1}$ of the detector. This means we need a $\beta>0.8$ for a particle to produce a Cherenkov signal. In terms of the momentum, $\beta=pc/E$ or:
 \begin{align*}
-  \beta=\frac{p}{\sqrt{(pc)^2+(mc^2)^2}}
+  \beta=\frac{p}{\sqrt{{(pc)}^2+{(mc^2)}^2}}
 \end{align*}
 Plugging in $\SI{528}{MeV.c^{-1}}$ for $p$ and both provided values of $m_\pi$ and $m_K$, we find:
 \begin{equation}
@@ -414,13 +410,13 @@ So the particle could \textbf{not} have been a $K^\pm$, but it could have been a
 \newpage
 \section{Proton Decay}
 \begin{problem}
-  \begin{enumerate}[label=\alph*)]
+  \begin{enumerate}[label = (\alph*)]
   \item Certain beyond the Standard Model (BSM) grand unified theories allow protons to decay. An observation of a proton decay would be a sure sign of New physics. Assuming that we would have noticed if 1\% of the protons in the universe had decayed since the beginning of the Big Bang 13 billion years ago, what limit does this imply for the lifetime of the proton?
   \item The Super-Kamiokande experiment is one of the experiments searching for a proton decay using a 50 kton water tank (Arxiv:2010.16098).
 Estimate the 95\% confidence level lower limit on the lifetime of protons assuming no proton decays have been observed so far during the operation of this detector. In Poisson statistics if no events are observed in an experiment the 95\% confidence level lower limit on the number of predicted events is 3 events. Assume that the BSM theories would allow for any of the protons and neutrons in the water molecules to decay with equal lifetime. The molar mass of the water is $\SI{18}{g.mol^{-1}}$.
   \end{enumerate}
 \end{problem}
-\begin{enumerate}[label=\alph*)]
+\begin{enumerate}[label = (\alph*)]
 \item Assuming the exponential decay model we have that:
   \begin{align*}
     N(t)=N(0)e^{-t/\tau}
@@ -440,7 +436,7 @@ Estimate the 95\% confidence level lower limit on the lifetime of protons assumi
   \end{align*}
   Which is from Poisson statistics. Seeing as the limit from the previous problem was $\order{10^{12}}$ years, it is safe to say that for this experiment $t/\tau\ll1$, so we can rewrite the above as:
   \begin{align*}
-    3=N(0)(1-e^{-t/\tau})=N(0)\qty(1-\qty(1-\frac{t}\tau+\order{(t/\tau)^2}))
+    3=N(0)(1-e^{-t/\tau})=N(0)\qty(1-\qty(1-\frac{t}\tau+\order{{(t/\tau)}^2}))
     \approx N(0)\frac{t}\tau
   \end{align*}
   Hence the lifetime estimate would be:
