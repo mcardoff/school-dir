@@ -102,7 +102,7 @@ The ``polarization vectors'' $\veps^\mu_\lambda$ for a photon with momentum $p^\
 \end{aside}
 
 \subsection{Perturbation Theory}
-QED is a weakly-coupled theory -- photons and electrons (or quarks) do not interact very strongly. To zeroth order they do not interact at all. Hence, one can regard interactions as perturbations of this simple picture. The outcome of treating QED perturbatively can be represented pictorially via Feynman diagrams. These ``Feynman rules'' are derived from quantum field theory. In practice, all one needs for simple calculations are the Feynman rules.
+QED is a weakly-coupled theory --- photons and electrons (or quarks) do not interact very strongly. To zeroth order they do not interact at all. Hence, one can regard interactions as perturbations of this simple picture. The outcome of treating QED perturbatively can be represented pictorially via Feynman diagrams. These ``Feynman rules'' are derived from quantum field theory. In practice, all one needs for simple calculations are the Feynman rules.
 
 Lets draw the Feynman diagram for $e^+e^-\to\mu^+\mu^-$ then work out the details:
 \begin{figure}[H]
@@ -231,7 +231,7 @@ When a virtual particle appears in a Feynman diagram, this corresponds to a prop
   &=\frac{i(-g^{\mu\nu}+p^\mu p^\nu/p^2)}{p^2}
 \end{align*}
 \begin{remark}
-  The charge arrow on the fermion above is defined such that the direction of motion of the \emph{particle} is the direction of the charge arrow. \emph{Antiparticles} go backward in time.
+  The charge arrow on the fermion above is defined such that the direction of motion of the \emph{particle} is the direction of the charge arrow.\@\emph{Antiparticles} go backward in time.
 \end{remark}
 
 The numerators of the propagators come from summing over helicities:
@@ -241,7 +241,7 @@ The numerators of the propagators come from summing over helicities:
   -g^{\mu\nu}+\frac{p^\mu p^\nu}{p^2}
 \end{align*}
 
-The photon propagator looks complicated, but we will see that the second term will not contribute in practice in either of QED or QCD.
+The photon propagator looks complicated, but we will see that the second term will not contribute in practice in either of QED or QCD.\@
 
 Lets now turn the pictogram into an actual calculation of the scattering amplitude:
 \begin{figure}[H]
@@ -264,8 +264,7 @@ Lets now turn the pictogram into an actual calculation of the scattering amplitu
     \propag [bos, mom=\(q\)] (a) to [edge label'=\(\gamma\)] (b);
     \end{feynhand}
   \end{tikzpicture}
-  \caption{$e^+e^-\to\mu^+\mu^-$}
-  \label{fig:feynman}
+  \caption{$e^+e^-\to\mu^+\mu^-$}\label{fig:feynman}
 \end{figure}
 The arrows on the actual edges indicate charge or ``fermion'' flow, read the spinor chain opposite in the direction of these arrows, for example, the left chain would be read as:
 \begin{align*}
@@ -370,4 +369,51 @@ So our trace is fairly easy:
     -m_e^2g^{\mu\nu}}\\
   &=p_1^\mu p_2^\nu+p_1^\nu p_2^\mu-p_1\vdot p_2g^{\mu\nu}-m_e^2g^{\mu\nu}
 \end{align*}
-Similarly, the helicities of the final-state fermions are often unobserved, so we can sum over all helicities. 
+Similarly, the helicities of the final-state fermions are often unobserved, so we can sum over all helicities. (Note that if we wanted to pull out for example $u_L$, we could insert a $P_L=\frac{1-\gamma_5}2$, or for $u_R$: $P_R=\frac{1+\gamma_5}2$)
+\begin{align*}
+  \sum_\lambda&\sum_{\lambda'}\bar{u}(p_r)\gamma_\mu v(p_4){\qty(\bar{u}(p_3)\gamma_\nu v(p_4))}^*\\
+  &=\Tr[\gamma_\mu(\slap_4-m_\mu)\gamma_\nu(\slap_3+m_\mu)]\\
+  &=4\qty[p_{4\mu}p_{3\nu}+p_{4\nu}p_{3\mu}-p_3\vdot p_4g_{\mu\nu}-m_\mu^2g_{\mu\nu}]
+\end{align*}
+Since $m_e\ll m_\mu$, we'll ignore $m_e$ from this point forward. So:
+\begin{align*}
+  \overline{\abs{\M}^2}=&\frac{e^4}{q^4}\qty[p_1^\mu p_2^\nu+p_1^\nu p_2^\mu-p_1\vdot p_2g^{\mu\nu}]\\
+  &\times4\qty[p_{4\mu}p_{3\nu}+p_{4\nu}p_{3\mu}-p_3\vdot p_4g_{\mu\nu}-m_\mu^2g_{\mu\nu}]\\
+  &=4\frac{e^4}{q^4}\qty[
+  \begin{aligned}
+    2&(p_1\vdot p_4)(p_2\vdot p_3)+2(p_1\vdot p_3)(p_2\vdot p_4)\\
+    -2&(p_1\vdot p_2)(p_3\vdot p_4)-2(p_3\vdot p_4)(p_1\vdot p_2)+4(p_1\vdot p_2)(p_3\vdot p_4)\\
+    -&m_\mu^2(2(p_1\vdot p_2)-4(p_1\vdot p_2))
+  \end{aligned}
+  ]\\
+  &=4\frac{e^4}{q^4}\qty[2(p_1\vdot p_4)(p_2\vdot p_3)+2(p_1\vdot p_3)(p_2\vdot p_4)+2m_\mu^2(p_1\vdot p_2)]
+\end{align*}
+Use momentum conservation to simplify:
+\begin{align*}
+  p_1+p_2&=p_3+p_4\\
+  {(p_1-p_3)}^2&={(p_4-p_2)}^2\\
+  \implies -2p_1\vdot p_3+m_\mu^2=-2p_2\vdot p_4+m_\mu^2
+\end{align*}
+Hence we have two identities:
+\begin{align*}
+  p_1\vdot p_3=p_2\vdot p_4\qquad p_1\vdot p_4=p_2\vdot p_3
+\end{align*}
+Hence the fully simplified matrix element is:
+\begin{align*}
+  \overline{\abs{\M}^2}=8e^4\frac1{q^4}\qty[{(p_2\vdot p_3)}^2+{(p_1\vdot p_3)}^2+m_\mu^2(p_1\vdot p_2)]
+\end{align*}
+
+\paragraph{From $\overline{\abs{\M}^2}$ to $\dd{\sigma}$ (differential cross section)}
+\begin{align*}
+  \dd{\sigma}=\underbrace{\frac1{2s}}_{\text{``Flux factor''}}
+  \underbrace{\frac{\dd[3]{p_3}}{{(2\pi)}^3 2E_3}\frac{\dd[3]{p_4}}{{(2\pi)}^3 2E_4}{(2\pi)}^4\delta^4(p_1+p_2-p_3-p_4)}_{\text{``Phase Space''}}
+\end{align*}
+Where $s\equiv{(p_1+p_2)}^2=q^2$ ``Mandelstam variable''
+
+Two-body phase space is quite siumple. Everything is determined by kinematics, except the angles of the outgoing particles:
+\begin{figure}[H]
+  \centering
+  
+  \caption{Kinematic diagram of our collision}\label{fig:kinematics}
+\end{figure}
+
