@@ -1,0 +1,60 @@
+\documentclass[aspectratio=169]{beamer}
+
+\title{Introduction!}
+\author{Michael Cardiff}
+\subtitle{}
+
+\usepackage[italicdiff]{physics}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{url}
+
+% Changes style of actual slides
+\usetheme{Dresden}
+% Changes color of slides
+\usecolortheme{spruce}
+% removes controls at bottom right side
+\usenavigationsymbolstemplate{}
+
+% for figures
+\graphicspath{ {./figs/} }
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{About Me}
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[xshift=-2.5cm,yshift=1cm] at (current page.center) {\includegraphics[width=4.0cm]{chicago.jpg}};
+    \node[xshift=2.5cm,yshift=1cm] at (current page.center) {\includegraphics[width=4.0cm]{brandeis}};
+    \node[xshift=-4.5cm,yshift=-2cm] at (current page.center) {\includegraphics[width=5.0cm]{f1}};
+    \node[xshift=4.5cm,yshift=-2cm] at (current page.center) {\includegraphics[width=3.0cm]{rubiks}};
+    \node[xshift=0cm,yshift=-2cm] at (current page.center) {\includegraphics[width=3.0cm]{emacs}};
+  \end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Previous \& Current Work}
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[xshift=2cm,yshift=-4.0cm] at (current page.north west) {\includegraphics[width=4.5cm]{qp_eta}};
+    \node[xshift=6.5cm,yshift=-4.0cm] at (current page.north west) {\includegraphics[width=4.5cm]{qp_pt}};
+    \node[draw, align=center, xshift=4.5cm,yshift=-6.25cm] at (current page.north west) {\textbf{Qualification Project}\\Re-Evaluating Track Selections for ITk};
+    \node[xshift=11.0cm,yshift=-4.0cm] at (current page.north west) {\includegraphics[width=2.5cm]{VBS_kl}};
+    \node[xshift=13.5cm,yshift=-4.0cm] at (current page.north west) {\includegraphics[width=2.5cm]{VBS_k2v}};
+    \node[draw, align=center, xshift=12.25cm,yshift=-6.25cm] at (current page.north west) {\textbf{Analysis Work}\\VBS VVh, Focusing on $\kappa_{WW}$};
+  \end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Upcoming Work Here}
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[xshift=-4cm,yshift=1cm] at (current page.center) {\includegraphics[width=6.0cm]{4Dtrack}};
+    \node[xshift=4cm,yshift=1cm] at (current page.center) {\includegraphics[width=3.0cm]{ACTSlogo}};
+    \node[xshift=0cm,yshift=-2cm] at (current page.center) {\includegraphics[width=3.0cm]{allpixlogo}};
+  \end{tikzpicture}
+\end{frame}
+
+\end{document}
