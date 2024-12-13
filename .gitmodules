@@ -4,3 +4,6 @@
 [submodule "FA23/AE_PRESENTATION"]
 	path = FA23/AE_PRESENTATION
 	url = https://git@git.overleaf.com/659ebde36543d2ccc0aa5917
+[submodule "Research/SLAC/weightfield-studies"]
+	path = Research/SLAC/weightfield-studies
+	url = git@github.com:slaclab/weightfield-studies.git
