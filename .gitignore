@@ -17,8 +17,6 @@
 !README.org
 octave-workspace
 *#
-/CS485/Research Paper/figs/
-RESEARCH
 *.djvu
 /FA22/PHYS019a/LAB 1/
 *.jpg
@@ -37,3 +35,4 @@ RESEARCH
 /FA23/PHYS280a/madgraph_3_5_1/
 /current
 /EXTRA/Particle/build/
+.DS_Store
