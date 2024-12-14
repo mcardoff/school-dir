@@ -7,3 +7,6 @@
 [submodule "Research/SLAC/weightfield-studies"]
 	path = Research/SLAC/weightfield-studies
 	url = git@github.com:slaclab/weightfield-studies.git
+[submodule "Research/VVH/piecharts"]
+	path = Research/VVH/piecharts
+	url = git@github.com:mcardoff/piecharts.git
