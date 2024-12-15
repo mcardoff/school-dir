@@ -243,6 +243,7 @@ The numerators of the propagators come from summing over helicities:
 
 The photon propagator looks complicated, but we will see that the second term will not contribute in practice in either of QED or QCD.\@
 
+\subsection{Cross section calculation: $e^+e^-\to\mu^+\mu^-$}
 Lets now turn the pictogram into an actual calculation of the scattering amplitude:
 \begin{figure}[H]
   \centering
@@ -413,7 +414,285 @@ Where $s\equiv{(p_1+p_2)}^2=q^2$ ``Mandelstam variable''
 Two-body phase space is quite siumple. Everything is determined by kinematics, except the angles of the outgoing particles:
 \begin{figure}[H]
   \centering
-  
+  \begin{tikzpicture}
+    \begin{feynhand}
+      \vertex (em) at (-2,0) {$e^-$};
+      \vertex (ep) at ( 2,0) {$e^+$};
+      \vertex (i) at (0,0);
+      \vertex (mp) at (-1.0, -1.73205) {$\mu^+$};
+      \vertex (mm) at ( 1.0,  1.73205) {$\mu^-$};
+      \propag[fer] (em) to (i);
+      \propag[fer] (ep) to (i);
+      \propag[fer] (i) to (mp);
+      \propag[fer] (i) to (mm);
+    \end{feynhand}
+    \draw (0.5,0.0) arc
+    [start angle=0, end angle=60, x radius=0.5,y radius=0.5];
+    \node at (0.7, 0.3) {$\theta$};
+  \end{tikzpicture}
   \caption{Kinematic diagram of our collision}\label{fig:kinematics}
 \end{figure}
 
+
+\begin{remark}
+  We will solve for $\theta$ dependence. There is also an angle $\phi$ (angle of $\mu^+\mu^-$ plane with respect to some vertical plane), but in most cases $\bar{\abs{\M}}^2$ has no explicit $\phi$ dependence, so this is trivial. That is to say, there is a cylindrical symmetry in geenral.
+\end{remark}
+
+Two-body phase space, ignoring some factors of $2\pi$:
+\begin{align*}
+  \frac{\dd[3]{\vb{p}_3}}{2E_3}\frac{\dd[3]{\vb{p}_4}}{2E_4}
+  \underbrace{\delta^4(p_1+p_2-p_3-p_4)}_{\text{Energy conservation}}
+\end{align*}
+Let $p=p_1+p_2$, in the $p$ rest frame:
+\begin{align*}
+  p&=(\sqrt{s},0,0,0)\\
+  p^2&=s={(p_1+p_2)}^2
+\end{align*}
+Phase space doe snot look Lorentz invariant, but it is. To see this, and where this came from, notice:
+\begin{align*}
+  \frac{\dd[3]{\vb{p}}}{2E}=\dd[4](p)\delta(p^2-m^2)\Theta(E)
+\end{align*}
+For a particle of mass $m$
+\begin{proof}
+  \begin{align*}
+    \dd[4]{p}\delta(p^2-m^2)\Theta(E)
+    &=\dd[3]{\vb{p}}\dd{E}\delta(E^2-\vb{p}^2-m^2)\Theta(E)
+  \end{align*}
+  The $\delta$ function has the following property:
+  \begin{align*}
+    \delta(f(x))&=\sum_{x_0}\frac{\delta(x-x_0)}{\abs{f'(x_0)}}\\
+    \text{Where }\quad f(x_0)&=0
+  \end{align*}
+  So we can expant the Energy delta function:
+  \begin{align*}
+    \delta(E^2-(\vb{p}^2+m^2))=
+    \frac{\delta(E-\sqrt{\vb{p}^2+m^2})}{2E}+
+    \frac{\delta(E+\sqrt{\vb{p}^2+m^2})}{2E}
+  \end{align*}
+  The first term requires $E>0$, where the second requires $E<0$, so the latter is ``killed'' by the $\Theta(E)$, hence we have:
+  \begin{align*}
+    \int\dd{E}\delta(E^2-(\vb{p}^2+m^2))\Theta(E)=\frac1{2E}
+    \implies\dd[4]{p}\delta(p^2-m^2)=\frac{\dd[3]{\vb{p}}}{2E}
+  \end{align*}
+\end{proof}
+We will exploit this relationship to aid in solving the phase-space integral.
+\begin{align*}
+  \frac{\dd[3]{\vb{p}_3}}{2E_3}\frac{\dd[3]{\vb{p}_4}}{2E_4}\delta^4(p-p_3-p_4)
+  &=\frac{\dd[3]{\vb{p}_3}}{2E_3}\delta[4]{p_4}(p_4^2-m^2)\Theta(E_4)
+  \delta^4(p-p_3-p_4)
+\end{align*}
+We can use the extra $\delta^4$ to solve the $p_4$ integral, setting $p_4=p-p_3$, and we can ignore the $\Theta(E_4)$:
+\begin{align*}
+  \frac{\dd[3]{\vb{p}_3}}{2E_3}\delta[4]{p_4}(p_4^2-m^2)\Theta(E_4)
+  \delta^4(p-p_3-p_4)
+  =\frac{\dd[3]{\vb{p}_3}}{2E_3}\delta({(p-p_3)}^2-m^2)
+\end{align*}
+In our special rest frame, ${(p-p_3)}^2-m^2=s-2\sqrt{s}E_3$. We then take advantage of spherical coordinates in $\vb{p}_3$:
+\begin{align*}
+  \dd[3]{\vb{p_3}}=\dd{\Omega}\abs{\vb{p_3}}^2\dd{p_3}
+\end{align*}
+With the energy momentum constraint, we also have:
+\begin{align*}
+  E^2_3=\vb{p_3}^2+m^2\implies 2E_3\dd{E_3}=2\abs{\vb{p_3}}\dd{p_3}
+\end{align*}
+Changing out differential to:
+\begin{align*}
+  \frac{\dd[3]{\vb{p}_3}}{2E_3}\delta(s-2\sqrt{s}E_3)
+  &=\dd{\Omega}\underbrace{\abs{\vb{p_3}}^2\dd{p_3}}_{\abs{\vb{p_3}}E_3\dd{E_3}}
+  \frac1{2E_3}\delta(s-2\sqrt{s}E_3)\\
+  &=\frac12\abs{\vb{p_3}}\dd{\Omega}\dd{E_3}\delta(s-2\sqrt{s}E_3)
+\end{align*}
+We can then finish the integral over $E_3$:
+\begin{align*}
+  \int\dd{E_3}\delta(s-2\sqrt{s}E_3)=\frac{1}{2\sqrt{s}}
+\end{align*}
+Giving our integrated result:
+\begin{align*}
+  \frac{\dd[3]{\vb{p}_3}}{2E_3}\frac{\dd[3]{\vb{p}_4}}{2E_4}\delta^4(p-p_3-p_4)
+  =\frac1{4\sqrt{s}}\abs{\vb{p}_3}\dd{\Omega}
+\end{align*}
+Kinematically, tis process is like a ``virtual'' photon of mass $\sqrt{s}$ decaying into two muons of mass $m$.
+
+In the $CM$ frame, $\abs{\vb{p}_3}=\abs{\vb{p}_4}=\frac{\sqrt{s}}2\beta$, and in terms of the mass and $s$:
+\begin{align*}
+  \beta=\sqrt{1-\frac{4m_\mu^2}{s}}
+\end{align*}
+So, for our process:
+\begin{align*}
+  \frac1{{(2\pi)}^2}\dd[3]{\vb{p}_3}{2E_3}\dd[3]{\vb{p}_4}{2E_4}
+  \delta^4(p_1+p_2-p_3-p_4)=\frac1{{(2\pi)}^2}\frac18\beta\dd{\Omega}
+\end{align*}
+So the differential for the cross section is:
+\begin{align*}
+  \dd{\bar{\sigma}}&=\frac1{2s}\overline{\abs{\M}^2}\times PS\\
+  &=\frac1{2s}\frac{8e^4}{s^2}
+  [{(p_2\vdot p_3)}^2+{(p_1\vdot p_3)}^2+m_\mu^2(p_1\vdot p_2)]
+  \frac1{{(2\pi)}^2}\frac{\beta}{8}\dd{\Omega}
+\end{align*}
+Choose the following values for the momenta:
+\begin{align*}
+  p_1&=\frac{\sqrt{s}}{2}(1,0,0,1)\\
+  p_2&=\frac{\sqrt{s}}{2}(1,0,0,-1)\\
+  p_3&=\frac{\sqrt{s}}{2}(1,0,\beta\sin\theta,\beta\cos\theta)\\
+  p_4&=\frac{\sqrt{s}}{2}(1,0,-\beta\sin\theta,-\beta\cos\theta)
+\end{align*}
+The dot products are:
+\begin{align*}
+  p_2\vdot p_3&=\frac{s}{4}(1+\beta\cos\theta)\\
+  p_1\vdot p_3&=\frac{s}{4}(1-\beta\cos\theta)\\
+  p_1\vdot p_2&=\frac{s}{2}
+\end{align*}
+Subbing these in:
+\begin{align*}
+  \dd{\bar{\sigma}}&=\frac1{2s}\frac{e^4}{{(2\pi)}^2}\frac{\beta}{s^2}s^2
+  \qty[\frac1{16}{(1+\beta\cos\theta)}^2+{(1-\beta\cos\theta)}^2+\frac{m_\mu^2}{2s}]
+  \dd{\Omega}\\
+  &=\frac1{2s}\frac{e^4}{{(2\pi)}^2}\beta
+  \qty[\frac18(1+\beta^2\cos^2\theta)+\frac{m_\mu^2}{2s}]\dd{\Omega}
+\end{align*}
+Using the fact that there is $\phi$ symmetry, we can integrate it out for an extra factor of $2\pi$, giving:
+\begin{align*}
+  \dv{\bar{\sigma}}{(\cos\theta)}&=\frac\pi{8s}\frac{e^4}{{(2\pi)}^2}\beta
+  \qty[1+\beta^2\cos^2\theta+4\frac{m_\mu^2}{s}]
+\end{align*}
+Using $\alpha=e^2/4\pi$ and $z=\cos\theta$:
+\begin{align*}
+  \dv{\bar{\sigma}}{z}&=\frac\pi{2s}\alpha^2\beta
+  \qty[1+\beta^2z^2+4\frac{m_\mu^2}{s}]
+\end{align*}
+The total cross section is then found using
+\begin{align*}
+  \bar{\sigma}=\int_{-1}^1\dv{\bar{\sigma}}{z}\dd{z}
+  =\frac{\pi}{2s}\alpha^2\beta\qty[2+\frac23\beta^2+2\frac{4m_\mu^2}{s}]
+\end{align*}
+The parenthetical can be reduced to:
+\begin{align*}
+  2+\frac23\beta^2+2\frac{4m_\mu^2}{s}=\frac83+\frac{16}3\frac{m_\mu^2}{s}
+\end{align*}
+Hence our final result!
+\begin{align*}
+  \boxed{\bar{\sigma}=\frac{4\pi}{3s}\alpha^2\beta\qty(1+2\frac{m_\mu^2}{s})}
+\end{align*}
+We've finally reached the total cross section for $e^-e^+\to\mu^-\mu^+$. This is \emph{the} basic cross section of $e^-e^+$ physics, other cross sections are compared to this one.
+
+Recent (and future) $ee$ colliders run at energies far above $2m_\mu$:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{ccc}
+    Collider & $\sqrt{s}$        & Location\\ \midrule
+    BEPC   & \SI{3}{\GeV}        & Beijing\\ \midrule
+    CESR   & \SI{10}{\GeV}       & Cornell\\ \midrule
+    SLC    & \SI{91}{\GeV}       & Stanford\\ \midrule
+    LEP I  & \SI{91}{\GeV}       & CERN\\ \midrule
+    LEP II & 91-\SI{210}{\GeV}   & CERN\\ \midrule
+    ILC    & 500-\SI{1000}{\GeV} & Future\\
+  \end{tabular}
+  \caption{$\sqrt{s}$ Values at various colliders}\label{tab:1}
+\end{table}
+The value we found, $\bar{\sigma}(e^+e^-\to\mu^+\mu^-)=\frac{4\pi\alpha^2}{2s}$ is a good approximation.
+
+\subsection{$e^+e^-\to$ hadrons}
+The basic process here is $e^-e^+\to q\bar{q}$:
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{feynhand}
+      \vertex (a) at (0,0);
+      \vertex (e1) at (-1, 1) {$e^-$};
+      \vertex (e2) at (-1,-1) {$e^+$};
+      \vertex (m1) at (2.5, 1) {$q$};
+      \vertex (m2) at (2.5,-1) {$\bar{q}$};
+      \vertex (b) at (1.5,0);
+      \propag (e1) to (a);
+      \propag (e2) to (a);
+      \propag (b) to (m1);
+      \propag (b) to (m2);
+      \propag[bos] (a) to (b);
+    \end{feynhand}
+  \end{tikzpicture}
+  \caption{Feynman Diagram for $e^+e^-\to q\bar{q}$}
+\end{figure}
+This is just like $e^-e^+\to\mu^-\mu^+$. The quarks do not exist in free form, and must ``hadronize'' over a time scale $1/\Lambda_{QCD}\sim\SI{1e-23}{\s}$. This picture is therefore valid if $q\bar{q}$ creation occurs over a time small compared to $1/\Lambda_{QCD}$, i.e.\ at energies $\sqrt{s}\gg\Lambda_{QCD}\sim\SI{200}{\MeV}$.
+
+For example, $e^+e^-\to\pi^-\pi^+$ looks like this:
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[scale=2.0]
+    \begin{feynhand}
+      \vertex (a) at (0,0);
+      \vertex (b) at (3/2,0);
+      \vertex (ga) at (11/6, 1/3);
+      \vertex (gb) at (13/6, 2/3);
+      \vertex (gc) at (11/6,-1/3);
+      \vertex (gd) at (13/6,-2/3);
+      \vertex (c) at (13/6, 0);
+      \vertex (d) at ( 5/2, 1/3);
+      \vertex (e) at ( 5/2,-1/3);
+      \vertex (f1) at (-1, 1) {$e^-$};
+      \vertex (f2) at (-1,-1) {$e^+$};
+      \vertex (ur) at (5/2, 1) {$u$};
+      \vertex (ub) at (5/2,-1) {$\bar{u}$};
+      \vertex (db) at (17/6, 2/3) {$\bar{d}$};
+      \vertex (dr) at (17/6,-2/3) {$d$};
+      \propag (f1) to (a);
+      \propag (f2) to (a);
+      \propag (b) to (ur);
+      \propag (b) to (ub);
+      \propag[bos] (a) to (b);
+      \propag[glu] (ga) to (c);
+      \propag[glu] (gb) to (d);
+      \propag[glu] (gc) to (c);
+      \propag[glu] (gd) to (e);
+      \propag (c) to (d);
+      \propag (c) to (e);
+      \propag (d) to (db);
+      \propag (e) to (dr);
+    \end{feynhand}
+    \draw[rotate around={45:(8/3, 5/6)}] (8/3, 5/6) ellipse (0.2 and 0.5);
+    \node at (9/3, 7/6) {$\pi^+$};
+    \draw[rotate around={45:(8/3,-5/6)}] (8/3,-5/6) ellipse (0.5 and 0.2);
+    \node at (9/3, -7/6) {$\pi^-$};
+  \end{tikzpicture}
+  \caption{Feynman Diagram for $e^+e^-\to \pi^+\pi^-$}
+\end{figure}
+
+If we sum over all possible hadronic final states:
+\begin{align*}
+  \sigma(e^-e^+\to q\bar{q})=\sigma(e^-e^+\to\text{hadrons})
+\end{align*}
+Since we already solved $e^-e^+\to\mu^-\mu^+$, we can write down this cross section immediately:
+\begin{align*}
+  \sigma(e^-e^+\to q\bar{q})=\frac{4\pi\alpha^2}{2s}\beta\qty(1+2\frac{m_q^2}{s})
+  Q_q^2\times 3
+\end{align*}
+The multiple of 3 comes from the quark colors, and $Q_q$ is the quark charge.
+
+Taking this one step further, one of the most important tests of QCD (and a strong constraint on \emph{all} possible low-energy physics) is the measurement of $R_{\text{hadrons}}$:
+\begin{align*}
+  R_{\text{h}}=\frac{\sigma(e^-e^+\to\text{hadrons})}{\sigma(e^-e^+\to\mu^-\mu^+)}
+\end{align*}
+At $\sqrt{s}=\SI{8}{\GeV}$, for example, one is above threshold for $u\bar{u}, d\bar{d},s\bar{s}$, and $c\bar{c}$ production. Hence:
+\begin{align*}
+  R_{\text{h}}(\SI{8}{\GeV})&=3[Q_u^2+Q_d^2+Q_s^2+Q_c^2]\\
+  &=3\qty[{\qty(\frac23)}^2+{\qty(-\frac13)}^2
+  +{\qty(-\frac13)}^2+{\qty(\frac23)}^2]\\
+  &=\frac{10}{3}
+\end{align*}
+Measurements of $R_{\text{h}}$ have been made at the $\sim1\%$ level at several energies. Since this number is a ratio, many experimental systematic errors cancel, leaving a very strong case that there really are 3 colors of quarks.
+
+Where the measurement of $R_{\text{h}}$ is challenging is near threshold for a $q\bar{q}$ pair. The $q\bar{q}$ pair binds into a meson due to the strong force:
+\begin{TODO}
+  binding
+\end{TODO}
+These must have the quantum numbers of the photon, $J^P=1^-,I=0$, such as:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{ccc}
+    Quarks & Meson      & Threshold \\ \midrule
+    $u,d$  & $\rho$     & \SI{720}{\MeV} \\ \midrule
+    $s$    & $\phi$     & \SI{1020}{\MeV} \\ \midrule
+    $c$    & $J/\psi$   & \SI{3.1}{\GeV} \\ \midrule
+    $b$    & $\Upsilon$ & \SI{9.46}{\GeV}
+  \end{tabular}
+  \caption{Threshold production for some $q\bar{q}$ pairs}
+\end{table}
