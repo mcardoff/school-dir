@@ -1,6 +1,75 @@
 \documentclass{article}
 
-\input{./preamble.tex}
+\author{Michael Cardiff}
+\date{\today}
+
+%% science symbols
+\usepackage{amsmath,amssymb,amsthm}  % ams
+\usepackage{siunitx}
+\usepackage{bm,cancel}               % look nice
+\usepackage{physics,slashed}         % phys specific
+
+%% general pretty stuff
+\usepackage{caption,float,graphicx,url,enumitem}
+\usepackage{tikz,tikz-feynhand}
+\usepackage{geometry}
+\usepackage{booktabs}
+
+% setup options
+\captionsetup{labelfont=bf}
+\geometry{margin=1in}
+
+% macros
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\H}{\mathcal{H}}
+\renewcommand{\bar}{\overline}
+\renewcommand{\l}{\ell}
+\newcommand{\id}{\bm{1}}
+\newcommand{\mcV}{\mathcal{V}}
+\newcommand{\D}{\partial}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\veps}{\varepsilon}
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=2pt](char){#1};}}
+
+% mdframed environments
+\usepackage[framemethod=TikZ]{mdframed}
+\mdfsetup{skipabove=\topskip,skipbelow=\topskip}
+\mdfdefinestyle{defstyle}{%
+  linewidth=1pt,
+  frametitlerule=true,
+  frametitlebackgroundcolor=gray!40,
+  backgroundcolor=gray!20,
+  innertopmargin=\topskip
+}
+
+\mdfdefinestyle{todostyle}{%
+  linewidth=0pt,
+  frametitlerule=false,
+  frametitlebackgroundcolor=red!40,
+  backgroundcolor=red!20,
+  innertopmargin=\topskip
+}
+
+\mdtheorem[style=defstyle]{definition}{Definition}
+\mdtheorem[style=defstyle]{theorem}{Theorem}
+\mdtheorem[style=defstyle]{problem}{Problem}
+\mdtheorem[style=defstyle]{example}{Example}
+
+\numberwithin{example}{section}
+
+\newenvironment{thebook}
+{\begin{mdframed}[style=defstyle,frametitle={From the Book}]}{\end{mdframed}}
+
+\newenvironment{remark}
+{\begin{mdframed}[style=defstyle,frametitle={Remark}]}{\end{mdframed}}
+
+\newenvironment{TODO}
+{\begin{mdframed}[style=todostyle,frametitle={TO DO}]}{\end{mdframed}}
+
+\theoremstyle{plain}
+\newtheorem*{note}{Note}
+\newtheorem*{aside}{Aside}
 
 \title{\vspace{-3em}Particle Physics Notes}
 \date{\today}
